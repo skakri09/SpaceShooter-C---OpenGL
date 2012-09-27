@@ -85,6 +85,7 @@
     <ClCompile Include="PlayerSpaceShip.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectileFactory.cpp" />
+    <ClCompile Include="SimpleEnemySpaceShip.cpp" />
     <ClCompile Include="SpaceShipBase.cpp" />
     <ClCompile Include="SquareBullet.cpp" />
     <ClCompile Include="Vector3d.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="PlayerSpaceShip.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileFactory.h" />
+    <ClInclude Include="SimpleEnemySpaceShip.h" />
     <ClInclude Include="SpaceShipBase.h" />
     <ClInclude Include="SquareBullet.h" />
     <ClInclude Include="Timer.h" />

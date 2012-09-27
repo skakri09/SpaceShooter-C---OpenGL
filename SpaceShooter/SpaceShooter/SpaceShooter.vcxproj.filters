@@ -75,6 +75,9 @@
     <ClCompile Include="SquareBullet.cpp">
       <Filter>Game\Drawables\Projectiles\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SimpleEnemySpaceShip.cpp">
+      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -118,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="SquareBullet.h">
       <Filter>Game\Drawables\Projectiles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleEnemySpaceShip.h">
+      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
