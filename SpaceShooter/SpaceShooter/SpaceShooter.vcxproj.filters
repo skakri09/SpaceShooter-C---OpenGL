@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{ea134570-8b96-4896-ba59-cba3bea79a9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{9a464e1b-37c9-48c9-97f7-dbf944751574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Game\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="GLUtils">
+      <UniqueIdentifier>{01ab4019-a69e-42ac-97a2-fb64ccb1a01c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables">
+      <UniqueIdentifier>{f97c10df-bd35-4c4a-8c4a-ab6d088247f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\SpaceShips">
+      <UniqueIdentifier>{440a7adc-3d79-4d14-b9ae-894a491c0072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\SpaceShips\Header Files">
+      <UniqueIdentifier>{84164f3e-c197-44c2-9643-476140178b08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\SpaceShips\Source Files">
+      <UniqueIdentifier>{ad07e0da-0a92-44b1-a607-1c7919515eab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\Projectiles">
+      <UniqueIdentifier>{c9fea405-5a1f-45bd-8fd0-cb4b506ec810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\Projectiles\Header Files">
+      <UniqueIdentifier>{1153580c-78e5-4ddd-8814-98263c30cb81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\Projectiles\Source Files">
+      <UniqueIdentifier>{37250a22-5f3d-4809-92ae-1e7c86cc71a0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Game\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Game\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LogSys.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3d.cpp">
+      <Filter>Game\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceShipBase.cpp">
+      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSpaceShip.cpp">
+      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Game\Drawables\Projectiles\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileFactory.cpp">
+      <Filter>Game\Drawables\Projectiles\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SquareBullet.cpp">
+      <Filter>Game\Drawables\Projectiles\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameManager.h">
+      <Filter>Game\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLUtils\GLUtils.hpp">
+      <Filter>GLUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="GLUtils\Program.hpp">
+      <Filter>GLUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="GLUtils\VBO.hpp">
+      <Filter>GLUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="LogSys.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Game\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3d.h">
+      <Filter>Game\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceShipBase.h">
+      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSpaceShip.h">
+      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Game\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Game\Drawables\Projectiles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileFactory.h">
+      <Filter>Game\Drawables\Projectiles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SquareBullet.h">
+      <Filter>Game\Drawables\Projectiles\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+Innleveringen består av begynnelsen på en spaceshooter, skrevet i c++ med openGL og SDL. Jeg har valgt å ha mange muligheter åpne når det gjelder kontrollsystemer i spillet ved å ha muligheten til å rotere skipet rundt både x, y og z aksen(left, middle og right mouse btn eller j, k og l btn om man ikke har mus tiljengelig), hvorpå skudd som blir skutt fra romskipet man styrer alltid kommmer ut fra tuppen på skipet i dens retning i det man skyter. Man kan bevege skipet i x og y retningen (opp, ned, høyre og venstre) på skjermen med wasd. Man kan også bevege seg langs z aksen (inn og ut i skjermen) ved å skrolle på musehjulet. Rotasjonen på skipet har ingen innvirkning på bevegelsen til skipet.
+
+Romskipet består av en quad akter-ende, og en triangle-fan som lager tuppen på skipet ved å definerer tuppen, og 5 punkter som står i samme hjører som akterenden. Space avfyrer skudd fra romskipet, skuddene består foreløpig av 6 firkantede sider som settes sammen til et rektangel. Input skjer igjennom SDL ved hjelp av både keystates (for bevegelse) og events(for "actions" som skal sje en gang per trykk).
+
+For å unngå at skipet beveger seg utenfor frustrum har jeg enkle if-sjekker som sørger for at velocity blir satt til 0 om man ville beveget seg utenfor.
+
+Som basis for all posisjon, velocity, force o.l bruker jeg en vector3d klasse som inneholder en float for x, y og z. Klassen har også operator overlastninger og noen funksjoner for å gjøre håndtering av posisjons oppdateringer osv enklere.
+
+Det er nå foreløpig med mange muligheter for kontrollering av skipet som muligens ikke vil bli brukt senere. De er likevel med nå så jeg har flere muligheter senere om jeg skulle få lyst å bruke dem. Knappene som er brukt nå er heller ikke de mest praktiske gameplay messig, men de er enkle å bytte senere når det trengs.
+
+Skudd fra romskipet opprettes fra et factory som kan returnere alle fremtidige typer skudd. Hver skudd type deler samme display list for alle instansene av skuddet, og skudd vill bli gjenbrukt når de ikke lenger vises på skjermen viav en simpel form for object pooling.
