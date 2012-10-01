@@ -80,7 +80,16 @@ void GameManager::init() {
 	createOpenGLContext();
 	setOpenGLStates();
 
-	resize(window_width, window_height);
+	glViewport(0, 0, window_width, window_height);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(75.0f, 1.5f, 1.0f, 500.0f);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	//resize(window_width, window_height);
 
 	player.CreateDrawable();
 }
@@ -103,6 +112,7 @@ void GameManager::play()
 	while (!doExit) 
 	{
 		deltaTime = (GLfloat) my_timer.elapsedAndRestart();
+		/*	
 		keystates = SDL_GetKeyState(NULL);
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) 
@@ -168,6 +178,7 @@ void GameManager::play()
 		{
 			player.FireGun(deltaTime);
 		}
+		*/
 		HandleXAxisMovement();
 		HandleYAxisMovement();
 		HandleFrustumCollision();
@@ -184,67 +195,58 @@ void GameManager::quit() {
 	std::cout << "Bye bye..." << std::endl;
 }
 
-bool GameManager::keyDown( SDLKey key )
-{
-	if(keystates[key])
-	{
-		return true;
-	}
-	return false;
-}
-
 void GameManager::HandleXAxisMovement()
 {
-	if (keyDown(SDLK_a)|| keyDown(SDLK_d))
-	{
-		//if left and right
-		if (keyDown(SDLK_a) && keyDown(SDLK_d))
-		{
-			player.setXVel(0.0f);
-		}
-		//If only left
-		if (keyDown(SDLK_a) && !keyDown(SDLK_d))
-		{
-			player.setXVel(-PLAYER_X_VELOCITY);
-		}
-		//If only right
-		if (!keyDown(SDLK_a) && keyDown(SDLK_d))
-		{
-			player.setXVel(PLAYER_X_VELOCITY);
-		}
-	}
-	else
-	{
-		//No movement
-		player.setXVel(0.0f);
-	}
+	//if (keyDown(SDLK_a)|| keyDown(SDLK_d))
+	//{
+	//	//if left and right
+	//	if (keyDown(SDLK_a) && keyDown(SDLK_d))
+	//	{
+	//		player.setXVel(0.0f);
+	//	}
+	//	//If only left
+	//	if (keyDown(SDLK_a) && !keyDown(SDLK_d))
+	//	{
+	//		player.setXVel(-PLAYER_X_VELOCITY);
+	//	}
+	//	//If only right
+	//	if (!keyDown(SDLK_a) && keyDown(SDLK_d))
+	//	{
+	//		player.setXVel(PLAYER_X_VELOCITY);
+	//	}
+	//}
+	//else
+	//{
+	//	//No movement
+	//	player.setXVel(0.0f);
+	//}
 }
 
 void GameManager::HandleYAxisMovement()
 {
-	if (keyDown(SDLK_w)|| keyDown(SDLK_s))
-	{
-		//if up and down
-		if (keyDown(SDLK_w) && keyDown(SDLK_s))
-		{
-			player.setYVel(0.0f);
-		}
-		//If only up
-		if (keyDown(SDLK_w) && !keyDown(SDLK_s))
-		{
-			player.setYVel(PLAYER_Y_VELOCITY);
-		}
-		//If only down
-		if (!keyDown(SDLK_w) && keyDown(SDLK_s))
-		{
-			player.setYVel(-PLAYER_Y_VELOCITY);
-		}
-	}
-	else
-	{
-		//No movement
-		player.setYVel(0.0f);
-	}
+	//if (keyDown(SDLK_w)|| keyDown(SDLK_s))
+	//{
+	//	//if up and down
+	//	if (keyDown(SDLK_w) && keyDown(SDLK_s))
+	//	{
+	//		player.setYVel(0.0f);
+	//	}
+	//	//If only up
+	//	if (keyDown(SDLK_w) && !keyDown(SDLK_s))
+	//	{
+	//		player.setYVel(PLAYER_Y_VELOCITY);
+	//	}
+	//	//If only down
+	//	if (!keyDown(SDLK_w) && keyDown(SDLK_s))
+	//	{
+	//		player.setYVel(-PLAYER_Y_VELOCITY);
+	//	}
+	//}
+	//else
+	//{
+	//	//No movement
+	//	player.setYVel(0.0f);
+	//}
 }
 
 void GameManager::HandleFrustumCollision()

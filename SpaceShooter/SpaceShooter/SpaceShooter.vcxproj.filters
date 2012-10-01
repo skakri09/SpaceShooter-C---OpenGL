@@ -78,6 +78,9 @@
     <ClCompile Include="SimpleEnemySpaceShip.cpp">
       <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Game\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -124,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="SimpleEnemySpaceShip.h">
       <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Game\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

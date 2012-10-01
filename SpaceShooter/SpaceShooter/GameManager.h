@@ -9,6 +9,7 @@
 #include "Drawable.h"
 #include "PlayerSpaceShip.h"
 #include "Projectile.h"
+#include "InputManager.h"
 
 #include <gl/gl.h>
 
@@ -26,6 +27,7 @@ static const float FRUSTUM_RIGHT = 55.0f;
 static const float FRUSTUM_TOP = 46.0f;
 static const float FRUSTUM_BOTTOM = -28.0f;
 
+class InputManager;
 class GameManager 
 {
 public:
@@ -86,9 +88,6 @@ private:
 	Timer my_timer;		//Timer for machine independent motion
 	GLfloat deltaTime;	//Time since last update 
 	
-	//Returns true if the param key is down
-	bool keyDown(SDLKey key);
-	
 	//Handles movement along the x axis. Checks for input and changes
 	//x velocity based on the input.
 	void HandleXAxisMovement();
@@ -103,9 +102,8 @@ private:
 	//frustum, but against an invisible wall matching the coordinates.
 	void HandleFrustumCollision();
 
-	Uint8* keystates; // Holds a snapshot of keys on the keyboard.
-
 	CPlayerSpaceShip player; // Player spaceship object
+
 };
 
 #endif // _GAMEMANAGER_H_
