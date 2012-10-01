@@ -104,6 +104,7 @@ private:
 
 	CPlayerSpaceShip player; // Player spaceship object
 
+	InputManager input;
 };
 
 #endif // _GAMEMANAGER_H_

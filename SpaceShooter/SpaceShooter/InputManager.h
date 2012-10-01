@@ -13,7 +13,7 @@
 #endif
 
 #include <gl/gl.h>
-
+#include <gl/GLU.h>
 #include <SDL.h>
 
 class InputManager
@@ -24,7 +24,8 @@ public:
 
 	//Handles updates the input manager relies on to do input checks.
 	//Should be called in the beginning of each game loop update
-	void Update();
+	//param bool should be a ref to the bool running the gameloop
+	void Update(bool& exitGame);
 
 	//Returns true if the param key is down, try to avoid
 	//using this function, rely on the predefined game-
@@ -42,9 +43,6 @@ public:
 
 	//Returning true if right mouse btn is being held down
 	bool RightMouseDownHold();
-	
-	//Returning true if space btn is pressed once
-	bool SpaceBtnDown();
 
 	//Returning true if fire button is held down (space)
 	bool Fire();
@@ -69,8 +67,6 @@ private:
 	Uint8 mouseBtns;	// Holds a snapshot of the mouse buttons' state
 	int mouseX;		// Mouse x pos	
 	int mouseY;		// Mouse y pos
-
-	bool doExit;
 };
 
 #endif // InputManager_h__

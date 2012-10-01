@@ -3,7 +3,6 @@
 
 InputManager::InputManager()
 {
-	doExit = false;
 }
 
 InputManager::~InputManager()
@@ -11,7 +10,7 @@ InputManager::~InputManager()
 
 }
 
-void InputManager::Update()
+void InputManager::Update(bool& exitGame)
 {
 	mouseBtns = SDL_GetMouseState(&mouseX, &mouseY);
 
@@ -26,10 +25,10 @@ void InputManager::Update()
 			switch(event.key.keysym.sym) 
 			{
 			case SDLK_ESCAPE:
-				doExit = true;
+				exitGame = true;
 				break;
 			case SDLK_q:
-				doExit = true;
+				exitGame = true;
 				break;
 			}
 			break;
@@ -47,7 +46,7 @@ void InputManager::Update()
 			}
 			break;
 		case SDL_QUIT: //e.g., user clicks the upper right x
-			doExit = true;
+			exitGame = true;
 			break;
 		case SDL_VIDEORESIZE:
 			resize(event.resize.w, event.resize.h);
@@ -70,11 +69,6 @@ bool InputManager::KeyDownHold( SDLKey key )
 	return(keystates[key]);
 }
 
-bool InputManager::Quit()
-{
-	return doExit;	
-}
-
 bool InputManager::LeftMouseDownHold()
 {
 	return ((mouseBtns&SDL_BUTTON_LEFT) != 0);
@@ -90,39 +84,63 @@ bool InputManager::RightMouseDownHold()
 	return ((mouseBtns&SDL_BUTTON_RIGHT) != 0);
 }
 
-bool InputManager::SpaceBtnDown()
-{
-	return(keystates[SDLK_SPACE]);
-}
-
 bool InputManager::MoveLeft()
 {
-	return(keystates[SDLK_LEFT]);
+	if(keystates[SDLK_LEFT] != NULL
+		|| keystates[SDLK_a] != NULL)
+	{
+		return true;
+	}
+	return false;
 }
 
 bool InputManager::MoveRight()
 {
-	return(keystates[SDLK_RIGHT]);
+	if(keystates[SDLK_RIGHT] != NULL
+		|| keystates[SDLK_d] != NULL)
+	{
+		return true;
+	}
+	return false;
 }
 
 bool InputManager::MoveUp()
 {
-	return(keystates[SDLK_UP]);
+	if(keystates[SDLK_UP] != NULL
+		|| keystates[SDLK_w] != NULL)
+	{
+		return true;
+	}
+	return false;
 }
 
 bool InputManager::MoveDown()
 {
-	return(keystates[SDLK_DOWN]);
+	if(keystates[SDLK_DOWN] != NULL
+		|| keystates[SDLK_s] != NULL)
+	{
+		return true;
+	}
+	return false;
 }
 
 void InputManager::resize( unsigned int width, unsigned int height )
 {
-	/*glViewport(0, 0, width, height);
+	glViewport(0, 0, width, height);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(75.0f, 1.5f, 1.0f, 500.0f);
 
 	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();*/
+	glLoadIdentity();
+}
+
+bool InputManager::Fire()
+{
+	if(keystates[SDLK_SPACE] != NULL)
+	{
+		return true;
+	}
+	return false;
 }

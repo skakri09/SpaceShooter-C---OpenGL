@@ -112,73 +112,14 @@ void GameManager::play()
 	while (!doExit) 
 	{
 		deltaTime = (GLfloat) my_timer.elapsedAndRestart();
-		/*	
-		keystates = SDL_GetKeyState(NULL);
-		SDL_Event event;
-		while (SDL_PollEvent(&event)) 
-		{// poll for pending events
-			switch (event.type) 
-			{
-			case SDL_KEYDOWN:
-				switch(event.key.keysym.sym) 
-				{
-				case SDLK_ESCAPE:
-					doExit = true;
-					break;
-				case SDLK_q:
-					if (event.key.keysym.mod & KMOD_CTRL) doExit = true; //Ctrl+q
-					break;
-				case SDLK_j:
-					player.InitRotation(X_AXIS);
-					break;
-				case SDLK_k:
-					player.InitRotation(Z_AXIS);
-					break;
-				case SDLK_l:
-					player.InitRotation(Y_AXIS);
-					break;
-				}
-				break;
-			case SDL_MOUSEBUTTONDOWN:
-				{
-					switch(event.button.button)
-					{
-					case SDL_BUTTON_LEFT:
-						player.InitRotation(X_AXIS);
-						break;
-					case SDL_BUTTON_RIGHT:
-						player.InitRotation(Z_AXIS);
-						break;
-					case SDL_BUTTON_MIDDLE:
-						player.InitRotation(Y_AXIS);
-						break;
-					}
-				}break;
-			case SDL_QUIT: //e.g., user clicks the upper right x
-				doExit = true;
-				break;
-			case SDL_VIDEORESIZE:
-				resize(event.resize.w, event.resize.h);
-				break; 
-			}
-			if(event.button.button == SDL_BUTTON_WHEELDOWN)
-			{
-				player.setZVel(-PLAYER_Z_VELOCITY);
-			}
-			else if(event.button.button == SDL_BUTTON_WHEELUP)
-			{
-				player.setZVel(PLAYER_Z_VELOCITY);
-			}
-			else
-			{
-				player.setZVel(0.0f);
-			}
-		}
-		if(keyDown(SDLK_SPACE))
+		
+		input.Update(doExit);
+	
+		if(input.Fire())
 		{
 			player.FireGun(deltaTime);
 		}
-		*/
+
 		HandleXAxisMovement();
 		HandleYAxisMovement();
 		HandleFrustumCollision();
@@ -197,56 +138,56 @@ void GameManager::quit() {
 
 void GameManager::HandleXAxisMovement()
 {
-	//if (keyDown(SDLK_a)|| keyDown(SDLK_d))
-	//{
-	//	//if left and right
-	//	if (keyDown(SDLK_a) && keyDown(SDLK_d))
-	//	{
-	//		player.setXVel(0.0f);
-	//	}
-	//	//If only left
-	//	if (keyDown(SDLK_a) && !keyDown(SDLK_d))
-	//	{
-	//		player.setXVel(-PLAYER_X_VELOCITY);
-	//	}
-	//	//If only right
-	//	if (!keyDown(SDLK_a) && keyDown(SDLK_d))
-	//	{
-	//		player.setXVel(PLAYER_X_VELOCITY);
-	//	}
-	//}
-	//else
-	//{
-	//	//No movement
-	//	player.setXVel(0.0f);
-	//}
+	if (input.MoveLeft()|| input.MoveRight())
+	{
+		//if left and right
+		if (input.MoveLeft() && input.MoveRight())
+		{
+			player.setXVel(0.0f);
+		}
+		//If only left
+		if (input.MoveLeft() && !input.MoveRight())
+		{
+			player.setXVel(-PLAYER_X_VELOCITY);
+		}
+		//If only right
+		if (!input.MoveLeft() && input.MoveRight())
+		{
+			player.setXVel(PLAYER_X_VELOCITY);
+		}
+	}
+	else
+	{
+		//No movement
+		player.setXVel(0.0f);
+	}
 }
 
 void GameManager::HandleYAxisMovement()
 {
-	//if (keyDown(SDLK_w)|| keyDown(SDLK_s))
-	//{
-	//	//if up and down
-	//	if (keyDown(SDLK_w) && keyDown(SDLK_s))
-	//	{
-	//		player.setYVel(0.0f);
-	//	}
-	//	//If only up
-	//	if (keyDown(SDLK_w) && !keyDown(SDLK_s))
-	//	{
-	//		player.setYVel(PLAYER_Y_VELOCITY);
-	//	}
-	//	//If only down
-	//	if (!keyDown(SDLK_w) && keyDown(SDLK_s))
-	//	{
-	//		player.setYVel(-PLAYER_Y_VELOCITY);
-	//	}
-	//}
-	//else
-	//{
-	//	//No movement
-	//	player.setYVel(0.0f);
-	//}
+	if (input.MoveUp()|| input.MoveDown())
+	{
+		//if up and down
+		if (input.MoveUp() && input.MoveDown())
+		{
+			player.setYVel(0.0f);
+		}
+		//If only up
+		if (input.MoveUp() && !input.MoveDown())
+		{
+			player.setYVel(PLAYER_Y_VELOCITY);
+		}
+		//If only down
+		if (!input.MoveUp() && input.MoveDown())
+		{
+			player.setYVel(-PLAYER_Y_VELOCITY);
+		}
+	}
+	else
+	{
+		//No movement
+		player.setYVel(0.0f);
+	}
 }
 
 void GameManager::HandleFrustumCollision()

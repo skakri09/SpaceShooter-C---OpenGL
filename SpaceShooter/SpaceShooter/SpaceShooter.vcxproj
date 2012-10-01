@@ -39,8 +39,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\libraries\i386\DevIL-SDK-x86-1.7.8\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\libraries\i386\DevIL-SDK-x86-1.7.8\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\libraries\i386\DevIL-SDK-x86-1.7.8\include;C:\libraries\i386\SDL-1.2.15\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\libraries\i386\DevIL-SDK-x86-1.7.8\lib;C:\libraries\i386\SDL-1.2.15\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
