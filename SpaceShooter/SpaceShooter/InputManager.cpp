@@ -117,12 +117,12 @@ bool InputManager::MoveDown()
 
 void InputManager::resize( unsigned int width, unsigned int height )
 {
-	glViewport(0, 0, width, height);
+	/*glViewport(0, 0, width, height);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(75.0f, 1.5f, 1.0f, 500.0f);
 
 	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
+	glLoadIdentity();*/
 }
