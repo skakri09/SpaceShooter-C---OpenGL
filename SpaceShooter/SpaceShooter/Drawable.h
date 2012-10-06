@@ -14,28 +14,28 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-
+#include <gl/glew.h>
 #include <gl/gl.h>
 
 #include "Timer.h"
 #include "Vector3d.h"
 
-
-
-class CDrawable
+class Drawable
 {
 public:
 
 	// Pure virtual function draw, should contain functionality
 	// that draws to the screen when overwritten.
-	// The function is called from a loop in gameManager that draws
-	// all objects added to a CDrawable vector
 	virtual void Draw(GLfloat deltaTime) = 0;
+
+	// Pure virtual function Update, should contain everything
+	// needed to update the particular object.
+	virtual void Update(GLfloat deltaTime) = 0;
 
 	// Pure virtual function CreateDrawable. Once overwritten it should
 	// set up and prepare the surface or model we are using once drawing.
 	virtual void CreateDrawable() = 0;
-	
+
 	void SetVelocity(float xVel, float yVel, float zVel=0)
 	{
 		velocity.setX(xVel);
@@ -43,7 +43,7 @@ public:
 		velocity.setZ(zVel);
 	};
 
-	CVector3D getVelocity(){return velocity;}
+	Vector3D getVelocity(){return velocity;}
 	float getXVel(){return velocity.getX();}
 	float getYVel(){return velocity.getY();}
 	float getZVel(){return velocity.getZ();}
@@ -54,7 +54,7 @@ public:
 	float getXPos(){return position.getX();}
 	float getYPos(){return position.getY();}
 	float getZPos(){return position.getZ();}
-
+	
 protected:
 	// Calculates the position by adding velocity multiplied by
 	// deltaTime (time since last frame) with the current position
@@ -63,11 +63,12 @@ protected:
 		position += (velocity * deltaTime);
 	}
 
-	CVector3D position; // Ship Position
-	CVector3D velocity; // Ship velocity
+	Vector3D position; // Ship Position
+	Vector3D velocity; // Ship velocity
 
 	GLuint displayList; // The display list ID
-
+	
+	
 private:
 
 };

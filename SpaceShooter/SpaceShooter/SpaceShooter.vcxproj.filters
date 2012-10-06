@@ -43,6 +43,18 @@
     <Filter Include="Game\Drawables\Projectiles\Source Files">
       <UniqueIdentifier>{37250a22-5f3d-4809-92ae-1e7c86cc71a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Drawables\Particles">
+      <UniqueIdentifier>{a7c2d978-e4eb-4e6c-94c6-48ff97e725a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\Particles\Header Files">
+      <UniqueIdentifier>{05190b0b-8b64-404f-aa08-01e89cb1609d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\Particles\Source Files">
+      <UniqueIdentifier>{f4c90c94-0dc3-4428-b5d9-ae04966a5e59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{6aea5599-217f-4d5b-853d-a3dadc282886}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -80,6 +92,15 @@
     </ClCompile>
     <ClCompile Include="Vector3d.cpp">
       <Filter>Game\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalCalculator.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Game\Drawables\Particles\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleManager.cpp">
+      <Filter>Game\Drawables\Particles\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +151,15 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Game\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalCalculator.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Game\Drawables\Particles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleManager.h">
+      <Filter>Game\Drawables\Particles\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

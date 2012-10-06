@@ -1,19 +1,19 @@
 #include "ProjectileFactory.h"	
 
-CProjectileFactory::CProjectileFactory() : log("ProjectileFactory", WARN)
+ProjectileFactory::ProjectileFactory() : log("ProjectileFactory", WARN)
 {
 }
-CProjectileFactory::~CProjectileFactory()
+ProjectileFactory::~ProjectileFactory()
 {
 
 }
-CProjectileFactory* CProjectileFactory::Inst()
+ProjectileFactory* ProjectileFactory::Inst()
 {
-	static CProjectileFactory* instance = new CProjectileFactory();
+	static ProjectileFactory* instance = new ProjectileFactory();
 	return instance;
 }
 
-CProjectile* CProjectileFactory::GetProjectile( ProjectileTypes projectileType )
+Projectile* ProjectileFactory::GetProjectile( ProjectileTypes projectileType )
 {
 	switch(projectileType)
 	{
@@ -25,12 +25,12 @@ CProjectile* CProjectileFactory::GetProjectile( ProjectileTypes projectileType )
 	return NULL;
 }
 
-void CProjectileFactory::addDisplayList(ProjectileTypes projectileType, GLuint dispList )
+void ProjectileFactory::addDisplayList(ProjectileTypes projectileType, GLuint dispList )
 {
 	displayLists[projectileType] = dispList;
 }
 
-GLuint CProjectileFactory::getDisplayList( ProjectileTypes projectileType )
+GLuint ProjectileFactory::getDisplayList( ProjectileTypes projectileType )
 {
 	if(displayLists.find(projectileType) != displayLists.end())
 	{
@@ -43,7 +43,7 @@ GLuint CProjectileFactory::getDisplayList( ProjectileTypes projectileType )
 	}
 }
 
-CSquareBullet* CProjectileFactory::getSimpleBullet()
+SquareBullet* ProjectileFactory::getSimpleBullet()
 {
 	if(simpleBullets.size() > 0)
 	{
@@ -56,7 +56,7 @@ CSquareBullet* CProjectileFactory::getSimpleBullet()
 		}
 	}
 
-	simpleBullets.push_back(new CSquareBullet());
+	simpleBullets.push_back(new SquareBullet());
 	return simpleBullets.back();
 }
 

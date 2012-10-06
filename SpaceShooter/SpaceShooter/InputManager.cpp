@@ -66,7 +66,11 @@ void InputManager::Update(bool& exitGame)
 
 bool InputManager::KeyDownHold( SDLKey key )
 {
-	return(keystates[key]);
+	if(keystates[key] != NULL)
+	{
+		return true;
+	}
+	return false;
 }
 
 bool InputManager::LeftMouseDownHold()

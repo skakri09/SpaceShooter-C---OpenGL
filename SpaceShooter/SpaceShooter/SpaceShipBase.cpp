@@ -1,22 +1,26 @@
 #include "SpaceShipBase.h"
 
-CSpaceShip::CSpaceShip( float xPos /*= 0*/, float yPos /*= 0*/, float zPos /*= 0*/,float direction /*=0*/ )
+SpaceShip::SpaceShip( float xPos /*= 0*/, float yPos /*= 0*/, float zPos /*= 0*/,float direction /*=0*/ )
 {
-	CDrawable::position.setX(xPos);
-	CDrawable::position.setY(yPos);
-	CDrawable::position.setZ(zPos);
+	Drawable::position.setX(xPos);
+	Drawable::position.setY(yPos);
+	Drawable::position.setZ(zPos);
 }
 
-CSpaceShip::~CSpaceShip()
+SpaceShip::~SpaceShip()
 {
 
 }
 
-void CSpaceShip::Draw(GLfloat deltaTime)
+void SpaceShip::Draw(GLfloat deltaTime)
 {
 }
 
-void CSpaceShip::CreateDrawable()
+void SpaceShip::Update(GLfloat deltaTime)
+{
+
+}
+void SpaceShip::CreateDrawable()
 {
 
 }

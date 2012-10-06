@@ -13,12 +13,12 @@
 #endif // SimpleEnemySpaceShip_H
 #include "SpaceShipBase.h"
 
-class CSimpleEnemySpaceShip : public CSpaceShip
+class SimpleEnemySpaceShip : public SpaceShip
 {
 
 public:
-	CSimpleEnemySpaceShip();
-	~CSimpleEnemySpaceShip();
+	SimpleEnemySpaceShip();
+	~SimpleEnemySpaceShip();
 
 protected:
 

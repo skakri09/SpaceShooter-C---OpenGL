@@ -19,7 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -39,8 +39,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\libraries\i386\DevIL-SDK-x86-1.7.8\include;C:\libraries\i386\SDL-1.2.15\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\libraries\i386\DevIL-SDK-x86-1.7.8\lib;C:\libraries\i386\SDL-1.2.15\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\libraries\i386\DevIL-SDK-x86-1.7.8\include;C:\libraries\i386\SDL-1.2.15\include;C:\libraries\i386\glew-1.9.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\libraries\i386\DevIL-SDK-x86-1.7.8\lib;C:\libraries\i386\SDL-1.2.15\lib;C:\libraries\i386\glew-1.9.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -56,11 +56,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>DevIL.lib;ILU.lib;ILUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DevIL.lib;ILU.lib;ILUT.lib;glew32.lib;glew32mx.lib;glew32mxs.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -87,6 +88,9 @@
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="LogSys.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NormalCalculator.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleManager.cpp" />
     <ClCompile Include="PlayerSpaceShip.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectileFactory.cpp" />
@@ -104,6 +108,9 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogSys.h" />
+    <ClInclude Include="NormalCalculator.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleManager.h" />
     <ClInclude Include="PlayerSpaceShip.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileFactory.h" />

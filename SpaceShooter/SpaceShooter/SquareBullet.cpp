@@ -1,23 +1,23 @@
 #include "SquareBullet.h"
 
-CSquareBullet::CSquareBullet() :CProjectile(5.0f)
+SquareBullet::SquareBullet() :Projectile(5.0f)
 {
 	CreateDrawable();
 }
 
-CSquareBullet::~CSquareBullet()
+SquareBullet::~SquareBullet()
 {
 
 }
 
-void CSquareBullet::CreateDrawable()
+void SquareBullet::CreateDrawable()
 {
-	displayList = CProjectileFactory::Inst()->getDisplayList(SIMPLE_BULLET);
+	displayList = ProjectileFactory::Inst()->getDisplayList(SIMPLE_BULLET);
 
 	if(displayList == -1)
 	{
 		displayList = glGenLists(1);
-		CProjectileFactory::Inst()->addDisplayList(SIMPLE_BULLET, CDrawable::displayList);
+		ProjectileFactory::Inst()->addDisplayList(SIMPLE_BULLET, Drawable::displayList);
 		glNewList(displayList, GL_COMPILE);
 		glBegin(GL_QUADS);
 		

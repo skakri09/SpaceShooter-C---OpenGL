@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 		GameManager* game;
 		game = new GameManager();
 		game->init();
-		game->play();
+		game->GameLoop();
 		delete game;
 	} catch (std::exception &e) {
 		std::string err = e.what();

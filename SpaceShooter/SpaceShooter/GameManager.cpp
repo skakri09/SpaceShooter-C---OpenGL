@@ -4,7 +4,7 @@
 
 #include <Windows.h>
 #include <GL/GL.h>
-
+//#include <gl/glew.h>
 
 #include <iostream>
 #include <string>
@@ -60,12 +60,14 @@ void GameManager::resize(unsigned int width, unsigned int height) {
 }
 
 void GameManager::setOpenGLStates() {
-	
 	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	//glDepthFunc(GL_LEQUAL);
 	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	//glShadeModel(GL_SMOOTH); 
-	glClearColor(0.2f, 0.1f, 0.1f, 1.0f);
+	//glClearColor(0.2f, 0.1f, 0.1f, 1.0f);
 }
 
 void GameManager::init() {
@@ -76,7 +78,7 @@ void GameManager::init() {
 		throw std::runtime_error(err.str());
 	}
 	atexit( SDL_Quit);
-
+	
 	createOpenGLContext();
 	setOpenGLStates();
 
@@ -88,43 +90,47 @@ void GameManager::init() {
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	
+	if(glewInit() != GLEW_OK)
+	{
+		log << ERRORX << "GlewInit() failed" << std::endl;
+	}
 
-	//resize(window_width, window_height);
+	resize(window_width, window_height);
 
+	//particleManager.init();
 	player.CreateDrawable();
+	particleManager.InitParticleManager();
 }
 
 void GameManager::render() {
 	//Clear screen, and set the correct program
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	player.Draw(deltaTime);
-	//proj.Draw(deltaTime);
 	
-//	checkGLErrors();
+	particleManager.UpdateAndDrawParticles(deltaTime);
+	
+	player.Update(deltaTime);
+	player.Draw(deltaTime);
+	
+	checkGLErrors();
 }
 
-void GameManager::play() 
+void GameManager::GameLoop() 
 {
-	bool doExit = false;
+	doExit = false;
 
 	//SDL main loop
 	while (!doExit) 
 	{
-		deltaTime = (GLfloat) my_timer.elapsedAndRestart();
+		//storing delta time in a class variable. Casting to GLfloat since
+		//we basically use that in the whole project
+		deltaTime = static_cast<GLfloat>(my_timer.elapsedAndRestart());
 		
-		input.Update(doExit);
-	
-		if(input.Fire())
-		{
-			player.FireGun(deltaTime);
-		}
-
-		HandleXAxisMovement();
-		HandleYAxisMovement();
+		//Handles all input logic
+		HandleInput(deltaTime);
+		
 		HandleFrustumCollision();
 
-		//log << INFO << "X: " << xPos << " Y: " << yPos << std::endl;
 		//Render, and swap front and back buffers
 		render();
 		SDL_GL_SwapBuffers();
@@ -203,5 +209,19 @@ void GameManager::HandleFrustumCollision()
 		player.setYVel(0.0f);
 	}
 		log << INFO << player.getYPos() << std::endl;
+}
+
+void GameManager::HandleInput(GLfloat deltaTime)
+{
+	//Updates the input class, making it ready for input checks later
+	input.Update(doExit);
+
+	if(input.Fire())
+	{
+		player.FireGun(deltaTime);
+	}
+
+	HandleXAxisMovement();
+	HandleYAxisMovement();
 }
 

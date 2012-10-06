@@ -24,13 +24,13 @@
 
 enum ProjectileTypes {SIMPLE_BULLET};
 
-class CSquareBullet;
+class SquareBullet;
 
-class CProjectileFactory
+class ProjectileFactory
 {
 public:
-	static CProjectileFactory* Inst();
-	CProjectile* GetProjectile(ProjectileTypes projectileType);
+	static ProjectileFactory* Inst();
+	Projectile* GetProjectile(ProjectileTypes projectileType);
 	
 	
 	void addDisplayList(ProjectileTypes projectileType, GLuint dispList);
@@ -41,12 +41,12 @@ protected:
 private:
 	Logger log;
 
-	CProjectileFactory();
-	~CProjectileFactory();
+	ProjectileFactory();
+	~ProjectileFactory();
 	
-	CSquareBullet* getSimpleBullet();
+	SquareBullet* getSimpleBullet();
 	
-	std::vector<CSquareBullet*> simpleBullets;
+	std::vector<SquareBullet*> simpleBullets;
 
 	std::map<ProjectileTypes, GLuint> displayLists;
 

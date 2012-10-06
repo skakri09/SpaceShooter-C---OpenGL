@@ -13,11 +13,11 @@
 
 static const float PROJECTILE_VELOCITY = -80.0f;
 
-class CSquareBullet : public CProjectile
+class SquareBullet : public Projectile
 {
 public:
-	CSquareBullet();
-	~CSquareBullet();
+	SquareBullet();
+	~SquareBullet();
 
 	void CreateDrawable();
 

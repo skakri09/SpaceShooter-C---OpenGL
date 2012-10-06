@@ -1,8 +1,8 @@
 #include "PlayerSpaceShip.h"
 
-CPlayerSpaceShip::CPlayerSpaceShip(float startX, float startY, float startZ, float direction)
+PlayerSpaceShip::PlayerSpaceShip(float startX, float startY, float startZ, float direction)
 	: log("PlayerSpaceship", ERRORX),
-	  CSpaceShip(startX, startY, startZ, direction)
+	  SpaceShip(startX, startY, startZ, direction)
 {
 	xAxis.rotating = false;
 	yAxis.rotating = false;
@@ -13,17 +13,32 @@ CPlayerSpaceShip::CPlayerSpaceShip(float startX, float startY, float startZ, flo
 	timeSinceLastFired = 0.0f;
 }
 
-CPlayerSpaceShip::~CPlayerSpaceShip()
+PlayerSpaceShip::~PlayerSpaceShip()
 {
 }
 
-void CPlayerSpaceShip::Draw( GLfloat deltaTime )
+//Experimental VBO/VA arrays
+GLfloat triangle[] = {0, 0, 0, 1, 0, 0, 0.5, 1, 0};
+GLuint dex[] ={0, 1, 2};
+
+GLfloat spaceshipVertexes[] = {-0.5f, 0.0f, 0.0f,
+	0.5f, 0.0f, 0.0f,
+	0.3f, 0.6f, -0.2f,
+	-0.3f, 0.6f, -0.2f,
+	0.0f, 0.5f, -2.2f
+};
+unsigned int index[] = { 0, 1, 2, //back right triangle
+	0, 2, 3, //back left triangle
+	0, 3, 4, //left side
+	0, 4, 1, //bottom side
+	3, 2, 4, //top side
+	1, 4, 2 //right side
+};
+
+void PlayerSpaceShip::Draw( GLfloat deltaTime )
 {
-	timeSinceLastFired += deltaTime;
-	CalculatePosition(deltaTime);
-
 	glPushMatrix();
-
+	
 	glTranslatef(position.getX(), position.getY(), position.getZ());
 	glTranslatef(0.f, -10.f, -50.f);
 	
@@ -31,22 +46,58 @@ void CPlayerSpaceShip::Draw( GLfloat deltaTime )
 	RotateArroundY(deltaTime);
 	RotateArroundZ(deltaTime);
 	
-	glScalef(4.f, 4.f, 4.f);
+		/// EXPERIMENTING WITH VBO BELOW ///
 
-	glCallList(CDrawable::displayList);
+	/*glVertexPointer(3, GL_FLOAT, 0, spaceshipVertexes);
+	glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, index);*/
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_INDEX_ARRAY);
+	
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
+	
+	glVertexPointer(3, GL_FLOAT, 0, NULL);	
+	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, &indexes);
+	
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_VERTEX_ARRAY);
+	
 	glPopMatrix();
 
 	DrawProjectiles(deltaTime);
+}
+
+void PlayerSpaceShip::Update(GLfloat deltaTime)
+{
+	timeSinceLastFired += deltaTime;
+	CalculatePosition(deltaTime);
 
 	log << INFO << "X: " << position.getX()<< " Y: " << position.getY() << " Z: " << position.getZ() << std::endl;
 }
 
-void CPlayerSpaceShip::CreateDrawable()
+void PlayerSpaceShip::CreateDrawable()
 {
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*9, triangle, GL_STATIC_DRAW);
+
+	glGenBuffers(1, &indexes);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)*3, dex, GL_STATIC_DRAW);
+	
+	/*glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*15, spaceshipVertexes, GL_STATIC_DRAW);
+
+	glGenBuffers(1, &indexes);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)*18, index, GL_STATIC_DRAW);*/
+
+	/*
 	CDrawable::displayList = glGenLists(1);
 	glNewList(CDrawable::displayList, GL_COMPILE);
 
-	/*The normals are commented out, as they are currently not correct, to fix l8r*/
+	//The normals are commented out, as they are currently not correct, to fix l8r
 
 	//Back quad part of the spaceship
 	glBegin(GL_QUADS);
@@ -98,9 +149,10 @@ void CPlayerSpaceShip::CreateDrawable()
 	glEnd();
 
 	glEndList();
+	*/
 }
 
-void CPlayerSpaceShip::RotateArroundX(GLfloat deltaTime)
+void PlayerSpaceShip::RotateArroundX(GLfloat deltaTime)
 {
 	if(xAxis.targetAngle > xAxis.currentAngle)
 	{
@@ -118,7 +170,7 @@ void CPlayerSpaceShip::RotateArroundX(GLfloat deltaTime)
 	log << INFO << "Angle around X: " << -xAxis.currentAngle << std::endl;
 }
 
-void CPlayerSpaceShip::RotateArroundZ(GLfloat deltaTime)
+void PlayerSpaceShip::RotateArroundZ(GLfloat deltaTime)
 {
 	if(zAxis.targetAngle > zAxis.currentAngle)
 	{
@@ -137,7 +189,7 @@ void CPlayerSpaceShip::RotateArroundZ(GLfloat deltaTime)
 }
 
 
-void CPlayerSpaceShip::RotateArroundY( GLfloat deltaTime )
+void PlayerSpaceShip::RotateArroundY( GLfloat deltaTime )
 {
 	if(yAxis.targetAngle > yAxis.currentAngle)
 	{
@@ -155,7 +207,7 @@ void CPlayerSpaceShip::RotateArroundY( GLfloat deltaTime )
 	log << INFO << "Angle around Y: " << yAxis.currentAngle << std::endl;
 }
 
-void CPlayerSpaceShip::InitRotation( Axis axisToRotateArround )
+void PlayerSpaceShip::InitRotation( Axis axisToRotateArround )
 {
 	switch(axisToRotateArround)
 	{
@@ -186,24 +238,24 @@ void CPlayerSpaceShip::InitRotation( Axis axisToRotateArround )
 	}
 }
 
-void CPlayerSpaceShip::FireGun(float deltaTime)
+void PlayerSpaceShip::FireGun(float deltaTime)
 {
 	timeSinceLastFired += deltaTime;
-	if(timeSinceLastFired >= FIRE_COOLDOWN)
+ 	if(timeSinceLastFired >= FIRE_COOLDOWN)
 	{
 		timeSinceLastFired = 0.0f;
 		rotation.setX(xAxis.currentAngle);
 		rotation.setY(yAxis.currentAngle);
 		rotation.setZ(zAxis.currentAngle);
 
-		CProjectile* projectile = CProjectileFactory::Inst()->GetProjectile(SIMPLE_BULLET);
+		Projectile* projectile = ProjectileFactory::Inst()->GetProjectile(SIMPLE_BULLET);
 
 		projectile->FireProjectile(position, rotation, 1.0f);
 		projectiles.push_back(projectile);
 	}
 }
 
-void CPlayerSpaceShip::DrawProjectiles( float deltaTime )
+void PlayerSpaceShip::DrawProjectiles( float deltaTime )
 {
 	for(auto i = projectiles.begin(); i != projectiles.end();)
 	{
@@ -213,11 +265,13 @@ void CPlayerSpaceShip::DrawProjectiles( float deltaTime )
 		}
 		else
 		{
+			(*i)->Update(deltaTime);
 			(*i)->Draw(deltaTime);
 			++i;
 		}
 	}
 }
+
 
 
 

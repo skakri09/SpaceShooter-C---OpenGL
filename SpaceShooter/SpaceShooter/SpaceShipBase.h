@@ -18,14 +18,15 @@
 #include "Drawable.h"
 
 enum Direction {CLOCKWISE, ANTI_CLOCKWISE};
-class CSpaceShip : public CDrawable
+class SpaceShip : public Drawable
 {
 public:
-	CSpaceShip(float xPos = 0, float yPos = 0, float zPos = 0, float direction =0);
+	SpaceShip(float xPos = 0, float yPos = 0, float zPos = 0, float direction =0);
 
-	~CSpaceShip();
+	~SpaceShip();
 
 	virtual void Draw(GLfloat deltaTime);
+	virtual void Update(GLfloat deltaTime);
 	virtual void CreateDrawable();
 
 

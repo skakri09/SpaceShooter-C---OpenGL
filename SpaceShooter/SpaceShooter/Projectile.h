@@ -12,15 +12,17 @@
 #include "Drawable.h"
 #include "Logger.h"
 
-class CProjectile : public CDrawable
+class Projectile : public Drawable
 {
 public:
-	CProjectile(float projectileFlytime);
-	~CProjectile();
+	Projectile(float projectileFlytime);
+	~Projectile();
 
 	virtual void Draw(GLfloat deltaTime);
 
-	virtual void FireProjectile(CVector3D startPos, CVector3D startRotation, GLfloat speed);
+	virtual void Update(GLfloat deltaTime);
+
+	virtual void FireProjectile(Vector3D startPos, Vector3D startRotation, GLfloat speed);
 
 	bool isFired(){return fired;}
 
@@ -29,8 +31,8 @@ protected:
 	
 	float projectileVelocity;
 	float timeSinceFired;
-	CVector3D startRotation;
-	CVector3D startPosition;
+	Vector3D startRotation;
+	Vector3D startPosition;
 	bool fired;
 
 private:

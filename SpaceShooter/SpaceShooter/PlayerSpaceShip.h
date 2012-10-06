@@ -9,6 +9,7 @@
 #define PlayerSpaceShip_H
 
 #include <vector>
+
 #include "SpaceShipBase.h"
 #include "Logger.h"
 #include "Projectile.h"
@@ -34,14 +35,17 @@ struct RotationInfo
 	GLfloat targetAngle;
 };
 
-class CPlayerSpaceShip : public CSpaceShip
+
+class PlayerSpaceShip : public SpaceShip
 {
 public:
-	CPlayerSpaceShip(float startX, float startY, float startZ, float direction);
-	~CPlayerSpaceShip();
+	PlayerSpaceShip(float startX, float startY, float startZ, float direction);
+	~PlayerSpaceShip();
 
 	//Does drawing of the spaceship. Also takes care of updating position of the ship.
 	void Draw(GLfloat deltaTime);
+
+	void Update(GLfloat deltaTime);
 
 	//Creates the displaylist for the spaceship
 	void CreateDrawable();
@@ -57,7 +61,7 @@ private:
 
 	//Vector of projectiles, used to loop trough them and 
 	//call their respecive Draw() function
-	std::vector<CProjectile*> projectiles;
+	std::vector<Projectile*> projectiles;
 	void DrawProjectiles(float deltaTime);
 	float timeSinceLastFired;
 	
@@ -68,14 +72,16 @@ private:
 	
 	//Stores the current rotation in degrees arround the 3 axes
 	//Used to send as parameter to projectiles.
-	CVector3D rotation; 
+	Vector3D rotation; 
 
 	//Struct objects that hold rotation info about the differet axes
 	RotationInfo xAxis;
 	RotationInfo yAxis;
 	RotationInfo zAxis;
-	
+
+	GLuint indexes;
+	GLuint vbo;
+
 };
-
-
+	
 #endif // PlayerSpaceShip_H
