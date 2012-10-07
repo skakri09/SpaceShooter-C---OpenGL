@@ -1,16 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Game">
       <UniqueIdentifier>{ea134570-8b96-4896-ba59-cba3bea79a9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Game\Drawables">
       <UniqueIdentifier>{f97c10df-bd35-4c4a-8c4a-ab6d088247f8}</UniqueIdentifier>
@@ -42,41 +34,55 @@
     <Filter Include="Game\Drawables\Particles\Source Files">
       <UniqueIdentifier>{f4c90c94-0dc3-4428-b5d9-ae04966a5e59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utility">
-      <UniqueIdentifier>{6aea5599-217f-4d5b-853d-a3dadc282886}</UniqueIdentifier>
+    <Filter Include="Game\Managers">
+      <UniqueIdentifier>{9f3e8dee-5255-435e-91e7-bdbc5d00ca02}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utility\GLUtils">
-      <UniqueIdentifier>{01ab4019-a69e-42ac-97a2-fb64ccb1a01c}</UniqueIdentifier>
+    <Filter Include="Game\Managers\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Utility\Logger">
-      <UniqueIdentifier>{9a464e1b-37c9-48c9-97f7-dbf944751574}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Header Files">
+    <Filter Include="Game\Managers\Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Game\Drawables\SpaceShips\SpaceShipAIs">
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Game\Utility">
+      <UniqueIdentifier>{6aea5599-217f-4d5b-853d-a3dadc282886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utility\GLUtils">
+      <UniqueIdentifier>{01ab4019-a69e-42ac-97a2-fb64ccb1a01c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utility\Logger">
+      <UniqueIdentifier>{9a464e1b-37c9-48c9-97f7-dbf944751574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SpaceShipAI">
       <UniqueIdentifier>{8999161e-3c8d-4ea2-b3ff-f242757410c8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Drawables\SpaceShips\SpaceShipAIs\Header Files">
-      <UniqueIdentifier>{a5efe86b-35ef-4781-87f7-a4d44ce88134}</UniqueIdentifier>
+    <Filter Include="Game\SpaceShipAI\States">
+      <UniqueIdentifier>{0768e7ca-c450-4e7d-99cd-cc1bb51b35be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Drawables\SpaceShips\SpaceShipAIs\Source Files">
+    <Filter Include="Game\SpaceShipAI\States\Source Files">
       <UniqueIdentifier>{ce2922d5-5c64-434f-92da-a28b2d9903f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SpaceShipAI\States\Header Files">
+      <UniqueIdentifier>{a5efe86b-35ef-4781-87f7-a4d44ce88134}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
-      <Filter>Game\Source Files</Filter>
+      <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Game\Source Files</Filter>
+      <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LogSys.cpp">
-      <Filter>Utility\Logger</Filter>
+      <Filter>Game\Utility\Logger</Filter>
     </ClCompile>
     <ClCompile Include="Logger.cpp">
-      <Filter>Utility\Logger</Filter>
+      <Filter>Game\Utility\Logger</Filter>
     </ClCompile>
     <ClCompile Include="PlayerSpaceShip.cpp">
       <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
@@ -91,13 +97,10 @@
       <Filter>Game\Drawables\Projectiles\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>Game\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3d.cpp">
-      <Filter>Game\Source Files</Filter>
+      <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NormalCalculator.cpp">
-      <Filter>Utility</Filter>
+      <Filter>Game\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Game\Drawables\Particles\Source Files</Filter>
@@ -105,43 +108,55 @@
     <ClCompile Include="ParticleManager.cpp">
       <Filter>Game\Drawables\Particles\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SimpleEnemyShip.cpp">
-      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SpaceShip.cpp">
       <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SimpleEnemyAI.cpp">
-      <Filter>Game\Drawables\SpaceShips\SpaceShipAIs\Source Files</Filter>
+    <ClCompile Include="BaseEnemyShip.cpp">
+      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleEnemy.cpp">
+      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySpaceShipConstantState.cpp">
+      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FireState.cpp">
+      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3d.cpp">
+      <Filter>Game\Utility</Filter>
     </ClCompile>
     <ClCompile Include="SpaceShipManager.cpp">
-      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
+      <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowPlayerState.cpp">
+      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
-      <Filter>Game\Header Files</Filter>
+      <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GLUtils\GLUtils.hpp">
-      <Filter>Utility\GLUtils</Filter>
+      <Filter>Game\Utility\GLUtils</Filter>
     </ClInclude>
     <ClInclude Include="GLUtils\Program.hpp">
-      <Filter>Utility\GLUtils</Filter>
+      <Filter>Game\Utility\GLUtils</Filter>
     </ClInclude>
     <ClInclude Include="GLUtils\VBO.hpp">
-      <Filter>Utility\GLUtils</Filter>
+      <Filter>Game\Utility\GLUtils</Filter>
     </ClInclude>
     <ClInclude Include="LogSys.h">
-      <Filter>Utility\Logger</Filter>
+      <Filter>Game\Utility\Logger</Filter>
     </ClInclude>
     <ClInclude Include="Logger.h">
-      <Filter>Utility\Logger</Filter>
+      <Filter>Game\Utility\Logger</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
-      <Filter>Game\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3d.h">
-      <Filter>Game\Header Files</Filter>
+      <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlayerSpaceShip.h">
       <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
@@ -156,10 +171,10 @@
       <Filter>Game\Drawables\Projectiles\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>Game\Header Files</Filter>
+      <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NormalCalculator.h">
-      <Filter>Utility</Filter>
+      <Filter>Game\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Game\Drawables\Particles\Header Files</Filter>
@@ -167,23 +182,44 @@
     <ClInclude Include="ParticleManager.h">
       <Filter>Game\Drawables\Particles\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameConstants.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleEnemyShip.h">
-      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Drawable.h">
       <Filter>Game\Drawables</Filter>
     </ClInclude>
     <ClInclude Include="SpaceShip.h">
       <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SimpleEnemyAI.h">
-      <Filter>Game\Drawables\SpaceShips\SpaceShipAIs\Header Files</Filter>
+    <ClInclude Include="BaseEnemyShip.h">
+      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleEnemy.h">
+      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AiStateMachine.h">
+      <Filter>Game\SpaceShipAI</Filter>
+    </ClInclude>
+    <ClInclude Include="AiState.h">
+      <Filter>Game\SpaceShipAI</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySpaceshipConstantState.h">
+      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FireState.h">
+      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3d.h">
+      <Filter>Game\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConstants.h">
+      <Filter>Game\Utility</Filter>
     </ClInclude>
     <ClInclude Include="SpaceShipManager.h">
-      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
+      <Filter>Game\Managers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowPlayerState.h">
+      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

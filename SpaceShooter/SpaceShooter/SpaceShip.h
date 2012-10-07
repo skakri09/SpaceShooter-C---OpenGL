@@ -23,7 +23,7 @@
 //enum Direction {CLOCKWISE, ANTI_CLOCKWISE};
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
-//Speed of the rotation arround x, y and z axis
+//Speed of the rotation around x, y and z axis
 static const GLfloat ROTATE_SPEED = 200.0f;
 
 //Used to store information about rotation around different axes
@@ -39,25 +39,28 @@ class SpaceShip : public Drawable
 public:
 	SpaceShip();
 
-	~SpaceShip();
+	virtual ~SpaceShip();
 
 	virtual void Draw();
+
+	//Stores a local deltaTime variable and updates
+	//timeSinceLastFired. It's main functionality will
+	//come from child classes overwriting, but be sure
+	//that the child classes also call this Update function
+	//to keep the time variables up to date
 	virtual void Update(GLfloat deltaTime);
 	
+	//Will take care of initializing the spaceship by setting positions,
+	//velocity etc and creating the VBO/displayList or whatever is being 
+	//used for rendering.
 	virtual void InitSpaceship(float startX, float startY, float startZ);
 
 	//Starts rotation around the specified axis
 	void InitRotation(Axis axisToRotateArround);
 	
+	GLfloat getDeltaTime(){return deltaTime;}
 protected:
 	virtual void CreateDrawable();
-
-	//local copy of deltaTime, used since we need to call the rotate functions
-	//inside the Draw() function, and they need a deltaTime variable.
-	GLfloat deltaTime; 
-
-	//Takes care of firing the spaceships gun.
-	void FireGun(float deltaTime, GLfloat fireCooldown, GLfloat projectileSpeed);
 
 	//Vector of projectiles, used to loop trough them and 
 	//call their respecive Draw() function
@@ -66,6 +69,9 @@ protected:
 	//Loops trough and draws the currently active projectiles
 	//We let the child spaceship class take care of calling this
 	void DrawProjectiles(float deltaTime);
+	
+	//Takes care of firing the spaceships gun.
+	void FireGun(GLfloat fireCooldown, GLfloat projectileSpeed);
 
 	//Used to time the coolown of a shot
 	float timeSinceLastFired;
@@ -87,6 +93,9 @@ protected:
 private:
 	Logger log;
 
+	//local copy of deltaTime, used since we need to call the rotate functions
+	//inside the Draw() function, and they need a deltaTime variable.
+	GLfloat deltaTime; 
 };
 
 #endif // SpaceShip_H

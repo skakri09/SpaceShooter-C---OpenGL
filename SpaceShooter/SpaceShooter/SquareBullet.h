@@ -15,7 +15,7 @@ class SquareBullet : public Projectile
 {
 public:
 	SquareBullet();
-	~SquareBullet();
+	virtual ~SquareBullet();
 
 	void CreateDrawable();
 

@@ -16,7 +16,7 @@ class Projectile : public Drawable
 {
 public:
 	Projectile(float projectileFlytime);
-	~Projectile();
+	virtual ~Projectile();
 
 	virtual void Draw();
 

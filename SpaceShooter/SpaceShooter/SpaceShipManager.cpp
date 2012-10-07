@@ -16,7 +16,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	this->input = input;
 
 	player.InitSpaceship(0.0f, 0.0f, 0.0f);
-	enemy.InitSpaceship(0.0f, 0.0f, -100.0f);
+	enemy.InitSpaceship(300.0f, 0.0f, -100.0f);
 }
 
 void SpaceShipManager::UpdateManager(GLfloat deltaTime)
@@ -25,7 +25,7 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	{
 		player.Shoot();
 	}
-
+	HandlePlayerRotation();
 	HandleXAxisMovement();
 	HandleYAxisMovement();
 	
@@ -109,4 +109,13 @@ void SpaceShipManager::HandleFrustumCollision()
 		player.setYVel(0.0f);
 	}
 	log << INFO << player.getYPos() << std::endl;
+}
+
+void SpaceShipManager::HandlePlayerRotation()
+{
+	if(input->LeftMouseDownOnce())
+	{
+		player.InitRotation(Y_AXIS);
+		enemy.InitRotation(Y_AXIS);
+	}
 }

@@ -3,6 +3,9 @@
 
 InputManager::InputManager()
 {
+	leftDownOnce = false;
+	rightDownOnce = false;
+	middleDownOnce = false;
 }
 
 InputManager::~InputManager()
@@ -15,7 +18,9 @@ void InputManager::Update(bool& exitGame)
 	mouseBtns = SDL_GetMouseState(&mouseX, &mouseY);
 
 	keystates = SDL_GetKeyState(NULL);
-	
+	leftDownOnce = false;
+	rightDownOnce = false;
+	middleDownOnce = false;
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) 
 	{
@@ -37,10 +42,13 @@ void InputManager::Update(bool& exitGame)
 				switch(event.button.button)
 				{
 				case SDL_BUTTON_LEFT:
+					leftDownOnce = true;
 					break;
 				case SDL_BUTTON_RIGHT:
+					rightDownOnce = true;
 					break;
 				case SDL_BUTTON_MIDDLE:
+					middleDownOnce = true;
 					break;
 				}
 			}
@@ -56,9 +64,6 @@ void InputManager::Update(bool& exitGame)
 		{
 		}
 		else if(event.button.button == SDL_BUTTON_WHEELUP)
-		{
-		}
-		else
 		{
 		}
 	}

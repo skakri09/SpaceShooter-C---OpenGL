@@ -10,6 +10,8 @@ SpaceShip::SpaceShip()
 	yAxis.currentAngle = 0.0;
 	zAxis.currentAngle = 0.0f;
 	timeSinceLastFired = 0.0f;
+	deltaTime = 0;
+	timeSinceLastFired = 0;
 }
 
 SpaceShip::~SpaceShip()
@@ -33,9 +35,9 @@ void SpaceShip::CreateDrawable()
 
 }
 
-void SpaceShip::FireGun(float deltaTime, GLfloat fireCooldown, GLfloat projectileSpeed)
+void SpaceShip::FireGun(GLfloat fireCooldown, GLfloat projectileSpeed)
 {
-	timeSinceLastFired += deltaTime;
+	//timeSinceLastFired += this->getDeltaTime();
 	if(timeSinceLastFired >= fireCooldown)
 	{
 		timeSinceLastFired = 0.0f;

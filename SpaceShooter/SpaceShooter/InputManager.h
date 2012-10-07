@@ -44,6 +44,10 @@ public:
 	//Returning true if right mouse btn is being held down
 	bool RightMouseDownHold();
 
+	bool LeftMouseDownOnce(){return leftDownOnce;}
+	bool RightMouseDownOnce(){return rightDownOnce;}
+	bool MiddleMouseDownOnce(){return middleDownOnce;}
+
 	//Returning true if fire button is held down (space)
 	bool Fire();
 
@@ -64,6 +68,7 @@ public:
 private:
 	Uint8* keystates;	// Holds a snapshot of keys on the keyboard.
 
+	bool leftDownOnce, middleDownOnce, rightDownOnce;
 	Uint8 mouseBtns;	// Holds a snapshot of the mouse buttons' state
 	int mouseX;		// Mouse x pos	
 	int mouseY;		// Mouse y pos

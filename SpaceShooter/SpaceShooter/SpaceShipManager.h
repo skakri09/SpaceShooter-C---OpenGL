@@ -8,7 +8,7 @@
 #ifndef SpaceShipManager_h__
 #define SpaceShipManager_h__
 
-#include "SimpleEnemyShip.h"
+#include "SimpleEnemy.h"
 #include "PlayerSpaceShip.h"
 #include "GameConstants.h"
 #include "InputManager.h"
@@ -36,7 +36,7 @@ private:
 	InputManager* input;	
 
 	PlayerSpaceShip player; // Player spaceship object
-	SimpleEnemyShip enemy;  // Enemy spaceship object
+	SimpleEnemy enemy;  // Enemy spaceship object
 
 	//Handles movement along the x axis. Checks for input and changes
 	//x velocity based on the input.
@@ -54,6 +54,8 @@ private:
 	//This is because we use a perspective projection instead of a
 	//orthographic projection
 	void HandleFrustumCollision();
+
+	void HandlePlayerRotation();
 };
 
 #endif // SpaceShipManager_h__

@@ -16,6 +16,12 @@ float Vector3D::Distance(const Vector3D& vector1, Vector3D& vector2)
 		pow((vector2.x - vector1.y), 2) );
 }
 
+float Vector3D::Distance( Vector3D& vector2 )
+{
+	return sqrt( pow((vector2.x - x), 2) + 
+		pow((vector2.x - y), 2) );
+}
+
 Vector3D& Vector3D::operator= (const Vector3D& vector2)
 {
 	if(this == &vector2)

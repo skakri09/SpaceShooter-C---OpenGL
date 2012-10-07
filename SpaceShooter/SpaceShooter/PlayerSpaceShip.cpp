@@ -29,11 +29,12 @@ void PlayerSpaceShip::Draw()
 	glPushMatrix();
 	
 	glTranslatef(position.getX(), position.getY(), position.getZ());
+
 	glTranslatef(0.f, -10.f, -50.f);
 	glScalef(4.0f, 4.0f, 4.0f);
-	RotateArroundX(deltaTime);
-	RotateArroundY(deltaTime);
-	RotateArroundZ(deltaTime);
+	RotateArroundX(getDeltaTime());
+	RotateArroundY(getDeltaTime());
+	RotateArroundZ(getDeltaTime());
 	//glRotatef(90, 1, 0, 0);
 		/// EXPERIMENTING WITH VBO/VA BELOW ///
 
@@ -67,7 +68,7 @@ void PlayerSpaceShip::Draw()
 	glDisableClientState(GL_VERTEX_ARRAY);
 	*/
 	glPopMatrix();
-	DrawProjectiles(deltaTime);
+	DrawProjectiles(getDeltaTime());
 }
 
 void PlayerSpaceShip::Update(GLfloat deltaTime)
@@ -159,7 +160,7 @@ void PlayerSpaceShip::CreateDrawable()
 
 void PlayerSpaceShip::Shoot()
 {
-	SpaceShip::FireGun(deltaTime, FIRE_COOLDOWN_PLAYER, SQUARE_BULLET_SPEED_PLAYER);
+	SpaceShip::FireGun(FIRE_COOLDOWN_PLAYER, SQUARE_BULLET_SPEED_PLAYER);
 }
 
 void PlayerSpaceShip::InitSpaceship( float startX, float startY, float startZ )

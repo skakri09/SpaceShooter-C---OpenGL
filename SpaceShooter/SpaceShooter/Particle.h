@@ -20,7 +20,7 @@ class Particle : Drawable
 {
 public:
     Particle();
-    ~Particle();
+    virtual ~Particle();
 
 	virtual void Draw();
 	

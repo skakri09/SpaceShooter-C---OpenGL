@@ -24,7 +24,7 @@ class PlayerSpaceShip : public SpaceShip
 {
 public:
 	PlayerSpaceShip();
-	~PlayerSpaceShip();
+	virtual ~PlayerSpaceShip();
 
 	//Does drawing of the spaceship.
 	void Draw();

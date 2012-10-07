@@ -1,12 +1,15 @@
-#include "SimpleEnemyShip.h"
+#include "SimpleEnemy.h"
 
-SimpleEnemyShip::SimpleEnemyShip(SpaceShip* playerShip)
-	:log("SimpleEnemyShip", WARN)
+SimpleEnemy::SimpleEnemy(PlayerSpaceShip* playerShip)
+	: log("SimpleEnemy", WARN),
+	 BaseEnemyShip(playerShip, std::make_shared<IdleState>(),
+					std::make_shared<EnemySpaceshipConstantState>())
+	
 {
-	this->playerShip = playerShip;
+
 }
 
-SimpleEnemyShip::~SimpleEnemyShip()
+SimpleEnemy::~SimpleEnemy()
 {
 }
 
@@ -27,21 +30,21 @@ unsigned int enemyIndex[] = { 0, 1, 2, //back right triangle
 };
 
 
-void SimpleEnemyShip::Draw()
+void SimpleEnemy::Draw()
 {
 	glPushMatrix();
-	
+
 	glTranslatef(position.getX(), position.getY(), position.getZ());
-	
+
 	glTranslatef(0.f, -10.f, -50.f);
 	glScalef(4.0f, 4.0f, 4.0f);
-	//glRotatef(180, 0, 1, 0);
-	
-	RotateArroundX(deltaTime);
-	RotateArroundY(deltaTime);
-	RotateArroundZ(deltaTime);
+	glRotatef(180, 0, 1, 0);//turned against the player
 
-	
+	RotateArroundX(getDeltaTime());
+	RotateArroundY(getDeltaTime());
+	RotateArroundZ(getDeltaTime());
+
+
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -53,14 +56,14 @@ void SimpleEnemyShip::Draw()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	glPopMatrix();
-	DrawProjectiles(deltaTime);
+	DrawProjectiles(getDeltaTime());
 }
 
-void SimpleEnemyShip::Update( GLfloat deltaTime )
+void SimpleEnemy::Update( GLfloat deltaTime )
 {
-	SpaceShip::Update(deltaTime);
-	
-	//shipAI.UpdateAI(this); //Asking the AI to update this enemy
+	BaseEnemyShip::Update(deltaTime);
+
+	HandleAI();
 
 	CalculatePosition(deltaTime);
 
@@ -68,7 +71,7 @@ void SimpleEnemyShip::Update( GLfloat deltaTime )
 		<< " Z: " << position.getZ() << std::endl;
 }
 
-void SimpleEnemyShip::CreateDrawable()
+void SimpleEnemy::CreateDrawable()
 {
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -79,14 +82,27 @@ void SimpleEnemyShip::CreateDrawable()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)*18, enemyIndex, GL_STATIC_DRAW);
 }
 
-void SimpleEnemyShip::Shoot()
+void SimpleEnemy::Shoot()
 {
-	SpaceShip::FireGun(deltaTime, FIRE_COOLDOWN_SIMPLE_ENEMY, SQUARE_BULLET_SPEED_SIMPLE_ENEMY);
+	SpaceShip::FireGun(FIRE_COOLDOWN_SIMPLE_ENEMY, -SQUARE_BULLET_SPEED_SIMPLE_ENEMY);
 }
 
-void SimpleEnemyShip::InitSpaceship( float startX, float startY, float startZ )
+void SimpleEnemy::InitSpaceship( float startX, float startY, float startZ )
 {
-	SpaceShip::InitSpaceship(startX, startY, startZ);
-	
+	BaseEnemyShip::InitSpaceship(startX, startY, startZ);
+
 	CreateDrawable();
+
+	//SetAI(SIMPLE_AI);
 }
+
+void SimpleEnemy::HandleAI()
+{
+	float a = position.Distance(*playerShip->getPosition());
+	if(position.Distance(*playerShip->getPosition()) > 200 
+		&& aiStateMachine.GetCurrentState() != "FollowPlayerState")
+	{
+		aiStateMachine.ChangeState(std::make_shared<FollowPlayerState>());
+	}
+}
+	

@@ -83,7 +83,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EnemySpaceShipConstantState.cpp" />
+    <ClCompile Include="FireState.cpp" />
+    <ClCompile Include="FollowPlayerState.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="LogSys.cpp" />
@@ -94,20 +98,26 @@
     <ClCompile Include="PlayerSpaceShip.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectileFactory.cpp" />
-    <ClCompile Include="SimpleEnemyAI.cpp" />
-    <ClCompile Include="SimpleEnemyShip.cpp" />
+    <ClCompile Include="SimpleEnemy.cpp" />
+    <ClCompile Include="BaseEnemyShip.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
     <ClCompile Include="SpaceShipManager.cpp" />
     <ClCompile Include="SquareBullet.cpp" />
     <ClCompile Include="Vector3d.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AiState.h" />
+    <ClInclude Include="AiStateMachine.h" />
     <ClInclude Include="Drawable.h" />
+    <ClInclude Include="EnemySpaceshipConstantState.h" />
+    <ClInclude Include="FireState.h" />
+    <ClInclude Include="FollowPlayerState.h" />
     <ClInclude Include="GameConstants.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GLUtils\GLUtils.hpp" />
     <ClInclude Include="GLUtils\Program.hpp" />
     <ClInclude Include="GLUtils\VBO.hpp" />
+    <ClInclude Include="IdleState.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogSys.h" />
@@ -117,8 +127,8 @@
     <ClInclude Include="PlayerSpaceShip.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileFactory.h" />
-    <ClInclude Include="SimpleEnemyAI.h" />
-    <ClInclude Include="SimpleEnemyShip.h" />
+    <ClInclude Include="SimpleEnemy.h" />
+    <ClInclude Include="BaseEnemyShip.h" />
     <ClInclude Include="SpaceShip.h" />
     <ClInclude Include="SpaceShipManager.h" />
     <ClInclude Include="SquareBullet.h" />

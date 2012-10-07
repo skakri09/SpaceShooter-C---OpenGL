@@ -56,6 +56,9 @@ public:
 	// Get the distance between two vectors
 	static float Distance(const Vector3D& vector1, Vector3D& vector2);
 
+	// Get the distance between two vectors
+	float Distance(Vector3D& vector2);
+
 	// Give left CVector3D the values of right CVector3D
 	Vector3D& operator= (const Vector3D& vector2);
 
