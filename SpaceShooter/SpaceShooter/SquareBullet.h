@@ -11,8 +11,6 @@
 #include "Projectile.h"
 #include "ProjectileFactory.h"
 
-static const float PROJECTILE_VELOCITY = -80.0f;
-
 class SquareBullet : public Projectile
 {
 public:

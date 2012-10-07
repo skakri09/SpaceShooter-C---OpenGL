@@ -16,24 +16,14 @@
 
 #include "Timer.h"
 #include "Drawable.h"
-#include "PlayerSpaceShip.h"
+#include "SpaceShipManager.h"
 #include "Projectile.h"
 #include "InputManager.h"
 #include "ParticleManager.h"
+#include "GameConstants.h"
 
 #include <gl/glew.h>
 #include <gl/gl.h>
-
-static const float PLAYER_X_VELOCITY = 50.0f;
-static const float PLAYER_Y_VELOCITY = 50.0f;
-static const float PLAYER_Z_VELOCITY = 100.0f;
-static const float FRUSTUM_LEFT = -55.0f;
-static const float FRUSTUM_RIGHT = 55.0f;
-static const float FRUSTUM_TOP = 46.0f;
-static const float FRUSTUM_BOTTOM = -28.0f;
-
-static const unsigned int window_width = 1280;
-static const unsigned int window_height = 900;
 
 //Forward declaring InputManager class as this class rely on it,
 //and the InputManager class rely on this class.
@@ -55,14 +45,17 @@ public:
 	// Quit function 
 	void quit();
 
-	//Function that handles rendering into the OpenGL context
+	//Function that calls all render functions from other managers
 	void render();
 
-
+	//function that calls all update functions from other managers
+	//and takes care of swapping buffers
+	void update();
+	
 	//Function that is called when the window is resized
 	void resize(unsigned int width, unsigned int height);
 
-protected:
+private:
 
 	//Creates the OpenGL context using SDL
 	void createOpenGLContext();
@@ -71,36 +64,24 @@ protected:
 	//throughout the game
 	void setOpenGLStates();
 
-	
-
 private:
 	Logger log;
+
 	Timer my_timer;		//Timer for machine independent motion
 	GLfloat deltaTime;	//Time since last update 
-	
-	void HandleInput(GLfloat deltaTime);
 
-	//Handles movement along the x axis. Checks for input and changes
-	//x velocity based on the input.
-	void HandleXAxisMovement();
-	//Handles movement along the y axis. Checks for input and changes
-	//y velocity based on the input.
-	void HandleYAxisMovement();
-	
-	//Does simple collision checking with the frustum. The truth is it
-	//only checks for collision against set x and y coordinates that 
-	//matches the sides of the screen where the ship starts. If its
-	//moved somewhere along the z axis, it wont check against the 
-	//frustum, but against an invisible wall matching the coordinates.
-	//This is because we use a perspective projection instead of a
-	//orthographic projection
-	void HandleFrustumCollision();
 
-	PlayerSpaceShip player; // Player spaceship object
-
+	//Manager handling all the particle effects in the game
 	ParticleManager particleManager;
+
+	//Manager handling all the spaceships, both player and enemies
+	SpaceShipManager shipManager;
+
+	//Inputmanager, requires an update call each gameloop to be updated
+	//and ready for input queries
 	InputManager input;
-	bool doExit;
+
+	bool doExit; //If true, the game quits
 };
 
 #endif // _GAMEMANAGER_H_

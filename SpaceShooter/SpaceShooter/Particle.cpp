@@ -3,14 +3,6 @@
 
 Particle::Particle()
 {
-	isActive = false;
-	life = 0.0f;
-	fade = 0.0f;
-	velocity = 0.0f;
-	position = 0.0f;
-	r = 0.0f;
-	g = 0.0f;
-	b = 0.0f;
 }
 
 Particle::~Particle()
@@ -38,23 +30,7 @@ void Particle::InitParticle(Vector3D startPos, Vector3D velocity,
 	this->b = b;
 }
 
-void Particle::UpdateParticle( GLfloat deltatime )
-{
-	position += velocity*deltatime;
-	life -= fade * deltatime;
-
-	if (life <= 0.0f) 
-	{
-		isActive=false;
-	}
-	else if(position.getZ() >= 10)
-	{
-		life = 0.0f;
-		isActive = false;
-	}
-}
-
-void Particle::DrawParticle()
+void Particle::Draw()
 {
 	if (isActive) 
 	{
@@ -67,4 +43,32 @@ void Particle::DrawParticle()
 		glTexCoord2d(1,0); glVertex3f(position.getX()+0.5f,position.getY()-0.5f,position.getZ()); // Bottom Right
 		glEnd();
 	}
+}
+
+void Particle::Update( GLfloat deltaTime )
+{
+	Drawable::CalculatePosition(deltaTime);
+	life -= fade * deltaTime;
+
+	if (life <= 0.0f) 
+	{
+		isActive=false;
+	}
+	else if(position.getZ() >= 10)
+	{
+		life = 0.0f;
+		isActive = false;
+	}
+}
+
+void Particle::CreateDrawable()
+{
+	isActive = false;
+	life = 0.0f;
+	fade = 0.0f;
+	velocity = 0.0f;
+	position = 0.0f;
+	r = 0.0f;
+	g = 0.0f;
+	b = 0.0f;
 }

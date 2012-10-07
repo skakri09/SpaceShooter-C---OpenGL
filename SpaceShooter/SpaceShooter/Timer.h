@@ -23,14 +23,16 @@ public:
 	 * Report the elapsed time in seconds (it will return a double,
 	 * so the fractional part is subsecond part).
 	 */
-	inline double elapsed() const {
+	inline double elapsed() const 
+	{
 		return getCurrentTime() - startTime_;
 	};
 
 	/** 
 	 * Report the elapsed time in seconds, and reset the timer.
 	 */
-	inline double elapsedAndRestart() {
+	inline double elapsedAndRestart() 
+	{
 		double now = getCurrentTime();
 		double elapsed = now - startTime_;
 		startTime_ = now;
@@ -40,14 +42,16 @@ public:
 	/**
 	 * Restart the timer.
 	 */
-	inline void restart() {
+	inline void restart() 
+	{
 		startTime_ = getCurrentTime();
 	};
 
 	/** 
 	 * Return the current time as number of elapsed seconds of this day.
 	 */
-	double static getCurrentTime() {
+	double static getCurrentTime() 
+	{
 #ifdef WIN32
 #if 1
     LARGE_INTEGER f;

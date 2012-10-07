@@ -18,7 +18,7 @@ public:
 	Projectile(float projectileFlytime);
 	~Projectile();
 
-	virtual void Draw(GLfloat deltaTime);
+	virtual void Draw();
 
 	virtual void Update(GLfloat deltaTime);
 

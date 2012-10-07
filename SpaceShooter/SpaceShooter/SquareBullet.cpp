@@ -1,6 +1,6 @@
 #include "SquareBullet.h"
 
-SquareBullet::SquareBullet() :Projectile(5.0f)
+SquareBullet::SquareBullet() : Projectile(5.0f)
 {
 	CreateDrawable();
 }

@@ -17,8 +17,11 @@
 #include <sstream>
 #include <string>
 #include <fstream>
-#include <gl/GL.h>
 #include "Particle.h"
+#include "GameConstants.h"
+
+#include <gl/GL.h> //must be included after particle.h
+
 #include "Logger.h"
 
 
@@ -29,29 +32,15 @@ struct Image {
 	unsigned long height;
 };
 
-//struct Particle {
-//	bool	active;					// Active (Yes/No)
-//	float	life;					// Particle Life
-//	float	fade;					// Fade Speed
-//	float	r;						// Red Value
-//	float	g;						// Green Value
-//	float	b;						// Blue Value
-//	float	x;						// X Position
-//	float	y;						// Y Position
-//	float	z;						// Z Position
-//	float	xi;						// X Direction
-//	float	yi;						// Y Direction
-//	float	zi;						// Z Direction
-//};
-
 // const value for the maximum number of lightspeed particles
 static const unsigned int MAX_LIGHTPSEED_PARTICLES = 1000;
 
 //The max distance a star can spawn from the middle and in 
 // x/y direction
-static const float MAX_STAR_DIST_FROM_MIDDLE_X = 350.0f;
-static const float MAX_STAR_DIST_FROM_MIDDLE_Y = 250.0f;
-static const float STAR_FARPOINT = -300.0f;
+static const float MAX_STAR_DIST_FROM_MIDDLE_X = 650.0f;
+static const float MAX_STAR_DIST_FROM_MIDDLE_Y = 450.0f;
+static const float STAR_FARPOINT = -550.0f;
+
 class ParticleManager
 {
 public:
@@ -60,7 +49,9 @@ public:
 
 	void InitParticleManager();
 
-	void UpdateAndDrawParticles(GLfloat deltatime );
+	void UpdateParticles(GLfloat deltatime);
+
+	void DrawParticles();
 
 protected:
 
@@ -78,6 +69,10 @@ private:
 	Image ReadImage(std::string image);
 
 	Vector3D zeroPoint;
+
+	void InitNewLightspeedParticle(Particle& p, bool firstFrame);
+	bool validLightspeedPos(float xPos, float yPos);
+	int failcounter;
 };
 
 #endif // ParticleManager_h__

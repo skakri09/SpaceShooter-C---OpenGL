@@ -134,8 +134,8 @@ void InputManager::resize( unsigned int width, unsigned int height )
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(75.0f, 1.5f, 1.0f, 500.0f);
-
+	gluPerspective(75.0f, 1.5f, 1.0f, 600.0f);
+	gluLookAt(0, 1.10, 30,	0, 0.30, 0,		0, 1, 0); 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }

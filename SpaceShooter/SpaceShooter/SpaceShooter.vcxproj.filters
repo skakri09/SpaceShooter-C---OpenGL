@@ -8,19 +8,9 @@
     <Filter Include="Game">
       <UniqueIdentifier>{ea134570-8b96-4896-ba59-cba3bea79a9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Logger">
-      <UniqueIdentifier>{9a464e1b-37c9-48c9-97f7-dbf944751574}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Game\Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="GLUtils">
-      <UniqueIdentifier>{01ab4019-a69e-42ac-97a2-fb64ccb1a01c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\Drawables">
       <UniqueIdentifier>{f97c10df-bd35-4c4a-8c4a-ab6d088247f8}</UniqueIdentifier>
@@ -55,6 +45,25 @@
     <Filter Include="Utility">
       <UniqueIdentifier>{6aea5599-217f-4d5b-853d-a3dadc282886}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utility\GLUtils">
+      <UniqueIdentifier>{01ab4019-a69e-42ac-97a2-fb64ccb1a01c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Logger">
+      <UniqueIdentifier>{9a464e1b-37c9-48c9-97f7-dbf944751574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Game\Drawables\SpaceShips\SpaceShipAIs">
+      <UniqueIdentifier>{8999161e-3c8d-4ea2-b3ff-f242757410c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\SpaceShips\SpaceShipAIs\Header Files">
+      <UniqueIdentifier>{a5efe86b-35ef-4781-87f7-a4d44ce88134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\SpaceShips\SpaceShipAIs\Source Files">
+      <UniqueIdentifier>{ce2922d5-5c64-434f-92da-a28b2d9903f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -64,13 +73,10 @@
       <Filter>Game\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LogSys.cpp">
-      <Filter>Logger</Filter>
+      <Filter>Utility\Logger</Filter>
     </ClCompile>
     <ClCompile Include="Logger.cpp">
-      <Filter>Logger</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceShipBase.cpp">
-      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
+      <Filter>Utility\Logger</Filter>
     </ClCompile>
     <ClCompile Include="PlayerSpaceShip.cpp">
       <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
@@ -83,9 +89,6 @@
     </ClCompile>
     <ClCompile Include="SquareBullet.cpp">
       <Filter>Game\Drawables\Projectiles\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SimpleEnemySpaceShip.cpp">
-      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Game\Source Files</Filter>
@@ -102,25 +105,37 @@
     <ClCompile Include="ParticleManager.cpp">
       <Filter>Game\Drawables\Particles\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SimpleEnemyShip.cpp">
+      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceShip.cpp">
+      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleEnemyAI.cpp">
+      <Filter>Game\Drawables\SpaceShips\SpaceShipAIs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceShipManager.cpp">
+      <Filter>Game\Drawables\SpaceShips\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
       <Filter>Game\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GLUtils\GLUtils.hpp">
-      <Filter>GLUtils</Filter>
+      <Filter>Utility\GLUtils</Filter>
     </ClInclude>
     <ClInclude Include="GLUtils\Program.hpp">
-      <Filter>GLUtils</Filter>
+      <Filter>Utility\GLUtils</Filter>
     </ClInclude>
     <ClInclude Include="GLUtils\VBO.hpp">
-      <Filter>GLUtils</Filter>
+      <Filter>Utility\GLUtils</Filter>
     </ClInclude>
     <ClInclude Include="LogSys.h">
-      <Filter>Logger</Filter>
+      <Filter>Utility\Logger</Filter>
     </ClInclude>
     <ClInclude Include="Logger.h">
-      <Filter>Logger</Filter>
+      <Filter>Utility\Logger</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Game\Header Files</Filter>
@@ -128,14 +143,8 @@
     <ClInclude Include="Vector3d.h">
       <Filter>Game\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpaceShipBase.h">
-      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerSpaceShip.h">
       <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Drawable.h">
-      <Filter>Game\Drawables</Filter>
     </ClInclude>
     <ClInclude Include="Projectile.h">
       <Filter>Game\Drawables\Projectiles\Header Files</Filter>
@@ -145,9 +154,6 @@
     </ClInclude>
     <ClInclude Include="SquareBullet.h">
       <Filter>Game\Drawables\Projectiles\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleEnemySpaceShip.h">
-      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Game\Header Files</Filter>
@@ -160,6 +166,24 @@
     </ClInclude>
     <ClInclude Include="ParticleManager.h">
       <Filter>Game\Drawables\Particles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConstants.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleEnemyShip.h">
+      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Game\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceShip.h">
+      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleEnemyAI.h">
+      <Filter>Game\Drawables\SpaceShips\SpaceShipAIs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceShipManager.h">
+      <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

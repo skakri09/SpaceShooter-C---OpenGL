@@ -4,7 +4,7 @@ Projectile::Projectile(float projectileFlytime)
 	:log("Projectile", WARN)
 {
 	PROJECTILE_FLYTIME = projectileFlytime;
-	projectileVelocity = -50.0f;
+	projectileVelocity = -100.0f;
 	fired = false;
 }
 
@@ -13,7 +13,7 @@ Projectile::~Projectile()
 
 }
 
-void Projectile::Draw( GLfloat deltaTime )
+void Projectile::Draw()
 {
 	if(fired)
 	{
@@ -39,6 +39,7 @@ void Projectile::Draw( GLfloat deltaTime )
 		
 		glPopMatrix();
 		glPopMatrix();
+		log << INFO << position.getZ() << std::endl;
 	}
 }
 
@@ -68,7 +69,7 @@ void Projectile::FireProjectile( Vector3D startPos, Vector3D startRotation, GLfl
 	Drawable::position = 0.0f;
 	Drawable::velocity = 0.0f;
 	timeSinceFired = 0.0f;
-	velocity.setZ(projectileVelocity);
+	velocity.setZ(-speed);//setting to negative z so we don't have to do that other places
 	this->startRotation = startRotation;
 	this->startPosition = startPos;
 	fired = true;

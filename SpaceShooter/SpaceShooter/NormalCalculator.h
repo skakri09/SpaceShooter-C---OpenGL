@@ -34,3 +34,4 @@ private:
 
 };
 #endif // NormalCalculator_h__
+

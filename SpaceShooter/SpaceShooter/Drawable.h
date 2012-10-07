@@ -26,7 +26,7 @@ public:
 
 	// Pure virtual function draw, should contain functionality
 	// that draws to the screen when overwritten.
-	virtual void Draw(GLfloat deltaTime) = 0;
+	virtual void Draw() = 0;
 
 	// Pure virtual function Update, should contain everything
 	// needed to update the particular object.
@@ -36,14 +36,10 @@ public:
 	// set up and prepare the surface or model we are using once drawing.
 	virtual void CreateDrawable() = 0;
 
-	void SetVelocity(float xVel, float yVel, float zVel=0)
-	{
-		velocity.setX(xVel);
-		velocity.setY(yVel);
-		velocity.setZ(zVel);
-	};
-
-	Vector3D getVelocity(){return velocity;}
+	
+	//Various get and set functions for velocity and position.
+	//Creating several ways of setting and getting the variables
+	//as the most convenient of doing it way varies a lot.
 	float getXVel(){return velocity.getX();}
 	float getYVel(){return velocity.getY();}
 	float getZVel(){return velocity.getZ();}
@@ -55,6 +51,16 @@ public:
 	float getYPos(){return position.getY();}
 	float getZPos(){return position.getZ();}
 	
+	Vector3D* getPosition(){return &position;}
+	Vector3D* getVelocity(){return &velocity;}
+	void setVelocity(Vector3D& newVel){this->velocity = newVel;}
+	void SetVelocity(float xVel, float yVel, float zVel)
+	{
+		velocity.setX(xVel);
+		velocity.setY(yVel);
+		velocity.setZ(zVel);
+	};
+
 protected:
 	// Calculates the position by adding velocity multiplied by
 	// deltaTime (time since last frame) with the current position
@@ -67,7 +73,8 @@ protected:
 	Vector3D velocity; // Ship velocity
 
 	GLuint displayList; // The display list ID
-	
+	GLuint indexes;
+	GLuint vbo;
 	
 private:
 

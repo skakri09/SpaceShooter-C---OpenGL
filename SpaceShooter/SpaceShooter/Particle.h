@@ -11,24 +11,25 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
+#include "Drawable.h"
 #include <vector>
-#include <gl/GL.h>
 #include "Vector3d.h"
 
-class Particle
+#include <gl/GL.h>
+class Particle : Drawable
 {
 public:
     Particle();
     ~Particle();
 
+	virtual void Draw();
+	
+	virtual void Update(GLfloat deltaTime);
+	
+	virtual void CreateDrawable();
 
 	void InitParticle(Vector3D StartPos, Vector3D Velocity, 
 					float fadeSpeed, float r, float g, float b);
-
-	void UpdateParticle(GLfloat deltatime);
-
-	void DrawParticle();
-
 
 	bool isActive; //Is the particle active
 	float life;  //The life of the particle
@@ -38,8 +39,8 @@ public:
 	float g;	 //Green color value
 	float b;	 //Blue color value
 	
-	Vector3D position;
-	Vector3D velocity;
+	//Vector3D position;
+	//Vector3D velocity;
 
 protected:
 
