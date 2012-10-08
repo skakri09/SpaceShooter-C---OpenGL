@@ -19,6 +19,8 @@
 #include "Drawable.h"
 #include "Projectile.h"
 #include "ProjectileFactory.h"
+#include "Mesh.h"
+#include "MeshLoader.h"
 
 //enum Direction {CLOCKWISE, ANTI_CLOCKWISE};
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
@@ -59,6 +61,7 @@ public:
 	void InitRotation(Axis axisToRotateArround);
 	
 	GLfloat getDeltaTime(){return deltaTime;}
+
 protected:
 	virtual void CreateDrawable();
 
@@ -89,6 +92,8 @@ protected:
 	RotationInfo xAxis;
 	RotationInfo yAxis;
 	RotationInfo zAxis;
+
+	MeshLoader meshLoader;
 
 private:
 	Logger log;

@@ -22,8 +22,8 @@ void BaseEnemyShip::Draw()
 
 void BaseEnemyShip::Update( GLfloat deltaTime )
 {
-	SpaceShip::Update(deltaTime);
 	aiStateMachine.Update(deltaTime);
+	SpaceShip::Update(deltaTime);
 }
 
 void BaseEnemyShip::InitSpaceship( float startX, float startY, float startZ )

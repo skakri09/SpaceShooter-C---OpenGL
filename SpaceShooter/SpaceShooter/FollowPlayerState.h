@@ -19,12 +19,15 @@ public:
 
 	virtual void Enter(BaseEnemyShip* enemy);
 
-	virtual void Execute(BaseEnemyShip* enemy, float delta);
+	virtual void UpdateState(BaseEnemyShip* enemy, float delta);
 
 	virtual void Exit(BaseEnemyShip* enemy);
 
 private:
 	Logger log;
+
+	Vector3D targetPosition;
+	Vector3D targetDirection;
 };
 
 #endif // FollowPlayerState_h__

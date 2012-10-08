@@ -45,7 +45,7 @@ void SimpleEnemy::Draw()
 	RotateArroundZ(getDeltaTime());
 
 
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vertices);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
 	glEnableClientState(GL_VERTEX_ARRAY);
 
@@ -73,8 +73,8 @@ void SimpleEnemy::Update( GLfloat deltaTime )
 
 void SimpleEnemy::CreateDrawable()
 {
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glGenBuffers(1, &vertices);
+	glBindBuffer(GL_ARRAY_BUFFER, vertices);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*15, enemyVertexes, GL_STATIC_DRAW);
 
 	glGenBuffers(1, &indexes);
@@ -92,17 +92,30 @@ void SimpleEnemy::InitSpaceship( float startX, float startY, float startZ )
 	BaseEnemyShip::InitSpaceship(startX, startY, startZ);
 
 	CreateDrawable();
-
-	//SetAI(SIMPLE_AI);
 }
 
 void SimpleEnemy::HandleAI()
 {
+		
 	float a = position.Distance(*playerShip->getPosition());
-	if(position.Distance(*playerShip->getPosition()) > 200 
-		&& aiStateMachine.GetCurrentState() != "FollowPlayerState")
+	if(a >= 105 && aiStateMachine.GetCurrentState() != "FollowPlayerState")
+	/*if(position.getX() <= (playerShip->getXPos()+50)
+		&& aiStateMachine.GetCurrentState() != "FollowPlayerState")*/
 	{
 		aiStateMachine.ChangeState(std::make_shared<FollowPlayerState>());
+	}
+	//else if(position.getX() >= (playerShip->getXPos()-50)
+	//	&& aiStateMachine.GetCurrentState() != "FollowPlayerState")
+	//{
+	//	aiStateMachine.ChangeState(std::make_shared<FollowPlayerState>());
+	//}
+	//else if(aiStateMachine.GetCurrentState() != "FireState"
+	//	&& ( position.getX() <= (playerShip->getXPos()+50) 
+	//	|| position.getX() >= (playerShip->getXPos()-50)))
+	else if(aiStateMachine.GetCurrentState() != "FireState"
+		&& a < 110)
+	{
+		aiStateMachine.ChangeState(std::make_shared<FireState>());
 	}
 }
 	

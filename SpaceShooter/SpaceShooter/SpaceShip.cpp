@@ -166,5 +166,3 @@ void SpaceShip::InitSpaceship( float startX, float startY, float startZ )
 
 
 
-
-

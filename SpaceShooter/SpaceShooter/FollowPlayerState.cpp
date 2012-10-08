@@ -3,14 +3,23 @@
 void FollowPlayerState::Enter( BaseEnemyShip* owner )
 {
 	log << INFO << "Entering followPlayerState" << std::endl;
+	//targetPosition = *owner->getPlayerShip()->getPosition() - *owner->getPosition();
+	//targetDirection = targetPosition;
+	//targetDirection.setZ(0);
+	//targetDirection.Normalize();
 }
 
-void FollowPlayerState::Execute( BaseEnemyShip* owner, float deltaTime )
+void FollowPlayerState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
-	Vector3D newVel = *owner->getPlayerShip()->getVelocity();
-	newVel.setZ(0.0);
-	owner->setVelocity(newVel);
-	log << INFO << "--" << std::endl;
+	targetPosition = *owner->getPlayerShip()->getPosition() - *owner->getPosition();
+	targetDirection = targetPosition;
+	targetDirection.setZ(0);
+	targetDirection.Normalize();
+
+	Vector3D velocity = targetDirection * 100;
+
+	owner->setVelocity(velocity);
+	//log << INFO <<"  " << owner->getXPos()<<"  " << owner->getZPos()<<"  " << owner->getZPos() << std::endl;
 }
 
 void FollowPlayerState::Exit( BaseEnemyShip* owner )

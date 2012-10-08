@@ -23,6 +23,11 @@ public:
 
 	Vector3D(float x = 0, float y = 0, float z = 0);
 	~Vector3D();
+	
+	void setValues(float x, float y, float z)
+	{
+		this->x = x; this->y = y; this->z = z;
+	}
 
 	inline void setX(float x)	{this->x = x;}
 	inline void setY(float y)	{this->y = y;}

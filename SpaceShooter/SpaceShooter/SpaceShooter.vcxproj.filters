@@ -70,6 +70,18 @@
     <Filter Include="Game\SpaceShipAI\States\Header Files">
       <UniqueIdentifier>{a5efe86b-35ef-4781-87f7-a4d44ce88134}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Utility\XML loading">
+      <UniqueIdentifier>{6f0d73b0-5420-44aa-8a53-82149900770a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utility\Vector3d">
+      <UniqueIdentifier>{296d3937-a0f1-4285-9154-a287553aa0b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utility\NormalCalculator">
+      <UniqueIdentifier>{5089f04f-a03c-4e2b-b3ed-24825276aff3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Drawables\Collidable">
+      <UniqueIdentifier>{73f35500-7397-4ec9-b375-7022661f5fc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -99,9 +111,6 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NormalCalculator.cpp">
-      <Filter>Game\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Game\Drawables\Particles\Source Files</Filter>
     </ClCompile>
@@ -123,9 +132,6 @@
     <ClCompile Include="FireState.cpp">
       <Filter>Game\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector3d.cpp">
-      <Filter>Game\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="SpaceShipManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
@@ -134,6 +140,21 @@
     </ClCompile>
     <ClCompile Include="IdleState.cpp">
       <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshLoader.cpp">
+      <Filter>Game\Utility\XML loading</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlLoader.cpp">
+      <Filter>Game\Utility\XML loading</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3d.cpp">
+      <Filter>Game\Utility\Vector3d</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalCalculator.cpp">
+      <Filter>Game\Utility\NormalCalculator</Filter>
+    </ClCompile>
+    <ClCompile Include="Collidable.cpp">
+      <Filter>Game\Drawables\Collidable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -173,9 +194,6 @@
     <ClInclude Include="InputManager.h">
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NormalCalculator.h">
-      <Filter>Game\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Game\Drawables\Particles\Header Files</Filter>
     </ClInclude>
@@ -206,9 +224,6 @@
     <ClInclude Include="FireState.h">
       <Filter>Game\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector3d.h">
-      <Filter>Game\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="GameConstants.h">
       <Filter>Game\Utility</Filter>
     </ClInclude>
@@ -221,5 +236,28 @@
     <ClInclude Include="IdleState.h">
       <Filter>Game\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MeshLoader.h">
+      <Filter>Game\Utility\XML loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlLoader.h">
+      <Filter>Game\Utility\XML loading</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Game\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3d.h">
+      <Filter>Game\Utility\Vector3d</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalCalculator.h">
+      <Filter>Game\Utility\NormalCalculator</Filter>
+    </ClInclude>
+    <ClInclude Include="Collidable.h">
+      <Filter>Game\Drawables\Collidable</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Mesh_PlayerSpaceship.xml">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

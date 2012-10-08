@@ -10,19 +10,19 @@ PlayerSpaceShip::~PlayerSpaceShip()
 }
 
 //Experimental VBO/VA arrays
-GLfloat spaceshipVertexes[] = {-0.5f, 0.0f, 0.0f,//left bottom
-	0.5f, 0.0f, 0.0f,//right bottom
-	0.3f, 0.6f, -0.2f,//right top
-	-0.3f, 0.6f, -0.2f,//left top
-	0.0f, 0.5f, -2.2f//front
-};
-unsigned int index[] = { 0, 1, 2, //back right triangle
-	0, 2, 3, //back left triangle
-	0, 3, 4, //left side
-	0, 4, 1, //bottom side
-	3, 2, 4, //top side
-	1, 4, 2 //right side
-};
+//GLfloat spaceshipVertexes[] = {-0.5f, 0.0f, 0.0f,//left bottom
+//	0.5f, 0.0f, 0.0f,//right bottom
+//	0.3f, 0.6f, -0.2f,//right top
+//	-0.3f, 0.6f, -0.2f,//left top
+//	0.0f, 0.5f, -2.2f//front
+//};
+//unsigned int index[] = { 0, 1, 2, //back right triangle
+//	0, 2, 3, //back left triangle
+//	0, 3, 4, //left side
+//	0, 4, 1, //bottom side
+//	3, 2, 4, //top side
+//	1, 4, 2 //right side
+//};
 
 void PlayerSpaceShip::Draw()
 {
@@ -46,15 +46,31 @@ void PlayerSpaceShip::Draw()
 	glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT,index);
 	glDisableClientState(GL_VERTEX_ARRAY);*/
 	
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
-	glEnableClientState(GL_VERTEX_ARRAY);
 
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+	//glEnableClientState(GL_COLOR_ARRAY);
+	//glEnable(GL_COLOR_MATERIAL);
+	glBindBuffer(GL_ARRAY_BUFFER, vertices);
 	glVertexPointer(3, GL_FLOAT, 0, 0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, normals);
+	glNormalPointer(GL_FLOAT, 0, 0);
+	
+	/*glBindBuffer(GL_COLOR_ARRAY, colors);
+	glColorPointer(3, GL_FLOAT, 0, 0);*/
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
 	glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT,0);
+
 	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
+	//glDisableClientState(GL_COLOR_ARRAY);
+
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	//glBindBuffer(GL_COLOR_ARRAY, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
 	/*
 	glEnableClientState(GL_INDEX_ARRAY);
 	
@@ -83,13 +99,22 @@ void PlayerSpaceShip::Update(GLfloat deltaTime)
 
 void PlayerSpaceShip::CreateDrawable()
 {
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*15, spaceshipVertexes, GL_STATIC_DRAW);
+	std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
+	glGenBuffers(1, &vertices);
+	glBindBuffer(GL_ARRAY_BUFFER, vertices);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->vertices.size(), &mesh->vertices[0], GL_STATIC_DRAW);
+
+	glGenBuffers(1, &normals);
+	glBindBuffer(GL_ARRAY_BUFFER, normals);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->normals.size(), &mesh->normals[0], GL_STATIC_DRAW);
+
+	/*glGenBuffers(1, &colors);
+	glBindBuffer(GL_COLOR_ARRAY, colors);
+	glBufferData(GL_COLOR_ARRAY, sizeof(float)*mesh->colors.size(), &mesh->colors[0], GL_STATIC_DRAW);*/
 
 	glGenBuffers(1, &indexes);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)*18, index, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float)*mesh->indices.size(), &mesh->indices[0], GL_STATIC_DRAW);
 	
 	/*glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);

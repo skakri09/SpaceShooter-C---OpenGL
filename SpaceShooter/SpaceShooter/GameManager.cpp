@@ -54,7 +54,7 @@ void GameManager::setOpenGLStates() {
 	glEnable(GL_CULL_FACE);
 	//glEnable(GL_BLEND);
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-	//glShadeModel(GL_SMOOTH); 
+	glShadeModel(GL_SMOOTH); 
 	//glClearColor(0.2f, 0.1f, 0.1f, 1.0f);
 }
 
@@ -124,7 +124,7 @@ void GameManager::GameLoop()
 		fps++;
 		if(sec >= 1.0f)
 		{
-			log << WARN << fps << std::endl;
+			log << INFO << fps << std::endl;
 			fps = 0;
 			sec = 0;
 		}

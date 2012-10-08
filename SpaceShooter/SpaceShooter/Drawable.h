@@ -74,8 +74,10 @@ protected:
 
 	GLuint displayList; // The display list ID
 	GLuint indexes;
-	GLuint vbo;
-	
+	GLuint normals;
+	GLuint vertices;
+	GLuint colors;
+
 private:
 
 };
