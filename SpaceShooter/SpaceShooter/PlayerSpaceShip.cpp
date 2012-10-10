@@ -89,6 +89,8 @@ void PlayerSpaceShip::CreateDrawable()
 {
 	Mesh3dsLoader loader;
 	meshInfo = loader.Load3dsMesh("milfalcon.3ds");
+	//collisionSphere = loader.GetBoundingSphere();
+	//collisionSphere = loader.GetBoundingSphere();
 	//collisionSphere = *meshInfo.collisionSphere;
 	//std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
 	//meshInfo.numberOfIndices = mesh->indices.size();

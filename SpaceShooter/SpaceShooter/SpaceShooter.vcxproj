@@ -86,6 +86,7 @@
     <ClCompile Include="AxisAlignedBoundingBox.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Collidable.cpp" />
+    <ClCompile Include="CollisionSphere.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="FireState.cpp" />
     <ClCompile Include="FollowPlayerState.cpp" />
@@ -119,6 +120,7 @@
     <ClInclude Include="AxisAlignedBoundingBox.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collidable.h" />
+    <ClInclude Include="CollisionSphere.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="EnemySpaceshipConstantState.h" />
     <ClInclude Include="FireState.h" />

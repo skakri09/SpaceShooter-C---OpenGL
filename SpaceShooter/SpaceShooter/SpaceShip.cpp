@@ -175,6 +175,8 @@ void SpaceShip::InitSpaceship( float startX, float startY, float startZ,
 	Drawable::SetScale(scaleX, scaleY, scaleZ);
 	Drawable::startRotation.setValues(rotX, rotY, rotZ);
 	Drawable::startRotationDegrees = startRotDeg;
+
+	//collisionSphere = 
 }
 
 void SpaceShip::DrawWithArrays()

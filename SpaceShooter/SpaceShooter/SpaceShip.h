@@ -21,6 +21,7 @@
 #include "ProjectileFactory.h"
 #include "Mesh.h"
 #include "MeshLoader.h"
+#include "BoundingSphere.h"
 
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
@@ -62,7 +63,7 @@ public:
 	void InitRotation(Axis axisToRotateArround);
 	
 	GLfloat getDeltaTime(){return deltaTime;}
-
+	BoundingSphere& GetCollisionSphere(){return collisionSphere;}
 protected:
 	virtual void CreateDrawable();
 
@@ -97,8 +98,7 @@ protected:
 	RotationInfo yAxis;
 	RotationInfo zAxis;
 
-	MeshLoader meshLoader;
-
+	BoundingSphere collisionSphere;
 private:
 	Logger log;
 

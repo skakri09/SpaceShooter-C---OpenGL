@@ -21,7 +21,6 @@ public:
 	std::vector<float> normals;
 	std::vector<float> colors;
 };
-//class BoundingSphere;
 
 class MeshInfo
 {

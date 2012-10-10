@@ -18,7 +18,6 @@ public:
 	~AABB();
 
 protected:
-	Logger log;
 	void CreateAABB(Mesh& mesh);
 
 	void CreateAABB( Lib3dsVector* vertices, unsigned int size);
@@ -42,6 +41,9 @@ protected:
 	Vector3D m_RightBottomBack;
 	Vector3D m_LeftBottomFront;
 	Vector3D m_RightBottomFront;
+
+private:
+	Logger log;
 };
 
 #endif // AABB_h__

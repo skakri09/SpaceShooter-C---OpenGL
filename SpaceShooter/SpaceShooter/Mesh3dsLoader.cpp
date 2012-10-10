@@ -98,8 +98,7 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 
 		return meshInfo;
 	}
-	MeshInfo empty;
-	return empty;
+	return meshInfo;
 }
 
 

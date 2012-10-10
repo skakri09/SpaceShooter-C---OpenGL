@@ -22,7 +22,6 @@
 #include "Timer.h"
 #include "Vector3d.h"
 #include "Transformation.h"
-#include "BoundingSphere.h"
 
 class Drawable
 {
@@ -90,7 +89,6 @@ protected:
 	}
 
 	Transformation transformationValues;
-	BoundingSphere asd;
 
 	Vector3D position; // Ship Position
 	Vector3D velocity; // Ship velocity

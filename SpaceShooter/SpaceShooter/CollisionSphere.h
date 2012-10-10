@@ -1,25 +1,23 @@
 /********************************************************************
-	created:	9:10:2012   9:49
-	filename: 	BoundingSphere.h
-	author:		Kristian Skarseth
-	
-	purpose:	Bounding sphere collision box
+    created:    10:10:2012   22:31
+    filename:   CollisionSphere.h
+    author:     Kristian Skarseth
+    
+    purpose:    
 *********************************************************************/
-#ifndef BoundingSphere_h__
-#define BoundingSphere_h__
+#ifndef CollisionSphere_h__
+#define CollisionSphere_h__
 
-//#include "Collidable.h"
 #include "AABB.h"
 #include "Vector3d.h"
-//#include <lib3ds/types.h>
 #include "Transformation.h"
 #include "Mesh.h"
 
-class BoundingSphere : public AABB
+class CollisionSphere : public AABB
 {
 public:
-	BoundingSphere();
-	~BoundingSphere();
+    CollisionSphere();
+    ~CollisionSphere();
 
 	//Returns the amount of collision between this and the param
 	//vector3D as a vector3d. If there is no collision, the returned 
@@ -36,7 +34,7 @@ public:
 	void ApplyTransformations(Transformation& translationInfo);
 
 	Vector3D& GetMidpoint();
-	
+
 	float GetRadius();
 
 protected:
@@ -52,7 +50,6 @@ private:
 	Vector3D CollisionFarpoint;
 	float LocalRadius;
 	float CollisionRadius;
-
 };
 
-#endif // BoundingSphere_h__
+#endif // CollisionSphere_h__

@@ -13,6 +13,7 @@
 #include "Logger.h"
 #include "MeshLoader.h"
 #include "Mesh.h"
+#include "BoundingSphere.h"
 
 class Projectile : public Drawable
 {
@@ -39,6 +40,7 @@ protected:
 
 	MeshLoader meshLoader;
 
+	BoundingSphere collisionSphere;
 private:
 	Logger log;
 

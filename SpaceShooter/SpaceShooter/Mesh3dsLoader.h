@@ -37,9 +37,9 @@ public:
 
 	MeshInfo Load3dsMesh(std::string _3dsMeshFile);
 	
-	BoundingSphere GetBoundingSphere();//{return collisionSphere;}
+	BoundingSphere GetBoundingSphere(){return collisionSphere;}
 	//MeshInfo& GetMeshInfo();
-
+	BoundingSphere collisionSphere;
 private:
 	Logger log;
 
@@ -49,7 +49,7 @@ private:
 	Lib3dsFile* model;
 	
 	MeshInfo meshInfo;
-	BoundingSphere collisionSphere;
+	
 };
 
 #endif // Mesh3dsLoader_h__
