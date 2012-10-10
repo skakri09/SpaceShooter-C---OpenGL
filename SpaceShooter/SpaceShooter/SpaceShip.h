@@ -7,7 +7,7 @@
 				Contains functionality to draw and set/get position and
 				velocity of the spaceship.
 
-				Position and velocity comes in form of a CVector3D, and the
+				Position and velocity comes in form of a Vector3D, and the
 				Draw() function is inherited from the Drawable abstract class 
 				which works as an interface in this case.
 *********************************************************************/
@@ -62,9 +62,10 @@ public:
 	
 	GLfloat getDeltaTime(){return deltaTime;}
 
+	BoundingSphere collisionSphere;
 protected:
 	virtual void CreateDrawable();
-
+	
 	//Vector of projectiles, used to loop trough them and 
 	//call their respecive Draw() function
 	std::vector<Projectile*> projectiles;

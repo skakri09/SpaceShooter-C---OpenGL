@@ -48,29 +48,7 @@ void PlayerSpaceShip::Draw()
 	glDisableClientState(GL_VERTEX_ARRAY);*/
 	
 
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_NORMAL_ARRAY);
-	//glEnableClientState(GL_COLOR_ARRAY);
-	//glEnable(GL_COLOR_MATERIAL);
-	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
-	glVertexPointer(3, GL_FLOAT, 0, 0);
 
-	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
-	glNormalPointer(GL_FLOAT, 0, 0);
-	
-	/*glBindBuffer(GL_COLOR_ARRAY, colors);
-	glColorPointer(3, GL_FLOAT, 0, 0);*/
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-	glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT,0);
-
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_NORMAL_ARRAY);
-	//glDisableClientState(GL_COLOR_ARRAY);
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	//glBindBuffer(GL_COLOR_ARRAY, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	/*
 	glEnableClientState(GL_INDEX_ARRAY);
@@ -94,7 +72,10 @@ void PlayerSpaceShip::Update(GLfloat deltaTime)
 	SpaceShip::Update(deltaTime);
 	
 	CalculatePosition(deltaTime);
+	glPushMatrix();
 
+	//collisionSphere.ApplyTransformations(position, rotation, 0, scale);
+	glPopMatrix();
 	log << INFO << "X: " << position.getX()<< " Y: " << position.getY() 
 		<< " Z: " << position.getZ() << std::endl;
 }
@@ -102,6 +83,7 @@ void PlayerSpaceShip::Update(GLfloat deltaTime)
 void PlayerSpaceShip::CreateDrawable()
 {
 	std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
+	meshInfo.numberOfIndices = mesh->indices.size();
 	collisionSphere.CreateCollisionBox(*mesh);
 
 	glGenBuffers(1, &meshInfo.vertices);

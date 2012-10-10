@@ -27,6 +27,7 @@ class MeshInfo
 public:
 	GLuint vertices;
 	GLuint indices;
+	GLuint numberOfIndices;
 	GLuint normals;
 };
 #endif // Mesh_h__

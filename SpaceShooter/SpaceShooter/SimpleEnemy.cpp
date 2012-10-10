@@ -6,7 +6,6 @@ SimpleEnemy::SimpleEnemy(PlayerSpaceShip* playerShip)
 					std::make_shared<EnemySpaceshipConstantState>())
 	
 {
-
 }
 
 SimpleEnemy::~SimpleEnemy()
@@ -42,15 +41,17 @@ void SimpleEnemy::Draw()
 
 	BaseEnemyShip::Draw();
 
-	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-	glEnableClientState(GL_VERTEX_ARRAY);
+	//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
+	//glEnableClientState(GL_VERTEX_ARRAY);
 
-	glVertexPointer(3, GL_FLOAT, 0, 0);
-	glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT,0);
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	//glVertexPointer(3, GL_FLOAT, 0, 0);
+	////meshInfo.numberOfIndices = mesh->indices.size();
+	//glDrawElements(GL_TRIANGLES,  18, GL_UNSIGNED_INT,0);
+
+	//glDisableClientState(GL_VERTEX_ARRAY);
+	//glBindBuffer(GL_ARRAY_BUFFER, 0);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	glPopMatrix();
 	DrawProjectiles(getDeltaTime());
@@ -70,13 +71,33 @@ void SimpleEnemy::Update( GLfloat deltaTime )
 
 void SimpleEnemy::CreateDrawable()
 {
+	std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
+	meshInfo.numberOfIndices = mesh->indices.size();
+	collisionSphere.CreateCollisionBox(*mesh);
+
 	glGenBuffers(1, &meshInfo.vertices);
 	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*15, enemyVertexes, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->vertices.size(), &mesh->vertices[0], GL_STATIC_DRAW);
+
+	glGenBuffers(1, &meshInfo.normals);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->normals.size(), &mesh->normals[0], GL_STATIC_DRAW);
+
+	/*glGenBuffers(1, &colors);
+	glBindBuffer(GL_COLOR_ARRAY, colors);
+	glBufferData(GL_COLOR_ARRAY, sizeof(float)*mesh->colors.size(), &mesh->colors[0], GL_STATIC_DRAW);*/
 
 	glGenBuffers(1, &meshInfo.indices);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)*18, enemyIndex, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float)*mesh->indices.size(), &mesh->indices[0], GL_STATIC_DRAW);
+
+	//glGenBuffers(1, &meshInfo.vertices);
+	//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*15, enemyVertexes, GL_STATIC_DRAW);
+
+	//glGenBuffers(1, &meshInfo.indices);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)*18, enemyIndex, GL_STATIC_DRAW);
 }
 
 void SimpleEnemy::Shoot()

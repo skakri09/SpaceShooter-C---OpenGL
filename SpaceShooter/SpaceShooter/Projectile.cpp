@@ -17,7 +17,6 @@ void Projectile::Draw()
 {
 	if(fired)
 	{
-
 		// Applying transformations to this matrix to match the position and rotation of the 
 		// spaceship when fire was called.
 		glPushMatrix();
@@ -33,7 +32,8 @@ void Projectile::Draw()
 		//Draw the projectile in the above object's space which is transformed into the correct
 		//position and rotation.
 		glPushMatrix();
-
+		glTranslatef(position.getX(), position.getY(), position.getZ());
+		glScalef(0.3f, 0.3f, 0.3f);
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_NORMAL_ARRAY);
 
@@ -44,20 +44,17 @@ void Projectile::Draw()
 		glNormalPointer(GL_FLOAT, 0, 0);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-		glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT,0);
+		glDrawElements(GL_TRIANGLES,  meshInfo.numberOfIndices, GL_UNSIGNED_INT,0);
 
 		glDisableClientState(GL_VERTEX_ARRAY);
 		glDisableClientState(GL_NORMAL_ARRAY);
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-		glTranslatef(position.getX(), position.getY(), position.getZ());
-		glScalef(0.3f, 0.3f, 0.3f);
-		//glCallList(Drawable::displayList);
 		
 		glPopMatrix();
 		glPopMatrix();
+
 		log << INFO << position.getZ() << std::endl;
 	}
 }

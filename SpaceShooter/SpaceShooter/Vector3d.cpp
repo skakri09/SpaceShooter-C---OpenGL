@@ -65,6 +65,14 @@ Vector3D& Vector3D::operator*=(const float scalar)
 	return *this;
 }
 
+Vector3D& Vector3D::operator*=(const Vector3D& vector2)
+{
+	x *= vector2.x;
+	y *= vector2.y;
+	z *= vector2.z;
+	return *this;
+}
+
 Vector3D& Vector3D::operator/=(const float scalar)
 {
 	x /= scalar;
@@ -87,6 +95,12 @@ const Vector3D Vector3D::operator*(const float scalar) const
 {
 	return (Vector3D(*this) *= scalar);
 }
+
+const Vector3D Vector3D::operator*(const Vector3D& vector2) const
+{
+	return (Vector3D(*this) *= vector2);
+}
+
 
 const Vector3D Vector3D::operator/(const float scalar) const
 {

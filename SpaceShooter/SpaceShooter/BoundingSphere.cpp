@@ -13,11 +13,13 @@ BoundingSphere::~BoundingSphere()
 Vector3D BoundingSphere::IsCollision( BoundingSphere& otherCollidable )
 {
 	Vector3D ammountOfCollision = 0;
-	float distance = midpoint.Distance(otherCollidable.GetMidpoint());
+	float distance = LocalMidpoint.Distance(otherCollidable.GetMidpoint());
 
-	if( distance < radius + otherCollidable.GetRadius() )
+	if( distance < CollisionRadius + otherCollidable.GetRadius() )
 	{
-		ammountOfCollision = otherCollidable.GetMidpoint() - midpoint;
+		Vector3D a = otherCollidable.GetMidpoint();
+
+		ammountOfCollision = otherCollidable.GetMidpoint() - CollisionMidpoint;
 	}
 
 	return ammountOfCollision;
@@ -27,34 +29,34 @@ void BoundingSphere::CreateCollisionBox(Mesh& mesh)
 {
 	AABB::CreateAABB(mesh);
 
-	midpoint.setValues(m_Right - m_Width/2, m_Top - m_Height/2, m_Front - m_Depth/2);
-	radius = 0;
-	farPoint = 0;
+	LocalMidpoint.setValues(m_Right - m_Width/2, m_Top - m_Height/2, m_Front - m_Depth/2);
+	LocalRadius = 0;
+	LocalFarpoint = 0;
 	float distance;
 
-	distance = farPoint.Distance(AABB::m_LeftTopBack);
-	if(distance > radius) { radius = distance; }
+	distance = LocalFarpoint.Distance(AABB::m_LeftTopBack);
+	if(distance > LocalRadius) { LocalRadius = distance; }
 	
-	distance = farPoint.Distance(AABB::m_RightTopBack);
-	if(distance > radius) { radius = distance; }
+	distance = LocalFarpoint.Distance(AABB::m_RightTopBack);
+	if(distance > LocalRadius) { LocalRadius = distance; }
 	
-	distance = farPoint.Distance(AABB::m_LeftTopFront);
-	if(distance > radius) { radius = distance; }
+	distance = LocalFarpoint.Distance(AABB::m_LeftTopFront);
+	if(distance > LocalRadius) { LocalRadius = distance; }
 	
-	distance = farPoint.Distance(AABB::m_RightTopFront);
-	if(distance > radius) { radius = distance; }
+	distance = LocalFarpoint.Distance(AABB::m_RightTopFront);
+	if(distance > LocalRadius) { LocalRadius = distance; }
 	
-	distance = farPoint.Distance(AABB::m_LeftBottomBack);
-	if(distance > radius) { radius = distance; }
+	distance = LocalFarpoint.Distance(AABB::m_LeftBottomBack);
+	if(distance > LocalRadius) { LocalRadius = distance; }
 	
-	distance = farPoint.Distance(AABB::m_RightBottomBack);
-	if(distance > radius) { radius = distance; }
+	distance = LocalFarpoint.Distance(AABB::m_RightBottomBack);
+	if(distance > LocalRadius) { LocalRadius = distance; }
 	
-	distance = farPoint.Distance(AABB::m_LeftBottomFront);
-	if(distance > radius) { radius = distance; }
+	distance = LocalFarpoint.Distance(AABB::m_LeftBottomFront);
+	if(distance > LocalRadius) { LocalRadius = distance; }
 	
-	distance = farPoint.Distance(AABB::m_RightBottomFront);
-	if(distance > radius) { radius = distance; }
+	distance = LocalFarpoint.Distance(AABB::m_RightBottomFront);
+	if(distance > LocalRadius) { LocalRadius = distance; }
 
 	log << INFO << "Created a boundingSphere collisionbox" << std::endl;
 }
@@ -64,15 +66,23 @@ void BoundingSphere::ApplyTransformations(Vector3D& translation,
 											float degrees,
 											Vector3D& scale)
 {
-	Collidable::ApplyTransformations(translation, rotation, degrees, scale);
+	CollisionMidpoint = LocalMidpoint + translation;
+	Vector3D middleMan = LocalRadius;
+	middleMan *= scale;
+	CollisionFarpoint = middleMan;
+	CollisionRadius = CollisionMidpoint.Distance(CollisionFarpoint);
+	//Collidable::ApplyTransformations(translation, rotation, degrees, scale);
+	/*glTranslatef(translation.getX(), translation.getY(), translation.getZ());
+
+	glScalef(scale.getX(), scale.getY(), scale.getZ());*/
 }
 
 Vector3D& BoundingSphere::GetMidpoint()
 {
-	return midpoint;
+	return CollisionMidpoint;
 }
 
 float BoundingSphere::GetRadius()
 {
-	return radius;
+	return CollisionRadius;
 }

@@ -41,8 +41,6 @@ public:
 private:
 	Logger log;
 
-	BoundingSphere collisionSphere;
-
 	//Creates the displaylist or VBO for the spaceship
 	void CreateDrawable();
 

@@ -40,7 +40,7 @@ std::shared_ptr<Mesh> MeshLoader::LoadMeshXml( std::string meshLoadPath )
 		log << ERRORX << "The creation of normals was not successful" << std::endl;
 	}
 
-	return mesh;
+ 	return mesh;
 }
 
 bool MeshLoader::PlaceFloatsInMeshObj( std::string& string,

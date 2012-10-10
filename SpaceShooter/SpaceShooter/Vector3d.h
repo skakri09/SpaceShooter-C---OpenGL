@@ -64,40 +64,46 @@ public:
 	// Get the distance between two vectors
 	float Distance(Vector3D& vector2);
 
-	// Give left CVector3D the values of right CVector3D
+	// Give left Vector3D the values of right Vector3D
 	Vector3D& operator= (const Vector3D& vector2);
 
-	// Give this CVector3D the values of the float
+	// Give this Vector3D the values of the float
 	Vector3D& operator= (const float value);
 
-	// Add the values of right CVector3D to the right CVector3D
+	// Add the values of right Vector3D to the right Vector3D
 	Vector3D& operator+=(const Vector3D& vector2);
 
-	// Subtract the values of right CVector3D from left CVector3D
+	// Subtract the values of right Vector3D from left Vector3D
 	Vector3D& operator-=(const Vector3D& vector2);
 
-	// Multiply the CVector3D with a scalar value
+	// Multiply the Vector3D with a scalar value
 	Vector3D& operator*=(const float scalar);
 
-	// Divide the CVector3D with a scalar value
+	// Multiply the Vector3D with a Vector3D
+	Vector3D& operator*=(const Vector3D& vector2);
+
+	// Divide the Vector3D with a scalar value
 	Vector3D& operator/=(const float scalar);
 
-	// Adds left and right CVector3D and returns the value
+	// Adds left and right Vector3D and returns the value
 	const Vector3D operator+(const Vector3D& vector2) const;
 
-	// Subtracts right CVector3D from left CVector3D and returns the value
+	// Subtracts right Vector3D from left Vector3D and returns the value
 	const Vector3D operator-(const Vector3D& vector2) const;
 
-	// Multiplies CVector3D with the scalar and returns the value
+	// Multiplies Vector3D with the scalar and returns the value
 	const Vector3D operator*(const float scalar) const;
 
-	// Divides CVector3D with the scalar and returns the value
+	// Multiplies Vector3D with the vector3d and returns the value
+	const Vector3D operator*(const Vector3D& vector2) const;
+
+	// Divides Vector3D with the scalar and returns the value
 	const Vector3D operator/(const float scalar) const;
 
-	// Returns true if left CVector3D equals the right CVector3D. False otherwise
+	// Returns true if left Vector3D equals the right Vector3D. False otherwise
 	bool operator==(const Vector3D& vector2) const;
 
-	// Returns rue if left CVector3D is not equal to the right CVector3D. False otherwise.
+	// Returns rue if left Vector3D is not equal to the right Vector3D. False otherwise.
 	bool operator!=(const Vector3D& vector2) const;
 
 

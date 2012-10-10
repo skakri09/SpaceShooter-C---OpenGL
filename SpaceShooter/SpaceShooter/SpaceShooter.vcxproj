@@ -107,6 +107,7 @@
     <ClCompile Include="SpaceShip.cpp" />
     <ClCompile Include="SpaceShipManager.cpp" />
     <ClCompile Include="SquareBullet.cpp" />
+    <ClCompile Include="Transformable.cpp" />
     <ClCompile Include="Vector3d.cpp" />
     <ClCompile Include="XmlLoader.cpp" />
   </ItemGroup>
@@ -144,6 +145,8 @@
     <ClInclude Include="SpaceShipManager.h" />
     <ClInclude Include="SquareBullet.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Transformable.h" />
+    <ClInclude Include="Transformation.h" />
     <ClInclude Include="Vector3d.h" />
     <ClInclude Include="XmlLoader.h" />
   </ItemGroup>

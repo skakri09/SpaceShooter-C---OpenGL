@@ -41,9 +41,12 @@ protected:
 private:
 	Logger log;
 
-	Vector3D midpoint;
-	Vector3D farPoint;
-	float radius;
+	Vector3D LocalMidpoint;
+	Vector3D LocalFarpoint;
+	Vector3D CollisionMidpoint;
+	Vector3D CollisionFarpoint;
+	float LocalRadius;
+	float CollisionRadius;
 
 };
 

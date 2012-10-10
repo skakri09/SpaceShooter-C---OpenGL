@@ -33,6 +33,8 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 
 	player.Update(deltaTime);
 	enemy.Update(deltaTime);
+
+	player.collisionSphere.IsCollision(enemy.collisionSphere);
 	
 }
 

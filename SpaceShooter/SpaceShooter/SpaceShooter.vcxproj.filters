@@ -88,6 +88,9 @@
     <Filter Include="Game\Drawables\Collidable\Source Files">
       <UniqueIdentifier>{7cb255ac-e9d2-4938-954b-37412f861ece}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Utility\Transformable">
+      <UniqueIdentifier>{3de9616c-7450-4bf0-9750-8ff06bde13d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -171,6 +174,9 @@
     <ClCompile Include="Collidable.cpp">
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Transformable.cpp">
+      <Filter>Game\Utility\Transformable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -214,9 +220,6 @@
     </ClInclude>
     <ClInclude Include="ParticleManager.h">
       <Filter>Game\Drawables\Particles\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Drawable.h">
-      <Filter>Game\Drawables</Filter>
     </ClInclude>
     <ClInclude Include="SpaceShip.h">
       <Filter>Game\Drawables\SpaceShips\Header Files</Filter>
@@ -277,6 +280,15 @@
     </ClInclude>
     <ClInclude Include="AABB.h">
       <Filter>Game\Drawables\Collidable\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Game\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformation.h">
+      <Filter>Game\Utility\Transformable</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformable.h">
+      <Filter>Game\Utility\Transformable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
