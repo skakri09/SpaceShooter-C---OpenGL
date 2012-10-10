@@ -91,6 +91,9 @@
     <Filter Include="Game\Utility\Transformable">
       <UniqueIdentifier>{3de9616c-7450-4bf0-9750-8ff06bde13d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Utility\3ds Loading">
+      <UniqueIdentifier>{e8489c58-6263-42ed-a64c-8b389ae4660d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -176,6 +179,9 @@
     </ClCompile>
     <ClCompile Include="Transformable.cpp">
       <Filter>Game\Utility\Transformable</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh3dsLoader.cpp">
+      <Filter>Game\Utility\3ds Loading</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +295,12 @@
     </ClInclude>
     <ClInclude Include="Transformable.h">
       <Filter>Game\Utility\Transformable</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh3dsLoader.h">
+      <Filter>Game\Utility\3ds Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Game\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

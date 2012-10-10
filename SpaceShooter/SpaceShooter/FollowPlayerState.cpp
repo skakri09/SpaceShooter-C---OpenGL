@@ -16,7 +16,7 @@ void FollowPlayerState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 	targetDirection.setZ(0);
 	targetDirection.Normalize();
 
-	Vector3D velocity = targetDirection * 100;
+	Vector3D velocity = targetDirection * SIMPLE_ENEMY_SPEED;
 
 	owner->setVelocity(velocity);
 	//log << INFO <<"  " << owner->getXPos()<<"  " << owner->getZPos()<<"  " << owner->getZPos() << std::endl;

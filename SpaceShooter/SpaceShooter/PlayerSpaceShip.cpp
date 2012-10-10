@@ -1,5 +1,6 @@
 #include "PlayerSpaceShip.h"
 
+
 PlayerSpaceShip::PlayerSpaceShip()
 	: log("PlayerSpaceship", ERRORX)
 {
@@ -28,13 +29,17 @@ void PlayerSpaceShip::Draw()
 {
 	glPushMatrix();
 	
-	glTranslatef(position.getX(), position.getY(), position.getZ());
+	ApplyTransformations();
+	glRotatef(180, 0, 0, 1);//sortof placeholder rotation
+	DrawWithArrays();
+
+	//glTranslatef(position.getX(), position.getY(), position.getZ());
 
 	//glTranslatef(0.f, -10.f, -50.f);
 	//glScalef(4.0f, 4.0f, 4.0f);
 
 	//Does rotating of spaceship according to its rotation values
-	SpaceShip::Draw();
+	//SpaceShip::Draw();
 
 	//glRotatef(90, 1, 0, 0);
 		/// EXPERIMENTING WITH VBO/VA BELOW ///
@@ -82,25 +87,27 @@ void PlayerSpaceShip::Update(GLfloat deltaTime)
 
 void PlayerSpaceShip::CreateDrawable()
 {
-	std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
-	meshInfo.numberOfIndices = mesh->indices.size();
-	collisionSphere.CreateCollisionBox(*mesh);
+	Mesh3dsLoader loader;
+	meshInfo = loader.Load3dsMesh("milfalcon.3ds");
+	//std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
+	//meshInfo.numberOfIndices = mesh->indices.size();
+	//collisionSphere.CreateCollisionBox(*mesh);
 
-	glGenBuffers(1, &meshInfo.vertices);
-	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->vertices.size(), &mesh->vertices[0], GL_STATIC_DRAW);
+	//glGenBuffers(1, &meshInfo.vertices);
+	//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->vertices.size(), &mesh->vertices[0], GL_STATIC_DRAW);
 
-	glGenBuffers(1, &meshInfo.normals);
-	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->normals.size(), &mesh->normals[0], GL_STATIC_DRAW);
+	//glGenBuffers(1, &meshInfo.normals);
+	//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->normals.size(), &mesh->normals[0], GL_STATIC_DRAW);
 
-	/*glGenBuffers(1, &colors);
-	glBindBuffer(GL_COLOR_ARRAY, colors);
-	glBufferData(GL_COLOR_ARRAY, sizeof(float)*mesh->colors.size(), &mesh->colors[0], GL_STATIC_DRAW);*/
+	///*glGenBuffers(1, &colors);
+	//glBindBuffer(GL_COLOR_ARRAY, colors);
+	//glBufferData(GL_COLOR_ARRAY, sizeof(float)*mesh->colors.size(), &mesh->colors[0], GL_STATIC_DRAW);*/
 
-	glGenBuffers(1, &meshInfo.indices);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float)*mesh->indices.size(), &mesh->indices[0], GL_STATIC_DRAW);
+	//glGenBuffers(1, &meshInfo.indices);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float)*mesh->indices.size(), &mesh->indices[0], GL_STATIC_DRAW);
 	
 	/*glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -174,9 +181,13 @@ void PlayerSpaceShip::Shoot()
 	SpaceShip::FireGun(FIRE_COOLDOWN_PLAYER, SQUARE_BULLET_SPEED_PLAYER);
 }
 
-void PlayerSpaceShip::InitSpaceship( float startX, float startY, float startZ )
+void PlayerSpaceShip::InitSpaceship( float startX, float startY, float startZ,
+	float scaleX, float scaleY, float scaleZ,
+	float startRotDeg, float rotX, float rotY, float rotZ)
 {
-	SpaceShip::InitSpaceship(startX, startY, startZ);
+	SpaceShip::InitSpaceship(startX, startY, startZ,
+		scaleX, scaleY, scaleZ, 
+		startRotDeg, rotX, rotY, rotZ);
 
 	CreateDrawable();
 }

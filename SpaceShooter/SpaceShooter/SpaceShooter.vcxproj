@@ -95,6 +95,7 @@
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="LogSys.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mesh3dsLoader.cpp" />
     <ClCompile Include="MeshLoader.cpp" />
     <ClCompile Include="NormalCalculator.cpp" />
     <ClCompile Include="Particle.cpp" />
@@ -128,10 +129,12 @@
     <ClInclude Include="GLUtils\Program.hpp" />
     <ClInclude Include="GLUtils\VBO.hpp" />
     <ClInclude Include="IdleState.h" />
+    <ClInclude Include="Image.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogSys.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Mesh3dsLoader.h" />
     <ClInclude Include="MeshLoader.h" />
     <ClInclude Include="NormalCalculator.h" />
     <ClInclude Include="Particle.h" />

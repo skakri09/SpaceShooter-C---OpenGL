@@ -22,7 +22,6 @@
 #include "Mesh.h"
 #include "MeshLoader.h"
 
-//enum Direction {CLOCKWISE, ANTI_CLOCKWISE};
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
 //Speed of the rotation around x, y and z axis
@@ -55,7 +54,9 @@ public:
 	//Will take care of initializing the spaceship by setting positions,
 	//velocity etc and creating the VBO/displayList or whatever is being 
 	//used for rendering.
-	virtual void InitSpaceship(float startX, float startY, float startZ);
+	virtual void InitSpaceship(float startX, float startY, float startZ,
+								float scaleX, float scaleY, float scaleZ,
+								float startRotDeg, float rotX, float rotY, float rotZ);
 
 	//Starts rotation around the specified axis
 	void InitRotation(Axis axisToRotateArround);
@@ -65,7 +66,10 @@ public:
 	BoundingSphere collisionSphere;
 protected:
 	virtual void CreateDrawable();
-	
+
+	virtual void DrawWithArrays();
+	virtual void DrawWithIndices();
+
 	//Vector of projectiles, used to loop trough them and 
 	//call their respecive Draw() function
 	std::vector<Projectile*> projectiles;
@@ -85,7 +89,7 @@ protected:
 	void RotateArroundY(GLfloat deltaTime);
 	void RotateArroundZ(GLfloat deltaTime);
 
-	//Stores the current rotation in degrees arround the 3 axes
+	//Stores the current rotation in degrees around the 3 axes
 	//Used to send as parameter to projectiles.
 	Vector3D rotation; 
 

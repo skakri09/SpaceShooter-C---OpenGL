@@ -56,6 +56,24 @@ void GameManager::setOpenGLStates() {
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	glShadeModel(GL_SMOOTH); 
 	//glClearColor(0.2f, 0.1f, 0.1f, 1.0f);
+	//
+	//glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHT0);
+	//GLfloat pos[] = { 0.0, 100000.0, -1000.0, 1000.0 };
+	//glLightfv(GL_LIGHT0, GL_POSITION, pos);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
+
+
+	GLfloat pos[] = { 0.0, 4.0, 4.0 };
+	glLightfv(GL_LIGHT0, GL_SPECULAR, pos);
+	//glEnable(GL_LIGHT1);
+	//GLfloat pos2[] = { 0.0, -50.0, 100.0, 0.0 };
+	//glLightf(GL_LIGHT1, GL_POSITION, pos2);
+
+	//GLfloat mat[] = {0.1, 0.1, 0.0, 1};
+	//glMaterialfv(GL_FRONT, GL_SPECULAR, mat);
+	//glLightfv(GL_LIGHT1, GL_DIFFUSE, pos);
 }
 
 void GameManager::init() {

@@ -21,44 +21,19 @@ SpaceShip::~SpaceShip()
 
 void SpaceShip::Draw()
 {
-	glRotatef(yAxis.currentAngle, 0.0f, 1.0f, 0.0f);
-	glRotatef(xAxis.currentAngle, 1.0f, 0.0f, 0.0f);
-	glRotatef(zAxis.currentAngle, 0.0f, 0.0f, 1.0f);
-	//glScalef(scale.getX(), scale.getY(), scale.getZ());
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_NORMAL_ARRAY);
-	//glEnableClientState(GL_COLOR_ARRAY);
-	//glEnable(GL_COLOR_MATERIAL);
-	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
-	glVertexPointer(3, GL_FLOAT, 0, 0);
-
-	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
-	glNormalPointer(GL_FLOAT, 0, 0);
-	
-	/*glBindBuffer(GL_COLOR_ARRAY, colors);
-	glColorPointer(3, GL_FLOAT, 0, 0);*/
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-	glDrawElements(GL_TRIANGLES, meshInfo.numberOfIndices, GL_UNSIGNED_INT,0);
-
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_NORMAL_ARRAY);
-	//glDisableClientState(GL_COLOR_ARRAY);
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	//glBindBuffer(GL_COLOR_ARRAY, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	ApplyTransformations();
+	//DrawWithIndices();
 }
 
 void SpaceShip::Update(GLfloat deltaTime)
 {
 	this->deltaTime = deltaTime;
 	timeSinceLastFired += deltaTime;
-	Vector3D dummy;
-	collisionSphere.ApplyTransformations(position, rotation, 0, dummy);
-	RotateArroundX(getDeltaTime());
-	RotateArroundY(getDeltaTime());
-	RotateArroundZ(getDeltaTime());
+	//Vector3D dummy;
+	//collisionSphere.ApplyTransformations(position, rotation, 0, dummy);
+	//RotateArroundX(getDeltaTime());
+	//RotateArroundY(getDeltaTime());
+	//RotateArroundZ(getDeltaTime());
 }
 
 void SpaceShip::CreateDrawable()
@@ -186,11 +161,81 @@ void SpaceShip::InitRotation( Axis axisToRotateArround )
 	}
 }
 
-void SpaceShip::InitSpaceship( float startX, float startY, float startZ )
+void SpaceShip::InitSpaceship( float startX, float startY, float startZ,
+	float scaleX, float scaleY, float scaleZ,
+	float startRotDeg, float rotX, float rotY, float rotZ)
 {
 	Drawable::position.setX(startX);
 	Drawable::position.setY(startY);
 	Drawable::position.setZ(startZ);
+	
+	Drawable::scale.setX(scaleX);
+	Drawable::scale.setY(scaleY);
+	Drawable::scale.setZ(scaleZ);
+	Drawable::startRotation.setValues(rotX, rotY, rotZ);
+	Drawable::startRotationDegrees = startRotDeg;
+}
+
+void SpaceShip::DrawWithArrays()
+{
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+	//glEnableClientState(GL_COLOR_ARRAY);
+	//glEnable(GL_COLOR_MATERIAL);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
+	glVertexPointer(3, GL_FLOAT, 0, 0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
+	glNormalPointer(GL_FLOAT, 0, 0);
+	
+	/*glBindBuffer(GL_COLOR_ARRAY, colors);
+	glColorPointer(3, GL_FLOAT, 0, 0);*/
+
+	/*glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
+	glDrawElements(GL_TRIANGLES, meshInfo.numberOfIndices, GL_UNSIGNED_INT,0);*/
+	glDrawArrays(GL_TRIANGLES, 0, meshInfo.numberOfIndices);
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
+	//glDisableClientState(GL_COLOR_ARRAY);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	//glBindBuffer(GL_COLOR_ARRAY, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+}
+
+void SpaceShip::DrawWithIndices()
+{
+	//glTranslatef(position.getX(), position.getY(), position.getZ());
+
+	////glRotatef(yAxis.currentAngle, 0.0f, 1.0f, 0.0f);
+	////glRotatef(xAxis.currentAngle, 1.0f, 0.0f, 0.0f);
+	////glRotatef(zAxis.currentAngle, 0.0f, 0.0f, 1.0f);
+	//
+	//glScalef(scale.getX(), scale.getY(), scale.getZ());
+	
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+	//glEnableClientState(GL_COLOR_ARRAY);
+	//glEnable(GL_COLOR_MATERIAL);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
+	glVertexPointer(3, GL_FLOAT, 0, 0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
+	glNormalPointer(GL_FLOAT, 0, 0);
+	
+	/*glBindBuffer(GL_COLOR_ARRAY, colors);
+	glColorPointer(3, GL_FLOAT, 0, 0);*/
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
+	glDrawElements(GL_TRIANGLES, meshInfo.numberOfIndices, GL_UNSIGNED_INT,0);
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
+	//glDisableClientState(GL_COLOR_ARRAY);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	//glBindBuffer(GL_COLOR_ARRAY, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 

@@ -8,6 +8,7 @@
 #ifndef Transformable_h__
 #define Transformable_h__
 
+#ifdef _WIN32
 #include <windows.h>
 #endif
 #include <gl/gl.h>
@@ -31,6 +32,8 @@ public:
 protected:
 
 private:
+	// Calculates the position by adding velocity multiplied by
+	// deltaTime (time since last frame) with the current position
 	void CalculatePosition(float deltaTime);
 
 	Vector3D position;	// The translated position

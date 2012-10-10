@@ -29,5 +29,6 @@ public:
 	GLuint indices;
 	GLuint numberOfIndices;
 	GLuint normals;
+	GLuint textCoords;
 };
 #endif // Mesh_h__

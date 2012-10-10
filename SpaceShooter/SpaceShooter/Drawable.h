@@ -70,8 +70,20 @@ protected:
 		position += (velocity * deltaTime);
 	}
 
+	//Applies the transformations for this object using the
+	//the vector3ds position, scale and rotation
+	virtual void ApplyTransformations()
+	{
+		glTranslatef(position.getX(), position.getY(), position.getZ());
+		glScalef(scale.getX(), scale.getY(), scale.getZ());
+		glRotatef(startRotationDegrees, startRotation.getX(), startRotation.getY(), startRotation.getZ());
+	}
+
 	Vector3D position; // Ship Position
 	Vector3D velocity; // Ship velocity
+	Vector3D scale;
+	Vector3D startRotation;
+	float startRotationDegrees;
 
 	MeshInfo meshInfo;
 	GLuint indices;

@@ -19,18 +19,11 @@
 #include <fstream>
 #include "Particle.h"
 #include "GameConstants.h"
-
+#include "Image.h"
 #include <gl/GL.h> //must be included after particle.h
 
 #include "Logger.h"
 
-
-struct Image {
-	std::vector<char> data;
-	unsigned int components;
-	unsigned long width;
-	unsigned long height;
-};
 
 // const value for the maximum number of lightspeed particles
 static const unsigned int MAX_LIGHTPSEED_PARTICLES = 1000;
