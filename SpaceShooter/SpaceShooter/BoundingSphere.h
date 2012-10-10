@@ -13,7 +13,7 @@
 #include "Vector3d.h"
 #include <lib3ds/types.h>
 #include "Transformation.h"
-class MeshInfo;
+#include "Mesh.h"
 class BoundingSphere : public AABB
 {
 public:

@@ -17,6 +17,7 @@
 #include <gl/glew.h>
 #include <gl/gl.h>
 
+
 #include "Mesh.h"
 #include "Timer.h"
 #include "Vector3d.h"
@@ -89,7 +90,7 @@ protected:
 	}
 
 	Transformation transformationValues;
-	
+	BoundingSphere asd;
 
 	Vector3D position; // Ship Position
 	Vector3D velocity; // Ship velocity

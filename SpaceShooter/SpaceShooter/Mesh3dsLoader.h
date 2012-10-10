@@ -8,8 +8,10 @@
 #ifndef Mesh3dsLoader_h__
 #define Mesh3dsLoader_h__
 
-#include <Windows.h>
-#include <SDL.h>
+#ifdef _WIN32
+#include <windows.h>
+#endif
+//#include <SDL.h>
 #include <lib3ds/file.h>
 #include <lib3ds/mesh.h>
 #include <gl/glew.h>
@@ -34,7 +36,8 @@ public:
     ~Mesh3dsLoader();
 
 	MeshInfo Load3dsMesh(std::string _3dsMeshFile);
-
+	
+	BoundingSphere GetBoundingSphere();//{return collisionSphere;}
 	//MeshInfo& GetMeshInfo();
 
 private:
@@ -46,6 +49,7 @@ private:
 	Lib3dsFile* model;
 	
 	MeshInfo meshInfo;
+	BoundingSphere collisionSphere;
 };
 
 #endif // Mesh3dsLoader_h__

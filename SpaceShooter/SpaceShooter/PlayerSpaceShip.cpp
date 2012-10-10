@@ -79,7 +79,7 @@ void PlayerSpaceShip::Update(GLfloat deltaTime)
 	CalculatePosition(deltaTime);
 	glPushMatrix();
 
-	meshInfo.collisionSphere->ApplyTransformations(transformationValues);
+	//meshInfo.collisionSphere->ApplyTransformations(transformationValues);
 	glPopMatrix();
 	log << INFO << "X: " << position.getX()<< " Y: " << position.getY() 
 		<< " Z: " << position.getZ() << std::endl;
