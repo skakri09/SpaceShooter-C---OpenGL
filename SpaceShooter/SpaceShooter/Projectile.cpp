@@ -17,25 +17,44 @@ void Projectile::Draw()
 {
 	if(fired)
 	{
+
 		// Applying transformations to this matrix to match the position and rotation of the 
 		// spaceship when fire was called.
- 		glPushMatrix();
-		
+		glPushMatrix();
+
 		glTranslatef(startPosition.getX(), startPosition.getY(), startPosition.getZ());
-		glTranslatef(0.f, -10.f, -50.f);
- 		glRotatef(startRotation.getX(), 1.0f, 0.0f, 0.0f);
+		//glTranslatef(0.f, -10.f, -50.f);
+		glRotatef(startRotation.getX(), 1.0f, 0.0f, 0.0f);
 		glRotatef(startRotation.getY(), 0.0f, 1.0f, 0.0f);
 		glRotatef(startRotation.getZ(), 0.0f, 0.0f, 1.0f);
-		glScalef(2.f, 2.f, 2.f);
-		glTranslatef(0.0f,  0.5f, -2.2f);
-		
+		//glScalef(2.f, 2.f, 2.f);
+		//glTranslatef(0.0f,  0.5f, -2.2f);
+
 		//Draw the projectile in the above object's space which is transformed into the correct
 		//position and rotation.
 		glPushMatrix();
-		
+
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_NORMAL_ARRAY);
+
+		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
+		glVertexPointer(3, GL_FLOAT, 0, 0);
+
+		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
+		glNormalPointer(GL_FLOAT, 0, 0);
+
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
+		glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT,0);
+
+		glDisableClientState(GL_VERTEX_ARRAY);
+		glDisableClientState(GL_NORMAL_ARRAY);
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
 		glTranslatef(position.getX(), position.getY(), position.getZ());
 		glScalef(0.3f, 0.3f, 0.3f);
-		glCallList(Drawable::displayList);
+		//glCallList(Drawable::displayList);
 		
 		glPopMatrix();
 		glPopMatrix();

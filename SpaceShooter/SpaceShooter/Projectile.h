@@ -11,6 +11,8 @@
 
 #include "Drawable.h"
 #include "Logger.h"
+#include "MeshLoader.h"
+#include "Mesh.h"
 
 class Projectile : public Drawable
 {
@@ -34,6 +36,8 @@ protected:
 	Vector3D startRotation;
 	Vector3D startPosition;
 	bool fired;
+
+	MeshLoader meshLoader;
 
 private:
 	Logger log;

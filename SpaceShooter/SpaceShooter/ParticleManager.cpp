@@ -3,7 +3,7 @@
 ParticleManager::ParticleManager()
 	:log("ParticleManager", WARN)
 {
-	srand(time(0));
+	srand(static_cast<unsigned int>(time(0)));
 
 	zeroPoint.setX(0.0f);
 	zeroPoint.setY(0.0f);

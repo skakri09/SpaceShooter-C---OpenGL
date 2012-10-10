@@ -13,7 +13,8 @@
 //to do with boost. Warning reads as follows:
 //Warning	1	warning C4345: behavior change: an object of POD type 
 //constructed with an initializer of the form () will be default-initialized
-#pragma warning(disable: 4345)
+
+//#pragma warning(disable: 4345)
 
 #include <string>
 #include <sstream>

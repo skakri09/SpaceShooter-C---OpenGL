@@ -12,6 +12,7 @@
 
 #include "SpaceShip.h"
 #include "Logger.h"
+#include "BoundingSphere.h"
 
 //CD on the spaceships fireing of projectiles in seconds
 static const float FIRE_COOLDOWN_PLAYER  = 0.2f;
@@ -39,6 +40,8 @@ public:
 	
 private:
 	Logger log;
+
+	BoundingSphere collisionSphere;
 
 	//Creates the displaylist or VBO for the spaceship
 	void CreateDrawable();

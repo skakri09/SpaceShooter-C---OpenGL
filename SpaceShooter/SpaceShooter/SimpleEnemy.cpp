@@ -40,13 +40,10 @@ void SimpleEnemy::Draw()
 	glScalef(4.0f, 4.0f, 4.0f);
 	glRotatef(180, 0, 1, 0);//turned against the player
 
-	RotateArroundX(getDeltaTime());
-	RotateArroundY(getDeltaTime());
-	RotateArroundZ(getDeltaTime());
+	BaseEnemyShip::Draw();
 
-
-	glBindBuffer(GL_ARRAY_BUFFER, vertices);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
 	glEnableClientState(GL_VERTEX_ARRAY);
 
 	glVertexPointer(3, GL_FLOAT, 0, 0);
@@ -73,12 +70,12 @@ void SimpleEnemy::Update( GLfloat deltaTime )
 
 void SimpleEnemy::CreateDrawable()
 {
-	glGenBuffers(1, &vertices);
-	glBindBuffer(GL_ARRAY_BUFFER, vertices);
+	glGenBuffers(1, &meshInfo.vertices);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*15, enemyVertexes, GL_STATIC_DRAW);
 
-	glGenBuffers(1, &indexes);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
+	glGenBuffers(1, &meshInfo.indices);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)*18, enemyIndex, GL_STATIC_DRAW);
 }
 

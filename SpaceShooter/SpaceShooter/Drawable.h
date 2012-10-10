@@ -17,6 +17,7 @@
 #include <gl/glew.h>
 #include <gl/gl.h>
 
+#include "Mesh.h"
 #include "Timer.h"
 #include "Vector3d.h"
 
@@ -72,8 +73,8 @@ protected:
 	Vector3D position; // Ship Position
 	Vector3D velocity; // Ship velocity
 
-	GLuint displayList; // The display list ID
-	GLuint indexes;
+	MeshInfo meshInfo;
+	GLuint indices;
 	GLuint normals;
 	GLuint vertices;
 	GLuint colors;

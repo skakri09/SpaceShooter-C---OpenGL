@@ -21,13 +21,19 @@ SpaceShip::~SpaceShip()
 
 void SpaceShip::Draw()
 {
-
+	glRotatef(yAxis.currentAngle, 0.0f, 1.0f, 0.0f);
+	glRotatef(xAxis.currentAngle, 1.0f, 0.0f, 0.0f);
+	glRotatef(zAxis.currentAngle, 0.0f, 0.0f, 1.0f);
 }
 
 void SpaceShip::Update(GLfloat deltaTime)
 {
 	this->deltaTime = deltaTime;
 	timeSinceLastFired += deltaTime;
+
+	RotateArroundX(getDeltaTime());
+	RotateArroundY(getDeltaTime());
+	RotateArroundZ(getDeltaTime());
 }
 
 void SpaceShip::CreateDrawable()
@@ -83,7 +89,7 @@ void SpaceShip::RotateArroundX(GLfloat deltaTime)
 	{
 		xAxis.rotating = false;
 	}
-	glRotatef(xAxis.currentAngle, 1.0f, 0.0f, 0.0f);
+	
 	log << INFO << "Angle around X: " << -xAxis.currentAngle << std::endl;
 }
 
@@ -101,7 +107,7 @@ void SpaceShip::RotateArroundZ(GLfloat deltaTime)
 	{
 		zAxis.rotating = false;
 	}
-	glRotatef(zAxis.currentAngle, 0.0f, 0.0f, 1.0f);
+	
 	log << INFO << "Angle around Z: " << zAxis.currentAngle << std::endl;
 }
 
@@ -120,7 +126,7 @@ void SpaceShip::RotateArroundY( GLfloat deltaTime )
 	{
 		yAxis.rotating = false;
 	}
-	glRotatef(yAxis.currentAngle, 0.0f, 1.0f, 0.0f);
+	
 	log << INFO << "Angle around Y: " << yAxis.currentAngle << std::endl;
 }
 

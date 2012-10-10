@@ -7,7 +7,10 @@
 *********************************************************************/
 #ifndef Mesh_h__
 #define Mesh_h__
-
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <gl/gl.h>
 #include <vector>
 
 class Mesh
@@ -19,4 +22,11 @@ public:
 	std::vector<float> colors;
 };
 
+class MeshInfo
+{
+public:
+	GLuint vertices;
+	GLuint indices;
+	GLuint normals;
+};
 #endif // Mesh_h__

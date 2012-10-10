@@ -82,6 +82,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AABB.cpp" />
+    <ClCompile Include="AxisAlignedBoundingBox.cpp" />
+    <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="FireState.cpp" />
@@ -108,8 +111,11 @@
     <ClCompile Include="XmlLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AABB.h" />
     <ClInclude Include="AiState.h" />
     <ClInclude Include="AiStateMachine.h" />
+    <ClInclude Include="AxisAlignedBoundingBox.h" />
+    <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="EnemySpaceshipConstantState.h" />
@@ -143,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Mesh_PlayerSpaceship.xml" />
+    <None Include="Mesh_SquareBullet.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

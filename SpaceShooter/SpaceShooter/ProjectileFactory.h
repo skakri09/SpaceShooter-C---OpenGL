@@ -33,8 +33,9 @@ public:
 	Projectile* GetProjectile(ProjectileTypes projectileType);
 	
 	
-	void addDisplayList(ProjectileTypes projectileType, GLuint dispList);
-	GLuint getDisplayList(ProjectileTypes projectileType);
+	void AddVBOInfo(ProjectileTypes projectileType, MeshInfo meshInfo);
+	
+	MeshInfo* GetMeshInfo(ProjectileTypes projectileType);
 
 protected:
 
@@ -48,7 +49,7 @@ private:
 	
 	std::vector<SquareBullet*> simpleBullets;
 
-	std::map<ProjectileTypes, GLuint> displayLists;
+	std::map<ProjectileTypes, MeshInfo> MeshInfos;
 
 };
 #endif // ProjectileFactory_h__

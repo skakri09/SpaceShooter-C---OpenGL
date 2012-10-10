@@ -30,11 +30,12 @@ void PlayerSpaceShip::Draw()
 	
 	glTranslatef(position.getX(), position.getY(), position.getZ());
 
-	glTranslatef(0.f, -10.f, -50.f);
-	glScalef(4.0f, 4.0f, 4.0f);
-	RotateArroundX(getDeltaTime());
-	RotateArroundY(getDeltaTime());
-	RotateArroundZ(getDeltaTime());
+	//glTranslatef(0.f, -10.f, -50.f);
+	//glScalef(4.0f, 4.0f, 4.0f);
+
+	//Does rotating of spaceship according to its rotation values
+	SpaceShip::Draw();
+
 	//glRotatef(90, 1, 0, 0);
 		/// EXPERIMENTING WITH VBO/VA BELOW ///
 
@@ -51,16 +52,16 @@ void PlayerSpaceShip::Draw()
 	glEnableClientState(GL_NORMAL_ARRAY);
 	//glEnableClientState(GL_COLOR_ARRAY);
 	//glEnable(GL_COLOR_MATERIAL);
-	glBindBuffer(GL_ARRAY_BUFFER, vertices);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
 	glVertexPointer(3, GL_FLOAT, 0, 0);
 
-	glBindBuffer(GL_ARRAY_BUFFER, normals);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
 	glNormalPointer(GL_FLOAT, 0, 0);
 	
 	/*glBindBuffer(GL_COLOR_ARRAY, colors);
 	glColorPointer(3, GL_FLOAT, 0, 0);*/
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
 	glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT,0);
 
 	glDisableClientState(GL_VERTEX_ARRAY);
@@ -83,6 +84,7 @@ void PlayerSpaceShip::Draw()
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);
 	*/
+	
 	glPopMatrix();
 	DrawProjectiles(getDeltaTime());
 }
@@ -100,20 +102,22 @@ void PlayerSpaceShip::Update(GLfloat deltaTime)
 void PlayerSpaceShip::CreateDrawable()
 {
 	std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
-	glGenBuffers(1, &vertices);
-	glBindBuffer(GL_ARRAY_BUFFER, vertices);
+	collisionSphere.CreateCollisionBox(*mesh);
+
+	glGenBuffers(1, &meshInfo.vertices);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->vertices.size(), &mesh->vertices[0], GL_STATIC_DRAW);
 
-	glGenBuffers(1, &normals);
-	glBindBuffer(GL_ARRAY_BUFFER, normals);
+	glGenBuffers(1, &meshInfo.normals);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->normals.size(), &mesh->normals[0], GL_STATIC_DRAW);
 
 	/*glGenBuffers(1, &colors);
 	glBindBuffer(GL_COLOR_ARRAY, colors);
 	glBufferData(GL_COLOR_ARRAY, sizeof(float)*mesh->colors.size(), &mesh->colors[0], GL_STATIC_DRAW);*/
 
-	glGenBuffers(1, &indexes);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexes);
+	glGenBuffers(1, &meshInfo.indices);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float)*mesh->indices.size(), &mesh->indices[0], GL_STATIC_DRAW);
 	
 	/*glGenBuffers(1, &vbo);

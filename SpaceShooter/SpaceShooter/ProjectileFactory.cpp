@@ -25,21 +25,21 @@ Projectile* ProjectileFactory::GetProjectile( ProjectileTypes projectileType )
 	return NULL;
 }
 
-void ProjectileFactory::addDisplayList(ProjectileTypes projectileType, GLuint dispList )
+void ProjectileFactory::AddVBOInfo(ProjectileTypes projectileType, MeshInfo meshInfo)
 {
-	displayLists[projectileType] = dispList;
+	MeshInfos[projectileType] = meshInfo;
 }
 
-GLuint ProjectileFactory::getDisplayList( ProjectileTypes projectileType )
+MeshInfo* ProjectileFactory::GetMeshInfo( ProjectileTypes projectileType )
 {
-	if(displayLists.find(projectileType) != displayLists.end())
+	if(MeshInfos.find(projectileType) != MeshInfos.end())
 	{
-		return displayLists.find(projectileType)->second;
+		return &MeshInfos.find(projectileType)->second;
 	}
 	else
 	{
-		log << INFO << "projectile display list was not found" << std::endl;
-		return -1;
+		log << INFO << "projectile meshInfo was not found" << std::endl;
+		return NULL;
 	}
 }
 

@@ -3,17 +3,16 @@
     filename:   Collidable.h
     author:     Kristian Skarseth
     
-    purpose:    An object that handles everything that has to do with
-				collision for any object. It has functions to check 
-				collision against this or other object, as well as for
-				creating collision boxes.
-	note:		Using m_ prefix for member variables for once. This is not
-				my usual style, but since I'm going soft and creating public
-				functions with the same names as the member variables I decided
-				to give them the "member" prefix.
+    purpose:    Base object for any type of collisionbox.
+
 *********************************************************************/
 #ifndef Collidable_h__
 #define Collidable_h__
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <gl/gl.h>
 
 #include "Mesh.h"
 #include "Logger.h"
@@ -25,38 +24,22 @@ public:
     Collidable();
     ~Collidable();
 
-	//Make return the rectangular overlap
-	bool CheckForCollision(Collidable& otherCollidable);
+	////Make return the rectangular overlap
+	//virtual bool IsCollision(Collidable& otherCollidable) = 0;
 
-	float Height();
-	float Width();
-	float Depth();
+	virtual void ApplyTransformations(Vector3D& translation,
+									  Vector3D& rotation,
+									  float degrees,
+									  Vector3D& scale);
 
-	float Left();
-	float Right();
-	float Top();
-	float Bottom();
-	float Back();
-	float Front();
 protected:
+	//Creates the collisionBox for the spaceship. The default
+	//implementation creates a bounding sphere collisionBox
+	virtual void CreateCollisionBox(Mesh& mesh) = 0;
 
 private:
 	Logger log;
 	
-	float m_Height;
-	float m_Width;
-	float m_Depth;
-
-	float m_Left;
-	float m_Right;
-	float m_Top;
-	float m_Bottom;
-	float m_Back;
-	float m_Front;
-
-	//Creates the collisionBox for the spaceship. The default
-	//implementation creates a bounding sphere collisionBox
-	void CreateCollisionBox(Mesh& mesh);
 };
 
 #endif // Collidable_h__

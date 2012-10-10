@@ -130,7 +130,6 @@ bool MeshLoader::MakeNormals( const std::vector<float>& vertices,
 							  std::vector<float>& targetVector )
 {
 	bool successful = true;
-	//targetVector.push_back(vertices.at(1));
 
 	for(unsigned int i = 0; i < indices.size();)
 	{

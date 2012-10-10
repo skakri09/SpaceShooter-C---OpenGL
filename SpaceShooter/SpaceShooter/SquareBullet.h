@@ -10,6 +10,7 @@
 
 #include "Projectile.h"
 #include "ProjectileFactory.h"
+#include "BoundingSphere.h"
 
 class SquareBullet : public Projectile
 {
@@ -19,6 +20,8 @@ public:
 
 	void CreateDrawable();
 
+private:
+	BoundingSphere collisionSphere;
 };
 
 #endif // SimpleBullet_h__

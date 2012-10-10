@@ -1,5 +1,8 @@
 #include "BaseEnemyShip.h"
 
+#pragma warning(push)
+//Disabling warning about using 'this' pointer in ctor. 
+#pragma warning(disable: 4355)
 BaseEnemyShip::BaseEnemyShip(PlayerSpaceShip* playerShip, 
 	std::shared_ptr<AiState> startupState,
 	std::shared_ptr<AiState> constantState)
@@ -10,6 +13,7 @@ BaseEnemyShip::BaseEnemyShip(PlayerSpaceShip* playerShip,
 {
 	this->playerShip = playerShip;
 }
+#pragma warning(pop)
 
 BaseEnemyShip::~BaseEnemyShip()
 {
@@ -17,7 +21,7 @@ BaseEnemyShip::~BaseEnemyShip()
 
 void BaseEnemyShip::Draw()
 {
-
+	SpaceShip::Draw();
 }
 
 void BaseEnemyShip::Update( GLfloat deltaTime )
