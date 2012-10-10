@@ -11,8 +11,10 @@
 #include "Collidable.h"
 #include "AABB.h"
 #include "Vector3d.h"
-
-class BoundingSphere : public Collidable, public AABB
+#include <lib3ds/types.h>
+#include "Transformation.h"
+class MeshInfo;
+class BoundingSphere : public AABB
 {
 public:
 	BoundingSphere();
@@ -27,10 +29,10 @@ public:
 	//implementation creates a bounding sphere collisionBox
 	virtual void CreateCollisionBox(Mesh& mesh);
 
-	void ApplyTransformations(Vector3D& translation,
-								Vector3D& rotation,
-								float degrees,
-								Vector3D& scale);
+	//same as above, but takes a reference to an array of floats instead
+	virtual void CreateCollisionBox(Lib3dsVector* vertices, unsigned int size);
+
+	void ApplyTransformations(Transformation& translationInfo);
 
 	Vector3D& GetMidpoint();
 	
@@ -40,6 +42,8 @@ protected:
 
 private:
 	Logger log;
+
+	void CalculateDistance();
 
 	Vector3D LocalMidpoint;
 	Vector3D LocalFarpoint;

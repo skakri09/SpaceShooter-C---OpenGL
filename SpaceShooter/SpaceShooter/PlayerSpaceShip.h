@@ -12,7 +12,6 @@
 
 #include "SpaceShip.h"
 #include "Logger.h"
-#include "BoundingSphere.h"
 #include "Mesh3dsLoader.h"
 //CD on the spaceships fireing of projectiles in seconds
 static const float FIRE_COOLDOWN_PLAYER  = 0.2f;

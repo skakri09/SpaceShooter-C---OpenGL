@@ -58,7 +58,7 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 					//	memcpy(&texCoords[finishedFaces*3 +i], mesh->texelL[face->points[i]], sizeof(Lib3dsVector));
 					//	log << INFO << mesh->faceL[i].material << std::endl;
 					//}
-					memcpy(&vertices[finishedFaces*3 +i], mesh->pointL[face->points[i]].pos, sizeof(Lib3dsVector));
+					memcpy(&vertices[finishedFaces*3 +i], mesh->pointL[face->points[i]].pos, sizeof(float)*3);
 				}
 				finishedFaces++;
 			}
@@ -76,6 +76,11 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 		//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.textCoords);
 		//glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsTexel) * 3 * totalFaces, &texCoords[0], GL_STATIC_DRAW);
 		meshInfo.numberOfIndices = totalFaces*3;
+
+		std::shared_ptr<BoundingSphere> collisionSphere = std::make_shared<BoundingSphere>();
+		collisionSphere->CreateCollisionBox(vertices, totalFaces);
+		meshInfo.collisionSphere = collisionSphere;
+
 		if(vertices)
 		{
 			delete[] vertices;
@@ -95,6 +100,8 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 
 		return meshInfo;
 	}
+	MeshInfo empty;
+	return empty;
 }
 
 

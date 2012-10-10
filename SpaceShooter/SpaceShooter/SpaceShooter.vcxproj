@@ -154,8 +154,11 @@
     <ClInclude Include="XmlLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="lib3ds-1_3d.dll" />
     <None Include="Mesh_PlayerSpaceship.xml" />
     <None Include="Mesh_SquareBullet.xml" />
+    <None Include="milfalcon.3ds" />
+    <None Include="tiebomber.3ds" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

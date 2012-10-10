@@ -20,6 +20,8 @@
 #include "Mesh.h"
 #include "Timer.h"
 #include "Vector3d.h"
+#include "Transformation.h"
+#include "BoundingSphere.h"
 
 class Drawable
 {
@@ -61,15 +63,22 @@ public:
 		velocity.setY(yVel);
 		velocity.setZ(zVel);
 	};
-
+	void SetScale(float x, float y, float z)
+	{
+		scale.setValues(x, y, z);
+		transformationValues.scale = scale;
+	}
 protected:
 	// Calculates the position by adding velocity multiplied by
 	// deltaTime (time since last frame) with the current position
 	inline void CalculatePosition(GLfloat deltaTime)
 	{
 		position += (velocity * deltaTime);
-	}
+		transformationValues.position = position;
+		transformationValues.scale = scale;
 
+	}
+	
 	//Applies the transformations for this object using the
 	//the vector3ds position, scale and rotation
 	virtual void ApplyTransformations()
@@ -78,6 +87,9 @@ protected:
 		glScalef(scale.getX(), scale.getY(), scale.getZ());
 		glRotatef(startRotationDegrees, startRotation.getX(), startRotation.getY(), startRotation.getZ());
 	}
+
+	Transformation transformationValues;
+	
 
 	Vector3D position; // Ship Position
 	Vector3D velocity; // Ship velocity

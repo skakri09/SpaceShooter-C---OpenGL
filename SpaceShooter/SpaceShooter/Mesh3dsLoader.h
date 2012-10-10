@@ -25,6 +25,7 @@
 #include "Image.h"
 #include "Mesh.h"
 #include "Logger.h"
+#include "BoundingSphere.h"
 
 class Mesh3dsLoader
 {
@@ -45,7 +46,6 @@ private:
 	Lib3dsFile* model;
 	
 	MeshInfo meshInfo;
-
 };
 
 #endif // Mesh3dsLoader_h__

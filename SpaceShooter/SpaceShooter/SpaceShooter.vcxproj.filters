@@ -79,20 +79,20 @@
     <Filter Include="Game\Utility\NormalCalculator">
       <UniqueIdentifier>{5089f04f-a03c-4e2b-b3ed-24825276aff3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Drawables\Collidable">
-      <UniqueIdentifier>{73f35500-7397-4ec9-b375-7022661f5fc6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Drawables\Collidable\Header Files">
-      <UniqueIdentifier>{931148ca-66b9-4003-9d05-3af32e048afb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Drawables\Collidable\Source Files">
-      <UniqueIdentifier>{7cb255ac-e9d2-4938-954b-37412f861ece}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Utility\Transformable">
       <UniqueIdentifier>{3de9616c-7450-4bf0-9750-8ff06bde13d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\Utility\3ds Loading">
       <UniqueIdentifier>{e8489c58-6263-42ed-a64c-8b389ae4660d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utility\Collidable">
+      <UniqueIdentifier>{73f35500-7397-4ec9-b375-7022661f5fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utility\Collidable\Header Files">
+      <UniqueIdentifier>{931148ca-66b9-4003-9d05-3af32e048afb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utility\Collidable\Source Files">
+      <UniqueIdentifier>{7cb255ac-e9d2-4938-954b-37412f861ece}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -166,13 +166,13 @@
       <Filter>Game\Utility\NormalCalculator</Filter>
     </ClCompile>
     <ClCompile Include="AxisAlignedBoundingBox.cpp">
-      <Filter>Game\Drawables\Collidable\Source Files</Filter>
+      <Filter>Game\Utility\Collidable\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BoundingSphere.cpp">
-      <Filter>Game\Drawables\Collidable\Source Files</Filter>
+      <Filter>Game\Utility\Collidable\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AABB.cpp">
-      <Filter>Game\Drawables\Collidable\Source Files</Filter>
+      <Filter>Game\Utility\Collidable\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Collidable.cpp">
       <Filter>Game\Managers\Source Files</Filter>
@@ -276,16 +276,16 @@
       <Filter>Game\Utility\NormalCalculator</Filter>
     </ClInclude>
     <ClInclude Include="AxisAlignedBoundingBox.h">
-      <Filter>Game\Drawables\Collidable\Header Files</Filter>
+      <Filter>Game\Utility\Collidable\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BoundingSphere.h">
-      <Filter>Game\Drawables\Collidable\Header Files</Filter>
+      <Filter>Game\Utility\Collidable\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Collidable.h">
-      <Filter>Game\Drawables\Collidable\Header Files</Filter>
+      <Filter>Game\Utility\Collidable\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AABB.h">
-      <Filter>Game\Drawables\Collidable\Header Files</Filter>
+      <Filter>Game\Utility\Collidable\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Drawable.h">
       <Filter>Game\Drawables</Filter>
@@ -308,6 +308,15 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Mesh_SquareBullet.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="milfalcon.3ds">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="tiebomber.3ds">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="lib3ds-1_3d.dll">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

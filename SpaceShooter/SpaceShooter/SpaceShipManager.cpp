@@ -16,7 +16,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	this->input = input;
 
 	player.InitSpaceship(0.0f, 0.0f, 0.0f, 0.5, 0.5, 0.5, -90, 1, 0, 0);
-	enemy.InitSpaceship(300.0f, 0.0f, -50.0f, 0.02, 0.02, 0.02, 270, 1, 0, 0);
+	enemy.InitSpaceship(300.0f, 0.0f, -50.0f, 0.02f, 0.02f, 0.02f, 270, 1, 0, 0);
 }
 
 void SpaceShipManager::UpdateManager(GLfloat deltaTime)
@@ -34,12 +34,13 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	player.Update(deltaTime);
 	enemy.Update(deltaTime);
 
-	player.collisionSphere.IsCollision(enemy.collisionSphere);
+	//player.collisionSphere.IsCollision(enemy.collisionSphere);
 	
 }
 
 void SpaceShipManager::DrawSpaceShips()
 {
+
 	player.Draw();
 	enemy.Draw();
 }

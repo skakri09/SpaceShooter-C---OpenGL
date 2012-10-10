@@ -63,7 +63,6 @@ public:
 	
 	GLfloat getDeltaTime(){return deltaTime;}
 
-	BoundingSphere collisionSphere;
 protected:
 	virtual void CreateDrawable();
 

@@ -15,14 +15,7 @@ class Transformation
 public:
     
 	Vector3D position;	// The translated position
-
 	Vector3D scale;		// The translated scale
-
-
-	Vector3D rotation;	// The axis to rotate arround
-	float degrees;		// The degrees to rotate
-
-
 };
 
 #endif // Transformation_h__

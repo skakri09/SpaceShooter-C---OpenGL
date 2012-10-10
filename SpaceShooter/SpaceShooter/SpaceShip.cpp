@@ -27,8 +27,11 @@ void SpaceShip::Draw()
 
 void SpaceShip::Update(GLfloat deltaTime)
 {
+	//CalculatePosition(deltaTime);
 	this->deltaTime = deltaTime;
 	timeSinceLastFired += deltaTime;
+	//meshInfo.collisionSphere->ApplyTransformations(transformationValues);
+	//collisionSphere.ApplyTransformations(transformationValues)
 	//Vector3D dummy;
 	//collisionSphere.ApplyTransformations(position, rotation, 0, dummy);
 	//RotateArroundX(getDeltaTime());
@@ -169,9 +172,7 @@ void SpaceShip::InitSpaceship( float startX, float startY, float startZ,
 	Drawable::position.setY(startY);
 	Drawable::position.setZ(startZ);
 	
-	Drawable::scale.setX(scaleX);
-	Drawable::scale.setY(scaleY);
-	Drawable::scale.setZ(scaleZ);
+	Drawable::SetScale(scaleX, scaleY, scaleZ);
 	Drawable::startRotation.setValues(rotX, rotY, rotZ);
 	Drawable::startRotationDegrees = startRotDeg;
 }

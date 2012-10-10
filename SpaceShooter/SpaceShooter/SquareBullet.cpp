@@ -20,7 +20,7 @@ void SquareBullet::CreateDrawable()
 		
 		std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_SquareBullet.xml");
 		meshInfo.numberOfIndices = mesh->indices.size();
-		collisionSphere.CreateCollisionBox(*mesh);
+	//	collisionSphere.CreateCollisionBox(*mesh);
 
 		glGenBuffers(1, &meshInfo.vertices);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);

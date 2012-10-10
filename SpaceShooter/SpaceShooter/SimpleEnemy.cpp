@@ -41,6 +41,7 @@ void SimpleEnemy::CreateDrawable()
 
 	Mesh3dsLoader loader;
 	meshInfo = loader.Load3dsMesh("tiebomber.3ds");
+	//collisionSphere = *meshInfo.collisionSphere;
 	//std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
 	//meshInfo.numberOfIndices = mesh->indices.size();
 	//collisionSphere.CreateCollisionBox(*mesh);

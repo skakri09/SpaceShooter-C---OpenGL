@@ -10,7 +10,7 @@
 
 #include "Vector3d.h"
 #include "Mesh.h"
-
+#include <lib3ds/types.h>
 class AABB
 {
 public:
@@ -20,6 +20,8 @@ public:
 protected:
 	Logger log;
 	void CreateAABB(Mesh& mesh);
+
+	void CreateAABB( Lib3dsVector* vertices, unsigned int size);
 
 	float m_Height;
 	float m_Width;
