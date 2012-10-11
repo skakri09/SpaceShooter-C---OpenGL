@@ -23,7 +23,7 @@ void SquareBullet::CreateDrawable()
 
 		meshInfo.collisionSphere = std::make_shared<BoundingSphere>();
 		meshInfo.collisionSphere->CreateCollisionBox(*mesh);
-		collisionSphere = meshInfo.collisionSphere;
+		collisionSphere = *meshInfo.collisionSphere;
 		glGenBuffers(1, &meshInfo.vertices);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->vertices.size(), &mesh->vertices[0], GL_STATIC_DRAW);
@@ -47,7 +47,7 @@ void SquareBullet::CreateDrawable()
 	else
 	{
 		meshInfo = *_meshInfo;
-		collisionSphere = _meshInfo->collisionSphere;
+		collisionSphere = *_meshInfo->collisionSphere;
 	}
 }
 

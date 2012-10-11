@@ -39,6 +39,8 @@ protected:
 
 	MeshLoader meshLoader;
 
+	virtual void UpdateTransformationValues();
+
 private:
 	Logger log;
 

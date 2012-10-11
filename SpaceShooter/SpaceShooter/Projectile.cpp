@@ -64,8 +64,9 @@ void Projectile::Update(GLfloat deltaTime)
 	if(fired)
 	{
 		CalculatePosition(deltaTime);
+		UpdateTransformationValues();
 		timeSinceFired += deltaTime;
-		collisionSphere->ApplyTransformations(transformationValues);
+		collisionSphere.ApplyTransformations(transformationValues);
 		//Makes sure we stop drawing the projectile if it's been "airborne" longer then or 
 		//equal to the constant PROJECTILE_FLYTIME
 		if(timeSinceFired >= PROJECTILE_FLYTIME)
@@ -90,4 +91,10 @@ void Projectile::FireProjectile( Vector3D startPos, Vector3D startRotation, Vect
 	this->startRotation = startRotation;
 	this->startPosition = startPos;
 	fired = true;
+}
+
+void Projectile::UpdateTransformationValues()
+{
+	Drawable::UpdateTransformationValues();
+	transformationValues.position +=startPosition;
 }

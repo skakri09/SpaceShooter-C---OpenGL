@@ -31,7 +31,8 @@ void SpaceShip::Update(GLfloat deltaTime)
 	this->deltaTime = deltaTime;
 	timeSinceLastFired += deltaTime;
 	CalculatePosition(deltaTime);
-	collisionSphere->ApplyTransformations(transformationValues);
+	UpdateTransformationValues();
+	collisionSphere.ApplyTransformations(transformationValues);
 	//meshInfo.collisionSphere->ApplyTransformations(transformationValues);
 	//collisionSphere.ApplyTransformations(transformationValues)
 	//Vector3D dummy;
@@ -241,11 +242,14 @@ bool SpaceShip::WasHitByPorjectile( std::vector<Projectile*>* projectiles )
 {
 	for(unsigned int i = 0; i < projectiles->size(); i++)
 	{
-		std::shared_ptr<BoundingSphere> asd = projectiles->at(i)->GetCollisionSphere();
-		Vector3D dsa = collisionSphere->IsCollision(asd);
-		if(dsa.getX() > 0 || dsa.getY() > 0.0f || dsa.getZ() > 0.0f)
+		if(projectiles->at(i)->isFired())
 		{
-			return true;
+			BoundingSphere asd = projectiles->at(i)->GetCollisionSphere();
+			Vector3D dsa = collisionSphere.IsCollision(asd);
+			if(dsa.getX() > 0 || dsa.getY() > 0.0f || dsa.getZ() > 0.0f)
+			{
+				return true;
+			}
 		}
 	}
 	return false;

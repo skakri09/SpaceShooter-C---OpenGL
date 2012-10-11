@@ -84,7 +84,7 @@ void PlayerSpaceShip::CreateDrawable()
 {
 	Mesh3dsLoader loader;
 	meshInfo = loader.Load3dsMesh("milfalcon.3ds");
-	collisionSphere = loader.GetBoundingSphere();
+	collisionSphere = *loader.GetBoundingSphere();
 
 	//collisionSphere = loader.GetBoundingSphere();
 	//collisionSphere = loader.GetBoundingSphere();

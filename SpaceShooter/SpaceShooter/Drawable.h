@@ -72,7 +72,7 @@ public:
 		transformationValues.scale = scale;
 	}
 	
-	std::shared_ptr<BoundingSphere> GetCollisionSphere(){return collisionSphere;}
+	BoundingSphere& GetCollisionSphere(){return collisionSphere;}
 
 protected:
 
@@ -81,6 +81,11 @@ protected:
 	inline void CalculatePosition(GLfloat deltaTime)
 	{
 		position += (velocity * deltaTime);
+		
+	}
+
+	virtual void UpdateTransformationValues()
+	{
 		transformationValues.position = position;
 		transformationValues.scale = scale;
 	}
@@ -95,7 +100,7 @@ protected:
 	}
 
 	Transformation transformationValues;
-	std::shared_ptr<BoundingSphere> collisionSphere;
+	BoundingSphere collisionSphere;
 
 	Vector3D position; // Ship Position
 	Vector3D velocity; // Ship velocity

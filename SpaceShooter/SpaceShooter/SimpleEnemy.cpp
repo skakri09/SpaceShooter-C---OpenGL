@@ -41,7 +41,7 @@ void SimpleEnemy::CreateDrawable()
 
 	Mesh3dsLoader loader;
 	meshInfo = loader.Load3dsMesh("tiebomber.3ds");
-	collisionSphere = loader.GetBoundingSphere();
+	collisionSphere = *loader.GetBoundingSphere();
 	//collisionSphere = *meshInfo.collisionSphere;
 	//std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
 	//meshInfo.numberOfIndices = mesh->indices.size();
@@ -69,12 +69,12 @@ void SimpleEnemy::CreateDrawable()
 
 	//glGenBuffers(1, &meshInfo.indices);
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)*18, enemyIndex, GL_STATIC_DRAW);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)*18, enemyIndex, GL_STATIC_DRAW);+
 }
 
 void SimpleEnemy::Shoot()
 {
-	SpaceShip::FireGun(FIRE_COOLDOWN_SIMPLE_ENEMY, -SQUARE_BULLET_SPEED_SIMPLE_ENEMY);
+ 	SpaceShip::FireGun(FIRE_COOLDOWN_SIMPLE_ENEMY, -SQUARE_BULLET_SPEED_SIMPLE_ENEMY);
 }
 
 void SimpleEnemy::InitSpaceship(float startX, float startY, float startZ,

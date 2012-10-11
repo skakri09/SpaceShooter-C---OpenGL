@@ -10,16 +10,16 @@ BoundingSphere::~BoundingSphere()
 {
 }
 
-Vector3D BoundingSphere::IsCollision( std::shared_ptr<BoundingSphere> otherCollidable )
+Vector3D BoundingSphere::IsCollision( BoundingSphere& otherCollidable)
 {
 	Vector3D ammountOfCollision = 0;
-	float distance = LocalMidpoint.Distance(otherCollidable->GetMidpoint());
+	float distance = CollisionMidpoint.Distance(otherCollidable.GetMidpoint());
 
-	if( distance < CollisionRadius + otherCollidable->GetRadius() )
+	if( distance < CollisionRadius + otherCollidable.GetRadius() )
 	{
-		Vector3D a = otherCollidable->GetMidpoint();
+        Vector3D a = otherCollidable.GetMidpoint();
 
-		ammountOfCollision = otherCollidable->GetMidpoint() - CollisionMidpoint;
+		ammountOfCollision = otherCollidable.GetMidpoint() - CollisionMidpoint;
 	}
 
 	return ammountOfCollision;
@@ -42,10 +42,12 @@ void BoundingSphere::CreateCollisionBox(Lib3dsVector* vertices, unsigned int siz
 
 void BoundingSphere::ApplyTransformations(Transformation& translationInfo)
 {
-	CollisionMidpoint = LocalMidpoint + translationInfo.position;
 	float biggest = translationInfo.scale.getX();
 	if(biggest < translationInfo.scale.getY()){biggest = translationInfo.scale.getY();}
 	if(biggest < translationInfo.scale.getZ()){biggest = translationInfo.scale.getZ();}
+
+	CollisionMidpoint = (LocalMidpoint*biggest) + translationInfo.position;
+	
 
 	CollisionRadius = LocalRadius * biggest;
 	//Vector3D middleMan = LocalRadius;
