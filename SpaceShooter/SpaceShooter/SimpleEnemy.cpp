@@ -21,16 +21,16 @@ void SimpleEnemy::Draw()
 	DrawWithArrays();
 
 	glPopMatrix();
-	DrawProjectiles(getDeltaTime());
+	DrawProjectiles();
 }
 
 void SimpleEnemy::Update( GLfloat deltaTime )
 {
 	BaseEnemyShip::Update(deltaTime);
-
+	UpdateProjectiles(deltaTime);
 	HandleAI();
 
-	CalculatePosition(deltaTime);
+	//CalculatePosition(deltaTime);
 
 	log << INFO << "X: " << position.getX()<< " Y: " << position.getY() 
 		<< " Z: " << position.getZ() << std::endl;
@@ -41,6 +41,7 @@ void SimpleEnemy::CreateDrawable()
 
 	Mesh3dsLoader loader;
 	meshInfo = loader.Load3dsMesh("tiebomber.3ds");
+	collisionSphere = loader.GetBoundingSphere();
 	//collisionSphere = *meshInfo.collisionSphere;
 	//std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
 	//meshInfo.numberOfIndices = mesh->indices.size();

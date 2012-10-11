@@ -43,7 +43,7 @@ protected:
 	Vector3D m_RightBottomFront;
 
 private:
-	Logger log;
+	//Logger log;
 };
 
 #endif // AABB_h__

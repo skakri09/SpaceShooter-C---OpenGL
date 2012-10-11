@@ -24,7 +24,7 @@ public:
 	//Returns the amount of collision between this and the param
 	//vector3D as a vector3d. If there is no collision, the returned 
 	//vector3d will be a null-vector
-	Vector3D IsCollision(BoundingSphere& otherCollidable);
+	Vector3D IsCollision(std::shared_ptr<BoundingSphere> otherCollidable);
 
 	//Creates the collisionBox for the spaceship. The default
 	//implementation creates a bounding sphere collisionBox
@@ -42,7 +42,7 @@ public:
 protected:
 
 private:
-	Logger log;
+	//Logger log;
 
 	void CalculateDistance();
 

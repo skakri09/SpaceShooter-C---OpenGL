@@ -65,7 +65,7 @@ void Projectile::Update(GLfloat deltaTime)
 	{
 		CalculatePosition(deltaTime);
 		timeSinceFired += deltaTime;
-
+		collisionSphere->ApplyTransformations(transformationValues);
 		//Makes sure we stop drawing the projectile if it's been "airborne" longer then or 
 		//equal to the constant PROJECTILE_FLYTIME
 		if(timeSinceFired >= PROJECTILE_FLYTIME)
@@ -80,10 +80,11 @@ void Projectile::Update(GLfloat deltaTime)
 	}
 }
 
-void Projectile::FireProjectile( Vector3D startPos, Vector3D startRotation, GLfloat speed )
+void Projectile::FireProjectile( Vector3D startPos, Vector3D startRotation, Vector3D scale, GLfloat speed )
 {
 	Drawable::position = 0.0f;
 	Drawable::velocity = 0.0f;
+	Drawable::scale = scale;
 	timeSinceFired = 0.0f;
 	velocity.setZ(-speed);//setting to negative z so we don't have to do that other places
 	this->startRotation = startRotation;

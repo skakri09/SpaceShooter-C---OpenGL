@@ -2,7 +2,7 @@
 #include <lib3ds/types.h>
 
 BoundingSphere::BoundingSphere()
-	:log("BoundingSphere", WARN)
+	//:log("BoundingSphere", WARN)
 {
 }
 
@@ -10,16 +10,16 @@ BoundingSphere::~BoundingSphere()
 {
 }
 
-Vector3D BoundingSphere::IsCollision( BoundingSphere& otherCollidable )
+Vector3D BoundingSphere::IsCollision( std::shared_ptr<BoundingSphere> otherCollidable )
 {
 	Vector3D ammountOfCollision = 0;
-	float distance = LocalMidpoint.Distance(otherCollidable.GetMidpoint());
+	float distance = LocalMidpoint.Distance(otherCollidable->GetMidpoint());
 
-	if( distance < CollisionRadius + otherCollidable.GetRadius() )
+	if( distance < CollisionRadius + otherCollidable->GetRadius() )
 	{
-		Vector3D a = otherCollidable.GetMidpoint();
+		Vector3D a = otherCollidable->GetMidpoint();
 
-		ammountOfCollision = otherCollidable.GetMidpoint() - CollisionMidpoint;
+		ammountOfCollision = otherCollidable->GetMidpoint() - CollisionMidpoint;
 	}
 
 	return ammountOfCollision;
@@ -29,14 +29,14 @@ void BoundingSphere::CreateCollisionBox(Mesh& mesh)
 {
 	AABB::CreateAABB(mesh);
 	CalculateDistance();
-	log << INFO << "Created a boundingSphere collisionbox" << std::endl;
+	//log << INFO << "Created a boundingSphere collisionbox" << std::endl;
 }
 
 void BoundingSphere::CreateCollisionBox(Lib3dsVector* vertices, unsigned int size)
 {
 	AABB::CreateAABB(vertices, size);
 	CalculateDistance();
-	log << INFO << "Created a boundingSphere collisionbox" << std::endl;
+	//log << INFO << "Created a boundingSphere collisionbox" << std::endl;
 }
 
 

@@ -34,13 +34,20 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	player.Update(deltaTime);
 	enemy.Update(deltaTime);
 
-	player.GetCollisionSphere().IsCollision(enemy.GetCollisionSphere());
+	if(enemy.WasHitByPorjectile(player.GetProjectiles()))
+	{
+		int asd = 1;
+	}
+	if(player.WasHitByPorjectile(enemy.GetProjectiles()))
+	{
+		int hi = 1;
+	}
+	//player.GetCollisionSphere()->IsCollision(enemy.GetCollisionSphere());
 	
 }
 
 void SpaceShipManager::DrawSpaceShips()
 {
-
 	player.Draw();
 	enemy.Draw();
 }

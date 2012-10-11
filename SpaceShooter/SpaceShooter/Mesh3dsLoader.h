@@ -37,11 +37,17 @@ public:
 
 	MeshInfo Load3dsMesh(std::string _3dsMeshFile);
 	
-	BoundingSphere GetBoundingSphere(){return collisionSphere;}
-	//MeshInfo& GetMeshInfo();
-	BoundingSphere collisionSphere;
+	//Returning the collisionSphere by value as we wish to transfer complete
+	//ownership anyway and store it in a none-pointer fashion
+	std::shared_ptr<BoundingSphere> GetBoundingSphere(){return collisionSphere;}
+	
+
+	
+
 private:
 	Logger log;
+
+	std::shared_ptr<BoundingSphere> collisionSphere;
 
 	unsigned int GetNrOfFaces();
 

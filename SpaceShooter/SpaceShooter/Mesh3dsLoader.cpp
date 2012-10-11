@@ -77,7 +77,8 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 		//glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsTexel) * 3 * totalFaces, &texCoords[0], GL_STATIC_DRAW);
 		meshInfo.numberOfIndices = totalFaces*3;
 
-		collisionSphere.CreateCollisionBox(vertices, totalFaces);
+		collisionSphere = std::make_shared<BoundingSphere>();
+		collisionSphere->CreateCollisionBox(vertices, totalFaces);
 
 		if(vertices)
 		{

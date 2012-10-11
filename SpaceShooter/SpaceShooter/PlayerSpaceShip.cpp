@@ -69,18 +69,13 @@ void PlayerSpaceShip::Draw()
 	*/
 	
 	glPopMatrix();
-	DrawProjectiles(getDeltaTime());
+	DrawProjectiles();
 }
 
 void PlayerSpaceShip::Update(GLfloat deltaTime)
 {
-	SpaceShip::Update(deltaTime);
-	
-	CalculatePosition(deltaTime);
-	glPushMatrix();
-
-	//meshInfo.collisionSphere->ApplyTransformations(transformationValues);
-	glPopMatrix();
+	SpaceShip::Update(deltaTime);	
+	UpdateProjectiles(deltaTime);
 	log << INFO << "X: " << position.getX()<< " Y: " << position.getY() 
 		<< " Z: " << position.getZ() << std::endl;
 }
@@ -89,6 +84,8 @@ void PlayerSpaceShip::CreateDrawable()
 {
 	Mesh3dsLoader loader;
 	meshInfo = loader.Load3dsMesh("milfalcon.3ds");
+	collisionSphere = loader.GetBoundingSphere();
+
 	//collisionSphere = loader.GetBoundingSphere();
 	//collisionSphere = loader.GetBoundingSphere();
 	//collisionSphere = *meshInfo.collisionSphere;

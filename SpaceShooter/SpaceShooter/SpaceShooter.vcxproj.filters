@@ -183,9 +183,6 @@
     <ClCompile Include="Mesh3dsLoader.cpp">
       <Filter>Game\Utility\3ds Loading</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionSphere.cpp">
-      <Filter>Game\Utility\Collidable\Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -304,9 +301,6 @@
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Game\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionSphere.h">
-      <Filter>Game\Utility\Collidable\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

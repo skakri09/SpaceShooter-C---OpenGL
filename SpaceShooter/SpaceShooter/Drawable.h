@@ -22,6 +22,7 @@
 #include "Timer.h"
 #include "Vector3d.h"
 #include "Transformation.h"
+#include "BoundingSphere.h"
 
 class Drawable
 {
@@ -57,18 +58,24 @@ public:
 	Vector3D* getPosition(){return &position;}
 	Vector3D* getVelocity(){return &velocity;}
 	void setVelocity(Vector3D& newVel){this->velocity = newVel;}
+
 	void SetVelocity(float xVel, float yVel, float zVel)
 	{
 		velocity.setX(xVel);
 		velocity.setY(yVel);
 		velocity.setZ(zVel);
 	};
+	
 	void SetScale(float x, float y, float z)
 	{
 		scale.setValues(x, y, z);
 		transformationValues.scale = scale;
 	}
+	
+	std::shared_ptr<BoundingSphere> GetCollisionSphere(){return collisionSphere;}
+
 protected:
+
 	// Calculates the position by adding velocity multiplied by
 	// deltaTime (time since last frame) with the current position
 	inline void CalculatePosition(GLfloat deltaTime)
@@ -76,7 +83,6 @@ protected:
 		position += (velocity * deltaTime);
 		transformationValues.position = position;
 		transformationValues.scale = scale;
-
 	}
 	
 	//Applies the transformations for this object using the
@@ -89,6 +95,7 @@ protected:
 	}
 
 	Transformation transformationValues;
+	std::shared_ptr<BoundingSphere> collisionSphere;
 
 	Vector3D position; // Ship Position
 	Vector3D velocity; // Ship velocity

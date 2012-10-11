@@ -22,6 +22,7 @@ public:
 	std::vector<float> colors;
 };
 
+class BoundingSphere;
 class MeshInfo
 {
 public:
@@ -30,6 +31,6 @@ public:
 	GLuint numberOfIndices;
 	GLuint normals;
 	GLuint textCoords;
-	//std::shared_ptr<BoundingSphere> collisionSphere;
+	std::shared_ptr<BoundingSphere> collisionSphere;
 };
 #endif // Mesh_h__

@@ -21,7 +21,6 @@
 #include "ProjectileFactory.h"
 #include "Mesh.h"
 #include "MeshLoader.h"
-#include "BoundingSphere.h"
 
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
@@ -63,7 +62,11 @@ public:
 	void InitRotation(Axis axisToRotateArround);
 	
 	GLfloat getDeltaTime(){return deltaTime;}
-	BoundingSphere& GetCollisionSphere(){return collisionSphere;}
+
+	std::vector<Projectile*>* GetProjectiles(){return &projectiles;}
+
+	bool WasHitByPorjectile(std::vector<Projectile*>* projectiles);
+
 protected:
 	virtual void CreateDrawable();
 
@@ -76,8 +79,11 @@ protected:
 
 	//Loops trough and draws the currently active projectiles
 	//We let the child spaceship class take care of calling this
-	void DrawProjectiles(float deltaTime);
-	
+	void DrawProjectiles();
+
+	//Loops trough the projectiles we own and call Update on them
+	void UpdateProjectiles(float deltaTime);
+
 	//Takes care of firing the spaceships gun.
 	void FireGun(GLfloat fireCooldown, GLfloat projectileSpeed);
 
@@ -98,7 +104,7 @@ protected:
 	RotationInfo yAxis;
 	RotationInfo zAxis;
 
-	BoundingSphere collisionSphere;
+	
 private:
 	Logger log;
 

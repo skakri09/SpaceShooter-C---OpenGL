@@ -30,6 +30,8 @@ void SpaceShip::Update(GLfloat deltaTime)
 	//CalculatePosition(deltaTime);
 	this->deltaTime = deltaTime;
 	timeSinceLastFired += deltaTime;
+	CalculatePosition(deltaTime);
+	collisionSphere->ApplyTransformations(transformationValues);
 	//meshInfo.collisionSphere->ApplyTransformations(transformationValues);
 	//collisionSphere.ApplyTransformations(transformationValues)
 	//Vector3D dummy;
@@ -55,25 +57,19 @@ void SpaceShip::FireGun(GLfloat fireCooldown, GLfloat projectileSpeed)
 		rotation.setZ(zAxis.currentAngle);
 
 		Projectile* projectile = ProjectileFactory::Inst()->GetProjectile(SIMPLE_BULLET);
-
-		projectile->FireProjectile(position, rotation, projectileSpeed);
+		Vector3D scale;scale.setValues(0.3f, 0.3f, 0.3f);
+		projectile->FireProjectile(position, rotation, scale, projectileSpeed);
 		projectiles.push_back(projectile);
 	}
 }
 
-void SpaceShip::DrawProjectiles( float deltaTime )
+void SpaceShip::DrawProjectiles( )
 {
-	for(auto i = projectiles.begin(); i != projectiles.end();)
+	for(auto i = projectiles.begin(); i != projectiles.end(); i++)
 	{
-		if( !(*i)->isFired() )
+		if( (*i)->isFired() )
 		{
-			i = projectiles.erase(i);
-		}
-		else
-		{
-			(*i)->Update(deltaTime);
 			(*i)->Draw();
-			++i;
 		}
 	}
 }
@@ -241,7 +237,32 @@ void SpaceShip::DrawWithIndices()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
+bool SpaceShip::WasHitByPorjectile( std::vector<Projectile*>* projectiles )
+{
+	for(unsigned int i = 0; i < projectiles->size(); i++)
+	{
+		std::shared_ptr<BoundingSphere> asd = projectiles->at(i)->GetCollisionSphere();
+		Vector3D dsa = collisionSphere->IsCollision(asd);
+		if(dsa.getX() > 0 || dsa.getY() > 0.0f || dsa.getZ() > 0.0f)
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
-
-
-
+void SpaceShip::UpdateProjectiles( float deltaTime )
+{
+	for(auto i = projectiles.begin(); i != projectiles.end();)
+	{
+		if( !(*i)->isFired() )
+		{
+			i = projectiles.erase(i);
+		}
+		else
+		{
+			(*i)->Update(deltaTime);
+			++i;
+		}
+	}
+}

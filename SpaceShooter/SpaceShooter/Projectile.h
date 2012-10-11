@@ -13,7 +13,6 @@
 #include "Logger.h"
 #include "MeshLoader.h"
 #include "Mesh.h"
-#include "BoundingSphere.h"
 
 class Projectile : public Drawable
 {
@@ -25,7 +24,7 @@ public:
 
 	virtual void Update(GLfloat deltaTime);
 
-	virtual void FireProjectile(Vector3D startPos, Vector3D startRotation, GLfloat speed);
+	virtual void FireProjectile(Vector3D startPos, Vector3D startRotation, Vector3D scale, GLfloat speed);
 
 	bool isFired(){return fired;}
 
@@ -40,7 +39,6 @@ protected:
 
 	MeshLoader meshLoader;
 
-	BoundingSphere collisionSphere;
 private:
 	Logger log;
 

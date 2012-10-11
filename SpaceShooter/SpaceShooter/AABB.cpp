@@ -2,7 +2,7 @@
 
 
 AABB::AABB()
-	:log("AABB", WARN)
+	//:log("AABB", WARN)
 {
 }
 
@@ -60,7 +60,7 @@ void AABB::CreateAABB( Mesh& mesh )
 	m_LeftBottomFront.setValues(m_Left, m_Bottom, m_Front);
 	m_RightBottomFront.setValues(m_Right, m_Bottom, m_Front);
 
-	log << INFO << "Created a AxisAlignedBoundingBox collisionbox" << std::endl;
+	//log << INFO << "Created a AxisAlignedBoundingBox collisionbox" << std::endl;
 }
 
 void AABB::CreateAABB( Lib3dsVector* vertices, unsigned int size)
@@ -112,5 +112,5 @@ void AABB::CreateAABB( Lib3dsVector* vertices, unsigned int size)
 	m_LeftBottomFront.setValues(m_Left, m_Bottom, m_Front);
 	m_RightBottomFront.setValues(m_Right, m_Bottom, m_Front);
 
-	log << INFO << "Created a AxisAlignedBoundingBox collisionbox" << std::endl;
+	//log << INFO << "Created a AxisAlignedBoundingBox collisionbox" << std::endl;
 }
