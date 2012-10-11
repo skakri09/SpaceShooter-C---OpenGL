@@ -15,7 +15,7 @@
 
 
 #include "Timer.h"
-#include "Drawable.h"
+#include "GameObject.h"
 #include "SpaceShipManager.h"
 #include "Projectile.h"
 #include "InputManager.h"

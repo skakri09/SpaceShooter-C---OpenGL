@@ -287,9 +287,6 @@
     <ClInclude Include="AABB.h">
       <Filter>Game\Utility\Collidable\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Drawable.h">
-      <Filter>Game\Drawables</Filter>
-    </ClInclude>
     <ClInclude Include="Transformation.h">
       <Filter>Game\Utility\Transformable</Filter>
     </ClInclude>
@@ -301,6 +298,9 @@
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Game\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Game\Drawables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

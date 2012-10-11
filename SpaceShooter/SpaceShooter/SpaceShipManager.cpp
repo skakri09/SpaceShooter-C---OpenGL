@@ -36,11 +36,11 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 
   	if(enemy.WasHitByPorjectile(player.GetProjectiles()))
 	{
-		int asd = 1;
+		log << WARN << "You hit an enemy with a projectile!"  << std::endl;
 	}
 	if(player.WasHitByPorjectile(enemy.GetProjectiles()))
 	{
-  		
+  		log << WARN << "Player was hit by a projectile!" << std::endl;
 	}
 	//player.GetCollisionSphere()->IsCollision(enemy.GetCollisionSphere());
 	

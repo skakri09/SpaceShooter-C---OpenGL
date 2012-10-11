@@ -11,12 +11,12 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-#include "Drawable.h"
+#include "GameObject.h"
 #include <vector>
 #include "Vector3d.h"
 
 #include <gl/GL.h>
-class Particle : Drawable
+class Particle : GameObject
 {
 public:
     Particle();

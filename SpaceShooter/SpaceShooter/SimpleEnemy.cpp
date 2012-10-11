@@ -3,7 +3,8 @@
 SimpleEnemy::SimpleEnemy(PlayerSpaceShip* playerShip)
 	: log("SimpleEnemy", WARN),
 	 BaseEnemyShip(playerShip, std::make_shared<IdleState>(),
-					std::make_shared<EnemySpaceshipConstantState>())
+					std::make_shared<EnemySpaceshipConstantState>(),
+					10)//hp
 	
 {
 }
@@ -40,7 +41,7 @@ void SimpleEnemy::CreateDrawable()
 {
 
 	Mesh3dsLoader loader;
-	meshInfo = loader.Load3dsMesh("tiebomber.3ds");
+	meshInfo = loader.Load3dsMesh("..//3ds//tiebomber.3ds");
 	collisionSphere = *loader.GetBoundingSphere();
 	//collisionSphere = *meshInfo.collisionSphere;
 	//std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");

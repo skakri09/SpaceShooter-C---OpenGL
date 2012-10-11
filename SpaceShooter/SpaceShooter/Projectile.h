@@ -9,15 +9,15 @@
 #ifndef Projectile_H
 #define Projectile_H
 
-#include "Drawable.h"
+#include "GameObject.h"
 #include "Logger.h"
 #include "MeshLoader.h"
 #include "Mesh.h"
 
-class Projectile : public Drawable
+class Projectile : public GameObject
 {
 public:
-	Projectile(float projectileFlytime);
+	Projectile(float projectileFlytime, int projectileDmg);
 	virtual ~Projectile();
 
 	virtual void Draw();
@@ -28,9 +28,15 @@ public:
 
 	bool isFired(){return fired;}
 
+	void DestroyProjectile(){fired = false;}
+
+	int GetProjectileDmg(){return projectileDamage;}
+
 protected:
 	float PROJECTILE_FLYTIME;
 	
+	int projectileDamage;
+
 	float projectileVelocity;
 	float timeSinceFired;
 	Vector3D startRotation;

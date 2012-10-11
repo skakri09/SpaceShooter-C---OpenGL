@@ -24,10 +24,11 @@
 #include "Transformation.h"
 #include "BoundingSphere.h"
 
-class Drawable
+class GameObject
 {
 public:
-
+	GameObject(){isAlive = true;}
+	~GameObject(){}
 	// Pure virtual function draw, should contain functionality
 	// that draws to the screen when overwritten.
 	virtual void Draw() = 0;
@@ -74,6 +75,7 @@ public:
 	
 	BoundingSphere& GetCollisionSphere(){return collisionSphere;}
 
+	virtual void KillGameObject(){}
 protected:
 
 	// Calculates the position by adding velocity multiplied by
@@ -81,7 +83,6 @@ protected:
 	inline void CalculatePosition(GLfloat deltaTime)
 	{
 		position += (velocity * deltaTime);
-		
 	}
 
 	virtual void UpdateTransformationValues()
@@ -114,6 +115,7 @@ protected:
 	GLuint vertices;
 	GLuint colors;
 
+	bool isAlive;
 private:
 
 };

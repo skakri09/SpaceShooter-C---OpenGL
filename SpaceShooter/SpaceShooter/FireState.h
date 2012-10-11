@@ -15,7 +15,7 @@
 class FireState : public AiState
 {
 public:
-    FireState():log("FireState", INFO), AiState("FireState"){}
+    FireState():log("FireState", WARN), AiState("FireState"){}
 
 	virtual void Enter(BaseEnemyShip* owner);
 

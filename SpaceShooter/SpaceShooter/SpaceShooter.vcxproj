@@ -119,7 +119,7 @@
     <ClInclude Include="AxisAlignedBoundingBox.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collidable.h" />
-    <ClInclude Include="Drawable.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="EnemySpaceshipConstantState.h" />
     <ClInclude Include="FireState.h" />
     <ClInclude Include="FollowPlayerState.h" />

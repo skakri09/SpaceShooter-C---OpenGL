@@ -16,7 +16,7 @@
 class FollowPlayerState : public AiState
 {
 public:
-    FollowPlayerState():log("FollowPlayerState", INFO), AiState("FollowPlayerState"){}
+    FollowPlayerState():log("FollowPlayerState", WARN), AiState("FollowPlayerState"){}
 
 	virtual void Enter(BaseEnemyShip* enemy);
 

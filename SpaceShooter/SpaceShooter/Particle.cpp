@@ -47,7 +47,7 @@ void Particle::Draw()
 
 void Particle::Update( GLfloat deltaTime )
 {
-	Drawable::CalculatePosition(deltaTime);
+	GameObject::CalculatePosition(deltaTime);
 	life -= fade * deltaTime;
 
 	if (life <= 0.0f) 

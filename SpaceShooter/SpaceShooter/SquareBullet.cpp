@@ -1,13 +1,12 @@
 #include "SquareBullet.h"
 
-SquareBullet::SquareBullet() : Projectile(5.0f)
+SquareBullet::SquareBullet() : Projectile(5.0f, 10)
 {
 	CreateDrawable();
 }
 
 SquareBullet::~SquareBullet()
 {
-
 }
 
 void SquareBullet::CreateDrawable()
@@ -15,9 +14,7 @@ void SquareBullet::CreateDrawable()
 	MeshInfo* _meshInfo = ProjectileFactory::Inst()->GetMeshInfo(SIMPLE_BULLET);
 
 	if(_meshInfo == NULL)
-	{
-		//displayList = glGenLists(1);
-		
+	{	
 		std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_SquareBullet.xml");
 		meshInfo.numberOfIndices = mesh->indices.size();
 

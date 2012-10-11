@@ -36,7 +36,7 @@ void GameManager::createOpenGLContext() {
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8); // Use framebuffer with 8 bit for blue
 	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8); // Use framebuffer with 8 bit for alpha
 
-	SDL_WM_SetCaption("NITH - PG430 Space Invaders", "");
+	SDL_WM_SetCaption("NITH - PG430 Space Invaders - FPS: ", "");
 
 	// Initalize video
 	if (SDL_SetVideoMode(window_width, window_height, 0, SDL_OPENGL
@@ -133,16 +133,25 @@ void GameManager::GameLoop()
 	//the various managers
 	int fps = 0;
 	GLfloat sec = 0;
+	int counter = 0;
+	GLfloat asd = 0;
+	GLfloat avgFps = 0;
+	GLfloat dsa = 0;
 	while (!doExit) 
 	{
 		//storing delta time in a class variable. Casting to GLfloat since
 		//we basically use that in the whole project
 		deltaTime = static_cast<GLfloat>(my_timer.elapsedAndRestart());
+		
 		sec += deltaTime;
 		fps++;
 		if(sec >= 1.0f)
 		{
 			log << INFO << fps << std::endl;
+			std::ostringstream fpsStream;
+			fpsStream << "NITH - PG430 Space Invaders - FPS: ";
+			fpsStream << fps;
+			SDL_WM_SetCaption(fpsStream.str().c_str(), "");
 			fps = 0;
 			sec = 0;
 		}

@@ -2,7 +2,8 @@
 
 
 PlayerSpaceShip::PlayerSpaceShip()
-	: log("PlayerSpaceship", ERRORX)
+	: log("PlayerSpaceship", ERRORX),
+	SpaceShip(50)//the HP
 {
 }
 
@@ -83,7 +84,7 @@ void PlayerSpaceShip::Update(GLfloat deltaTime)
 void PlayerSpaceShip::CreateDrawable()
 {
 	Mesh3dsLoader loader;
-	meshInfo = loader.Load3dsMesh("milfalcon.3ds");
+	meshInfo = loader.Load3dsMesh("..//3ds//milfalcon.3ds");
 	collisionSphere = *loader.GetBoundingSphere();
 
 	//collisionSphere = loader.GetBoundingSphere();

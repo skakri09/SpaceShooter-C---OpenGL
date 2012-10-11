@@ -1,8 +1,9 @@
 #include "SpaceShip.h"
 
-SpaceShip::SpaceShip()
+SpaceShip::SpaceShip(int spaceshipHP)
 	:log("SpaceShipbase", WARN)
 {
+	this->SpaceshipHealth = spaceshipHP;
 	xAxis.rotating = false;
 	yAxis.rotating = false;
 	zAxis.rotating = false;
@@ -27,19 +28,26 @@ void SpaceShip::Draw()
 
 void SpaceShip::Update(GLfloat deltaTime)
 {
-	//CalculatePosition(deltaTime);
-	this->deltaTime = deltaTime;
-	timeSinceLastFired += deltaTime;
-	CalculatePosition(deltaTime);
-	UpdateTransformationValues();
-	collisionSphere.ApplyTransformations(transformationValues);
-	//meshInfo.collisionSphere->ApplyTransformations(transformationValues);
-	//collisionSphere.ApplyTransformations(transformationValues)
-	//Vector3D dummy;
-	//collisionSphere.ApplyTransformations(position, rotation, 0, dummy);
-	//RotateArroundX(getDeltaTime());
-	//RotateArroundY(getDeltaTime());
-	//RotateArroundZ(getDeltaTime());
+	if(SpaceshipHealth > 0)
+	{
+		//CalculatePosition(deltaTime);
+		this->deltaTime = deltaTime;
+		timeSinceLastFired += deltaTime;
+		CalculatePosition(deltaTime);
+		UpdateTransformationValues();
+		collisionSphere.ApplyTransformations(transformationValues);
+		//meshInfo.collisionSphere->ApplyTransformations(transformationValues);
+		//collisionSphere.ApplyTransformations(transformationValues)
+		//Vector3D dummy;
+		//collisionSphere.ApplyTransformations(position, rotation, 0, dummy);
+		//RotateArroundX(getDeltaTime());
+		//RotateArroundY(getDeltaTime());
+		//RotateArroundZ(getDeltaTime());
+	}
+	else
+	{
+		KillGameObject();//not implemented
+	}
 }
 
 void SpaceShip::CreateDrawable()
@@ -58,7 +66,7 @@ void SpaceShip::FireGun(GLfloat fireCooldown, GLfloat projectileSpeed)
 		rotation.setZ(zAxis.currentAngle);
 
 		Projectile* projectile = ProjectileFactory::Inst()->GetProjectile(SIMPLE_BULLET);
-		Vector3D scale;scale.setValues(0.3f, 0.3f, 0.3f);
+		Vector3D scale;scale.setValues(1.0f, 1.0f, 1.0f);
 		projectile->FireProjectile(position, rotation, scale, projectileSpeed);
 		projectiles.push_back(projectile);
 	}
@@ -110,7 +118,6 @@ void SpaceShip::RotateArroundZ(GLfloat deltaTime)
 	
 	log << INFO << "Angle around Z: " << zAxis.currentAngle << std::endl;
 }
-
 
 void SpaceShip::RotateArroundY( GLfloat deltaTime )
 {
@@ -165,13 +172,13 @@ void SpaceShip::InitSpaceship( float startX, float startY, float startZ,
 	float scaleX, float scaleY, float scaleZ,
 	float startRotDeg, float rotX, float rotY, float rotZ)
 {
-	Drawable::position.setX(startX);
-	Drawable::position.setY(startY);
-	Drawable::position.setZ(startZ);
+	GameObject::position.setX(startX);
+	GameObject::position.setY(startY);
+	GameObject::position.setZ(startZ);
 	
-	Drawable::SetScale(scaleX, scaleY, scaleZ);
-	Drawable::startRotation.setValues(rotX, rotY, rotZ);
-	Drawable::startRotationDegrees = startRotDeg;
+	GameObject::SetScale(scaleX, scaleY, scaleZ);
+	GameObject::startRotation.setValues(rotX, rotY, rotZ);
+	GameObject::startRotationDegrees = startRotDeg;
 
 	//collisionSphere = 
 }
@@ -244,10 +251,15 @@ bool SpaceShip::WasHitByPorjectile( std::vector<Projectile*>* projectiles )
 	{
 		if(projectiles->at(i)->isFired())
 		{
-			BoundingSphere asd = projectiles->at(i)->GetCollisionSphere();
-			Vector3D dsa = collisionSphere.IsCollision(asd);
-			if(dsa.getX() > 0 || dsa.getY() > 0.0f || dsa.getZ() > 0.0f)
+			BoundingSphere projectileColSphere = projectiles->at(i)->GetCollisionSphere();
+			Vector3D collAmnt = collisionSphere.IsCollision(projectileColSphere);
+			if(collAmnt.getX() > 0 || collAmnt.getY() > 0.0f || collAmnt.getZ() > 0.0f)
 			{
+				int dmgTaken = projectiles->at(i)->GetProjectileDmg();
+				SpaceshipHealth -= dmgTaken;
+				log << WARN << "Spaceship hit! It lost " << dmgTaken << ", " 
+					<< SpaceshipHealth << "HP left" << std::endl;
+				projectiles->at(i)->DestroyProjectile();
 				return true;
 			}
 		}

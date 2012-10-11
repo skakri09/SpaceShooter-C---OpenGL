@@ -18,7 +18,7 @@ using std::shared_ptr;
 static const float FIRE_COOLDOWN_SIMPLE_ENEMY  = 0.2f;
 
 //The speed of a square bullet for the player
-static const float SQUARE_BULLET_SPEED_SIMPLE_ENEMY = 100.0f;
+static const float SQUARE_BULLET_SPEED_SIMPLE_ENEMY = 50.0f;
 
 enum EnemyAiType{SIMPLE_AI};
 
@@ -27,7 +27,8 @@ class BaseEnemyShip : public SpaceShip
 public:
     BaseEnemyShip(PlayerSpaceShip* playerShip, 
 				   std::shared_ptr<AiState> startupState,
-				   std::shared_ptr<AiState> constantState);
+				   std::shared_ptr<AiState> constantState,
+				   int enemyHP);
 
     virtual ~BaseEnemyShip();
 

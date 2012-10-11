@@ -1,11 +1,12 @@
 #include "Projectile.h"
 
-Projectile::Projectile(float projectileFlytime)
+Projectile::Projectile(float projectileFlytime, int projectileDmg)
 	:log("Projectile", WARN)
 {
-	PROJECTILE_FLYTIME = projectileFlytime;
-	projectileVelocity = -100.0f;
-	fired = false;
+	this->PROJECTILE_FLYTIME = projectileFlytime;
+	this->projectileDamage = projectileDmg;
+	this->projectileVelocity = -100.0f;
+	this->fired = false;
 }
 
 Projectile::~Projectile()
@@ -22,18 +23,15 @@ void Projectile::Draw()
 		glPushMatrix();
 
 		glTranslatef(startPosition.getX(), startPosition.getY(), startPosition.getZ());
-		//glTranslatef(0.f, -10.f, -50.f);
 		glRotatef(startRotation.getX(), 1.0f, 0.0f, 0.0f);
 		glRotatef(startRotation.getY(), 0.0f, 1.0f, 0.0f);
 		glRotatef(startRotation.getZ(), 0.0f, 0.0f, 1.0f);
-		//glScalef(2.f, 2.f, 2.f);
-		//glTranslatef(0.0f,  0.5f, -2.2f);
 
 		//Draw the projectile in the above object's space which is transformed into the correct
 		//position and rotation.
 		glPushMatrix();
 		glTranslatef(position.getX(), position.getY(), position.getZ());
-		glScalef(0.3f, 0.3f, 0.3f);
+		glScalef(scale.getX(), scale.getY(), scale.getZ());
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_NORMAL_ARRAY);
 
@@ -67,6 +65,7 @@ void Projectile::Update(GLfloat deltaTime)
 		UpdateTransformationValues();
 		timeSinceFired += deltaTime;
 		collisionSphere.ApplyTransformations(transformationValues);
+		
 		//Makes sure we stop drawing the projectile if it's been "airborne" longer then or 
 		//equal to the constant PROJECTILE_FLYTIME
 		if(timeSinceFired >= PROJECTILE_FLYTIME)
@@ -83,9 +82,9 @@ void Projectile::Update(GLfloat deltaTime)
 
 void Projectile::FireProjectile( Vector3D startPos, Vector3D startRotation, Vector3D scale, GLfloat speed )
 {
-	Drawable::position = 0.0f;
-	Drawable::velocity = 0.0f;
-	Drawable::scale = scale;
+	GameObject::position = 0.0f;
+	GameObject::velocity = 0.0f;
+	GameObject::scale = scale;
 	timeSinceFired = 0.0f;
 	velocity.setZ(-speed);//setting to negative z so we don't have to do that other places
 	this->startRotation = startRotation;
@@ -95,6 +94,6 @@ void Projectile::FireProjectile( Vector3D startPos, Vector3D startRotation, Vect
 
 void Projectile::UpdateTransformationValues()
 {
-	Drawable::UpdateTransformationValues();
+	GameObject::UpdateTransformationValues();
 	transformationValues.position +=startPosition;
 }

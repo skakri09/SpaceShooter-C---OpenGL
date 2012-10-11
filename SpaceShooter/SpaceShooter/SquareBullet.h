@@ -20,6 +20,7 @@ public:
 	void CreateDrawable();
 
 private:
+
 };
 
 #endif // SimpleBullet_h__

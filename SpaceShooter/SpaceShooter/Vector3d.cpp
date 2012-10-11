@@ -13,13 +13,15 @@ Vector3D::~Vector3D()
 float Vector3D::Distance(const Vector3D& vector1, Vector3D& vector2)
 {
 	return sqrt( pow((vector2.x - vector1.x), 2) + 
-		pow((vector2.x - vector1.y), 2) );
+		pow((vector2.x - vector1.y), 2) +
+		pow((vector2.z - vector1.z), 2));
 }
 
 float Vector3D::Distance( Vector3D& vector2 )
 {
 	return sqrt( pow((vector2.x - x), 2) + 
-		pow((vector2.x - y), 2) );
+		pow((vector2.y - y), 2) +
+		pow((vector2.z - z), 2));
 }
 
 Vector3D& Vector3D::operator= (const Vector3D& vector2)
@@ -109,12 +111,12 @@ const Vector3D Vector3D::operator/(const float scalar) const
 
 bool Vector3D::operator==(const Vector3D& vector2) const
 {
-	return ((x == vector2.x) && (y == vector2.y));
+	return ((x == vector2.x) && (y == vector2.y) && (z == vector2.z));
 }
 
 bool Vector3D::operator!=(const Vector3D& vector2) const
 {
-	return !((x == vector2.x) && (y == vector2.y));
+	return !((x == vector2.x) && (y == vector2.y) && (z == vector2.z));
 }
 
 void Vector3D::Invert()

@@ -16,7 +16,7 @@
 #define SpaceShip_H
 
 #include "Logger.h"
-#include "Drawable.h"
+#include "GameObject.h"
 #include "Projectile.h"
 #include "ProjectileFactory.h"
 #include "Mesh.h"
@@ -35,10 +35,10 @@ struct RotationInfo
 	GLfloat targetAngle;
 };
 
-class SpaceShip : public Drawable
+class SpaceShip : public GameObject
 {
 public:
-	SpaceShip();
+	SpaceShip(int spaceshipHP);
 
 	virtual ~SpaceShip();
 
@@ -66,12 +66,14 @@ public:
 	std::vector<Projectile*>* GetProjectiles(){return &projectiles;}
 
 	bool WasHitByPorjectile(std::vector<Projectile*>* projectiles);
-
+	int GetSpaceshipHP(){return SpaceshipHealth;}
 protected:
 	virtual void CreateDrawable();
 
 	virtual void DrawWithArrays();
 	virtual void DrawWithIndices();
+
+	int SpaceshipHealth;
 
 	//Vector of projectiles, used to loop trough them and 
 	//call their respecive Draw() function

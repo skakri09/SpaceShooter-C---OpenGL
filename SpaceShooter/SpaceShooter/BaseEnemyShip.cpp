@@ -5,11 +5,13 @@
 #pragma warning(disable: 4355)
 BaseEnemyShip::BaseEnemyShip(PlayerSpaceShip* playerShip, 
 	std::shared_ptr<AiState> startupState,
-	std::shared_ptr<AiState> constantState)
+	std::shared_ptr<AiState> constantState,
+	int enemyHP)
 	:log("SimpleEnemyShip", WARN),
 	aiStateMachine(this, 
 					startupState,
-					constantState)
+					constantState),
+	SpaceShip(enemyHP)
 {
 	this->playerShip = playerShip;
 }
