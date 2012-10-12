@@ -19,6 +19,7 @@
 #include "InputManager.h"
 #include "Logger.h"
 #include "SpaceShip.h"
+#include "GetRandomFloat.h"
 
 class SpaceShipManager
 {
@@ -68,6 +69,7 @@ private:
 	void HandlePlayerRotation();
 
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemySpaceShips;
+	std::shared_ptr<BaseEnemyShip> GetRandomEnemy();
 };
 
 #endif // SpaceShipManager_h__

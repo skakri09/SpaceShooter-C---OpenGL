@@ -147,9 +147,6 @@
     <ClCompile Include="SpaceShipManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FollowPlayerState.cpp">
-      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IdleState.cpp">
       <Filter>Game\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
@@ -203,6 +200,12 @@
     </ClCompile>
     <ClCompile Include="ParticleManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ApproachXYZPlayerState.cpp">
+      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ApproachXYPlayerState.cpp">
+      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -262,9 +265,6 @@
     </ClInclude>
     <ClInclude Include="SpaceShipManager.h">
       <Filter>Game\Managers\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FollowPlayerState.h">
-      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IdleState.h">
       <Filter>Game\SpaceShipAI\States\Header Files</Filter>
@@ -332,6 +332,15 @@
     <ClInclude Include="ParticleManager.h">
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GetRandomFloat.h">
+      <Filter>Game\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ApproachXYZPlayerState.h">
+      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ApproachXYPlayerState.h">
+      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Mesh_PlayerSpaceship.xml">
@@ -343,6 +352,5 @@
     <None Include="lib3ds-1_3d.dll">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

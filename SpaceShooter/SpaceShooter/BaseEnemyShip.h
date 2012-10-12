@@ -57,6 +57,7 @@ public:
 
 	void setActive(bool isActive){this->isActive = isActive;}
 
+	float GetShipSpeed(){return ShipSpeed;}
 protected:
 	//The AI state machine
 	AiStateMachine aiStateMachine;
@@ -75,6 +76,7 @@ protected:
 
 	bool isActive;
 	
+	float ShipSpeed;
 private:
 	Logger log;
 

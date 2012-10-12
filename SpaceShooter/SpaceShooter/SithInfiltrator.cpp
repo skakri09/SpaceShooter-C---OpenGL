@@ -59,7 +59,7 @@ void SithInfiltrator::InitSpaceship(float startX, float startY, float startZ,
 		dirVecX, dirVecY, dirVecZ);
 
 	GameObject::SetScale(0.05f, 0.05f, 0.05f);
-
+	BaseEnemyShip::ShipSpeed = 75;
 	if(!WasInited)
 	{
 		CreateGameObject();
@@ -68,24 +68,17 @@ void SithInfiltrator::InitSpaceship(float startX, float startY, float startZ,
 
 void SithInfiltrator::HandleAI()
 {
-		
-	float a = position.Distance(*playerShip->getPosition());
-	if(a >= 105 && aiStateMachine.GetCurrentState() != "FollowPlayerState")
-	/*if(position.getX() <= (playerShip->getXPos()+50)
-		&& aiStateMachine.GetCurrentState() != "FollowPlayerState")*/
+	float dist = position.Distance(*playerShip->getPosition());
+	if(dist >= 105 && aiStateMachine.GetCurrentState() != "ApproachXYZPlayerState"
+		&& position.getZ() > -50)
 	{
-		aiStateMachine.ChangeState(std::make_shared<FollowPlayerState>());
+		aiStateMachine.ChangeState(std::make_shared<ApproachXYZPlayerState>());
 	}
-	//else if(position.getX() >= (playerShip->getXPos()-50)
-	//	&& aiStateMachine.GetCurrentState() != "FollowPlayerState")
-	//{
-	//	aiStateMachine.ChangeState(std::make_shared<FollowPlayerState>());
-	//}
-	//else if(aiStateMachine.GetCurrentState() != "FireState"
-	//	&& ( position.getX() <= (playerShip->getXPos()+50) 
-	//	|| position.getX() >= (playerShip->getXPos()-50)))
-	else if(aiStateMachine.GetCurrentState() != "FireState"
-		&& a < 110)
+	else if(dist > 75 && aiStateMachine.GetCurrentState() != "ApproachXYPlayerState")
+	{
+		aiStateMachine.ChangeState(std::make_shared<ApproachXYPlayerState>());
+	}
+	else if(aiStateMachine.GetCurrentState() != "FireState")
 	{
 		aiStateMachine.ChangeState(std::make_shared<FireState>());
 	}

@@ -64,6 +64,9 @@ public:
 	// Get the distance between two vectors
 	float Distance(Vector3D& vector2);
 
+	// Get the distance between the two vectors in the xy plane only
+	float XYDistance(Vector3D& vector2);
+
 	// Give left Vector3D the values of right Vector3D
 	Vector3D& operator= (const Vector3D& vector2);
 

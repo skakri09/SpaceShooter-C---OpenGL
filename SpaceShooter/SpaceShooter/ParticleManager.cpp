@@ -178,11 +178,6 @@ void ParticleManager::InitLightspeedStars()
 	}
 }
 
-float ParticleManager::GetRandFloat( float min, float max )
-{
-	return ((max - min) * ((float)rand()/RAND_MAX))+min;
-}
-
 Image ParticleManager::ReadImage( std::string image )
 {
 	Image img;

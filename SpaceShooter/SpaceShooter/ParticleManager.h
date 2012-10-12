@@ -20,6 +20,7 @@
 #include "Particle.h"
 #include "GameConstants.h"
 #include "Image.h"
+#include "GetRandomFloat.h"
 #include <gl/GL.h> //must be included after particle.h
 
 #include "Logger.h"
@@ -56,8 +57,6 @@ private:
 
 	GLuint particle1;
 	void InitLightspeedStars();
-
-	float GetRandFloat(float min, float max);
 
 	Image ReadImage(std::string image);
 

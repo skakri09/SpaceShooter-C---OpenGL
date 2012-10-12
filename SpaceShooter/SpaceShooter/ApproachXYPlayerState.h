@@ -1,22 +1,21 @@
 /********************************************************************
-    created:    7:10:2012   19:44
-    filename:   FollowPlayerState.h
+    created:    12:10:2012   18:29
+    filename:   ApproachXYPlayerState.h
     author:     Kristian Skarseth
     
     purpose:    
 *********************************************************************/
-#ifndef FollowPlayerState_h__
-#define FollowPlayerState_h__
+#ifndef ApproachXYPlayerState_h__
+#define ApproachXYPlayerState_h__
 
 #include "AiState.h"
 #include "BaseEnemyShip.h"
 #include "logger.h"
-#include "GameConstants.h"
 
-class FollowPlayerState : public AiState
+class ApproachXYPlayerState : public AiState
 {
 public:
-    FollowPlayerState():log("FollowPlayerState", WARN), AiState("FollowPlayerState"){}
+    ApproachXYPlayerState():log("ApproachPlayerState", INFO),AiState("ApproachXYPlayerState"){}
 
 	virtual void Enter(BaseEnemyShip* enemy);
 
@@ -25,10 +24,10 @@ public:
 	virtual void Exit(BaseEnemyShip* enemy);
 
 private:
-	Logger log;
-
 	Vector3D targetPosition;
 	Vector3D targetDirection;
+
+	Logger log;
 };
 
-#endif // FollowPlayerState_h__
+#endif // ApproachXYPlayerState_h__

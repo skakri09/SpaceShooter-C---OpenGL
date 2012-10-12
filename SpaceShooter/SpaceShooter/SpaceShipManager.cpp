@@ -22,7 +22,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 
 	player.InitSpaceship(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 
-	EnemySpaceShips.push_back(std::make_shared<ImperialTieInterceptor>(&player));
+	EnemySpaceShips.push_back(GetRandomEnemy());
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end(); i++)
 	{
 		(*i)->InitSpaceship(100.0f, 0.0f, -50.0f, -90, 1, 0, 0, 0, 0, 1);
@@ -63,7 +63,7 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	}
 	if(EnemySpaceShips.size() == 0)
 	{
-		EnemySpaceShips.push_back(std::make_shared<SithInfiltrator>(&player));
+		EnemySpaceShips.push_back(GetRandomEnemy());
 		EnemySpaceShips.back()->InitSpaceship(100.0f, 0.0f, -50.0f, -90, 1, 0, 0, 0, 0, 1);
 	}
 
@@ -165,5 +165,23 @@ void SpaceShipManager::HandlePlayerRotation()
 	if(input->LeftMouseDownOnce())
 	{
 		player.InitRotation(Y_AXIS);
+	}
+}
+
+std::shared_ptr<BaseEnemyShip> SpaceShipManager::GetRandomEnemy()
+{
+	float random = GetRandFloat(0.0f, 3.0f);
+	
+	if(random >=0 && random <= 1.0f)
+	{
+		return std::make_shared<ImperialTieFighter>(&player);
+	}
+	else if(random > 1 && random <= 2.0f)
+	{
+		return std::make_shared<ImperialTieInterceptor>(&player);
+	}
+	else if(random > 2 && random <= 3.0f)
+	{
+		return std::make_shared<SithInfiltrator>(&player);
 	}
 }

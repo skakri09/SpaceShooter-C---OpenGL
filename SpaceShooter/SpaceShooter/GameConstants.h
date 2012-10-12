@@ -14,8 +14,6 @@ static const float PLAYER_X_VELOCITY = 75.0f;
 static const float PLAYER_Y_VELOCITY = 75.0f;
 static const float PLAYER_Z_VELOCITY = 100.0f;
 
-static const float SIMPLE_ENEMY_SPEED = 50;
-
 static const float FRUSTUM_LEFT = -90.0f;
 static const float FRUSTUM_RIGHT = 90.0f;
 static const float FRUSTUM_TOP = 50.0f;

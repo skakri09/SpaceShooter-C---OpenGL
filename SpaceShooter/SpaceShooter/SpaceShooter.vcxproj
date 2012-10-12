@@ -83,11 +83,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
+    <ClCompile Include="ApproachXYPlayerState.cpp" />
+    <ClCompile Include="ApproachXYZPlayerState.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="FireState.cpp" />
-    <ClCompile Include="FollowPlayerState.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="ImperialTieFighter.cpp" />
@@ -119,14 +120,16 @@
     <ClInclude Include="AABB.h" />
     <ClInclude Include="AiState.h" />
     <ClInclude Include="AiStateMachine.h" />
+    <ClInclude Include="ApproachXYPlayerState.h" />
+    <ClInclude Include="ApproachXYZPlayerState.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="EnemySpaceshipConstantState.h" />
     <ClInclude Include="FireState.h" />
-    <ClInclude Include="FollowPlayerState.h" />
     <ClInclude Include="GameConstants.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GetRandomFloat.h" />
     <ClInclude Include="GLUtils\GLUtils.hpp" />
     <ClInclude Include="GLUtils\Program.hpp" />
     <ClInclude Include="GLUtils\VBO.hpp" />
@@ -160,7 +163,6 @@
     <ClInclude Include="XmlLoader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="lib3ds-1_3d.dll" />
     <None Include="Mesh_PlayerSpaceship.xml" />
     <None Include="Mesh_SquareBullet.xml" />

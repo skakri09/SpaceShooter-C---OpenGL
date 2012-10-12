@@ -24,6 +24,12 @@ float Vector3D::Distance( Vector3D& vector2 )
 		pow((vector2.z - z), 2));
 }
 
+float Vector3D::XYDistance( Vector3D& vector2 )
+{
+	return sqrt( pow((vector2.x - x), 2) + 
+		pow((vector2.y - y), 2));
+}
+
 Vector3D& Vector3D::operator= (const Vector3D& vector2)
 {
 	if(this == &vector2)
@@ -174,5 +180,4 @@ Vector3D Vector3D::CrossProduct( const Vector3D& vector2 ) const
 
 	return crossProduct;
 }
-
 

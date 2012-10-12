@@ -16,7 +16,8 @@
 #include "EnemySpaceshipConstantState.h"
 #include "FireState.h"
 #include "IdleState.h"
-#include "FollowPlayerState.h"
+#include "ApproachXYZPlayerState.h"
+#include "ApproachXYPlayerState.h"
 
 class ImperialTieFighter : public BaseEnemyShip
 {

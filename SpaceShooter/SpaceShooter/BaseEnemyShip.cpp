@@ -38,6 +38,7 @@ void BaseEnemyShip::Draw()
 
 void BaseEnemyShip::Update( GLfloat deltaTime )
 {
+
 	aiStateMachine.Update(deltaTime);
 	SpaceShip::Update(deltaTime);
 }
