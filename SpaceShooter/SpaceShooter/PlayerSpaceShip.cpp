@@ -68,11 +68,9 @@ void PlayerSpaceShip::Update(GLfloat deltaTime)
 
 void PlayerSpaceShip::CreateDrawable()
 {
-	Mesh3dsLoader loader;
-	meshInfo = loader.Load3dsMesh("..//3ds//MilleniumFalcon//MilleniumFalcon.3ds");
-	collisionSphere = *loader.GetBoundingSphere();
+	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//MilleniumFalcon//MilleniumFalcon.3ds");
+	collisionSphere = *meshInfo.collisionSphere;//*loader.GetBoundingSphere();
 	WasInited = true;
-
 }
 
 void PlayerSpaceShip::Shoot()

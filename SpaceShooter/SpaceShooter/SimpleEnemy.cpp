@@ -43,7 +43,7 @@ void SimpleEnemy::Update( GLfloat deltaTime )
 void SimpleEnemy::CreateDrawable()
 {
 	//Mesh3dsLoader loader;
-	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
+	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//SithInfiltrator//SithInfiltrator.3ds");
 	collisionSphere = *meshInfo.collisionSphere;//*loader.GetBoundingSphere();
 	WasInited = true;
 	//collisionSphere = *meshInfo.collisionSphere;
