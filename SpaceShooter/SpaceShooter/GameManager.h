@@ -13,11 +13,9 @@
 #include <memory>
 #include <SDL.h>
 
-
 #include "Timer.h"
 #include "GameObject.h"
 #include "SpaceShipManager.h"
-#include "Projectile.h"
 #include "InputManager.h"
 #include "ParticleManager.h"
 #include "GameConstants.h"

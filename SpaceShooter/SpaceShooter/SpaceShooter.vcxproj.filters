@@ -64,12 +64,6 @@
     <Filter Include="Game\GameObjects\SpaceShips">
       <UniqueIdentifier>{440a7adc-3d79-4d14-b9ae-894a491c0072}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\GameObjects\SpaceShips\Header Files">
-      <UniqueIdentifier>{84164f3e-c197-44c2-9643-476140178b08}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\GameObjects\SpaceShips\Source Files">
-      <UniqueIdentifier>{ad07e0da-0a92-44b1-a607-1c7919515eab}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\GameObjects\Projectiles">
       <UniqueIdentifier>{c9fea405-5a1f-45bd-8fd0-cb4b506ec810}</UniqueIdentifier>
     </Filter>
@@ -100,6 +94,18 @@
     <Filter Include="Game\Utility\ResourceLoading\XML loading">
       <UniqueIdentifier>{6f0d73b0-5420-44aa-8a53-82149900770a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameObjects\SpaceShips\Player">
+      <UniqueIdentifier>{5a074286-82ff-44af-adb7-3bbf83463841}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObjects\SpaceShips\Enemies">
+      <UniqueIdentifier>{4abf28cd-1480-44bd-91f3-7367e3c0c573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObjects\SpaceShips\Enemies\Header Files">
+      <UniqueIdentifier>{84164f3e-c197-44c2-9643-476140178b08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObjects\SpaceShips\Enemies\Source Files">
+      <UniqueIdentifier>{ad07e0da-0a92-44b1-a607-1c7919515eab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -113,9 +119,6 @@
     </ClCompile>
     <ClCompile Include="Logger.cpp">
       <Filter>Game\Utility\Logger</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerSpaceShip.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Projectile.cpp">
       <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
@@ -135,14 +138,11 @@
     <ClCompile Include="ParticleManager.cpp">
       <Filter>Game\GameObjects\Particles\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpaceShip.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BaseEnemyShip.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Source Files</Filter>
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SimpleEnemy.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Source Files</Filter>
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EnemySpaceShipConstantState.cpp">
       <Filter>Game\SpaceShipAI\States\Source Files</Filter>
@@ -168,17 +168,11 @@
     <ClCompile Include="NormalCalculator.cpp">
       <Filter>Game\Utility\NormalCalculator</Filter>
     </ClCompile>
-    <ClCompile Include="AxisAlignedBoundingBox.cpp">
-      <Filter>Game\Utility\Collidable\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BoundingSphere.cpp">
       <Filter>Game\Utility\Collidable\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AABB.cpp">
       <Filter>Game\Utility\Collidable\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Collidable.cpp">
-      <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Transformable.cpp">
       <Filter>Game\Utility\Transformable</Filter>
@@ -194,6 +188,15 @@
     </ClCompile>
     <ClCompile Include="ShooterModule.cpp">
       <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Collidable.cpp">
+      <Filter>Game\Utility\Collidable\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSpaceShip.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceShip.cpp">
+      <Filter>Game\GameObjects\SpaceShips</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -218,9 +221,6 @@
     <ClInclude Include="Timer.h">
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerSpaceShip.h">
-      <Filter>Game\GameObjects\SpaceShips\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Projectile.h">
       <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
@@ -239,14 +239,11 @@
     <ClInclude Include="ParticleManager.h">
       <Filter>Game\GameObjects\Particles\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpaceShip.h">
-      <Filter>Game\GameObjects\SpaceShips\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BaseEnemyShip.h">
-      <Filter>Game\GameObjects\SpaceShips\Header Files</Filter>
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SimpleEnemy.h">
-      <Filter>Game\GameObjects\SpaceShips\Header Files</Filter>
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AiStateMachine.h">
       <Filter>Game\SpaceShipAI</Filter>
@@ -275,17 +272,11 @@
     <ClInclude Include="XmlLoader.h">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Game\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="Vector3d.h">
       <Filter>Game\Utility\Vector3d</Filter>
     </ClInclude>
     <ClInclude Include="NormalCalculator.h">
       <Filter>Game\Utility\NormalCalculator</Filter>
-    </ClInclude>
-    <ClInclude Include="AxisAlignedBoundingBox.h">
-      <Filter>Game\Utility\Collidable\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BoundingSphere.h">
       <Filter>Game\Utility\Collidable\Header Files</Filter>
@@ -320,6 +311,15 @@
     <ClInclude Include="ShooterModule.h">
       <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MeshInfo.h">
+      <Filter>Game\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSpaceShip.h">
+      <Filter>Game\GameObjects\SpaceShips\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceShip.h">
+      <Filter>Game\GameObjects\SpaceShips</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Mesh_PlayerSpaceship.xml">
@@ -328,14 +328,9 @@
     <None Include="Mesh_SquareBullet.xml">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="milfalcon.3ds">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="tiebomber.3ds">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="lib3ds-1_3d.dll">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

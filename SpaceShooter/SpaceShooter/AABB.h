@@ -9,8 +9,9 @@
 #define AABB_h__
 
 #include "Vector3d.h"
-#include "Mesh.h"
 #include <lib3ds/types.h>
+#include <vector>
+
 class AABB
 {
 public:
@@ -18,7 +19,7 @@ public:
 	~AABB();
 
 protected:
-	void CreateAABB(Mesh& mesh);
+	void CreateAABB(std::vector<float>* vertices);
 
 	void CreateAABB( Lib3dsVector* vertices, unsigned int size);
 

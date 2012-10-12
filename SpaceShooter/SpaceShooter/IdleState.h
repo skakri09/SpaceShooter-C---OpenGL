@@ -19,7 +19,7 @@ public:
 
 	virtual void Enter(BaseEnemyShip* enemy);
 
-	virtual void Execute(BaseEnemyShip* enemy, float delta);
+	virtual void UpdateState(BaseEnemyShip* enemy, float delta);
 
 	virtual void Exit(BaseEnemyShip* enemy);
 

@@ -1,5 +1,5 @@
 /********************************************************************
-    created:    10:10:2012   22:55
+    created:    12:10:2012   15:15
     filename:   MeshInfo.h
     author:     Kristian Skarseth
     
@@ -9,6 +9,14 @@
 #define MeshInfo_h__
 
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <gl/gl.h>
+#include "BoundingSphere.h"
+#include <memory>
+
+class BoundingSphere;
 class MeshInfo
 {
 public:
@@ -17,7 +25,7 @@ public:
 	GLuint numberOfIndices;
 	GLuint normals;
 	GLuint textCoords;
-	//std::shared_ptr<BoundingSphere> collisionSphere;
+	std::shared_ptr<BoundingSphere> collisionSphere;
 };
 
 #endif // MeshInfo_h__

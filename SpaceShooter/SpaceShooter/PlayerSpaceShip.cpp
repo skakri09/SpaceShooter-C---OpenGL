@@ -66,7 +66,7 @@ void PlayerSpaceShip::Update(GLfloat deltaTime)
 		<< " Z: " << position.getZ() << std::endl;
 }
 
-void PlayerSpaceShip::CreateDrawable()
+void PlayerSpaceShip::CreateGameObject()
 {
 	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//MilleniumFalcon//MilleniumFalcon.3ds");
 	collisionSphere = *meshInfo.collisionSphere;//*loader.GetBoundingSphere();
@@ -90,7 +90,7 @@ void PlayerSpaceShip::InitSpaceship( float startX, float startY, float startZ,
 
 	if(!WasInited)
 	{
-		CreateDrawable();
+		CreateGameObject();
 	}
 }
 

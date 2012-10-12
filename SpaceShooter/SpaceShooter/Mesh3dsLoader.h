@@ -25,7 +25,7 @@
 #include <vector>
 #include <memory>
 #include "Image.h"
-#include "Mesh.h"
+#include "MeshInfo.h"
 #include "Logger.h"
 #include "BoundingSphere.h"
 
@@ -35,11 +35,12 @@ public:
     Mesh3dsLoader();
     ~Mesh3dsLoader();
 
+	//Loads a .3ds file from the param path & filename
+	//The function will take care of creating the VBOs
+	//and loading them to the gpu. It returns a MeshInfo
+	//object containing the IDs for the VBOs as well as
+	//a collisionSphere object created from the loaded vertexes
 	MeshInfo Load3dsMesh(std::string _3dsMeshFile);
-	
-	//Returning the collisionSphere by value as we wish to transfer complete
-	//ownership anyway and store it in a none-pointer fashion
-	std::shared_ptr<BoundingSphere> GetBoundingSphere(){return collisionSphere;}
 	
 private:
 	Logger log;

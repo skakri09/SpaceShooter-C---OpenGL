@@ -61,7 +61,7 @@ void Particle::Update( GLfloat deltaTime )
 	}
 }
 
-void Particle::CreateDrawable()
+void Particle::CreateGameObject()
 {
 	isActive = false;
 	life = 0.0f;

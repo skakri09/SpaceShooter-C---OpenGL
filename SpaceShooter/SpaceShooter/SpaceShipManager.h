@@ -3,7 +3,9 @@
     filename:   SpaceShipManager.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    Manages all spaceships in the game, calling their update
+				and draw functions, creating, initializing and destroying
+				them.
 *********************************************************************/
 #ifndef SpaceShipManager_h__
 #define SpaceShipManager_h__
@@ -21,13 +23,17 @@ public:
     SpaceShipManager();
     ~SpaceShipManager();
 
+	//Initializing this manager. The input parameter
+	//pointer should point to the inputManager used
+	//by the game. We take it so that we can handle
+	//input for the spaceship in this class.
 	void InitManager(InputManager* input);
 	
+	//Calling Update() on all active spaceships
 	void UpdateManager(GLfloat deltaTime);
 
+	//Calling Draw() on all active spaceships
 	void DrawSpaceShips();
-
-protected:
 
 private:
 	Logger log;

@@ -83,7 +83,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
-    <ClCompile Include="AxisAlignedBoundingBox.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
@@ -118,7 +117,6 @@
     <ClInclude Include="AABB.h" />
     <ClInclude Include="AiState.h" />
     <ClInclude Include="AiStateMachine.h" />
-    <ClInclude Include="AxisAlignedBoundingBox.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="GameObject.h" />
@@ -135,9 +133,9 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogSys.h" />
-    <ClInclude Include="Mesh.h" />
     <ClInclude Include="Mesh3dsLoader.h" />
     <ClInclude Include="MeshFactory.h" />
+    <ClInclude Include="MeshInfo.h" />
     <ClInclude Include="MeshXmlLoader.h" />
     <ClInclude Include="NormalCalculator.h" />
     <ClInclude Include="Particle.h" />
@@ -158,11 +156,10 @@
     <ClInclude Include="XmlLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="lib3ds-1_3d.dll" />
     <None Include="Mesh_PlayerSpaceship.xml" />
     <None Include="Mesh_SquareBullet.xml" />
-    <None Include="milfalcon.3ds" />
-    <None Include="tiebomber.3ds" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

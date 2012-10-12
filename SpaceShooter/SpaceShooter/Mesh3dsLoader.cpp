@@ -33,13 +33,6 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 		//Lib3dsTexel* texCoords = new Lib3dsTexel[totalFaces * 3];
 		Lib3dsVector* normals = new Lib3dsVector[totalFaces * 3];
 
-		//std::vector<Lib3dsVector> vertices;
-		//std::vector<Lib3dsTexel> texCoords;
-		//std::vector<Lib3dsVector> normals;
-		//
-		//vertices.reserve(totalFaces*3);
-		//texCoords.reserve(totalFaces*3);
-		//normals.reserve(totalFaces*3);
 
 		Lib3dsMesh* mesh;
 		unsigned int finishedFaces = 0;

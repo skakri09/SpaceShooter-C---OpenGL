@@ -4,7 +4,6 @@
 *	Author:		Kristian Skarseth
 *	
 *	purpose:	The class acts as a base class for any projectiles in the game.
-				It has everything except the body of the projectile. 
 *********************************************************************/
 #ifndef Projectile_H
 #define Projectile_H
@@ -12,7 +11,7 @@
 #include "GameObject.h"
 #include "Logger.h"
 #include "MeshXmlLoader.h"
-#include "Mesh.h"
+#include "MeshInfo.h"
 
 class Projectile : public GameObject
 {

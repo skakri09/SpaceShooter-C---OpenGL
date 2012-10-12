@@ -17,7 +17,7 @@ public:
 	SquareBullet();
 	virtual ~SquareBullet();
 
-	void CreateDrawable();
+	void CreateGameObject();
 
 private:
 

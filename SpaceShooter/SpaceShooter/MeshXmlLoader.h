@@ -16,6 +16,12 @@
 
 //#pragma warning(disable: 4345)
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <gl/glew.h>
+#include <gl/GL.h>
+
 #include <string>
 #include <sstream>
 #include <iterator>
@@ -27,7 +33,8 @@
 #include "Logger.h"
 #include "XmlLoader.h"
 #include "NormalCalculator.h"
-#include "Mesh.h"
+#include "MeshInfo.h"
+#include "BoundingSphere.h"
 using boost::property_tree::ptree;
 
 
@@ -48,10 +55,10 @@ public:
     MeshXmlLoader();
     ~MeshXmlLoader();
 	
-	//Returns a Mesh struct consisting of data from the xml at
+	//Returns a MeshInfo struct consisting of data from the xml at
 	//the loadpath. Loadpath has to contain the full path of
 	//the file, including the file name and extension
-	std::shared_ptr<Mesh> LoadMeshXml(std::string meshLoadPath);
+	MeshInfo LoadMeshXml(std::string meshLoadPath);
 
 protected:
 
@@ -76,6 +83,9 @@ private:
 					 const std::vector<unsigned int>& indices,
 					 std::vector<float>& targetVector);
 
+	MeshInfo meshInfo;
+
+	std::shared_ptr<BoundingSphere> collisionSphere;
 };
 
 #endif // MeshLoader_h__

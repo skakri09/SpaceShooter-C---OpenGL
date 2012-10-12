@@ -16,10 +16,10 @@ void SpaceShipManager::InitManager(InputManager* input)
 	
 	player.InitSpaceship(0.0f, -10.0f, 0.0f, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, -1);
 
-	EnemySpaceShips.push_back(std::make_shared<SimpleEnemy>(&player));
+	EnemySpaceShips.push_back(std::make_shared<SithInfiltratorEnemy>(&player));
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end(); i++)
 	{
-		(*i)->InitSpaceship(100.0f, 0.0f, -50.0f, 0.8f, 0.8f, 0.8f, -90, 1, 0, 0, 0, 0, 1);
+		(*i)->InitSpaceship(100.0f, 0.0f, -50.0f, 0.1f, 0.1f, 0.1f, -90, 1, 0, 0, 0, 0, 1);
 	}
 }
 
@@ -57,8 +57,8 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	}
 	if(EnemySpaceShips.size() == 0)
 	{
-		EnemySpaceShips.push_back(std::make_shared<SimpleEnemy>(&player));
-		EnemySpaceShips.back()->InitSpaceship(100.0f, 0.0f, -50.0f, 0.8f, 0.8f, 0.8f, -90, 1, 0, 0, 0, 0, 1);
+		EnemySpaceShips.push_back(std::make_shared<SithInfiltratorEnemy>(&player));
+		EnemySpaceShips.back()->InitSpaceship(100.0f, 0.0f, -50.0f, 0.1f, 0.1f, 0.1f, -90, 1, 0, 0, 0, 0, 1);
 	}
 
 	/*if(player.HandleProjectileCollision(enemy.GetProjectiles()))
@@ -71,7 +71,11 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 
 void SpaceShipManager::DrawSpaceShips()
 {
-	player.Draw();
+	if(player.GameObjectAlive())
+	{
+		player.Draw();
+	}
+	
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();i++)
 	{
 		if( (*i)->GameObjectAlive() )

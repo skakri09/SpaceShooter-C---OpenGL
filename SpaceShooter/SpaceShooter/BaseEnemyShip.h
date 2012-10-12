@@ -61,7 +61,7 @@ protected:
 	PlayerSpaceShip* playerShip;
 
 	//Creates the displaylist/vbo for the spaceship
-	virtual void CreateDrawable();
+	virtual void CreateGameObject();
 
 	//Takes care of switching between AI states. Any enemy spaceship
 	//need to implement their own functionality in this function

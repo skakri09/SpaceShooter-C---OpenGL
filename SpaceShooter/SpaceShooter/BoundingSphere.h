@@ -8,12 +8,13 @@
 #ifndef BoundingSphere_h__
 #define BoundingSphere_h__
 
-//#include "Collidable.h"
+#include <vector>
+#include <memory>
+#include <lib3ds/types.h>
 #include "AABB.h"
 #include "Vector3d.h"
-//#include <lib3ds/types.h>
 #include "Transformation.h"
-#include "Mesh.h"
+//#include "MeshInfo.h"
 
 class BoundingSphere : public AABB
 {
@@ -26,11 +27,10 @@ public:
 	//vector3d will be a null-vector
 	Vector3D IsCollision(BoundingSphere& otherCollidable);
 
-	//Creates the collisionBox for the spaceship. The default
-	//implementation creates a bounding sphere collisionBox
-	void CreateCollisionBox(Mesh& mesh);
+	//Creates the collisionBox for the spaceship. from a vector of vertices
+	void CreateCollisionBox(std::vector<float>* vertices);
 
-	//same as above, but takes a reference to an array of floats instead
+	//same as above, but takes a pointer to an array of floats instead
 	void CreateCollisionBox(Lib3dsVector* vertices, unsigned int size);
 
 	void ApplyTransformations(Transformation& translationInfo);
@@ -42,8 +42,6 @@ public:
 protected:
 
 private:
-	//Logger log;
-
 	void CalculateDistance();
 
 	Vector3D LocalMidpoint;

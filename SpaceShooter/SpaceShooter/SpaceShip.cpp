@@ -43,11 +43,11 @@ void SpaceShip::Update(GLfloat deltaTime)
 	}
 	else
 	{
-		KillGameObject();//not implemented
+		KillGameObject();
 	}
 }
 
-void SpaceShip::CreateDrawable()
+void SpaceShip::CreateGameObject()
 {
 
 }

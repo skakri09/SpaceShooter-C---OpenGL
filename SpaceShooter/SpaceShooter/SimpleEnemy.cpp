@@ -1,6 +1,6 @@
 #include "SimpleEnemy.h"
 
-SimpleEnemy::SimpleEnemy(PlayerSpaceShip* playerShip)
+SithInfiltratorEnemy::SithInfiltratorEnemy(PlayerSpaceShip* playerShip)
 	: log("SimpleEnemy", WARN),
 	 BaseEnemyShip(playerShip, std::make_shared<IdleState>(),
 					std::make_shared<EnemySpaceshipConstantState>(),
@@ -9,11 +9,11 @@ SimpleEnemy::SimpleEnemy(PlayerSpaceShip* playerShip)
 {
 }
 
-SimpleEnemy::~SimpleEnemy()
+SithInfiltratorEnemy::~SithInfiltratorEnemy()
 {
 }
 
-void SimpleEnemy::Draw()
+void SithInfiltratorEnemy::Draw()
 {
 	if(isAlive)
 	{
@@ -28,60 +28,29 @@ void SimpleEnemy::Draw()
 	}
 }
 
-void SimpleEnemy::Update( GLfloat deltaTime )
+void SithInfiltratorEnemy::Update( GLfloat deltaTime )
 {
 	BaseEnemyShip::Update(deltaTime);
 	shooterModule.UpdateModule(deltaTime);
 	HandleAI();
 
-	//CalculatePosition(deltaTime);
-
 	log << INFO << "X: " << position.getX()<< " Y: " << position.getY() 
 		<< " Z: " << position.getZ() << std::endl;
 }
 
-void SimpleEnemy::CreateDrawable()
+void SithInfiltratorEnemy::CreateGameObject()
 {
-	//Mesh3dsLoader loader;
 	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//SithInfiltrator//SithInfiltrator.3ds");
-	collisionSphere = *meshInfo.collisionSphere;//*loader.GetBoundingSphere();
+	collisionSphere = *meshInfo.collisionSphere;
 	WasInited = true;
-	//collisionSphere = *meshInfo.collisionSphere;
-	//std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
-	//meshInfo.numberOfIndices = mesh->indices.size();
-	//collisionSphere.CreateCollisionBox(*mesh);
-
-	//glGenBuffers(1, &meshInfo.vertices);
-	//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->vertices.size(), &mesh->vertices[0], GL_STATIC_DRAW);
-
-	//glGenBuffers(1, &meshInfo.normals);
-	//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(float)*mesh->normals.size(), &mesh->normals[0], GL_STATIC_DRAW);
-
-	///*glGenBuffers(1, &colors);
-	//glBindBuffer(GL_COLOR_ARRAY, colors);
-	//glBufferData(GL_COLOR_ARRAY, sizeof(float)*mesh->colors.size(), &mesh->colors[0], GL_STATIC_DRAW);*/
-
-	//glGenBuffers(1, &meshInfo.indices);
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float)*mesh->indices.size(), &mesh->indices[0], GL_STATIC_DRAW);
-
-	//glGenBuffers(1, &meshInfo.vertices);
-	//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*15, enemyVertexes, GL_STATIC_DRAW);
-
-	//glGenBuffers(1, &meshInfo.indices);
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)*18, enemyIndex, GL_STATIC_DRAW);+
 }
 
-void SimpleEnemy::Shoot()
+void SithInfiltratorEnemy::Shoot()
 {
  	SpaceShip::FireGun();
 }
 
-void SimpleEnemy::InitSpaceship(float startX, float startY, float startZ,
+void SithInfiltratorEnemy::InitSpaceship(float startX, float startY, float startZ,
 	float scaleX, float scaleY, float scaleZ,
 	float startRotDeg, float rotX, float rotY, float rotZ,
 	float dirVecX, float dirVecY, float dirVecZ)
@@ -93,11 +62,11 @@ void SimpleEnemy::InitSpaceship(float startX, float startY, float startZ,
 
 	if(!WasInited)
 	{
-		CreateDrawable();
+		CreateGameObject();
 	}
 }
 
-void SimpleEnemy::HandleAI()
+void SithInfiltratorEnemy::HandleAI()
 {
 		
 	float a = position.Distance(*playerShip->getPosition());

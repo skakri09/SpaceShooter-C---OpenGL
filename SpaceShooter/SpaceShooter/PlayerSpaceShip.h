@@ -44,7 +44,7 @@ private:
 	Logger log;
 
 	//Creates the displaylist or VBO for the spaceship
-	void CreateDrawable();
+	void CreateGameObject();
 
 };
 	

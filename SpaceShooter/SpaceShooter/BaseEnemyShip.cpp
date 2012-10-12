@@ -43,7 +43,7 @@ void BaseEnemyShip::Shoot()
 
 }
 
-void BaseEnemyShip::CreateDrawable()
+void BaseEnemyShip::CreateGameObject()
 {
 
 }

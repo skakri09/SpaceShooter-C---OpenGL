@@ -6,7 +6,7 @@ void IdleState::Enter( BaseEnemyShip* owner )
 	log << INFO << "Entering Idle state" << std::endl;
 }
 
-void IdleState::Execute( BaseEnemyShip* owner, float deltaTime )
+void IdleState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
 	//log << INFO << "--" << std::endl;
 }

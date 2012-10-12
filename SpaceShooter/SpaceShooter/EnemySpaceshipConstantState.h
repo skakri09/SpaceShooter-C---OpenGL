@@ -20,9 +20,10 @@ public:
 
 	virtual void Enter(BaseEnemyShip* owner);
 
-	virtual void Execute(BaseEnemyShip* owner, float deltaTime);
+	virtual void UpdateState(BaseEnemyShip* owner, float deltaTime);
 
 	virtual void Exit(BaseEnemyShip* owner);
+
 private:
 	Logger log;
 

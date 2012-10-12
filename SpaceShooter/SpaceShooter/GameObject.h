@@ -18,7 +18,7 @@
 #include <gl/gl.h>
 
 
-#include "Mesh.h"
+#include "MeshInfo.h"
 #include "Timer.h"
 #include "Vector3d.h"
 #include "Transformation.h"
@@ -30,6 +30,7 @@ class GameObject
 public:
 	GameObject(){isAlive = true;}
 	~GameObject(){}
+
 	// Pure virtual function draw, should contain functionality
 	// that draws to the screen when overwritten.
 	virtual void Draw() = 0;
@@ -38,14 +39,16 @@ public:
 	// needed to update the particular object.
 	virtual void Update(GLfloat deltaTime) = 0;
 
-	// Pure virtual function CreateDrawable. Once overwritten it should
-	// set up and prepare the surface or model we are using once drawing.
-	virtual void CreateDrawable() = 0;
+	// Pure virtual function CreateDrawable. The overwritten version
+	// should load and prepare everything the gameObject requires to
+	// do perform it's functionality. Generally this will be loading
+	// the mesh file associated with the object.
+	virtual void CreateGameObject() = 0;
 
 	
 	//Various get and set functions for velocity and position.
 	//Creating several ways of setting and getting the variables
-	//as the most convenient of doing it way varies a lot.
+	//as the most convenient of doing it way varies trought the game
 	float getXVel(){return velocity.getX();}
 	float getYVel(){return velocity.getY();}
 	float getZVel(){return velocity.getZ();}
@@ -67,16 +70,24 @@ public:
 		velocity.setY(yVel);
 		velocity.setZ(zVel);
 	};
-	
+
+	//Sets the scale of this object. Also updates the scale
+	//in the transformationValues struct
 	void SetScale(float x, float y, float z)
 	{
 		scale.setValues(x, y, z);
 		transformationValues.scale = scale;
 	}
 	
+	//Returns a reference to this objects collisionSphere object
 	BoundingSphere& GetCollisionSphere(){return collisionSphere;}
 
+	//Sets the object to not being alive, meaning the object
+	//wont get rendered or updated 
 	virtual void KillGameObject(){isAlive = false;}
+	
+	//Returns wheither or not this object is alive. The object should
+	//not be rendered or updated if it's not alive
 	bool GameObjectAlive(){return isAlive;}
 protected:
 
@@ -87,6 +98,9 @@ protected:
 		position += (velocity * deltaTime);
 	}
 
+	//Updates a struct with transformation values for this object
+	//so that we can pass the struct to the collisionBox object
+	//assigned to this object and let it update itself.
 	virtual void UpdateTransformationValues()
 	{
 		transformationValues.position = position;
@@ -102,21 +116,31 @@ protected:
 		glRotatef(objectRotationDegrees, objectRotation.getX(), objectRotation.getY(), objectRotation.getZ());
 	}
 
+	//Struct object containing transformation information
+	//on this object. Will be updated on update() calls 
+	//and can be passed to objects requiring knowledge
+	//of this objects displacement/rotation etc
 	Transformation transformationValues;
+
+	//BoundingSphere object acting as this objects collision box.
 	BoundingSphere collisionSphere;
 
-	Vector3D position; // Ship Position
-	Vector3D velocity; // Ship velocity
-	Vector3D scale;
+	Vector3D position;	// Ship Position
+	Vector3D velocity;	// Ship velocity
+	Vector3D scale;		// Ship scale
+ 	
+	//A normalized directional vector. The vector
+	//should always be updated to the direction of 
+	//the gameObject
+	Vector3D directionVector;
+
+	//The rotation of the gameObject
 	Vector3D objectRotation;
 	float objectRotationDegrees;
-	Vector3D directionVector;//a normalized directional vector
-
+	
+	//This game objects mesh info object. The MeshInfo
+	//object contains VBO IDs for drawing
 	MeshInfo meshInfo;
-	GLuint indices;
-	GLuint normals;
-	GLuint vertices;
-	GLuint colors;
 
 	bool isAlive;
 private:

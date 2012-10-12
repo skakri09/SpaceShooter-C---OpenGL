@@ -18,7 +18,7 @@
 #include "Logger.h"
 #include "GameObject.h"
 #include "Projectile.h"
-#include "Mesh.h"
+#include "MeshInfo.h"
 #include "MeshXmlLoader.h"
 #include "ShooterModule.h"
 
@@ -75,7 +75,7 @@ protected:
 
 	bool WasInited;
 
-	virtual void CreateDrawable();
+	virtual void CreateGameObject();
 
 	virtual void DrawWithArrays();
 	virtual void DrawWithIndices();

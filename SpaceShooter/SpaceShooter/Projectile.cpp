@@ -35,6 +35,7 @@ void Projectile::Draw()
 		//Draw the projectile in the above object's space which is transformed into the correct
 		//position and rotation.
 		glPushMatrix();
+
 		glTranslatef(position.getX(), position.getY(), position.getZ());
 		glScalef(scale.getX(), scale.getY(), scale.getZ());
 		glEnableClientState(GL_VERTEX_ARRAY);

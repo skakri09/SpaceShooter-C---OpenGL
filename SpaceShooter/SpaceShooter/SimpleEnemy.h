@@ -17,11 +17,11 @@
 #include "FireState.h"
 #include "IdleState.h"
 #include "FollowPlayerState.h"
-class SimpleEnemy : public BaseEnemyShip
+class SithInfiltratorEnemy : public BaseEnemyShip
 {
 public:
-    SimpleEnemy(PlayerSpaceShip* playerShip);
-    virtual ~SimpleEnemy();
+    SithInfiltratorEnemy(PlayerSpaceShip* playerShip);
+    virtual ~SithInfiltratorEnemy();
 	
 	//Does drawing of the spaceship.
 	void Draw();
@@ -44,7 +44,7 @@ private:
 	Logger log;
 
 	//Creates the displaylist/vbo for the spaceship
-	void CreateDrawable();
+	void CreateGameObject();
 };
 
 #endif // SimpleEnemy_h__

@@ -26,7 +26,7 @@ public:
 	
 	virtual void Update(GLfloat deltaTime);
 	
-	virtual void CreateDrawable();
+	virtual void CreateGameObject();
 
 	void InitParticle(Vector3D StartPos, Vector3D Velocity, 
 					float fadeSpeed, float r, float g, float b);

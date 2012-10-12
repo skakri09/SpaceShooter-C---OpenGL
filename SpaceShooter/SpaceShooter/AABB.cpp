@@ -11,38 +11,38 @@ AABB::~AABB()
 
 }
 
-void AABB::CreateAABB( Mesh& mesh )
+void AABB::CreateAABB( std::vector<float>* vertices)
 {
 	m_Right = m_Left = m_Top = m_Bottom = m_Front = m_Back = 0;
 
 #pragma region forloop
-	for(unsigned int i = 0; i < mesh.vertices.size(); i+=3)
+	for(unsigned int i = 0; i < vertices->size(); i+=3)
 	{
-		if(mesh.vertices.at(i) > m_Right)
+		if(vertices->at(i) > m_Right)
 		{
-			m_Right = mesh.vertices.at(i);
+			m_Right = vertices->at(i);
 		}
-		else if(mesh.vertices.at(i) < m_Left)
+		else if(vertices->at(i) < m_Left)
 		{
-			m_Left = mesh.vertices.at(i);
-		}
-
-		if(mesh.vertices.at(i+1) > m_Top)
-		{
-			m_Top = mesh.vertices.at(i+1);
-		}
-		else if(mesh.vertices.at(i+1) < m_Bottom)
-		{
-			m_Bottom = mesh.vertices.at(i+1);
+			m_Left = vertices->at(i);
 		}
 
-		if(mesh.vertices.at(i+2) > m_Front)
+		if(vertices->at(i+1) > m_Top)
 		{
-			m_Front = mesh.vertices.at(i+2);
+			m_Top = vertices->at(i+1);
 		}
-		else if(mesh.vertices.at(i+2) < m_Back)
+		else if(vertices->at(i+1) < m_Bottom)
 		{
-			m_Back = mesh.vertices.at(i+2);
+			m_Bottom = vertices->at(i+1);
+		}
+
+		if(vertices->at(i+2) > m_Front)
+		{
+			m_Front = vertices->at(i+2);
+		}
+		else if(vertices->at(i+2) < m_Back)
+		{
+			m_Back = vertices->at(i+2);
 		}
 	}
 #pragma endregion

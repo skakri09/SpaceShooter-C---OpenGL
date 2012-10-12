@@ -174,7 +174,7 @@ void ParticleManager::InitLightspeedStars()
 	LightspeedStars.resize(MAX_LIGHTPSEED_PARTICLES/10);
 	for(unsigned int i = 0; i< LightspeedStars.size(); i++)
 	{
-		LightspeedStars.at(i).CreateDrawable();
+		LightspeedStars.at(i).CreateGameObject();
 		InitNewLightspeedParticle(LightspeedStars.at(i),true); 
 		
 	}

@@ -10,37 +10,67 @@ MeshXmlLoader::~MeshXmlLoader()
 {
 }
 
-std::shared_ptr<Mesh> MeshXmlLoader::LoadMeshXml( std::string meshLoadPath )
+MeshInfo MeshXmlLoader::LoadMeshXml( std::string meshLoadPath )
 {
-	std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
-	
+	std::vector<float> vertices;
+	std::vector<unsigned int> indices;
+	std::vector<float> normals;
+	std::vector<float> colors;
+
 	//Loading the xml with base class' xml loader function
 	ptree xmlPtree = *XmlLoader::LoadXML(meshLoadPath);
 
-	std::string vertices = xmlPtree.get<std::string>("mesh.vertices");
-	if(!PlaceFloatsInMeshObj(vertices, mesh->vertices))
+	std::string verticesString = xmlPtree.get<std::string>("mesh.vertices");
+	if(!PlaceFloatsInMeshObj(verticesString, vertices))
 	{
 		log << ERRORX << "The placing of vertices in mesh object was not successful" << std::endl;
 	}
 	
-	std::string indices = xmlPtree.get<std::string>("mesh.indices");
-	if(!PlaceUIntsInMeshObj(indices, mesh->indices))
+	std::string indicesString = xmlPtree.get<std::string>("mesh.indices");
+	if(!PlaceUIntsInMeshObj(indicesString, indices))
 	{
 		log << ERRORX << "The placing of indices in mesh object was not successful" << std::endl;
 	}
 	
-	std::string colors = xmlPtree.get<std::string>("mesh.colors");
-	if(!PlaceFloatsInMeshObj(colors, mesh->colors))
+	std::string colorsString = xmlPtree.get<std::string>("mesh.colors");
+	if(!PlaceFloatsInMeshObj(colorsString, colors))
 	{
 		log << ERRORX << "The placing of indices in mesh object was not successful" << std::endl;
 	}
 
-	if(!MakeNormals(mesh->vertices, mesh->indices, mesh->normals))
+	if(!MakeNormals(vertices, indices, normals))
 	{
 		log << ERRORX << "The creation of normals was not successful" << std::endl;
 	}
 
- 	return mesh;
+	glGenBuffers(1, &meshInfo.vertices);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*vertices.size(), &vertices[0], GL_STATIC_DRAW);
+
+	glGenBuffers(1, &meshInfo.normals);
+	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*normals.size(), &normals[0], GL_STATIC_DRAW);
+
+	/*glGenBuffers(1, &colors);
+	glBindBuffer(GL_COLOR_ARRAY, colors);
+	glBufferData(GL_COLOR_ARRAY, sizeof(float)*mesh->colors.size(), &mesh->colors[0], GL_STATIC_DRAW);*/
+
+	glGenBuffers(1, &meshInfo.indices);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float)*indices.size(), &indices[0], GL_STATIC_DRAW);
+
+	//glGenBuffers(1, &meshInfo.textCoords);
+	//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.textCoords);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsTexel) * 3 * totalFaces, &texCoords[0], GL_STATIC_DRAW);
+	
+	meshInfo.numberOfIndices = indices.size();
+
+	collisionSphere = std::make_shared<BoundingSphere>();
+	collisionSphere->CreateCollisionBox(&vertices);
+	//collisionSphere->CreateCollisionBox(vertices, meshInfo.numberOfIndices);
+	meshInfo.collisionSphere = collisionSphere;
+
+ 	return meshInfo;
 }
 
 bool MeshXmlLoader::PlaceFloatsInMeshObj( std::string& string,
@@ -55,8 +85,7 @@ bool MeshXmlLoader::PlaceFloatsInMeshObj( std::string& string,
 	GetStringAsVector(string, stringVec);
 
 	//Looping trough the string vector, removing the ',' char at the end of all
-	//the "floats" that has one. Then placing the value in the vector we 
-	//are returning. Showing a warning if the convertion failed
+	//the "floats" that has one. Then placing the value in the param vector
 	for(unsigned int i = 0; i < stringVec.size(); i++)
 	{
 		if(stringVec.at(i).back() == ',')

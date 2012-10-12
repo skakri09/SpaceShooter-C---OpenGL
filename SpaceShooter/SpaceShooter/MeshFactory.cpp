@@ -49,7 +49,11 @@ MeshInfo MeshFactory::GetMesh( std::string meshName)
 		{
 			//load xml file
 			//LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
-
+			LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
+			return LoadedMeshes[meshName];
 		}
 	}
+	MeshInfo WasNotAbleToLoadMeshDurp;
+
+	return WasNotAbleToLoadMeshDurp;
 }

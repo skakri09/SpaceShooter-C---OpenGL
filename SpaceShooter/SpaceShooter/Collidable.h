@@ -14,7 +14,7 @@
 #endif
 #include <gl/gl.h>
 
-#include "Mesh.h"
+#include "MeshInfo.h"
 #include "Logger.h"
 #include "Vector3d.h"
 
@@ -33,9 +33,7 @@ public:
 									  Vector3D& scale);
 
 protected:
-	//Creates the collisionBox for the spaceship. The default
-	//implementation creates a bounding sphere collisionBox
-	virtual void CreateCollisionBox(Mesh& mesh) = 0;
+
 
 private:
 	Logger log;

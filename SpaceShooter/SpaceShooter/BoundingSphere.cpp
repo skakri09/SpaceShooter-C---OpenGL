@@ -2,7 +2,6 @@
 #include <lib3ds/types.h>
 
 BoundingSphere::BoundingSphere()
-	//:log("BoundingSphere", WARN)
 {
 }
 
@@ -25,18 +24,16 @@ Vector3D BoundingSphere::IsCollision( BoundingSphere& otherCollidable)
 	return ammountOfCollision;
 }
 
-void BoundingSphere::CreateCollisionBox(Mesh& mesh)
+void BoundingSphere::CreateCollisionBox( std::vector<float>* vertices )
 {
-	AABB::CreateAABB(mesh);
+	AABB::CreateAABB(vertices);
 	CalculateDistance();
-	//log << INFO << "Created a boundingSphere collisionbox" << std::endl;
 }
 
 void BoundingSphere::CreateCollisionBox(Lib3dsVector* vertices, unsigned int size)
 {
 	AABB::CreateAABB(vertices, size);
 	CalculateDistance();
-	//log << INFO << "Created a boundingSphere collisionbox" << std::endl;
 }
 
 
