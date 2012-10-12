@@ -38,7 +38,9 @@ void GameManager::createOpenGLContext() {
 
 	SDL_WM_SetCaption("NITH - PG430 Space Invaders - FPS: ", "");
 
-	// Initalize video
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
+
 	if (SDL_SetVideoMode(window_width, window_height, 0, SDL_OPENGL
 		| SDL_DOUBLEBUF | SDL_RESIZABLE) == NULL) {
 			std::stringstream err;
@@ -50,13 +52,19 @@ void GameManager::createOpenGLContext() {
 void GameManager::setOpenGLStates() {
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	//glDepthFunc(GL_LEQUAL);
+	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_CULL_FACE);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	glEnable(GL_BLEND);
+	glEnable(GL_MULTISAMPLE);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST );
+	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST );
+
+	glEnable(GL_LINE_SMOOTH);
+	glEnable(GL_POLYGON_SMOOTH);
+	
+	
 	glShadeModel(GL_SMOOTH); 
-	//glClearColor(0.2f, 0.1f, 0.1f, 1.0f);
-	//
+
 	//glEnable(GL_LIGHTING);
 	//glEnable(GL_LIGHT0);
 	//GLfloat pos[] = { 0.0, 100000.0, -1000.0, 1000.0 };

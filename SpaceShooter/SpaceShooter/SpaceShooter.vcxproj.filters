@@ -135,13 +135,7 @@
     <ClCompile Include="Particle.cpp">
       <Filter>Game\GameObjects\Particles\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleManager.cpp">
-      <Filter>Game\GameObjects\Particles\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BaseEnemyShip.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SimpleEnemy.cpp">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EnemySpaceShipConstantState.cpp">
@@ -198,6 +192,18 @@
     <ClCompile Include="SpaceShip.cpp">
       <Filter>Game\GameObjects\SpaceShips</Filter>
     </ClCompile>
+    <ClCompile Include="ImperialTieFighter.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SithInfiltrator.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImperialTieInterceptor.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleManager.cpp">
+      <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -236,13 +242,7 @@
     <ClInclude Include="Particle.h">
       <Filter>Game\GameObjects\Particles\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleManager.h">
-      <Filter>Game\GameObjects\Particles\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BaseEnemyShip.h">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleEnemy.h">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AiStateMachine.h">
@@ -319,6 +319,18 @@
     </ClInclude>
     <ClInclude Include="SpaceShip.h">
       <Filter>Game\GameObjects\SpaceShips</Filter>
+    </ClInclude>
+    <ClInclude Include="ImperialTieFighter.h">
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SithInfiltrator.h">
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImperialTieInterceptor.h">
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleManager.h">
+      <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

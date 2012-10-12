@@ -55,7 +55,6 @@ public:
 	//velocity etc and creating the VBO/displayList or whatever is being 
 	//used for rendering.
 	virtual void InitSpaceship(float startX, float startY, float startZ,
-								float scaleX, float scaleY, float scaleZ,
 								float startRotDeg, float rotX, float rotY, float rotZ,
 								float dirVecX, float dirVecY, float dirVecZ);
 

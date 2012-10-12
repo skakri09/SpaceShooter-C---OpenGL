@@ -1,19 +1,20 @@
-#include "SimpleEnemy.h"
+#include "ImperialTieFighter.h"
 
-SithInfiltratorEnemy::SithInfiltratorEnemy(PlayerSpaceShip* playerShip)
-	: log("SimpleEnemy", WARN),
-	 BaseEnemyShip(playerShip, std::make_shared<IdleState>(),
-					std::make_shared<EnemySpaceshipConstantState>(),
-					10)//hp
-	
+
+ImperialTieFighter::ImperialTieFighter(PlayerSpaceShip* playerShip)
+	: log("ImperialTieFighter", WARN),
+	BaseEnemyShip(playerShip, std::make_shared<IdleState>(),
+	std::make_shared<EnemySpaceshipConstantState>(),
+	10)//hp
 {
 }
 
-SithInfiltratorEnemy::~SithInfiltratorEnemy()
+ImperialTieFighter::~ImperialTieFighter()
 {
 }
 
-void SithInfiltratorEnemy::Draw()
+
+void ImperialTieFighter::Draw()
 {
 	if(isAlive)
 	{
@@ -28,7 +29,7 @@ void SithInfiltratorEnemy::Draw()
 	}
 }
 
-void SithInfiltratorEnemy::Update( GLfloat deltaTime )
+void ImperialTieFighter::Update( GLfloat deltaTime )
 {
 	BaseEnemyShip::Update(deltaTime);
 	shooterModule.UpdateModule(deltaTime);
@@ -38,27 +39,27 @@ void SithInfiltratorEnemy::Update( GLfloat deltaTime )
 		<< " Z: " << position.getZ() << std::endl;
 }
 
-void SithInfiltratorEnemy::CreateGameObject()
+void ImperialTieFighter::CreateGameObject()
 {
-	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//SithInfiltrator//SithInfiltrator.3ds");
+	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
 	collisionSphere = *meshInfo.collisionSphere;
 	WasInited = true;
 }
 
-void SithInfiltratorEnemy::Shoot()
+void ImperialTieFighter::Shoot()
 {
  	SpaceShip::FireGun();
 }
 
-void SithInfiltratorEnemy::InitSpaceship(float startX, float startY, float startZ,
-	float scaleX, float scaleY, float scaleZ,
+void ImperialTieFighter::InitSpaceship(float startX, float startY, float startZ,
 	float startRotDeg, float rotX, float rotY, float rotZ,
 	float dirVecX, float dirVecY, float dirVecZ)
 {
 	BaseEnemyShip::InitSpaceship(startX, startY, startZ,
-		scaleX, scaleY, scaleZ,
 		startRotDeg, rotX, rotY, rotZ,
 		dirVecX, dirVecY, dirVecZ);
+
+	GameObject::SetScale(1.05f, 1.05f, 1.05f);
 
 	if(!WasInited)
 	{
@@ -66,7 +67,7 @@ void SithInfiltratorEnemy::InitSpaceship(float startX, float startY, float start
 	}
 }
 
-void SithInfiltratorEnemy::HandleAI()
+void ImperialTieFighter::HandleAI()
 {
 		
 	float a = position.Distance(*playerShip->getPosition());

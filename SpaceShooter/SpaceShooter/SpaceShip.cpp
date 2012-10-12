@@ -156,13 +156,11 @@ void SpaceShip::InitRotation( Axis axisToRotateArround )
 }
 
 void SpaceShip::InitSpaceship( float startX, float startY, float startZ,
-	float scaleX, float scaleY, float scaleZ,
 	float startRotDeg, float rotX, float rotY, float rotZ,
 	float dirVecX, float dirVecY, float dirVecZ)
 {
 	GameObject::position.setValues(startX, startY, startZ);
 	GameObject::directionVector.setValues(dirVecX, dirVecY, dirVecZ);
-	GameObject::SetScale(scaleX, scaleY, scaleZ);
 	GameObject::objectRotation.setValues(rotX, rotY, rotZ);
 	GameObject::objectRotationDegrees = startRotDeg;
 

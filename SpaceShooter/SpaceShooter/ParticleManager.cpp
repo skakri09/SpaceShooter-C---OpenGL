@@ -44,7 +44,7 @@ void ParticleManager::InitParticleManager()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	//Set that we want to use both the color of our geometry (i.e., glColor) and our texture
-	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	//glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
 	InitLightspeedStars();
 }
@@ -148,7 +148,7 @@ void ParticleManager::InitNewLightspeedParticle(Particle& p, bool firstFrame)
 	
 	newParticleVel.setX(0.0f);
 	newParticleVel.setY(0.0f);
-	newParticleVel.setZ(10000/zeroPoint.Distance(newParticlePos, zeroPoint)*5);
+	newParticleVel.setZ(20000/zeroPoint.Distance(newParticlePos, zeroPoint)*5);
 
 	p.InitParticle(newParticlePos, newParticleVel, GetRandFloat(0.01f, 0.1f), 1, 1, 1);
 }

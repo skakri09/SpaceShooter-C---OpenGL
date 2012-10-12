@@ -1,12 +1,12 @@
 /********************************************************************
     created:    7:10:2012   12:40
-    filename:   SimpleEnemy.h
+    filename:   ImperialTieInterceptor.h
     author:     Kristian Skarseth
     
     purpose:    
 *********************************************************************/
-#ifndef SimpleEnemy_h__
-#define SimpleEnemy_h__
+#ifndef ImperialTieInterceptor_h__
+#define ImperialTieInterceptor_h__
 
 #include "BaseEnemyShip.h"
 #include "Logger.h"
@@ -17,11 +17,12 @@
 #include "FireState.h"
 #include "IdleState.h"
 #include "FollowPlayerState.h"
-class SithInfiltratorEnemy : public BaseEnemyShip
+
+class ImperialTieInterceptor : public BaseEnemyShip
 {
 public:
-    SithInfiltratorEnemy(PlayerSpaceShip* playerShip);
-    virtual ~SithInfiltratorEnemy();
+    ImperialTieInterceptor(PlayerSpaceShip* playerShip);
+    virtual ~ImperialTieInterceptor();
 	
 	//Does drawing of the spaceship.
 	void Draw();
@@ -29,7 +30,6 @@ public:
 	void Update(GLfloat deltaTime);
 
 	void InitSpaceship(float startX, float startY, float startZ,
-		float scaleX, float scaleY, float scaleZ,
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ);
 
@@ -47,4 +47,4 @@ private:
 	void CreateGameObject();
 };
 
-#endif // SimpleEnemy_h__
+#endif // ImperialTieInterceptor_h__

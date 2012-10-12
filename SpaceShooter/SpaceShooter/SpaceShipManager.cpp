@@ -14,12 +14,18 @@ void SpaceShipManager::InitManager(InputManager* input)
 {
 	this->input = input;
 	
-	player.InitSpaceship(0.0f, -10.0f, 0.0f, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, -1);
+	//making sure to pre-load all spaceships we will be using so we dont have to do it on runtime
+	//Its not nessescary to load the player ship, as it's always loaded on the start
+	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
+	MeshFactory::Inst()->LoadMesh("..//3ds//SithInfiltrator//SithInfiltrator.3ds");
+	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 
-	EnemySpaceShips.push_back(std::make_shared<SithInfiltratorEnemy>(&player));
+	player.InitSpaceship(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
+
+	EnemySpaceShips.push_back(std::make_shared<ImperialTieInterceptor>(&player));
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end(); i++)
 	{
-		(*i)->InitSpaceship(100.0f, 0.0f, -50.0f, 0.1f, 0.1f, 0.1f, -90, 1, 0, 0, 0, 0, 1);
+		(*i)->InitSpaceship(100.0f, 0.0f, -50.0f, -90, 1, 0, 0, 0, 0, 1);
 	}
 }
 
@@ -57,8 +63,8 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	}
 	if(EnemySpaceShips.size() == 0)
 	{
-		EnemySpaceShips.push_back(std::make_shared<SithInfiltratorEnemy>(&player));
-		EnemySpaceShips.back()->InitSpaceship(100.0f, 0.0f, -50.0f, 0.1f, 0.1f, 0.1f, -90, 1, 0, 0, 0, 0, 1);
+		EnemySpaceShips.push_back(std::make_shared<SithInfiltrator>(&player));
+		EnemySpaceShips.back()->InitSpaceship(100.0f, 0.0f, -50.0f, -90, 1, 0, 0, 0, 0, 1);
 	}
 
 	/*if(player.HandleProjectileCollision(enemy.GetProjectiles()))

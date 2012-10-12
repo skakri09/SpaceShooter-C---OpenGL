@@ -1,33 +1,33 @@
 /********************************************************************
-*	Created:	2012/09/10  19:42
-*	Filename: 	PlayerSpaceShip.h
-*	Author:		Kristian Skarseth
-*	
-*	purpose:	Space ship class for a player controller spaceship.
+    created:    12:10:2012   16:08
+    filename:   ImperialTieFighter.h
+    author:     Kristian Skarseth
+    
+    purpose:    
 *********************************************************************/
-#ifndef PlayerSpaceShip_H
-#define PlayerSpaceShip_H
+#ifndef ImperialTieFighter_h__
+#define ImperialTieFighter_h__
 
-#include <vector>
-
-#include "SpaceShip.h"
+#include "BaseEnemyShip.h"
 #include "Logger.h"
-#include "Mesh3dsLoader.h"
-//CD on the spaceships fireing of projectiles in seconds
-static const float FIRE_COOLDOWN_PLAYER  = 0.2f;
+#include "SpaceShip.h"
+#include "PlayerSpaceShip.h"
 
-//The speed of a square bullet for the player
-static const float SQUARE_BULLET_SPEED_PLAYER = 100.0f;
+#include "EnemySpaceshipConstantState.h"
+#include "FireState.h"
+#include "IdleState.h"
+#include "FollowPlayerState.h"
 
-
-class PlayerSpaceShip : public SpaceShip
+class ImperialTieFighter : public BaseEnemyShip
 {
 public:
-	PlayerSpaceShip();
-	virtual ~PlayerSpaceShip();
+    ImperialTieFighter(PlayerSpaceShip* playerShip);
+    ~ImperialTieFighter();
+
 
 	//Does drawing of the spaceship.
 	void Draw();
+
 	//Draws the spaceship and takes care of the bullets it owns
 	void Update(GLfloat deltaTime);
 
@@ -38,13 +38,16 @@ public:
 	//Shoots the gun, calling the fire function from spaceShipbase 
 	//with proper parameters (the cd and speed defined in top of class)
 	void Shoot();
-	
+
+protected:
+	void HandleAI();
+
 private:
 	Logger log;
 
-	//Creates the displaylist or VBO for the spaceship
+	//Creates the displaylist/vbo for the spaceship
 	void CreateGameObject();
 
 };
-	
-#endif // PlayerSpaceShip_H
+
+#endif // ImperialTieFighter_h__

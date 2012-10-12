@@ -10,7 +10,10 @@
 #ifndef SpaceShipManager_h__
 #define SpaceShipManager_h__
 
-#include "SimpleEnemy.h"
+#include "BaseEnemyShip.h"
+#include "SithInfiltrator.h"
+#include "ImperialTieFighter.h"
+#include "ImperialTieInterceptor.h"
 #include "PlayerSpaceShip.h"
 #include "GameConstants.h"
 #include "InputManager.h"
@@ -64,7 +67,7 @@ private:
 
 	void HandlePlayerRotation();
 
-	std::vector<std::shared_ptr<SpaceShip>> EnemySpaceShips;
+	std::vector<std::shared_ptr<BaseEnemyShip>> EnemySpaceShips;
 };
 
 #endif // SpaceShipManager_h__

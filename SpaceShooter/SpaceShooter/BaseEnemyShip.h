@@ -31,6 +31,10 @@ public:
 				   int enemyHP);
 
     virtual ~BaseEnemyShip();
+	
+	virtual void InitSpaceship(float startX, float startY, float startZ,
+		float startRotDeg, float rotX, float rotY, float rotZ,
+		float dirVecX, float dirVecY, float dirVecZ);
 
 	//Does drawing of the spaceship.
 	virtual void Draw();
