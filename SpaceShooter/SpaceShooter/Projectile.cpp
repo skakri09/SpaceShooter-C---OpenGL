@@ -1,12 +1,17 @@
 #include "Projectile.h"
 
-Projectile::Projectile(float projectileFlytime, int projectileDmg)
+Projectile::Projectile(	float projectileFlytime, 
+						int projectileDmg, 
+						float projectileCooldown,
+						float scaleX, float scaleY, float scaleZ)
 	:log("Projectile", WARN)
 {
+	this->projectileCooldown = projectileCooldown;
 	this->PROJECTILE_FLYTIME = projectileFlytime;
 	this->projectileDamage = projectileDmg;
-	this->projectileVelocity = -100.0f;
+	this->projectileVelocity = 100.0f;
 	this->fired = false;
+	GameObject::scale.setValues(scaleX, scaleY, scaleZ);
 }
 
 Projectile::~Projectile()
@@ -23,9 +28,9 @@ void Projectile::Draw()
 		glPushMatrix();
 
 		glTranslatef(startPosition.getX(), startPosition.getY(), startPosition.getZ());
-		glRotatef(startRotation.getX(), 1.0f, 0.0f, 0.0f);
-		glRotatef(startRotation.getY(), 0.0f, 1.0f, 0.0f);
-		glRotatef(startRotation.getZ(), 0.0f, 0.0f, 1.0f);
+		glRotatef(objectRotation.getX(), 1.0f, 0.0f, 0.0f);
+		glRotatef(objectRotation.getY(), 0.0f, 1.0f, 0.0f);
+		glRotatef(objectRotation.getZ(), 0.0f, 0.0f, 1.0f);
 
 		//Draw the projectile in the above object's space which is transformed into the correct
 		//position and rotation.
@@ -80,14 +85,15 @@ void Projectile::Update(GLfloat deltaTime)
 	}
 }
 
-void Projectile::FireProjectile( Vector3D startPos, Vector3D startRotation, Vector3D scale, GLfloat speed )
+void Projectile::FireProjectile( Vector3D startPos, Vector3D directionVector)
 {
 	GameObject::position = 0.0f;
 	GameObject::velocity = 0.0f;
 	GameObject::scale = scale;
 	timeSinceFired = 0.0f;
-	velocity.setZ(-speed);//setting to negative z so we don't have to do that other places
-	this->startRotation = startRotation;
+	velocity = directionVector;
+	velocity.Normalize();
+	velocity *= projectileVelocity;
 	this->startPosition = startPos;
 	fired = true;
 }

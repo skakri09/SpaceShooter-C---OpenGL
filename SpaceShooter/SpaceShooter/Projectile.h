@@ -11,20 +11,23 @@
 
 #include "GameObject.h"
 #include "Logger.h"
-#include "MeshLoader.h"
+#include "MeshXmlLoader.h"
 #include "Mesh.h"
 
 class Projectile : public GameObject
 {
 public:
-	Projectile(float projectileFlytime, int projectileDmg);
+	Projectile(	float projectileFlytime, 
+				int projectileDmg, 
+				float projectileCooldown,
+				float scaleX, float scaleY, float scaleZ);
 	virtual ~Projectile();
 
 	virtual void Draw();
 
 	virtual void Update(GLfloat deltaTime);
 
-	virtual void FireProjectile(Vector3D startPos, Vector3D startRotation, Vector3D scale, GLfloat speed);
+	virtual void FireProjectile(Vector3D startPos, Vector3D directionVector);
 
 	bool isFired(){return fired;}
 
@@ -32,18 +35,20 @@ public:
 
 	int GetProjectileDmg(){return projectileDamage;}
 
+	float GetProjectileCooldown(){return projectileCooldown;}
+
 protected:
 	float PROJECTILE_FLYTIME;
-	
+	float projectileCooldown;
 	int projectileDamage;
 
 	float projectileVelocity;
 	float timeSinceFired;
-	Vector3D startRotation;
+	Vector3D objectRotation;
 	Vector3D startPosition;
 	bool fired;
-
-	MeshLoader meshLoader;
+	float projectileSpeed;
+	MeshXmlLoader meshLoader;
 
 	virtual void UpdateTransformationValues();
 

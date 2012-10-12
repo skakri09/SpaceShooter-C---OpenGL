@@ -13,6 +13,7 @@
 #include "GameConstants.h"
 #include "InputManager.h"
 #include "Logger.h"
+#include "SpaceShip.h"
 
 class SpaceShipManager
 {
@@ -36,7 +37,7 @@ private:
 	InputManager* input;	
 
 	PlayerSpaceShip player; // Player spaceship object
-	SimpleEnemy enemy;  // Enemy spaceship object
+	//std::shared_ptr<SimpleEnemy> enemy;  // Enemy spaceship object
 
 	//Handles movement along the x axis. Checks for input and changes
 	//x velocity based on the input.
@@ -56,6 +57,8 @@ private:
 	void HandleFrustumCollision();
 
 	void HandlePlayerRotation();
+
+	std::vector<std::shared_ptr<SpaceShip>> EnemySpaceShips;
 };
 
 #endif // SpaceShipManager_h__

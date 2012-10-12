@@ -30,24 +30,39 @@ class ProjectileFactory
 {
 public:
 	static ProjectileFactory* Inst();
-	Projectile* GetProjectile(ProjectileTypes projectileType);
+	
+	//Initializes the factory, loading all the different projectile
+	//types and storing some key information for the various types.
+	//This function should be called before or when starting a new 
+	//game so we dont end up having to load resources when firing
+	//the first shot!
+	//Note: This force-loads all projectile types. If we at a later point
+	//end up with a lot of different projectile types that are not all unlocked
+	//at once, we should change the force-loading of all projectile types to be
+	//based on the types we have unlocked.
+	void InitProjectileFactory();
+
+	std::shared_ptr<Projectile> GetProjectile(ProjectileTypes projectileType);
 	
 	
 	void AddVBOInfo(ProjectileTypes projectileType, MeshInfo meshInfo);
 	
 	MeshInfo* GetMeshInfo(ProjectileTypes projectileType);
 
+	float GetProjectileCooldown(ProjectileTypes projectileType);
 protected:
 
 private:
 	Logger log;
-
+	bool wasInited;
 	ProjectileFactory();
 	~ProjectileFactory();
 	
-	SquareBullet* getSimpleBullet();
+	std::map<ProjectileTypes, float> projectileCooldowns; 
+
+	std::shared_ptr<SquareBullet> getSimpleBullet();
 	
-	std::vector<SquareBullet*> simpleBullets;
+	std::vector<std::shared_ptr<SquareBullet>> simpleBullets;
 
 	std::map<ProjectileTypes, MeshInfo> MeshInfos;
 

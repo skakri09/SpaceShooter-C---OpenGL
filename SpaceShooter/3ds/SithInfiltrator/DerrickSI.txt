@@ -1,0 +1,21 @@
+This zip file, named DA_SI.zip, contains the following files for the Sith Infiltrator:
+
+Scene:		SITHINF.lws
+
+objects:	SImain.lwo
+		SIbotleft.lwo
+		SIbotright.lwo
+		SIlandgear.lwo
+		SIramp.lwo
+
+textures:	SIbot.jpg
+		SIbotwing.jpg
+		SItop.jpg
+		SIupwing.jpg
+
+rendered image:	sith_inf.jpg
+
+Just open the .lws file and the objects and textures should be referenced.
+
+Thanks for your patience!
+Derrick Auyoung

@@ -2,6 +2,7 @@
 
 ProjectileFactory::ProjectileFactory() : log("ProjectileFactory", WARN)
 {
+	wasInited = false;
 }
 ProjectileFactory::~ProjectileFactory()
 {
@@ -13,7 +14,7 @@ ProjectileFactory* ProjectileFactory::Inst()
 	return instance;
 }
 
-Projectile* ProjectileFactory::GetProjectile( ProjectileTypes projectileType )
+std::shared_ptr<Projectile> ProjectileFactory::GetProjectile( ProjectileTypes projectileType )
 {
 	switch(projectileType)
 	{
@@ -43,7 +44,7 @@ MeshInfo* ProjectileFactory::GetMeshInfo( ProjectileTypes projectileType )
 	}
 }
 
-SquareBullet* ProjectileFactory::getSimpleBullet()
+std::shared_ptr<SquareBullet> ProjectileFactory::getSimpleBullet()
 {
 	if(simpleBullets.size() > 0)
 	{
@@ -56,7 +57,28 @@ SquareBullet* ProjectileFactory::getSimpleBullet()
 		}
 	}
 
-	simpleBullets.push_back(new SquareBullet());
+	simpleBullets.push_back(std::make_shared<SquareBullet>());
 	return simpleBullets.back();
+}
+
+float ProjectileFactory::GetProjectileCooldown( ProjectileTypes projectileType )
+{
+	if(projectileCooldowns.find(projectileType) != projectileCooldowns.end())
+	{
+		return projectileCooldowns.find(projectileType)->second;
+	}
+	log << CRITICAL << "Cooldown for projectile type " << projectileType << " not found" << std::endl;
+	return 0;
+}
+
+void ProjectileFactory::InitProjectileFactory()
+{
+	wasInited = true;
+
+//Repeat the two following lines of code for each ProjectileType added to the game!
+	/***********************************************************************/
+	std::shared_ptr<Projectile> dummyPtr = GetProjectile(SIMPLE_BULLET);
+	projectileCooldowns[SIMPLE_BULLET] = dummyPtr->GetProjectileCooldown();
+	/***********************************************************************/
 }
 

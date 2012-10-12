@@ -18,9 +18,9 @@
 #include "Logger.h"
 #include "GameObject.h"
 #include "Projectile.h"
-#include "ProjectileFactory.h"
 #include "Mesh.h"
-#include "MeshLoader.h"
+#include "MeshXmlLoader.h"
+#include "ShooterModule.h"
 
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
@@ -56,41 +56,35 @@ public:
 	//used for rendering.
 	virtual void InitSpaceship(float startX, float startY, float startZ,
 								float scaleX, float scaleY, float scaleZ,
-								float startRotDeg, float rotX, float rotY, float rotZ);
+								float startRotDeg, float rotX, float rotY, float rotZ,
+								float dirVecX, float dirVecY, float dirVecZ);
 
 	//Starts rotation around the specified axis
 	void InitRotation(Axis axisToRotateArround);
 	
 	GLfloat getDeltaTime(){return deltaTime;}
 
-	std::vector<Projectile*>* GetProjectiles(){return &projectiles;}
+	std::deque<std::shared_ptr<Projectile>>* GetProjectiles(){return shooterModule.GetActiveProjectiles();}
 
-	bool WasHitByPorjectile(std::vector<Projectile*>* projectiles);
-	int GetSpaceshipHP(){return SpaceshipHealth;}
+	void HandleProjectileCollision(std::deque<std::shared_ptr<Projectile>>* projectiles);
+
+	int GetSpaceshipHP(){return SpaceShipCurrentHealth;}
+
 protected:
+	ShooterModule shooterModule;
+
+	bool WasInited;
+
 	virtual void CreateDrawable();
 
 	virtual void DrawWithArrays();
 	virtual void DrawWithIndices();
 
-	int SpaceshipHealth;
-
-	//Vector of projectiles, used to loop trough them and 
-	//call their respecive Draw() function
-	std::vector<Projectile*> projectiles;
-
-	//Loops trough and draws the currently active projectiles
-	//We let the child spaceship class take care of calling this
-	void DrawProjectiles();
-
-	//Loops trough the projectiles we own and call Update on them
-	void UpdateProjectiles(float deltaTime);
+	int SpaceShipMaxHealth;
+	int SpaceShipCurrentHealth;
 
 	//Takes care of firing the spaceships gun.
-	void FireGun(GLfloat fireCooldown, GLfloat projectileSpeed);
-
-	//Used to time the coolown of a shot
-	float timeSinceLastFired;
+	void FireGun();
 
 	//handles the rotation arround the x, y and z axis
 	void RotateArroundX(GLfloat deltaTime);
@@ -99,7 +93,7 @@ protected:
 
 	//Stores the current rotation in degrees around the 3 axes
 	//Used to send as parameter to projectiles.
-	Vector3D rotation; 
+	//Vector3D rotation; 
 
 	//Struct objects that hold rotation info about the differet axes
 	RotationInfo xAxis;

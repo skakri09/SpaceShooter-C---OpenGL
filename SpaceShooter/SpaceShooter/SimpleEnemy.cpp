@@ -15,20 +15,23 @@ SimpleEnemy::~SimpleEnemy()
 
 void SimpleEnemy::Draw()
 {
-	glPushMatrix();
+	if(isAlive)
+	{
+		glPushMatrix();
 
-	ApplyTransformations();
-	//glRotatef(180, 0, 0, 1);//sortof placeholder rotation
-	DrawWithArrays();
+		ApplyTransformations();
 
-	glPopMatrix();
-	DrawProjectiles();
+		DrawWithArrays();
+
+		glPopMatrix();
+		shooterModule.DrawModule();
+	}
 }
 
 void SimpleEnemy::Update( GLfloat deltaTime )
 {
 	BaseEnemyShip::Update(deltaTime);
-	UpdateProjectiles(deltaTime);
+	shooterModule.UpdateModule(deltaTime);
 	HandleAI();
 
 	//CalculatePosition(deltaTime);
@@ -39,10 +42,10 @@ void SimpleEnemy::Update( GLfloat deltaTime )
 
 void SimpleEnemy::CreateDrawable()
 {
-
-	Mesh3dsLoader loader;
-	meshInfo = loader.Load3dsMesh("..//3ds//tiebomber.3ds");
-	collisionSphere = *loader.GetBoundingSphere();
+	//Mesh3dsLoader loader;
+	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
+	collisionSphere = *meshInfo.collisionSphere;//*loader.GetBoundingSphere();
+	WasInited = true;
 	//collisionSphere = *meshInfo.collisionSphere;
 	//std::shared_ptr<Mesh> mesh = meshLoader.LoadMeshXml("Mesh_PlayerSpaceship.xml");
 	//meshInfo.numberOfIndices = mesh->indices.size();
@@ -75,18 +78,23 @@ void SimpleEnemy::CreateDrawable()
 
 void SimpleEnemy::Shoot()
 {
- 	SpaceShip::FireGun(FIRE_COOLDOWN_SIMPLE_ENEMY, -SQUARE_BULLET_SPEED_SIMPLE_ENEMY);
+ 	SpaceShip::FireGun();
 }
 
 void SimpleEnemy::InitSpaceship(float startX, float startY, float startZ,
 	float scaleX, float scaleY, float scaleZ,
-	float startRotDeg, float rotX, float rotY, float rotZ )
+	float startRotDeg, float rotX, float rotY, float rotZ,
+	float dirVecX, float dirVecY, float dirVecZ)
 {
 	BaseEnemyShip::InitSpaceship(startX, startY, startZ,
 		scaleX, scaleY, scaleZ,
-		startRotDeg, rotX, rotY, rotZ);
+		startRotDeg, rotX, rotY, rotZ,
+		dirVecX, dirVecY, dirVecZ);
 
-	CreateDrawable();
+	if(!WasInited)
+	{
+		CreateDrawable();
+	}
 }
 
 void SimpleEnemy::HandleAI()

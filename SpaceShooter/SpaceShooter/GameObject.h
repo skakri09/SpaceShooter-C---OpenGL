@@ -23,6 +23,7 @@
 #include "Vector3d.h"
 #include "Transformation.h"
 #include "BoundingSphere.h"
+#include "MeshFactory.h"
 
 class GameObject
 {
@@ -75,7 +76,8 @@ public:
 	
 	BoundingSphere& GetCollisionSphere(){return collisionSphere;}
 
-	virtual void KillGameObject(){}
+	virtual void KillGameObject(){isAlive = false;}
+	bool GameObjectAlive(){return isAlive;}
 protected:
 
 	// Calculates the position by adding velocity multiplied by
@@ -97,7 +99,7 @@ protected:
 	{
 		glTranslatef(position.getX(), position.getY(), position.getZ());
 		glScalef(scale.getX(), scale.getY(), scale.getZ());
-		glRotatef(startRotationDegrees, startRotation.getX(), startRotation.getY(), startRotation.getZ());
+		glRotatef(objectRotationDegrees, objectRotation.getX(), objectRotation.getY(), objectRotation.getZ());
 	}
 
 	Transformation transformationValues;
@@ -106,8 +108,9 @@ protected:
 	Vector3D position; // Ship Position
 	Vector3D velocity; // Ship velocity
 	Vector3D scale;
-	Vector3D startRotation;
-	float startRotationDegrees;
+	Vector3D objectRotation;
+	float objectRotationDegrees;
+	Vector3D directionVector;//a normalized directional vector
 
 	MeshInfo meshInfo;
 	GLuint indices;

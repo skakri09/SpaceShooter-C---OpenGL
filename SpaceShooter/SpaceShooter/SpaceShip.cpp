@@ -3,16 +3,15 @@
 SpaceShip::SpaceShip(int spaceshipHP)
 	:log("SpaceShipbase", WARN)
 {
-	this->SpaceshipHealth = spaceshipHP;
+	this->SpaceShipMaxHealth = spaceshipHP;
 	xAxis.rotating = false;
 	yAxis.rotating = false;
 	zAxis.rotating = false;
 	xAxis.currentAngle = 0.0;
 	yAxis.currentAngle = 0.0;
 	zAxis.currentAngle = 0.0f;
-	timeSinceLastFired = 0.0f;
 	deltaTime = 0;
-	timeSinceLastFired = 0;
+	WasInited = false;
 }
 
 SpaceShip::~SpaceShip()
@@ -23,16 +22,14 @@ SpaceShip::~SpaceShip()
 void SpaceShip::Draw()
 {
 	ApplyTransformations();
-	//DrawWithIndices();
 }
 
 void SpaceShip::Update(GLfloat deltaTime)
 {
-	if(SpaceshipHealth > 0)
+	if(SpaceShipCurrentHealth > 0)
 	{
 		//CalculatePosition(deltaTime);
 		this->deltaTime = deltaTime;
-		timeSinceLastFired += deltaTime;
 		CalculatePosition(deltaTime);
 		UpdateTransformationValues();
 		collisionSphere.ApplyTransformations(transformationValues);
@@ -55,32 +52,22 @@ void SpaceShip::CreateDrawable()
 
 }
 
-void SpaceShip::FireGun(GLfloat fireCooldown, GLfloat projectileSpeed)
+void SpaceShip::FireGun()
 {
-	//timeSinceLastFired += this->getDeltaTime();
-	if(timeSinceLastFired >= fireCooldown)
-	{
-		timeSinceLastFired = 0.0f;
-		rotation.setX(xAxis.currentAngle);
-		rotation.setY(yAxis.currentAngle);
-		rotation.setZ(zAxis.currentAngle);
+	////timeSinceLastFired += this->getDeltaTime();
+	//if(timeSinceLastFired >= fireCooldown)
+	//{
+	//	timeSinceLastFired = 0.0f;
+	//	rotation.setX(xAxis.currentAngle);
+	//	rotation.setY(yAxis.currentAngle);
+	//	rotation.setZ(zAxis.currentAngle);
 
-		Projectile* projectile = ProjectileFactory::Inst()->GetProjectile(SIMPLE_BULLET);
-		Vector3D scale;scale.setValues(1.0f, 1.0f, 1.0f);
-		projectile->FireProjectile(position, rotation, scale, projectileSpeed);
-		projectiles.push_back(projectile);
-	}
-}
-
-void SpaceShip::DrawProjectiles( )
-{
-	for(auto i = projectiles.begin(); i != projectiles.end(); i++)
-	{
-		if( (*i)->isFired() )
-		{
-			(*i)->Draw();
-		}
-	}
+	//	//Projectile* projectile = ProjectileFactory::Inst()->GetProjectile(SIMPLE_BULLET);
+	//	//Vector3D scale;scale.setValues(1.0f, 1.0f, 1.0f);
+	//	//projectile->FireProjectile(position, rotation, scale, projectileSpeed);
+	//	//projectiles.push_back(projectile);
+		shooterModule.Shoot(SIMPLE_BULLET, position, directionVector);
+	//}
 }
 
 void SpaceShip::RotateArroundX(GLfloat deltaTime)
@@ -170,17 +157,17 @@ void SpaceShip::InitRotation( Axis axisToRotateArround )
 
 void SpaceShip::InitSpaceship( float startX, float startY, float startZ,
 	float scaleX, float scaleY, float scaleZ,
-	float startRotDeg, float rotX, float rotY, float rotZ)
+	float startRotDeg, float rotX, float rotY, float rotZ,
+	float dirVecX, float dirVecY, float dirVecZ)
 {
-	GameObject::position.setX(startX);
-	GameObject::position.setY(startY);
-	GameObject::position.setZ(startZ);
-	
+	GameObject::position.setValues(startX, startY, startZ);
+	GameObject::directionVector.setValues(dirVecX, dirVecY, dirVecZ);
 	GameObject::SetScale(scaleX, scaleY, scaleZ);
-	GameObject::startRotation.setValues(rotX, rotY, rotZ);
-	GameObject::startRotationDegrees = startRotDeg;
+	GameObject::objectRotation.setValues(rotX, rotY, rotZ);
+	GameObject::objectRotationDegrees = startRotDeg;
 
-	//collisionSphere = 
+	isAlive = true;
+	SpaceShipCurrentHealth = SpaceShipMaxHealth;
 }
 
 void SpaceShip::DrawWithArrays()
@@ -245,7 +232,7 @@ void SpaceShip::DrawWithIndices()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-bool SpaceShip::WasHitByPorjectile( std::vector<Projectile*>* projectiles )
+void SpaceShip::HandleProjectileCollision( std::deque<std::shared_ptr<Projectile>>* projectiles )
 {
 	for(unsigned int i = 0; i < projectiles->size(); i++)
 	{
@@ -256,29 +243,11 @@ bool SpaceShip::WasHitByPorjectile( std::vector<Projectile*>* projectiles )
 			if(collAmnt.getX() > 0 || collAmnt.getY() > 0.0f || collAmnt.getZ() > 0.0f)
 			{
 				int dmgTaken = projectiles->at(i)->GetProjectileDmg();
-				SpaceshipHealth -= dmgTaken;
+				SpaceShipCurrentHealth -= dmgTaken;
 				log << WARN << "Spaceship hit! It lost " << dmgTaken << ", " 
-					<< SpaceshipHealth << "HP left" << std::endl;
+					<< SpaceShipCurrentHealth << "/" << SpaceShipMaxHealth <<"HP left" << std::endl;
 				projectiles->at(i)->DestroyProjectile();
-				return true;
 			}
-		}
-	}
-	return false;
-}
-
-void SpaceShip::UpdateProjectiles( float deltaTime )
-{
-	for(auto i = projectiles.begin(); i != projectiles.end();)
-	{
-		if( !(*i)->isFired() )
-		{
-			i = projectiles.erase(i);
-		}
-		else
-		{
-			(*i)->Update(deltaTime);
-			++i;
 		}
 	}
 }

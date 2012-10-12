@@ -101,6 +101,7 @@ void GameManager::init() {
 	//+ some other stuff
 	input.resize(window_width, window_height);
 
+	ProjectileFactory::Inst()->InitProjectileFactory();
 	shipManager.InitManager(&input);
 	particleManager.InitParticleManager();
 }

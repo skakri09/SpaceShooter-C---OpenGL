@@ -2,8 +2,7 @@
 
 
 SpaceShipManager::SpaceShipManager() 
-	:log("SpaceShipmanager", WARN),
-	enemy(&player)
+	:log("SpaceShipmanager", WARN)
 {
 }
 
@@ -14,9 +13,14 @@ SpaceShipManager::~SpaceShipManager()
 void SpaceShipManager::InitManager(InputManager* input)
 {
 	this->input = input;
+	
+	player.InitSpaceship(0.0f, -10.0f, 0.0f, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, -1);
 
-	player.InitSpaceship(0.0f, -10.0f, 0.0f, 0.5, 0.5, 0.5, -90, 1, 0, 0);
-	enemy.InitSpaceship(300.0f, 0.0f, -50.0f, 0.02f, 0.02f, 0.02f, 270, 1, 0, 0);
+	EnemySpaceShips.push_back(std::make_shared<SimpleEnemy>(&player));
+	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end(); i++)
+	{
+		(*i)->InitSpaceship(100.0f, 0.0f, -50.0f, 0.8f, 0.8f, 0.8f, -90, 1, 0, 0, 0, 0, 1);
+	}
 }
 
 void SpaceShipManager::UpdateManager(GLfloat deltaTime)
@@ -31,17 +35,36 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	
 	HandleFrustumCollision();
 
-	player.Update(deltaTime);
-	enemy.Update(deltaTime);
-
-  	if(enemy.WasHitByPorjectile(player.GetProjectiles()))
+	if(player.GameObjectAlive())
 	{
-		log << WARN << "You hit an enemy with a projectile!"  << std::endl;
+		player.Update(deltaTime);
 	}
-	if(player.WasHitByPorjectile(enemy.GetProjectiles()))
+	
+
+	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();)
+	{
+		if( !(*i)->GameObjectAlive() )
+		{
+			i = EnemySpaceShips.erase(i);
+		}
+		else
+		{
+			(*i)->Update(deltaTime);
+			(*i)->HandleProjectileCollision(player.GetProjectiles());
+			player.HandleProjectileCollision( (*i)->GetProjectiles());
+			++i;
+		}
+	}
+	if(EnemySpaceShips.size() == 0)
+	{
+		EnemySpaceShips.push_back(std::make_shared<SimpleEnemy>(&player));
+		EnemySpaceShips.back()->InitSpaceship(100.0f, 0.0f, -50.0f, 0.8f, 0.8f, 0.8f, -90, 1, 0, 0, 0, 0, 1);
+	}
+
+	/*if(player.HandleProjectileCollision(enemy.GetProjectiles()))
 	{
   		log << WARN << "Player was hit by a projectile!" << std::endl;
-	}
+	}*/
 	//player.GetCollisionSphere()->IsCollision(enemy.GetCollisionSphere());
 	
 }
@@ -49,7 +72,13 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 void SpaceShipManager::DrawSpaceShips()
 {
 	player.Draw();
-	enemy.Draw();
+	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();i++)
+	{
+		if( (*i)->GameObjectAlive() )
+		{
+			(*i)->Draw();
+		}
+	}
 }
 
 void SpaceShipManager::HandleXAxisMovement()
@@ -126,6 +155,5 @@ void SpaceShipManager::HandlePlayerRotation()
 	if(input->LeftMouseDownOnce())
 	{
 		player.InitRotation(Y_AXIS);
-		enemy.InitRotation(Y_AXIS);
 	}
 }

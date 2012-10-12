@@ -79,7 +79,7 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 
 		collisionSphere = std::make_shared<BoundingSphere>();
 		collisionSphere->CreateCollisionBox(vertices, totalFaces);
-
+		meshInfo.collisionSphere = collisionSphere;
 		if(vertices)
 		{
 			delete[] vertices;

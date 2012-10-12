@@ -41,9 +41,6 @@ public:
 	//ownership anyway and store it in a none-pointer fashion
 	std::shared_ptr<BoundingSphere> GetBoundingSphere(){return collisionSphere;}
 	
-
-	
-
 private:
 	Logger log;
 
