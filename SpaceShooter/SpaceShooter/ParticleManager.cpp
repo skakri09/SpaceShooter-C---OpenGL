@@ -3,8 +3,6 @@
 ParticleManager::ParticleManager()
 	:log("ParticleManager", WARN)
 {
-	srand(static_cast<unsigned int>(time(0)));
-
 	zeroPoint.setX(0.0f);
 	zeroPoint.setY(0.0f);
 	zeroPoint.setZ(0.0f);
@@ -62,6 +60,7 @@ void ParticleManager::UpdateParticles( GLfloat deltatime)
 		{
 			Particle newParticle;
 			LightspeedStars.push_back(newParticle);
+			InitNewLightspeedParticle(LightspeedStars.back(), true); 
 		}
 	}
 
@@ -172,11 +171,10 @@ void ParticleManager::InitLightspeedStars()
 {
 	LightspeedStars.reserve(MAX_LIGHTPSEED_PARTICLES);
 	LightspeedStars.resize(MAX_LIGHTPSEED_PARTICLES/10);
+
 	for(unsigned int i = 0; i< LightspeedStars.size(); i++)
 	{
-		LightspeedStars.at(i).CreateGameObject();
 		InitNewLightspeedParticle(LightspeedStars.at(i),true); 
-		
 	}
 }
 

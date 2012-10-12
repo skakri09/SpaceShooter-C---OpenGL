@@ -17,9 +17,8 @@ void Particle::InitParticle(Vector3D startPos, Vector3D velocity,
 	fade = fadeSpeed; //rand()/static_cast<float>(RAND_MAX)+0.1f;	// Random Fade Speed
 
 	this->position = startPos;
-
 	this->velocity = velocity;
-	
+
 	/*p.xi=20*(0.5f-rand()/static_cast<float>(RAND_MAX));
 	p.yi=20*(0.5f-rand()/static_cast<float>(RAND_MAX));
 	p.zi=20*(0.5f-rand()/static_cast<float>(RAND_MAX));*/
@@ -63,12 +62,5 @@ void Particle::Update( GLfloat deltaTime )
 
 void Particle::CreateGameObject()
 {
-	isActive = false;
-	life = 0.0f;
-	fade = 0.0f;
-	velocity = 0.0f;
-	position = 0.0f;
-	r = 0.0f;
-	g = 0.0f;
-	b = 0.0f;
+
 }

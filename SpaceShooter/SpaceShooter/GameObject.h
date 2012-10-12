@@ -89,6 +89,7 @@ public:
 	//Returns wheither or not this object is alive. The object should
 	//not be rendered or updated if it's not alive
 	bool GameObjectAlive(){return isAlive;}
+	
 protected:
 
 	// Calculates the position by adding velocity multiplied by

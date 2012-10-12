@@ -21,10 +21,10 @@ GameManager::GameManager()
 	: log("GameMan", WARN)
 {
 	my_timer.restart();
+	srand(static_cast<unsigned int>(time(0)));
 }
 
 GameManager::~GameManager() {
-
 }
 
 void GameManager::createOpenGLContext() {

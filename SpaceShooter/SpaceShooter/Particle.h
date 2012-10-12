@@ -16,7 +16,7 @@
 #include "Vector3d.h"
 
 #include <gl/GL.h>
-class Particle : GameObject
+class Particle : public GameObject
 {
 public:
     Particle();
