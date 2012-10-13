@@ -25,8 +25,12 @@ void SpaceShipManager::InitManager(InputManager* input)
 	EnemySpaceShips.push_back(GetRandomEnemy());
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end(); i++)
 	{
-		(*i)->InitSpaceship(100.0f, 0.0f, -50.0f, -90, 1, 0, 0, 0, 0, 1);
+		float x = GetRandFloat(-100.0f, 100.0f);
+		float y = GetRandFloat(-50.0f, 50.0f);
+		float z = GetRandFloat(-500.0f, -400.0f);
+		EnemySpaceShips.back()->InitSpaceship(x, y, z, -90, 1, 0, 0, 0, 0, 1);
 	}
+	TimeSinceLastEnemySpawn = 0.0f;
 }
 
 void SpaceShipManager::UpdateManager(GLfloat deltaTime)
@@ -61,10 +65,15 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 			++i;
 		}
 	}
-	if(EnemySpaceShips.size() == 0)
+	TimeSinceLastEnemySpawn += deltaTime;
+	if(TimeSinceLastEnemySpawn >= 0.5f)
 	{
+		TimeSinceLastEnemySpawn = 0.0f;
 		EnemySpaceShips.push_back(GetRandomEnemy());
-		EnemySpaceShips.back()->InitSpaceship(100.0f, 0.0f, -50.0f, -90, 1, 0, 0, 0, 0, 1);
+		float x = GetRandFloat(-100.0f, 100.0f);
+		float y = GetRandFloat(-50.0f, 50.0f);
+		float z = GetRandFloat(-500.0f, -400.0f);
+		EnemySpaceShips.back()->InitSpaceship(x, y, z, -90, 1, 0, 0, 0, 0, 1);
 	}
 
 	/*if(player.HandleProjectileCollision(enemy.GetProjectiles()))

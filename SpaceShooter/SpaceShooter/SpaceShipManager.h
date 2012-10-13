@@ -70,6 +70,7 @@ private:
 
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemySpaceShips;
 	std::shared_ptr<BaseEnemyShip> GetRandomEnemy();
+	float TimeSinceLastEnemySpawn;
 };
 
 #endif // SpaceShipManager_h__

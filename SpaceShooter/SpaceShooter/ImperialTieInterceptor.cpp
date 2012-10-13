@@ -68,17 +68,19 @@ void ImperialTieInterceptor::InitSpaceship(float startX, float startY, float sta
 
 void ImperialTieInterceptor::HandleAI()
 {
-	float dist = position.Distance(*playerShip->getPosition());
-	if(dist >= 105 && aiStateMachine.GetCurrentState() != "ApproachXYZPlayerState"
-		&& position.getZ() > -50)
+	float xyDist = position.XYDistance(*playerShip->getPosition());
+	if(aiStateMachine.GetCurrentState() != "ApproachXYZPlayerState"
+		&& position.getZ() < -50)
 	{
 		aiStateMachine.ChangeState(std::make_shared<ApproachXYZPlayerState>());
 	}
-	else if(dist > 75 && aiStateMachine.GetCurrentState() != "ApproachXYPlayerState")
+	else if(xyDist > 30 && aiStateMachine.GetCurrentState() != "ApproachXYPlayerState"
+		&& position.getZ()>=-50)
 	{
 		aiStateMachine.ChangeState(std::make_shared<ApproachXYPlayerState>());
 	}
-	else if(aiStateMachine.GetCurrentState() != "FireState")
+	else if(aiStateMachine.GetCurrentState() != "FireState" && xyDist <= 30
+		&& position.getZ() >=-50)
 	{
 		aiStateMachine.ChangeState(std::make_shared<FireState>());
 	}

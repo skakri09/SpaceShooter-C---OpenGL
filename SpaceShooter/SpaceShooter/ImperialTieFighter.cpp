@@ -5,7 +5,7 @@ ImperialTieFighter::ImperialTieFighter(PlayerSpaceShip* playerShip)
 	: log("ImperialTieFighter", WARN),
 	BaseEnemyShip(playerShip, std::make_shared<IdleState>(),
 	std::make_shared<EnemySpaceshipConstantState>(),
-	10)//hp
+	30)//hp
 {
 }
 
@@ -58,7 +58,7 @@ void ImperialTieFighter::InitSpaceship(float startX, float startY, float startZ,
 	BaseEnemyShip::InitSpaceship(startX, startY, startZ,
 		startRotDeg, rotX, rotY, rotZ,
 		dirVecX, dirVecY, dirVecZ);
-	BaseEnemyShip::ShipSpeed = 75;
+	BaseEnemyShip::ShipSpeed = 50;
 	GameObject::SetScale(1.05f, 1.05f, 1.05f);
 
 	if(!WasInited)
@@ -70,16 +70,18 @@ void ImperialTieFighter::InitSpaceship(float startX, float startY, float startZ,
 void ImperialTieFighter::HandleAI()
 {
 	float xyDist = position.XYDistance(*playerShip->getPosition());
-	if(xyDist >= 105 && aiStateMachine.GetCurrentState() != "ApproachXYZPlayerState"
-		&& position.getZ() > -50)
+	if(aiStateMachine.GetCurrentState() != "ApproachXYZPlayerState"
+		&& position.getZ() < -50)
 	{
 		aiStateMachine.ChangeState(std::make_shared<ApproachXYZPlayerState>());
 	}
-	else if(xyDist > 75 && aiStateMachine.GetCurrentState() != "ApproachXYPlayerState")
+	else if(xyDist > 30 && aiStateMachine.GetCurrentState() != "ApproachXYPlayerState"
+		&& position.getZ()>=-50)
 	{
 		aiStateMachine.ChangeState(std::make_shared<ApproachXYPlayerState>());
 	}
-	else if(aiStateMachine.GetCurrentState() != "FireState")
+	else if(aiStateMachine.GetCurrentState() != "FireState" && xyDist <= 30
+		&& position.getZ() >=-50)
 	{
 		aiStateMachine.ChangeState(std::make_shared<FireState>());
 	}
