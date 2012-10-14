@@ -15,7 +15,7 @@
 class IdleState : public AiState
 {
 public:
-    IdleState():log("IdleState", INFO), AiState("IdleState"){}
+    IdleState():log("IdleState", WARN), AiState("IdleState"){}
 
 	virtual void Enter(BaseEnemyShip* enemy);
 

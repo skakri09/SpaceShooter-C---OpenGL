@@ -15,7 +15,7 @@
 class ApproachXYPlayerState : public AiState
 {
 public:
-    ApproachXYPlayerState():log("ApproachPlayerState", INFO),AiState("ApproachXYPlayerState"){}
+    ApproachXYPlayerState():log("ApproachPlayerState", WARN),AiState("ApproachXYPlayerState"){}
 
 	virtual void Enter(BaseEnemyShip* enemy);
 

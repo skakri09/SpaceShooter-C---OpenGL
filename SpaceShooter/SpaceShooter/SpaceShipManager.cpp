@@ -66,7 +66,7 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 		}
 	}
 	TimeSinceLastEnemySpawn += deltaTime;
-	if(TimeSinceLastEnemySpawn >= 0.5f)
+	if(TimeSinceLastEnemySpawn >= 0.01)
 	{
 		TimeSinceLastEnemySpawn = 0.0f;
 		EnemySpaceShips.push_back(GetRandomEnemy());

@@ -112,6 +112,7 @@
     <ClCompile Include="SpaceShip.cpp" />
     <ClCompile Include="SpaceShipManager.cpp" />
     <ClCompile Include="SquareBullet.cpp" />
+    <ClCompile Include="testclass.cpp" />
     <ClCompile Include="Transformable.cpp" />
     <ClCompile Include="Vector3d.cpp" />
     <ClCompile Include="XmlLoader.cpp" />

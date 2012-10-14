@@ -207,6 +207,9 @@
     <ClCompile Include="ApproachXYPlayerState.cpp">
       <Filter>Game\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testclass.cpp">
+      <Filter>Game\Utility\ResourceLoading\3ds Loading</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">

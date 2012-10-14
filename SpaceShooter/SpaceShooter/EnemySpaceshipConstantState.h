@@ -15,7 +15,7 @@
 class EnemySpaceshipConstantState : public AiState
 {
 public:
-    EnemySpaceshipConstantState():log("ConstAiState", INFO), 
+    EnemySpaceshipConstantState():log("ConstAiState", WARN), 
 		AiState("EnemySpaceshipConstantState"){}
 
 	virtual void Enter(BaseEnemyShip* owner);
