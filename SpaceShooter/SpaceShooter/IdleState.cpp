@@ -8,7 +8,6 @@ void IdleState::Enter( BaseEnemyShip* owner )
 
 void IdleState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
-	//log << INFO << "--" << std::endl;
 }
 
 void IdleState::Exit( BaseEnemyShip* owner )

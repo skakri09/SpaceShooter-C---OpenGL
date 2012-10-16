@@ -55,6 +55,7 @@ void ShooterModule::UpdateModule( float deltaTime )
 
 void ShooterModule::DrawModule()
 {
+	glPushMatrix();
 	//Drawing all our projectiles if they are tagged as "fired"
 	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end(); i++)
 	{
@@ -62,5 +63,9 @@ void ShooterModule::DrawModule()
 		{
 			(*i)->Draw();
 		}
+		//glAccum(GL_ACCUM, 1.0f);
+		//glAccum(GL_MULT, 0.95f); 
+		//glAccum(GL_RETURN, 2.1); 
 	}
+	glPopMatrix();
 }

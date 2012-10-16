@@ -3,7 +3,7 @@
     filename:   ShooterModule.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    A module that gives a spaceship the ability to shoot
 *********************************************************************/
 #ifndef ShooterModule_h__
 #define ShooterModule_h__

@@ -3,7 +3,8 @@
     filename:   EnemySpaceshipConstantState.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    The constant state for an enemy spaceship. This AI state
+				currently dont have much use
 *********************************************************************/
 #ifndef EnemySpaceshipConstantState_h__
 #define EnemySpaceshipConstantState_h__

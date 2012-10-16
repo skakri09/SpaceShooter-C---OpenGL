@@ -3,7 +3,8 @@
     filename:   Collidable.h
     author:     Kristian Skarseth
     
-    purpose:    Base object for any type of collisionbox.
+    purpose:    Base object for a collidable. This class is not yet put
+				to use, as we only use BoundingSphere atm
 
 *********************************************************************/
 #ifndef Collidable_h__

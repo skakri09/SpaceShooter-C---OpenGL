@@ -81,6 +81,7 @@ void ParticleManager::UpdateParticles( GLfloat deltatime)
 
 void ParticleManager::DrawParticles()
 {
+	glPushMatrix();
 	//Enabling Texture2ds for the particles only. Disabling it again after updating the particles.
 	//It seems you can't draw polygons etc when texture2d is enabled. Maybe that changes when I 
 	//put textures on the other models later.
@@ -88,7 +89,6 @@ void ParticleManager::DrawParticles()
 
 	//Updating and drawing all LightspeedStars
 	glBindTexture(GL_TEXTURE_2D, particle1);
-
 	//Looping trough all the stars and drawing them if they are active
 	for(unsigned int i = 0; i < LightspeedStars.size(); i++)
 	{
@@ -97,32 +97,17 @@ void ParticleManager::DrawParticles()
 			LightspeedStars.at(i).Draw();
 		}
 	}
-
+	glAccum(GL_ACCUM, 1.0f);
+	glAccum(GL_MULT, 0.95f); 
+	glAccum(GL_RETURN, 2.1); 
 	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
 }
 
 void ParticleManager::InitNewLightspeedParticle(Particle& p, bool firstFrame)
 {
 	Vector3D newParticlePos;
 	Vector3D newParticleVel;
-	
-	/*float partOfScreen = GetRandFloat(0.0f, 4.0f);
-	if(partOfScreen <= 1.0f)
-	{
-
-	}
-	else if(partOfScreen <= 2.0f && partOfScreen > 1.0f)
-	{
-
-	}
-	else if(partOfScreen <= 3.0f && partOfScreen > 2.0f)
-	{
-
-	}
-	else
-	{
-
-	}*/
 
 	float xPos = GetRandFloat(-MAX_STAR_DIST_FROM_MIDDLE_X, MAX_STAR_DIST_FROM_MIDDLE_X);
 	float yPos = GetRandFloat(-MAX_STAR_DIST_FROM_MIDDLE_Y, MAX_STAR_DIST_FROM_MIDDLE_Y);

@@ -19,12 +19,11 @@
 #include <vector>
 
 #include "Projectile.h"
-#include "SquareBullet.h"
+#include "SquareFastBullet.h"
 #include "Logger.h"
-
-enum ProjectileTypes {SIMPLE_BULLET};
-
-class SquareBullet;
+#include "ProjectileTypes.h"
+#include "SquareSlowBullet.h"
+class SquareFastBullet;
 
 class ProjectileFactory
 {
@@ -41,10 +40,9 @@ public:
 	//at once, we should change the force-loading of all projectile types to be
 	//based on the types we have unlocked.
 	void InitProjectileFactory();
-
+	
 	std::shared_ptr<Projectile> GetProjectile(ProjectileTypes projectileType);
-	
-	
+
 	void AddVBOInfo(ProjectileTypes projectileType, MeshInfo meshInfo);
 	
 	MeshInfo* GetMeshInfo(ProjectileTypes projectileType);
@@ -60,9 +58,9 @@ private:
 	
 	std::map<ProjectileTypes, float> projectileCooldowns; 
 
-	std::shared_ptr<SquareBullet> getSimpleBullet();
 	
-	std::vector<std::shared_ptr<SquareBullet>> simpleBullets;
+	
+	std::vector<std::shared_ptr<Projectile>> projectiles;
 
 	std::map<ProjectileTypes, MeshInfo> MeshInfos;
 

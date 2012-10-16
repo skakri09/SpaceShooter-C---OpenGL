@@ -39,8 +39,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\libraries\i386\DevIL-SDK-x86-1.7.8\include;C:\libraries\i386\SDL-1.2.15\include;C:\libraries\i386\glew-1.9.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\libraries\i386\DevIL-SDK-x86-1.7.8\lib;C:\libraries\i386\SDL-1.2.15\lib;C:\libraries\i386\glew-1.9.0\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\libraries\i386\lib3ds-1.3.0\include;C:\libraries\i386\DevIL-SDK-x86-1.7.8\include;C:\libraries\i386\SDL-1.2.15\include;C:\libraries\i386\glew-1.9.0\include;C:\Program Files\boost\boost_1_47;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\libraries\i386\lib3ds-1.3.0\lib;C:\libraries\i386\SDL-1.2.15\lib\x86;C:\libraries\i386\glew-1.9.0\lib;C:\Program Files\boost\boost_1_47\lib;C:\libraries\i386\DevIL-SDK-x86-1.7.8\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -60,7 +60,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>DevIL.lib;ILU.lib;ILUT.lib;glew32.lib;glew32mx.lib;glew32mxs.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DevIL.lib;ILU.lib;ILUT.lib;glew32.lib;glew32mx.lib;glew32mxs.lib;glew32s.lib;lib3ds.lib;SDL_ttf.lib;SDL_mixer.lib;SDL_image.lib;SDL.lib;SDLmain.lib;SDL_net.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\libraries\i386\SDL-1.2.15\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -88,6 +89,7 @@
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
+    <ClCompile Include="SquareSlowBullet.cpp" />
     <ClCompile Include="FireState.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="IdleState.cpp" />
@@ -111,8 +113,7 @@
     <ClCompile Include="BaseEnemyShip.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
     <ClCompile Include="SpaceShipManager.cpp" />
-    <ClCompile Include="SquareBullet.cpp" />
-    <ClCompile Include="testclass.cpp" />
+    <ClCompile Include="SquareFastBullet.cpp" />
     <ClCompile Include="Transformable.cpp" />
     <ClCompile Include="Vector3d.cpp" />
     <ClCompile Include="XmlLoader.cpp" />
@@ -125,6 +126,8 @@
     <ClInclude Include="ApproachXYZPlayerState.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collidable.h" />
+    <ClInclude Include="ProjectileTypes.h" />
+    <ClInclude Include="SquareSlowBullet.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="EnemySpaceshipConstantState.h" />
     <ClInclude Include="FireState.h" />
@@ -156,7 +159,7 @@
     <ClInclude Include="BaseEnemyShip.h" />
     <ClInclude Include="SpaceShip.h" />
     <ClInclude Include="SpaceShipManager.h" />
-    <ClInclude Include="SquareBullet.h" />
+    <ClInclude Include="SquareFastBullet.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Transformable.h" />
     <ClInclude Include="Transformation.h" />
@@ -165,8 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="lib3ds-1_3d.dll" />
-    <None Include="Mesh_PlayerSpaceship.xml" />
-    <None Include="Mesh_SquareBullet.xml" />
+    <None Include="Mesh_PlayerSpaceship.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Mesh_SquareBullet.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

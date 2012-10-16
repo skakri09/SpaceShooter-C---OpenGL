@@ -3,7 +3,8 @@
     filename:   SimpleEnemyShip.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    The base for all enemy ships. It also inherits from 
+				the spaceship class
 *********************************************************************/
 #ifndef SimpleEnemyShip_h__
 #define SimpleEnemyShip_h__

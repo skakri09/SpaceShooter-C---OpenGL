@@ -48,7 +48,7 @@ void ImperialTieFighter::CreateGameObject()
 
 void ImperialTieFighter::Shoot()
 {
- 	SpaceShip::FireGun();
+ 	SpaceShip::FireGun(SQUARE_SLOW_BULLET);
 }
 
 void ImperialTieFighter::InitSpaceship(float startX, float startY, float startZ,

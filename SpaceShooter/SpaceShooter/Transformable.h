@@ -3,7 +3,8 @@
     filename:   Transformable.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    Intended as a module that allows a gameobject to move,
+				scale and rotate. Not yet implemented and finished
 *********************************************************************/
 #ifndef Transformable_h__
 #define Transformable_h__

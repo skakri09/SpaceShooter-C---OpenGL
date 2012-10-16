@@ -3,7 +3,7 @@
     filename:   Mesh3dsLoader.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    The class can load .3ds files using lib3ds
 *********************************************************************/
 #ifndef Mesh3dsLoader_h__
 #define Mesh3dsLoader_h__

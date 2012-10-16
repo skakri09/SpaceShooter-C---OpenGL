@@ -18,7 +18,7 @@ void Particle::InitParticle(Vector3D startPos, Vector3D velocity,
 
 	this->position = startPos;
 	this->velocity = velocity;
-
+	
 	/*p.xi=20*(0.5f-rand()/static_cast<float>(RAND_MAX));
 	p.yi=20*(0.5f-rand()/static_cast<float>(RAND_MAX));
 	p.zi=20*(0.5f-rand()/static_cast<float>(RAND_MAX));*/
@@ -34,7 +34,6 @@ void Particle::Draw()
 	if (isActive) 
 	{
 		glColor4f(r, g, b, life);
-
 		glBegin(GL_QUADS);
 		glTexCoord2d(1,1); glVertex3f(position.getX()+0.5f,position.getY()+0.5f,position.getZ()); // Top Right
 		glTexCoord2d(0,1); glVertex3f(position.getX()-0.5f,position.getY()+0.5f,position.getZ()); // Top Left

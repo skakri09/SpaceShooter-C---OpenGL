@@ -13,7 +13,7 @@
 //to do with boost. Warning reads as follows:
 //Warning	1	warning C4345: behavior change: an object of POD type 
 //constructed with an initializer of the form () will be default-initialized
-
+// edit: Not seen this warning in a while now, so removing the pragma disable
 //#pragma warning(disable: 4345)
 
 #ifdef _WIN32

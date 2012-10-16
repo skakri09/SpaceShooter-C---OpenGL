@@ -83,7 +83,7 @@ protected:
 	int SpaceShipCurrentHealth;
 
 	//Takes care of firing the spaceships gun.
-	void FireGun();
+	void FireGun(ProjectileTypes projectileType);
 
 	//handles the rotation arround the x, y and z axis
 	void RotateArroundX(GLfloat deltaTime);

@@ -3,7 +3,10 @@
 	filename: 	BoundingSphere.h
 	author:		Kristian Skarseth
 	
-	purpose:	Bounding sphere collision box
+	purpose:	Bounding sphere collision box class. The class defines
+				a bounding sphere around an object of vertices. After
+				creating the bounding sphere you can check collision
+				between this and other bounding spheres
 *********************************************************************/
 #ifndef BoundingSphere_h__
 #define BoundingSphere_h__
@@ -11,6 +14,7 @@
 #include <vector>
 #include <memory>
 #include <lib3ds/types.h>
+
 #include "AABB.h"
 #include "Vector3d.h"
 #include "Transformation.h"

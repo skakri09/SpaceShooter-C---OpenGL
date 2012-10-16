@@ -46,18 +46,6 @@
     <Filter Include="Game\Utility\NormalCalculator">
       <UniqueIdentifier>{5089f04f-a03c-4e2b-b3ed-24825276aff3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Utility\Transformable">
-      <UniqueIdentifier>{3de9616c-7450-4bf0-9750-8ff06bde13d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Utility\Collidable">
-      <UniqueIdentifier>{73f35500-7397-4ec9-b375-7022661f5fc6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Utility\Collidable\Header Files">
-      <UniqueIdentifier>{931148ca-66b9-4003-9d05-3af32e048afb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Utility\Collidable\Source Files">
-      <UniqueIdentifier>{7cb255ac-e9d2-4938-954b-37412f861ece}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\GameObjects">
       <UniqueIdentifier>{f97c10df-bd35-4c4a-8c4a-ab6d088247f8}</UniqueIdentifier>
     </Filter>
@@ -82,9 +70,6 @@
     <Filter Include="Game\GameObjects\Particles\Source Files">
       <UniqueIdentifier>{f4c90c94-0dc3-4428-b5d9-ae04966a5e59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Utility\MeshFactory">
-      <UniqueIdentifier>{fa6e8da1-40c9-4a57-9a26-cb53a9abc679}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Utility\ResourceLoading">
       <UniqueIdentifier>{58dd5215-ec28-40cc-8a00-8840c951b124}</UniqueIdentifier>
     </Filter>
@@ -106,6 +91,33 @@
     <Filter Include="Game\GameObjects\SpaceShips\Enemies\Source Files">
       <UniqueIdentifier>{ad07e0da-0a92-44b1-a607-1c7919515eab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Components">
+      <UniqueIdentifier>{80c502bf-18f2-4d74-a866-d52285e7ae62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Factories">
+      <UniqueIdentifier>{f03877de-f363-4ff3-8388-90a34d270094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Factories\Header Files">
+      <UniqueIdentifier>{0182c98b-17ae-4596-a15e-507649d6c689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Factories\Source Files">
+      <UniqueIdentifier>{09bc5448-f734-42b9-a22c-5530c3318802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components\Collidable">
+      <UniqueIdentifier>{73f35500-7397-4ec9-b375-7022661f5fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components\Collidable\Header Files">
+      <UniqueIdentifier>{931148ca-66b9-4003-9d05-3af32e048afb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components\Collidable\Source Files">
+      <UniqueIdentifier>{7cb255ac-e9d2-4938-954b-37412f861ece}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components\Shooter Module">
+      <UniqueIdentifier>{1882e82b-f696-4d08-a9e4-453249fd280f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utility\Transformable//Not in use atm">
+      <UniqueIdentifier>{3de9616c-7450-4bf0-9750-8ff06bde13d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -121,12 +133,6 @@
       <Filter>Game\Utility\Logger</Filter>
     </ClCompile>
     <ClCompile Include="Projectile.cpp">
-      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ProjectileFactory.cpp">
-      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SquareBullet.cpp">
       <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
@@ -160,28 +166,22 @@
       <Filter>Game\Utility\NormalCalculator</Filter>
     </ClCompile>
     <ClCompile Include="BoundingSphere.cpp">
-      <Filter>Game\Utility\Collidable\Source Files</Filter>
+      <Filter>Game\Components\Collidable\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AABB.cpp">
-      <Filter>Game\Utility\Collidable\Source Files</Filter>
+      <Filter>Game\Components\Collidable\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Transformable.cpp">
-      <Filter>Game\Utility\Transformable</Filter>
+      <Filter>Game\Utility\Transformable//Not in use atm</Filter>
     </ClCompile>
     <ClCompile Include="Mesh3dsLoader.cpp">
       <Filter>Game\Utility\ResourceLoading\3ds Loading</Filter>
     </ClCompile>
-    <ClCompile Include="MeshFactory.cpp">
-      <Filter>Game\Utility\MeshFactory</Filter>
-    </ClCompile>
     <ClCompile Include="MeshXmlLoader.cpp">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
     </ClCompile>
-    <ClCompile Include="ShooterModule.cpp">
-      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Collidable.cpp">
-      <Filter>Game\Utility\Collidable\Source Files</Filter>
+      <Filter>Game\Components\Collidable\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlayerSpaceShip.cpp">
       <Filter>Game\GameObjects\SpaceShips\Player</Filter>
@@ -207,8 +207,20 @@
     <ClCompile Include="ApproachXYPlayerState.cpp">
       <Filter>Game\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testclass.cpp">
-      <Filter>Game\Utility\ResourceLoading\3ds Loading</Filter>
+    <ClCompile Include="ProjectileFactory.cpp">
+      <Filter>Game\Factories\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshFactory.cpp">
+      <Filter>Game\Factories\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShooterModule.cpp">
+      <Filter>Game\Components\Shooter Module</Filter>
+    </ClCompile>
+    <ClCompile Include="SquareSlowBullet.cpp">
+      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SquareFastBullet.cpp">
+      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -234,12 +246,6 @@
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Projectile.h">
-      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ProjectileFactory.h">
-      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SquareBullet.h">
       <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
@@ -282,19 +288,19 @@
       <Filter>Game\Utility\NormalCalculator</Filter>
     </ClInclude>
     <ClInclude Include="BoundingSphere.h">
-      <Filter>Game\Utility\Collidable\Header Files</Filter>
+      <Filter>Game\Components\Collidable\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Collidable.h">
-      <Filter>Game\Utility\Collidable\Header Files</Filter>
+      <Filter>Game\Components\Collidable\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AABB.h">
-      <Filter>Game\Utility\Collidable\Header Files</Filter>
+      <Filter>Game\Components\Collidable\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Transformation.h">
-      <Filter>Game\Utility\Transformable</Filter>
+      <Filter>Game\Utility\Transformable//Not in use atm</Filter>
     </ClInclude>
     <ClInclude Include="Transformable.h">
-      <Filter>Game\Utility\Transformable</Filter>
+      <Filter>Game\Utility\Transformable//Not in use atm</Filter>
     </ClInclude>
     <ClInclude Include="Mesh3dsLoader.h">
       <Filter>Game\Utility\ResourceLoading\3ds Loading</Filter>
@@ -305,14 +311,8 @@
     <ClInclude Include="GameObject.h">
       <Filter>Game\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="MeshFactory.h">
-      <Filter>Game\Utility\MeshFactory</Filter>
-    </ClInclude>
     <ClInclude Include="MeshXmlLoader.h">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
-    </ClInclude>
-    <ClInclude Include="ShooterModule.h">
-      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MeshInfo.h">
       <Filter>Game\Utility</Filter>
@@ -343,6 +343,24 @@
     </ClInclude>
     <ClInclude Include="ApproachXYPlayerState.h">
       <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileFactory.h">
+      <Filter>Game\Factories\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshFactory.h">
+      <Filter>Game\Factories\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShooterModule.h">
+      <Filter>Game\Components\Shooter Module</Filter>
+    </ClInclude>
+    <ClInclude Include="SquareSlowBullet.h">
+      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SquareFastBullet.h">
+      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileTypes.h">
+      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

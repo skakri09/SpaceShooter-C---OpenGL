@@ -3,7 +3,8 @@
     filename:   MeshInfo.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:	The meshinfo class holds information about a mesh that
+				has been uploaded to the gpu. 
 *********************************************************************/
 #ifndef MeshInfo_h__
 #define MeshInfo_h__

@@ -38,9 +38,6 @@ public:
 	float r;     //Red color value
 	float g;	 //Green color value
 	float b;	 //Blue color value
-	
-	//Vector3D position;
-	//Vector3D velocity;
 
 protected:
 

@@ -49,7 +49,10 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	{
 		player.Update(deltaTime);
 	}
-	
+	else
+	{
+
+	}
 
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();)
 	{
@@ -60,13 +63,16 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 		else
 		{
 			(*i)->Update(deltaTime);
-			(*i)->HandleProjectileCollision(player.GetProjectiles());
-			player.HandleProjectileCollision( (*i)->GetProjectiles());
+			if(player.GameObjectAlive())
+			{
+				(*i)->HandleProjectileCollision(player.GetProjectiles());
+				player.HandleProjectileCollision( (*i)->GetProjectiles());
+			}
 			++i;
 		}
 	}
 	TimeSinceLastEnemySpawn += deltaTime;
-	if(TimeSinceLastEnemySpawn >= 0.01)
+	if(TimeSinceLastEnemySpawn >= 1.01)
 	{
 		TimeSinceLastEnemySpawn = 0.0f;
 		EnemySpaceShips.push_back(GetRandomEnemy());
@@ -75,13 +81,6 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 		float z = GetRandFloat(-500.0f, -400.0f);
 		EnemySpaceShips.back()->InitSpaceship(x, y, z, -90, 1, 0, 0, 0, 0, 1);
 	}
-
-	/*if(player.HandleProjectileCollision(enemy.GetProjectiles()))
-	{
-  		log << WARN << "Player was hit by a projectile!" << std::endl;
-	}*/
-	//player.GetCollisionSphere()->IsCollision(enemy.GetCollisionSphere());
-	
 }
 
 void SpaceShipManager::DrawSpaceShips()
@@ -193,4 +192,5 @@ std::shared_ptr<BaseEnemyShip> SpaceShipManager::GetRandomEnemy()
 	{
 		return std::make_shared<SithInfiltrator>(&player);
 	}
+	return NULL;
 }

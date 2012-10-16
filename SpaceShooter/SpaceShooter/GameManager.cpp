@@ -4,7 +4,6 @@
 
 #include <Windows.h>
 #include <GL/GL.h>
-//#include <gl/glew.h>
 
 #include <iostream>
 #include <string>
@@ -72,9 +71,10 @@ void GameManager::setOpenGLStates() {
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHTING);
 
-
-	GLfloat pos[] = { 0.0, 4.0, 4.0 };
-	glLightfv(GL_LIGHT0, GL_SPECULAR, pos);
+	//GLfloat pos[] = {0.0f, 0.0f, 0.0f};
+	GLfloat specularColor[] = { 0.0, 0.0, 0.0 };
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specularColor);
+	//glLightfv(GL_LIGHT0, GL_POSITION, pos);
 	//glEnable(GL_LIGHT1);
 	//GLfloat pos2[] = { 0.0, -50.0, 100.0, 0.0 };
 	//glLightf(GL_LIGHT1, GL_POSITION, pos2);
@@ -120,7 +120,9 @@ void GameManager::render() {
 	
 	particleManager.DrawParticles();
 	shipManager.DrawSpaceShips();
-
+	//glAccum(GL_ACCUM, 0.3f);
+	//glAccum(GL_MULT, 0.7f); 
+	//glAccum(GL_RETURN, 1.1);
 	checkGLErrors();
 	SDL_GL_SwapBuffers();
 }

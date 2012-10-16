@@ -12,11 +12,14 @@
 #include "Logger.h"
 #include "MeshXmlLoader.h"
 #include "MeshInfo.h"
+#include "ProjectileTypes.h"
 
 class Projectile : public GameObject
 {
 public:
-	Projectile(	float projectileFlytime, 
+	Projectile( ProjectileTypes projectileType,
+				float projectileeVelocity,
+				float projectileFlytime, 
 				int projectileDmg, 
 				float projectileCooldown,
 				float scaleX, float scaleY, float scaleZ);
@@ -36,6 +39,8 @@ public:
 
 	float GetProjectileCooldown(){return projectileCooldown;}
 
+	ProjectileTypes GetProjectileType(){return projectileType;}
+
 protected:
 	float PROJECTILE_FLYTIME;
 	float projectileCooldown;
@@ -51,6 +56,7 @@ protected:
 
 	virtual void UpdateTransformationValues();
 
+	ProjectileTypes projectileType;
 private:
 	Logger log;
 

@@ -26,6 +26,7 @@ Thumbs.db
 *.sbr
 *.ipch
 *.sdf
+*.rar
 obj/
 [Rr]elease*/
 _ReSharper*/

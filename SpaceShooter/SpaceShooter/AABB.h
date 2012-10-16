@@ -3,7 +3,7 @@
 	filename: 	AABB.h
 	author:		Kristian Skarseth
 	
-	purpose:	
+	purpose:	Creates an AABB box from a collection of vertices
 *********************************************************************/
 #ifndef AABB_h__
 #define AABB_h__
@@ -19,8 +19,10 @@ public:
 	~AABB();
 
 protected:
+	//Creates an AABB from a vector of floats
 	void CreateAABB(std::vector<float>* vertices);
 
+	//Creates an AABB from a 2d array of floats 
 	void CreateAABB( Lib3dsVector* vertices, unsigned int size);
 
 	float m_Height;

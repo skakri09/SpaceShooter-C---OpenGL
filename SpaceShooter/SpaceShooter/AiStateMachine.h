@@ -3,7 +3,8 @@
     filename:   AiStateMachine.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    Our AI state machine. It handles updaing of current state(s)
+				and the change from one state to another
 *********************************************************************/
 #ifndef AiStateMachine_h__
 #define AiStateMachine_h__

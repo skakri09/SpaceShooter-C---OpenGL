@@ -3,7 +3,8 @@
     filename:   ApproachXYPlayerState.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    A simple state for approaching the player in the X/Y plane
+				
 *********************************************************************/
 #ifndef ApproachXYPlayerState_h__
 #define ApproachXYPlayerState_h__

@@ -3,7 +3,8 @@
     filename:   FireState.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    A simple state for fireing the default gun of the enemy
+				spaceship.
 *********************************************************************/
 #ifndef FireState_h__
 #define FireState_h__

@@ -47,7 +47,7 @@ void SithInfiltrator::CreateGameObject()
 
 void SithInfiltrator::Shoot()
 {
- 	SpaceShip::FireGun();
+ 	SpaceShip::FireGun(SQUARE_SLOW_BULLET);
 }
 
 void SithInfiltrator::InitSpaceship(float startX, float startY, float startZ,

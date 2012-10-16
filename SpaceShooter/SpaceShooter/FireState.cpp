@@ -8,7 +8,6 @@ void FireState::Enter( BaseEnemyShip* owner )
 void FireState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
 	owner->Shoot();
-	//log << INFO << "" << std::endl;
 }
 
 void FireState::Exit( BaseEnemyShip* owner )

@@ -14,18 +14,6 @@ ProjectileFactory* ProjectileFactory::Inst()
 	return instance;
 }
 
-std::shared_ptr<Projectile> ProjectileFactory::GetProjectile( ProjectileTypes projectileType )
-{
-	switch(projectileType)
-	{
-	case SIMPLE_BULLET:
-		return getSimpleBullet();
-		break;
-	}
-	log << WARN << "GetProjectile() did not find anything to return, returning NULL" << std::endl;
-	return NULL;
-}
-
 void ProjectileFactory::AddVBOInfo(ProjectileTypes projectileType, MeshInfo meshInfo)
 {
 	MeshInfos[projectileType] = meshInfo;
@@ -44,21 +32,32 @@ MeshInfo* ProjectileFactory::GetMeshInfo( ProjectileTypes projectileType )
 	}
 }
 
-std::shared_ptr<SquareBullet> ProjectileFactory::getSimpleBullet()
+std::shared_ptr<Projectile> ProjectileFactory::GetProjectile(ProjectileTypes projectileType)
 {
-	if(simpleBullets.size() > 0)
+	if(projectiles.size() > 0)
 	{
-		for(unsigned int i = 0; i < simpleBullets.size(); i++)
+		for(unsigned int i = 0; i < projectiles.size(); i++)
 		{
-			if(!simpleBullets.at(i)->isFired())
+			if(projectiles.at(i)->GetProjectileType() == projectileType)
 			{
-				return simpleBullets.at(i);
+				if(!projectiles.at(i)->isFired())
+				{
+					return projectiles.at(i);
+				}
 			}
 		}
 	}
-
-	simpleBullets.push_back(std::make_shared<SquareBullet>());
-	return simpleBullets.back();
+	switch(projectileType)
+	{
+	case SQUARE_FAST_BULLET:
+		projectiles.push_back(std::make_shared<SquareFastBullet>());
+		break;
+	case SQUARE_SLOW_BULLET:
+		projectiles.push_back(std::make_shared<SquareSlowBullet>());
+		break;
+	}
+	
+	return projectiles.back();
 }
 
 float ProjectileFactory::GetProjectileCooldown( ProjectileTypes projectileType )
@@ -77,8 +76,11 @@ void ProjectileFactory::InitProjectileFactory()
 
 //Repeat the two following lines of code for each ProjectileType added to the game!
 	/***********************************************************************/
-	std::shared_ptr<Projectile> dummyPtr = GetProjectile(SIMPLE_BULLET);
-	projectileCooldowns[SIMPLE_BULLET] = dummyPtr->GetProjectileCooldown();
+	std::shared_ptr<Projectile> squarefast = GetProjectile(SQUARE_FAST_BULLET);
+	projectileCooldowns[SQUARE_FAST_BULLET] = squarefast->GetProjectileCooldown();
+
+	std::shared_ptr<Projectile> squareslow = GetProjectile(SQUARE_SLOW_BULLET);
+	projectileCooldowns[SQUARE_SLOW_BULLET] = squareslow->GetProjectileCooldown();
 	/***********************************************************************/
 }
 

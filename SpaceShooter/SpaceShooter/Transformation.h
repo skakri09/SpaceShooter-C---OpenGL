@@ -3,7 +3,7 @@
     filename:   Transformation.h
     author:     Kristian Skarseth
     
-    purpose:    A class holding tranformation attributes
+    purpose:    A class holding tranformation attributes. 
 *********************************************************************/
 #ifndef Transformation_h__
 #define Transformation_h__

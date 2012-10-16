@@ -52,22 +52,9 @@ void SpaceShip::CreateGameObject()
 
 }
 
-void SpaceShip::FireGun()
+void SpaceShip::FireGun(ProjectileTypes projectileType)
 {
-	////timeSinceLastFired += this->getDeltaTime();
-	//if(timeSinceLastFired >= fireCooldown)
-	//{
-	//	timeSinceLastFired = 0.0f;
-	//	rotation.setX(xAxis.currentAngle);
-	//	rotation.setY(yAxis.currentAngle);
-	//	rotation.setZ(zAxis.currentAngle);
-
-	//	//Projectile* projectile = ProjectileFactory::Inst()->GetProjectile(SIMPLE_BULLET);
-	//	//Vector3D scale;scale.setValues(1.0f, 1.0f, 1.0f);
-	//	//projectile->FireProjectile(position, rotation, scale, projectileSpeed);
-	//	//projectiles.push_back(projectile);
-		shooterModule.Shoot(SIMPLE_BULLET, position, directionVector);
-	//}
+	shooterModule.Shoot(projectileType, position, directionVector);
 }
 
 void SpaceShip::RotateArroundX(GLfloat deltaTime)

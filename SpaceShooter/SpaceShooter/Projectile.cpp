@@ -1,15 +1,18 @@
 #include "Projectile.h"
 
-Projectile::Projectile(	float projectileFlytime, 
+Projectile::Projectile(	ProjectileTypes projectileType,
+						float projectileeVelocity,
+						float projectileFlytime, 
 						int projectileDmg, 
 						float projectileCooldown,
 						float scaleX, float scaleY, float scaleZ)
 	:log("Projectile", WARN)
 {
+	this->projectileType = projectileType;
 	this->projectileCooldown = projectileCooldown;
 	this->PROJECTILE_FLYTIME = projectileFlytime;
 	this->projectileDamage = projectileDmg;
-	this->projectileVelocity = 100.0f;
+	this->projectileVelocity = projectileeVelocity;
 	this->fired = false;
 	GameObject::scale.setValues(scaleX, scaleY, scaleZ);
 }
