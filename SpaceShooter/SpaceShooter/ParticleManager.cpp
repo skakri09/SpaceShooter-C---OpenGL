@@ -97,9 +97,9 @@ void ParticleManager::DrawParticles()
 			LightspeedStars.at(i).Draw();
 		}
 	}
-	glAccum(GL_ACCUM, 1.0f);
-	glAccum(GL_MULT, 0.95f); 
-	glAccum(GL_RETURN, 2.1); 
+	glAccum(GL_ACCUM, 0.2f);
+	glAccum(GL_MULT, 0.9f); 
+	glAccum(GL_RETURN, 3.6f); 
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }
@@ -130,9 +130,7 @@ void ParticleManager::InitNewLightspeedParticle(Particle& p, bool firstFrame)
 		newParticlePos.setZ(STAR_FARPOINT);
 	}
 	
-	newParticleVel.setX(0.0f);
-	newParticleVel.setY(0.0f);
-	newParticleVel.setZ(20000/zeroPoint.Distance(newParticlePos, zeroPoint)*5);
+	newParticleVel.setValues(0.0f, 0.0f, 2000/zeroPoint.Distance(newParticlePos, zeroPoint)*50);
 
 	p.InitParticle(newParticlePos, newParticleVel, GetRandFloat(0.01f, 0.1f), 1, 1, 1);
 }
@@ -146,7 +144,6 @@ bool ParticleManager::validLightspeedPos( float xPos, float yPos )
 			failcounter++;
 			log << INFO << failcounter << std::endl;
 			return false;
-			
 		}
 	}
 	return true;

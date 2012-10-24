@@ -70,17 +70,17 @@ void ImperialTieInterceptor::HandleAI()
 {
 	float xyDist = position.XYDistance(*playerShip->getPosition());
 	if(aiStateMachine.GetCurrentState() != "ApproachXYZPlayerState"
-		&& position.getZ() < -50)
+		&& position.getZ() < -75)
 	{
 		aiStateMachine.ChangeState(std::make_shared<ApproachXYZPlayerState>());
 	}
 	else if(xyDist > 30 && aiStateMachine.GetCurrentState() != "ApproachXYPlayerState"
-		&& position.getZ()>=-50)
+		&& position.getZ()>=-75)
 	{
 		aiStateMachine.ChangeState(std::make_shared<ApproachXYPlayerState>());
 	}
 	else if(aiStateMachine.GetCurrentState() != "FireState" && xyDist <= 30
-		&& position.getZ() >=-50)
+		&& position.getZ() >=-75)
 	{
 		aiStateMachine.ChangeState(std::make_shared<FireState>());
 	}

@@ -222,6 +222,12 @@
     <ClCompile Include="SquareFastBullet.cpp">
       <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ImperialStarDestroyerInactive.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StarDestroyerShipSpawning.cpp">
+      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -361,6 +367,12 @@
     </ClInclude>
     <ClInclude Include="ProjectileTypes.h">
       <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImperialStarDestroyerInactive.h">
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StarDestroyerShipSpawning.h">
+      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

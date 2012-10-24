@@ -20,3 +20,5 @@ Lib3ds implementasjonen er ikke 100% fullført enda. Det blir nå kun extracted ve
 Alle VBOs blir kun opprettet en gang når man laster inn filen. Deretter opereres det kun med MeshInfo struct objekter. Disse blir sendt rundt når en klasse vil ha tilgang til en modell å tegne. MeshInfo inneholder VBO IDene til ojektene, og blir opprettet under innlasting. Dette gjør at vi ikke trenger å sende noe data til GPU annet enn ved oppstart/load.
 
 Jeg har lagt til partikler som skal se ut som stjerner vi beveger oss fort forbi. Dette blir tegnet som teksturerte quads med immediate mode, da jeg ikke har fått tid til å prioritere å gjøre det til vbos enda. Dette er selvølgelig ikke optimalt, men ville heller ha det med som immediate mode, enn ikke å ha det med.
+
+Noe som nå kan sees på som en bug er at projectiles fjærnes når deres eier spaceship blir drept. Dette skal fikses

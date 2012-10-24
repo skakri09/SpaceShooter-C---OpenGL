@@ -64,24 +64,20 @@ void GameManager::setOpenGLStates() {
 	
 	glShadeModel(GL_SMOOTH); 
 
-	//glEnable(GL_LIGHTING);
-	//glEnable(GL_LIGHT0);
-	//GLfloat pos[] = { 0.0, 100000.0, -1000.0, 1000.0 };
-	//glLightfv(GL_LIGHT0, GL_POSITION, pos);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHTING);
 
-	//GLfloat pos[] = {0.0f, 0.0f, 0.0f};
-	GLfloat specularColor[] = { 0.0, 0.0, 0.0 };
-	glLightfv(GL_LIGHT0, GL_SPECULAR, specularColor);
-	//glLightfv(GL_LIGHT0, GL_POSITION, pos);
-	//glEnable(GL_LIGHT1);
-	//GLfloat pos2[] = { 0.0, -50.0, 100.0, 0.0 };
-	//glLightf(GL_LIGHT1, GL_POSITION, pos2);
+	////GLfloat pos[] = {0.0f, 0.0f, 0.0f};
+	//GLfloat specularColor[] = { 0.0, 0.0, 0.0 };
+	//GLfloat diffuseColor[] = { 0.0, 0.0, 0.0 };
+	//GLfloat ambientColor[] = {0.0f, 0.0f, 0.0f};
+	//GLfloat position[] = {0.0f, 10.0f, 50.0f};
+	////GL_AMBIENT, GL_SPECULAR, GL_DIFFUSE
+	//glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseColor);
+	//glLightfv(GL_LIGHT0, GL_SPECULAR, specularColor);
+	//glLightfv(GL_LIGHT0, GL_AMBIENT, ambientColor);
+	//glLightfv(GL_LIGHT0, GL_POSITION, position);
 
-	//GLfloat mat[] = {0.1, 0.1, 0.0, 1};
-	//glMaterialfv(GL_FRONT, GL_SPECULAR, mat);
-	//glLightfv(GL_LIGHT1, GL_DIFFUSE, pos);
 }
 
 void GameManager::init() {
@@ -120,9 +116,7 @@ void GameManager::render() {
 	
 	particleManager.DrawParticles();
 	shipManager.DrawSpaceShips();
-	//glAccum(GL_ACCUM, 0.3f);
-	//glAccum(GL_MULT, 0.7f); 
-	//glAccum(GL_RETURN, 1.1);
+
 	checkGLErrors();
 	SDL_GL_SwapBuffers();
 }

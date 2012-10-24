@@ -19,6 +19,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//SithInfiltrator//SithInfiltrator.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
+	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 
 	player.InitSpaceship(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 
@@ -85,6 +86,7 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 
 void SpaceShipManager::DrawSpaceShips()
 {
+	glPushMatrix();
 	if(player.GameObjectAlive())
 	{
 		player.Draw();
@@ -97,6 +99,7 @@ void SpaceShipManager::DrawSpaceShips()
 			(*i)->Draw();
 		}
 	}
+	glPopMatrix();
 }
 
 void SpaceShipManager::HandleXAxisMovement()
