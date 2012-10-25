@@ -118,6 +118,9 @@
     <Filter Include="Game\Utility\Transformable//Not in use atm">
       <UniqueIdentifier>{3de9616c-7450-4bf0-9750-8ff06bde13d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameObjects\Planets">
+      <UniqueIdentifier>{e8b467e5-79d5-403e-9cc4-053e889a367a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -222,11 +225,14 @@
     <ClCompile Include="SquareFastBullet.cpp">
       <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ImperialStarDestroyerInactive.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="StarDestroyerShipSpawning.cpp">
       <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImperialStarDestroyer.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Planet.cpp">
+      <Filter>Game\GameObjects\Planets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -368,11 +374,14 @@
     <ClInclude Include="ProjectileTypes.h">
       <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ImperialStarDestroyerInactive.h">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StarDestroyerShipSpawning.h">
       <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImperialStarDestroyer.h">
+      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Planet.h">
+      <Filter>Game\GameObjects\Planets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

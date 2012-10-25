@@ -20,7 +20,7 @@
 #include "Logger.h"
 #include "SpaceShip.h"
 #include "GetRandomFloat.h"
-
+#include "ImperialStarDestroyer.h"
 class SpaceShipManager
 {
 public:

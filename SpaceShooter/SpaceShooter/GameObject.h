@@ -48,7 +48,7 @@ public:
 	
 	//Various get and set functions for velocity and position.
 	//Creating several ways of setting and getting the variables
-	//as the most convenient of doing it way varies trought the game
+	//as the most convenient of doing it varies trough the game
 	float getXVel(){return velocity.getX();}
 	float getYVel(){return velocity.getY();}
 	float getZVel(){return velocity.getZ();}

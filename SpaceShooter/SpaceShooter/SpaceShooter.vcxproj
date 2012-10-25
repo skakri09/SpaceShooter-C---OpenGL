@@ -89,7 +89,8 @@
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
-    <ClCompile Include="ImperialStarDestroyerInactive.cpp" />
+    <ClCompile Include="ImperialStarDestroyer.cpp" />
+    <ClCompile Include="Planet.cpp" />
     <ClCompile Include="SquareSlowBullet.cpp" />
     <ClCompile Include="FireState.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -128,7 +129,8 @@
     <ClInclude Include="ApproachXYZPlayerState.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collidable.h" />
-    <ClInclude Include="ImperialStarDestroyerInactive.h" />
+    <ClInclude Include="ImperialStarDestroyer.h" />
+    <ClInclude Include="Planet.h" />
     <ClInclude Include="ProjectileTypes.h" />
     <ClInclude Include="SquareSlowBullet.h" />
     <ClInclude Include="GameObject.h" />

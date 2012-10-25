@@ -7,6 +7,7 @@ ImperialTieInterceptor::ImperialTieInterceptor(PlayerSpaceShip* playerShip)
 					10)//hp
 	
 {
+
 }
 
 ImperialTieInterceptor::~ImperialTieInterceptor()
