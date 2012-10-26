@@ -9,15 +9,16 @@
 #define SquareFastBullet_h__
 
 #include "Projectile.h"
-
+#include "ProjectileFactory.h"
 class SquareFastBullet : public Projectile
 {
 public:
 	SquareFastBullet();
-	virtual ~SquareFastBullet();
+	~SquareFastBullet();
 
-private:
-
+protected:
+	//virtual void CreateProjectile(ProjectileTypes projectileType, std::string meshPathFromXmlFolder);
+	virtual void CreateProjectile(ProjectileTypes projectileType,  std::string meshPathFromXmlFolder );
 };
 
 #endif // SquareFastBullet_h__

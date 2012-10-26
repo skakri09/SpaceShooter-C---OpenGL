@@ -9,14 +9,17 @@
 #define SquareSlowBullet_h__
 
 #include "Projectile.h"
+#include "ProjectileFactory.h"
 
 class SquareSlowBullet : public Projectile
 {
 public:
 	SquareSlowBullet();
-	virtual ~SquareSlowBullet();
+	~SquareSlowBullet();
 
 protected:
+	//void CreateProjectile(ProjectileTypes projectileType, std::string meshPathFromXmlFolder);
+	virtual void CreateProjectile(ProjectileTypes projectileType,  std::string meshPathFromXmlFolder );
 
 private:
 

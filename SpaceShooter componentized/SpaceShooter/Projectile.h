@@ -14,13 +14,11 @@
 #include "MeshXmlLoader.h"
 #include "MeshInfo.h"
 #include "ProjectileTypes.h"
-//#include "ProjectileFactory.h"
 
 #include "VBODrawable.h"
 #include "Transformable.h"
 #include "BoundingSphere.h"
 
-//class ProjectileFactory;
 class Projectile : public GameObject2
 {
 public:
@@ -54,7 +52,7 @@ public:
 	BoundingSphere collisionSphere;	//A projectile has a boundingSphere for collision
 
 protected:
-	void CreateProjectile(ProjectileTypes projectileType, std::string meshPathFromXmlFolder);
+	virtual void CreateProjectile(ProjectileTypes projectileType, std::string meshPathFromXmlFolder){}
 
 	Vector3D initialStartPosition;
 	float PROJECTILE_FLYTIME;

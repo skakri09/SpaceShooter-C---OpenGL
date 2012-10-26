@@ -65,4 +65,6 @@ private:
 	std::map<ProjectileTypes, MeshInfo> MeshInfos;
 
 };
+
+
 #endif // ProjectileFactory_h__
