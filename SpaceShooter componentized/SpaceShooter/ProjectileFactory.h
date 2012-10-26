@@ -18,13 +18,13 @@
 #include <map>
 #include <vector>
 
-#include "Projectile.h"
+//#include "Projectile.h"
 #include "SquareFastBullet.h"
 #include "Logger.h"
 #include "ProjectileTypes.h"
 #include "SquareSlowBullet.h"
-class SquareFastBullet;
 
+class Projectile;
 class ProjectileFactory
 {
 public:

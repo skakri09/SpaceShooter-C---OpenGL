@@ -9,15 +9,12 @@
 #define SquareFastBullet_h__
 
 #include "Projectile.h"
-#include "ProjectileFactory.h"
 
 class SquareFastBullet : public Projectile
 {
 public:
 	SquareFastBullet();
 	virtual ~SquareFastBullet();
-
-	void CreateGameObject();
 
 private:
 

@@ -8,28 +8,36 @@
 #ifndef Projectile_H
 #define Projectile_H
 
-#include "GameObject.h"
+#include "GameObject2.h"
 #include "Logger.h"
+#include "MeshFactory.h"
 #include "MeshXmlLoader.h"
 #include "MeshInfo.h"
 #include "ProjectileTypes.h"
+//#include "ProjectileFactory.h"
 
-class Projectile : public GameObject
+#include "VBODrawable.h"
+#include "Transformable.h"
+#include "BoundingSphere.h"
+
+//class ProjectileFactory;
+class Projectile : public GameObject2
 {
 public:
 	Projectile( ProjectileTypes projectileType,
-				float projectileeVelocity,
-				float projectileFlytime, 
-				int projectileDmg, 
-				float projectileCooldown,
-				float scaleX, float scaleY, float scaleZ);
+		float projectileeVelocity,
+		float projectileFlytime, 
+		int projectileDmg, 
+		float projectileCooldown,
+		float scale);
+
 	virtual ~Projectile();
 
 	virtual void Draw();
 
 	virtual void Update(GLfloat deltaTime);
 
-	virtual void FireProjectile(Vector3D startPos, Vector3D directionVector);
+	virtual void FireProjectile(Transformable& ownerTransformable);
 
 	bool isFired(){return fired;}
 
@@ -41,22 +49,29 @@ public:
 
 	ProjectileTypes GetProjectileType(){return projectileType;}
 
+	VBODrawable vboDrawable;		//A projectile is drawn with VBOs
+	Transformable transformable;	//A projectile is transformable
+	BoundingSphere collisionSphere;	//A projectile has a boundingSphere for collision
+
 protected:
+	void CreateProjectile(ProjectileTypes projectileType, std::string meshPathFromXmlFolder);
+
+	Vector3D initialStartPosition;
 	float PROJECTILE_FLYTIME;
 	float projectileCooldown;
 	int projectileDamage;
 
 	float projectileVelocity;
 	float timeSinceFired;
-	Vector3D objectRotation;
-	Vector3D startPosition;
+
 	bool fired;
 	float projectileSpeed;
 	MeshXmlLoader meshLoader;
 
-	virtual void UpdateTransformationValues();
-
 	ProjectileTypes projectileType;
+
+	float scale;
+
 private:
 	Logger log;
 

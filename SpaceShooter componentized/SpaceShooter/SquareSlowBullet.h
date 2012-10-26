@@ -9,15 +9,12 @@
 #define SquareSlowBullet_h__
 
 #include "Projectile.h"
-#include "ProjectileFactory.h"
 
 class SquareSlowBullet : public Projectile
 {
 public:
 	SquareSlowBullet();
 	virtual ~SquareSlowBullet();
-
-	void CreateGameObject();
 
 protected:
 

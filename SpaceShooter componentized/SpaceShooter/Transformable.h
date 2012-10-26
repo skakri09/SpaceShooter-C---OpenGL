@@ -36,7 +36,7 @@ public:
 
 	//Does the glTranslatef, glScalef and glRotatef function calls
 	//with the variables we have stored in this class.
-	void ApplyGLTransformations();
+	void ApplyGLTransformations(bool translatef = true, bool scalef = true, bool rotatef = true);
 
 	//Various get and set functions for velocity and position.
 	//Creating several ways of setting and getting the variables
@@ -55,7 +55,7 @@ public:
 
 	Vector3D* getPosition();
 	Vector3D* getVelocity();
-	void setVelocity(Vector3D& newVel);
+	void SetVelocity(Vector3D& newVel);
 
 	void SetVelocity(float xVel, float yVel, float zVel);
 

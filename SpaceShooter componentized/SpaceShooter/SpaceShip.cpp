@@ -46,9 +46,7 @@ void SpaceShip::CreateGameObject(std::string meshPathFrom3dsFolder)
 
 void SpaceShip::FireGun(ProjectileTypes projectileType)
 {
-	shooterModule.Shoot(projectileType,
-		*transformable.getPosition(),
-		transformable.getDirectionVector());
+	shooterModule.Shoot(projectileType, transformable);
 }
 
 void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,
@@ -70,7 +68,7 @@ void SpaceShip::HandleProjectileCollision( std::deque<std::shared_ptr<Projectile
 	{
 		if(projectiles->at(i)->isFired())
 		{
-			BoundingSphere projectileColSphere = projectiles->at(i)->GetCollisionSphere();
+			BoundingSphere projectileColSphere = projectiles->at(i)->collisionSphere;
 			Vector3D collAmnt = collisionSphere.IsCollision(projectileColSphere);
 			if(collAmnt.getX() > 0 || collAmnt.getY() > 0.0f || collAmnt.getZ() > 0.0f)
 			{

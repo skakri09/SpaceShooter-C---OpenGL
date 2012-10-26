@@ -20,7 +20,7 @@ public:
 
 	//Fires a specified projectile. The startPos and startRotation is required
 	//in order to fire the projectile from the correct position. 
-	void Shoot(ProjectileTypes projectileType, Vector3D startPos, Vector3D directionVector);
+	void Shoot(ProjectileTypes projectileType, Transformable& ownerTransformable);
 
 	//Looping trough all the projectiles and updating them
 	void UpdateModule(float deltaTime);

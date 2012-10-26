@@ -33,20 +33,30 @@ void Transformable::Update( float deltaTime )
 	UpdateCollisionTransformationInfo();
 }
 
-void Transformable::ApplyGLTransformations()
+void Transformable::ApplyGLTransformations( 
+	bool translatef /*= true*/, bool scalef /*= true*/, bool rotatef /*= true*/ )
 {
-	glTranslatef(position.getX(), 
-		position.getY(), 
-		position.getZ());
+	if(translatef)
+	{
+		glTranslatef(position.getX(), 
+			position.getY(), 
+			position.getZ());
+	}
 	
-	glScalef(scale.getX(), 
-		scale.getY(), 
-		scale.getZ());
+	if(scalef)
+	{
+		glScalef(scale.getX(), 
+			scale.getY(), 
+			scale.getZ());
+	}
 	
-	glRotatef(objectRotationDegrees, 
-		rotationAxis.getX(),
-		rotationAxis.getY(), 
-		rotationAxis.getZ());
+	if(rotatef)
+	{
+		glRotatef(objectRotationDegrees, 
+			rotationAxis.getX(),
+			rotationAxis.getY(), 
+			rotationAxis.getZ());
+	}
 }
 
 CollisionTransformationInfo& Transformable::GetCollisionTransformationInfo()
@@ -109,7 +119,7 @@ Vector3D* Transformable::getVelocity()
 	return &velocity;
 }
 
-void Transformable::setVelocity(Vector3D& newVel)
+void Transformable::SetVelocity(Vector3D& newVel)
 {
 	this->velocity = newVel;
 }

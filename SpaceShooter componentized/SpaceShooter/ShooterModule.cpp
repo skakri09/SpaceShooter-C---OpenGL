@@ -9,7 +9,7 @@ ShooterModule::~ShooterModule()
 {
 }
 
-void ShooterModule::Shoot( ProjectileTypes projectileType, Vector3D startPos, Vector3D directionVector )
+void ShooterModule::Shoot( ProjectileTypes projectileType, Transformable& ownerTransformable )
 {
 	float typeCD = ProjectileFactory::Inst()->GetProjectileCooldown(projectileType);
 	
@@ -24,7 +24,7 @@ void ShooterModule::Shoot( ProjectileTypes projectileType, Vector3D startPos, Ve
 	{
 		projectileCooldowns[projectileType] = typeCD;
 		std::shared_ptr<Projectile> projectile = ProjectileFactory::Inst()->GetProjectile(projectileType);
-		projectile->FireProjectile(startPos, directionVector);
+		projectile->FireProjectile(ownerTransformable);
 		ActiveProjectiles.push_back(projectile);
 	}
 }

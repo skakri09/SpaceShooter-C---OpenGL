@@ -31,9 +31,9 @@ void Projectile::Draw()
 		glPushMatrix();
 
 		glTranslatef(startPosition.getX(), startPosition.getY(), startPosition.getZ());
-		glRotatef(objectRotation.getX(), 1.0f, 0.0f, 0.0f);
-		glRotatef(objectRotation.getY(), 0.0f, 1.0f, 0.0f);
-		glRotatef(objectRotation.getZ(), 0.0f, 0.0f, 1.0f);
+		//glRotatef(objectRotation.getX(), 1.0f, 0.0f, 0.0f);
+		//glRotatef(objectRotation.getY(), 0.0f, 1.0f, 0.0f);
+		//glRotatef(objectRotation.getZ(), 0.0f, 0.0f, 1.0f);
 
 		//Draw the projectile in the above object's space which is transformed into the correct
 		//position and rotation.

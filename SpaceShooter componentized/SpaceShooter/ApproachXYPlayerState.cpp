@@ -13,7 +13,7 @@ void ApproachXYPlayerState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 	targetDirection.Normalize();
 	Vector3D velocity = targetDirection * owner->GetShipSpeed();
 
-	owner->transformable.setVelocity(velocity);
+	owner->transformable.SetVelocity(velocity);
 }
 
 void ApproachXYPlayerState::Exit( BaseEnemyShip* owner )
