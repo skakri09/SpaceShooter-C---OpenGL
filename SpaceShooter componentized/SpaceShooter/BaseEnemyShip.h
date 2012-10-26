@@ -33,18 +33,15 @@ public:
 
     virtual ~BaseEnemyShip();
 	
-	virtual void InitSpaceShip(float startX, float startY, float startZ,
-		float startRotDeg, float rotX, float rotY, float rotZ,
-		float dirVecX, float dirVecY, float dirVecZ);
-
 	//Does drawing of the spaceship.
 	virtual void Draw();
 
 	//Draws the spaceship and takes care of the bullets it owns
 	virtual void Update(GLfloat deltaTime);
 
-	//virtual void InitSpaceship(float startX, float startY, float startZ,
-	//							float scaleX, float scaleY, float scaleZ);
+	virtual void InitSpaceShip(float startX, float startY, float startZ,
+		float startRotDeg, float rotX, float rotY, float rotZ,
+		float dirVecX, float dirVecY, float dirVecZ) = 0;
 	
 	//Shoots the gun, calling the fire function from spaceShipbase 
 	//with proper parameters (the cd and speed defined in top of class)

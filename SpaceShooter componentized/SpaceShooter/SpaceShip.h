@@ -55,24 +55,23 @@ public:
 								float scale);
 
 	//Starts rotation around the specified axis
-	void InitRotation(Axis axisToRotateArround);
+	//void InitRotation(Axis axisToRotateArround);
 
 	std::deque<std::shared_ptr<Projectile>>* GetProjectiles(){return shooterModule.GetActiveProjectiles();}
 
 	void HandleProjectileCollision(std::deque<std::shared_ptr<Projectile>>* projectiles);
 
 	int GetSpaceshipHP(){return SpaceShipCurrentHealth;}
-
-protected:
+	
 	ShooterModule shooterModule;	//A spaceship can shoot
 	VBODrawable vboDrawable;		//A spaceship is drawn with VBOs
 	Transformable transformable;	//A spaceship is transformable
-	BoundingSphere collisionSphere;	//A spaceship has a boundingSphere for collisiona
+	BoundingSphere collisionSphere;	//A spaceship has a boundingSphere for collision
 
+protected:
+	
 	virtual void CreateGameObject(std::string meshPathFrom3dsFolder);
 
-	virtual void DrawWithArrays();
-	virtual void DrawWithIndices();
 
 	int SpaceShipMaxHealth;
 	int SpaceShipCurrentHealth;

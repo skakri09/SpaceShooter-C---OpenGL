@@ -2,7 +2,7 @@
 
 void IdleState::Enter( BaseEnemyShip* owner )
 {
-	owner->SetVelocity(0.0f, 0.0f, 0.0f);
+	owner->transformable.SetVelocity(0.0f, 0.0f, 0.0f);
 	log << INFO << "Entering Idle state" << std::endl;
 }
 

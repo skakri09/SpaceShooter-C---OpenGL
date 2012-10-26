@@ -20,8 +20,6 @@ public:
     ImperialStarDestroyer(PlayerSpaceShip* playerShip);
     ~ImperialStarDestroyer();
 
-	//Does drawing of the spaceship.
-	void Draw();
 
 	//Draws the spaceship and takes care of the bullets it owns
 	void Update(GLfloat deltaTime);

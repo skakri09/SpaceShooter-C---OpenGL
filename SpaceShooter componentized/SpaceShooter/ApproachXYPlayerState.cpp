@@ -7,17 +7,17 @@ void ApproachXYPlayerState::Enter( BaseEnemyShip* owner )
 
 void ApproachXYPlayerState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
-	targetPosition = *owner->getPlayerShip()->getPosition() - *owner->getPosition();
+	targetPosition = *owner->getPlayerShip()->transformable.getPosition() - *owner->transformable.getPosition();
 	targetDirection = targetPosition;
 	targetDirection.setZ(0);
 	targetDirection.Normalize();
 	Vector3D velocity = targetDirection * owner->GetShipSpeed();
 
-	owner->setVelocity(velocity);
+	owner->transformable.setVelocity(velocity);
 }
 
 void ApproachXYPlayerState::Exit( BaseEnemyShip* owner )
 {
 	log << INFO << "Exiting ApproachXYZPlayerState" << std::endl;
-	owner->SetVelocity(0,0,0);
+	owner->transformable.SetVelocity(0,0,0);
 }

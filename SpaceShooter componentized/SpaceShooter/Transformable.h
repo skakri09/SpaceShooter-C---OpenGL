@@ -90,7 +90,7 @@ private:
 	Vector3D scale;		// The scale of the object this class is representing
 
 	//The rotation of the gameObject
-	Vector3D objectRotation;
+	Vector3D rotationAxis;
 	float objectRotationDegrees;
 };
 

@@ -27,6 +27,7 @@ void SpaceShip::Update(float deltaTime)
 
 void SpaceShip::Draw()
 {
+	transformable.ApplyGLTransformations();
 	vboDrawable.DrawWithArrays();
 }
 

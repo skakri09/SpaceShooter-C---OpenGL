@@ -17,15 +17,6 @@ BaseEnemyShip::BaseEnemyShip(PlayerSpaceShip* playerShip,
 }
 #pragma warning(pop)
 
-void BaseEnemyShip::InitSpaceShip( float startX, float startY, float startZ,
-	float startRotDeg, float rotX, float rotY, float rotZ,
-	float dirVecX, float dirVecY, float dirVecZ)
-{
-SpaceShip::InitSpaceShip(startX, startY, startZ, 
-	startRotDeg, rotX, rotY, rotZ, 
-	dirVecX, dirVecY, dirVecZ);
-
-}
 
 BaseEnemyShip::~BaseEnemyShip()
 {
@@ -33,7 +24,14 @@ BaseEnemyShip::~BaseEnemyShip()
 
 void BaseEnemyShip::Draw()
 {
-	SpaceShip::Draw();
+	glPushMatrix();
+
+	transformable.ApplyGLTransformations();
+	vboDrawable.DrawWithArrays();
+
+	glPopMatrix();
+
+	shooterModule.DrawModule();
 }
 
 void BaseEnemyShip::Update( GLfloat deltaTime )

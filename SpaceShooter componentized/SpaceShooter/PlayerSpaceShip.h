@@ -33,7 +33,7 @@ public:
 
 	void InitSpaceShip(float startX, float startY, float startZ,
 		float startRotDeg, float rotX, float rotY, float rotZ,
-		float dirVecX, float dirVecY, float dirVecZ, float scale);
+		float dirVecX, float dirVecY, float dirVecZ);
 
 	//Shoots the gun, calling the fire function from spaceShipbase 
 	//with proper parameters (the cd and speed defined in top of class)
@@ -41,9 +41,6 @@ public:
 	
 private:
 	Logger log;
-
-	//Creates the displaylist or VBO for the spaceship
-	void CreateGameObject();
 
 };
 	

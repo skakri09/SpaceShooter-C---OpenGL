@@ -13,30 +13,12 @@ ImperialTieFighter::~ImperialTieFighter()
 {
 }
 
-
-void ImperialTieFighter::Draw()
-{
-	if(isAlive)
-	{
-		glPushMatrix();
-
-		ApplyTransformations();
-
-		DrawWithArrays();
-
-		glPopMatrix();
-		shooterModule.DrawModule();
-	}
-}
-
 void ImperialTieFighter::Update( GLfloat deltaTime )
 {
 	BaseEnemyShip::Update(deltaTime);
 	shooterModule.UpdateModule(deltaTime);
 	HandleAI();
 
-	log << INFO << "X: " << position.getX()<< " Y: " << position.getY() 
-		<< " Z: " << position.getZ() << std::endl;
 }
 
 void ImperialTieFighter::Shoot()
@@ -48,30 +30,31 @@ void ImperialTieFighter::InitSpaceShip(float startX, float startY, float startZ,
 	float startRotDeg, float rotX, float rotY, float rotZ,
 	float dirVecX, float dirVecY, float dirVecZ)
 {
-	BaseEnemyShip::InitSpaceShip(startX, startY, startZ,
+	SpaceShip::InitSpaceShip(startX, startY, startZ,
 		startRotDeg, rotX, rotY, rotZ,
-		dirVecX, dirVecY, dirVecZ);
+		dirVecX, dirVecY, dirVecZ, 1.05f);
+
 	BaseEnemyShip::ShipSpeed = 50;
-	GameObject::SetScale(1.05f, 1.05f, 1.05f);
 
 	CreateGameObject("ImperialTieFighter//ImperialTieFighter.3ds");
 }
 
 void ImperialTieFighter::HandleAI()
 {
-	float xyDist = position.XYDistance(*playerShip->getPosition());
+	float xyDist = transformable.getPosition()->XYDistance(*playerShip->transformable.getPosition());
+
 	if(aiStateMachine.GetCurrentState() != "ApproachXYZPlayerState"
-		&& position.getZ() < -75)
+		&& transformable.getPosition()->getZ() < -75)
 	{
 		aiStateMachine.ChangeState(std::make_shared<ApproachXYZPlayerState>());
 	}
 	else if(xyDist > 30 && aiStateMachine.GetCurrentState() != "ApproachXYPlayerState"
-		&& position.getZ()>=-75)
+		&& transformable.getPosition()->getZ()>=-75)
 	{
 		aiStateMachine.ChangeState(std::make_shared<ApproachXYPlayerState>());
 	}
 	else if(aiStateMachine.GetCurrentState() != "FireState" && xyDist <= 30
-		&& position.getZ() >=-75)
+		&& transformable.getPosition()->getZ() >=-75)
 	{
 		aiStateMachine.ChangeState(std::make_shared<FireState>());
 	}

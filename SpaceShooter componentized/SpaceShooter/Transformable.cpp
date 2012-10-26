@@ -20,6 +20,11 @@ void Transformable::Init(Vector3D startPos,
 	position = startPos;
 
 	this->directionVector = directionVector;
+
+	objectRotationDegrees = rotationDeg;
+
+	this->rotationAxis = rotationAxis;
+	
 }
 
 void Transformable::Update( float deltaTime )
@@ -39,9 +44,9 @@ void Transformable::ApplyGLTransformations()
 		scale.getZ());
 	
 	glRotatef(objectRotationDegrees, 
-		objectRotation.getX(),
-		objectRotation.getY(), 
-		objectRotation.getZ());
+		rotationAxis.getX(),
+		rotationAxis.getY(), 
+		rotationAxis.getZ());
 }
 
 CollisionTransformationInfo& Transformable::GetCollisionTransformationInfo()
@@ -53,7 +58,7 @@ float Transformable::getXVel()
 {
 	return velocity.getX();
 }
-
+  
 float Transformable::getYVel()
 {
 	return velocity.getY();

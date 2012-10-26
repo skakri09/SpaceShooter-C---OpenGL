@@ -12,12 +12,12 @@
 class GameObject2
 {
 public:
-	GameObject2()
-	{
-		kill = false;
-	}
+	//GameObject2()
+	//{
+	//	kill = false;
+	//}
 
-	virtual ~GameObject2();
+	//virtual ~GameObject2();
 
 	virtual void Update(float deltaTime) = 0;
 
