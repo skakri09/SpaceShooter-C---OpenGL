@@ -26,8 +26,6 @@ public:
 	GLuint numberOfIndices;
 	GLuint normals;
 	GLuint textCoords;
-	GLuint colors;
-
 	std::shared_ptr<BoundingSphere> collisionSphere;
 };
 

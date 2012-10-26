@@ -22,7 +22,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//Planets//Endor//Endor.3ds");
 
-	player.InitSpaceship(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
+	player.InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 
 	EnemySpaceShips.push_back(GetRandomEnemy());
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end(); i++)
@@ -31,12 +31,12 @@ void SpaceShipManager::InitManager(InputManager* input)
 		//float y = GetRandFloat(-50.0f, 50.0f);
 		//float z = GetRandFloat(-500.0f, -400.0f);
 		float x = -175; float y = 0; float z = -440;
-		EnemySpaceShips.back()->InitSpaceship(x, y, z, -90, 1, 0, 0, 0, 0, 1);
+		EnemySpaceShips.back()->InitSpaceShip(x, y, z, -90, 1, 0, 0, 0, 0, 1);
 	}
 	TimeSinceLastEnemySpawn = 0.0f;
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(&player));
 	//EnemySpaceShips.back()->InitSpaceship(-200, -10, -450, 180, 0, 1, 0, 0, 0, 1);
-	EnemySpaceShips.back()->InitSpaceship(-200, 0, -450, 180, 0, 1, 0, 0, 0, 1);
+	EnemySpaceShips.back()->InitSpaceShip(-200, 0, -450, 180, 0, 1, 0, 0, 0, 1);
 }
 
 void SpaceShipManager::UpdateManager(GLfloat deltaTime)
@@ -85,7 +85,7 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 		float x = GetRandFloat(-100.0f, 100.0f);
 		float y = GetRandFloat(-50.0f, 50.0f);
 		float z = GetRandFloat(-500.0f, -400.0f);
-		EnemySpaceShips.back()->InitSpaceship(x, y, z, -90, 1, 0, 0, 0, 0, 1);
+		EnemySpaceShips.back()->InitSpaceShip(x, y, z, -90, 1, 0, 0, 0, 0, 1);
 	}
 }
 

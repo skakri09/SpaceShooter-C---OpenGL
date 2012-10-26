@@ -17,11 +17,11 @@ BaseEnemyShip::BaseEnemyShip(PlayerSpaceShip* playerShip,
 }
 #pragma warning(pop)
 
-void BaseEnemyShip::InitSpaceship( float startX, float startY, float startZ,
+void BaseEnemyShip::InitSpaceShip( float startX, float startY, float startZ,
 	float startRotDeg, float rotX, float rotY, float rotZ,
 	float dirVecX, float dirVecY, float dirVecZ)
 {
-SpaceShip::InitSpaceship(startX, startY, startZ, 
+SpaceShip::InitSpaceShip(startX, startY, startZ, 
 	startRotDeg, rotX, rotY, rotZ, 
 	dirVecX, dirVecY, dirVecZ);
 
@@ -54,10 +54,6 @@ void BaseEnemyShip::Shoot()
 
 }
 
-void BaseEnemyShip::CreateGameObject()
-{
-
-}
 
 //void BaseEnemyShip::SetAI( EnemyAiType aiType )
 //{

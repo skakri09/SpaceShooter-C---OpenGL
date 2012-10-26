@@ -16,7 +16,7 @@ void Planet::Draw()
 
 	ApplyTransformations();
 
-	DrawWithArrays();
+//	DrawWithArrays();
 
 	glPopMatrix();
 }

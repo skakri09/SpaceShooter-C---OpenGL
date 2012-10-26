@@ -37,7 +37,7 @@ void BoundingSphere::CreateCollisionBox(Lib3dsVector* vertices, unsigned int siz
 }
 
 
-void BoundingSphere::ApplyTransformations(Transformation& translationInfo)
+void BoundingSphere::Update(CollisionTransformationInfo& translationInfo)
 {
 	float biggest = translationInfo.scale.getX();
 	if(biggest < translationInfo.scale.getY()){biggest = translationInfo.scale.getY();}

@@ -35,9 +35,9 @@ void ImperialStarDestroyer::Update( GLfloat deltaTime )
 	HandleAI();
 }
 
-void ImperialStarDestroyer::InitSpaceship( float startX, float startY, float startZ, float startRotDeg, float rotX, float rotY, float rotZ, float dirVecX, float dirVecY, float dirVecZ )
+void ImperialStarDestroyer::InitSpaceShip( float startX, float startY, float startZ, float startRotDeg, float rotX, float rotY, float rotZ, float dirVecX, float dirVecY, float dirVecZ )
 {
-	BaseEnemyShip::InitSpaceship(startX, startY, startZ,
+	BaseEnemyShip::InitSpaceShip(startX, startY, startZ,
 		startRotDeg, rotX, rotY, rotZ,
 		dirVecX, dirVecY, dirVecZ);
 	BaseEnemyShip::ShipSpeed = 50;
@@ -45,7 +45,7 @@ void ImperialStarDestroyer::InitSpaceship( float startX, float startY, float sta
 
 	if(!WasInited)
 	{
-		CreateGameObject();
+		CreateGameObject("ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 	}
 }
 
@@ -59,9 +59,3 @@ void ImperialStarDestroyer::HandleAI()
 
 }
 
-void ImperialStarDestroyer::CreateGameObject()
-{
-	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
-	collisionSphere = *meshInfo.collisionSphere;
-	WasInited = true;
-}

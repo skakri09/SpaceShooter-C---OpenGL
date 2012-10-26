@@ -118,6 +118,7 @@
     <ClCompile Include="SquareFastBullet.cpp" />
     <ClCompile Include="StarDestroyerShipSpawning.cpp" />
     <ClCompile Include="Transformable.cpp" />
+    <ClCompile Include="VBODrawable.cpp" />
     <ClCompile Include="Vector3d.cpp" />
     <ClCompile Include="XmlLoader.cpp" />
   </ItemGroup>
@@ -130,6 +131,7 @@
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
+    <ClInclude Include="MeshInfo.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="ProjectileTypes.h" />
     <ClInclude Include="SquareSlowBullet.h" />
@@ -151,7 +153,6 @@
     <ClInclude Include="LogSys.h" />
     <ClInclude Include="Mesh3dsLoader.h" />
     <ClInclude Include="MeshFactory.h" />
-    <ClInclude Include="MeshInfo.h" />
     <ClInclude Include="MeshXmlLoader.h" />
     <ClInclude Include="NormalCalculator.h" />
     <ClInclude Include="Particle.h" />
@@ -168,11 +169,13 @@
     <ClInclude Include="StarDestroyerShipSpawning.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Transformable.h" />
-    <ClInclude Include="Transformation.h" />
+    <ClInclude Include="CollisionTransformationInfo.h" />
+    <ClInclude Include="VBODrawable.h" />
     <ClInclude Include="Vector3d.h" />
     <ClInclude Include="XmlLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GameObject2.h" />
     <None Include="lib3ds-1_3d.dll" />
     <None Include="Mesh_PlayerSpaceship.xml">
       <SubType>Designer</SubType>

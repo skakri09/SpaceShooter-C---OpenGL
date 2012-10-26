@@ -21,7 +21,7 @@
 #include "MeshInfo.h"
 #include "Timer.h"
 #include "Vector3d.h"
-#include "Transformation.h"
+#include "CollisionTransformationInfo.h"
 #include "BoundingSphere.h"
 #include "MeshFactory.h"
 
@@ -121,7 +121,7 @@ protected:
 	//on this object. Will be updated on update() calls 
 	//and can be passed to objects requiring knowledge
 	//of this objects displacement/rotation etc
-	Transformation transformationValues;
+	CollisionTransformationInfo transformationValues;
 
 	//BoundingSphere object acting as this objects collision box.
 	BoundingSphere collisionSphere;

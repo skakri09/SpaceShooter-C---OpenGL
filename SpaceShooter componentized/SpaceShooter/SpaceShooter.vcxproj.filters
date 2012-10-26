@@ -25,26 +25,8 @@
     <Filter Include="Game\Utility\GLUtils">
       <UniqueIdentifier>{01ab4019-a69e-42ac-97a2-fb64ccb1a01c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Utility\Logger">
-      <UniqueIdentifier>{9a464e1b-37c9-48c9-97f7-dbf944751574}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\SpaceShipAI">
-      <UniqueIdentifier>{8999161e-3c8d-4ea2-b3ff-f242757410c8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\SpaceShipAI\States">
-      <UniqueIdentifier>{0768e7ca-c450-4e7d-99cd-cc1bb51b35be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\SpaceShipAI\States\Source Files">
-      <UniqueIdentifier>{ce2922d5-5c64-434f-92da-a28b2d9903f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\SpaceShipAI\States\Header Files">
-      <UniqueIdentifier>{a5efe86b-35ef-4781-87f7-a4d44ce88134}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Utility\Vector3d">
       <UniqueIdentifier>{296d3937-a0f1-4285-9154-a287553aa0b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Utility\NormalCalculator">
-      <UniqueIdentifier>{5089f04f-a03c-4e2b-b3ed-24825276aff3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\GameObjects">
       <UniqueIdentifier>{f97c10df-bd35-4c4a-8c4a-ab6d088247f8}</UniqueIdentifier>
@@ -115,11 +97,32 @@
     <Filter Include="Game\Components\Shooter Module">
       <UniqueIdentifier>{1882e82b-f696-4d08-a9e4-453249fd280f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Utility\Transformable//Not in use atm">
-      <UniqueIdentifier>{3de9616c-7450-4bf0-9750-8ff06bde13d0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\GameObjects\Planets">
       <UniqueIdentifier>{e8b467e5-79d5-403e-9cc4-053e889a367a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components\SpaceShipAI">
+      <UniqueIdentifier>{8999161e-3c8d-4ea2-b3ff-f242757410c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components\SpaceShipAI\States">
+      <UniqueIdentifier>{0768e7ca-c450-4e7d-99cd-cc1bb51b35be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components\SpaceShipAI\States\Source Files">
+      <UniqueIdentifier>{ce2922d5-5c64-434f-92da-a28b2d9903f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components\SpaceShipAI\States\Header Files">
+      <UniqueIdentifier>{a5efe86b-35ef-4781-87f7-a4d44ce88134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components\VBO">
+      <UniqueIdentifier>{fbb20691-ad67-4934-9e72-08773d967cbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utility\NormalCalculator">
+      <UniqueIdentifier>{5089f04f-a03c-4e2b-b3ed-24825276aff3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components\Transformable">
+      <UniqueIdentifier>{3de9616c-7450-4bf0-9750-8ff06bde13d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utility\Logger">
+      <UniqueIdentifier>{9a464e1b-37c9-48c9-97f7-dbf944751574}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -148,16 +151,16 @@
       <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EnemySpaceShipConstantState.cpp">
-      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FireState.cpp">
-      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SpaceShipManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="IdleState.cpp">
-      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="XmlLoader.cpp">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
@@ -175,7 +178,7 @@
       <Filter>Game\Components\Collidable\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Transformable.cpp">
-      <Filter>Game\Utility\Transformable//Not in use atm</Filter>
+      <Filter>Game\Components\Transformable</Filter>
     </ClCompile>
     <ClCompile Include="Mesh3dsLoader.cpp">
       <Filter>Game\Utility\ResourceLoading\3ds Loading</Filter>
@@ -205,10 +208,10 @@
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ApproachXYZPlayerState.cpp">
-      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ApproachXYPlayerState.cpp">
-      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ProjectileFactory.cpp">
       <Filter>Game\Factories\Source Files</Filter>
@@ -226,13 +229,16 @@
       <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StarDestroyerShipSpawning.cpp">
-      <Filter>Game\SpaceShipAI\States\Source Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ImperialStarDestroyer.cpp">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Planet.cpp">
       <Filter>Game\GameObjects\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="VBODrawable.cpp">
+      <Filter>Game\Components\VBO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -270,16 +276,16 @@
       <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AiStateMachine.h">
-      <Filter>Game\SpaceShipAI</Filter>
+      <Filter>Game\Components\SpaceShipAI</Filter>
     </ClInclude>
     <ClInclude Include="AiState.h">
-      <Filter>Game\SpaceShipAI</Filter>
+      <Filter>Game\Components\SpaceShipAI</Filter>
     </ClInclude>
     <ClInclude Include="EnemySpaceshipConstantState.h">
-      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FireState.h">
-      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameConstants.h">
       <Filter>Game\Utility</Filter>
@@ -288,7 +294,7 @@
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IdleState.h">
-      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="XmlLoader.h">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
@@ -308,26 +314,17 @@
     <ClInclude Include="AABB.h">
       <Filter>Game\Components\Collidable\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transformation.h">
-      <Filter>Game\Utility\Transformable//Not in use atm</Filter>
-    </ClInclude>
     <ClInclude Include="Transformable.h">
-      <Filter>Game\Utility\Transformable//Not in use atm</Filter>
+      <Filter>Game\Components\Transformable</Filter>
     </ClInclude>
     <ClInclude Include="Mesh3dsLoader.h">
       <Filter>Game\Utility\ResourceLoading\3ds Loading</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.h">
-      <Filter>Game\Utility</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Game\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="MeshXmlLoader.h">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshInfo.h">
-      <Filter>Game\Utility</Filter>
     </ClInclude>
     <ClInclude Include="PlayerSpaceShip.h">
       <Filter>Game\GameObjects\SpaceShips\Player</Filter>
@@ -351,10 +348,10 @@
       <Filter>Game\Utility</Filter>
     </ClInclude>
     <ClInclude Include="ApproachXYZPlayerState.h">
-      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ApproachXYPlayerState.h">
-      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ProjectileFactory.h">
       <Filter>Game\Factories\Header Files</Filter>
@@ -375,13 +372,28 @@
       <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StarDestroyerShipSpawning.h">
-      <Filter>Game\SpaceShipAI\States\Header Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ImperialStarDestroyer.h">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Planet.h">
       <Filter>Game\GameObjects\Planets</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionTransformationInfo.h">
+      <Filter>Game\Components\Collidable</Filter>
+    </ClInclude>
+    <ClInclude Include="VBODrawable.h">
+      <Filter>Game\Components\VBO</Filter>
+    </ClInclude>
+    <ClInclude Include="VBODrawable.h">
+      <Filter>Game\Components\VBO</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshInfo.h">
+      <Filter>Game\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -393,6 +405,9 @@
     </None>
     <None Include="lib3ds-1_3d.dll">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="GameObject2.h">
+      <Filter>Game\GameObjects</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -39,32 +39,22 @@ void ImperialTieFighter::Update( GLfloat deltaTime )
 		<< " Z: " << position.getZ() << std::endl;
 }
 
-void ImperialTieFighter::CreateGameObject()
-{
-	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
-	collisionSphere = *meshInfo.collisionSphere;
-	WasInited = true;
-}
-
 void ImperialTieFighter::Shoot()
 {
  	SpaceShip::FireGun(SQUARE_SLOW_BULLET);
 }
 
-void ImperialTieFighter::InitSpaceship(float startX, float startY, float startZ,
+void ImperialTieFighter::InitSpaceShip(float startX, float startY, float startZ,
 	float startRotDeg, float rotX, float rotY, float rotZ,
 	float dirVecX, float dirVecY, float dirVecZ)
 {
-	BaseEnemyShip::InitSpaceship(startX, startY, startZ,
+	BaseEnemyShip::InitSpaceShip(startX, startY, startZ,
 		startRotDeg, rotX, rotY, rotZ,
 		dirVecX, dirVecY, dirVecZ);
 	BaseEnemyShip::ShipSpeed = 50;
 	GameObject::SetScale(1.05f, 1.05f, 1.05f);
 
-	if(!WasInited)
-	{
-		CreateGameObject();
-	}
+	CreateGameObject("ImperialTieFighter//ImperialTieFighter.3ds");
 }
 
 void ImperialTieFighter::HandleAI()

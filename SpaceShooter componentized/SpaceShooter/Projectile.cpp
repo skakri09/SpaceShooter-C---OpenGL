@@ -73,7 +73,7 @@ void Projectile::Update(GLfloat deltaTime)
 		CalculatePosition(deltaTime);
 		UpdateTransformationValues();
 		timeSinceFired += deltaTime;
-		collisionSphere.ApplyTransformations(transformationValues);
+		collisionSphere.Update(transformationValues);
 		
 		//Makes sure we stop drawing the projectile if it's been "airborne" longer then or 
 		//equal to the constant PROJECTILE_FLYTIME

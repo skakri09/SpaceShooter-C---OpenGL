@@ -31,9 +31,9 @@ public:
 	//Draws the spaceship and takes care of the bullets it owns
 	void Update(GLfloat deltaTime);
 
-	void InitSpaceship(float startX, float startY, float startZ,
+	void InitSpaceShip(float startX, float startY, float startZ,
 		float startRotDeg, float rotX, float rotY, float rotZ,
-		float dirVecX, float dirVecY, float dirVecZ);
+		float dirVecX, float dirVecY, float dirVecZ, float scale);
 
 	//Shoots the gun, calling the fire function from spaceShipbase 
 	//with proper parameters (the cd and speed defined in top of class)

@@ -38,32 +38,24 @@ void SithInfiltrator::Update( GLfloat deltaTime )
 		<< " Z: " << position.getZ() << std::endl;
 }
 
-void SithInfiltrator::CreateGameObject()
-{
-	meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//SithInfiltrator//SithInfiltrator.3ds");
-	collisionSphere = *meshInfo.collisionSphere;
-	WasInited = true;
-}
-
 void SithInfiltrator::Shoot()
 {
  	SpaceShip::FireGun(SQUARE_SLOW_BULLET);
 }
 
-void SithInfiltrator::InitSpaceship(float startX, float startY, float startZ,
+void SithInfiltrator::InitSpaceShip(float startX, float startY, float startZ,
 	float startRotDeg, float rotX, float rotY, float rotZ,
 	float dirVecX, float dirVecY, float dirVecZ)
 {
-	BaseEnemyShip::InitSpaceship(startX, startY, startZ,
+	BaseEnemyShip::InitSpaceShip(startX, startY, startZ,
 		startRotDeg, rotX, rotY, rotZ,
 		dirVecX, dirVecY, dirVecZ);
 
 	GameObject::SetScale(0.05f, 0.05f, 0.05f);
 	BaseEnemyShip::ShipSpeed = 50;
-	if(!WasInited)
-	{
-		CreateGameObject();
-	}
+
+	CreateGameObject("SithInfiltrator//SithInfiltrator.3ds");
+
 }
 
 void SithInfiltrator::HandleAI()

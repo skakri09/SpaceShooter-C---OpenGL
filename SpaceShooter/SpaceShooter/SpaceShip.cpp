@@ -194,7 +194,7 @@ void SpaceShip::DrawWithIndices()
 	
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
-	//glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
 	//glEnable(GL_COLOR_MATERIAL);
 	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
 	glVertexPointer(3, GL_FLOAT, 0, 0);
@@ -210,7 +210,7 @@ void SpaceShip::DrawWithIndices()
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
-	//glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	//glBindBuffer(GL_COLOR_ARRAY, 0);

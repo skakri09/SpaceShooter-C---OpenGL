@@ -17,14 +17,19 @@
 
 #include "AABB.h"
 #include "Vector3d.h"
-#include "Transformation.h"
-//#include "MeshInfo.h"
+#include "CollisionTransformationInfo.h"
 
 class BoundingSphere : public AABB
 {
 public:
 	BoundingSphere();
 	~BoundingSphere();
+
+	//Updates the CollisionSphere. Should be called every game update, or when we want
+	//the collisionsphere to have it's position and scale updated.
+	//The parameter collisionTranformationInfo reference should contain updated position
+	//and scale of the object this collisionsphere is bent for.
+	void Update(CollisionTransformationInfo& translationInfo);
 
 	//Returns the amount of collision between this and the param
 	//vector3D as a vector3d. If there is no collision, the returned 
@@ -34,10 +39,10 @@ public:
 	//Creates the collisionBox for the spaceship. from a vector of vertices
 	void CreateCollisionBox(std::vector<float>* vertices);
 
-	//same as above, but takes a pointer to an array of floats instead
+	//same as above, but takes a pointer to a lib3dsvector which contain the vertices instead
 	void CreateCollisionBox(Lib3dsVector* vertices, unsigned int size);
 
-	void ApplyTransformations(Transformation& translationInfo);
+	//void Update(CollisionTransformationInfo& translationInfo);
 
 	Vector3D& GetMidpoint();
 	

@@ -16,52 +16,46 @@
 #define SpaceShip_H
 
 #include "Logger.h"
-#include "GameObject.h"
+#include "GameObject2.h"
 #include "Projectile.h"
 #include "MeshInfo.h"
 #include "MeshXmlLoader.h"
+
+//Components
 #include "ShooterModule.h"
+#include "VBODrawable.h"
+#include "Transformable.h"
+#include "BoundingSphere.h"
 
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
 //Speed of the rotation around x, y and z axis
 static const GLfloat ROTATE_SPEED = 200.0f;
 
-//Used to store information about rotation around different axes
-struct RotationInfo
-{
-	bool rotating;
-	GLfloat currentAngle;
-	GLfloat targetAngle;
-};
 
-class SpaceShip : public GameObject
+
+class SpaceShip : public GameObject2
 {
 public:
 	SpaceShip(int spaceshipHP);
 
 	virtual ~SpaceShip();
 
+	virtual void Update(float deltaTime);
+	
 	virtual void Draw();
-
-	//Stores a local deltaTime variable and updates
-	//timeSinceLastFired. It's main functionality will
-	//come from child classes overwriting, but be sure
-	//that the child classes also call this Update function
-	//to keep the time variables up to date
-	virtual void Update(GLfloat deltaTime);
+	
 	
 	//Will take care of initializing the spaceship by setting positions,
 	//velocity etc and creating the VBO/displayList or whatever is being 
 	//used for rendering.
-	virtual void InitSpaceship(float startX, float startY, float startZ,
+	virtual void InitSpaceShip(float startX, float startY, float startZ,
 								float startRotDeg, float rotX, float rotY, float rotZ,
-								float dirVecX, float dirVecY, float dirVecZ);
+								float dirVecX, float dirVecY, float dirVecZ,
+								float scale);
 
 	//Starts rotation around the specified axis
 	void InitRotation(Axis axisToRotateArround);
-	
-	GLfloat getDeltaTime(){return deltaTime;}
 
 	std::deque<std::shared_ptr<Projectile>>* GetProjectiles(){return shooterModule.GetActiveProjectiles();}
 
@@ -70,11 +64,12 @@ public:
 	int GetSpaceshipHP(){return SpaceShipCurrentHealth;}
 
 protected:
-	ShooterModule shooterModule;
+	ShooterModule shooterModule;	//A spaceship can shoot
+	VBODrawable vboDrawable;		//A spaceship is drawn with VBOs
+	Transformable transformable;	//A spaceship is transformable
+	BoundingSphere collisionSphere;	//A spaceship has a boundingSphere for collisiona
 
-	bool WasInited;
-
-	virtual void CreateGameObject();
+	virtual void CreateGameObject(std::string meshPathFrom3dsFolder);
 
 	virtual void DrawWithArrays();
 	virtual void DrawWithIndices();
@@ -85,27 +80,9 @@ protected:
 	//Takes care of firing the spaceships gun.
 	void FireGun(ProjectileTypes projectileType);
 
-	//handles the rotation arround the x, y and z axis
-	void RotateArroundX(GLfloat deltaTime);
-	void RotateArroundY(GLfloat deltaTime);
-	void RotateArroundZ(GLfloat deltaTime);
-
-	//Stores the current rotation in degrees around the 3 axes
-	//Used to send as parameter to projectiles.
-	//Vector3D rotation; 
-
-	//Struct objects that hold rotation info about the differet axes
-	RotationInfo xAxis;
-	RotationInfo yAxis;
-	RotationInfo zAxis;
-
-	
 private:
 	Logger log;
 
-	//local copy of deltaTime, used since we need to call the rotate functions
-	//inside the Draw() function, and they need a deltaTime variable.
-	GLfloat deltaTime; 
 };
 
 #endif // SpaceShip_H

@@ -10,10 +10,10 @@
 
 #include "Vector3d.h"
 
-class Transformation
+class CollisionTransformationInfo
 {
 public:
-    
+
 	Vector3D position;	// The translated position
 	Vector3D scale;		// The translated scale
 };

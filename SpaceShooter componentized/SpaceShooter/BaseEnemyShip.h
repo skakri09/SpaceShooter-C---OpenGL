@@ -33,7 +33,7 @@ public:
 
     virtual ~BaseEnemyShip();
 	
-	virtual void InitSpaceship(float startX, float startY, float startZ,
+	virtual void InitSpaceShip(float startX, float startY, float startZ,
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ);
 
@@ -65,9 +65,6 @@ protected:
 
 	//A pointer to the player spaceship. 
 	PlayerSpaceShip* playerShip;
-
-	//Creates the displaylist/vbo for the spaceship
-	virtual void CreateGameObject();
 
 	//Takes care of switching between AI states. Any enemy spaceship
 	//need to implement their own functionality in this function
