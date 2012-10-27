@@ -19,7 +19,6 @@ Projectile::Projectile(	ProjectileTypes projectileType,
 
 Projectile::~Projectile()
 {
-
 }
 
 void Projectile::Draw()

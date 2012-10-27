@@ -18,7 +18,6 @@ public:
 	~SquareSlowBullet();
 
 protected:
-	//void CreateProjectile(ProjectileTypes projectileType, std::string meshPathFromXmlFolder);
 	virtual void CreateProjectile(ProjectileTypes projectileType,  std::string meshPathFromXmlFolder );
 
 private:

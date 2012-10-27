@@ -74,13 +74,16 @@ void ProjectileFactory::InitProjectileFactory()
 {
 	wasInited = true;
 
-//Repeat the two following lines of code for each ProjectileType added to the game!
+	//Repeat the two following lines of code for each ProjectileType added to the game!
+	//This takes care of pre-loading the mesh into a VBO on the graphics card on startup
+	//so we dont get a small freeze when trying to use an object that has not been loaded.
 	/***********************************************************************/
 	std::shared_ptr<Projectile> squarefast = GetProjectile(SQUARE_FAST_BULLET);
 	projectileCooldowns[SQUARE_FAST_BULLET] = squarefast->GetProjectileCooldown();
+	/***********************************************************************/
 
 	std::shared_ptr<Projectile> squareslow = GetProjectile(SQUARE_SLOW_BULLET);
 	projectileCooldowns[SQUARE_SLOW_BULLET] = squareslow->GetProjectileCooldown();
-	/***********************************************************************/
+	
 }
 

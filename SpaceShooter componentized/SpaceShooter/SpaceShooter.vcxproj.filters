@@ -368,9 +368,6 @@
     <ClInclude Include="SquareFastBullet.h">
       <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectileTypes.h">
-      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StarDestroyerShipSpawning.h">
       <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
@@ -394,6 +391,9 @@
     </ClInclude>
     <ClInclude Include="MeshInfo.h">
       <Filter>Game\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileTypes.h">
+      <Filter>Game\GameObjects\Projectiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

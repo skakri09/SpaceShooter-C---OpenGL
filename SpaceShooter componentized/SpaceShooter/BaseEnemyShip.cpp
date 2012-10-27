@@ -41,12 +41,6 @@ void BaseEnemyShip::Update( GLfloat deltaTime )
 	SpaceShip::Update(deltaTime);
 }
 
-//void BaseEnemyShip::InitSpaceship(float startX, float startY, float startZ,
-//								float scaleX, float scaleY, float scaleZ)
-//{
-//	SpaceShip::InitSpaceship(startX, startY, startZ, s);
-//}
-
 void BaseEnemyShip::Shoot()
 {
 

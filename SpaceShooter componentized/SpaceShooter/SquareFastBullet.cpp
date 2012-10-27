@@ -8,7 +8,6 @@ SquareFastBullet::SquareFastBullet()
 
 SquareFastBullet::~SquareFastBullet()
 {
-
 }
 
 void SquareFastBullet::CreateProjectile(ProjectileTypes projectileType,  std::string meshPathFromXmlFolder )
