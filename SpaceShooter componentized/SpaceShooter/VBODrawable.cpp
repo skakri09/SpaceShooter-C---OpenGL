@@ -94,7 +94,7 @@ void VBODrawable::EnableClientStates( bool colorArray /*= false*/,
 	}
 	if(elementArrayEnabled)
 	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
 	}
 }
 

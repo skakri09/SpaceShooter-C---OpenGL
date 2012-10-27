@@ -397,17 +397,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Mesh_PlayerSpaceship.xml">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Mesh_SquareBullet.xml">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="lib3ds-1_3d.dll">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="GameObject2.h">
       <Filter>Game\GameObjects</Filter>
+    </None>
+    <None Include="..\xml\Projectiles\Mesh_SquareBullet.xml">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
 </Project>

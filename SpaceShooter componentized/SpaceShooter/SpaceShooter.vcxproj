@@ -175,14 +175,9 @@
     <ClInclude Include="XmlLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\xml\Projectiles\Mesh_SquareBullet.xml" />
     <None Include="GameObject2.h" />
     <None Include="lib3ds-1_3d.dll" />
-    <None Include="Mesh_PlayerSpaceship.xml">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Mesh_SquareBullet.xml">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

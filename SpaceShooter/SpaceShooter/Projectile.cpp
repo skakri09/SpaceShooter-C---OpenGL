@@ -64,7 +64,7 @@ void Projectile::Draw()
 
 		log << INFO << position.getZ() << std::endl;
 	}
-}
+} 
 
 void Projectile::Update(GLfloat deltaTime)
 {

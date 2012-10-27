@@ -36,27 +36,9 @@ void Projectile::Draw()
 		//position and rotation.
 		glPushMatrix();
 
-		transformable.ApplyGLTransformations();
+		transformable.ApplyGLTransformations(true, true, false);
 		vboDrawable.DrawWithIndices();
-		//glTranslatef(position.getX(), position.getY(), position.getZ());
-		//glScalef(scale.getX(), scale.getY(), scale.getZ());
-		//glEnableClientState(GL_VERTEX_ARRAY);
-		//glEnableClientState(GL_NORMAL_ARRAY);
 
-		//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
-		//glVertexPointer(3, GL_FLOAT, 0, 0);
-
-		//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
-		//glNormalPointer(GL_FLOAT, 0, 0);
-
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-		//glDrawElements(GL_TRIANGLES,  meshInfo.numberOfIndices, GL_UNSIGNED_INT,0);
-
-		//glDisableClientState(GL_VERTEX_ARRAY);
-		//glDisableClientState(GL_NORMAL_ARRAY);
-
-		//glBindBuffer(GL_ARRAY_BUFFER, 0);
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 		glPopMatrix();
 		glPopMatrix();
@@ -83,18 +65,19 @@ void Projectile::Update(GLfloat deltaTime)
 
 void Projectile::FireProjectile( Transformable& ownerTransformable)
 {
-	Vector3D zeroRotation;
-	transformable.Init(*ownerTransformable.getPosition(), zeroRotation, 0, 1,
+	Vector3D zeroVec;
+	transformable.Init(zeroVec, zeroVec, 0, 1,
 						ownerTransformable.getDirectionVector());
 
 	transformable.SetScale(scale, scale, scale);
 	timeSinceFired = 0.0f;
 
-	Vector3D velocity = transformable.getDirectionVector().Normalize();
+	Vector3D velocity = transformable.getDirectionVector();//.Normalize();
+	velocity.Normalize();
 	velocity*=projectileVelocity;
 	transformable.SetVelocity(velocity);
 
-	initialStartPosition = *transformable.getPosition();
+	initialStartPosition = *ownerTransformable.getPosition();
 	fired = true;
 }
 
