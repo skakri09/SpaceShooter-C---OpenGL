@@ -36,7 +36,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	TimeSinceLastEnemySpawn = 0.0f;
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(&player));
 	//EnemySpaceShips.back()->InitSpaceship(-200, -10, -450, 180, 0, 1, 0, 0, 0, 1);
-	EnemySpaceShips.back()->InitSpaceship(-200, 0, -450, 180, 0, 1, 0, 0, 0, 1);
+	EnemySpaceShips.back()->InitSpaceship(-200, 0, -200, 180, 0, 1, 0, 0, 0, 1);
 }
 
 void SpaceShipManager::UpdateManager(GLfloat deltaTime)

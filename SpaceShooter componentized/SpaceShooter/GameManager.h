@@ -63,6 +63,7 @@ private:
 	//throughout the game
 	void setOpenGLStates();
 
+	float rotate;
 private:
 	Logger log;
 

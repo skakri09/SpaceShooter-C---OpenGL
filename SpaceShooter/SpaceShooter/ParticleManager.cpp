@@ -97,9 +97,9 @@ void ParticleManager::DrawParticles()
 			LightspeedStars.at(i).Draw();
 		}
 	}
-	glAccum(GL_ACCUM, 0.2f);
-	glAccum(GL_MULT, 0.9f); 
-	glAccum(GL_RETURN, 3.6f); 
+	//glAccum(GL_ACCUM, 0.2f);
+	//glAccum(GL_MULT, 0.9f); 
+	//glAccum(GL_RETURN, 3.6f); 
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }

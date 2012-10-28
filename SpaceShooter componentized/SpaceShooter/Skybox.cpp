@@ -17,11 +17,185 @@ void Skybox::initSkybox()
 	skybox[SKY_FRONT]=loadTexture("..//skybox//skybox1//front.png");
 	skybox[SKY_TOP]=loadTexture("..//skybox//skybox1//top.png");
 	skybox[SKY_BOTTOM]=loadTexture("..//skybox//skybox1//bottom.png");
+	size = 200;
 }
 
 void Skybox::drawSkybox()
 {
+	bool b1=glIsEnabled(GL_TEXTURE_2D);     //new, we left the textures turned on, if it was turned on
+	glDisable(GL_LIGHTING); //turn off lighting, when making the skybox
+	glDisable(GL_DEPTH_TEST);       //turn off depth texting
+	glEnable(GL_TEXTURE_2D);
+	//glDisable(GL_CULL_FACE);
+	
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D,skybox[SKY_BACK]); 
+	glBegin(GL_QUADS);
+	glTexCoord2f(1, 1);
+	glVertex3f(size*-0.5f, size*-0.5f, size*-0.5f);//bottom left
+	glTexCoord2f(0, 1);
+	glVertex3f(size*0.5f, size*-0.5f, size*-0.5f);//bottom right
+	glTexCoord2f(0, 0);
+	glVertex3f(size*0.5f, size*0.5f, size*-0.5f); //top right
+	glTexCoord2f(1, 0);
+	glVertex3f(size*-0.5f, size*0.5f, size*-0.5f);//top left
+	glEnd();
+	glPopMatrix();
 
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D,skybox[SKY_LEFT]);
+	glBegin(GL_QUADS);
+	glTexCoord2f(1, 1);
+	glVertex3f(size*-0.5f, size*-0.5f, size*0.5f);//front bottom
+	glTexCoord2f(0, 1);
+	glVertex3f(size*-0.5f, size*-0.5f, size*-0.5f);//back bottom
+	glTexCoord2f(0, 0);
+	glVertex3f(size*-0.5f, size*0.5f, size*-0.5f);//back top
+	glTexCoord2f(1, 0);
+	glVertex3f(size*-0.5f, size*0.5f, size*0.5f);//front top
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D,skybox[SKY_FRONT]);
+	glBegin(GL_QUADS);
+	glTexCoord2f(0, 1);
+	glVertex3f(size*-0.5f, size*-0.5f, size*0.5f);//bottom left
+	glTexCoord2f(0, 0);
+	glVertex3f(size*-0.5f, size*0.5f, size*0.5f);//top left
+	glTexCoord2f(1, 0);
+	glVertex3f(size*0.5f, size*0.5f, size*0.5f);//top right
+	glTexCoord2f(1, 1);
+	glVertex3f(size*0.5f, size*-0.5f, size*0.5f);//bottom right
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D,skybox[SKY_RIGHT]);
+	glBegin(GL_QUADS);
+	glTexCoord2f(0, 1);
+	glVertex3f(size*0.5f, size*-0.5f, size*0.5f);//front bottom
+	glTexCoord2f(0, 0);
+	glVertex3f(size*0.5f, size*0.5f, size*0.5f);//front top
+	glTexCoord2f(1, 0);
+	glVertex3f(size*0.5f, size*0.5f, size*-0.5f);//back top
+	glTexCoord2f(1, 1);
+	glVertex3f(size*0.5f, size*-0.5f, size*-0.5f);//back bottom
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D,skybox[SKY_TOP]);          
+	glBegin(GL_QUADS);
+	glTexCoord2f(0, 1);
+	glVertex3f(size*-0.5f, size*0.5f, size*0.5f);//front left
+	glTexCoord2f(0, 0);
+	glVertex3f(size*-0.5f, size*0.5f, size*-0.5f);//back left
+	glTexCoord2f(1, 0);
+	glVertex3f(size*0.5f, size*0.5f, size*-0.5f);//back right
+	glTexCoord2f(1, 1);
+	glVertex3f(size*0.5f, size*0.5f, size*0.5f);//front right
+	
+	
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+
+	glBindTexture(GL_TEXTURE_2D,skybox[SKY_BOTTOM]);               
+	glBegin(GL_QUADS);
+	glTexCoord2f(0, 0);
+	glVertex3f(size*-0.5f, size*-0.5f, size*0.5f);//front left
+	glTexCoord2f(1, 0);
+	glVertex3f(size*0.5f, size*-0.5f, size*0.5f);//front right
+	glTexCoord2f(1, 1);
+	glVertex3f(size*0.5f, size*-0.5f, size*-0.5f);//back right
+	glTexCoord2f(0, 1);
+	glVertex3f(size*-0.5f, size*-0.5f, size*-0.5f);//back left
+	glEnd();
+	glPopMatrix();
+	
+	//and turn on texturing
+	//glDisable(GL_CULL_FACE);
+	//glBindTexture(GL_TEXTURE_2D,skybox[SKY_BACK]);  //use the texture we want
+	//glBegin(GL_QUADS);      //and draw a face
+	////back face
+	//glTexCoord2f(0,0);      //use the correct texture coordinate
+	//glVertex3f(size/2,size/2,size/2);       //and a vertex
+	//glTexCoord2f(1,0);      //and repeat it...
+	//glVertex3f(-size/2,size/2,size/2);
+	//glTexCoord2f(1,1);
+	//glVertex3f(-size/2,-size/2,size/2);
+	//glTexCoord2f(0,1);
+	//glVertex3f(size/2,-size/2,size/2);
+	//glEnd();
+	//glBindTexture(GL_TEXTURE_2D,skybox[SKY_LEFT]);
+	//glBegin(GL_QUADS);     
+	////left face
+	//glTexCoord2f(0,0);
+	//glVertex3f(-size/2,size/2,size/2);
+	//glTexCoord2f(1,0);
+	//glVertex3f(-size/2,size/2,-size/2);
+	//glTexCoord2f(1,1);
+	//glVertex3f(-size/2,-size/2,-size/2);
+	//glTexCoord2f(0,1);
+	//glVertex3f(-size/2,-size/2,size/2);
+	//glEnd();
+	//glBindTexture(GL_TEXTURE_2D,skybox[SKY_FRONT]);
+	//glBegin(GL_QUADS);     
+	////front face
+	//glTexCoord2f(1,0);
+	//glVertex3f(size/2,size/2,-size/2);
+	//glTexCoord2f(0,0);
+	//glVertex3f(-size/2,size/2,-size/2);
+	//glTexCoord2f(0,1);
+	//glVertex3f(-size/2,-size/2,-size/2);
+	//glTexCoord2f(1,1);
+	//glVertex3f(size/2,-size/2,-size/2);
+	//glEnd();
+	//glBindTexture(GL_TEXTURE_2D,skybox[SKY_RIGHT]);
+	//glBegin(GL_QUADS);     
+	////right face
+	//glTexCoord2f(0,0);
+	//glVertex3f(size/2,size/2,-size/2);
+	//glTexCoord2f(1,0);
+	//glVertex3f(size/2,size/2,size/2);
+	//glTexCoord2f(1,1);
+	//glVertex3f(size/2,-size/2,size/2);
+	//glTexCoord2f(0,1);
+	//glVertex3f(size/2,-size/2,-size/2);
+	//glEnd();
+	//glBindTexture(GL_TEXTURE_2D,skybox[SKY_TOP]);          
+	//glBegin(GL_QUADS);                      //top face
+	//glTexCoord2f(1,0);
+	//glVertex3f(size/2,size/2,size/2);
+	//glTexCoord2f(0,0);
+	//glVertex3f(-size/2,size/2,size/2);
+	//glTexCoord2f(0,1);
+	//glVertex3f(-size/2,size/2,-size/2);
+	//glTexCoord2f(1,1);
+	//glVertex3f(size/2,size/2,-size/2);
+	//glEnd();
+	//glBindTexture(GL_TEXTURE_2D,skybox[SKY_BOTTOM]);               
+	//glBegin(GL_QUADS);     
+	////bottom face
+	//glTexCoord2f(1,1);
+	//glVertex3f(size/2,-size/2,size/2);
+	//glTexCoord2f(0,1);
+	//glVertex3f(-size/2,-size/2,size/2);
+	//glTexCoord2f(0,0);
+	//glVertex3f(-size/2,-size/2,-size/2);
+	//glTexCoord2f(1,0);
+	//glVertex3f(size/2,-size/2,-size/2);
+	//glEnd();
+	
+	
+	
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_LIGHTING);  //turn everything back, which we turned on, and turn everything off, which we have turned on.
+	glEnable(GL_DEPTH_TEST);
+	if(!b1)
+		glDisable(GL_TEXTURE_2D);
 }
 
 unsigned int Skybox::loadTexture(const char* filename)
@@ -54,18 +228,107 @@ unsigned int Skybox::loadTexture(const char* filename)
 
 	// finally get the image data, and delete the il-image.
 	ilCopyPixels(0, 0, 0, img.width, img.height, 1, IL_RGBA, IL_UNSIGNED_BYTE, &img.data[0]);
-	
+	ilDeleteImages(1, &imageName); 
 
 	
 	glBindTexture(GL_TEXTURE_2D,num);       //and use the texture, we have just generated
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); //if the texture is smaller, than the image, we get the avarege of the pixels next to it
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR); //same if the image bigger
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST); //if the texture is smaller, than the image, we get the avarege of the pixels next to it
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST); //same if the image bigger
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP);      //we repeat the pixels in the edge of the texture, it will hide that 1px wide line at the edge of the cube, which you have seen in the video
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP);      //we do it for vertically and horizontally (previous line)
-	glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,img.width,img.height,0,GL_RGBA,GL_UNSIGNED_SHORT_5_6_5,&img.data[0]);        //we make the actual texture
+	glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,img.width,img.height,0,GL_RGBA,IL_UNSIGNED_BYTE,&img.data[0]);        //we make the actual texture
 	
-	ilDeleteImages(1, &imageName); 
 	return num;     //and we return the id
+}
+
+
+void Skybox::CreateSkyBox(float x, float y, float z, float width, float height, float length)
+{
+	/*
+		All this function does is create 6 squares and distance them according to the measurements 
+			provided by the user. Mess around with it if you want.
+	*/
+
+	// Bind the BACK texture of the sky map to the BACK side of the cube
+	glBindTexture(GL_TEXTURE_2D, skybox[SKY_BACK]);
+
+	// Center the skybox
+	x = x - width  / 2;
+	y = y - height / 2;
+	z = z - length / 2;
+	glBegin(GL_QUADS);		
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(x + width, y,			z);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(x + width, y + height, z); 
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(x,			y + height, z);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(x,			y,			z);
+		
+	glEnd();
+	glBindTexture(GL_TEXTURE_2D, skybox[SKY_FRONT]);
+	glBegin(GL_QUADS);	
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(x,			y,			z + length);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(x,			y + height, z + length);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(x + width, y + height, z + length); 
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(x + width, y,			z + length);
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, skybox[SKY_BOTTOM]);
+	glBegin(GL_QUADS);		
+	
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(x,			y,			z);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(x,			y,			z + length);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(x + width, y,			z + length); 
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(x + width, y,			z);
+	glEnd();
+	glBindTexture(GL_TEXTURE_2D, skybox[SKY_TOP]);
+	glBegin(GL_QUADS);		
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(x + width, y + height, z);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(x + width, y + height, z + length); 
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(x,			y + height,	z + length);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(x,			y + height,	z);
+	glEnd();
+	glBindTexture(GL_TEXTURE_2D, skybox[SKY_LEFT]);
+	glBegin(GL_QUADS);		
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(x,			y + height,	z);	
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(x,			y + height,	z + length); 
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(x,			y,			z + length);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(x,			y,			z);		
+		
+	glEnd();
+	glBindTexture(GL_TEXTURE_2D, skybox[SKY_RIGHT]);
+	glBegin(GL_QUADS);	
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(x + width, y,			z);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(x + width, y,			z + length);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(x + width, y + height,	z + length); 
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(x + width, y + height,	z);
+	glEnd();
+}
+
+void Skybox::drawQuad()
+{
+	glBegin(GL_QUADS);
+
+	//glNormal3f(0.0f, 0.0f, 1.0f);
+	//back face
+	//glTexCoord2f(0,0);      //use the correct texture coordinate
+	glTexCoord2f(1,1);      //use the correct texture coordinate
+	glVertex3f(size*0.5f, size*0.5f,size* -0.5f);//top right
+	//glVertex3f(size/2,size/2,size/2);       //top right
+	
+	//glTexCoord2f(1,0);      //and repeat it...
+	glTexCoord2f(0,1);      //and repeat it...
+	glVertex3f(size*-0.5f, size*0.5f, size*-0.5f);//top left
+	//glVertex3f(-size/2,size/2,size/2);//topleft
+	
+	//glTexCoord2f(1,1);
+	glTexCoord2f(0,0);
+	glVertex3f(size*-0.5f, size*-0.5f, size*-0.5f);//bottom left
+	//glVertex3f(-size/2,-size/2,size/2);//bottomleft
+	
+	//glTexCoord2f(0,1);
+	glTexCoord2f(1,0);
+	glVertex3f(size*0.5f, size*-0.5f, size*-0.5f);//bottom right
+	//glVertex3f(size/2,-size/2,size/2);//bottomright	
+	glEnd();
 }
 
 //void Skybox::DrawSkybox(float size)

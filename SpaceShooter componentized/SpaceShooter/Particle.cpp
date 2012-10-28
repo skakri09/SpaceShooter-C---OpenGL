@@ -35,10 +35,10 @@ void Particle::Draw()
 	{
 		glColor4f(r, g, b, life);
 		glBegin(GL_QUADS);
-		glTexCoord2d(1,1); glVertex3f(position.getX()+0.5f,position.getY()+0.5f,position.getZ()); // Top Right
-		glTexCoord2d(0,1); glVertex3f(position.getX()-0.5f,position.getY()+0.5f,position.getZ()); // Top Left
-		glTexCoord2d(0,0); glVertex3f(position.getX()-0.5f,position.getY()-0.5f,position.getZ()); // Bottom Left
-		glTexCoord2d(1,0); glVertex3f(position.getX()+0.5f,position.getY()-0.5f,position.getZ()); // Bottom Right
+		glTexCoord2d(1,0); glVertex3f(position.getX()+0.5f,position.getY()+0.5f,position.getZ()); // Top Right
+		glTexCoord2d(0,0); glVertex3f(position.getX()-0.5f,position.getY()+0.5f,position.getZ()); // Top Left
+		glTexCoord2d(0,1); glVertex3f(position.getX()-0.5f,position.getY()-0.5f,position.getZ()); // Bottom Left
+		glTexCoord2d(1,1); glVertex3f(position.getX()+0.5f,position.getY()-0.5f,position.getZ()); // Bottom Right
 		glEnd();
 	}
 }

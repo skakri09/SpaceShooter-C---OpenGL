@@ -40,6 +40,11 @@ public:
 
 	unsigned int skybox[6];
 
+	float size;
+	void CreateSkyBox(float x, float y, float z, float width, float height, float length);
+
+	void drawQuad();
+
 private:
 	Logger log;
 	/*void InitSkybox(std::string skyBoxName, std::string extension);

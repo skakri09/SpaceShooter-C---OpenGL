@@ -103,7 +103,7 @@ void GameManager::init() {
 	ilInit();
 	iluInit();
 	// Set the origin to be the lower left corner
-	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
+	ilOriginFunc(IL_ORIGIN_UPPER_LEFT);
 	ilEnable(IL_ORIGIN_SET);
 
 	//A resize MUST be called before we start, as it does 
@@ -117,6 +117,7 @@ void GameManager::init() {
 	//skybox.InitSkybox("skybox1", ".png");
 	//skybox.createCubeMap();
 	skybox.initSkybox();
+	rotate = 0;
 }
 
 void GameManager::render() {
@@ -126,14 +127,21 @@ void GameManager::render() {
 	
 	glPushMatrix();
 	glLoadIdentity();
-	//skybox.drawCubeBox(50);
-	//skybox.DrawSkybox(35);
-	//skybox.drawCube(20);
+	
+	rotate+= deltaTime*30;
+	if(rotate >= 360)
+	{
+		rotate -=360;
+	}
+	//glTranslatef(0, 0, 40);
+	glRotatef(rotate, sin(my_timer.getCurrentTime()), sin(my_timer.getCurrentTime()), cos(my_timer.getCurrentTime()));
+	skybox.drawSkybox();
+	//skybox.CreateSkyBox(0, 0, 0, 1, 1, 1);
 	glPopMatrix();
 
 	glClear(GL_DEPTH_BUFFER_BIT);
-	//particleManager.DrawParticles();
-	//shipManager.DrawSpaceShips();
+	particleManager.DrawParticles();
+	shipManager.DrawSpaceShips();
 
 	checkGLErrors();
 	glPopMatrix();
@@ -145,7 +153,7 @@ void GameManager::update()
 	input.Update(doExit);
 
 	particleManager.UpdateParticles(deltaTime);
-	shipManager.UpdateManager(deltaTime);
+	//shipManager.UpdateManager(deltaTime);
 }
 
 void GameManager::GameLoop() 
