@@ -12,10 +12,10 @@
 class GameObject2
 {
 public:
-	//GameObject2()
-	//{
-	//	kill = false;
-	//}
+	GameObject2()
+	{
+		kill = false;
+	}
 
 	//virtual ~GameObject2();
 
@@ -26,6 +26,8 @@ public:
 	void FlagForKill(){kill = true;}
 
 	bool CanKill(){return kill;}
+
+	bool IsAlive(){return !kill;}
 
 protected:
 

@@ -19,6 +19,7 @@
 #include "InputManager.h"
 #include "ParticleManager.h"
 #include "GameConstants.h"
+#include "Skybox.h"
 
 #include <gl/glew.h>
 #include <gl/gl.h>
@@ -78,6 +79,9 @@ private:
 	//Inputmanager, requires an update call each gameloop to be updated
 	//and ready for input queries
 	InputManager input;
+
+	//Our skybox
+	Skybox skybox;
 
 	bool doExit; //If true, the game quits
 };

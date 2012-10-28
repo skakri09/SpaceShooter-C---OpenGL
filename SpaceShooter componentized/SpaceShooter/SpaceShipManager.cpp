@@ -21,7 +21,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//Planets//Endor//Endor.3ds");
-
+	planet.CreatePlanet("Endor//Endor.3ds");
 	player.InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 
 	EnemySpaceShips.push_back(GetRandomEnemy());
@@ -41,6 +41,8 @@ void SpaceShipManager::InitManager(InputManager* input)
 
 void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 {
+	planet.Update(deltaTime);
+
 	if(input->Fire())
 	{
 		player.Shoot();
@@ -51,7 +53,7 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	
 	HandleFrustumCollision();
 
-	if(player.CanKill())
+	if(!player.CanKill())
 	{
 		player.Update(deltaTime);
 	}
@@ -62,14 +64,14 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();)
 	{
-		if( !(*i)->CanKill() )
+		if( (*i)->CanKill() )
 		{
 			i = EnemySpaceShips.erase(i);
 		}
 		else
 		{
 			(*i)->Update(deltaTime);
-			if(player.CanKill())
+			if(!player.CanKill())
 			{
 				(*i)->HandleProjectileCollision(player.GetProjectiles());
 				player.HandleProjectileCollision( (*i)->GetProjectiles());
@@ -91,19 +93,18 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 
 void SpaceShipManager::DrawSpaceShips()
 {
+	
 	glPushMatrix();
-	if(player.CanKill())
-	{
-		player.Draw();
-	}
+	
+	planet.Draw();
+
+	player.Draw();
 	
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();i++)
 	{
-		if( (*i)->CanKill() )
-		{
-			(*i)->Draw();
-		}
+		(*i)->Draw();
 	}
+
 	glPopMatrix();
 }
 
@@ -119,12 +120,12 @@ void SpaceShipManager::HandleXAxisMovement()
 		//If only left
 		if (input->MoveLeft() && !input->MoveRight())
 		{
-			player.transformable.setXVel(-PLAYER_X_VELOCITY);
+			player.transformable.setXVel(-PLAYER_XY_VELOCITY);
 		}
 		//If only right
 		if (!input->MoveLeft() && input->MoveRight())
 		{
-			player.transformable.setXVel(PLAYER_X_VELOCITY);
+			player.transformable.setXVel(PLAYER_XY_VELOCITY);
 		}
 	}
 	else
@@ -146,12 +147,12 @@ void SpaceShipManager::HandleYAxisMovement()
 		//If only up
 		if (input->MoveUp() && !input->MoveDown())
 		{
-			player.transformable.setYVel(PLAYER_Y_VELOCITY);
+			player.transformable.setYVel(PLAYER_XY_VELOCITY);
 		}
 		//If only down
 		if (!input->MoveUp() && input->MoveDown())
 		{
-			player.transformable.setYVel(-PLAYER_Y_VELOCITY);
+			player.transformable.setYVel(-PLAYER_XY_VELOCITY);
 		}
 	}
 	else

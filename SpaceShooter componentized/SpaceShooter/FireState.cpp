@@ -7,7 +7,11 @@ void FireState::Enter( BaseEnemyShip* owner )
 
 void FireState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
-	owner->Shoot();
+	if(owner->getPlayerShip()->IsAlive())
+	{
+		owner->Shoot();
+	}
+	
 }
 
 void FireState::Exit( BaseEnemyShip* owner )

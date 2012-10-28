@@ -99,6 +99,12 @@ void GameManager::init() {
 	{
 		log << ERRORX << "GlewInit() failed" << std::endl;
 	}
+	// Initialize DevIL
+	ilInit();
+	iluInit();
+	// Set the origin to be the lower left corner
+	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
+	ilEnable(IL_ORIGIN_SET);
 
 	//A resize MUST be called before we start, as it does 
 	//the gluPerspective() and glViewPort() calls 
@@ -108,16 +114,29 @@ void GameManager::init() {
 	ProjectileFactory::Inst()->InitProjectileFactory();
 	shipManager.InitManager(&input);
 	particleManager.InitParticleManager();
+	//skybox.InitSkybox("skybox1", ".png");
+	//skybox.createCubeMap();
+	skybox.initSkybox();
 }
 
 void GameManager::render() {
 	//Clear screen, and set the correct program
+	glPushMatrix();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-	particleManager.DrawParticles();
-	shipManager.DrawSpaceShips();
+	glPushMatrix();
+	glLoadIdentity();
+	//skybox.drawCubeBox(50);
+	//skybox.DrawSkybox(35);
+	//skybox.drawCube(20);
+	glPopMatrix();
+
+	glClear(GL_DEPTH_BUFFER_BIT);
+	//particleManager.DrawParticles();
+	//shipManager.DrawSpaceShips();
 
 	checkGLErrors();
+	glPopMatrix();
 	SDL_GL_SwapBuffers();
 }
 

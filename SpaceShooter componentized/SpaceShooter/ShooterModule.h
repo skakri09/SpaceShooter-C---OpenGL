@@ -9,7 +9,7 @@
 #define ShooterModule_h__
 
 #include "ProjectileFactory.h"
-#include <deque>
+#include <vector>
 
 
 class ShooterModule
@@ -28,12 +28,14 @@ public:
 	//Looping trough all the projectiles and drawing them
 	void DrawModule();
 
-	std::deque<std::shared_ptr<Projectile>>* GetActiveProjectiles(){return &ActiveProjectiles;}
+	std::vector<std::shared_ptr<Projectile>>* GetActiveProjectiles(){return &ActiveProjectiles;}
+	
+	int nrOfActiveProjectiles(){return ActiveProjectiles.size();}
 protected:
 
 private:
 	//using a deque as we're removing from the front of the container
-	std::deque<std::shared_ptr<Projectile>> ActiveProjectiles;
+	std::vector<std::shared_ptr<Projectile>> ActiveProjectiles;
 
 	//Map holding the cooldown on the individual projectile types
 	std::map<ProjectileTypes, float> projectileCooldowns;

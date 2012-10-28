@@ -24,19 +24,22 @@ BaseEnemyShip::~BaseEnemyShip()
 
 void BaseEnemyShip::Draw()
 {
-	glPushMatrix();
+	//if(IsAlive())
+	{
+		glPushMatrix();
 
-	transformable.ApplyGLTransformations();
-	vboDrawable.DrawWithArrays();
+		transformable.ApplyGLTransformations();
+		vboDrawable.DrawWithArrays();
 
-	glPopMatrix();
+		glPopMatrix();
 
-	shooterModule.DrawModule();
+		shooterModule.DrawModule();
+	}
+	
 }
 
 void BaseEnemyShip::Update( GLfloat deltaTime )
 {
-
 	aiStateMachine.Update(deltaTime);
 	SpaceShip::Update(deltaTime);
 }

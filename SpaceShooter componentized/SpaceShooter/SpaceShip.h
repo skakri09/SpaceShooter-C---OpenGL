@@ -15,6 +15,8 @@
 #ifndef SpaceShip_H
 #define SpaceShip_H
 
+#include <vector>
+
 #include "Logger.h"
 #include "GameObject2.h"
 #include "Projectile.h"
@@ -57,9 +59,9 @@ public:
 	//Starts rotation around the specified axis
 	//void InitRotation(Axis axisToRotateArround);
 
-	std::deque<std::shared_ptr<Projectile>>* GetProjectiles(){return shooterModule.GetActiveProjectiles();}
+	std::vector<std::shared_ptr<Projectile>>* GetProjectiles(){return shooterModule.GetActiveProjectiles();}
 
-	void HandleProjectileCollision(std::deque<std::shared_ptr<Projectile>>* projectiles);
+	void HandleProjectileCollision(std::vector<std::shared_ptr<Projectile>>* projectiles);
 
 	int GetSpaceshipHP(){return SpaceShipCurrentHealth;}
 	

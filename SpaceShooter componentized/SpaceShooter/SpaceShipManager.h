@@ -21,6 +21,7 @@
 #include "SpaceShip.h"
 #include "GetRandomFloat.h"
 #include "ImperialStarDestroyer.h"
+#include "Planet.h"
 class SpaceShipManager
 {
 public:
@@ -47,7 +48,6 @@ private:
 	InputManager* input;	
 
 	PlayerSpaceShip player; // Player spaceship object
-	//std::shared_ptr<SimpleEnemy> enemy;  // Enemy spaceship object
 
 	//Handles movement along the x axis. Checks for input and changes
 	//x velocity based on the input.
@@ -69,8 +69,13 @@ private:
 	void HandlePlayerRotation();
 
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemySpaceShips;
+	
+	//Returns a random enemy
 	std::shared_ptr<BaseEnemyShip> GetRandomEnemy();
+	
 	float TimeSinceLastEnemySpawn;
+
+	Planet planet;
 };
 
 #endif // SpaceShipManager_h__

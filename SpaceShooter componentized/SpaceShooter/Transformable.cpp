@@ -27,6 +27,24 @@ void Transformable::Init(Vector3D startPos,
 	
 }
 
+void Transformable::Init( float xPos, float yPos, float zPos, 
+						Vector3D rotationAxis, float rotationDeg, 
+						float scale, /*Cheating and only allowing uniform scaling */ 
+						Vector3D directionVector )
+{
+	SetScale(scale, scale, scale);
+
+	Vector3D startPos(xPos, yPos, zPos);
+
+	position = startPos;
+
+	this->directionVector = directionVector;
+
+	objectRotationDegrees = rotationDeg;
+
+	this->rotationAxis = rotationAxis;
+}
+
 void Transformable::Update( float deltaTime )
 {
 	CalculatePosition(deltaTime);

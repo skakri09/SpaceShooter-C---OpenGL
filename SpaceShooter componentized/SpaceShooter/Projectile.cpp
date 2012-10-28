@@ -29,7 +29,7 @@ void Projectile::Draw()
 		// spaceship when fire was called.
 		glPushMatrix();
 
-		glTranslatef(initialStartPosition.getX(), initialStartPosition.getY(), initialStartPosition.getZ());
+		//glTranslatef(initialStartPosition.getX(), initialStartPosition.getY(), initialStartPosition.getZ());
 
 		//Draw the projectile in the above object's space which is transformed into the correct
 		//position and rotation.
@@ -65,7 +65,7 @@ void Projectile::Update(GLfloat deltaTime)
 void Projectile::FireProjectile( Transformable& ownerTransformable)
 {
 	Vector3D zeroVec;
-	transformable.Init(zeroVec, zeroVec, 0, 1,
+	transformable.Init(*ownerTransformable.getPosition(), zeroVec, 0, 1,
 						ownerTransformable.getDirectionVector());
 
 	transformable.SetScale(scale, scale, scale);

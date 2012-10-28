@@ -13,7 +13,7 @@ SpaceShip::~SpaceShip()
 
 void SpaceShip::Update(float deltaTime)
 {
-	if(SpaceShipCurrentHealth > 0)
+		if(SpaceShipCurrentHealth > 0)
 	{
 		transformable.Update(deltaTime);
 		collisionSphere.Update(transformable.GetCollisionTransformationInfo());
@@ -21,14 +21,18 @@ void SpaceShip::Update(float deltaTime)
 	}
 	else
 	{
-		//KillGameObject();
+		GameObject2::FlagForKill();
 	}
 }
 
 void SpaceShip::Draw()
 {
-	transformable.ApplyGLTransformations();
-	vboDrawable.DrawWithArrays();
+	if(IsAlive())
+	{
+		transformable.ApplyGLTransformations();
+		vboDrawable.DrawWithArrays();
+	}
+	
 }
 
 void SpaceShip::CreateGameObject(std::string meshPathFrom3dsFolder)
@@ -62,7 +66,7 @@ void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	SpaceShipCurrentHealth = SpaceShipMaxHealth;
 }
 
-void SpaceShip::HandleProjectileCollision( std::deque<std::shared_ptr<Projectile>>* projectiles )
+void SpaceShip::HandleProjectileCollision( std::vector<std::shared_ptr<Projectile>>* projectiles )
 {
 	for(unsigned int i = 0; i < projectiles->size(); i++)
 	{

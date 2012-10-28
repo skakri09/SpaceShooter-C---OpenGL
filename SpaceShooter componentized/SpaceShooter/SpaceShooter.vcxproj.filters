@@ -124,6 +124,9 @@
     <Filter Include="Game\Utility\Logger">
       <UniqueIdentifier>{9a464e1b-37c9-48c9-97f7-dbf944751574}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Skyboxes">
+      <UniqueIdentifier>{ea2dffb0-010b-443d-b7cf-6be31fb8adbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -240,6 +243,9 @@
     <ClCompile Include="VBODrawable.cpp">
       <Filter>Game\Components\VBO</Filter>
     </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Game\Skyboxes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -326,9 +332,6 @@
     <ClInclude Include="MeshXmlLoader.h">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerSpaceShip.h">
-      <Filter>Game\GameObjects\SpaceShips\Player</Filter>
-    </ClInclude>
     <ClInclude Include="SpaceShip.h">
       <Filter>Game\GameObjects\SpaceShips</Filter>
     </ClInclude>
@@ -395,6 +398,12 @@
     <ClInclude Include="ProjectileTypes.h">
       <Filter>Game\GameObjects\Projectiles</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerSpaceShip.h">
+      <Filter>Game\GameObjects\SpaceShips\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Game\Skyboxes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib3ds-1_3d.dll">
@@ -404,6 +413,9 @@
       <Filter>Game\GameObjects</Filter>
     </None>
     <None Include="..\xml\Projectiles\Mesh_SquareBullet.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\xml\Mesh_PlayerSpaceship.xml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

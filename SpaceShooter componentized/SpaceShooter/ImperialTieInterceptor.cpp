@@ -18,7 +18,7 @@ ImperialTieInterceptor::~ImperialTieInterceptor()
 void ImperialTieInterceptor::Update( GLfloat deltaTime )
 {
 	BaseEnemyShip::Update(deltaTime);
-	shooterModule.UpdateModule(deltaTime);
+	//shooterModule.UpdateModule(deltaTime);
 	HandleAI();
 
 }

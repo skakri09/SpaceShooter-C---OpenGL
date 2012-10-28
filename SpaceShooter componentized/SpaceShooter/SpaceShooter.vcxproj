@@ -91,6 +91,7 @@
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
     <ClCompile Include="Planet.cpp" />
+    <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="SquareSlowBullet.cpp" />
     <ClCompile Include="FireState.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="MeshInfo.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="ProjectileTypes.h" />
+    <ClInclude Include="Skybox.h" />
     <ClInclude Include="SquareSlowBullet.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="EnemySpaceshipConstantState.h" />
@@ -175,6 +177,7 @@
     <ClInclude Include="XmlLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\xml\Mesh_PlayerSpaceship.xml" />
     <None Include="..\xml\Projectiles\Mesh_SquareBullet.xml" />
     <None Include="GameObject2.h" />
     <None Include="lib3ds-1_3d.dll" />

@@ -16,7 +16,6 @@ ParticleManager::~ParticleManager()
 
 void ParticleManager::InitParticleManager()
 {
-	InitDevil();
 	Image img = ReadImage("Particle.png");
 
 	glGenTextures(1, &particle1);
@@ -191,13 +190,3 @@ Image ParticleManager::ReadImage( std::string image )
 	return img;
 }
 
-void ParticleManager::InitDevil()
-{
-	// Initialize DevIL
-	ilInit();
-	iluInit();
-
-	// Set the origin to be the lower left corner
-	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
-	ilEnable(IL_ORIGIN_SET);
-}

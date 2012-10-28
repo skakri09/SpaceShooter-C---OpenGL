@@ -13,6 +13,11 @@
 #include "SpaceShip.h"
 #include "Logger.h"
 #include "Mesh3dsLoader.h"
+
+//velocity values for the player spaceship
+static const float PLAYER_XY_VELOCITY = 75.0f;
+static const float PLAYER_Z_VELOCITY = 100.0f;
+
 //CD on the spaceships fireing of projectiles in seconds
 static const float FIRE_COOLDOWN_PLAYER  = 0.2f;
 

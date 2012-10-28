@@ -16,7 +16,7 @@ void PlayerSpaceShip::Draw()
 	glPushMatrix();
 	
 	transformable.ApplyGLTransformations();
-	glRotatef(180, 0, 0, 1);//sortof placeholder rotation
+	glRotatef(180, 0, 0, 1);//rotating the player towards negative z axis
 	vboDrawable.DrawWithArrays();
 
 	glPopMatrix();
@@ -26,7 +26,7 @@ void PlayerSpaceShip::Draw()
 
 void PlayerSpaceShip::Update(GLfloat deltaTime)
 {
-	SpaceShip::Update(deltaTime);	
+	SpaceShip::Update(deltaTime);
 }
 
 void PlayerSpaceShip::Shoot()
@@ -41,7 +41,7 @@ void PlayerSpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	SpaceShip::InitSpaceShip(startX, startY, startZ, 
 		startRotDeg, rotX, rotY, rotZ, 
 		dirVecX, dirVecY, dirVecZ, 
-		0.5f);
+		0.4f);
 	
 	CreateGameObject("MilleniumFalcon//MilleniumFalcon.3ds");
 }
