@@ -3,7 +3,7 @@
     filename:   Skybox.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    Class to draw a desired skybox
 *********************************************************************/
 #ifndef Skybox_h__
 #define Skybox_h__
@@ -16,9 +16,11 @@
 #include <IL/il.h>
 #include <IL/ilu.h>
 #include <iostream>
+#include <vector>
 
 #include "Image.h"
 #include "Logger.h"
+
 enum faces{SKY_LEFT=0, SKY_BACK, SKY_RIGHT, SKY_FRONT, SKY_TOP, SKY_BOTTOM};
 
 struct ImageProperties
@@ -32,40 +34,18 @@ public:
     Skybox();
     ~Skybox();
 
-	void initSkybox();
+	void initSkybox(std::string skyboxName, float size);
 
 	void drawSkybox();
-
-	unsigned int loadTexture(const char* filename);
 
 	unsigned int skybox[6];
 
 	float size;
-	void CreateSkyBox(float x, float y, float z, float width, float height, float length);
-
-	void drawQuad();
 
 private:
 	Logger log;
-	/*void InitSkybox(std::string skyBoxName, std::string extension);
 
-	void DrawSkybox(float size);
-
-	void createCubeMap();
-	void drawCube(float size);
-
-	void drawCubeBox(float size);
-private:
-	
-
-	GLuint skybox[6];
-
-	GLuint LoadImage(std::string image);
-
-	Image readTexture(std::string image);
-	void drawQuad(float size);
-	
-	GLuint texName;*/
+	unsigned int loadTexture(std::string filename);
 };
 
 #endif // Skybox_h__

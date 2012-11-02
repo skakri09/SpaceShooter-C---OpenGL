@@ -1,7 +1,6 @@
 #include "GameManager.h"
 #include "GLUtils/GLUtils.hpp"
 
-
 #include <Windows.h>
 #include <GL/GL.h>
 
@@ -99,6 +98,7 @@ void GameManager::init() {
 	{
 		log << ERRORX << "GlewInit() failed" << std::endl;
 	}
+
 	// Initialize DevIL
 	ilInit();
 	iluInit();
@@ -114,9 +114,8 @@ void GameManager::init() {
 	ProjectileFactory::Inst()->InitProjectileFactory();
 	shipManager.InitManager(&input);
 	particleManager.InitParticleManager();
-	//skybox.InitSkybox("skybox1", ".png");
-	//skybox.createCubeMap();
-	skybox.initSkybox();
+	skybox.initSkybox("skybox1", 100);
+
 	rotate = 0;
 }
 
@@ -127,16 +126,11 @@ void GameManager::render() {
 	
 	glPushMatrix();
 	glLoadIdentity();
-	
-	rotate+= deltaTime*30;
-	if(rotate >= 360)
-	{
-		rotate -=360;
-	}
-	//glTranslatef(0, 0, 40);
-	glRotatef(rotate, sin(my_timer.getCurrentTime()), sin(my_timer.getCurrentTime()), cos(my_timer.getCurrentTime()));
+
+	glRotatef(rotate, 0, 1, 0);/*static_cast<float>(sin(my_timer.getCurrentTime())), 
+					  static_cast<float>(sin(my_timer.getCurrentTime())), 
+					  static_cast<float>(cos(my_timer.getCurrentTime())));*/
 	skybox.drawSkybox();
-	//skybox.CreateSkyBox(0, 0, 0, 1, 1, 1);
 	glPopMatrix();
 
 	glClear(GL_DEPTH_BUFFER_BIT);
@@ -150,10 +144,16 @@ void GameManager::render() {
 
 void GameManager::update()
 {
+	rotate += deltaTime*1.5f;
+	if(rotate >= 360)
+	{
+		rotate -=360;
+	}
+
 	input.Update(doExit);
 
 	particleManager.UpdateParticles(deltaTime);
-	//shipManager.UpdateManager(deltaTime);
+	shipManager.UpdateManager(deltaTime);
 }
 
 void GameManager::GameLoop() 
@@ -165,10 +165,6 @@ void GameManager::GameLoop()
 	//the various managers
 	int fps = 0;
 	GLfloat sec = 0;
-	int counter = 0;
-	GLfloat asd = 0;
-	GLfloat avgFps = 0;
-	GLfloat dsa = 0;
 	while (!doExit) 
 	{
 		//storing delta time in a class variable. Casting to GLfloat since
@@ -177,7 +173,7 @@ void GameManager::GameLoop()
 		
 		sec += deltaTime;
 		fps++;
-		if(sec >= 1.0f)
+		if(sec >= 1.0f)//updating the fps counter once every second
 		{
 			log << INFO << fps << std::endl;
 			std::ostringstream fpsStream;
