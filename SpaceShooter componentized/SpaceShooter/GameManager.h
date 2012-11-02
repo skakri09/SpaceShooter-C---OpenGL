@@ -72,7 +72,7 @@ private:
 
 
 	//Manager handling all the particle effects in the game
-	ParticleManager particleManager;
+	//ParticleManager particleManager;
 
 	//Manager handling all the spaceships, both player and enemies
 	SpaceShipManager shipManager;

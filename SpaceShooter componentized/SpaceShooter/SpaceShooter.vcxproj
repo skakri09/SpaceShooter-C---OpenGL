@@ -91,6 +91,7 @@
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
+    <ClCompile Include="ParticleEmitter.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="SquareSlowBullet.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
     <ClInclude Include="MeshInfo.h" />
+    <ClInclude Include="ParticleEmitter.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="ProjectileTypes.h" />
     <ClInclude Include="Skybox.h" />

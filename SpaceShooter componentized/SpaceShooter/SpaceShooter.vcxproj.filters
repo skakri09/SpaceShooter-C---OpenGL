@@ -127,6 +127,9 @@
     <Filter Include="Game\Skyboxes">
       <UniqueIdentifier>{ea2dffb0-010b-443d-b7cf-6be31fb8adbc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Components\ParticleEmitter">
+      <UniqueIdentifier>{3af77fd5-f300-48df-9150-1d7952219751}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -245,6 +248,9 @@
     </ClCompile>
     <ClCompile Include="Skybox.cpp">
       <Filter>Game\Skyboxes</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEmitter.cpp">
+      <Filter>Game\Components\ParticleEmitter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -403,6 +409,9 @@
     </ClInclude>
     <ClInclude Include="Skybox.h">
       <Filter>Game\Skyboxes</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEmitter.h">
+      <Filter>Game\Components\ParticleEmitter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

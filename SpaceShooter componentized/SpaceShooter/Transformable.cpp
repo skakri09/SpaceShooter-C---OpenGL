@@ -45,6 +45,21 @@ void Transformable::Init( float xPos, float yPos, float zPos,
 	this->rotationAxis = rotationAxis;
 }
 
+void Transformable::Init( Vector3D startPos, float scale, Vector3D velocity )
+{
+	SetScale(scale, scale, scale);
+
+	position = startPos;
+
+	directionVector = velocity.Normalize();
+
+	objectRotationDegrees = 0.0f;
+	Vector3D zerovec; 
+	rotationAxis = zerovec;
+
+	this->velocity = velocity;
+}
+
 void Transformable::Update( float deltaTime )
 {
 	CalculatePosition(deltaTime);

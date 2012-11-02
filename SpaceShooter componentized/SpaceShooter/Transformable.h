@@ -25,6 +25,10 @@ public:
     ~Transformable();
 
 	void Init(Vector3D startPos,
+		float scale,	//Cheating and only allowing uniform scaling
+		Vector3D velocity);
+
+	void Init(Vector3D startPos,
 		Vector3D rotationAxis,
 		float rotationDeg,
 		float scale,	//Cheating and only allowing uniform scaling
@@ -36,6 +40,7 @@ public:
 		float scale,	//Cheating and only allowing uniform scaling
 		Vector3D directionVector);
 
+	
 	//Updates everything in this component. Should be called once every game
 	//update, or whenever the component owner requires this component to update
 	void Update(float deltaTime);

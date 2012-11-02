@@ -113,7 +113,7 @@ void GameManager::init() {
 
 	ProjectileFactory::Inst()->InitProjectileFactory();
 	shipManager.InitManager(&input);
-	particleManager.InitParticleManager();
+	//particleManager.InitParticleManager();
 	skybox.initSkybox("skybox1", 100);
 
 	rotate = 0;
@@ -134,7 +134,7 @@ void GameManager::render() {
 	glPopMatrix();
 
 	glClear(GL_DEPTH_BUFFER_BIT);
-	particleManager.DrawParticles();
+	//particleManager.DrawParticles();
 	shipManager.DrawSpaceShips();
 
 	checkGLErrors();
@@ -152,7 +152,7 @@ void GameManager::update()
 
 	input.Update(doExit);
 
-	particleManager.UpdateParticles(deltaTime);
+	//particleManager.UpdateParticles(deltaTime);
 	shipManager.UpdateManager(deltaTime);
 }
 
