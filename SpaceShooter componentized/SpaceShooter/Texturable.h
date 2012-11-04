@@ -3,11 +3,24 @@
     filename:   Texturable.h
     author:     Kristian Skarseth
     
-    purpose:    A component giving functionality to load and use textures
+    purpose:    A component giving functionality to load and bind textures
 *********************************************************************/
 #ifndef Texturable_h__
 #define Texturable_h__
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
+#include <IL/il.h>
+#include <IL/ilu.h>
+#include <map>
+
+#include "Image.h"
+#include "Logger.h"
+
+#include <gl/glew.h>
+#include <gl/GL.h>
 
 class Texturable
 {
@@ -15,11 +28,19 @@ public:
     Texturable();
     ~Texturable();
 
-	void BindTexture();
+	void BindTexture(std::string textureName);
+	void UnbindTexture();
 
+	void InitTexture(std::string textureFullPathname, std::string textureKeyName);
 
 private:
+	Logger log;
 
+	std::map<std::string, GLuint> textures;
+
+	void LoadAndBindTexture(std::string imageFullPathAndName, std::string keyName);
+
+	Image ReadImage(std::string image);
 
 
 };

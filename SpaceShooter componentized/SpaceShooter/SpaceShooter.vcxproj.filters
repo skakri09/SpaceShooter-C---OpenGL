@@ -130,6 +130,9 @@
     <Filter Include="Game\Components\ParticleEmitter">
       <UniqueIdentifier>{3af77fd5-f300-48df-9150-1d7952219751}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Components\Texturable">
+      <UniqueIdentifier>{5111f200-e206-4ad9-9f2a-5466916d003a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -252,8 +255,8 @@
     <ClCompile Include="ParticleEmitter.cpp">
       <Filter>Game\Components\ParticleEmitter</Filter>
     </ClCompile>
-    <ClCompile Include="TextureComponent.cpp">
-      <Filter>Game\GameObjects\Particles\Source Files</Filter>
+    <ClCompile Include="Texturable.cpp">
+      <Filter>Game\Components\Texturable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -416,8 +419,8 @@
     <ClInclude Include="ParticleEmitter.h">
       <Filter>Game\Components\ParticleEmitter</Filter>
     </ClInclude>
-    <ClInclude Include="TextureComponent.h">
-      <Filter>Game\GameObjects\Particles\Header Files</Filter>
+    <ClInclude Include="Texturable.h">
+      <Filter>Game\Components\Texturable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
