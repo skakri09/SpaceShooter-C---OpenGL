@@ -86,6 +86,7 @@ private:
 	MeshInfo meshInfo;
 
 	std::shared_ptr<BoundingSphere> collisionSphere;
+
 };
 
 #endif // MeshLoader_h__

@@ -22,6 +22,7 @@
 #include "GetRandomFloat.h"
 #include "ImperialStarDestroyer.h"
 #include "Planet.h"
+
 class SpaceShipManager
 {
 public:

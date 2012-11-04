@@ -27,6 +27,7 @@ public:
 	GLuint normals;
 	GLuint textCoords;
 	GLuint colors;
+	GLenum mode;
 
 	std::shared_ptr<BoundingSphere> collisionSphere;
 };

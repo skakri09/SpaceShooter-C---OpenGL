@@ -1,5 +1,6 @@
 #include "MeshXmlLoader.h"
-
+#include "GLUtils/GLUtils.hpp"
+using GLUtils::checkGLErrors;
 
 MeshXmlLoader::MeshXmlLoader()
 	:log("MeshLoader", WARN)
@@ -16,10 +17,10 @@ MeshInfo MeshXmlLoader::LoadMeshXml( std::string meshLoadPath )
 	std::vector<unsigned int> indices;
 	std::vector<float> normals;
 	std::vector<float> colors;
-
+	std::vector<unsigned int> texCoords;
 	//Loading the xml with base class' xml loader function
 	ptree xmlPtree = *XmlLoader::LoadXML(meshLoadPath);
-
+	
 	std::string verticesString = xmlPtree.get<std::string>("mesh.vertices");
 	if(!PlaceFloatsInMeshObj(verticesString, vertices))
 	{
@@ -38,36 +39,57 @@ MeshInfo MeshXmlLoader::LoadMeshXml( std::string meshLoadPath )
 		log << ERRORX << "The placing of indices in mesh object was not successful" << std::endl;
 	}
 
+	std::string texCoordString = xmlPtree.get<std::string>("mesh.textCoords");
+	if(!PlaceUIntsInMeshObj(texCoordString, texCoords))
+	{
+		log << ERRORX << "The placing of texCoords in mesh object was not successful" << std::endl;
+	}
+
 	if(!MakeNormals(vertices, indices, normals))
 	{
 		log << ERRORX << "The creation of normals was not successful" << std::endl;
 	}
 
+	int mode = xmlPtree.get<int>("mesh.mode");
+	switch(mode)
+	{
+	case 3: meshInfo.mode = GL_TRIANGLES;
+	case 4: meshInfo.mode = GL_QUADS;
+	}
+
 	glGenBuffers(1, &meshInfo.vertices);
 	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*vertices.size(), &vertices[0], GL_STATIC_DRAW);
-
-	glGenBuffers(1, &meshInfo.normals);
-	glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*normals.size(), &normals[0], GL_STATIC_DRAW);
-
+	
+	if(!normals.empty())
+	{
+		glGenBuffers(1, &meshInfo.normals);
+		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*normals.size(), &normals[0], GL_STATIC_DRAW);
+	}else{log<<WARN<< "there are no normals in this VBO" << std::endl;}
+	
 	/*glGenBuffers(1, &colors);
 	glBindBuffer(GL_COLOR_ARRAY, colors);
 	glBufferData(GL_COLOR_ARRAY, sizeof(float)*mesh->colors.size(), &mesh->colors[0], GL_STATIC_DRAW);*/
 
-	glGenBuffers(1, &meshInfo.indices);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float)*indices.size(), &indices[0], GL_STATIC_DRAW);
-
-	//glGenBuffers(1, &meshInfo.textCoords);
-	//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.textCoords);
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsTexel) * 3 * totalFaces, &texCoords[0], GL_STATIC_DRAW);
+	if(!indices.empty())
+	{
+		glGenBuffers(1, &meshInfo.indices);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float)*indices.size(), &indices[0], GL_STATIC_DRAW);
+	}else{log<<WARN<< "there are no indices in this VBO" << std::endl;}
+	
+	if(!texCoords.empty())
+	{
+		glGenBuffers(1, &meshInfo.textCoords);
+		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.textCoords);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(float)*texCoords.size(), &texCoords[0], GL_STATIC_DRAW);
+	}else{log<<WARN<< "there are no texCoords in this VBO" << std::endl;}
 	
 	meshInfo.numberOfIndices = indices.size();
 
 	collisionSphere = std::make_shared<BoundingSphere>();
 	collisionSphere->CreateCollisionBox(&vertices);
-	//collisionSphere->CreateCollisionBox(vertices, meshInfo.numberOfIndices);
 	meshInfo.collisionSphere = collisionSphere;
 
  	return meshInfo;

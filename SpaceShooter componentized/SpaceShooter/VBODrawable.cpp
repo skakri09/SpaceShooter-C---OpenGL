@@ -21,7 +21,7 @@ void VBODrawable::DrawWithArrays()
 	{
 		EnableClientStates(false, true, true, false);
 
-		glDrawArrays(GL_TRIANGLES, 0, meshInfo.numberOfIndices);
+		glDrawArrays(meshInfo.mode, 0, meshInfo.numberOfIndices);
 
 		DisableClientStates();
 	}
@@ -37,7 +37,7 @@ void VBODrawable::DrawWithIndices()
 	{
 		EnableClientStates(false, true, true, true);
 
-		glDrawElements(GL_TRIANGLES, meshInfo.numberOfIndices, GL_UNSIGNED_INT, 0);
+		glDrawElements(meshInfo.mode, meshInfo.numberOfIndices, GL_UNSIGNED_INT, 0);
 
 		DisableClientStates();	
 	}

@@ -21,20 +21,22 @@ public:
     ParticleEmitter();
     ~ParticleEmitter();
 
-	//Emmits a batch of particles. Origin is the start position of the particles,
-	//particleAmnt is the amount of particles to emmit, startSpreadRadius defines
-	//the area of which the particles can spawn away from the origin, max and min
-	//speed defines the boundries for speed and the max and min life the boundries
-	//for life which is affected by the fadeSpeed.
+	//Emitts the given amount of particles. Origin is the center of the
+	//particle emitting, where particles can spawn anywhere within the radius
+	//of that point.
 	void EmittParticles(Vector3D origin,
 						unsigned int particleAmnt,
 						float startSpreadRadius,
 						float maxSpeed,
 						float minSpeed,
-						float maxLife,
-						float minLife,
-						float fadeSpeed);
-protected:
+						float fadeSpeed,
+						float maxSize,
+						float minSize,
+						float r, float g, float b);
+
+	void UpdateParticles(float deltaTime);
+
+	void DrawParticles();
 
 private:
 	Logger log;

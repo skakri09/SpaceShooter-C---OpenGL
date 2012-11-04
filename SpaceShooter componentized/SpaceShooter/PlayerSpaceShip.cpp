@@ -22,6 +22,7 @@ void PlayerSpaceShip::Draw()
 	glPopMatrix();
 
 	shooterModule.DrawModule();
+	particleEmitter.DrawParticles();
 }
 
 void PlayerSpaceShip::Update(GLfloat deltaTime)

@@ -1,5 +1,6 @@
 #include "ParticleEmitter.h"
-
+#include "GLUtils/GLUtils.hpp"
+using GLUtils::checkGLErrors;
 
 ParticleEmitter::ParticleEmitter()
 	:log("ParticleEmitter", WARN)
@@ -15,17 +16,18 @@ void ParticleEmitter::EmittParticles( Vector3D origin,
 									float startSpreadRadius, 
 									float maxSpeed, 
 									float minSpeed, 
-									float maxLife, 
-									float minLife,
-									float fadeSpeed )
+									float fadeSpeed,
+									float maxSize,
+									float minSize,
+									float r, float g, float b)
 {
 	unsigned int newVecSize = particles.size() + particleAmnt;
 	particles.reserve(newVecSize);
 
-	for(int i = particles.size(); i <newVecSize; i++)
+	for(unsigned int i = (newVecSize-particleAmnt); i <newVecSize; i++)
 	{
-		particles[i] = std::make_shared<Particle>();
-		
+		//particles[i] = std::make_shared<Particle>();
+		particles.push_back(std::make_shared<Particle>());
 		Vector3D startPos(origin.getX()+GetRandFloat(-startSpreadRadius, startSpreadRadius),
 						origin.getY()+GetRandFloat(-startSpreadRadius, startSpreadRadius),
 						origin.getZ()+GetRandFloat(-startSpreadRadius, startSpreadRadius));
@@ -34,6 +36,33 @@ void ParticleEmitter::EmittParticles( Vector3D origin,
 						GetRandFloat(minSpeed, maxSpeed),
 						GetRandFloat(minSpeed, maxSpeed));
 
-		particles[i]->InitParticle(startPos, velocity, fadeSpeed, );
+		float scale = GetRandFloat(minSize, maxSize);
+
+		particles[i]->InitParticle(startPos, velocity, fadeSpeed, r, g, b, scale );
+	}
+}
+
+void ParticleEmitter::UpdateParticles( float deltaTime )
+{
+	for(auto i = particles.begin(); i != particles.end();)
+	{
+		if((*i)->CanKill())
+		{
+			i = particles.erase(i);
+		}
+		else
+		{
+			(*i)->Update(deltaTime);
+			++i;
+		}
+
+	}
+}
+
+void ParticleEmitter::DrawParticles()
+{
+	for(auto i = particles.begin(); i != particles.end(); i++)
+	{
+		(*i)->Draw();
 	}
 }

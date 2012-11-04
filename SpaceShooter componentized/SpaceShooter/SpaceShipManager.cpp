@@ -1,5 +1,6 @@
 #include "SpaceShipManager.h"
-
+#include "GLUtils/GLUtils.hpp"
+using GLUtils::checkGLErrors;
 
 SpaceShipManager::SpaceShipManager() 
 	:log("SpaceShipmanager", WARN)

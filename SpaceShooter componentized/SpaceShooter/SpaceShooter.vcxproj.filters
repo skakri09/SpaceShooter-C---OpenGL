@@ -427,5 +427,8 @@
     <None Include="..\xml\Mesh_PlayerSpaceship.xml">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\xml\skybox.xml">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

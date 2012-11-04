@@ -17,6 +17,8 @@
 #include "GameObject2.h"
 #include <vector>
 #include "Vector3d.h"
+#include "MeshFactory.h"
+#include "Image.h"
 
 #include <gl/GL.h>
 
@@ -34,8 +36,6 @@ public:
 
 	void InitParticle(Vector3D StartPos, Vector3D Velocity, float fadeSpeed, 
 						float r, float g, float b, float scale = 1.0f);
-
-	bool isActive; //Is the particle active
 	
 	float life;  //The life of the particle
 	float fade;  //The fade speed of the particle (fade value is subtracted from life)
@@ -50,7 +50,9 @@ public:
 protected:
 
 private:
+	void CreateParticle(std::string particleName);
 
+	Image ReadImage(std::string particleName);
 };
 
 #endif // Particle_h__

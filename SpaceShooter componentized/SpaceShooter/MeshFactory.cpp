@@ -34,7 +34,6 @@ MeshInfo MeshFactory::GetMesh( std::string meshName)
 		else if(extension == "xml")
 		{
 			//load xml file
-			//LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
 			LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
 			return LoadedMeshes[meshName];
 		}
@@ -61,7 +60,6 @@ void MeshFactory::LoadMesh( std::string meshName )
 		else if(extension == "xml")
 		{
 			//load xml file
-			//LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
 			LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
 		}
 	}

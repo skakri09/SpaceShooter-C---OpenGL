@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <mesh>
+  <mode>
+    3 <!--triangles-->
+  </mode>
+  <textCoords>
+    
+  </textCoords>
   <vertices>
     -0.5, 0.0, 0.0<!--0 bottom left front-->
     0.5f, 0.0, 0.0<!--1 bottom right front-->

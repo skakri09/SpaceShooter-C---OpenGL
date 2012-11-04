@@ -21,13 +21,6 @@
 #include "Image.h"
 #include "Logger.h"
 
-enum faces{SKY_LEFT=0, SKY_BACK, SKY_RIGHT, SKY_FRONT, SKY_TOP, SKY_BOTTOM};
-
-struct ImageProperties
-{
-	unsigned long width;
-	unsigned long height;
-};
 class Skybox
 {
 public:
@@ -40,12 +33,16 @@ public:
 
 	unsigned int skybox[6];
 
-	float size;
+	
 
 private:
+	float size;
+
 	Logger log;
 
 	unsigned int loadTexture(std::string filename);
+
+	enum faces{SKY_LEFT=0, SKY_BACK, SKY_RIGHT, SKY_FRONT, SKY_TOP, SKY_BOTTOM};
 };
 
 #endif // Skybox_h__

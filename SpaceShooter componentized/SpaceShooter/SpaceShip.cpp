@@ -1,5 +1,6 @@
 #include "SpaceShip.h"
-
+#include "GLUtils/GLUtils.hpp"
+using GLUtils::checkGLErrors;
 SpaceShip::SpaceShip(int spaceshipHP)
 	:log("SpaceShipbase", WARN)
 {
@@ -18,6 +19,7 @@ void SpaceShip::Update(float deltaTime)
 		transformable.Update(deltaTime);
 		collisionSphere.Update(transformable.GetCollisionTransformationInfo());
 		shooterModule.UpdateModule(deltaTime);
+		particleEmitter.UpdateParticles(deltaTime);
 	}
 	else
 	{
@@ -80,8 +82,18 @@ void SpaceShip::HandleProjectileCollision( std::vector<std::shared_ptr<Projectil
 				SpaceShipCurrentHealth -= dmgTaken;
 				log << WARN << "Spaceship hit! It lost " << dmgTaken << ", " 
 					<< SpaceShipCurrentHealth << "/" << SpaceShipMaxHealth <<"HP left" << std::endl;
+				
+				EmittProjectileHittParticles(*projectiles->at(i));
+				
 				projectiles->at(i)->DestroyProjectile();
 			}
 		}
 	}
+}
+
+void SpaceShip::EmittProjectileHittParticles(Projectile& p)
+{
+	Vector3D origin = *p.transformable.getPosition();
+	particleEmitter.EmittParticles(origin, 50, 1, 100, 10, 0.01, 1, 1, 0.5f, 0.5f, 0.5f);
+	checkGLErrors();
 }

@@ -1,5 +1,6 @@
 #include "Skybox.h"
-
+#include "GLUtils/GLUtils.hpp"
+using GLUtils::checkGLErrors;
 
 Skybox::Skybox() :log("Skybox", WARN)
 {

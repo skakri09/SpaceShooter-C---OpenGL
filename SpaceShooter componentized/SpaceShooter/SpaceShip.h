@@ -28,6 +28,7 @@
 #include "VBODrawable.h"
 #include "Transformable.h"
 #include "BoundingSphere.h"
+#include "ParticleEmitter.h"
 
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
@@ -69,6 +70,7 @@ public:
 	VBODrawable vboDrawable;		//A spaceship is drawn with VBOs
 	Transformable transformable;	//A spaceship is transformable
 	BoundingSphere collisionSphere;	//A spaceship has a boundingSphere for collision
+	ParticleEmitter particleEmitter;//A spaceship can emitt particles
 
 protected:
 	
@@ -80,6 +82,8 @@ protected:
 
 	//Takes care of firing the spaceships gun.
 	void FireGun(ProjectileTypes projectileType);
+
+	void EmittProjectileHittParticles(Projectile& p);
 
 private:
 	Logger log;

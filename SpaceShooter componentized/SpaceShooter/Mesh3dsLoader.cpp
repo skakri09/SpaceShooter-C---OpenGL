@@ -60,6 +60,8 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 				finishedFaces++;
 			}
 		}
+
+		meshInfo.mode = GL_TRIANGLES;
 		//Creating the buffer objects
 		glGenBuffers(1, &meshInfo.vertices);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
