@@ -63,10 +63,12 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 
 		meshInfo.mode = GL_TRIANGLES;
 		//Creating the buffer objects
+		meshInfo.haveVertices = true;
 		glGenBuffers(1, &meshInfo.vertices);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsVector) * 3 * totalFaces, &vertices[0], GL_STATIC_DRAW);
 
+		meshInfo.haveNormals = true;
 		glGenBuffers(1, &meshInfo.normals);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsVector) * 3 * totalFaces, &normals[0], GL_STATIC_DRAW);

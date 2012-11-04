@@ -50,7 +50,7 @@ public:
 protected:
 
 private:
-	void CreateParticle(std::string particleName);
+	void CreateParticle(std::string particleNameNoExtension);
 
 	Image ReadImage(std::string particleName);
 };

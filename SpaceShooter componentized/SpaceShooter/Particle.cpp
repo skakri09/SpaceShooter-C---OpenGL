@@ -22,7 +22,7 @@ void Particle::InitParticle(Vector3D startPos, Vector3D velocity, float fadeSpee
 	this->r = r;
 	this->g = g;
 	this->b = b;
-	CreateParticle("particle.png");
+	CreateParticle("particle");
 }
 
 void Particle::Draw()
@@ -30,7 +30,7 @@ void Particle::Draw()
 	if (IsAlive()) 
 	{
 		transformation.ApplyGLTransformations(true, true, false);
-		glColor4f(r, g, b, life);
+		//glColor4f(r, g, b, life);
 		vbo.DrawWithArrays();
 		//glColor4f(r, g, b, life);
 		//glBegin(GL_QUADS);
@@ -53,16 +53,17 @@ void Particle::Update( GLfloat deltaTime )
 	}
 }
 
-void Particle::CreateParticle( std::string particleName )
+void Particle::CreateParticle( std::string particleNameNoExtension )
 {
 	if(!vbo.HaveMeshInfo())
 	{
- 		std::string particlePath = "..//particles//";
-		particlePath += particleName;
+ 		std::string basePath = "..//particles//";
+ 		std::string particleImgPath = basePath + particleNameNoExtension + ".png";
+		std::string particleMeshpath = basePath + particleNameNoExtension + ".xml";
+		
+		Image img = ReadImage(particleImgPath);
 
-		Image img = ReadImage(particlePath);
-
-		MeshInfo meshInfo = MeshFactory::Inst()->GetMesh(particlePath);
+		MeshInfo meshInfo = MeshFactory::Inst()->GetMesh(particleMeshpath);
 
 		vbo.SetMeshInfo(meshInfo);
 	}

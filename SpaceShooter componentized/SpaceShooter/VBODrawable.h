@@ -34,7 +34,7 @@ public:
 
 	void SetMeshInfo(MeshInfo meshInfo);
 
-	//Returns true if this class have recieved a MeshInfo object
+	//Returns true if this class have received a MeshInfo object
 	bool HaveMeshInfo();
 
 private:
@@ -42,21 +42,11 @@ private:
 
 	MeshInfo meshInfo;
 
-	//Enables glClientStates based on the parameters
-	void EnableClientStates(bool colorArray = false,
-							bool normalArray = true,
-							bool vertexArray = true,
-							bool elementArray = false);
+	void EnableClientStates();
 	
 	//Disables all glClientStates currently enabled
 	void DisableClientStates();
 
-	//Bools for currently enabled glClientStates
-	bool colorArrayEnabled;
-	bool normalArrayEnabled;
-	bool vertexArrayEnabled;
-	bool elementArrayEnabled;
-	
 	bool haveMeshInfo;
 };
 

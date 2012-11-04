@@ -21,12 +21,21 @@ class BoundingSphere;
 class MeshInfo
 {
 public:
-	GLuint vertices;
-	GLuint indices;
+	MeshInfo()
+	{	
+		haveVertices = false; 
+		haveIndices = false;
+		haveNormals = false; 
+		haveTexCoords = false;
+		haveColors = false;
+	}
+
+	GLuint vertices;	bool haveVertices;
+	GLuint indices;		bool haveIndices;
 	GLuint numberOfIndices;
-	GLuint normals;
-	GLuint textCoords;
-	GLuint colors;
+	GLuint normals;		bool haveNormals;
+	GLuint textCoords;	bool haveTexCoords;
+	GLuint colors;		bool haveColors;
 	GLenum mode;
 
 	std::shared_ptr<BoundingSphere> collisionSphere;

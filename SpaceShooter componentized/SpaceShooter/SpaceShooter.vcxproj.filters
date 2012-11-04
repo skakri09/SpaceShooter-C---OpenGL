@@ -252,6 +252,9 @@
     <ClCompile Include="ParticleEmitter.cpp">
       <Filter>Game\Components\ParticleEmitter</Filter>
     </ClCompile>
+    <ClCompile Include="TextureComponent.cpp">
+      <Filter>Game\GameObjects\Particles\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -413,6 +416,9 @@
     <ClInclude Include="ParticleEmitter.h">
       <Filter>Game\Components\ParticleEmitter</Filter>
     </ClInclude>
+    <ClInclude Include="TextureComponent.h">
+      <Filter>Game\GameObjects\Particles\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib3ds-1_3d.dll">
@@ -428,6 +434,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\xml\skybox.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\particles\Particle.xml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

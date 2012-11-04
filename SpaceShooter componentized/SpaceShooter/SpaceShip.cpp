@@ -94,6 +94,6 @@ void SpaceShip::HandleProjectileCollision( std::vector<std::shared_ptr<Projectil
 void SpaceShip::EmittProjectileHittParticles(Projectile& p)
 {
 	Vector3D origin = *p.transformable.getPosition();
-	particleEmitter.EmittParticles(origin, 50, 1, 100, 10, 0.01, 1, 1, 0.5f, 0.5f, 0.5f);
+	particleEmitter.EmittParticles(origin, 50, 1, 100, 10, 0.01f, 1, 1, 0.5f, 0.5f, 0.5f);
 	checkGLErrors();
 }

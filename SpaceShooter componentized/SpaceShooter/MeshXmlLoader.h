@@ -83,9 +83,13 @@ private:
 					 const std::vector<unsigned int>& indices,
 					 std::vector<float>& targetVector);
 
-	MeshInfo meshInfo;
-
 	std::shared_ptr<BoundingSphere> collisionSphere;
+
+	bool BindVertices(std::vector<float>& vertices, MeshInfo& meshInfo);
+	bool BindNormals(std::vector<float>& normals, MeshInfo& meshInfo);
+	bool BindColors(std::vector<float>& colors, MeshInfo& meshInfo);
+	bool BindIndices(std::vector<unsigned int>& indices, MeshInfo& meshInfo);
+	bool BindTexCoords(std::vector<unsigned int>& texCoords, MeshInfo& meshInfo);
 
 };
 

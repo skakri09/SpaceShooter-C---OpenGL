@@ -1,13 +1,10 @@
 #include "VBODrawable.h"
-
+#include "GLUtils/GLUtils.hpp"
+using GLUtils::checkGLErrors;
 
 VBODrawable::VBODrawable()
 	:log("VBODrawable", WARN)
 {
-	colorArrayEnabled = false;
-	normalArrayEnabled = false;
-	vertexArrayEnabled = false;
-	elementArrayEnabled = false;
 	haveMeshInfo = false;
 }
 
@@ -19,10 +16,10 @@ void VBODrawable::DrawWithArrays()
 {
 	if(haveMeshInfo)
 	{
-		EnableClientStates(false, true, true, false);
+		EnableClientStates();
 
 		glDrawArrays(meshInfo.mode, 0, meshInfo.numberOfIndices);
-
+		checkGLErrors();
 		DisableClientStates();
 	}
 	else
@@ -35,7 +32,7 @@ void VBODrawable::DrawWithIndices()
 {
 	if(haveMeshInfo)
 	{
-		EnableClientStates(false, true, true, true);
+		EnableClientStates();
 
 		glDrawElements(meshInfo.mode, meshInfo.numberOfIndices, GL_UNSIGNED_INT, 0);
 
@@ -62,37 +59,35 @@ bool VBODrawable::HaveMeshInfo()
 //  P R I V A T E    F U N C T I O N S  //
 //**************************************//
 
-void VBODrawable::EnableClientStates( bool colorArray /*= false*/, 
-										bool normalArray /*= true*/, 
-										bool vertexArray /*= true*/, 
-										bool elementArray /*= false*/  )
+void VBODrawable::EnableClientStates()
 {
-	colorArrayEnabled = colorArray;
-	normalArrayEnabled = normalArray;
-	vertexArrayEnabled = vertexArray;
-	elementArrayEnabled = elementArray;
-
-	if(vertexArrayEnabled)
+	if(meshInfo.haveVertices)
 	{
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.vertices);
 		glVertexPointer(3, GL_FLOAT, 0, 0);
 	}
 
-	if(normalArrayEnabled)
+	if(meshInfo.haveNormals)
 	{
 		glEnableClientState(GL_NORMAL_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
 		glNormalPointer(GL_FLOAT, 0, 0);
 	}
 
-	if(colorArrayEnabled)
+	if(meshInfo.haveColors)
 	{
 		glEnableClientState(GL_COLOR_ARRAY);
 		glBindBuffer(GL_COLOR_ARRAY, meshInfo.colors);
 		glColorPointer(3, GL_FLOAT, 0, 0);
 	}
-	if(elementArrayEnabled)
+	if(meshInfo.haveTexCoords)
+	{
+		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		glBindBuffer(GL_TEXTURE_COORD_ARRAY, meshInfo.textCoords);
+		glTexCoordPointer(2, GL_FLOAT, 0, 0);
+	}
+	if(meshInfo.haveIndices)
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshInfo.indices);
 	}
@@ -100,26 +95,27 @@ void VBODrawable::EnableClientStates( bool colorArray /*= false*/,
 
 void VBODrawable::DisableClientStates()
 {
-	if(vertexArrayEnabled)
+	if(meshInfo.haveVertices)
 	{
 		glDisableClientState(GL_VERTEX_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		vertexArrayEnabled = false;
 	}
-	if(normalArrayEnabled)
+	if(meshInfo.haveNormals)
 	{
 		glDisableClientState(GL_NORMAL_ARRAY);
-		normalArrayEnabled = false;
 	}
-	if(colorArrayEnabled)
+	if(meshInfo.haveColors)
 	{
 		glDisableClientState(GL_COLOR_ARRAY);
 		glBindBuffer(GL_COLOR_ARRAY, 0);
-		colorArrayEnabled = false;
 	}
-	if(elementArrayEnabled)
+	if(meshInfo.haveTexCoords)
+	{
+		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+		glBindBuffer(GL_TEXTURE_COORD_ARRAY, 0);
+	}
+	if(meshInfo.haveIndices)
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		elementArrayEnabled = false;
 	}
 }

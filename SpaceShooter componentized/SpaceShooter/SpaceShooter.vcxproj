@@ -92,6 +92,7 @@
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
     <ClCompile Include="ParticleEmitter.cpp" />
+    <ClCompile Include="TextureComponent.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="SquareSlowBullet.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="ImperialStarDestroyer.h" />
     <ClInclude Include="MeshInfo.h" />
     <ClInclude Include="ParticleEmitter.h" />
+    <ClInclude Include="TextureComponent.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="ProjectileTypes.h" />
     <ClInclude Include="Skybox.h" />
@@ -180,6 +182,7 @@
     <ClInclude Include="XmlLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\particles\Particle.xml" />
     <None Include="..\xml\Mesh_PlayerSpaceship.xml" />
     <None Include="..\xml\Projectiles\Mesh_SquareBullet.xml" />
     <None Include="..\xml\skybox.xml">

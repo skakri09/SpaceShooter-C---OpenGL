@@ -14,6 +14,7 @@
 #include "Particle.h"
 #include "Logger.h"
 #include "GetRandomFloat.h"
+#include "MeshFactory.h"
 
 class ParticleEmitter
 {
@@ -43,6 +44,8 @@ private:
 
 
 	std::vector<std::shared_ptr<Particle>> particles;
+
+	GLuint particleTexture;
 };
 
 #endif // ParticleEmitter_h__
