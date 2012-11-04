@@ -66,6 +66,9 @@ void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	transformable.Init(startPos,rotationAxis, startRotDeg, scale, directionVec);
 
 	SpaceShipCurrentHealth = SpaceShipMaxHealth;
+
+	//loading and prepping the currently only particle the particleEmitter can use
+	particleEmitter.InitTexture("..//particles//particle.png", "particle");
 }
 
 void SpaceShip::HandleProjectileCollision( std::vector<std::shared_ptr<Projectile>>* projectiles )

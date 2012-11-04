@@ -338,9 +338,6 @@
     <ClInclude Include="Mesh3dsLoader.h">
       <Filter>Game\Utility\ResourceLoading\3ds Loading</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Game\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="MeshXmlLoader.h">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
     </ClInclude>

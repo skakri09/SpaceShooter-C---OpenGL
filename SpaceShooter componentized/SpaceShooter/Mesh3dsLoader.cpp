@@ -18,6 +18,8 @@ Mesh3dsLoader::~Mesh3dsLoader()
 MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 {
 	model = lib3ds_file_load(_3dsMeshFile.c_str());
+	
+	MeshInfo meshInfo;
 
 	Lib3dsMaterial* foo = model->materials;
 	//Lib3dsMaterial* lib3ds_file_get_materials(Lib3dsFile *file) { return file->materials; }

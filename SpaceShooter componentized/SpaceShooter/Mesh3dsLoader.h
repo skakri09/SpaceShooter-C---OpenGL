@@ -51,9 +51,7 @@ private:
 
 	unsigned int totalFaces;
 	Lib3dsFile* model;
-	
-	MeshInfo meshInfo;
-	
+
 };
 
 #endif // Mesh3dsLoader_h__

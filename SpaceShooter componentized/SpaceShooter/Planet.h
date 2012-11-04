@@ -8,11 +8,12 @@
 #ifndef Planet_h__
 #define Planet_h__
 
-#include "GameObject.h"
+#include "GameObject2.h"
 #include "VBODrawable.h"
 #include "Transformable.h"
+#include "MeshFactory.h"
 
-class Planet : public GameObject
+class Planet : public GameObject2
 {
 public:
     Planet(/*std::string meshName*/);
@@ -34,8 +35,9 @@ public:
 
 protected:
 	float rotation;
+	
 private:
-	//std::string meshName;
+	
 };
 
 #endif // Planet_h__

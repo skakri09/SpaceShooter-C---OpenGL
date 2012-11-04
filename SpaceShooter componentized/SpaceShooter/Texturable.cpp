@@ -1,5 +1,6 @@
 #include "Texturable.h"
-
+#include "GLUtils/GLUtils.hpp"
+using GLUtils::checkGLErrors;
 
 Texturable::Texturable()
 	:log("Texturable", WARN)
@@ -16,11 +17,11 @@ void Texturable::BindTexture(std::string textureName)
 	if(textures.find(textureName) != textures.end())
 	{
 		glBindTexture(GL_TEXTURE_2D, textures.find(textureName)->second);
+		checkGLErrors();
 	}
 	else
 	{
 		log << ERRORX << textureName << " not bound, it has not been created." << std::endl;
-		log << ERRORX << "Attempting to load and bind it..." << std::endl;
 	}
 }
 
@@ -33,7 +34,7 @@ void Texturable::UnbindTexture()
 
 void Texturable::InitTexture( std::string textureFullPathname, std::string textureKeyName )
 {
-
+	LoadAndBindTexture(textureFullPathname, textureKeyName);
 }
 
 void Texturable::LoadAndBindTexture( std::string imageFullPathAndName, std::string keyName )

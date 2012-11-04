@@ -61,8 +61,13 @@ void ParticleEmitter::UpdateParticles( float deltaTime )
 
 void ParticleEmitter::DrawParticles()
 {
-	for(auto i = particles.begin(); i != particles.end(); i++)
+	if(!particles.empty())
 	{
-		(*i)->Draw();
+		BindTexture("particle");
+		for(auto i = particles.begin(); i != particles.end(); i++)
+		{
+			(*i)->Draw();
+		}
+		UnbindTexture();
 	}
 }

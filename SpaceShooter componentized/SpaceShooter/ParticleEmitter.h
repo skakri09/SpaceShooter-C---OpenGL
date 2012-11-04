@@ -15,8 +15,9 @@
 #include "Logger.h"
 #include "GetRandomFloat.h"
 #include "MeshFactory.h"
+#include "Texturable.h"
 
-class ParticleEmitter
+class ParticleEmitter : public Texturable
 {
 public:
     ParticleEmitter();
@@ -46,6 +47,7 @@ private:
 	std::vector<std::shared_ptr<Particle>> particles;
 
 	GLuint particleTexture;
+
 };
 
 #endif // ParticleEmitter_h__

@@ -142,7 +142,6 @@
     <ClInclude Include="ProjectileTypes.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="SquareSlowBullet.h" />
-    <ClInclude Include="GameObject.h" />
     <ClInclude Include="EnemySpaceshipConstantState.h" />
     <ClInclude Include="FireState.h" />
     <ClInclude Include="GameConstants.h" />

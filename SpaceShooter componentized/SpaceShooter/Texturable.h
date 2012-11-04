@@ -28,17 +28,21 @@ public:
     Texturable();
     ~Texturable();
 
+	void InitTexture(std::string textureFullPathname, std::string textureKeyName);
+
+
+protected:
 	void BindTexture(std::string textureName);
 	void UnbindTexture();
 
-	void InitTexture(std::string textureFullPathname, std::string textureKeyName);
+	void LoadAndBindTexture(std::string imageFullPathAndName, std::string keyName);
 
 private:
 	Logger log;
 
 	std::map<std::string, GLuint> textures;
 
-	void LoadAndBindTexture(std::string imageFullPathAndName, std::string keyName);
+	
 
 	Image ReadImage(std::string image);
 
