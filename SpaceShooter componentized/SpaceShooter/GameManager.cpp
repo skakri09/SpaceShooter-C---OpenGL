@@ -130,7 +130,7 @@ void GameManager::render() {
 	glRotatef(rotate, 0, 1, 0);/*static_cast<float>(sin(my_timer.getCurrentTime())), 
 					  static_cast<float>(sin(my_timer.getCurrentTime())), 
 					  static_cast<float>(cos(my_timer.getCurrentTime())));*/
-	skybox.drawSkybox();
+	//skybox.drawSkybox();
 	glPopMatrix();
 
 	glClear(GL_DEPTH_BUFFER_BIT);

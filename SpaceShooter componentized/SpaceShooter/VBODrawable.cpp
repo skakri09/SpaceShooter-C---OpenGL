@@ -16,11 +16,18 @@ void VBODrawable::DrawWithArrays()
 {
 	if(haveMeshInfo)
 	{
-		EnableClientStates();
+		if(!meshInfo.haveIndices)
+		{
+			EnableClientStates();
 
-		glDrawArrays(meshInfo.mode, 0, meshInfo.numberOfIndices);
-		checkGLErrors();
-		DisableClientStates();
+			glDrawArrays(meshInfo.mode, 0, meshInfo.numberOfIndices);
+			checkGLErrors();
+			DisableClientStates();
+		}
+		else
+		{
+			DrawWithIndices();
+		}
 	}
 	else
 	{
@@ -32,11 +39,18 @@ void VBODrawable::DrawWithIndices()
 {
 	if(haveMeshInfo)
 	{
-		EnableClientStates();
+		if(meshInfo.haveIndices)
+		{
+			EnableClientStates();
 
-		glDrawElements(meshInfo.mode, meshInfo.numberOfIndices, GL_UNSIGNED_INT, 0);
+			glDrawElements(meshInfo.mode, meshInfo.numberOfIndices, GL_UNSIGNED_INT, 0);
 
-		DisableClientStates();	
+			DisableClientStates();	
+		}
+		else
+		{
+			DrawWithArrays();
+		}
 	}
 	else
 	{
