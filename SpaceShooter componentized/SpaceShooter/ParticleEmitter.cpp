@@ -38,24 +38,28 @@ void ParticleEmitter::EmittParticles( Vector3D origin,
 
 		float scale = GetRandFloat(minSize, maxSize);
 
-		particles[i]->InitParticle(startPos, velocity, fadeSpeed, r, g, b, scale );
+		particles.back()->InitParticle(startPos, velocity, fadeSpeed, r, g, b, scale );
+		//particles[i]->InitParticle(startPos, velocity, fadeSpeed, r, g, b, scale );
 	}
 }
 
 void ParticleEmitter::UpdateParticles( float deltaTime )
 {
-	for(auto i = particles.begin(); i != particles.end();)
+	if(!particles.empty())
 	{
-		if((*i)->CanKill())
+		for(auto i = particles.begin(); i != particles.end();)
 		{
-			i = particles.erase(i);
-		}
-		else
-		{
-			(*i)->Update(deltaTime);
-			++i;
-		}
+			if((*i)->CanKill())
+			{
+				i = particles.erase(i);
+			}
+			else
+			{
+				(*i)->Update(deltaTime);
+				++i;
+			}
 
+		}
 	}
 }
 
