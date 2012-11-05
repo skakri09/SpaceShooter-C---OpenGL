@@ -91,7 +91,7 @@
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
-    <ClCompile Include="ParticleEmitter.cpp" />
+    <ClCompile Include="ParticleManager.cpp" />
     <ClCompile Include="Texturable.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Skybox.cpp" />
@@ -110,7 +110,7 @@
     <ClCompile Include="MeshXmlLoader.cpp" />
     <ClCompile Include="NormalCalculator.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="ParticleManager.cpp" />
+    <ClCompile Include="ParticleManager2.cpp" />
     <ClCompile Include="PlayerSpaceShip.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectileFactory.cpp" />
@@ -136,7 +136,7 @@
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
     <ClInclude Include="MeshInfo.h" />
-    <ClInclude Include="ParticleEmitter.h" />
+    <ClInclude Include="ParticleManager.h" />
     <ClInclude Include="Texturable.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="ProjectileTypes.h" />
@@ -162,7 +162,7 @@
     <ClInclude Include="MeshXmlLoader.h" />
     <ClInclude Include="NormalCalculator.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="ParticleManager.h" />
+    <ClInclude Include="ParticleManager2.h" />
     <ClInclude Include="PlayerSpaceShip.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileFactory.h" />

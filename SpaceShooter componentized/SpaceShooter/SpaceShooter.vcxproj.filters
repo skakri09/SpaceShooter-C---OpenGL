@@ -4,17 +4,6 @@
     <Filter Include="Game">
       <UniqueIdentifier>{ea134570-8b96-4896-ba59-cba3bea79a9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Managers">
-      <UniqueIdentifier>{9f3e8dee-5255-435e-91e7-bdbc5d00ca02}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Managers\Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Game\Managers\Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -133,6 +122,17 @@
     <Filter Include="Game\Components\Texturable">
       <UniqueIdentifier>{5111f200-e206-4ad9-9f2a-5466916d003a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Managers">
+      <UniqueIdentifier>{9f3e8dee-5255-435e-91e7-bdbc5d00ca02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Managers\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Game\Managers\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -213,9 +213,6 @@
     <ClCompile Include="ImperialTieInterceptor.cpp">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleManager.cpp">
-      <Filter>Game\Managers\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ApproachXYZPlayerState.cpp">
       <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
@@ -252,11 +249,14 @@
     <ClCompile Include="Skybox.cpp">
       <Filter>Game\Skyboxes</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleEmitter.cpp">
-      <Filter>Game\Components\ParticleEmitter</Filter>
-    </ClCompile>
     <ClCompile Include="Texturable.cpp">
       <Filter>Game\Components\Texturable</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleManager2.cpp">
+      <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleManager.cpp">
+      <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -353,9 +353,6 @@
     <ClInclude Include="ImperialTieInterceptor.h">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleManager.h">
-      <Filter>Game\Managers\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GetRandomFloat.h">
       <Filter>Game\Utility</Filter>
     </ClInclude>
@@ -413,11 +410,14 @@
     <ClInclude Include="Skybox.h">
       <Filter>Game\Skyboxes</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleEmitter.h">
-      <Filter>Game\Components\ParticleEmitter</Filter>
-    </ClInclude>
     <ClInclude Include="Texturable.h">
       <Filter>Game\Components\Texturable</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleManager2.h">
+      <Filter>Game\Managers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleManager.h">
+      <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

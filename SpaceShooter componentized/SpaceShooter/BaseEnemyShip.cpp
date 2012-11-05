@@ -34,7 +34,6 @@ void BaseEnemyShip::Draw()
 		glPopMatrix();
 
 		shooterModule.DrawModule();
-		particleEmitter.DrawParticles();
 	}
 	
 }

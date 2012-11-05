@@ -34,7 +34,7 @@ public:
 	
 	virtual void Update(GLfloat deltaTime);
 
-	void InitParticle(Vector3D StartPos, Vector3D Velocity, float fadeSpeed, 
+	void InitParticle(Vector3D StartPos, Vector3D Velocity, float lifeDuration, 
 						float r, float g, float b, float scale = 1.0f);
 	
 	float life;  //The life of the particle

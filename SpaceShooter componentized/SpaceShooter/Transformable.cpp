@@ -51,7 +51,7 @@ void Transformable::Init( Vector3D startPos, float scale, Vector3D velocity )
 
 	position = startPos;
 
-	directionVector = velocity.Normalize();
+	directionVector = velocity;//.Normalize();
 
 	objectRotationDegrees = 0.0f;
 	Vector3D zerovec; 

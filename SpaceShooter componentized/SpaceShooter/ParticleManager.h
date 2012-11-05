@@ -1,69 +1,54 @@
-//********************************************************************
-//    created:    5:10:2012   16:11
-//    filename:   ParticleManager.h
-//    author:     Kristian Skarseth
-//    
-//    purpose:    
-//*********************************************************************/
-//#ifndef ParticleManager_h__
-//#define ParticleManager_h__
-//#ifdef _WIN32
-//#include <windows.h>
-//#endif
-//#include <vector>
-//#include <IL/il.h>
-//#include <IL/ilu.h>
-//#include <iostream>
-//#include <sstream>
-//#include <string>
-//#include <fstream>
-//#include "Particle.h"
-//#include "GameConstants.h"
-//#include "Image.h"
-//#include "GetRandomFloat.h"
-//#include <gl/GL.h> //must be included after particle.h
-//
-//#include "Logger.h"
-//
-//
-//// const value for the maximum number of lightspeed particles
-//static const unsigned int MAX_LIGHTPSEED_PARTICLES = 1000;
-//
-////The max distance a star can spawn from the middle and in 
-//// x/y direction
-//static const float MAX_STAR_DIST_FROM_MIDDLE_X = 650.0f;
-//static const float MAX_STAR_DIST_FROM_MIDDLE_Y = 450.0f;
-//static const float STAR_FARPOINT = -550.0f;
-//
-//class ParticleManager
-//{
-//public:
-//    ParticleManager();
-//    ~ParticleManager();
-//
-//	void InitParticleManager();
-//
-//	void UpdateParticles(GLfloat deltatime);
-//
-//	void DrawParticles();
-//
-//protected:
-//
-//private:
-//	Logger log;
-//
-//	std::vector<Particle> LightspeedStars;
-//
-//	GLuint particle1;
-//	void InitLightspeedStars();
-//
-//	Image ReadImage(std::string image);
-//
-//	Vector3D zeroPoint;
-//
-//	void InitNewLightspeedParticle(Particle& p, bool firstFrame);
-//	bool validLightspeedPos(float xPos, float yPos);
-//	int failcounter;
-//};
-//
-//#endif // ParticleManager_h__
+/********************************************************************
+    created:    5:11:2012   20:53
+    filename:   ParticleManager.h
+    author:     Kristian Skarseth
+    
+    purpose:    Takes care of all particles in the game. Spaceships or other 
+				components in need of displaying a particle-something use
+				this class.
+*********************************************************************/
+#ifndef ParticleManager_h__
+#define ParticleManager_h__
+
+#include <memory>
+#include <vector>
+
+#include "Vector3d.h"
+#include "GetRandomFloat.h"
+#include "MeshFactory.h"
+#include "VBODrawable.h"
+#include "Particle.h"
+
+class ParticleManager
+{
+public:
+	//Singleton access function
+   static ParticleManager* Inst();
+
+   //Should preload meshes or images used by the particle manager
+   void InitParticleManager();
+
+   void DrawParticles();
+   void UpdateParticles(float deltaTime);
+
+   void EmitStandardSpaceshipProjectileCollision(Vector3D origin);
+   //Function to emit a custom batch of particles
+   void EmitParticles(Vector3D origin,
+	   unsigned int particleAmnt,
+	   float startSpreadRadius,
+	   float maxSpeed,
+	   float fadeSpeed,
+	   float maxSize,
+	   float minSize,
+	   float r, float g, float b);
+
+private:
+	ParticleManager();
+	~ParticleManager();
+
+	VBODrawable vbo;
+
+	std::vector<std::shared_ptr<Particle>> particles;
+};
+
+#endif // ParticleManager_h__

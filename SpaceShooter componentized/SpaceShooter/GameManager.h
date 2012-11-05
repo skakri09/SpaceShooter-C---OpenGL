@@ -69,10 +69,6 @@ private:
 	Timer my_timer;		//Timer for machine independent motion
 	GLfloat deltaTime;	//Time since last update 
 
-
-	//Manager handling all the particle effects in the game
-	//ParticleManager particleManager;
-
 	//Manager handling all the spaceships, both player and enemies
 	SpaceShipManager shipManager;
 

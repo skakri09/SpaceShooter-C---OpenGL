@@ -22,13 +22,14 @@
 #include "Projectile.h"
 #include "MeshInfo.h"
 #include "MeshXmlLoader.h"
+#include "ParticleManager.h"
 
 //Components
 #include "ShooterModule.h"
 #include "VBODrawable.h"
 #include "Transformable.h"
 #include "BoundingSphere.h"
-#include "ParticleEmitter.h"
+
 
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
@@ -70,7 +71,6 @@ public:
 	VBODrawable vboDrawable;		//A spaceship is drawn with VBOs
 	Transformable transformable;	//A spaceship is transformable
 	BoundingSphere collisionSphere;	//A spaceship has a boundingSphere for collision
-	ParticleEmitter particleEmitter;//A spaceship can emitt particles
 
 protected:
 	

@@ -19,7 +19,6 @@ void SpaceShip::Update(float deltaTime)
 		transformable.Update(deltaTime);
 		collisionSphere.Update(transformable.GetCollisionTransformationInfo());
 		shooterModule.UpdateModule(deltaTime);
-		particleEmitter.UpdateParticles(deltaTime);
 	}
 	else
 	{
@@ -66,9 +65,6 @@ void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	transformable.Init(startPos,rotationAxis, startRotDeg, scale, directionVec);
 
 	SpaceShipCurrentHealth = SpaceShipMaxHealth;
-
-	//loading and prepping the currently only particle the particleEmitter can use
-	particleEmitter.InitTexture("..//particles//particle.png", "particle");
 }
 
 void SpaceShip::HandleProjectileCollision( std::vector<std::shared_ptr<Projectile>>* projectiles )
@@ -97,6 +93,6 @@ void SpaceShip::HandleProjectileCollision( std::vector<std::shared_ptr<Projectil
 void SpaceShip::EmittProjectileHittParticles(Projectile& p)
 {
 	Vector3D origin = *p.transformable.getPosition();
-	particleEmitter.EmittParticles(origin, 50, 1, 1000, 20, 1.5f, 0.3f, 0.1f, 0.0f, 1.0f, 0.0f);
+	ParticleManager::Inst()->EmitStandardSpaceshipProjectileCollision(origin);
 	//checkGLErrors();
 }
