@@ -8,7 +8,7 @@
 #ifndef Projectile_H
 #define Projectile_H
 
-#include "GameObject2.h"
+#include "GameObject.h"
 #include "Logger.h"
 #include "MeshFactory.h"
 #include "MeshXmlLoader.h"
@@ -19,7 +19,7 @@
 #include "Transformable.h"
 #include "BoundingSphere.h"
 
-class Projectile : public GameObject2
+class Projectile : public GameObject
 {
 public:
 	Projectile( ProjectileTypes projectileType,

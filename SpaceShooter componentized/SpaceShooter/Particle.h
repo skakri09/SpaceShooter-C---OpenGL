@@ -14,7 +14,7 @@
 
 #include "VBODrawable.h"
 #include "Transformable.h"
-#include "GameObject2.h"
+#include "GameObject.h"
 #include <vector>
 #include "Vector3d.h"
 #include "MeshFactory.h"
@@ -24,7 +24,7 @@
 
 
 
-class Particle : public GameObject2
+class Particle : public GameObject
 {
 public:
     Particle();

@@ -73,6 +73,7 @@ void ParticleEmitter::DrawParticles()
 		{
 			(*i)->Draw();
 		}
+		glColor4f(1, 1, 1, 1);
 		//glDisable(GL_COLOR);
 		//UnbindTexture();
 	}

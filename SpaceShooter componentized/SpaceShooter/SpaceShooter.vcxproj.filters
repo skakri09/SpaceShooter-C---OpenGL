@@ -424,9 +424,6 @@
     <None Include="lib3ds-1_3d.dll">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="GameObject2.h">
-      <Filter>Game\GameObjects</Filter>
-    </None>
     <None Include="..\xml\Projectiles\Mesh_SquareBullet.xml">
       <Filter>Resource Files</Filter>
     </None>
@@ -438,6 +435,9 @@
     </None>
     <None Include="..\particles\particle.xml">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="GameObject.h">
+      <Filter>Game\GameObjects</Filter>
     </None>
   </ItemGroup>
 </Project>

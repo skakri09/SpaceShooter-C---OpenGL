@@ -53,7 +53,8 @@ void GameManager::setOpenGLStates() {
 	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_MULTISAMPLE);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST );
 	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST );
@@ -64,18 +65,43 @@ void GameManager::setOpenGLStates() {
 	
 	glShadeModel(GL_SMOOTH); 
 
-	glEnable(GL_LIGHT0);
+	
 	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1);
+	const static GLfloat ambient[] = 
+	{ 0.0f, 0.0f, 0.0f, 1.0f };
+	const static GLfloat diffuse[] = 
+	{ 1.0f, 1.0f, 1.0f, 0.5f };
+	const static GLfloat specular[] = 
+	{ 0.0f, 1.0f, 0.0f, 1.0f };
+	const static GLfloat position[] = 
+	{ 0.0f, 0.0f, -500.0, 1.0f }; 
+	const static GLfloat position2[] = 
+	{ 0.0f, 500.0f,	0.0, 0.0f }; 
 
-	////GLfloat pos[] = {0.0f, 0.0f, 0.0f};
+	// set lighting types
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+	glLightfv(GL_LIGHT0, GL_POSITION, position);
+	
+	glLightfv(GL_LIGHT1, GL_POSITION, position2);
+	glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, specular);
+
+	//GLfloat pos[] = {0.0f, 0.0f, 0.0f};
 	//GLfloat specularColor[] = { 0.0, 0.0, 0.0 };
-	//GLfloat diffuseColor[] = { 0.0, 0.0, 0.0 };
+	//GLfloat diffuseColor[] = { 1.0, 1.0, 1.0};
 	//GLfloat ambientColor[] = {0.0f, 0.0f, 0.0f};
-	//GLfloat position[] = {0.0f, 10.0f, 50.0f};
+	//GLfloat position[] = {0.0f, 10.0f, -50.0f};
 	////GL_AMBIENT, GL_SPECULAR, GL_DIFFUSE
+	////glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseColor);
+	////glLightfv(GL_LIGHT0, GL_SPECULAR, specularColor);
 	//glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseColor);
-	//glLightfv(GL_LIGHT0, GL_SPECULAR, specularColor);
-	//glLightfv(GL_LIGHT0, GL_AMBIENT, ambientColor);
+	//glLightfv(GL_LIGHT0, GL_SPECULAR, diffuseColor);
+	//glLightfv(GL_LIGHT0, GL_AMBIENT, diffuseColor);
 	//glLightfv(GL_LIGHT0, GL_POSITION, position);
 
 }
@@ -131,7 +157,7 @@ void GameManager::render() {
 	glRotatef(rotate, 0, 1, 0);/*static_cast<float>(sin(my_timer.getCurrentTime())), 
 					  static_cast<float>(sin(my_timer.getCurrentTime())), 
 					  static_cast<float>(cos(my_timer.getCurrentTime())));*/
-	//skybox.drawSkybox();
+	skybox.drawSkybox();
 	glPopMatrix();
 
 	glClear(GL_DEPTH_BUFFER_BIT);

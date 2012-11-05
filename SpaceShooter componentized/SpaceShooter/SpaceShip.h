@@ -18,7 +18,7 @@
 #include <vector>
 
 #include "Logger.h"
-#include "GameObject2.h"
+#include "GameObject.h"
 #include "Projectile.h"
 #include "MeshInfo.h"
 #include "MeshXmlLoader.h"
@@ -37,7 +37,7 @@ static const GLfloat ROTATE_SPEED = 200.0f;
 
 
 
-class SpaceShip : public GameObject2
+class SpaceShip : public GameObject
 {
 public:
 	SpaceShip(int spaceshipHP);

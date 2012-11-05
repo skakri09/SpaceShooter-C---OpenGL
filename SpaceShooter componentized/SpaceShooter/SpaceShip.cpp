@@ -23,7 +23,7 @@ void SpaceShip::Update(float deltaTime)
 	}
 	else
 	{
-		GameObject2::FlagForKill();
+		GameObject::FlagForKill();
 	}
 }
 
@@ -97,6 +97,6 @@ void SpaceShip::HandleProjectileCollision( std::vector<std::shared_ptr<Projectil
 void SpaceShip::EmittProjectileHittParticles(Projectile& p)
 {
 	Vector3D origin = *p.transformable.getPosition();
-	particleEmitter.EmittParticles(origin, 50, 1, 100, 20, 0.1f, 0.2f, 0.1, 0.5f, 0.5f, 0.5f);
+	particleEmitter.EmittParticles(origin, 50, 1, 100, 20, 1.0f, 0.2f, 0.1, 1.0f, 0.5f, 0.5f);
 	checkGLErrors();
 }

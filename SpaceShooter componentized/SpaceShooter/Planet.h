@@ -8,12 +8,12 @@
 #ifndef Planet_h__
 #define Planet_h__
 
-#include "GameObject2.h"
+#include "GameObject.h"
 #include "VBODrawable.h"
 #include "Transformable.h"
 #include "MeshFactory.h"
 
-class Planet : public GameObject2
+class Planet : public GameObject
 {
 public:
     Planet(/*std::string meshName*/);
