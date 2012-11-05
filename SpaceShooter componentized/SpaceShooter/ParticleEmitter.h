@@ -16,6 +16,9 @@
 #include "GetRandomFloat.h"
 #include "MeshFactory.h"
 #include "Texturable.h"
+#include "MeshInfo.h"
+#include "MeshFactory.h"
+#include "VBODrawable.h"
 
 class ParticleEmitter : public Texturable
 {
@@ -23,7 +26,7 @@ public:
     ParticleEmitter();
     ~ParticleEmitter();
 
-	//Emitts the given amount of particles. Origin is the center of the
+	//Emits the given amount of particles. Origin is the center of the
 	//particle emitting, where particles can spawn anywhere within the radius
 	//of that point.
 	void EmittParticles(Vector3D origin,
@@ -43,10 +46,9 @@ public:
 private:
 	Logger log;
 
-
 	std::vector<std::shared_ptr<Particle>> particles;
 
-	GLuint particleTexture;
+	VBODrawable vbo;
 
 };
 

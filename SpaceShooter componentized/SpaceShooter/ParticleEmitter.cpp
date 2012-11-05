@@ -39,6 +39,11 @@ void ParticleEmitter::EmittParticles( Vector3D origin,
 		float scale = GetRandFloat(minSize, maxSize);
 
 		particles.back()->InitParticle(startPos, velocity, fadeSpeed, r, g, b, scale );
+
+		if(!vbo.HaveMeshInfo())
+		{
+			vbo.SetMeshInfo( MeshFactory::Inst()->GetMesh("..//particles//particle.xml"));
+		}
 		//particles[i]->InitParticle(startPos, velocity, fadeSpeed, r, g, b, scale );
 	}
 }
@@ -67,14 +72,17 @@ void ParticleEmitter::DrawParticles()
 {
 	if(!particles.empty())
 	{
-		//glEnable(GL_COLOR);
 		//BindTexture("particle");
 		for(auto i = particles.begin(); i != particles.end(); i++)
 		{
-			(*i)->Draw();
+			if(vbo.HaveMeshInfo())
+			{
+				glPushMatrix();
+				(*i)->Draw();
+				vbo.DrawWithArrays();
+				glPopMatrix();
+			}
 		}
 		glColor4f(1, 1, 1, 1);
-		//glDisable(GL_COLOR);
-		//UnbindTexture();
 	}
 }

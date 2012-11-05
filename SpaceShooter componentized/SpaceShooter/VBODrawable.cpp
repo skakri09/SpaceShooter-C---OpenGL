@@ -16,7 +16,7 @@ void VBODrawable::DrawWithArrays()
 {
 	if(haveMeshInfo)
 	{
-		//if(!meshInfo.haveIndices)
+		if(!meshInfo.haveIndices)
 		{
 			EnableClientStates();
 
@@ -24,10 +24,10 @@ void VBODrawable::DrawWithArrays()
 			checkGLErrors();
 			DisableClientStates();
 		}
-		/*else
+		else
 		{
 			DrawWithIndices();
-		}*/
+		}
 	}
 	else
 	{
@@ -39,7 +39,7 @@ void VBODrawable::DrawWithIndices()
 {
 	if(haveMeshInfo)
 	{
-		//if(meshInfo.haveIndices)
+		if(meshInfo.haveIndices)
 		{
 			EnableClientStates();
 
@@ -47,10 +47,10 @@ void VBODrawable::DrawWithIndices()
 
 			DisableClientStates();	
 		}
-		/*else
+		else
 		{
 			DrawWithArrays();
-		}*/
+		}
 	}
 	else
 	{

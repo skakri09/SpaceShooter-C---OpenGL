@@ -53,6 +53,7 @@ private:
 	void CreateParticle(std::string particleNameNoExtension);
 
 	Image ReadImage(std::string particleName);
+
 };
 
 #endif // Particle_h__

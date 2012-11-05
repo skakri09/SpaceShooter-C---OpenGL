@@ -10,8 +10,8 @@ Particle::~Particle()
 {
 }
 
-void Particle::InitParticle(Vector3D startPos, Vector3D velocity, float fadeSpeed, 
-							float r, float g, float b, float scale)
+void Particle::InitParticle(Vector3D startPos, Vector3D velocity, 
+							float fadeSpeed, float r, float g, float b, float scale)
 {
 	life = 1.0f; 
 	fade = fadeSpeed;
@@ -22,25 +22,15 @@ void Particle::InitParticle(Vector3D startPos, Vector3D velocity, float fadeSpee
 	this->r = r;
 	this->g = g;
 	this->b = b;
-	CreateParticle("particle");
+	//CreateParticle("particle");
 }
 
 void Particle::Draw()
 {
 	if (IsAlive()) 
 	{
-		glPushMatrix();
 		transformation.ApplyGLTransformations(true, true, false);
 		glColor4f(r, g, b, life);
-		vbo.DrawWithArrays();
-		//glColor4f(r, g, b, life);
-		//glBegin(GL_QUADS);
-		//glTexCoord2d(1,0); glVertex3f(position.getX()+0.5f,position.getY()+0.5f,position.getZ()); // Top Right
-		//glTexCoord2d(0,0); glVertex3f(position.getX()-0.5f,position.getY()+0.5f,position.getZ()); // Top Left
-		//glTexCoord2d(0,1); glVertex3f(position.getX()-0.5f,position.getY()-0.5f,position.getZ()); // Bottom Left
-		//glTexCoord2d(1,1); glVertex3f(position.getX()+0.5f,position.getY()-0.5f,position.getZ()); // Bottom Right
-		//glEnd();
-		glPopMatrix();
 	}
 }
 
