@@ -1,9 +1,0 @@
-This model is not made by me. The model is downloaded from http://www.scifi3d.com/ and all credits goes to the original creator(s):
-
-http://www.scifi3d.com/details.asp?intGenreID=10&intCatID=10&key=4
-
-Authors: 	
-
-    George Mezori (ZOO) (Conversion)
-    Al Meerow (Mesh)
-    Don Showalter (Maps/Optimization)
