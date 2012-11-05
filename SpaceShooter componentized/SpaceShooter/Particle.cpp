@@ -31,7 +31,7 @@ void Particle::Draw()
 	{
 		glPushMatrix();
 		transformation.ApplyGLTransformations(true, true, false);
-		//glColor4f(r, g, b, life);
+		glColor4f(r, g, b, life);
 		vbo.DrawWithArrays();
 		//glColor4f(r, g, b, life);
 		//glBegin(GL_QUADS);
@@ -63,9 +63,9 @@ void Particle::CreateParticle( std::string particleNameNoExtension )
  		std::string particleImgPath = basePath + particleNameNoExtension + ".png";
 		std::string particleMeshpath = basePath + particleNameNoExtension + ".xml";
 		
-		Image img = ReadImage(particleImgPath);
+		//Image img = ReadImage(particleImgPath);
 
-		MeshInfo meshInfo = MeshFactory::Inst()->GetMesh(particleMeshpath);
+ 		MeshInfo meshInfo = MeshFactory::Inst()->GetMesh(particleMeshpath);
 
 		vbo.SetMeshInfo(meshInfo);
 	}

@@ -181,7 +181,7 @@
     <ClInclude Include="XmlLoader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\particles\Particle.xml" />
+    <None Include="..\particles\particle.xml" />
     <None Include="..\xml\Mesh_PlayerSpaceship.xml" />
     <None Include="..\xml\Projectiles\Mesh_SquareBullet.xml" />
     <None Include="..\xml\skybox.xml">

@@ -23,6 +23,13 @@ MeshInfo MeshXmlLoader::LoadMeshXml( std::string meshLoadPath )
 	//Loading the xml with base class' xml loader function
 	ptree xmlPtree = *XmlLoader::LoadXML(meshLoadPath);
 	
+	int mode = xmlPtree.get<int>("mesh.mode");
+	switch(mode)
+	{
+	case 3: meshInfo.mode = GL_TRIANGLES; break;
+	case 4: meshInfo.mode = GL_QUADS; break;
+	}
+
 	std::string verticesString = xmlPtree.get<std::string>("mesh.vertices");
 	if(!PlaceFloatsInMeshObj(verticesString, vertices))
 	{
@@ -46,18 +53,18 @@ MeshInfo MeshXmlLoader::LoadMeshXml( std::string meshLoadPath )
 	{
 		log << ERRORX << "The placing of texCoords in mesh object was not successful" << std::endl;
 	}
-
-	if(!MakeNormals(vertices, indices, normals))
+	
+	//Not making normals for quads as is now.
+	if(meshInfo.mode == GL_TRIANGLES)
 	{
-		log << ERRORX << "The creation of normals was not successful" << std::endl;
+		if(!MakeNormals(vertices, indices, normals))
+		{
+			log << ERRORX << "The creation of normals was not successful" << std::endl;
+		}
 	}
+	
 
-	int mode = xmlPtree.get<int>("mesh.mode");
-	switch(mode)
-	{
-	case 3: meshInfo.mode = GL_TRIANGLES;
-	case 4: meshInfo.mode = GL_QUADS;
-	}
+	
 	
 	BindVertices(vertices, meshInfo);
 	BindNormals(normals, meshInfo);

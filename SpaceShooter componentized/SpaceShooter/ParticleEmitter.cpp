@@ -67,11 +67,13 @@ void ParticleEmitter::DrawParticles()
 {
 	if(!particles.empty())
 	{
-		BindTexture("particle");
+		//glEnable(GL_COLOR);
+		//BindTexture("particle");
 		for(auto i = particles.begin(); i != particles.end(); i++)
 		{
 			(*i)->Draw();
 		}
-		UnbindTexture();
+		//glDisable(GL_COLOR);
+		//UnbindTexture();
 	}
 }

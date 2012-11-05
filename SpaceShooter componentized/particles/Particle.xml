@@ -16,13 +16,13 @@
   </indices>
   
   <textCoords>
-    1, 0,
-    0, 0,
-    0, 1,
-    1, 1
   </textCoords>
 
   <colors>
   </colors>
 </mesh>
 
+<!--, 0,
+0, 0,
+0, 1,
+1, 1-->

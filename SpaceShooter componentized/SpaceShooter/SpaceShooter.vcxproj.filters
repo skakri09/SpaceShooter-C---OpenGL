@@ -436,7 +436,7 @@
     <None Include="..\xml\skybox.xml">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\particles\Particle.xml">
+    <None Include="..\particles\particle.xml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
