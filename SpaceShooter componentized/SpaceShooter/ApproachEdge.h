@@ -12,7 +12,7 @@
 #include "AiState.h"
 #include "BaseEnemyShip.h"
 
-class ApproachEdge
+class ApproachEdge : public AiState
 {
 public:
 	ApproachEdge():log("ApproachEdge", WARN),AiState("ApproachEdge"){}

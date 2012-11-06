@@ -8,10 +8,10 @@
     
   </textCoords>
   <vertices>
-    -0.5, 0.0, 0.0<!--0 bottom left front-->
-    0.5f, 0.0, 0.0<!--1 bottom right front-->
-    0.5, 1.0, 0.0<!--2 top right front-->
-    -0.5, 1.0, 0.0<!--3 top left front-->
+    -0.5, 0.0, 3.0<!--0 bottom left front-->
+    0.5f, 0.0, 3.0<!--1 bottom right front-->
+    0.5, 1.0, 3.0<!--2 top right front-->
+    -0.5, 1.0, 3.0<!--3 top left front-->
 
     0.5, 0.0, -3.0<!--4 bottom back right-->
     -0.5, 0.0, -3.0<!--5 bottom back left-->
