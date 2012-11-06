@@ -17,7 +17,7 @@ void PlayerSpaceShip::Draw()
 	
 	transformable.ApplyGLTransformations();
 	glRotatef(180, 0, 0, 1);//rotating the player towards negative z axis
-	vboDrawable.DrawWithArrays();
+	vboDrawable.Draw();
 
 	glPopMatrix();
 

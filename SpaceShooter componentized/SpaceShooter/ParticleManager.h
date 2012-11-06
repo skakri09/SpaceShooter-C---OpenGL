@@ -31,7 +31,9 @@ public:
    void DrawParticles();
    void UpdateParticles(float deltaTime);
 
+   //Emits a batch of particles that can be used for a standard collision
    void EmitStandardSpaceshipProjectileCollision(Vector3D origin);
+  
    //Function to emit a custom batch of particles
    void EmitParticles(Vector3D origin,
 	   unsigned int particleAmnt,

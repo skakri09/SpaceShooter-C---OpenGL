@@ -439,5 +439,8 @@
     <None Include="GameObject.h">
       <Filter>Game\GameObjects</Filter>
     </None>
+    <None Include="..\xml\square.xml">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

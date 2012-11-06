@@ -21,16 +21,13 @@ class VBODrawable
 public:
     VBODrawable();
     ~VBODrawable();
-
-	//Draws the VBO associated with this class'
-	//MeshInfo object trough arrays.
-	void DrawWithArrays();
-
-	//Draws the VBO associated with this class'
-	//MeshInfo object with indices. If the MeshInfo
-	//objects indices array is not in use or otherwise
-	//faulty, the drawing will be wrong.
-	void DrawWithIndices();
+	
+	//Draws the VBO held by the MeshInfo object
+	//this class has. If it has not previously been
+	//set we get an error and may crash.
+	//The class handles choosing between drawing with 
+	//arrays and elements based on the info in the MeshInfo obj.
+	void Draw();
 
 	void SetMeshInfo(MeshInfo meshInfo);
 

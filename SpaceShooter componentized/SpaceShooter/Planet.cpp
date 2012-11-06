@@ -18,7 +18,7 @@ void Planet::Draw()
 
 	transformable.ApplyGLTransformations(true, true, false);
 	glRotatef(rotation, 1.5f, 0.5f, 1.5f);
-	vboDrawable.DrawWithArrays();
+	vboDrawable.Draw();
 
 	glPopMatrix();
 }

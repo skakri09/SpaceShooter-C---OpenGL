@@ -29,7 +29,7 @@ void BaseEnemyShip::Draw()
 		glPushMatrix();
 
 		transformable.ApplyGLTransformations();
-		vboDrawable.DrawWithArrays();
+		vboDrawable.Draw();
 
 		glPopMatrix();
 

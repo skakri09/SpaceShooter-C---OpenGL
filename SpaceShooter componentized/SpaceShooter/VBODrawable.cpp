@@ -12,7 +12,7 @@ VBODrawable::~VBODrawable()
 {
 }
 
-void VBODrawable::DrawWithArrays()
+void VBODrawable::Draw()
 {
 	if(haveMeshInfo)
 	{
@@ -21,25 +21,9 @@ void VBODrawable::DrawWithArrays()
 			EnableClientStates();
 
 			glDrawArrays(meshInfo.mode, 0, meshInfo.numberOfIndices);
-			checkGLErrors();
 			DisableClientStates();
 		}
 		else
-		{
-			DrawWithIndices();
-		}
-	}
-	else
-	{
-		log << CRITICAL << "meshInfo not set" << std::endl;
-	}
-}
-
-void VBODrawable::DrawWithIndices()
-{
-	if(haveMeshInfo)
-	{
-		if(meshInfo.haveIndices)
 		{
 			EnableClientStates();
 
@@ -47,14 +31,10 @@ void VBODrawable::DrawWithIndices()
 
 			DisableClientStates();	
 		}
-		else
-		{
-			DrawWithArrays();
-		}
 	}
 	else
 	{
-		log << CRITICAL << "meshInfo not set" << std::endl;
+		log << ERRORX << "meshInfo not set" << std::endl;
 	}
 }
 

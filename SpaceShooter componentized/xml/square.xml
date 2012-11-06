@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mesh>
+  <mode>
+    4 <!--quads-->
+  </mode>
+  <vertices>
+    -0.5, -0.5, 0.0,<!--bottom left-->
+
+    0.5f, -0.5f, 0.0f<!--bottom right-->
+
+    0.5f, 0.5f, 0.0f<!--top right-->
+
+    -0.5f, 0.5f, 0.0f<!--top left-->
+    
+  </vertices>
+
+  <indices>
+  </indices>
+
+  <textCoords>
+  </textCoords>
+
+  <colors>
+
+  </colors>
+</mesh>
+

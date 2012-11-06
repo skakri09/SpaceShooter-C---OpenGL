@@ -187,6 +187,7 @@
     <None Include="..\xml\skybox.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="..\xml\square.xml" />
     <None Include="GameObject.h" />
     <None Include="lib3ds-1_3d.dll" />
   </ItemGroup>

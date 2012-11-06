@@ -31,7 +31,7 @@ void SpaceShip::Draw()
 	if(IsAlive())
 	{
 		transformable.ApplyGLTransformations();
-		vboDrawable.DrawWithArrays();
+		vboDrawable.Draw();
 	}
 	
 }
@@ -94,5 +94,4 @@ void SpaceShip::EmittProjectileHittParticles(Projectile& p)
 {
 	Vector3D origin = *p.transformable.getPosition();
 	ParticleManager::Inst()->EmitStandardSpaceshipProjectileCollision(origin);
-	//checkGLErrors();
 }

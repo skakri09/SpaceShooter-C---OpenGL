@@ -36,7 +36,7 @@ void Projectile::Draw()
 		glPushMatrix();
 
 		transformable.ApplyGLTransformations(true, true, false);
-		vboDrawable.DrawWithIndices();
+		vboDrawable.Draw();
 
 
 		glPopMatrix();

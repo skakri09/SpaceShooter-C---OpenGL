@@ -36,7 +36,7 @@ void ParticleManager::DrawParticles()
 			{
 				glPushMatrix();
 				(*i)->Draw();
-				vbo.DrawWithArrays();
+				vbo.Draw();
 				glPopMatrix();
 			}
 		}

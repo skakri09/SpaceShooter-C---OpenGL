@@ -30,11 +30,10 @@ public:
 
 	void InitTexture(std::string textureFullPathname, std::string textureKeyName);
 
-
-protected:
 	void BindTexture(std::string textureName);
 	void UnbindTexture();
 
+protected:
 	void LoadAndBindTexture(std::string imageFullPathAndName, std::string keyName);
 
 private:

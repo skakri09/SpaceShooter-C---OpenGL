@@ -12,7 +12,7 @@ Transformable::~Transformable()
 void Transformable::Init(Vector3D startPos,
 							Vector3D rotationAxis,
 							float rotationDeg,
-							float scale, /*Cheating and only allowing uniform scaling */ 
+							float scale, /* only allowing uniform scaling */ 
 							Vector3D directionVector )
 {
 	SetScale(scale, scale, scale);
@@ -29,7 +29,7 @@ void Transformable::Init(Vector3D startPos,
 
 void Transformable::Init( float xPos, float yPos, float zPos, 
 						Vector3D rotationAxis, float rotationDeg, 
-						float scale, /*Cheating and only allowing uniform scaling */ 
+						float scale, /*only allowing uniform scaling */ 
 						Vector3D directionVector )
 {
 	SetScale(scale, scale, scale);
@@ -44,7 +44,7 @@ void Transformable::Init( float xPos, float yPos, float zPos,
 
 	this->rotationAxis = rotationAxis;
 }
-
+												/*only allowing uniform scaling */ 
 void Transformable::Init( Vector3D startPos, float scale, Vector3D velocity )
 {
 	SetScale(scale, scale, scale);

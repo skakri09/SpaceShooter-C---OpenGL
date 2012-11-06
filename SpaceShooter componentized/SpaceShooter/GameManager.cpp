@@ -34,7 +34,7 @@ void GameManager::createOpenGLContext() {
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8); // Use framebuffer with 8 bit for blue
 	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8); // Use framebuffer with 8 bit for alpha
 
-	SDL_WM_SetCaption("NITH - PG430 Space Invaders - FPS: ", "");
+	SDL_WM_SetCaption("NITH - PG430 Space Invaders - FPS: 0", "");
 
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
@@ -116,7 +116,7 @@ void GameManager::init() {
 	atexit( SDL_Quit);
 	
 	createOpenGLContext();
-	setOpenGLStates();
+	
 
 	//initializing glew, if not called before we start initializing
 	//the the game objects we will crash when trying to access
@@ -133,16 +133,19 @@ void GameManager::init() {
 	ilOriginFunc(IL_ORIGIN_UPPER_LEFT);
 	ilEnable(IL_ORIGIN_SET);
 
-	//A resize MUST be called before we start, as it does 
-	//the gluPerspective() and glViewPort() calls 
-	//+ some other stuff
-	input.resize(window_width, window_height);
-
+	
+	
+	DisplayLoadingScreen();
+	setOpenGLStates();
 	ProjectileFactory::Inst()->InitProjectileFactory();
 	shipManager.InitManager(&input);
 	ParticleManager::Inst()->InitParticleManager();
 	skybox.initSkybox("skybox1", 100);
-
+	
+	//A resize MUST be called before we start, as it does 
+	//the gluPerspective() and glViewPort() calls 
+	//+ some other stuff
+	input.resize(window_width, window_height);
 	rotate = 0;
 }
 
@@ -153,10 +156,9 @@ void GameManager::render() {
 	
 	glPushMatrix();
 	glLoadIdentity();
+	//rotating the spacebox slightly to make it look more alive.
+	glRotatef(rotate, 0, 1, 0);
 
-	glRotatef(rotate, 0, 1, 0);/*static_cast<float>(sin(my_timer.getCurrentTime())), 
-					  static_cast<float>(sin(my_timer.getCurrentTime())), 
-					  static_cast<float>(cos(my_timer.getCurrentTime())));*/
 	skybox.drawSkybox();
 	glPopMatrix();
 
@@ -219,6 +221,32 @@ void GameManager::GameLoop()
 
 void GameManager::quit() {
 	std::cout << "Bye bye..." << std::endl;
+}
+
+void GameManager::DisplayLoadingScreen()
+{
+	Texturable texturable;
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	texturable.InitTexture("..//images//LoadingScreen.png", "loadingscreen");
+	texturable.BindTexture("loadingscreen");
+	glScalef(2, 2, 2);
+	glBegin(GL_QUADS);
+
+	glTexCoord2f(0, 1);
+	glVertex3f(-0.5f, -0.5f, 0.0f);//bottomleft
+	
+	glTexCoord2f(1, 1);
+	glVertex3f(0.5f, -0.5f, 0.0f);//bottomright
+	
+	glTexCoord2f(1, 0);
+	glVertex3f(0.5f, 0.5f, 0.0f);//topright
+
+	glTexCoord2f(0, 0);
+	glVertex3f(-0.5f, 0.5f, 0.0f);//topleft
+	glEnd();
+	texturable.UnbindTexture();
+	SDL_GL_SwapBuffers();
+
 }
 
 

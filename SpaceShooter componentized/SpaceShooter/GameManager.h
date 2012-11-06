@@ -19,6 +19,7 @@
 #include "ParticleManager.h"
 #include "GameConstants.h"
 #include "Skybox.h"
+#include "Texturable.h"
 
 #include <gl/glew.h>
 #include <gl/gl.h>
@@ -80,6 +81,11 @@ private:
 	Skybox skybox;
 
 	bool doExit; //If true, the game quits
+
+	//Does a quick and dirty drawing of a loading screen
+	//so we have something to look at while loading.
+	void DisplayLoadingScreen();
+
 };
 
 #endif // _GAMEMANAGER_H_

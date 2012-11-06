@@ -32,9 +32,6 @@ void InputManager::Update(bool& exitGame)
 			case SDLK_ESCAPE:
 				exitGame = true;
 				break;
-			case SDLK_q:
-				exitGame = true;
-				break;
 			}
 			break;
 		case SDL_MOUSEBUTTONDOWN:
