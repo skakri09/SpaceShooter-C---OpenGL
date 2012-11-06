@@ -189,4 +189,19 @@ void Transformable::UpdateCollisionTransformationInfo()
 	transformationValues.scale = scale;
 }
 
+void Transformable::SetXPos( float xPos )
+{
+	position.setX(xPos);
+}
+
+void Transformable::SetYPos( float yPos )
+{
+	position.setY(yPos);
+}
+
+void Transformable::SetZPos( float zPos )
+{
+	position.setZ(zPos);
+}
+
 

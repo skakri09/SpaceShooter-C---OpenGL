@@ -65,10 +65,9 @@ void ParticleManager::UpdateParticles( float deltaTime )
 	}
 }
 
-
 void ParticleManager::EmitStandardSpaceshipProjectileCollision( Vector3D origin )
 {
-	EmitParticles(origin, 100, 0.1f, 10, 1.0f, 0.3f, 0.1f, 1.0f, 1.0f, 1.0f);
+	EmitParticles(origin, 30, 0.1f, 10, 1.0f, 0.3f, 0.1f, 1.0f, 1.0f, 1.0f);
 }
 
 

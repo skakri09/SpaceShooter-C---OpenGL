@@ -11,11 +11,15 @@
 #include "AiState.h"
 #include "BaseEnemyShip.h"
 #include "logger.h"
+#include "SpaceShipManager.h"
+#include "ImperialTieFighter.h"
+#include "ImperialTieInterceptor.h"
+#include "GetRandomFloat.h"
 
 class StarDestroyerShipSpawning : public AiState
 {
 public:
-	StarDestroyerShipSpawning():log("StarDestroyerShipSpawning", WARN),AiState("StarDestroyerShipSpawning"){}
+	StarDestroyerShipSpawning();
 
 	virtual void Enter(BaseEnemyShip* enemy);
 
@@ -25,6 +29,14 @@ public:
 
 private:
 	Logger log;
+	BaseEnemyShip* ownerShip;
+	enum Direction{LEFT, RIGHT, UP, DOWN};
+	Direction direction;
+
+	void UpdateDirection(BaseEnemyShip* owner);
+	void HandleShipSpawning(float deltaTime);
+	float lastImpInterceptorSpawn;
+	float lastImpTieFighterSpawn;
 };
 
 #endif // StarDestroyerShipSpawning_h__

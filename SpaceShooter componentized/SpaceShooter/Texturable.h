@@ -43,7 +43,7 @@ private:
 
 	
 
-	Image ReadImage(std::string image);
+	Image* ReadImage(std::string image);
 
 
 };

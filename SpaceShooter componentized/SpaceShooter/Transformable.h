@@ -70,6 +70,9 @@ public:
 
 	void SetVelocity(float xVel, float yVel, float zVel);
 
+	void SetXPos(float xPos);
+	void SetYPos(float yPos);
+	void SetZPos(float zPos);
 	//Sets the scale of this object. Also updates the scale
 	//in the transformationValues struct
 	void SetScale(float x, float y, float z);

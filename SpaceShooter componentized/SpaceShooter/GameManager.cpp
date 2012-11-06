@@ -47,7 +47,8 @@ void GameManager::createOpenGLContext() {
 	}
 }
 
-void GameManager::setOpenGLStates() {
+void GameManager::setOpenGLStates() 
+{
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glDepthFunc(GL_LEQUAL);
@@ -62,9 +63,7 @@ void GameManager::setOpenGLStates() {
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_POLYGON_SMOOTH);
 	
-	
 	glShadeModel(GL_SMOOTH); 
-
 	
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
@@ -138,7 +137,7 @@ void GameManager::init() {
 	DisplayLoadingScreen();
 	setOpenGLStates();
 	ProjectileFactory::Inst()->InitProjectileFactory();
-	shipManager.InitManager(&input);
+	SpaceShipManager::Inst()->InitManager(&input);
 	ParticleManager::Inst()->InitParticleManager();
 	skybox.initSkybox("skybox1", 100);
 	
@@ -165,7 +164,7 @@ void GameManager::render() {
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	ParticleManager::Inst()->DrawParticles();
-	shipManager.DrawSpaceShips();
+	SpaceShipManager::Inst()->DrawSpaceShips();
 
 	checkGLErrors();
 	glPopMatrix();
@@ -183,7 +182,7 @@ void GameManager::update()
 	input.Update(doExit);
 
 	ParticleManager::Inst()->UpdateParticles(deltaTime);
-	shipManager.UpdateManager(deltaTime);
+	SpaceShipManager::Inst()->UpdateManager(deltaTime);
 }
 
 void GameManager::GameLoop() 
@@ -228,7 +227,7 @@ void GameManager::DisplayLoadingScreen()
 {
 	Texturable texturable;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	texturable.InitTexture("..//images//LoadingScreen.png", "loadingscreen");
+	texturable.InitTexture("..//images//LoadingScreen.jpg", "loadingscreen");
 	texturable.BindTexture("loadingscreen");
 	glScalef(2, 2, 2);
 	glBegin(GL_QUADS);

@@ -2,6 +2,13 @@
 #include "GLUtils/GLUtils.hpp"
 using GLUtils::checkGLErrors;
 
+
+SpaceShipManager* SpaceShipManager::Inst()
+{
+	static SpaceShipManager* instance = new SpaceShipManager();
+	return instance;
+}
+
 SpaceShipManager::SpaceShipManager() 
 	:log("SpaceShipmanager", WARN)
 {
@@ -36,8 +43,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	}
 	TimeSinceLastEnemySpawn = 0.0f;
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(&player));
-	//EnemySpaceShips.back()->InitSpaceship(-200, -10, -450, 180, 0, 1, 0, 0, 0, 1);
-	EnemySpaceShips.back()->InitSpaceShip(-200, 0, -450, 180, 0, 1, 0, 0, 0, 1);
+	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
 }
 
 void SpaceShipManager::UpdateManager(GLfloat deltaTime)
@@ -63,6 +69,12 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 
 	}
 
+	for(auto i = EnemyShipsForTransfer.begin(); i != EnemyShipsForTransfer.end();)
+	{
+		EnemySpaceShips.push_back(*i);
+		i = EnemyShipsForTransfer.erase(i);
+	}
+
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();)
 	{
 		if( (*i)->CanKill() )
@@ -83,12 +95,12 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	TimeSinceLastEnemySpawn += deltaTime;
 	if(TimeSinceLastEnemySpawn >= 1.01)
 	{
-		TimeSinceLastEnemySpawn = 0.0f;
+		/*TimeSinceLastEnemySpawn = 0.0f;
 		EnemySpaceShips.push_back(GetRandomEnemy());
 		float x = GetRandFloat(-100.0f, 100.0f);
 		float y = GetRandFloat(-50.0f, 50.0f);
 		float z = GetRandFloat(-500.0f, -400.0f);
-		EnemySpaceShips.back()->InitSpaceShip(x, y, z, -90, 1, 0, 0, 0, 0, 1);
+		EnemySpaceShips.back()->InitSpaceShip(x, y, z, -90, 1, 0, 0, 0, 0, 1);*/
 	}
 }
 
@@ -203,4 +215,14 @@ std::shared_ptr<BaseEnemyShip> SpaceShipManager::GetRandomEnemy()
 		return std::make_shared<SithInfiltrator>(&player);
 	}
 	return NULL;
+}
+
+void SpaceShipManager::TransferShipToShipManager( std::shared_ptr<BaseEnemyShip> ship )
+{
+	EnemyShipsForTransfer.push_back(ship);
+}
+
+PlayerSpaceShip* SpaceShipManager::GetPlayer()
+{
+	return &player;
 }

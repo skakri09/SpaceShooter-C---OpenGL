@@ -113,9 +113,6 @@
     <Filter Include="Game\Utility\Logger">
       <UniqueIdentifier>{9a464e1b-37c9-48c9-97f7-dbf944751574}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Skyboxes">
-      <UniqueIdentifier>{ea2dffb0-010b-443d-b7cf-6be31fb8adbc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Components\ParticleEmitter">
       <UniqueIdentifier>{3af77fd5-f300-48df-9150-1d7952219751}</UniqueIdentifier>
     </Filter>
@@ -132,6 +129,9 @@
     <Filter Include="Game\Managers\Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Game\Managers\Skyboxes">
+      <UniqueIdentifier>{ea2dffb0-010b-443d-b7cf-6be31fb8adbc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -247,7 +247,7 @@
       <Filter>Game\Components\VBO</Filter>
     </ClCompile>
     <ClCompile Include="Skybox.cpp">
-      <Filter>Game\Skyboxes</Filter>
+      <Filter>Game\Managers\Skyboxes</Filter>
     </ClCompile>
     <ClCompile Include="Texturable.cpp">
       <Filter>Game\Components\Texturable</Filter>
@@ -257,6 +257,12 @@
     </ClCompile>
     <ClCompile Include="ParticleManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ApproachRandXYPos.cpp">
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ApproachEdge.cpp">
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -408,7 +414,7 @@
       <Filter>Game\GameObjects\SpaceShips\Player</Filter>
     </ClInclude>
     <ClInclude Include="Skybox.h">
-      <Filter>Game\Skyboxes</Filter>
+      <Filter>Game\Managers\Skyboxes</Filter>
     </ClInclude>
     <ClInclude Include="Texturable.h">
       <Filter>Game\Components\Texturable</Filter>
@@ -418,6 +424,12 @@
     </ClInclude>
     <ClInclude Include="ParticleManager.h">
       <Filter>Game\Managers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ApproachRandXYPos.h">
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ApproachEdge.h">
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

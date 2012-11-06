@@ -26,8 +26,7 @@
 class SpaceShipManager
 {
 public:
-    SpaceShipManager();
-    ~SpaceShipManager();
+	static SpaceShipManager* Inst();
 
 	//Initializing this manager. The input parameter
 	//pointer should point to the inputManager used
@@ -41,8 +40,15 @@ public:
 	//Calling Draw() on all active spaceships
 	void DrawSpaceShips();
 
+	void TransferShipToShipManager(std::shared_ptr<BaseEnemyShip> ship);
+
+	PlayerSpaceShip* GetPlayer();
 private:
 	Logger log;
+
+	SpaceShipManager();
+	~SpaceShipManager();
+
 	//locally stored pointer to the inputManager object
 	//stored in gameManager, so that we can handle player
 	//input internally instead of trough the gameManager
@@ -70,6 +76,7 @@ private:
 	void HandlePlayerRotation();
 
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemySpaceShips;
+	std::vector<std::shared_ptr<BaseEnemyShip>> EnemyShipsForTransfer;
 	
 	//Returns a random enemy
 	std::shared_ptr<BaseEnemyShip> GetRandomEnemy();

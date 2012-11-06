@@ -37,26 +37,18 @@ void ImperialTieFighter::InitSpaceShip(float startX, float startY, float startZ,
 	BaseEnemyShip::ShipSpeed = 50;
 
 	CreateGameObject("ImperialTieFighter//ImperialTieFighter.3ds");
+	aiStateMachine.ChangeState(std::make_shared<ApproachRandXYPos>());
 }
 
 void ImperialTieFighter::HandleAI()
 {
-	float xyDist = transformable.getPosition()->XYDistance(*playerShip->transformable.getPosition());
-
-	if(aiStateMachine.GetCurrentState() != "ApproachXYZPlayerState"
-		&& transformable.getPosition()->getZ() < -75)
-	{
-		aiStateMachine.ChangeState(std::make_shared<ApproachXYZPlayerState>());
-	}
-	else if(xyDist > 30 && aiStateMachine.GetCurrentState() != "ApproachXYPlayerState"
-		&& transformable.getPosition()->getZ()>=-75)
-	{
-		aiStateMachine.ChangeState(std::make_shared<ApproachXYPlayerState>());
-	}
-	else if(aiStateMachine.GetCurrentState() != "FireState" && xyDist <= 30
-		&& transformable.getPosition()->getZ() >=-75)
+	//if(aiStateMachine.GetCurrentState() != "ApproachRandXYPos")
+	//{
+	//	
+	//}
+	/*else if(aiStateMachine.GetCurrentState() != "FireState" && transformable.getZPos() == -60.0f)
 	{
 		aiStateMachine.ChangeState(std::make_shared<FireState>());
-	}
+	}	*/
 }
 	

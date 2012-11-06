@@ -18,6 +18,7 @@
 #include "IdleState.h"
 #include "ApproachXYZPlayerState.h"
 #include "ApproachXYPlayerState.h"
+#include "ApproachRandXYPos.h"
 
 class ImperialTieFighter : public BaseEnemyShip
 {

@@ -39,7 +39,7 @@ void Texturable::InitTexture( std::string textureFullPathname, std::string textu
 
 void Texturable::LoadAndBindTexture( std::string imageFullPathAndName, std::string keyName )
 {
-	Image img = ReadImage(imageFullPathAndName);
+	Image* img = ReadImage(imageFullPathAndName);
 
 	GLuint texId;
 	glGenTextures(1, &texId);
@@ -50,15 +50,15 @@ void Texturable::LoadAndBindTexture( std::string imageFullPathAndName, std::stri
 
 	// Specify texture. If the image has four components, the last 
 	// is the alpha channel, which we will use in the blending
-	if (img.components == 3) 
+	if (img->components == 3) 
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img.width, img.height, 
-			0, GL_BGR_EXT, GL_UNSIGNED_BYTE, &img.data[0]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img->width, img->height, 
+			0, GL_RGB, GL_UNSIGNED_BYTE, &img->data[0]);
 	}
-	else if (img.components == 4) 
+	else if (img->components == 4) 
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.width, img.height, 0, 
-			GL_BGRA_EXT, GL_UNSIGNED_BYTE, &img.data[0]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img->width, img->height, 0,
+			GL_RGBA, GL_UNSIGNED_BYTE, &img->data[0]);
 	}
 
 	//Set texture parameters for wrapping and minification/magnification filters
@@ -68,11 +68,16 @@ void Texturable::LoadAndBindTexture( std::string imageFullPathAndName, std::stri
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
+	if(img)
+	{
+		delete img;
+		img = 0;
+	}
 }
 
-Image Texturable::ReadImage( std::string image )
+Image* Texturable::ReadImage( std::string image )
 {
-	Image img;
+	Image* img = new Image();
 	ILuint imageName; // The image name to return.
 	ilGenImages(1, &imageName); // Grab a new image name.
 
@@ -89,14 +94,22 @@ Image Texturable::ReadImage( std::string image )
 		ilDeleteImages(1, &imageName); // Delete the image name. 
 		exit(-1);
 	}
-	img.width = ilGetInteger(IL_IMAGE_WIDTH); // getting image width
-	img.height = ilGetInteger(IL_IMAGE_HEIGHT); // and height
-	img.components = 4;
-	int memory_needed = img.width * img.height * img.components;
-	img.data.resize(memory_needed); //Allocate memory
+	img->width = ilGetInteger(IL_IMAGE_WIDTH); // getting image width
+	img->height = ilGetInteger(IL_IMAGE_HEIGHT); // and height
+	img->components = ilGetInteger(IL_IMAGE_BYTES_PER_PIXEL);
+	int memory_needed = img->width * img->height * img->components;
+	img->data.resize(memory_needed); //Allocate memory
 
 	// finally get the image data, and delete the il-image.
-	ilCopyPixels(0, 0, 0, img.width, img.height, 1, IL_RGBA, IL_UNSIGNED_BYTE, &img.data[0]);
+	if(img->components == 3)
+	{
+		ilCopyPixels(0, 0, 0, img->width, img->height, 1, IL_RGB, IL_UNSIGNED_BYTE, &img->data[0]);
+	}
+	else if(img->components == 4)
+	{
+		ilCopyPixels(0, 0, 0, img->width, img->height, 1, IL_RGBA, IL_UNSIGNED_BYTE, &img->data[0]);
+	}
+	
 	ilDeleteImages(1, &imageName); 
 
 	return img;
