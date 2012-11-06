@@ -78,7 +78,7 @@ void GameManager::setOpenGLStates() {
 	const static GLfloat position[] = 
 	{ 0.0f, 0.0f, -500.0, 1.0f }; 
 	const static GLfloat position2[] = 
-	{ 0.0f, 500.0f,	0.0, 0.0f }; 
+	{ -500.0f, 0.0f,	0.0, 0.0f }; 
 
 	// set lighting types
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
@@ -129,12 +129,12 @@ void GameManager::init() {
 	// Initialize DevIL
 	ilInit();
 	iluInit();
-	// Set the origin to be the lower left corner
+	//Setting origin to upper left. I had problems getting it to work with lowerleft
+	//so just went with upper left. It takes some getting used to when working with 
+	//texcoords, but it works.
 	ilOriginFunc(IL_ORIGIN_UPPER_LEFT);
 	ilEnable(IL_ORIGIN_SET);
 
-	
-	
 	DisplayLoadingScreen();
 	setOpenGLStates();
 	ProjectileFactory::Inst()->InitProjectileFactory();
@@ -163,6 +163,7 @@ void GameManager::render() {
 	glPopMatrix();
 
 	glClear(GL_DEPTH_BUFFER_BIT);
+
 	ParticleManager::Inst()->DrawParticles();
 	shipManager.DrawSpaceShips();
 

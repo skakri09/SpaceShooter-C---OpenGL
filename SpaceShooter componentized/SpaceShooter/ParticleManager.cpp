@@ -35,8 +35,8 @@ void ParticleManager::DrawParticles()
 			if(vbo.HaveMeshInfo())
 			{
 				glPushMatrix();
-				(*i)->Draw();
-				vbo.Draw();
+				(*i)->Draw();	//Applies particle-specific translation etc
+				vbo.Draw();		//Draws the particle with the shared VBO
 				glPopMatrix();
 			}
 		}
@@ -48,15 +48,17 @@ void ParticleManager::UpdateParticles( float deltaTime )
 {
 	if(!particles.empty())
 	{
+
 		for(auto i = particles.begin(); i != particles.end();)
 		{
+			(*i)->Update(deltaTime);
+
 			if((*i)->CanKill())
 			{
 				i = particles.erase(i);
 			}
 			else
 			{
-				(*i)->Update(deltaTime);
 				++i;
 			}
 		}
@@ -66,8 +68,7 @@ void ParticleManager::UpdateParticles( float deltaTime )
 
 void ParticleManager::EmitStandardSpaceshipProjectileCollision( Vector3D origin )
 {
-	float g = 1.0f;//GetRandFloat(0.2f, 0.8f);
-	EmitParticles(origin, 100, 0.1f, 10, 1.0f, 0.3f, 0.1f, 1.0f, g, 1.0f);
+	EmitParticles(origin, 100, 0.1f, 10, 1.0f, 0.3f, 0.1f, 1.0f, 1.0f, 1.0f);
 }
 
 

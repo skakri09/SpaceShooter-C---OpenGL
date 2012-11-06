@@ -63,9 +63,6 @@ void ShooterModule::DrawModule()
 		{
 			(*i)->Draw();
 		}
-		//glAccum(GL_ACCUM, 1.0f);
-		//glAccum(GL_MULT, 0.95f); 
-		//glAccum(GL_RETURN, 2.1); 
 	}
 	glPopMatrix();
 }

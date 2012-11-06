@@ -37,6 +37,7 @@ void Particle::Draw()
 void Particle::Update( GLfloat deltaTime )
 {
 	transformation.Update(deltaTime);
+
 	life -= fade * deltaTime;
 
 	if (life <= 0.0f) 
