@@ -32,16 +32,6 @@ void SpaceShipManager::InitManager(InputManager* input)
 	planet.CreatePlanet("Endor//Endor.3ds");
 	player.InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 
-	EnemySpaceShips.push_back(GetRandomEnemy());
-	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end(); i++)
-	{
-		//float x = GetRandFloat(-100.0f, 100.0f);
-		//float y = GetRandFloat(-50.0f, 50.0f);
-		//float z = GetRandFloat(-500.0f, -400.0f);
-		float x = -175; float y = 0; float z = -440;
-		EnemySpaceShips.back()->InitSpaceShip(x, y, z, -90, 1, 0, 0, 0, 0, 1);
-	}
-	TimeSinceLastEnemySpawn = 0.0f;
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(&player));
 	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
 }
@@ -60,14 +50,8 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	
 	HandleFrustumCollision();
 
-	if(!player.CanKill())
-	{
-		player.Update(deltaTime);
-	}
-	else
-	{
+	player.Update(deltaTime);
 
-	}
 
 	for(auto i = EnemyShipsForTransfer.begin(); i != EnemyShipsForTransfer.end();)
 	{
@@ -84,23 +68,12 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 		else
 		{
 			(*i)->Update(deltaTime);
-			if(!player.CanKill())
-			{
-				(*i)->HandleProjectileCollision(player.GetProjectiles());
-				player.HandleProjectileCollision( (*i)->GetProjectiles());
-			}
+
+			(*i)->HandleProjectileCollision(player.GetProjectiles());
+			player.HandleProjectileCollision( (*i)->GetProjectiles());
+
 			++i;
 		}
-	}
-	TimeSinceLastEnemySpawn += deltaTime;
-	if(TimeSinceLastEnemySpawn >= 1.01)
-	{
-		/*TimeSinceLastEnemySpawn = 0.0f;
-		EnemySpaceShips.push_back(GetRandomEnemy());
-		float x = GetRandFloat(-100.0f, 100.0f);
-		float y = GetRandFloat(-50.0f, 50.0f);
-		float z = GetRandFloat(-500.0f, -400.0f);
-		EnemySpaceShips.back()->InitSpaceShip(x, y, z, -90, 1, 0, 0, 0, 0, 1);*/
 	}
 }
 
@@ -196,25 +169,6 @@ void SpaceShipManager::HandlePlayerRotation()
 	{
 		player.InitRotation(Y_AXIS);
 	}*/
-}
-
-std::shared_ptr<BaseEnemyShip> SpaceShipManager::GetRandomEnemy()
-{
-	float random = GetRandFloat(0.0f, 3.0f);
-	
-	if(random >=0 && random <= 1.0f)
-	{
-		return std::make_shared<ImperialTieFighter>(&player);
-	}
-	else if(random > 1 && random <= 2.0f)
-	{
-		return std::make_shared<ImperialTieInterceptor>(&player);
-	}
-	else if(random > 2 && random <= 3.0f)
-	{
-		return std::make_shared<SithInfiltrator>(&player);
-	}
-	return NULL;
 }
 
 void SpaceShipManager::TransferShipToShipManager( std::shared_ptr<BaseEnemyShip> ship )

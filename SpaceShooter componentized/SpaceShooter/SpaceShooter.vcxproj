@@ -117,7 +117,6 @@
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectileFactory.cpp" />
     <ClCompile Include="ShooterModule.cpp" />
-    <ClCompile Include="SithInfiltrator.cpp" />
     <ClCompile Include="BaseEnemyShip.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
     <ClCompile Include="SpaceShipManager.cpp" />
@@ -171,7 +170,6 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileFactory.h" />
     <ClInclude Include="ShooterModule.h" />
-    <ClInclude Include="SithInfiltrator.h" />
     <ClInclude Include="BaseEnemyShip.h" />
     <ClInclude Include="SpaceShip.h" />
     <ClInclude Include="SpaceShipManager.h" />

@@ -57,6 +57,7 @@ void ShooterModule::DrawModule()
 {
 	glPushMatrix();
 	//Drawing all our projectiles if they are tagged as "fired"
+	glColor3f(1.0f, 0.5f, 0.0f);
 	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end(); i++)
 	{
 		if( (*i)->isFired() )
@@ -64,5 +65,6 @@ void ShooterModule::DrawModule()
 			(*i)->Draw();
 		}
 	}
+	glColor3f(1.0, 1.0f, 1.0f);
 	glPopMatrix();
 }

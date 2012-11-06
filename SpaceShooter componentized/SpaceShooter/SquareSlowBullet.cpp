@@ -3,7 +3,6 @@
 
 SquareSlowBullet::SquareSlowBullet()
 	:Projectile(SQUARE_SLOW_BULLET, 20.0f, 10.0f, 10, 2.5f, 0.5f)
-	:Projectile(SQUARE_SLOW_BULLET, 30.0f, 10.0f, 10, 1.5f, 1.0f)
 {
 	CreateProjectile(SQUARE_SLOW_BULLET, "Mesh_SquareBullet.xml");
 }
@@ -16,6 +15,7 @@ void SquareSlowBullet::CreateProjectile(ProjectileTypes projectileType,  std::st
 {
 	if(!vboDrawable.HaveMeshInfo())
 	{
+		MeshInfo* _meshInfo = ProjectileFactory::Inst()->GetMeshInfo(projectileType);
 		if(_meshInfo == NULL)
 		{
 			std::string meshPath = "..//xml//Projectiles//";

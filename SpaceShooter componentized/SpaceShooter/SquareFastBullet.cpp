@@ -1,7 +1,7 @@
 #include "SquareFastBullet.h"
 
 SquareFastBullet::SquareFastBullet() 
-	:Projectile(SQUARE_FAST_BULLET, 100.0f, 7.0f, 10, 0.2f, 1.0f)
+	:Projectile(SQUARE_FAST_BULLET, 100.0f, 7.0f, 10, 0.2f, 0.5f)
 {
 	CreateProjectile(SQUARE_FAST_BULLET,"Mesh_SquareBullet.xml");
 }

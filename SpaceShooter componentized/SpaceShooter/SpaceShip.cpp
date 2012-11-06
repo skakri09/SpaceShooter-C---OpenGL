@@ -49,7 +49,7 @@ void SpaceShip::CreateGameObject(std::string meshPathFrom3dsFolder)
 
 void SpaceShip::FireGun(ProjectileTypes projectileType)
 {
-	shooterModule.Shoot(projectileType, this);
+	shooterModule.Shoot(projectileType, transformable);
 }
 
 void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,
@@ -64,32 +64,32 @@ void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 
 	SpaceShipCurrentHealth = SpaceShipMaxHealth;
 }
-//
-//void SpaceShip::HandleProjectileCollision( std::vector<std::shared_ptr<Projectile>>* projectiles )
-//{
-//	for(unsigned int i = 0; i < projectiles->size(); i++)
-//	{
-//		if(projectiles->at(i)->isFired())
-//		{
-//			BoundingSphere projectileColSphere = projectiles->at(i)->collisionSphere;
-//			Vector3D collAmnt = collisionSphere.IsCollision(projectileColSphere);
-//			if(collAmnt.getX() > 0 || collAmnt.getY() > 0.0f || collAmnt.getZ() > 0.0f)
-//			{
-//				int dmgTaken = projectiles->at(i)->GetProjectileDmg();
-//				SpaceShipCurrentHealth -= dmgTaken;
-//				log << WARN << "Spaceship hit! It lost " << dmgTaken << ", " 
-//					<< SpaceShipCurrentHealth << "/" << SpaceShipMaxHealth <<"HP left" << std::endl;
-//				
-//				EmittProjectileHittParticles(*projectiles->at(i));
-//				
-//				projectiles->at(i)->DestroyProjectile();
-//			}
-//		}
-//	}
-//}
 
-//void SpaceShip::EmittProjectileHittParticles(Projectile& p)
-//{
-//	Vector3D origin = *p.transformable.getPosition();
-//	ParticleManager::Inst()->EmitStandardSpaceshipProjectileCollision(origin);
-//}
+void SpaceShip::HandleProjectileCollision( std::vector<std::shared_ptr<Projectile>>* projectiles )
+{
+	for(unsigned int i = 0; i < projectiles->size(); i++)
+	{
+		if(projectiles->at(i)->isFired())
+		{
+			BoundingSphere projectileColSphere = projectiles->at(i)->collisionSphere;
+			Vector3D collAmnt = collisionSphere.IsCollision(projectileColSphere);
+			if(collAmnt.getX() > 0 || collAmnt.getY() > 0.0f || collAmnt.getZ() > 0.0f)
+			{
+				int dmgTaken = projectiles->at(i)->GetProjectileDmg();
+				SpaceShipCurrentHealth -= dmgTaken;
+				log << WARN << "Spaceship hit! It lost " << dmgTaken << ", " 
+					<< SpaceShipCurrentHealth << "/" << SpaceShipMaxHealth <<"HP left" << std::endl;
+				
+				EmittProjectileHittParticles(*projectiles->at(i));
+				
+				projectiles->at(i)->DestroyProjectile();
+			}
+		}
+	}
+}
+
+void SpaceShip::EmittProjectileHittParticles(Projectile& p)
+{
+	Vector3D origin = *p.transformable.getPosition();
+	ParticleManager::Inst()->EmitStandardSpaceshipProjectileCollision(origin);
+}

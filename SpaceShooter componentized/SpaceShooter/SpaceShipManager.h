@@ -11,7 +11,6 @@
 #define SpaceShipManager_h__
 
 #include "BaseEnemyShip.h"
-#include "SithInfiltrator.h"
 #include "ImperialTieFighter.h"
 #include "ImperialTieInterceptor.h"
 #include "PlayerSpaceShip.h"
@@ -77,11 +76,6 @@ private:
 
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemySpaceShips;
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemyShipsForTransfer;
-	
-	//Returns a random enemy
-	std::shared_ptr<BaseEnemyShip> GetRandomEnemy();
-	
-	float TimeSinceLastEnemySpawn;
 
 	Planet planet;
 };
