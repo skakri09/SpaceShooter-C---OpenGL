@@ -24,7 +24,5 @@ void ImperialStarDestroyer::InitSpaceShip( float startX, float startY, float sta
 		startRotDeg, rotX, rotY, rotZ,
 		dirVecX, dirVecY, dirVecZ, 0.4f);
 
-	BaseEnemyShip::ShipSpeed = 50;
-
 	CreateGameObject("ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 }

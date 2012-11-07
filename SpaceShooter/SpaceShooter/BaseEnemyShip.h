@@ -39,8 +39,6 @@ public:
 
 	int getSpaceShipHp(){return spaceShipHP;}
 
-	float GetShipSpeed(){return ShipSpeed;}
-
 	AiStateMachine& GetAiStateMachine(){return aiStateMachine;}
 
 protected:
@@ -53,8 +51,7 @@ protected:
 	int spaceShipHP;
 
 	bool isActive;
-	
-	float ShipSpeed;
+
 private:
 	Logger log;
 

@@ -3,7 +3,7 @@
     filename:   Planet.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    A gameobject representing a planet
 *********************************************************************/
 #ifndef Planet_h__
 #define Planet_h__
@@ -16,14 +16,12 @@
 class Planet : public GameObject
 {
 public:
-    Planet(/*std::string meshName*/);
+    Planet();
     ~Planet();
 
 	virtual void Draw();
 
 	virtual void Update(GLfloat deltaTime);
-
-	virtual void CreateGameObject();
 
 	virtual void CreatePlanet(std::string meshName);
 

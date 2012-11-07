@@ -27,13 +27,11 @@ void CrossScreenWhileFireing::UpdateState( BaseEnemyShip* owner, float deltaTime
 	if( (targetVelocity.getX() < 0 && owner->transformable.getXVel() > targetVelocity.getX()) 
 		|| (targetVelocity.getX() > 0 && owner->transformable.getXVel() < targetVelocity.getX()))
 	{
-		log << INFO << "targetX: " << targetVelocity.getX() << " curr:" << owner->transformable.getXVel() << std::endl;
-		log << INFO << "targetY: " << targetVelocity.getY() << " curr:" << owner->transformable.getYVel() << std::endl;
-		log << INFO << "targetZ: " << targetVelocity.getZ() << " curr:" << owner->transformable.getZVel() << std::endl;
 		Vector3D velAddition = targetVelocity*deltaTime;
 		Vector3D newVel = *owner->transformable.getVelocity() + velAddition;
 		owner->transformable.SetVelocity(newVel);
 	}
+
 	owner->Shoot(LASER_SLOW);
 
 	float dist = owner->transformable.getPosition()->Distance(targetPos);

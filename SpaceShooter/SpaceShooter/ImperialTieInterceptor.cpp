@@ -28,8 +28,6 @@ void ImperialTieInterceptor::InitSpaceShip(float startX, float startY, float sta
 		startRotDeg, rotX, rotY, rotZ,
 		dirVecX, dirVecY, dirVecZ, 0.5f);
 
-	BaseEnemyShip::ShipSpeed = 75;
-
 	CreateGameObject("ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	aiStateMachine.ChangeState(std::make_shared<ApproachEdge>());
 }

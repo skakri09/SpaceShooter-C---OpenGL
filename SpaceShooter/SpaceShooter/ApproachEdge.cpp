@@ -7,17 +7,17 @@ void ApproachEdge::Enter( BaseEnemyShip* owner )
 	SetDestination(owner->transformable.getPosition());
 	velocity = targetPos - *owner->transformable.getPosition();
 	velocity.Normalize();
-	velocity*= owner->GetShipSpeed();
+	velocity*= 200;
 	owner->transformable.SetVelocity(velocity);
 }
 
 void ApproachEdge::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
 	float dist = owner->transformable.getPosition()->Distance(targetPos);
-	if(dist <= 10)
+	if(dist <= 40)
 	{
 		Vector3D newVel = velocity;
-		newVel*= (dist/10);
+		newVel*= (dist/40);
 		owner->transformable.SetVelocity(newVel);
 		if(dist <= 1)
 		{

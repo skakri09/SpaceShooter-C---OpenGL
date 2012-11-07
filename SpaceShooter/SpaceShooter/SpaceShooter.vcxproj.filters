@@ -86,9 +86,6 @@
     <Filter Include="Game\Components\Shooter Module">
       <UniqueIdentifier>{1882e82b-f696-4d08-a9e4-453249fd280f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\GameObjects\Planets">
-      <UniqueIdentifier>{e8b467e5-79d5-403e-9cc4-053e889a367a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Components\SpaceShipAI">
       <UniqueIdentifier>{8999161e-3c8d-4ea2-b3ff-f242757410c8}</UniqueIdentifier>
     </Filter>
@@ -129,6 +126,9 @@
     </Filter>
     <Filter Include="Game\Skybox">
       <UniqueIdentifier>{ea2dffb0-010b-443d-b7cf-6be31fb8adbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObjects\Planets">
+      <UniqueIdentifier>{e8b467e5-79d5-403e-9cc4-053e889a367a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

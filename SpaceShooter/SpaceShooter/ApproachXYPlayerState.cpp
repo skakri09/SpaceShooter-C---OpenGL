@@ -11,7 +11,7 @@ void ApproachXYPlayerState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 	targetDirection = targetPosition;
 	targetDirection.setZ(0);
 	targetDirection.Normalize();
-	Vector3D velocity = targetDirection * owner->GetShipSpeed();
+	Vector3D velocity = targetDirection * 50;
 
 	owner->transformable.SetVelocity(velocity);
 }

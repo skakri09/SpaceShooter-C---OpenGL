@@ -6,7 +6,7 @@ void FleeState::Enter( BaseEnemyShip* owner )
 	SetTargetPos(owner->transformable.getPosition());
 	Vector3D velocity = targetPos - *owner->transformable.getPosition();
 	velocity.Normalize();
-	velocity = velocity * owner->GetShipSpeed();
+	velocity = velocity * 50;
 	owner->transformable.SetVelocity(velocity);
 }
 
@@ -14,7 +14,7 @@ void FleeState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
 	Vector3D velocity = targetPos - *owner->transformable.getPosition();
 	velocity.Normalize();
-	velocity = velocity * owner->GetShipSpeed();
+	velocity = velocity * 50;
 	owner->transformable.SetVelocity(velocity);
 
 	float dist = owner->transformable.getPosition()->Distance(targetPos);

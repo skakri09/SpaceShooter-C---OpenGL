@@ -27,8 +27,6 @@ void ImperialTieFighter::InitSpaceShip(float startX, float startY, float startZ,
 		startRotDeg, rotX, rotY, rotZ,
 		dirVecX, dirVecY, dirVecZ, 0.8f);
 
-	BaseEnemyShip::ShipSpeed = 50;
-
 	CreateGameObject("ImperialTieFighter//ImperialTieFighter.3ds");
 	aiStateMachine.ChangeState(std::make_shared<ApproachRandXYPos>());
 }

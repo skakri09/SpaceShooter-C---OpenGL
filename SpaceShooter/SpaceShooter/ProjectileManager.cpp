@@ -115,7 +115,7 @@ void ProjectileManager::DrawProjectiles()
 {
 	glPushMatrix();
 	//Drawing all our projectiles if they are tagged as "fired"
-	glColor3f(0.8f, 0.5f, 0.0f);//orangeish color
+	glColor3f(1.0f, 0.7f, 0.0f);//orangeish color
 	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end(); i++)
 	{
 		if( (*i)->isFired() )

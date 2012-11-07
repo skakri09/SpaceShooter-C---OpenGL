@@ -9,17 +9,17 @@ void ApproachRandXYPos::Enter( BaseEnemyShip* owner )
 	targetPosition.setZ(-60);
 	targetDirection = targetPosition - *owner->transformable.getPosition();
 	targetDirection.Normalize();
-	velocity = targetDirection * owner->GetShipSpeed();
+	velocity = targetDirection * 200;
 	owner->transformable.SetVelocity(velocity);
 }
 
 void ApproachRandXYPos::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
 	float dist = owner->transformable.getPosition()->Distance(targetPosition);
-	if(dist <= 10)
+	if(dist <= 40)
 	{
 		Vector3D newVel = velocity;
-		newVel*= (dist/10);
+		newVel*= (dist/40);
 		owner->transformable.SetVelocity(newVel);
 		if(dist <= 1)
 		{

@@ -32,7 +32,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	
 	player.InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(&player));
-	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
+	EnemySpaceShips.back()->InitSpaceShip(-200, -200, -600, 200, 0, 1, 0, 0, 0, 1);
 }
 
 void SpaceShipManager::UpdateManager(GLfloat deltaTime, bool& exit)
