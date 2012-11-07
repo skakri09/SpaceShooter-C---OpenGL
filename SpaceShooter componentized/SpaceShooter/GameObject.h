@@ -29,10 +29,13 @@ public:
 
 	bool IsAlive(){return !kill;}
 
+	void SetOwner(GameObject* owner){this->owner = owner;}
+	GameObject* GetOwner(){return owner;}
 protected:
 
 private:
 	bool kill;
+	GameObject* owner;
 };
 
 #endif // GameObject2_h__

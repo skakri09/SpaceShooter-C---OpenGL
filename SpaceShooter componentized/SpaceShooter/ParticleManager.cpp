@@ -30,6 +30,7 @@ void ParticleManager::DrawParticles()
 	if(!particles.empty())
 	{
 		//BindTexture("particle");
+		glColor3f(1.0f, 0.5f, 1.0f);
 		for(auto i = particles.begin(); i != particles.end(); i++)
 		{
 			if(vbo.HaveMeshInfo())

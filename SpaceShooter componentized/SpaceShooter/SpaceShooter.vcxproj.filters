@@ -130,7 +130,7 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Game\Managers\Skyboxes">
+    <Filter Include="Game\Skyboxes">
       <UniqueIdentifier>{ea2dffb0-010b-443d-b7cf-6be31fb8adbc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -207,9 +207,6 @@
     <ClCompile Include="ImperialTieFighter.cpp">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SithInfiltrator.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ImperialTieInterceptor.cpp">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
@@ -247,7 +244,7 @@
       <Filter>Game\Components\VBO</Filter>
     </ClCompile>
     <ClCompile Include="Skybox.cpp">
-      <Filter>Game\Managers\Skyboxes</Filter>
+      <Filter>Game\Skyboxes</Filter>
     </ClCompile>
     <ClCompile Include="Texturable.cpp">
       <Filter>Game\Components\Texturable</Filter>
@@ -263,6 +260,9 @@
     </ClCompile>
     <ClCompile Include="ApproachEdge.cpp">
       <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileManager.cpp">
+      <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -353,9 +353,6 @@
     <ClInclude Include="ImperialTieFighter.h">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SithInfiltrator.h">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ImperialTieInterceptor.h">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
@@ -414,7 +411,7 @@
       <Filter>Game\GameObjects\SpaceShips\Player</Filter>
     </ClInclude>
     <ClInclude Include="Skybox.h">
-      <Filter>Game\Managers\Skyboxes</Filter>
+      <Filter>Game\Skyboxes</Filter>
     </ClInclude>
     <ClInclude Include="Texturable.h">
       <Filter>Game\Components\Texturable</Filter>
@@ -430,6 +427,9 @@
     </ClInclude>
     <ClInclude Include="ApproachEdge.h">
       <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileManager.h">
+      <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

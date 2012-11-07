@@ -94,6 +94,7 @@
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
     <ClCompile Include="ParticleManager.cpp" />
+    <ClCompile Include="ProjectileManager.cpp" />
     <ClCompile Include="Texturable.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Skybox.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="ImperialStarDestroyer.h" />
     <ClInclude Include="MeshInfo.h" />
     <ClInclude Include="ParticleManager.h" />
+    <ClInclude Include="ProjectileManager.h" />
     <ClInclude Include="Texturable.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="ProjectileTypes.h" />
