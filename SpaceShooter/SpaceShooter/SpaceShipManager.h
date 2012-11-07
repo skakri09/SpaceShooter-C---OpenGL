@@ -75,6 +75,8 @@ private:
 
 	void HandlePlayerRotation();
 
+	void HandleCollision();
+
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemySpaceShips;
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemyShipsForTransfer;
 

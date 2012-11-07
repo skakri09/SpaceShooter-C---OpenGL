@@ -79,6 +79,9 @@ public:
 	Transformable transformable;	//A spaceship is transformable
 	BoundingSphere collisionSphere;	//A spaceship has a boundingSphere for collision
 
+	//Takes care of firing the spaceships gun.
+	bool Shoot(ProjectileTypes projectileType);
+
 protected:
 	
 	virtual void CreateGameObject(std::string meshPathFrom3dsFolder);
@@ -86,9 +89,6 @@ protected:
 	unsigned int lives;			//Amnt of times the spaceship can die
 	int SpaceShipMaxHealth;		//Max health of the ship
 	int SpaceShipCurrentHealth;	//Current health of the ship
-
-	//Takes care of firing the spaceships gun.
-	void FireGun(ProjectileTypes projectileType);
 
 	void EmittProjectileHittParticles(Projectile& p);
 

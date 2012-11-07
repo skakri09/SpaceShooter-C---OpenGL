@@ -136,7 +136,7 @@ void GameManager::init() {
 
 	DisplayLoadingScreen();
 	setOpenGLStates();
-	ProjectileManager::Inst()->InitProjectileManager();//InitProjectileFactory();
+	ProjectileManager::Inst()->InitProjectileManager();
 	SpaceShipManager::Inst()->InitManager(&input);
 	ParticleManager::Inst()->InitParticleManager();
 	skybox.initSkybox("skybox1", 100);

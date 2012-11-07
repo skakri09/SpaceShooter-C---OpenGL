@@ -1,20 +1,21 @@
-#include "SquareFastBullet.h"
+#include "LaserHighCooldown.h"
 
-SquareFastBullet::SquareFastBullet() 
-	:Projectile(SQUARE_FAST_BULLET, 100.0f, 7.0f, 10, 0.2f, 0.5f)
+
+LaserHighCooldown::LaserHighCooldown()
+	:Projectile(LASER_SLOW, 30.0f, 10.0f, 10, 3.5f, 0.2f)
 {
-	CreateProjectile(SQUARE_FAST_BULLET,"Mesh_SquareBullet.xml");
+	CreateProjectile(LASER_SLOW, "Mesh_Laser.xml");
 }
 
-SquareFastBullet::~SquareFastBullet()
+LaserHighCooldown::~LaserHighCooldown()
 {
 }
 
-void SquareFastBullet::CreateProjectile(ProjectileTypes projectileType,  std::string meshPathFromXmlFolder )
+void LaserHighCooldown::CreateProjectile(ProjectileTypes projectileType,  std::string meshPathFromXmlFolder )
 {
 	if(!vboDrawable.HaveMeshInfo())
 	{
-		MeshInfo* _meshInfo = ProjectileFactory::Inst()->GetMeshInfo(projectileType);
+		MeshInfo* _meshInfo = ProjectileManager::Inst()->GetMeshInfo(projectileType);
 		if(_meshInfo == NULL)
 		{
 			std::string meshPath = "..//xml//Projectiles//";

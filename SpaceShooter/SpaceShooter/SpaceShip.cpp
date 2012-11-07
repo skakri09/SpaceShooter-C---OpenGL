@@ -65,9 +65,9 @@ void SpaceShip::CreateGameObject(std::string meshPathFrom3dsFolder)
 	}
 }
 
-void SpaceShip::FireGun(ProjectileTypes projectileType)
+bool SpaceShip::Shoot(ProjectileTypes projectileType)
 {
-	shooterModule.Shoot(projectileType, transformable, this);
+	return shooterModule.Shoot(projectileType, transformable, this);
 }
 
 void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,

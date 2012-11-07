@@ -22,12 +22,12 @@ void ProjectileManager::InitProjectileManager()
 	//This takes care of pre-loading the mesh into a VBO on the graphics card on startup
 	//so we dont get a small freeze when trying to use an object that has not been loaded.
 	/***********************************************************************/
-	std::shared_ptr<Projectile> squarefast = GetProjectile(SQUARE_FAST_BULLET);
-	projectileCooldowns[SQUARE_FAST_BULLET] = squarefast->GetProjectileCooldown();
+	std::shared_ptr<Projectile> laserFast = GetProjectile(LASER_FAST);
+	projectileCooldowns[LASER_FAST] = laserFast->GetProjectileCooldown();
 	/***********************************************************************/
 
-	std::shared_ptr<Projectile> squareslow = GetProjectile(SQUARE_SLOW_BULLET);
-	projectileCooldowns[SQUARE_SLOW_BULLET] = squareslow->GetProjectileCooldown();
+	std::shared_ptr<Projectile> laserSlow = GetProjectile(LASER_SLOW);
+	projectileCooldowns[LASER_SLOW] = laserSlow->GetProjectileCooldown();
 }
 
 void ProjectileManager::Shoot( ProjectileTypes projectileType, Transformable& ownerTrans, GameObject* owner)
@@ -64,11 +64,11 @@ std::shared_ptr<Projectile> ProjectileManager::GetProjectile( ProjectileTypes pr
 	}
 	switch(projectileType)
 	{
-	case SQUARE_FAST_BULLET:
-		projectiles.push_back(std::make_shared<SquareFastBullet>());
+	case LASER_FAST:
+		projectiles.push_back(std::make_shared<LaserLowCooldown>());
 		break;
-	case SQUARE_SLOW_BULLET:
-		projectiles.push_back(std::make_shared<SquareSlowBullet>());
+	case LASER_SLOW:
+		projectiles.push_back(std::make_shared<LaserHighCooldown>());
 		break;
 	}
 
@@ -115,7 +115,7 @@ void ProjectileManager::DrawProjectiles()
 {
 	glPushMatrix();
 	//Drawing all our projectiles if they are tagged as "fired"
-	glColor3f(1.0f, 0.5f, 0.0f);
+	glColor3f(0.8f, 0.5f, 0.0f);//orangeish color
 	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end(); i++)
 	{
 		if( (*i)->isFired() )

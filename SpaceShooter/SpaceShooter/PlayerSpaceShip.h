@@ -18,13 +18,6 @@
 static const float PLAYER_XY_VELOCITY = 75.0f;
 static const float PLAYER_Z_VELOCITY = 100.0f;
 
-//CD on the spaceships fireing of projectiles in seconds
-static const float FIRE_COOLDOWN_PLAYER  = 0.2f;
-
-//The speed of a square bullet for the player
-static const float SQUARE_BULLET_SPEED_PLAYER = 100.0f;
-
-
 class PlayerSpaceShip : public SpaceShip
 {
 public:
@@ -33,16 +26,13 @@ public:
 
 	//Does drawing of the spaceship.
 	void Draw();
-	//Draws the spaceship and takes care of the bullets it owns
+
+	//Updates the spaceship
 	void Update(GLfloat deltaTime);
 
 	void InitSpaceShip(float startX, float startY, float startZ,
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ);
-
-	//Shoots the gun, calling the fire function from spaceShipbase 
-	//with proper parameters (the cd and speed defined in top of class)
-	void Shoot();
 	
 private:
 	Logger log;

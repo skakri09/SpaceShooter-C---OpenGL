@@ -9,13 +9,13 @@
 #define SquareSlowBullet_h__
 
 #include "Projectile.h"
-#include "ProjectileFactory.h"
+#include "ProjectileManager.h"
 
-class SquareSlowBullet : public Projectile
+class LaserHighCooldown : public Projectile
 {
 public:
-	SquareSlowBullet();
-	~SquareSlowBullet();
+	LaserHighCooldown();
+	~LaserHighCooldown();
 
 protected:
 	virtual void CreateProjectile(ProjectileTypes projectileType,  std::string meshPathFromXmlFolder );

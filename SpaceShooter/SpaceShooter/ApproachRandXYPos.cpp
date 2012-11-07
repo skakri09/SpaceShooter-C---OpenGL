@@ -9,7 +9,7 @@ void ApproachRandXYPos::Enter( BaseEnemyShip* owner )
 	targetPosition.setZ(-60);
 	targetDirection = targetPosition - *owner->transformable.getPosition();
 	targetDirection.Normalize();
-	Vector3D velocity = targetDirection * owner->GetShipSpeed();
+	velocity = targetDirection * owner->GetShipSpeed();
 	owner->transformable.SetVelocity(velocity);
 }
 
@@ -18,9 +18,14 @@ void ApproachRandXYPos::UpdateState( BaseEnemyShip* owner, float deltaTime )
 	float dist = owner->transformable.getPosition()->Distance(targetPosition);
 	if(dist <= 10)
 	{
-		owner->GetAiStateMachine().ChangeState(std::make_shared<FireState>());
-		//owner->transformable.SetVelocity(0, 0, 0);
-		//owner->transformable.SetZPos(-60);
+		Vector3D newVel = velocity;
+		newVel*= (dist/10);
+		owner->transformable.SetVelocity(newVel);
+		if(dist <= 1)
+		{
+			owner->GetAiStateMachine().ChangeState(std::make_shared<FireState>());
+		}
+		
 	}
 }
 

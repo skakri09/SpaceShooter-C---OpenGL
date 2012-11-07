@@ -53,8 +53,10 @@ void Projectile::Update(GLfloat deltaTime)
 		collisionSphere.Update(transformable.GetCollisionTransformationInfo());
 		
 		//Makes sure we stop drawing the projectile if it's been "airborne" longer then or 
-		//equal to the constant PROJECTILE_FLYTIME
-		if(timeSinceFired >= PROJECTILE_FLYTIME)
+		//equal to the constant PROJECTILE_FLYTIME, or it's outside the frustum
+		if(timeSinceFired >= PROJECTILE_FLYTIME 
+			|| transformable.getZPos() > 10 
+			|| transformable.getZPos() < -FRUSTUM_DEPTH )
 		{
 			fired = false;
 			timeSinceFired = 0.0f;

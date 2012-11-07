@@ -18,7 +18,7 @@
 #include "VBODrawable.h"
 #include "Transformable.h"
 #include "BoundingSphere.h"
-
+#include "GameConstants.h"
 class Projectile : public GameObject
 {
 public:

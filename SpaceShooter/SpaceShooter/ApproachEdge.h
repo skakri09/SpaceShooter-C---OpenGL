@@ -3,7 +3,8 @@
 	filename: 	ApproachEdge.h
 	author:		Kristian Skarseth
 	
-	purpose:	
+	purpose:	Sets a destination along an edge of the frustum and moves
+				towards it
 *********************************************************************/
 #ifndef ApproachEdge_h__
 #define ApproachEdge_h__
@@ -11,6 +12,9 @@
 #include "Logger.h"
 #include "AiState.h"
 #include "BaseEnemyShip.h"
+#include "GetRandomFloat.h"
+#include "GameConstants.h"
+#include "CrossScreenWhileFireing.h"
 
 class ApproachEdge : public AiState
 {
@@ -27,6 +31,11 @@ protected:
 
 private:
 	Logger log;
+
+	Vector3D targetPos;
+	Vector3D velocity;
+
+	void SetDestination(Vector3D* currPos);
 };
 
 #endif // ApproachEdge_h__

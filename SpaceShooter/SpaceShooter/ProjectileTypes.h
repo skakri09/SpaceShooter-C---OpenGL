@@ -1,6 +1,6 @@
 #ifndef ProjectileTypes_h__
 #define ProjectileTypes_h__
 
-enum ProjectileTypes {SQUARE_FAST_BULLET, SQUARE_SLOW_BULLET};
+enum ProjectileTypes {LASER_FAST, LASER_SLOW};
 
 #endif // ProjectileTypes_h__

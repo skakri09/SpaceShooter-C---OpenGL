@@ -213,20 +213,11 @@
     <ClCompile Include="ApproachXYPlayerState.cpp">
       <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ProjectileFactory.cpp">
-      <Filter>Game\Factories\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MeshFactory.cpp">
       <Filter>Game\Factories\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ShooterModule.cpp">
       <Filter>Game\Components\Shooter Module</Filter>
-    </ClCompile>
-    <ClCompile Include="SquareSlowBullet.cpp">
-      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SquareFastBullet.cpp">
-      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StarDestroyerShipSpawning.cpp">
       <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
@@ -260,6 +251,18 @@
     </ClCompile>
     <ClCompile Include="ProjectileManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FleeState.cpp">
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserLowCooldown.cpp">
+      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserHighCooldown.cpp">
+      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossScreenWhileFireing.cpp">
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -362,20 +365,11 @@
     <ClInclude Include="ApproachXYPlayerState.h">
       <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectileFactory.h">
-      <Filter>Game\Factories\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MeshFactory.h">
       <Filter>Game\Factories\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ShooterModule.h">
       <Filter>Game\Components\Shooter Module</Filter>
-    </ClInclude>
-    <ClInclude Include="SquareSlowBullet.h">
-      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SquareFastBullet.h">
-      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StarDestroyerShipSpawning.h">
       <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
@@ -428,12 +422,21 @@
     <ClInclude Include="ProjectileManager.h">
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FleeState.h">
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserHighCooldown.h">
+      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserLowCooldown.h">
+      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossScreenWhileFireing.h">
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib3ds-1_3d.dll">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="..\xml\Projectiles\Mesh_SquareBullet.xml">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\xml\Mesh_PlayerSpaceship.xml">
@@ -449,6 +452,9 @@
       <Filter>Game\GameObjects</Filter>
     </None>
     <None Include="..\xml\square.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\xml\Projectiles\Mesh_Laser.xml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

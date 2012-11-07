@@ -16,6 +16,7 @@
 #include <gl/GLU.h>
 #include <SDL.h>
 
+#include "GameConstants.h"
 class InputManager
 {
 public:

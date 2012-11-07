@@ -12,8 +12,8 @@
 #include <map>
 
 
-#include "SquareFastBullet.h"
-#include "SquareSlowBullet.h"
+#include "LaserLowCooldown.h"
+#include "LaserHighCooldown.h"
 #include "ProjectileTypes.h"
 #include "Logger.h"
 

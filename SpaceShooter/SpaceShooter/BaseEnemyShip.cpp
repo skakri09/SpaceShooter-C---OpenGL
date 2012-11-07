@@ -24,16 +24,12 @@ BaseEnemyShip::~BaseEnemyShip()
 
 void BaseEnemyShip::Draw()
 {
-	//if(IsAlive())
-	{
-		glPushMatrix();
+	glPushMatrix();
 
-		transformable.ApplyGLTransformations();
-		vboDrawable.Draw();
+	transformable.ApplyGLTransformations();
+	vboDrawable.Draw();
 
-		glPopMatrix();
-	}
-	
+	glPopMatrix();
 }
 
 void BaseEnemyShip::Update( GLfloat deltaTime )
@@ -41,20 +37,3 @@ void BaseEnemyShip::Update( GLfloat deltaTime )
 	aiStateMachine.Update(deltaTime);
 	SpaceShip::Update(deltaTime);
 }
-
-void BaseEnemyShip::Shoot()
-{
-
-}
-
-
-//void BaseEnemyShip::SetAI( EnemyAiType aiType )
-//{
-//	switch(aiType)
-//	{
-//	case SIMPLE_AI:
-//		shipAI = std::make_shared<SimpleEnemyAI>();
-//		break;
-//	}
-//}
-//

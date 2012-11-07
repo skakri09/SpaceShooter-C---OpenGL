@@ -12,7 +12,7 @@
 #include "AiState.h"
 #include "BaseEnemyShip.h"
 #include "Logger.h"
-
+#include "FleeState.h"
 class FireState : public AiState
 {
 public:
@@ -26,6 +26,8 @@ public:
 
 private:
 	Logger log;
+
+	unsigned int shotsFired;
 };
 
 #endif // FireState_h__

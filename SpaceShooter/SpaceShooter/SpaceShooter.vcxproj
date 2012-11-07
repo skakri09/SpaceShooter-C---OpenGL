@@ -91,14 +91,16 @@
     <ClCompile Include="ApproachXYZPlayerState.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Collidable.cpp" />
+    <ClCompile Include="CrossScreenWhileFireing.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
+    <ClCompile Include="FleeState.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
     <ClCompile Include="ParticleManager.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
     <ClCompile Include="Texturable.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Skybox.cpp" />
-    <ClCompile Include="SquareSlowBullet.cpp" />
+    <ClCompile Include="LaserHighCooldown.cpp" />
     <ClCompile Include="FireState.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="IdleState.cpp" />
@@ -116,12 +118,11 @@
     <ClCompile Include="ParticleManager2.cpp" />
     <ClCompile Include="PlayerSpaceShip.cpp" />
     <ClCompile Include="Projectile.cpp" />
-    <ClCompile Include="ProjectileFactory.cpp" />
     <ClCompile Include="ShooterModule.cpp" />
     <ClCompile Include="BaseEnemyShip.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
     <ClCompile Include="SpaceShipManager.cpp" />
-    <ClCompile Include="SquareFastBullet.cpp" />
+    <ClCompile Include="LaserLowCooldown.cpp" />
     <ClCompile Include="StarDestroyerShipSpawning.cpp" />
     <ClCompile Include="Transformable.cpp" />
     <ClCompile Include="VBODrawable.cpp" />
@@ -138,6 +139,8 @@
     <ClInclude Include="ApproachXYZPlayerState.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collidable.h" />
+    <ClInclude Include="CrossScreenWhileFireing.h" />
+    <ClInclude Include="FleeState.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
     <ClInclude Include="MeshInfo.h" />
     <ClInclude Include="ParticleManager.h" />
@@ -146,7 +149,7 @@
     <ClInclude Include="Planet.h" />
     <ClInclude Include="ProjectileTypes.h" />
     <ClInclude Include="Skybox.h" />
-    <ClInclude Include="SquareSlowBullet.h" />
+    <ClInclude Include="LaserHighCooldown.h" />
     <ClInclude Include="EnemySpaceshipConstantState.h" />
     <ClInclude Include="FireState.h" />
     <ClInclude Include="GameConstants.h" />
@@ -170,12 +173,11 @@
     <ClInclude Include="ParticleManager2.h" />
     <ClInclude Include="PlayerSpaceShip.h" />
     <ClInclude Include="Projectile.h" />
-    <ClInclude Include="ProjectileFactory.h" />
     <ClInclude Include="ShooterModule.h" />
     <ClInclude Include="BaseEnemyShip.h" />
     <ClInclude Include="SpaceShip.h" />
     <ClInclude Include="SpaceShipManager.h" />
-    <ClInclude Include="SquareFastBullet.h" />
+    <ClInclude Include="LaserLowCooldown.h" />
     <ClInclude Include="StarDestroyerShipSpawning.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Transformable.h" />
@@ -187,7 +189,7 @@
   <ItemGroup>
     <None Include="..\particles\particle.xml" />
     <None Include="..\xml\Mesh_PlayerSpaceship.xml" />
-    <None Include="..\xml\Projectiles\Mesh_SquareBullet.xml" />
+    <None Include="..\xml\Projectiles\Mesh_Laser.xml" />
     <None Include="..\xml\skybox.xml">
       <SubType>Designer</SubType>
     </None>

@@ -15,13 +15,6 @@ using std::shared_ptr;
 #include "PlayerSpaceShip.h"
 #include "AiStateMachine.h"
 #include "EnemySpaceshipConstantState.h"
-//CD on the spaceships fireing of projectiles in seconds
-static const float FIRE_COOLDOWN_SIMPLE_ENEMY  = 0.2f;
-
-//The speed of a square bullet for the player
-static const float SQUARE_BULLET_SPEED_SIMPLE_ENEMY = 50.0f;
-
-enum EnemyAiType{SIMPLE_AI};
 
 class BaseEnemyShip : public SpaceShip
 {
@@ -36,38 +29,26 @@ public:
 	//Does drawing of the spaceship.
 	virtual void Draw();
 
-	//Draws the spaceship and takes care of the bullets it owns
 	virtual void Update(GLfloat deltaTime);
 
 	virtual void InitSpaceShip(float startX, float startY, float startZ,
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ) = 0;
-	
-	//Shoots the gun, calling the fire function from spaceShipbase 
-	//with proper parameters (the cd and speed defined in top of class)
-	virtual void Shoot();
 
 	PlayerSpaceShip* getPlayerShip(){return playerShip;}
 
-	//void SetAI(EnemyAiType aiType);
-
 	int getSpaceShipHp(){return spaceShipHP;}
-
-	void setActive(bool isActive){this->isActive = isActive;}
 
 	float GetShipSpeed(){return ShipSpeed;}
 
 	AiStateMachine& GetAiStateMachine(){return aiStateMachine;}
+
 protected:
 	//The AI state machine
 	AiStateMachine aiStateMachine;
 
 	//A pointer to the player spaceship. 
 	PlayerSpaceShip* playerShip;
-
-	//Takes care of switching between AI states. Any enemy spaceship
-	//need to implement their own functionality in this function
-	virtual void HandleAI() = 0;
 	
 	int spaceShipHP;
 

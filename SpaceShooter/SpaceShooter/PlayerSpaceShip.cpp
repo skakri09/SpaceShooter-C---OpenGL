@@ -28,11 +28,6 @@ void PlayerSpaceShip::Update(GLfloat deltaTime)
 	SpaceShip::Update(deltaTime);
 }
 
-void PlayerSpaceShip::Shoot()
-{
-	SpaceShip::FireGun(SQUARE_FAST_BULLET);
-}
-
 void PlayerSpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	float startRotDeg, float rotX, float rotY, float rotZ,
 	float dirVecX, float dirVecY, float dirVecZ)
@@ -40,7 +35,7 @@ void PlayerSpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	SpaceShip::InitSpaceShip(startX, startY, startZ, 
 		startRotDeg, rotX, rotY, rotZ, 
 		dirVecX, dirVecY, dirVecZ, 
-		0.4f);
+		0.3f);
 	
 	CreateGameObject("MilleniumFalcon//MilleniumFalcon.3ds");
 }

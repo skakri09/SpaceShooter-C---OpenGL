@@ -16,8 +16,6 @@ ImperialStarDestroyer::~ImperialStarDestroyer()
 void ImperialStarDestroyer::Update( GLfloat deltaTime )
 {
 	BaseEnemyShip::Update(deltaTime);
-	//shooterModule.UpdateModule(deltaTime);
-	HandleAI();
 }
 
 void ImperialStarDestroyer::InitSpaceShip( float startX, float startY, float startZ, float startRotDeg, float rotX, float rotY, float rotZ, float dirVecX, float dirVecY, float dirVecZ )
@@ -30,14 +28,3 @@ void ImperialStarDestroyer::InitSpaceShip( float startX, float startY, float sta
 
 	CreateGameObject("ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 }
-
-void ImperialStarDestroyer::Shoot()
-{
-
-}
-
-void ImperialStarDestroyer::HandleAI()
-{
-
-}
-

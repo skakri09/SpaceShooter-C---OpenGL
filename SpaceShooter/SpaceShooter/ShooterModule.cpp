@@ -9,7 +9,7 @@ ShooterModule::~ShooterModule()
 {
 }
 
-void ShooterModule::Shoot( ProjectileTypes projectileType, Transformable& ownerTransformable, GameObject* owner )
+bool ShooterModule::Shoot( ProjectileTypes projectileType, Transformable& ownerTransformable, GameObject* owner )
 {
 	float typeCD = ProjectileManager::Inst()->GetProjectileCooldown(projectileType);
 	
@@ -24,7 +24,9 @@ void ShooterModule::Shoot( ProjectileTypes projectileType, Transformable& ownerT
 	{
 		projectileCooldowns[projectileType] = typeCD;
 		ProjectileManager::Inst()->Shoot(projectileType, ownerTransformable, owner);
+		return true;
 	}
+	return false;
 }
 
 void ShooterModule::UpdateModule( float deltaTime )

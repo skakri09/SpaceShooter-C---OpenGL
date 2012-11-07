@@ -23,7 +23,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	this->input = input;
 	
 	//making sure to pre-load all spaceships we will be using so we dont have to do it on runtime
-	//Its not nessescary to load the player ship, as it's always loaded on the start
+	//Its not necessary to load the player ship, as it's always loaded on the start
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
@@ -41,7 +41,7 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime, bool& exit)
 
 	if(input->Fire())
 	{
-		player.Shoot();
+		player.Shoot(LASER_FAST);
 	}
 	HandlePlayerRotation();
 	HandleXAxisMovement();
@@ -66,33 +66,15 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime, bool& exit)
 		if( (*i)->CanKill() )
 		{
 			i = EnemySpaceShips.erase(i);
+			log << WARN << "killing spaceship" << std::endl;
 		}
 		else
 		{
 			(*i)->Update(deltaTime);
-
-			//(*i)->HandleProjectileCollision(player.GetProjectiles());
-			//player.HandleProjectileCollision( (*i)->GetProjectiles());
-
 			++i;
 		}
 	}
-	std::vector<std::shared_ptr<Projectile>>* projectiles = 
-		ProjectileManager::Inst()->GetProjectiles();
-	for(auto i = projectiles->begin(); i != projectiles->end(); i++)
-	{
-		if( *(*i)->GetOwner() == player )
-		{
-			for(auto s = EnemySpaceShips.begin(); s != EnemySpaceShips.end(); s++)
-			{
-				(*s)->HandleProjectileCollision( (*i) );
-			}
-		}
-		else
-		{
-			player.HandleProjectileCollision( (*i) );
-		}
-	}
+	HandleCollision();
 }
 
 void SpaceShipManager::DrawSpaceShips()
@@ -202,4 +184,24 @@ PlayerSpaceShip* SpaceShipManager::GetPlayer()
 std::vector<std::shared_ptr<BaseEnemyShip>>* SpaceShipManager::GetEnemySpaceships()
 {
 	return &EnemySpaceShips;
+}
+
+void SpaceShipManager::HandleCollision()
+{
+	std::vector<std::shared_ptr<Projectile>>* projectiles = 
+		ProjectileManager::Inst()->GetProjectiles();
+	for(auto i = projectiles->begin(); i != projectiles->end(); i++)
+	{
+		if( *(*i)->GetOwner() == player )
+		{
+			for(auto s = EnemySpaceShips.begin(); s != EnemySpaceShips.end(); s++)
+			{
+				(*s)->HandleProjectileCollision( (*i) );
+			}
+		}
+		else
+		{
+			player.HandleProjectileCollision( (*i) );
+		}
+	}
 }
