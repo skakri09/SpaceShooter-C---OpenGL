@@ -15,6 +15,7 @@ void ApproachRandXYPos::Enter( BaseEnemyShip* owner )
 
 void ApproachRandXYPos::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
+	//Gradually decrementing the velocity of the owner ship when we are getting close to the destination
 	float dist = owner->transformable.getPosition()->Distance(targetPosition);
 	if(dist <= 40)
 	{

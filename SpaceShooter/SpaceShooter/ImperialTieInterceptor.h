@@ -3,7 +3,7 @@
     filename:   ImperialTieInterceptor.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    An imperial tie interceptor enemy
 *********************************************************************/
 #ifndef ImperialTieInterceptor_h__
 #define ImperialTieInterceptor_h__

@@ -3,7 +3,7 @@
     filename:   ImperialTieFighter.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    An imperial tie fighter enemy.
 *********************************************************************/
 #ifndef ImperialTieFighter_h__
 #define ImperialTieFighter_h__
@@ -16,8 +16,6 @@
 #include "EnemySpaceshipConstantState.h"
 #include "FireState.h"
 #include "IdleState.h"
-#include "ApproachXYZPlayerState.h"
-#include "ApproachXYPlayerState.h"
 #include "ApproachRandXYPos.h"
 
 class ImperialTieFighter : public BaseEnemyShip

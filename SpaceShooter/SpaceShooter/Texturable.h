@@ -3,7 +3,8 @@
     filename:   Texturable.h
     author:     Kristian Skarseth
     
-    purpose:    A component giving functionality to load and bind textures
+    purpose:    A component giving functionality to load and bind textures.
+				Not entirely finished yet.
 *********************************************************************/
 #ifndef Texturable_h__
 #define Texturable_h__

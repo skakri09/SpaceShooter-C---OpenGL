@@ -40,8 +40,7 @@ private:
 	MeshInfo meshInfo;
 
 	void EnableClientStates();
-	
-	//Disables all glClientStates currently enabled
+
 	void DisableClientStates();
 
 	bool haveMeshInfo;

@@ -3,7 +3,7 @@
 	filename: 	SquareSlowBullet.h
 	author:		Kristian Skarseth
 	
-	purpose:	A slow square bullet
+	purpose:	A laser with high cooldown and low speed
 *********************************************************************/
 #ifndef SquareSlowBullet_h__
 #define SquareSlowBullet_h__

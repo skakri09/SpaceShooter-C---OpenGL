@@ -127,7 +127,7 @@
     <Filter Include="Game\Skybox">
       <UniqueIdentifier>{ea2dffb0-010b-443d-b7cf-6be31fb8adbc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\GameObjects\Planets">
+    <Filter Include="Game\GameObjects\Environmental">
       <UniqueIdentifier>{e8b467e5-79d5-403e-9cc4-053e889a367a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -226,7 +226,7 @@
       <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Planet.cpp">
-      <Filter>Game\GameObjects\Planets</Filter>
+      <Filter>Game\GameObjects\Environmental</Filter>
     </ClCompile>
     <ClCompile Include="VBODrawable.cpp">
       <Filter>Game\Components\VBO</Filter>
@@ -236,9 +236,6 @@
     </ClCompile>
     <ClCompile Include="Texturable.cpp">
       <Filter>Game\Components\Texturable</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleManager2.cpp">
-      <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ParticleManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
@@ -378,7 +375,7 @@
       <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Planet.h">
-      <Filter>Game\GameObjects\Planets</Filter>
+      <Filter>Game\GameObjects\Environmental</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Game\Components</Filter>
@@ -406,9 +403,6 @@
     </ClInclude>
     <ClInclude Include="Texturable.h">
       <Filter>Game\Components\Texturable</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleManager2.h">
-      <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ParticleManager.h">
       <Filter>Game\Managers\Header Files</Filter>

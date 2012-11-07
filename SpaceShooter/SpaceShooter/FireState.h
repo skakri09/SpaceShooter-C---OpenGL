@@ -3,8 +3,8 @@
     filename:   FireState.h
     author:     Kristian Skarseth
     
-    purpose:    A simple state for fireing the default gun of the enemy
-				spaceship.
+    purpose:    A simple state for firing a LASER_SLOW projectile. Will switch
+				into FleeState when 4 or more shots have been fired.
 *********************************************************************/
 #ifndef FireState_h__
 #define FireState_h__

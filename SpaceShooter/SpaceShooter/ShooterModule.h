@@ -3,7 +3,7 @@
     filename:   ShooterModule.h
     author:     Kristian Skarseth
     
-    purpose:    A module that gives a spaceship the ability to shoot
+    purpose:    A module that gives a spaceship the ability to shoot.
 *********************************************************************/
 #ifndef ShooterModule_h__
 #define ShooterModule_h__
@@ -30,9 +30,8 @@ public:
 	//in order to fire the projectile from the correct position. 
 	bool Shoot(ProjectileTypes projectileType, Transformable& ownerTransformable, GameObject* owner);
 
-	//Looping trough all the projectiles and updating them
+	//Updates the cooldowns of the different projectiles
 	void UpdateModule(float deltaTime);
-	
 
 private:
 	//Map holding the cooldown on the individual projectile types

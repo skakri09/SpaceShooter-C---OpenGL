@@ -13,6 +13,7 @@ void ApproachEdge::Enter( BaseEnemyShip* owner )
 
 void ApproachEdge::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
+	//Gradually decrementing the velocity of the owner ship when we are getting close to the destination
 	float dist = owner->transformable.getPosition()->Distance(targetPos);
 	if(dist <= 40)
 	{

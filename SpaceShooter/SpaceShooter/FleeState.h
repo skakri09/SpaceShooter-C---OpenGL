@@ -30,6 +30,8 @@ private:
 
 	Vector3D targetPos;
 
+	//Decides the target position based on the start position of the owner spaceship
+	//Function will try to find the shortest way out from the frustum
 	void SetTargetPos(Vector3D* currentPos);
 };
 

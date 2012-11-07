@@ -3,7 +3,8 @@
     filename:   XmlLoader.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    Loads an XML file into a Boost Ptree and returns a
+				shared ptr to the ptree.
 *********************************************************************/
 #ifndef XmlLoader_h__
 #define XmlLoader_h__

@@ -11,7 +11,6 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-//#include <SDL.h>
 #include <lib3ds/file.h>
 #include <lib3ds/mesh.h>
 #include <gl/glew.h>

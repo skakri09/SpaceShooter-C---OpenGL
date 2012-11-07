@@ -4,12 +4,6 @@
 *	Author:		Kristian Skarseth
 *	
 *	purpose:	Base class for any spaceship, enemy or player.
-				Contains functionality to draw and set/get position and
-				velocity of the spaceship.
-
-				Position and velocity comes in form of a Vector3D, and the
-				Draw() function is inherited from the Drawable abstract class 
-				which works as an interface in this case.
 *********************************************************************/
 
 #ifndef SpaceShip_H

@@ -3,7 +3,9 @@
 	filename: 	InputManager.h
 	author:		Kristian Skarseth
 	
-	purpose:	
+	purpose:	The input manager. Has functionality to check if keys or
+				mouse buttons has been pressed once, has been released, is pressed
+				or is released.
 *********************************************************************/
 #ifndef InputManager_h__
 #define InputManager_h__

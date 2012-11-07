@@ -3,8 +3,9 @@
     filename:   EnemySpaceshipConstantState.h
     author:     Kristian Skarseth
     
-    purpose:    The constant state for an enemy spaceship. This AI state
-				currently dont have much use
+    purpose:    The constant state for an enemy spaceship. It takes care
+				of destorying enemy ships that may have bugged and are way
+				outside the frustum. 
 *********************************************************************/
 #ifndef EnemySpaceshipConstantState_h__
 #define EnemySpaceshipConstantState_h__

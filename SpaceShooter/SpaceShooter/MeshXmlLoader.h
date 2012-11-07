@@ -3,19 +3,10 @@
     filename:   MeshLoader.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:   Can load meshes from XML
 *********************************************************************/
 #ifndef MeshLoader_h__
 #define MeshLoader_h__
-
-//Disabling a warning that according to various sources
-//on the interwebs is faulty and should not appear. Something
-//to do with boost. Warning reads as follows:
-//Warning	1	warning C4345: behavior change: an object of POD type 
-//constructed with an initializer of the form () will be default-initialized
-// edit: Not seen this warning in a while now, so removing the pragma disable
-//#pragma warning(disable: 4345)
-
 #ifdef _WIN32
 #include <windows.h>
 #endif
@@ -85,6 +76,7 @@ private:
 
 	std::shared_ptr<BoundingSphere> collisionSphere;
 
+	//Functions to bind and upload VBO stuff to the GPU
 	bool BindVertices(std::vector<float>& vertices, MeshInfo& meshInfo);
 	bool BindNormals(std::vector<float>& normals, MeshInfo& meshInfo);
 	bool BindColors(std::vector<float>& colors, MeshInfo& meshInfo);

@@ -3,7 +3,7 @@
 *	Filename: 	SquareFastBullet.h
 *	Author:		Kristian Skarseth
 *	
-*	purpose:	A simple square bullet. 6 sides. 
+*	purpose:	A laser with low cooldown and high speed
 *********************************************************************/
 #ifndef SquareFastBullet_h__
 #define SquareFastBullet_h__

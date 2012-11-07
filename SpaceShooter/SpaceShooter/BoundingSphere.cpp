@@ -47,14 +47,6 @@ void BoundingSphere::Update(CollisionTransformationInfo& translationInfo)
 	
 
 	CollisionRadius = LocalRadius * biggest;
-	//Vector3D middleMan = LocalRadius;
-	//middleMan *= translationInfo.scale;
-	//CollisionFarpoint = middleMan + translationInfo.position;
-	//CollisionRadius = CollisionMidpoint.Distance(CollisionFarpoint);
-	//Collidable::ApplyTransformations(translation, rotation, degrees, scale);
-	/*glTranslatef(translation.getX(), translation.getY(), translation.getZ());
-
-	glScalef(scale.getX(), scale.getY(), scale.getZ());*/
 }
 
 Vector3D& BoundingSphere::GetMidpoint()

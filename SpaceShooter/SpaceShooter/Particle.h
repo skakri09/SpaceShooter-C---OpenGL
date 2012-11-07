@@ -3,7 +3,8 @@
     filename:   Particle.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    A particle. Currently dont support textures, but the future 
+				may change that.
 *********************************************************************/
 #ifndef Particle_h__
 #define Particle_h__

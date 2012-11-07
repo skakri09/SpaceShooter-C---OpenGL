@@ -3,7 +3,7 @@
     filename:   IdleState.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    A idle state. Does nothing, because it can.
 *********************************************************************/
 #ifndef IdleState_h__
 #define IdleState_h__

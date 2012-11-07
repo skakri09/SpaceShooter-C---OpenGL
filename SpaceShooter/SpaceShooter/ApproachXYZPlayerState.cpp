@@ -7,6 +7,7 @@ void ApproachXYZPlayerState::Enter( BaseEnemyShip* owner )
 
 void ApproachXYZPlayerState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
+	//gets the position of the player, and sets a new velocity of the owner in order to move towards the player
 	targetPosition = *owner->getPlayerShip()->transformable.getPosition() - *owner->transformable.getPosition();
 	targetDirection = targetPosition;
 	targetDirection.Normalize();

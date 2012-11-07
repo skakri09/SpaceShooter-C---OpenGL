@@ -3,7 +3,8 @@
     filename:   GameObject2.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    A base GameObject. It's an abstract object used as base
+				for all gameobjects in the game.
 *********************************************************************/
 #ifndef GameObject2_h__
 #define GameObject2_h__
@@ -17,8 +18,6 @@ public:
 		kill = false;
 	}
 
-	//virtual ~GameObject2();
-
 	virtual void Update(float deltaTime) = 0;
 
 	virtual void Draw() = 0;
@@ -29,12 +28,17 @@ public:
 
 	bool IsAlive(){return !kill;}
 
+	//Sets a pointer to another GameObject that is stored in this GameObject.
+	//This reference can be retrieved with GetOwner
 	void SetOwner(GameObject* owner){this->owner = owner;}
+
+	//Returns locally stored pointer to the GameObject that has been set with SetOwner
 	GameObject* GetOwner(){return owner;}
 
+	//Compares the address of this and another gameObject to see
+	//if they are the same. 
 	bool operator==(GameObject& otherGameObj)
 	{
-		//if(otherGameObj != *this)
 		if(&otherGameObj == this)
 		{
 			return true;

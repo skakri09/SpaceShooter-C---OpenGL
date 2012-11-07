@@ -8,14 +8,9 @@ void EnemySpaceshipConstantState::Enter( BaseEnemyShip* owner )
 
 void EnemySpaceshipConstantState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
-	if(owner->getSpaceShipHp() <= 0)
-	{
-		//log << INFO << "This enemy ran out of HP" << std::endl;
-	}
-
 	Vector3D* position = owner->transformable.getPosition();
-	//Killing all enemies in front of frustum
-	if(position->getZ() >= 10)
+	//Killing all enemies in front or far behind frustum
+	if(position->getZ() >= 15 || position->getZ() < -15000)
 	{
 		owner->FlagForKill();
 	}

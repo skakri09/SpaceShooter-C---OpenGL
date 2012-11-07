@@ -13,9 +13,9 @@ void FireState::UpdateState( BaseEnemyShip* owner, float deltaTime )
 	{
 		if(owner->Shoot(LASER_SLOW))
 		{
-			shotsFired++;
-			log << WARN << shotsFired << std::endl;
+			++shotsFired;
 		}
+		//Changing state into fleeState if we have shot 4 or more times
 		if(shotsFired >= 4)
 		{
 			owner->GetAiStateMachine().ChangeState(std::make_shared<FleeState>());

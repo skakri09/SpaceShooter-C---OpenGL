@@ -4,7 +4,7 @@
     author:     Kristian Skarseth
     
     purpose:    A factory for getting meshes. The factory will take care
-				of loading meshes that has not allready been loaded
+				of loading meshes that has not allready been loaded.
 *********************************************************************/
 #ifndef MeshFactory_h__
 #define MeshFactory_h__

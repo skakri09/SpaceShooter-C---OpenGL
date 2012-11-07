@@ -16,7 +16,7 @@ void CrossScreenWhileFireing::Enter( BaseEnemyShip* owner )
 	}
 	targetVelocity = targetPos - *owner->transformable.getPosition();
 	targetVelocity.Normalize();
-	targetVelocity = targetVelocity * 30;
+	targetVelocity = targetVelocity * 20;
 	owner->transformable.setYVel(targetVelocity.getY());
 	owner->transformable.setZVel(targetVelocity.getZ());
 }

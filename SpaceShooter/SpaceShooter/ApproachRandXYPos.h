@@ -3,7 +3,9 @@
 	filename: 	ApproachRandXYPos.h
 	author:		Kristian Skarseth
 	
-	purpose:	
+	purpose:	The state finds a random position on the XY plane in front of the
+				player, and approaches it. Switches into FireState once the 
+				destination is reached.
 *********************************************************************/
 #ifndef ApproachRandXYPos_h__
 #define ApproachRandXYPos_h__

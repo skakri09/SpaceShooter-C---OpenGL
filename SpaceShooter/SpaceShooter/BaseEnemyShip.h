@@ -26,18 +26,16 @@ public:
 
     virtual ~BaseEnemyShip();
 	
-	//Does drawing of the spaceship.
 	virtual void Draw();
 
 	virtual void Update(GLfloat deltaTime);
 
+	//Initializes the spaceship. Must be called before starting to draw and update
 	virtual void InitSpaceShip(float startX, float startY, float startZ,
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ) = 0;
 
 	PlayerSpaceShip* getPlayerShip(){return playerShip;}
-
-	int getSpaceShipHp(){return spaceShipHP;}
 
 	AiStateMachine& GetAiStateMachine(){return aiStateMachine;}
 
@@ -47,8 +45,6 @@ protected:
 
 	//A pointer to the player spaceship. 
 	PlayerSpaceShip* playerShip;
-	
-	int spaceShipHP;
 
 	bool isActive;
 

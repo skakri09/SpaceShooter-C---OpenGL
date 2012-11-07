@@ -22,6 +22,9 @@ class ProjectileManager
 public:
 	static ProjectileManager* Inst();    
 
+	//A call to this should always be called before starting the game,
+	//as it takes care of pre-loading the textures from disk. If they are not
+	//pre-loaded, there will be a tiny freeze as they are loaded.
 	void InitProjectileManager();
 
 	void UpdateProjectiles(float deltaTime);
@@ -31,11 +34,16 @@ public:
 	//Fires a specified projectile. 
 	void Shoot(ProjectileTypes projectileType, Transformable& ownerTrans, GameObject* owner);
 
+	//Returns the cooldown of the specified projectile type
 	float GetProjectileCooldown(ProjectileTypes projectileType);
 
+	//Returns meshinfo for the specified projectile type
 	MeshInfo* GetMeshInfo(ProjectileTypes projectileType);
 	
+	//Returns a pointer to the vector of Projectiles currently held by this 
+	//manager.
 	std::vector<std::shared_ptr<Projectile>>* GetProjectiles();
+
 private:
 	ProjectileManager();
 	~ProjectileManager();
@@ -47,9 +55,8 @@ private:
 	//Map holding the meshinfo for each projectile
 	std::map<ProjectileTypes, MeshInfo> MeshInfos;
 
+	//Returns a projectile object of the param type
 	std::shared_ptr<Projectile> GetProjectile(ProjectileTypes projectileType);
-
-	void AddVBOInfo(ProjectileTypes projectileType, MeshInfo meshInfo);
 
 	//Projectiles in use
 	std::vector<std::shared_ptr<Projectile>> ActiveProjectiles;

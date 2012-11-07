@@ -75,11 +75,6 @@ std::shared_ptr<Projectile> ProjectileManager::GetProjectile( ProjectileTypes pr
 	return projectiles.back();
 }
 
-void ProjectileManager::AddVBOInfo( ProjectileTypes projectileType, MeshInfo meshInfo )
-{
-	MeshInfos[projectileType] = meshInfo;
-}
-
 MeshInfo* ProjectileManager::GetMeshInfo( ProjectileTypes projectileType )
 {
 	if(MeshInfos.find(projectileType) != MeshInfos.end())

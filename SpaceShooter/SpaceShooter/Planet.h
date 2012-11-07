@@ -3,7 +3,7 @@
     filename:   Planet.h
     author:     Kristian Skarseth
     
-    purpose:    A gameobject representing a planet
+    purpose:    A gameobject representing a simple planet
 *********************************************************************/
 #ifndef Planet_h__
 #define Planet_h__
@@ -23,17 +23,18 @@ public:
 
 	virtual void Update(GLfloat deltaTime);
 
+	//Loads and prepares a the param planet
 	virtual void CreatePlanet(std::string meshName);
-
-	virtual void InitPlanet(float xPos, float yPos, float zPos);
-
 
 	VBODrawable vboDrawable;
 	Transformable transformable;
 
 protected:
+	//a simple variable used to rotate the planet
 	float rotation;
-	
+
+	virtual void InitPlanet(float xPos, float yPos, float zPos);
+
 private:
 	
 };

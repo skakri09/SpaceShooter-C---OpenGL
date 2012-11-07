@@ -45,7 +45,6 @@ void Planet::CreatePlanet( std::string meshName )
 		MeshInfo meshInfo = MeshFactory::Inst()->GetMesh(meshPath);
 
 		vboDrawable.SetMeshInfo(meshInfo);
-		//collisionSphere = *meshInfo.collisionSphere;
 	}
 	InitPlanet(800, -600, -800);
 }

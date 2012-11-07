@@ -4,7 +4,8 @@
 	author:		Kristian Skarseth
 	
 	purpose:	Sets a destination along an edge of the frustum and moves
-				towards it
+				towards it. Switches into CrossScreenWhileFireing state 
+				once the destination is reached.
 *********************************************************************/
 #ifndef ApproachEdge_h__
 #define ApproachEdge_h__

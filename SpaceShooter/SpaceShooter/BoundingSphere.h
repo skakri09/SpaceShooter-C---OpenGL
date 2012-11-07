@@ -42,8 +42,6 @@ public:
 	//same as above, but takes a pointer to a lib3dsvector which contain the vertices instead
 	void CreateCollisionBox(Lib3dsVector* vertices, unsigned int size);
 
-	//void Update(CollisionTransformationInfo& translationInfo);
-
 	Vector3D& GetMidpoint();
 	
 	float GetRadius();

@@ -3,7 +3,8 @@
     filename:   StarDestroyerShipSpawning.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    The state moves the owner arround the screen anti-clockwise
+				and spawns enemies
 *********************************************************************/
 #ifndef StarDestroyerShipSpawning_h__
 #define StarDestroyerShipSpawning_h__
