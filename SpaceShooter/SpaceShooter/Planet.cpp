@@ -3,7 +3,7 @@
 
 Planet::Planet()
 {
-	rotation = 200.0f;
+	rotation = 130.0f;
 }
 
 Planet::~Planet()
@@ -23,7 +23,7 @@ void Planet::Draw()
 
 void Planet::Update( GLfloat deltaTime )
 {
-	rotation += deltaTime*1.0f;
+	rotation += deltaTime*5.0f;
 	if(rotation >= 360.0f)
 	{
 		rotation -= 360.0f;

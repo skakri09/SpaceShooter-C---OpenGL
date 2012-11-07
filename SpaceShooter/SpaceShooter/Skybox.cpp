@@ -29,7 +29,6 @@ void Skybox::drawSkybox()
 	if(glIsEnabled(GL_TEXTURE_2D))
 		texIsEnabled = true;
 	else texIsEnabled = false;
-
 	glDisable(GL_LIGHTING);
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);			

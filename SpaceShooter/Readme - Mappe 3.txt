@@ -9,6 +9,7 @@ I tillegg til det som ble levert i mappe 1, er det nå lagt til følgende:
 *Lagt til et enkelt class diagram for å gi en oversikt over hva som brukes hvor o.l. Klarte ikke finne de riktige toolsene for å lage piler osv, så
 det ble mest comments for å forklare hva som er hva.
 *Lagt til en "EnvironmentManager" som senere vil ta seg av alt som har med environment å gjøre. Foreløpig drawer den bare en enkel planet.
+*Lagt til fog
 
 Jeg har optimalisert og endret store deler av koden, blandt annet:
 *Muligheten til å transformere, tegne med VBO, texturere(foreløpig ikke i bruk), bruke AI, skyte og kollidere er gjort om til komponenter som en klasse kan bruke til å få tilgang til de aktuelle funksjonalitetene. Dette virker mer dynamisk og ryddig, fremfor å prøve å designe et arv hierarki som er dømt til å ende opp med kaos.

@@ -65,9 +65,10 @@ private:
 	//throughout the game
 	void setOpenGLStates();
 
-
 	void SetLights();
 	
+	void SetFog();
+
 	//A simple variable used to rotate the skybox to make everything 
 	//look slightly more alive
 	float rotate;

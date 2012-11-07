@@ -66,6 +66,7 @@ void GameManager::setOpenGLStates()
 	glShadeModel(GL_SMOOTH); 
 	
 	SetLights();
+	SetFog();
 }
 
 void GameManager::init() {
@@ -241,7 +242,20 @@ void GameManager::SetLights()
 	glLightfv(GL_LIGHT1, GL_POSITION, position2);
 	glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
-	glLightfv(GL_LIGHT1, GL_SPECULAR, specular);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, specular);      
+}
+
+void GameManager::SetFog()
+{
+	GLfloat fogColor[4]= {0.0f, 0.0f, 0.0f, 1.0f}; 
+	//GL_EXP, GL_EXP2, GL_LINEAR
+	glFogi(GL_FOG_MODE, GL_LINEAR);       
+	glFogfv(GL_FOG_COLOR, fogColor);           
+	glFogf(GL_FOG_DENSITY, 0.45f);          
+	glHint(GL_FOG_HINT, GL_NICEST);      
+	glFogf(GL_FOG_START, 300.0f);         
+	glFogf(GL_FOG_END, FRUSTUM_DEPTH);              
+	glEnable(GL_FOG);   
 }
 
 
