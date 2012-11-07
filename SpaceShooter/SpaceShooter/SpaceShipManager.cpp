@@ -25,7 +25,6 @@ void SpaceShipManager::InitManager(InputManager* input)
 	//making sure to pre-load all spaceships we will be using so we dont have to do it on runtime
 	//Its not nessescary to load the player ship, as it's always loaded on the start
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
-	MeshFactory::Inst()->LoadMesh("..//3ds//SithInfiltrator//SithInfiltrator.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//Planets//Endor//Endor.3ds");
