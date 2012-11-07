@@ -21,7 +21,7 @@
 #include "GetRandomFloat.h"
 #include "ImperialStarDestroyer.h"
 #include "Planet.h"
-
+#include "ProjectileManager.h"
 class SpaceShipManager
 {
 public:
@@ -42,6 +42,7 @@ public:
 	void TransferShipToShipManager(std::shared_ptr<BaseEnemyShip> ship);
 
 	PlayerSpaceShip* GetPlayer();
+	std::vector<std::shared_ptr<BaseEnemyShip>>* GetEnemySpaceships();
 private:
 	Logger log;
 

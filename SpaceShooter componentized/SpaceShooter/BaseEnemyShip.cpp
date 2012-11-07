@@ -32,8 +32,6 @@ void BaseEnemyShip::Draw()
 		vboDrawable.Draw();
 
 		glPopMatrix();
-
-		shooterModule.DrawModule();
 	}
 	
 }

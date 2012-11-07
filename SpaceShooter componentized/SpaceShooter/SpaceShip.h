@@ -61,9 +61,8 @@ public:
 	//Starts rotation around the specified axis
 	//void InitRotation(Axis axisToRotateArround);
 
-	std::vector<std::shared_ptr<Projectile>>* GetProjectiles(){return shooterModule.GetActiveProjectiles();}
 
-	void HandleProjectileCollision(std::vector<std::shared_ptr<Projectile>>* projectiles);
+	void HandleProjectileCollision(std::shared_ptr<Projectile> projectile);
 
 	int GetSpaceshipHP(){return SpaceShipCurrentHealth;}
 	

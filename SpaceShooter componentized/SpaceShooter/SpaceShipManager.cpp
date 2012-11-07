@@ -30,8 +30,8 @@ void SpaceShipManager::InitManager(InputManager* input)
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//Planets//Endor//Endor.3ds");
 	planet.CreatePlanet("Endor//Endor.3ds");
+	
 	player.InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
-
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(&player));
 	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
 }
@@ -69,10 +69,26 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 		{
 			(*i)->Update(deltaTime);
 
-			(*i)->HandleProjectileCollision(player.GetProjectiles());
-			player.HandleProjectileCollision( (*i)->GetProjectiles());
+			//(*i)->HandleProjectileCollision(player.GetProjectiles());
+			//player.HandleProjectileCollision( (*i)->GetProjectiles());
 
 			++i;
+		}
+	}
+	std::vector<std::shared_ptr<Projectile>>* projectiles = 
+		ProjectileManager::Inst()->GetProjectiles();
+	for(auto i = projectiles->begin(); i != projectiles->end(); i++)
+	{
+		if( *(*i)->GetOwner() == player )
+		{
+			for(auto s = EnemySpaceShips.begin(); s != EnemySpaceShips.end(); s++)
+			{
+				(*s)->HandleProjectileCollision( (*i) );
+			}
+		}
+		else
+		{
+			player.HandleProjectileCollision( (*i) );
 		}
 	}
 }
@@ -179,4 +195,9 @@ void SpaceShipManager::TransferShipToShipManager( std::shared_ptr<BaseEnemyShip>
 PlayerSpaceShip* SpaceShipManager::GetPlayer()
 {
 	return &player;
+}
+
+std::vector<std::shared_ptr<BaseEnemyShip>>* SpaceShipManager::GetEnemySpaceships()
+{
+	return &EnemySpaceShips;
 }

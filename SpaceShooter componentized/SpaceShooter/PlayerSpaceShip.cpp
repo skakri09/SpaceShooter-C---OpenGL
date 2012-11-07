@@ -20,8 +20,6 @@ void PlayerSpaceShip::Draw()
 	vboDrawable.Draw();
 
 	glPopMatrix();
-
-	shooterModule.DrawModule();
 }
 
 void PlayerSpaceShip::Update(GLfloat deltaTime)

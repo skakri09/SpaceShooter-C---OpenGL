@@ -31,6 +31,17 @@ public:
 
 	void SetOwner(GameObject* owner){this->owner = owner;}
 	GameObject* GetOwner(){return owner;}
+
+	bool operator==(GameObject& otherGameObj)
+	{
+		//if(otherGameObj != *this)
+		if(&otherGameObj == this)
+		{
+			return true;
+		}
+		return false;
+	}
+
 protected:
 
 private:

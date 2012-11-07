@@ -49,7 +49,7 @@ void SpaceShip::CreateGameObject(std::string meshPathFrom3dsFolder)
 
 void SpaceShip::FireGun(ProjectileTypes projectileType)
 {
-	shooterModule.Shoot(projectileType, transformable);
+	shooterModule.Shoot(projectileType, transformable, this);
 }
 
 void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,
@@ -65,25 +65,22 @@ void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	SpaceShipCurrentHealth = SpaceShipMaxHealth;
 }
 
-void SpaceShip::HandleProjectileCollision( std::vector<std::shared_ptr<Projectile>>* projectiles )
+void SpaceShip::HandleProjectileCollision( std::shared_ptr<Projectile> projectile )
 {
-	for(unsigned int i = 0; i < projectiles->size(); i++)
+	if(projectile->isFired())
 	{
-		if(projectiles->at(i)->isFired())
+		BoundingSphere projectileColSphere = projectile->collisionSphere;
+		Vector3D collAmnt = collisionSphere.IsCollision(projectileColSphere);
+		if(collAmnt.getX() > 0 || collAmnt.getY() > 0.0f || collAmnt.getZ() > 0.0f)
 		{
-			BoundingSphere projectileColSphere = projectiles->at(i)->collisionSphere;
-			Vector3D collAmnt = collisionSphere.IsCollision(projectileColSphere);
-			if(collAmnt.getX() > 0 || collAmnt.getY() > 0.0f || collAmnt.getZ() > 0.0f)
-			{
-				int dmgTaken = projectiles->at(i)->GetProjectileDmg();
-				SpaceShipCurrentHealth -= dmgTaken;
-				log << WARN << "Spaceship hit! It lost " << dmgTaken << ", " 
-					<< SpaceShipCurrentHealth << "/" << SpaceShipMaxHealth <<"HP left" << std::endl;
+			int dmgTaken = projectile->GetProjectileDmg();
+			SpaceShipCurrentHealth -= dmgTaken;
+			log << WARN << "Spaceship hit! It lost " << dmgTaken << ", " 
+				<< SpaceShipCurrentHealth << "/" << SpaceShipMaxHealth <<"HP left" << std::endl;
 				
-				EmittProjectileHittParticles(*projectiles->at(i));
+			EmittProjectileHittParticles(*projectile);
 				
-				projectiles->at(i)->DestroyProjectile();
-			}
+			projectile->DestroyProjectile();
 		}
 	}
 }

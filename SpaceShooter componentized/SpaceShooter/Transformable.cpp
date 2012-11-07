@@ -24,7 +24,7 @@ void Transformable::Init(Vector3D startPos,
 	objectRotationDegrees = rotationDeg;
 
 	this->rotationAxis = rotationAxis;
-	
+	UpdateCollisionTransformationInfo();
 }
 
 void Transformable::Init( float xPos, float yPos, float zPos, 
@@ -43,6 +43,7 @@ void Transformable::Init( float xPos, float yPos, float zPos,
 	objectRotationDegrees = rotationDeg;
 
 	this->rotationAxis = rotationAxis;
+	UpdateCollisionTransformationInfo();
 }
 												/*only allowing uniform scaling */ 
 void Transformable::Init( Vector3D startPos, float scale, Vector3D velocity )
@@ -58,6 +59,7 @@ void Transformable::Init( Vector3D startPos, float scale, Vector3D velocity )
 	rotationAxis = zerovec;
 
 	this->velocity = velocity;
+	UpdateCollisionTransformationInfo();
 }
 
 void Transformable::Update( float deltaTime )

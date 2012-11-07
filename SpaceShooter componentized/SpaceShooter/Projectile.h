@@ -35,7 +35,7 @@ public:
 
 	virtual void Update(GLfloat deltaTime);
 
-	virtual void FireProjectile(Transformable& ownerTransformable);
+	virtual void FireProjectile(Transformable& ownerTransformable, GameObject* owner);
 
 	bool isFired(){return fired;}
 

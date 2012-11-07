@@ -136,7 +136,7 @@ void GameManager::init() {
 
 	DisplayLoadingScreen();
 	setOpenGLStates();
-	ProjectileFactory::Inst()->InitProjectileFactory();
+	ProjectileManager::Inst()->InitProjectileManager();//InitProjectileFactory();
 	SpaceShipManager::Inst()->InitManager(&input);
 	ParticleManager::Inst()->InitParticleManager();
 	skybox.initSkybox("skybox1", 100);
@@ -165,7 +165,7 @@ void GameManager::render() {
 
 	ParticleManager::Inst()->DrawParticles();
 	SpaceShipManager::Inst()->DrawSpaceShips();
-
+	ProjectileManager::Inst()->DrawProjectiles();
 	checkGLErrors();
 	glPopMatrix();
 	SDL_GL_SwapBuffers();
@@ -183,6 +183,7 @@ void GameManager::update()
 
 	ParticleManager::Inst()->UpdateParticles(deltaTime);
 	SpaceShipManager::Inst()->UpdateManager(deltaTime);
+	ProjectileManager::Inst()->UpdateProjectiles(deltaTime);
 }
 
 void GameManager::GameLoop() 

@@ -8,9 +8,17 @@
 #ifndef ShooterModule_h__
 #define ShooterModule_h__
 
-#include "ProjectileFactory.h"
 #include <vector>
+#include <map>
 
+#include <gl/glew.h>
+
+#include "GameObject.h"
+#include "ShooterModule.h"
+#include "ProjectileTypes.h"
+#include "Transformable.h"
+#include "Projectile.h"
+#include "ProjectileManager.h"
 
 class ShooterModule
 {
@@ -20,23 +28,13 @@ public:
 
 	//Fires a specified projectile. The startPos and startRotation is required
 	//in order to fire the projectile from the correct position. 
-	void Shoot(ProjectileTypes projectileType, Transformable& ownerTransformable);
+	void Shoot(ProjectileTypes projectileType, Transformable& ownerTransformable, GameObject* owner);
 
 	//Looping trough all the projectiles and updating them
 	void UpdateModule(float deltaTime);
 	
-	//Looping trough all the projectiles and drawing them
-	void DrawModule();
-
-	std::vector<std::shared_ptr<Projectile>>* GetActiveProjectiles(){return &ActiveProjectiles;}
-	
-	int nrOfActiveProjectiles(){return ActiveProjectiles.size();}
-protected:
 
 private:
-	//using a deque as we're removing from the front of the container
-	std::vector<std::shared_ptr<Projectile>> ActiveProjectiles;
-
 	//Map holding the cooldown on the individual projectile types
 	std::map<ProjectileTypes, float> projectileCooldowns;
 

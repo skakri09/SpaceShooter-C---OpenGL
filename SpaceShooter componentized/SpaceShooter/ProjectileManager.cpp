@@ -32,22 +32,9 @@ void ProjectileManager::InitProjectileManager()
 
 void ProjectileManager::Shoot( ProjectileTypes projectileType, Transformable& ownerTrans, GameObject* owner)
 {
-	float typeCD = GetProjectileCooldown(projectileType);
-
-	float projectileCD; 
-	if(projectileCooldowns.find(projectileType) != projectileCooldowns.end())
-	{
-		projectileCD = projectileCooldowns.find(projectileType)->second;
-	}
-	else { projectileCD = 0.0f; }
-
-	if(projectileCD <= 0.0f)
-	{
-		projectileCooldowns[projectileType] = typeCD;
-		std::shared_ptr<Projectile> projectile = GetProjectile(projectileType);
-		projectile->FireProjectile(ownerTrans);
-		ActiveProjectiles.push_back(projectile);
-	}
+	std::shared_ptr<Projectile> projectile = GetProjectile(projectileType);
+	projectile->FireProjectile(ownerTrans, owner);
+	ActiveProjectiles.push_back(projectile);
 }
 
 float ProjectileManager::GetProjectileCooldown( ProjectileTypes projectileType )
@@ -138,6 +125,11 @@ void ProjectileManager::DrawProjectiles()
 	}
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glPopMatrix();
+}
+
+std::vector<std::shared_ptr<Projectile>>* ProjectileManager::GetProjectiles()
+{
+	return &ActiveProjectiles;
 }
 
 

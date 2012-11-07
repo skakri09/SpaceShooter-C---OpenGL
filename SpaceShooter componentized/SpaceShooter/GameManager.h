@@ -20,6 +20,7 @@
 #include "GameConstants.h"
 #include "Skybox.h"
 #include "Texturable.h"
+#include "ProjectileManager.h"
 
 #include <gl/glew.h>
 #include <gl/gl.h>

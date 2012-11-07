@@ -11,11 +11,11 @@
 #include <memory>
 #include <map>
 
+
 #include "SquareFastBullet.h"
 #include "SquareSlowBullet.h"
 #include "ProjectileTypes.h"
 #include "Logger.h"
-
 
 class ProjectileManager
 {
@@ -34,7 +34,8 @@ public:
 	float GetProjectileCooldown(ProjectileTypes projectileType);
 
 	MeshInfo* GetMeshInfo(ProjectileTypes projectileType);
-
+	
+	std::vector<std::shared_ptr<Projectile>>* GetProjectiles();
 private:
 	ProjectileManager();
 	~ProjectileManager();
@@ -55,7 +56,6 @@ private:
 
 	//All projectiles, used or none used
 	std::vector<std::shared_ptr<Projectile>> projectiles;
-
 };
 
 #endif // ProjectileManager_h__

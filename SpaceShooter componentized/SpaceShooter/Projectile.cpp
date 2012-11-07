@@ -62,12 +62,13 @@ void Projectile::Update(GLfloat deltaTime)
 	}
 }
 
-void Projectile::FireProjectile( Transformable& ownerTransformable)
+void Projectile::FireProjectile( Transformable& ownerTransformable, GameObject* owner)
 {
+	SetOwner(owner);
 	Vector3D zeroVec;
 	transformable.Init(*ownerTransformable.getPosition(), zeroVec, 0, 1,
 						ownerTransformable.getDirectionVector());
-
+	
 	transformable.SetScale(scale, scale, scale);
 	timeSinceFired = 0.0f;
 
@@ -77,6 +78,8 @@ void Projectile::FireProjectile( Transformable& ownerTransformable)
 	transformable.SetVelocity(velocity);
 
 	initialStartPosition = *ownerTransformable.getPosition();
+
+	collisionSphere.Update(transformable.GetCollisionTransformationInfo());
 	fired = true;
 }
 

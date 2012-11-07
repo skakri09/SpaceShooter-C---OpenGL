@@ -9,9 +9,9 @@ ShooterModule::~ShooterModule()
 {
 }
 
-void ShooterModule::Shoot( ProjectileTypes projectileType, Transformable& ownerTransformable )
+void ShooterModule::Shoot( ProjectileTypes projectileType, Transformable& ownerTransformable, GameObject* owner )
 {
-	float typeCD = ProjectileFactory::Inst()->GetProjectileCooldown(projectileType);
+	float typeCD = ProjectileManager::Inst()->GetProjectileCooldown(projectileType);
 	
 	float projectileCD; 
 	if(projectileCooldowns.find(projectileType) != projectileCooldowns.end())
@@ -23,9 +23,7 @@ void ShooterModule::Shoot( ProjectileTypes projectileType, Transformable& ownerT
 	if(projectileCD <= 0.0f)
 	{
 		projectileCooldowns[projectileType] = typeCD;
-		std::shared_ptr<Projectile> projectile = ProjectileFactory::Inst()->GetProjectile(projectileType);
-		projectile->FireProjectile(ownerTransformable);
-		ActiveProjectiles.push_back(projectile);
+		ProjectileManager::Inst()->Shoot(projectileType, ownerTransformable, owner);
 	}
 }
 
@@ -36,35 +34,4 @@ void ShooterModule::UpdateModule( float deltaTime )
 	{
 		(*i).second -= deltaTime;
 	}
-	
-	//Updating the projectiles. Erasing them from the deque if 
-	//they are no longer tagged as "fired"
-	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end();)
-	{
-		if( !(*i)->isFired() )
-		{
-			i = ActiveProjectiles.erase(i);
-		}
-		else
-		{
-			(*i)->Update(deltaTime);
-			++i;
-		}
-	}
-}
-
-void ShooterModule::DrawModule()
-{
-	glPushMatrix();
-	//Drawing all our projectiles if they are tagged as "fired"
-	glColor3f(1.0f, 0.5f, 0.0f);
-	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end(); i++)
-	{
-		if( (*i)->isFired() )
-		{
-			(*i)->Draw();
-		}
-	}
-	glColor3f(1.0, 1.0f, 1.0f);
-	glPopMatrix();
 }
