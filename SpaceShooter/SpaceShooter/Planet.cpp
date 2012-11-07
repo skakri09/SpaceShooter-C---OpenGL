@@ -3,7 +3,7 @@
 
 Planet::Planet()
 {
-	rotation = 0.0f;
+	rotation = 200.0f;
 }
 
 Planet::~Planet()
@@ -13,7 +13,7 @@ Planet::~Planet()
 void Planet::Draw()
 {
 	glPushMatrix();
-	glColor3f(0.0f, 1.0f, 0.0f);
+	glColor3f(0.0f, 0.5f, 0.0f);
 	transformable.ApplyGLTransformations(true, true, false);
 	glRotatef(rotation, 1.5f, 0.5f, 1.5f);
 	vboDrawable.Draw();
@@ -33,7 +33,7 @@ void Planet::Update( GLfloat deltaTime )
 void Planet::InitPlanet( float xPos, float yPos, float zPos )
 {
 	Vector3D zeroVec;
-	transformable.Init(xPos, yPos, zPos, zeroVec, 0, 4.0f, zeroVec);
+	transformable.Init(xPos, yPos, zPos, zeroVec, 0, 2.0f, zeroVec);
 }
 
 void Planet::CreatePlanet( std::string meshName )
@@ -46,5 +46,5 @@ void Planet::CreatePlanet( std::string meshName )
 
 		vboDrawable.SetMeshInfo(meshInfo);
 	}
-	InitPlanet(800, -600, -800);
+	InitPlanet(800, -400, -800);
 }

@@ -231,7 +231,7 @@ void GameManager::SetLights()
 	const static GLfloat position[] = 
 	{ 0.0f, 0.0f, -500.0, 1.0f }; 
 	const static GLfloat position2[] = 
-	{ -500.0f, 0.0f,	0.0, 0.0f }; 
+	{ -500.0f, -500.0f, 0.0, 0.0f }; 
 
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
