@@ -36,7 +36,14 @@ enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 //Speed of the rotation around x, y and z axis
 static const GLfloat ROTATE_SPEED = 200.0f;
 
-
+struct RespawnValues
+{
+	Vector3D startPos;
+	Vector3D rotAxis;
+	Vector3D dirVec;
+	float scale;
+	float startRotDeg;
+};
 
 class SpaceShip : public GameObject
 {
@@ -65,7 +72,8 @@ public:
 	void HandleProjectileCollision(std::shared_ptr<Projectile> projectile);
 
 	int GetSpaceshipHP(){return SpaceShipCurrentHealth;}
-	
+	unsigned int GetLives(){return lives;}
+
 	ShooterModule shooterModule;	//A spaceship can shoot
 	VBODrawable vboDrawable;		//A spaceship is drawn with VBOs
 	Transformable transformable;	//A spaceship is transformable
@@ -75,15 +83,19 @@ protected:
 	
 	virtual void CreateGameObject(std::string meshPathFrom3dsFolder);
 
-
-	int SpaceShipMaxHealth;
-	int SpaceShipCurrentHealth;
+	unsigned int lives;			//Amnt of times the spaceship can die
+	int SpaceShipMaxHealth;		//Max health of the ship
+	int SpaceShipCurrentHealth;	//Current health of the ship
 
 	//Takes care of firing the spaceships gun.
 	void FireGun(ProjectileTypes projectileType);
 
 	void EmittProjectileHittParticles(Projectile& p);
 
+	void Respawn();
+	RespawnValues respawnValues;
+	float respawnImmunityTimer;
+	float respawnImmunityDuration;
 private:
 	Logger log;
 

@@ -12,8 +12,8 @@
 
 static const float FRUSTUM_LEFT = -30.0f;
 static const float FRUSTUM_RIGHT = 30.0f;
-static const float FRUSTUM_TOP = 15.0f;
-static const float FRUSTUM_BOTTOM = -20.0f;
+static const float FRUSTUM_TOP = 20.0f;
+static const float FRUSTUM_BOTTOM = -22.0f;
 
 static const unsigned int window_width = 1280;
 static const unsigned int window_height = 900;

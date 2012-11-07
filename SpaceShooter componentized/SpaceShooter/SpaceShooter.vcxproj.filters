@@ -113,9 +113,6 @@
     <Filter Include="Game\Utility\Logger">
       <UniqueIdentifier>{9a464e1b-37c9-48c9-97f7-dbf944751574}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Components\ParticleEmitter">
-      <UniqueIdentifier>{3af77fd5-f300-48df-9150-1d7952219751}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Components\Texturable">
       <UniqueIdentifier>{5111f200-e206-4ad9-9f2a-5466916d003a}</UniqueIdentifier>
     </Filter>
@@ -130,7 +127,7 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Game\Skyboxes">
+    <Filter Include="Game\Skybox">
       <UniqueIdentifier>{ea2dffb0-010b-443d-b7cf-6be31fb8adbc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -244,7 +241,7 @@
       <Filter>Game\Components\VBO</Filter>
     </ClCompile>
     <ClCompile Include="Skybox.cpp">
-      <Filter>Game\Skyboxes</Filter>
+      <Filter>Game\Skybox</Filter>
     </ClCompile>
     <ClCompile Include="Texturable.cpp">
       <Filter>Game\Components\Texturable</Filter>
@@ -411,7 +408,7 @@
       <Filter>Game\GameObjects\SpaceShips\Player</Filter>
     </ClInclude>
     <ClInclude Include="Skybox.h">
-      <Filter>Game\Skyboxes</Filter>
+      <Filter>Game\Skybox</Filter>
     </ClInclude>
     <ClInclude Include="Texturable.h">
       <Filter>Game\Components\Texturable</Filter>

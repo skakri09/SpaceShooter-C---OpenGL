@@ -72,7 +72,7 @@ void Projectile::FireProjectile( Transformable& ownerTransformable, GameObject* 
 	transformable.SetScale(scale, scale, scale);
 	timeSinceFired = 0.0f;
 
-	Vector3D velocity = transformable.getDirectionVector();//.Normalize();
+	Vector3D velocity = transformable.getDirectionVector();
 	velocity.Normalize();
 	velocity*=projectileVelocity;
 	transformable.SetVelocity(velocity);

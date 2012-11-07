@@ -5,6 +5,10 @@ SpaceShip::SpaceShip(int spaceshipHP)
 	:log("SpaceShipbase", WARN)
 {
 	this->SpaceShipMaxHealth = spaceshipHP;
+	lives = 1;
+
+	respawnImmunityDuration = 3.0f;
+	respawnImmunityTimer = respawnImmunityDuration + 1.0f;
 }
 
 SpaceShip::~SpaceShip()
@@ -18,9 +22,23 @@ void SpaceShip::Update(float deltaTime)
 	collisionSphere.Update(transformable.GetCollisionTransformationInfo());
 	shooterModule.UpdateModule(deltaTime);
 
+	respawnImmunityTimer += deltaTime;
+	if(respawnImmunityTimer <= respawnImmunityDuration)
+	{
+
+	}
 	if(SpaceShipCurrentHealth <= 0)
 	{
-		GameObject::FlagForKill();
+		lives -= 1;
+		if(lives <= 0)
+		{
+			lives = 0;
+			GameObject::FlagForKill();
+		}
+		else
+		{
+			Respawn();
+		}
 	}
 }
 
@@ -63,6 +81,13 @@ void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	transformable.Init(startPos,rotationAxis, startRotDeg, scale, directionVec);
 
 	SpaceShipCurrentHealth = SpaceShipMaxHealth;
+	
+	//Saving the init values in case we need to respawn later	
+	respawnValues.dirVec = directionVec;
+	respawnValues.rotAxis = rotationAxis;
+	respawnValues.startPos = startPos;
+	respawnValues.scale = scale;
+	respawnValues.startRotDeg = startRotDeg;
 }
 
 void SpaceShip::HandleProjectileCollision( std::shared_ptr<Projectile> projectile )
@@ -90,3 +115,16 @@ void SpaceShip::EmittProjectileHittParticles(Projectile& p)
 	Vector3D origin = *p.transformable.getPosition();
 	ParticleManager::Inst()->EmitStandardSpaceshipProjectileCollision(origin);
 }
+
+void SpaceShip::Respawn()
+{
+	transformable.Init(respawnValues.startPos, 
+						respawnValues.rotAxis, 
+						respawnValues.startRotDeg, 
+						respawnValues.scale, 
+						respawnValues.dirVec);
+
+	SpaceShipCurrentHealth = SpaceShipMaxHealth;
+	respawnImmunityTimer = 0.0f;
+}
+

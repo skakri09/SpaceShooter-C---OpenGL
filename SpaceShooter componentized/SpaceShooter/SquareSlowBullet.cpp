@@ -2,7 +2,7 @@
 
 
 SquareSlowBullet::SquareSlowBullet()
-	:Projectile(SQUARE_SLOW_BULLET, 20.0f, 10.0f, 10, 2.5f, 0.5f)
+	:Projectile(SQUARE_SLOW_BULLET, 30.0f, 10.0f, 10, 3.5f, 0.5f)
 {
 	CreateProjectile(SQUARE_SLOW_BULLET, "Mesh_SquareBullet.xml");
 }

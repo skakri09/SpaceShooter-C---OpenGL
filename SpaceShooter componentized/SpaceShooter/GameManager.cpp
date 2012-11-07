@@ -182,7 +182,7 @@ void GameManager::update()
 	input.Update(doExit);
 
 	ParticleManager::Inst()->UpdateParticles(deltaTime);
-	SpaceShipManager::Inst()->UpdateManager(deltaTime);
+	SpaceShipManager::Inst()->UpdateManager(deltaTime, doExit);
 	ProjectileManager::Inst()->UpdateProjectiles(deltaTime);
 }
 
@@ -206,10 +206,14 @@ void GameManager::GameLoop()
 		if(sec >= 1.0f)//updating the fps counter once every second
 		{
 			log << INFO << fps << std::endl;
-			std::ostringstream fpsStream;
-			fpsStream << "NITH - PG430 Space Invaders - FPS: ";
-			fpsStream << fps;
-			SDL_WM_SetCaption(fpsStream.str().c_str(), "");
+			std::ostringstream captionStream;
+			captionStream << "NITH - PG430 Space Invaders - FPS: ";
+			captionStream << fps;
+			captionStream << "  -  Player HP: ";
+			captionStream << SpaceShipManager::Inst()->GetPlayer()->GetSpaceshipHP();
+			captionStream << "  - Lives left: ";
+			captionStream << SpaceShipManager::Inst()->GetPlayer()->GetLives();
+			SDL_WM_SetCaption(captionStream.str().c_str(), "");
 			fps = 0;
 			sec = 0;
 		}

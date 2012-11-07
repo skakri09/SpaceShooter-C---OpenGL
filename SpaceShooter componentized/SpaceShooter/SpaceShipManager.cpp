@@ -36,7 +36,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
 }
 
-void SpaceShipManager::UpdateManager(GLfloat deltaTime)
+void SpaceShipManager::UpdateManager(GLfloat deltaTime, bool& exit)
 {
 	planet.Update(deltaTime);
 
@@ -51,7 +51,10 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	HandleFrustumCollision();
 
 	player.Update(deltaTime);
-
+	if(player.CanKill())
+	{
+		exit = true;
+	}
 
 	for(auto i = EnemyShipsForTransfer.begin(); i != EnemyShipsForTransfer.end();)
 	{

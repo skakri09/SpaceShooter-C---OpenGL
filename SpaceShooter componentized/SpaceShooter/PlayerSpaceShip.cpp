@@ -5,6 +5,7 @@ PlayerSpaceShip::PlayerSpaceShip()
 	: log("PlayerSpaceship", ERRORX),
 	SpaceShip(50)//the HP
 {
+	lives = 3;
 }
 
 PlayerSpaceShip::~PlayerSpaceShip()
@@ -43,4 +44,3 @@ void PlayerSpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	
 	CreateGameObject("MilleniumFalcon//MilleniumFalcon.3ds");
 }
-
