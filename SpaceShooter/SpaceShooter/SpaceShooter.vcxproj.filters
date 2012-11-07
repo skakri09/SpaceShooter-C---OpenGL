@@ -261,6 +261,9 @@
     <ClCompile Include="CrossScreenWhileFireing.cpp">
       <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EnvironmentalManager.cpp">
+      <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -428,6 +431,9 @@
     <ClInclude Include="CrossScreenWhileFireing.h">
       <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EnvironmentalManager.h">
+      <Filter>Game\Managers\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib3ds-1_3d.dll">
@@ -451,5 +457,6 @@
     <None Include="..\xml\Projectiles\Mesh_Laser.xml">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

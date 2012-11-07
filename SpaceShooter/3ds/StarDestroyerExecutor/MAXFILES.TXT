@@ -1,9 +1,0 @@
-H:\3D-Scenen\StarWars\supersternzerstörer\t$m$p$$$\Executor.max
-H:\3D-Scenen\StarWars\supersternzerstörer\t$m$p$$$\MAXFILES.TXT
-H:\Image1.jpg
-H:\Texturen\StarWars\StarShips\Hometext.gif
-H:\Texturen\coolshine.jpg
-H:\Texturen\StarWars\Stardest\lichtmaske.jpg
-H:\Texturen\Aluminm_grey.jpg
-H:\Texturen\smallbumps.tga
-H:\Texturen\Babylon 5\Diff16.tif

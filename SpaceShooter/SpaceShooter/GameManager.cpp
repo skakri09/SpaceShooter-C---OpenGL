@@ -102,6 +102,7 @@ void GameManager::init() {
 	ProjectileManager::Inst()->InitProjectileManager();
 	SpaceShipManager::Inst()->InitManager(&input);
 	ParticleManager::Inst()->InitParticleManager();
+	environment.InitManager();
 	skybox.initSkybox("skybox1", 100);
 	
 	//A resize MUST be called before we start, as it does 
@@ -125,7 +126,7 @@ void GameManager::render() {
 	glPopMatrix();
 
 	glClear(GL_DEPTH_BUFFER_BIT);
-
+	environment.DrawEnvironment();
 	ParticleManager::Inst()->DrawParticles();
 	SpaceShipManager::Inst()->DrawSpaceShips();
 	ProjectileManager::Inst()->DrawProjectiles();
@@ -143,7 +144,7 @@ void GameManager::update()
 	}
 
 	input.Update(doExit);
-
+	environment.Update(deltaTime);
 	ParticleManager::Inst()->UpdateParticles(deltaTime);
 	SpaceShipManager::Inst()->UpdateManager(deltaTime, doExit);
 	ProjectileManager::Inst()->UpdateProjectiles(deltaTime);

@@ -27,18 +27,15 @@ void SpaceShipManager::InitManager(InputManager* input)
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
-	MeshFactory::Inst()->LoadMesh("..//3ds//Planets//Endor//Endor.3ds");
-	planet.CreatePlanet("Endor//Endor.3ds");
+
 	
 	player.InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(&player));
-	EnemySpaceShips.back()->InitSpaceShip(-200, -200, -600, 200, 0, 1, 0, 0, 0, 1);
+	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
 }
 
 void SpaceShipManager::UpdateManager(GLfloat deltaTime, bool& exit)
 {
-	planet.Update(deltaTime);
-
 	if(input->Fire())
 	{
 		player.Shoot(LASER_FAST);
@@ -79,10 +76,7 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime, bool& exit)
 
 void SpaceShipManager::DrawSpaceShips()
 {
-	
 	glPushMatrix();
-	
-	planet.Draw();
 
 	player.Draw();
 	
@@ -92,6 +86,44 @@ void SpaceShipManager::DrawSpaceShips()
 	}
 
 	glPopMatrix();
+}
+
+void SpaceShipManager::TransferShipToShipManager( std::shared_ptr<BaseEnemyShip> ship )
+{
+	EnemyShipsForTransfer.push_back(ship);
+}
+
+PlayerSpaceShip* SpaceShipManager::GetPlayer()
+{
+	return &player;
+}
+
+std::vector<std::shared_ptr<BaseEnemyShip>>* SpaceShipManager::GetEnemySpaceships()
+{
+	return &EnemySpaceShips;
+}
+
+//  P R I V A T E    F U N C T I O N S  //
+//**************************************//
+
+void SpaceShipManager::HandleCollision()
+{
+	std::vector<std::shared_ptr<Projectile>>* projectiles = 
+		ProjectileManager::Inst()->GetProjectiles();
+	for(auto i = projectiles->begin(); i != projectiles->end(); i++)
+	{
+		if( *(*i)->GetOwner() == player )
+		{
+			for(auto s = EnemySpaceShips.begin(); s != EnemySpaceShips.end(); s++)
+			{
+				(*s)->HandleProjectileCollision( (*i) );
+			}
+		}
+		else
+		{
+			player.HandleProjectileCollision( (*i) );
+		}
+	}
 }
 
 void SpaceShipManager::HandleXAxisMovement()
@@ -169,39 +201,4 @@ void SpaceShipManager::HandlePlayerRotation()
 	{
 		player.InitRotation(Y_AXIS);
 	}*/
-}
-
-void SpaceShipManager::TransferShipToShipManager( std::shared_ptr<BaseEnemyShip> ship )
-{
-	EnemyShipsForTransfer.push_back(ship);
-}
-
-PlayerSpaceShip* SpaceShipManager::GetPlayer()
-{
-	return &player;
-}
-
-std::vector<std::shared_ptr<BaseEnemyShip>>* SpaceShipManager::GetEnemySpaceships()
-{
-	return &EnemySpaceShips;
-}
-
-void SpaceShipManager::HandleCollision()
-{
-	std::vector<std::shared_ptr<Projectile>>* projectiles = 
-		ProjectileManager::Inst()->GetProjectiles();
-	for(auto i = projectiles->begin(); i != projectiles->end(); i++)
-	{
-		if( *(*i)->GetOwner() == player )
-		{
-			for(auto s = EnemySpaceShips.begin(); s != EnemySpaceShips.end(); s++)
-			{
-				(*s)->HandleProjectileCollision( (*i) );
-			}
-		}
-		else
-		{
-			player.HandleProjectileCollision( (*i) );
-		}
-	}
 }

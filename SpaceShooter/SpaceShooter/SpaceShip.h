@@ -87,6 +87,7 @@ protected:
 	void EmittProjectileHittParticles(Projectile& p);
 
 	void Respawn();
+
 	RespawnValues respawnValues;
 	float respawnImmunityTimer;
 	float respawnImmunityDuration;

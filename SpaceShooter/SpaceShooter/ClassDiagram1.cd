@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="The gameManager class is the one running the gameloop. It takes care of calling Update and Draw on all the managers it holds, which is the 4 to the right.">
+    <Position X="0.5" Y="2.812" Height="1.302" Width="2.075" />
+  </Comment>
+  <Comment CommentText="The spaceshipManager holds all the spaceships and takes care of calling update and draw on them. It also oversee collision checking by getting a vector of active projectiles from  the ProjectileManager, looping trough them and calling each spaceships HandleCollision">
+    <Position X="4.354" Y="0.5" Height="0.948" Width="3.492" />
+  </Comment>
+  <Comment CommentText="The particle takes care of updating and drawing particles. Particles are emitted when another class calls EmittParticles with a bunch of parameters.">
+    <Position X="4.406" Y="1.625" Height="0.75" Width="3.023" />
+  </Comment>
+  <Comment CommentText="The projectilemanager updates and draws all Projectiles. It does pooling on projectiles for efficency.">
+    <Position X="4.635" Y="2.677" Height="0.677" Width="2.752" />
+  </Comment>
+  <Comment CommentText="The inputmanager provides functionality to check for input. Simple and easy.">
+    <Position X="4.635" Y="3.677" Height="0.75" Width="2.408" />
+  </Comment>
+  <Comment CommentText="Below is the current GameObject Herarchy. It's rather simple really.">
+    <Position X="11.996" Y="0.899" Height="0.364" Width="4.205" />
+  </Comment>
+  <Comment CommentText="The AIStatemachine can switch between all the various AIStates below. BaseEnemyShip holds an AiStateMachine, and trough it use the different AIStates for moving, shooting etc.">
+    <Position X="5.069" Y="6.008" Height="1.37" Width="2.651" />
+  </Comment>
+  <Comment CommentText="Various modules that gameobjects or other classes will use to get the functionality the module has to offer.">
+    <Position X="12.154" Y="8.289" Height="0.474" Width="3.298" />
+  </Comment>
+  <Comment CommentText="The Mesh hierarchy. All VBO information is sent in a MeshInfo object, which holds IDs for VBOs. The meshFactory stores all loaded meshes, and you can request MeshInfos from it. It uses the MeshXMLLoader and Mesh3dsLoader classes to load meshes.">
+    <Position X="22.733" Y="2.87" Height="1.169" Width="2.874" />
+  </Comment>
+  <Comment CommentText="The normalCalculator is used by the MeshXmlLoader to calculate normals">
+    <Position X="25.21" Y="5.061" Height="0.546" Width="2.347" />
+  </Comment>
+  <Comment CommentText="ProjectileTypes is used to decide what type of projectile is fired">
+    <Position X="9.865" Y="8.44" Height="0.474" Width="2.059" />
+  </Comment>
+  <Class Name="MeshInfo" Collapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAQABAAAAAgBCAQAAAAQAAAAAQAACAMgAACAAAAAA=</HashCode>
+      <FileName>MeshInfo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mesh3dsLoader" Collapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAADAAAAAAAAACAAAAEgAAAAAIAAAAgAIAAA=</HashCode>
+      <FileName>Mesh3dsLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeshXmlLoader" Collapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAkEAQAAAAAAAgCAAUEAAAAAAAIIAAAAACACA=</HashCode>
+      <FileName>MeshXmlLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XmlLoader" Collapsed="true">
+    <Position X="21.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAIAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>XmlLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NormalCalculator" Collapsed="true">
+    <Position X="23.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NormalCalculator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logger" Collapsed="true">
+    <Position X="15" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAQAAIAAAIAAAAAAAKCAAAAAAgAAAAABABAAAAAAAA=</HashCode>
+      <FileName>Logger.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogSys" Collapsed="true">
+    <Position X="15" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAgCAAACAAAAAAAAAAAAAAAAAQAAgAAEQAAA=</HashCode>
+      <FileName>LogSys.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameObject" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAIAMAAggBAAAAAAQAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceShip" Collapsed="true">
+    <Position X="12" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAACEAAgAIBgAAAkAACAgABAICIQQAIAQABAAAQAA=</HashCode>
+      <FileName>SpaceShip.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerSpaceShip" Collapsed="true">
+    <Position X="13.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAAAAAAgAAAAAACAAAAAAQQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlayerSpaceShip.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ImperialStarDestroyer" Collapsed="true">
+    <Position X="11" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAAAAAAAAAAAAACABAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImperialStarDestroyer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ImperialTieFighter" Collapsed="true">
+    <Position X="13.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQCAAAAAAAAAAAAAAQACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImperialTieFighter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ImperialTieInterceptor" Collapsed="true">
+    <Position X="8.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAIAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>ImperialTieInterceptor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseEnemyShip" Collapsed="true">
+    <Position X="11" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAIAAAAAAAgACAAAACRAAQAAAAAAgACAAAAAAAAA=</HashCode>
+      <FileName>BaseEnemyShip.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LaserHighCooldown" Collapsed="true">
+    <Position X="15.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>LaserHighCooldown.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projectile" Collapsed="true">
+    <Position X="16.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEYACBAAAQAAAhAAIgAACAACIAAIQQAQIAICAIAAICA=</HashCode>
+      <FileName>Projectile.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LaserLowCooldown" Collapsed="true">
+    <Position X="18" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAACA=</HashCode>
+      <FileName>LaserLowCooldown.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Particle" Collapsed="true">
+    <Position X="10" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AA0AAAAAAAAACkAAAAAAAAAAIAQAAQAJAQABBAAAAAA=</HashCode>
+      <FileName>Particle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Planet" Collapsed="true">
+    <Position X="14.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAAAgAAAgCAAAAAAAAABQAAAAIAAAAAIAA=</HashCode>
+      <FileName>Planet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AABB" Collapsed="true">
+    <Position X="17" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAIAAAAAAAEAhAAAAAABCAAQAAgSAQAAABkACggI=</HashCode>
+      <FileName>AABB.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoundingSphere" Collapsed="true">
+    <Position X="17" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAQAAAQAQAAAAAAACBgAIgAAAAAAAAIAAAAgAACA=</HashCode>
+      <FileName>BoundingSphere.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShooterModule" Collapsed="true">
+    <Position X="11.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAEAAABAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>ShooterModule.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AiState" Collapsed="true">
+    <Position X="3.25" Y="7.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAQAAAAAAAAAAAAAAAAAAEEAAIIAAABAAAAAA=</HashCode>
+      <FileName>AiState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AiStateMachine" Collapsed="true">
+    <Position X="3.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAIAAAAAhAAAIAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AiStateMachine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApproachEdge" Collapsed="true">
+    <Position X="0.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACEAAAAAEAAAAIAQQBAAAQAA=</HashCode>
+      <FileName>ApproachEdge.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApproachRandXYPos" Collapsed="true">
+    <Position X="4" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEABAAAAAAAAAAAAACAAAAAAEAAIAIAQABAAAAAA=</HashCode>
+      <FileName>ApproachRandXYPos.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApproachXYPlayerState" Collapsed="true">
+    <Position X="7.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEABAAAAAAAAAAAAACAAAAAAEAAAAIAAABAAAAAA=</HashCode>
+      <FileName>ApproachXYPlayerState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApproachXYZPlayerState" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEABAAAAAAEAAAAAACAAAAAAEAAAAIAAABAAAAAA=</HashCode>
+      <FileName>ApproachXYZPlayerState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemySpaceshipConstantState" Collapsed="true">
+    <Position X="2.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAEAAAAIAAABAACAAA=</HashCode>
+      <FileName>EnemySpaceshipConstantState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FireState" Collapsed="true">
+    <Position X="4" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAECAAAIAAABAAAAAA=</HashCode>
+      <FileName>FireState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdleState" Collapsed="true">
+    <Position X="5.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAEAAAAIAAABAAAAAA=</HashCode>
+      <FileName>IdleState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StarDestroyerShipSpawning" Collapsed="true">
+    <Position X="7.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAIAAAAAAICAAAAAAEABAAIAEABAAQAAI=</HashCode>
+      <FileName>StarDestroyerShipSpawning.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FleeState" Collapsed="true">
+    <Position X="2.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAICAAAAAAEABAAIAAQBAAAAAA=</HashCode>
+      <FileName>FleeState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrossScreenWhileFireing" Collapsed="true">
+    <Position X="5.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAACAAIAAAEAAAAIAAQBAAAAAA=</HashCode>
+      <FileName>CrossScreenWhileFireing.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VBODrawable" Collapsed="true">
+    <Position X="13.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAgADAAAAGQAgAIAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>VBODrawable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transformable" Collapsed="true">
+    <Position X="11.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oIQCKAAkAACCAAhAAAEQogADAkAAQAQAAARCUgAAAQg=</HashCode>
+      <FileName>Transformable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Texturable" Collapsed="true">
+    <Position X="13.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAABAAAAAAACAQAAAAAAAABQBAACAAAAAE=</HashCode>
+      <FileName>Texturable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeshFactory" Collapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAABAAAAEAAACSAAAAAAAgABAAACAAAAAAI=</HashCode>
+      <FileName>MeshFactory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ParticleManager" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAEAAAAgBAAAAQAAgAAAAAAAiAAAAIgA=</HashCode>
+      <FileName>ParticleManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectileManager" Collapsed="true">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAgBwAAEEAAABAAAAAAACAAEgAAAAAAAAABCAAAAAEA=</HashCode>
+      <FileName>ProjectileManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAABmAAgABAQAQCAAAAAAAABIAAQABAABUBAA=</HashCode>
+      <FileName>GameManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputManager" Collapsed="true">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAUAIAACAACQAAIQAEAAQEEEAAEIQYAAIAAAAQA=</HashCode>
+      <FileName>InputManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceShipManager" Collapsed="true">
+    <Position X="2.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAABIAgAAAAASEASQAAAAAAABABEQACgAAAIAA=</HashCode>
+      <FileName>SpaceShipManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Skybox" Collapsed="true">
+    <Position X="22.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABACAAAAIhIAACAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Skybox.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ProjectileTypes" Collapsed="true">
+    <Position X="9.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectileTypes.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

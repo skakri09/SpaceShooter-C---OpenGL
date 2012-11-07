@@ -9,7 +9,7 @@ void ApproachRandXYPos::Enter( BaseEnemyShip* owner )
 	targetPosition.setZ(-60);
 	targetDirection = targetPosition - *owner->transformable.getPosition();
 	targetDirection.Normalize();
-	velocity = targetDirection * 200;
+	velocity = targetDirection * 120;
 	owner->transformable.SetVelocity(velocity);
 }
 
@@ -17,10 +17,10 @@ void ApproachRandXYPos::UpdateState( BaseEnemyShip* owner, float deltaTime )
 {
 	//Gradually decrementing the velocity of the owner ship when we are getting close to the destination
 	float dist = owner->transformable.getPosition()->Distance(targetPosition);
-	if(dist <= 40)
+	if(dist <= 60)
 	{
 		Vector3D newVel = velocity;
-		newVel*= (dist/40);
+		newVel*= (dist/60);
 		owner->transformable.SetVelocity(newVel);
 		if(dist <= 1)
 		{

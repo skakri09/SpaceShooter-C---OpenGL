@@ -10,8 +10,8 @@
 #ifndef GameConstants_H
 #define GameConstants_H
 
-static const float FRUSTUM_LEFT = -30.0f;
-static const float FRUSTUM_RIGHT = 30.0f;
+static const float FRUSTUM_LEFT = -35.0f;
+static const float FRUSTUM_RIGHT = 35.0f;
 static const float FRUSTUM_TOP = 20.0f;
 static const float FRUSTUM_BOTTOM = -22.0f;
 static const float FRUSTUM_DEPTH = 800.0f;

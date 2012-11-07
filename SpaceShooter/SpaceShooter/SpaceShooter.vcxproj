@@ -93,6 +93,7 @@
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="CrossScreenWhileFireing.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
+    <ClCompile Include="EnvironmentalManager.cpp" />
     <ClCompile Include="FleeState.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
     <ClCompile Include="ParticleManager.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="CrossScreenWhileFireing.h" />
+    <ClInclude Include="EnvironmentalManager.h" />
     <ClInclude Include="FleeState.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
     <ClInclude Include="MeshInfo.h" />
@@ -192,6 +194,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="..\xml\square.xml" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="GameObject.h" />
     <None Include="lib3ds-1_3d.dll" />
   </ItemGroup>

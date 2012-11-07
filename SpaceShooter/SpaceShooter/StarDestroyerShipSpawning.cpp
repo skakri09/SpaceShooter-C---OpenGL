@@ -11,7 +11,7 @@ StarDestroyerShipSpawning::StarDestroyerShipSpawning()
 void StarDestroyerShipSpawning::Enter( BaseEnemyShip* owner )
 {
 	log << INFO << "Entering StarDestroyerShipSpawning" << std::endl;
-	direction = RIGHT;
+	direction = LEFT;
 	owner->transformable.setXVel(20.0f);
 	ownerShip = owner;
 }

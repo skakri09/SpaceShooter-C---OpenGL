@@ -21,6 +21,7 @@
 #include "Skybox.h"
 #include "Texturable.h"
 #include "ProjectileManager.h"
+#include "EnvironmentalManager.h"
 
 #include <gl/glew.h>
 #include <gl/gl.h>
@@ -80,6 +81,7 @@ private:
 	//and ready for input queries
 	InputManager input;
 
+	EnvironmentalManager environment;
 	//Our skybox
 	Skybox skybox;
 

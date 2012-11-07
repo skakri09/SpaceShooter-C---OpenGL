@@ -177,20 +177,6 @@ Vector3D& Transformable::getDirectionVector()
 	return directionVector;
 }
 
-//  P R I V A T E    F U N C T I O N S  //
-//**************************************//
-
-void Transformable::CalculatePosition( float deltaTime )
-{
-	position += (velocity * deltaTime);
-}
-
-void Transformable::UpdateCollisionTransformationInfo()
-{
-	transformationValues.position = position;
-	transformationValues.scale = scale;
-}
-
 void Transformable::SetXPos( float xPos )
 {
 	position.setX(xPos);
@@ -206,4 +192,19 @@ void Transformable::SetZPos( float zPos )
 	position.setZ(zPos);
 }
 
+
+
+//  P R I V A T E    F U N C T I O N S  //
+//**************************************//
+
+void Transformable::CalculatePosition( float deltaTime )
+{
+	position += (velocity * deltaTime);
+}
+
+void Transformable::UpdateCollisionTransformationInfo()
+{
+	transformationValues.position = position;
+	transformationValues.scale = scale;
+}
 

@@ -30,6 +30,40 @@ void ProjectileManager::InitProjectileManager()
 	projectileCooldowns[LASER_SLOW] = laserSlow->GetProjectileCooldown();
 }
 
+void ProjectileManager::UpdateProjectiles(float deltaTime)
+{
+	//Updating the projectiles. Erasing them from the vector if 
+	//they are no longer tagged as "fired"
+	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end();)
+	{
+		if( !(*i)->isFired() )
+		{
+			i = ActiveProjectiles.erase(i);
+		}
+		else
+		{
+			(*i)->Update(deltaTime);
+			++i;
+		}
+	}
+}
+
+void ProjectileManager::DrawProjectiles()
+{
+	glPushMatrix();
+	//Drawing all our projectiles if they are tagged as "fired"
+	glColor3f(1.0f, 0.7f, 0.0f);//orangeish color
+	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end(); i++)
+	{
+		if( (*i)->isFired() )
+		{
+			(*i)->Draw();
+		}
+	}
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glPopMatrix();
+}
+
 void ProjectileManager::Shoot( ProjectileTypes projectileType, Transformable& ownerTrans, GameObject* owner)
 {
 	std::shared_ptr<Projectile> projectile = GetProjectile(projectileType);
@@ -86,40 +120,6 @@ MeshInfo* ProjectileManager::GetMeshInfo( ProjectileTypes projectileType )
 		log << INFO << "projectile meshInfo was not found" << std::endl;
 		return NULL;
 	}
-}
-
-void ProjectileManager::UpdateProjectiles(float deltaTime)
-{
-	//Updating the projectiles. Erasing them from the vector if 
-	//they are no longer tagged as "fired"
-	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end();)
-	{
-		if( !(*i)->isFired() )
-		{
-			i = ActiveProjectiles.erase(i);
-		}
-		else
-		{
-			(*i)->Update(deltaTime);
-			++i;
-		}
-	}
-}
-
-void ProjectileManager::DrawProjectiles()
-{
-	glPushMatrix();
-	//Drawing all our projectiles if they are tagged as "fired"
-	glColor3f(1.0f, 0.7f, 0.0f);//orangeish color
-	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end(); i++)
-	{
-		if( (*i)->isFired() )
-		{
-			(*i)->Draw();
-		}
-	}
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glPopMatrix();
 }
 
 std::vector<std::shared_ptr<Projectile>>* ProjectileManager::GetProjectiles()
