@@ -55,7 +55,7 @@ void Projectile::Update(GLfloat deltaTime)
 		//Makes sure we stop drawing the projectile if it's been "airborne" longer then or 
 		//equal to the constant PROJECTILE_FLYTIME, or it's outside the frustum
 		if(timeSinceFired >= PROJECTILE_FLYTIME 
-			|| transformable.getZPos() > 15 
+			|| transformable.getZPos() > CAMERA_POS+5 
 			|| transformable.getZPos() < -FRUSTUM_DEPTH )
 		{
 			fired = false;

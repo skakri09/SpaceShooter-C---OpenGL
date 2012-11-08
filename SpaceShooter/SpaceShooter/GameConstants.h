@@ -15,6 +15,7 @@ static const float FRUSTUM_RIGHT = 35.0f;
 static const float FRUSTUM_TOP = 20.0f;
 static const float FRUSTUM_BOTTOM = -22.0f;
 static const float FRUSTUM_DEPTH = 1200.0f;
+static const float CAMERA_POS = 30.0f;
 static const unsigned int window_width = 1280;
 static const unsigned int window_height = 900;
 

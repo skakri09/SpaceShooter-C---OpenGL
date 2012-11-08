@@ -95,7 +95,7 @@ void GameManager::init() {
 	//Setting origin to upper left. I had problems getting it to work with lowerleft
 	//so just went with upper left. It takes some getting used to when working with 
 	//texcoords, but it works.
-	ilOriginFunc(IL_ORIGIN_UPPER_LEFT);
+	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
 	ilEnable(IL_ORIGIN_SET);
 
 	DisplayLoadingScreen();
