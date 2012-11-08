@@ -36,7 +36,7 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 		totalFaces = GetNrOfFaces();
 
 		Lib3dsVector* vertices = new Lib3dsVector[totalFaces * 3];
-		//Lib3dsTexel* texCoords = new Lib3dsTexel[totalFaces * 3];
+		Lib3dsTexel* texCoords = new Lib3dsTexel[totalFaces * 3];
 		Lib3dsVector* normals = new Lib3dsVector[totalFaces * 3];
 
 
@@ -52,11 +52,11 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 				Lib3dsFace* face = &mesh->faceL[currentFace];
 				for(unsigned int i = 0; i  < 3; i++)
 				{
-					//if(mesh->texelL)
-					//{	//copying the texcoords. This is not finished yet, and not sure if working
-					//	memcpy(&texCoords[finishedFaces*3 +i], mesh->texelL[face->points[i]], sizeof(Lib3dsVector));
-					//	log << INFO << mesh->faceL[i].material << std::endl;
-					//}
+					if(mesh->texelL)
+					{	//copying the texcoords. This is not finished yet, and not sure if working
+						memcpy(&texCoords[finishedFaces*3 +i], mesh->texelL[face->points[i]], sizeof(float)*2);
+						log << INFO << mesh->faceL[i].material << std::endl;
+					}
 					memcpy(&vertices[finishedFaces*3 +i], mesh->pointL[face->points[i]].pos, sizeof(float)*3);
 				}
 				finishedFaces++;
@@ -75,9 +75,11 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.normals);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsVector) * 3 * totalFaces, &normals[0], GL_STATIC_DRAW);
 
-		//glGenBuffers(1, &meshInfo.textCoords);
-		//glBindBuffer(GL_ARRAY_BUFFER, meshInfo.textCoords);
-		//glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsTexel) * 3 * totalFaces, &texCoords[0], GL_STATIC_DRAW);
+		meshInfo.haveTexCoords = true;
+		glGenBuffers(1, &meshInfo.textCoords);
+		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.textCoords);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsTexel) * 2 * totalFaces, &texCoords[0], GL_STATIC_DRAW);
+		
 		meshInfo.numberOfIndices = totalFaces*3;
 
 		collisionSphere = std::make_shared<BoundingSphere>();

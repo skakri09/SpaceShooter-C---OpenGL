@@ -24,6 +24,7 @@ void Skybox::initSkybox(std::string skyboxName, float size)
 
 void Skybox::drawSkybox()
 {
+	
 	//checking if textures were turned on before enabling
 	bool texIsEnabled; 
 	if(glIsEnabled(GL_TEXTURE_2D))
@@ -125,10 +126,12 @@ void Skybox::drawSkybox()
 	glEnable(GL_DEPTH_TEST);
 	if(!texIsEnabled)
 		glDisable(GL_TEXTURE_2D);
+	
 }
 
 unsigned int Skybox::loadTexture(std::string filename)
 {
+	ilOriginFunc(IL_ORIGIN_UPPER_LEFT);
 	Image img;
 	unsigned int num;       //the id for the texture
 	
@@ -166,7 +169,7 @@ unsigned int Skybox::loadTexture(std::string filename)
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP);      //we repeat the pixels in the edge of the texture, it will hide that 1px wide line at the edge of the cube, which you have seen in the video
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP);      //we do it for vertically and horizontally (previous line)
 	glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,img.width,img.height,0,GL_RGBA,IL_UNSIGNED_BYTE,&img.data[0]);        //we make the actual texture
-	
+	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
 	return num;     //and we return the id
 }
 

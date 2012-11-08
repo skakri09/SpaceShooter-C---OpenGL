@@ -22,6 +22,7 @@ void VBODrawable::Draw()
 
 			glDrawArrays(meshInfo.mode, 0, meshInfo.numberOfIndices);
 			DisableClientStates();
+
 		}
 		else
 		{
@@ -36,6 +37,7 @@ void VBODrawable::Draw()
 	{
 		log << ERRORX << "meshInfo not set" << std::endl;
 	}
+	
 }
 
 void VBODrawable::SetMeshInfo( MeshInfo meshInfo )
@@ -78,8 +80,9 @@ void VBODrawable::EnableClientStates()
 	if(meshInfo.haveTexCoords)
 	{
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		glBindBuffer(GL_TEXTURE_COORD_ARRAY, meshInfo.textCoords);
+		glBindBuffer(GL_ARRAY_BUFFER, meshInfo.textCoords);
 		glTexCoordPointer(2, GL_FLOAT, 0, 0);
+		glBindTexture(GL_TEXTURE_2D,2); 
 	}
 	if(meshInfo.haveIndices)
 	{
@@ -106,7 +109,8 @@ void VBODrawable::DisableClientStates()
 	if(meshInfo.haveTexCoords)
 	{
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-		glBindBuffer(GL_TEXTURE_COORD_ARRAY, 0);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindTexture(GL_TEXTURE_2D,0); 
 	}
 	if(meshInfo.haveIndices)
 	{

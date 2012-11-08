@@ -199,21 +199,25 @@ void GameManager::DisplayLoadingScreen()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	texturable.InitTexture("..//images//LoadingScreen.jpg", "loadingscreen");
 	texturable.BindTexture("loadingscreen");
+	
 	glScalef(2, 2, 2);
+	
+	
 	glBegin(GL_QUADS);
-
-	glTexCoord2f(0, 1);
+	
+	glTexCoord2f(0, 0);
 	glVertex3f(-0.5f, -0.5f, 0.0f);//bottomleft
 	
-	glTexCoord2f(1, 1);
+	glTexCoord2f(1, 0);
 	glVertex3f(0.5f, -0.5f, 0.0f);//bottomright
 	
-	glTexCoord2f(1, 0);
+	glTexCoord2f(1, 1);
 	glVertex3f(0.5f, 0.5f, 0.0f);//topright
 
-	glTexCoord2f(0, 0);
+	glTexCoord2f(0, 1);
 	glVertex3f(-0.5f, 0.5f, 0.0f);//topleft
 	glEnd();
+	
 	texturable.UnbindTexture();
 	SDL_GL_SwapBuffers();
 }
