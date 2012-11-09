@@ -19,7 +19,7 @@ class MenuEntry
 public:
     MenuEntry(std::string entryText, 
 			float xPos, float yPos, float zPos,
-			float scale );
+			float scale, bool centered = true );
 
     ~MenuEntry();
 
@@ -44,7 +44,7 @@ private:
 
 	std::shared_ptr<VboString> EntryText;
 
-	void CreateEntryText(std::string& entryText);
+	void CreateEntryText(std::string* entryText, float scale, bool centered);
 
 	VBODrawable vbo;
 };

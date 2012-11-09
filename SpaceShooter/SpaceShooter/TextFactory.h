@@ -11,6 +11,7 @@
 #include <string>
 #include <map>
 #include <memory>
+#include <algorithm>
 
 #include "Logger.h"
 #include "MeshFactory.h"
@@ -24,7 +25,14 @@ struct VboLetter
 	char letter;
 };
 
-typedef std::vector<VboLetter> VboString;
+typedef std::vector<VboLetter> VboLetters;
+
+struct VboString
+{
+	VboLetters vboLetters;
+	float stringLength;
+};
+
 
 class TextFactory
 {
@@ -37,7 +45,7 @@ public:
 	//Each VboLetter has a letter specific position to be used as string 
 	//offset, a meshinfo pointer for each specific letter, and a char to 
 	//identify the letter the VboLetter represents
-	std::shared_ptr<VboString> GetVboString(std::string& text);
+	std::shared_ptr<VboString> GetVboString(std::string* text);
 
 protected:
 
@@ -46,7 +54,6 @@ private:
 	~TextFactory();
 
 	Logger log;
-
 
 	std::map<char, std::shared_ptr<MeshInfo>> alphabet;
 

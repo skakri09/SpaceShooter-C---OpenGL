@@ -2,7 +2,7 @@
 
 
 PlayGameEntry::PlayGameEntry()
-	:MenuEntry("some text", -25, 0, 0, 0.1f)
+	:MenuEntry("Play Game", 0, 0, 0, 0.08f)
 {
 }
 

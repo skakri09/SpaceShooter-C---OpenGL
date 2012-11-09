@@ -30,24 +30,100 @@ void TextFactory::InitTextFactory()
 }
 
 
-std::shared_ptr<VboString> TextFactory::GetVboString( std::string& text )
+std::shared_ptr<VboString> TextFactory::GetVboString( std::string* text )
 {
-	std::shared_ptr<VboString> retVec = std::make_shared<VboString>();
+	std::shared_ptr<VboString> retString = std::make_shared<VboString>();
 
-	float offset = 0.0f;
-	float textLength = 1;
-	for(std::string::iterator i = text.begin(); i != text.end(); i++)
+	//Making sure the string is completely lowercase as 
+	//we only support lowercase ascii a-z
+	std::transform(text->begin(), text->end(), text->begin(), ::tolower);
+
+	Vector3D position(0.0f, 0.0f, 0.0f);
+	int nextLetterAdjustment = 0;
+	retString->stringLength = 0.0f;
+	for(std::string::iterator i = text->begin(); i != text->end(); i++)
 	{
+		if(*i == '\n')
+		{	//Moving line down
+			position.setY(position.getY()-60);
+			position.setX(0.0f);
+			continue;
+		}
 		VboLetter letter = GetVboLetter(*i);
-		
-		Vector3D position(offset*50.0f, 0.0f, 0.0f);
+	
+		if(letter.letter == 'i')
+		{
+			retString->stringLength += (40+nextLetterAdjustment);
+			position.setX((position.getX()+40+nextLetterAdjustment));
+			nextLetterAdjustment = -10;
+		}
+		else if(letter.letter == 'j')
+		{
+			retString->stringLength += (40+nextLetterAdjustment);
+			position.setX((position.getX()+40+nextLetterAdjustment));
+			nextLetterAdjustment = -10;
+		}
+		else if(letter.letter == 'w')
+		{
+			retString->stringLength += (60+nextLetterAdjustment);
+			position.setX((position.getX()+60+nextLetterAdjustment));
+			nextLetterAdjustment = 10;
+		}
+		else if(letter.letter == 'v')
+		{
+			retString->stringLength += (55+nextLetterAdjustment);
+			position.setX((position.getX()+55+nextLetterAdjustment));
+			nextLetterAdjustment = 5;
+		}
+		else if(letter.letter == 'x')
+		{
+			retString->stringLength += (55+nextLetterAdjustment);
+			position.setX((position.getX()+55+nextLetterAdjustment));
+			nextLetterAdjustment = 5;
+		}
+		else if(letter.letter == 'y')
+		{
+			retString->stringLength += (55+nextLetterAdjustment);
+			position.setX((position.getX()+55+nextLetterAdjustment));
+			nextLetterAdjustment = 5;
+		}
+		else if(letter.letter == 'c')
+		{
+			retString->stringLength += (55+nextLetterAdjustment);
+			position.setX((position.getX()+55+nextLetterAdjustment));
+			nextLetterAdjustment = 5;
+		}
+		else if(letter.letter == 'q')
+		{
+			retString->stringLength += (50+nextLetterAdjustment);
+			position.setX((position.getX()+50+nextLetterAdjustment));
+			nextLetterAdjustment = 5;
+		}
+		else if(letter.letter == 'm')
+		{
+			retString->stringLength += (55+nextLetterAdjustment);
+			position.setX((position.getX()+55+nextLetterAdjustment));
+			nextLetterAdjustment = 5;
+		}
+		else if(letter.letter != ' ')
+		{
+			retString->stringLength += (50+nextLetterAdjustment);
+			position.setX((position.getX()+50+nextLetterAdjustment));
+			nextLetterAdjustment = 0;
+		}
+		else //Space
+		{
+			position.setX(position.getX() + 30);
+			retString->stringLength += 30;
+			continue;
+		}
+
 		letter.stringPosition.Init(position, 1, Vector3D::ZeroVec());
 
-		retVec->push_back(letter);
-		
-		offset++;
+		retString->vboLetters.push_back(letter);
 	}
-	return retVec;
+	
+	return retString;
 }
 
 
