@@ -32,8 +32,7 @@ void Planet::Update( GLfloat deltaTime )
 
 void Planet::InitPlanet( float xPos, float yPos, float zPos )
 {
-	Vector3D zeroVec;
-	transformable.Init(xPos, yPos, zPos, zeroVec, 0, 2.0f, zeroVec);
+	transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 0, 2.0f, Vector3D::ZeroVec());
 }
 
 void Planet::CreatePlanet( std::string meshName )
@@ -42,7 +41,7 @@ void Planet::CreatePlanet( std::string meshName )
 	{
 		std::string meshPath = "..//3ds//Planets//";
 		meshPath += meshName;
-		MeshInfo meshInfo = MeshFactory::Inst()->GetMesh(meshPath);
+		std::shared_ptr<MeshInfo> meshInfo = MeshFactory::Inst()->GetMesh(meshPath);
 
 		vboDrawable.SetMeshInfo(meshInfo);
 	}

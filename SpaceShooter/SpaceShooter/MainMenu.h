@@ -32,6 +32,7 @@ protected:
 private:
 	Skybox skybox;
 
+	PlayGameEntry playGame;
 
 };
 

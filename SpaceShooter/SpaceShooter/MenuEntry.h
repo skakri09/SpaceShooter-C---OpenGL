@@ -27,7 +27,7 @@ public:
 	//menu entry is clicked
 	virtual void OnClicked() = 0;
 
-	virtual void UpdateEntry();
+	virtual void UpdateEntry(float deltaTime);
 
 	virtual void DrawEntry();
 
@@ -40,7 +40,10 @@ private:
 
 	bool isSelected;
 
+	Transformable EntryTransformable;
+
 	std::shared_ptr<VboString> EntryText;
+
 	void CreateEntryText(std::string& entryText);
 
 	VBODrawable vbo;

@@ -31,18 +31,22 @@ public:
 
 	void drawSkybox();
 
+	void UpdateSkybox(float deltaTime);
+
 	unsigned int skybox[6];
 
 	
 
 private:
 	float size;
+	float rotate;
 
 	Logger log;
 
 	unsigned int loadTexture(std::string filename);
 
 	enum faces{SKY_LEFT=0, SKY_BACK, SKY_RIGHT, SKY_FRONT, SKY_TOP, SKY_BOTTOM};
+
 };
 
 #endif // Skybox_h__

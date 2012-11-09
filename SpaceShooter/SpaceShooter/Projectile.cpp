@@ -67,8 +67,8 @@ void Projectile::Update(GLfloat deltaTime)
 void Projectile::FireProjectile( Transformable& ownerTransformable, GameObject* owner)
 {
 	SetOwner(owner);
-	Vector3D zeroVec;
-	transformable.Init(*ownerTransformable.getPosition(), zeroVec, 0, 1,
+
+	transformable.Init(*ownerTransformable.getPosition(), Vector3D::ZeroVec(), 0, 1,
 						ownerTransformable.getDirectionVector());
 	
 	transformable.SetScale(scale, scale, scale);

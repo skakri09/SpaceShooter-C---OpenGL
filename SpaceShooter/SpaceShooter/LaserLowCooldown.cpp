@@ -14,15 +14,15 @@ void LaserLowCooldown::CreateProjectile(ProjectileTypes projectileType,  std::st
 {
 	if(!vboDrawable.HaveMeshInfo())
 	{
-		MeshInfo* _meshInfo = ProjectileManager::Inst()->GetMeshInfo(projectileType);
+		std::shared_ptr<MeshInfo> _meshInfo = ProjectileManager::Inst()->GetMeshInfo(projectileType);
 		if(_meshInfo == NULL)
 		{
 			std::string meshPath = "..//xml//Projectiles//";
 			meshPath += meshPathFromXmlFolder;
-			MeshInfo meshInfo = MeshFactory::Inst()->GetMesh(meshPath);
+			std::shared_ptr<MeshInfo> meshInfo = MeshFactory::Inst()->GetMesh(meshPath);
 
-			vboDrawable.SetMeshInfo(&meshInfo);
-			collisionSphere = *meshInfo.collisionSphere;
+			vboDrawable.SetMeshInfo(meshInfo);
+			collisionSphere = *meshInfo->collisionSphere;
 		}
 		else
 		{

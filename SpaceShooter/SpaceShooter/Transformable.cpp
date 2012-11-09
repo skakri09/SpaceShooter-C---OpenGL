@@ -55,8 +55,8 @@ void Transformable::Init( Vector3D startPos, float scale, Vector3D velocity )
 	directionVector = velocity;//.Normalize();
 
 	objectRotationDegrees = 0.0f;
-	Vector3D zerovec; 
-	rotationAxis = zerovec;
+
+	rotationAxis = Vector3D::ZeroVec();
 
 	this->velocity = velocity;
 	UpdateCollisionTransformationInfo();
@@ -206,5 +206,10 @@ void Transformable::UpdateCollisionTransformationInfo()
 {
 	transformationValues.position = position;
 	transformationValues.scale = scale;
+}
+
+Vector3D& Transformable::GetScale()
+{
+	return scale;
 }
 

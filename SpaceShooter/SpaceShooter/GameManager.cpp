@@ -111,42 +111,30 @@ void GameManager::init() {
 	//the gluPerspective() and glViewPort() calls 
 	//+ some other stuff
 	input.resize(window_width, window_height);
-	rotate = 0;
-	currentGameState = GAME;
-	menu.Init(&input);
+	currentGameState = MENU;
+	menu = std::make_shared<MainMenu>();
+	menu->Init(&input);
 }
 
 void GameManager::RenderGame() 
 {
-	//Clear screen, and set the correct program
 	glPushMatrix();
-
-	glPushMatrix();
-	glLoadIdentity();
-	//rotating the spacebox slightly to make it look more alive.
-	glRotatef(rotate, 0, 1, 0);
 
 	skybox.drawSkybox();
-	glPopMatrix();
 
-	glClear(GL_DEPTH_BUFFER_BIT);
 	environment.DrawEnvironment();
 	ParticleManager::Inst()->DrawParticles();
 	SpaceShipManager::Inst()->DrawSpaceShips();
 	ProjectileManager::Inst()->DrawProjectiles();
 	checkGLErrors();
+
 	glPopMatrix();
 }
 
 void GameManager::UpdateGame()
 {
-	rotate += deltaTime*1.5f;
-	if(rotate >= 360)
-	{
-		rotate -=360;
-	}
-
 	environment.Update(deltaTime);
+	skybox.UpdateSkybox(deltaTime);
 	ParticleManager::Inst()->UpdateParticles(deltaTime);
 	SpaceShipManager::Inst()->UpdateManager(deltaTime, doExit);
 	ProjectileManager::Inst()->UpdateProjectiles(deltaTime);
@@ -194,8 +182,8 @@ void GameManager::GameLoop()
 		}
 		else if(currentGameState == MENU)
 		{
-			menu.UpdateMenu(deltaTime);
-			menu.DrawMenu();
+			menu->UpdateMenu(deltaTime);
+			menu->DrawMenu();
 		}
 		SDL_GL_SwapBuffers();
 	}

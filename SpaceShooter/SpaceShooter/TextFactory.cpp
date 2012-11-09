@@ -34,13 +34,18 @@ std::shared_ptr<VboString> TextFactory::GetVboString( std::string& text )
 {
 	std::shared_ptr<VboString> retVec = std::make_shared<VboString>();
 
+	float offset = 0.0f;
+	float textLength = 1;
 	for(std::string::iterator i = text.begin(); i != text.end(); i++)
 	{
 		VboLetter letter = GetVboLetter(*i);
 		
-		
-		log << WARN << letter.letter << std::endl;
+		Vector3D position(offset*50.0f, 0.0f, 0.0f);
+		letter.stringPosition.Init(position, 1, Vector3D::ZeroVec());
+
 		retVec->push_back(letter);
+		
+		offset++;
 	}
 	return retVec;
 }
@@ -61,20 +66,20 @@ VboLetter TextFactory::GetVboLetter( char letter )
 	{
 		log << ERRORX << letter << " is not a supported letter. Only lowercase a-z, returning 'a'" << std::endl;
 		
-		retLetter.meshInfo = &alphabet['a'];
+		retLetter.meshInfo = alphabet['a'];
 		retLetter.letter = 'a';
 	}
 	else //Letter is a valid ascii a-z lowercast
 	{
 		if(alphabet.find(letter) != alphabet.end())
 		{
-			retLetter.meshInfo = &alphabet.find(letter)->second;
+			retLetter.meshInfo = alphabet.find(letter)->second;
 			retLetter.letter = letter;
 		}
 		else
 		{
 			log << CRITICAL << "Cannot find letter. " << letter << ". Returning 'a'" << std::endl;
-			retLetter.meshInfo = &alphabet['a'];
+			retLetter.meshInfo = alphabet['a'];
 			retLetter.letter = 'a';
 		}
 	}

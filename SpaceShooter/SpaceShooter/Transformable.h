@@ -77,6 +77,7 @@ public:
 	//in the transformationValues struct
 	void SetScale(float x, float y, float z);
 
+	Vector3D& GetScale();
 	CollisionTransformationInfo& GetCollisionTransformationInfo();
 	
 	Vector3D& getDirectionVector();

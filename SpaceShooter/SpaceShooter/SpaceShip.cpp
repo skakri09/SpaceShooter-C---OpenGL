@@ -58,10 +58,10 @@ void SpaceShip::CreateGameObject(std::string meshPathFrom3dsFolder)
 	{
 		std::string meshPath = "..//3ds//";
 		meshPath += meshPathFrom3dsFolder;
-		MeshInfo meshInfo = MeshFactory::Inst()->GetMesh(meshPath);
+		std::shared_ptr<MeshInfo> meshInfo = MeshFactory::Inst()->GetMesh(meshPath);
 
 		vboDrawable.SetMeshInfo(meshInfo);
-		collisionSphere = *meshInfo.collisionSphere;
+		collisionSphere = *meshInfo->collisionSphere;
 	}
 }
 

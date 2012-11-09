@@ -16,7 +16,6 @@ void Particle::InitParticle(Vector3D startPos, Vector3D velocity,
 	life = 1.0f; 
 	fade = fadeSpeed;
 
-	Vector3D zerovec;
 	transformation.Init(startPos, scale, velocity);
 
 	this->r = r;
@@ -56,7 +55,7 @@ void Particle::CreateParticle( std::string particleNameNoExtension )
 		
 		//Image img = ReadImage(particleImgPath);
 
- 		MeshInfo meshInfo = MeshFactory::Inst()->GetMesh(particleMeshpath);
+ 		std::shared_ptr<MeshInfo> meshInfo = MeshFactory::Inst()->GetMesh(particleMeshpath);
 
 		vbo.SetMeshInfo(meshInfo);
 	}

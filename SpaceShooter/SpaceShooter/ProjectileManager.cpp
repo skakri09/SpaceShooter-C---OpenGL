@@ -109,11 +109,11 @@ std::shared_ptr<Projectile> ProjectileManager::GetProjectile( ProjectileTypes pr
 	return projectiles.back();
 }
 
-MeshInfo* ProjectileManager::GetMeshInfo( ProjectileTypes projectileType )
+std::shared_ptr<MeshInfo> ProjectileManager::GetMeshInfo( ProjectileTypes projectileType )
 {
 	if(MeshInfos.find(projectileType) != MeshInfos.end())
 	{
-		return &MeshInfos.find(projectileType)->second;
+		return MeshInfos.find(projectileType)->second;
 	}
 	else
 	{

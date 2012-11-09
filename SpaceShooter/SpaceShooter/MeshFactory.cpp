@@ -16,7 +16,7 @@ MeshFactory* MeshFactory::Inst()
 	return instance;
 }
 
-MeshInfo MeshFactory::GetMesh( std::string meshName)
+std::shared_ptr<MeshInfo> MeshFactory::GetMesh( std::string meshName)
 {
 	if(LoadedMeshes.find(meshName) != LoadedMeshes.end())
 	{
@@ -28,19 +28,20 @@ MeshInfo MeshFactory::GetMesh( std::string meshName)
 		if(extension == "3ds")
 		{
 			//load 3ds file
-			LoadedMeshes[meshName] = mesh3dsLoader.Load3dsMesh(meshName);
+			LoadedMeshes[meshName] = std::make_shared<MeshInfo>();
+			*LoadedMeshes[meshName] = mesh3dsLoader.Load3dsMesh(meshName);
+
 			return LoadedMeshes[meshName];
 		}
 		else if(extension == "xml")
 		{
 			//load xml file
-			LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
-			return LoadedMeshes[meshName];
+			LoadedMeshes[meshName] = std::make_shared<MeshInfo>();
+			*LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
+			return LoadedMeshes[meshName]; 
 		}
 	}
-	MeshInfo WasNotAbleToLoadMeshDurp;
-
-	return WasNotAbleToLoadMeshDurp;
+	return std::make_shared<MeshInfo>();
 }
 
 void MeshFactory::LoadMesh( std::string meshName )
@@ -55,12 +56,14 @@ void MeshFactory::LoadMesh( std::string meshName )
 		if(extension == "3ds")
 		{
 			//load 3ds file
-			LoadedMeshes[meshName] = mesh3dsLoader.Load3dsMesh(meshName);
+			LoadedMeshes[meshName] = std::make_shared<MeshInfo>();
+			*LoadedMeshes[meshName] = mesh3dsLoader.Load3dsMesh(meshName);
 		}
 		else if(extension == "xml")
 		{
 			//load xml file
-			LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
+			LoadedMeshes[meshName] = std::make_shared<MeshInfo>();
+			*LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
 		}
 	}
 }

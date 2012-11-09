@@ -20,7 +20,7 @@
 struct VboLetter
 {
 	Transformable stringPosition;
-	MeshInfo* meshInfo;
+	std::shared_ptr<MeshInfo> meshInfo;
 	char letter;
 };
 
@@ -48,7 +48,7 @@ private:
 	Logger log;
 
 
-	std::map<char, MeshInfo> alphabet;
+	std::map<char, std::shared_ptr<MeshInfo>> alphabet;
 
 	//Retrieves a character from the alphabet map
 	VboLetter GetVboLetter(char letter);

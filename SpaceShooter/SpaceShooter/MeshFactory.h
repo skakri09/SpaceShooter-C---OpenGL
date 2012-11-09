@@ -10,6 +10,7 @@
 #define MeshFactory_h__
 
 #include <map>
+#include <memory>
 
 #include "Mesh3dsLoader.h"
 #include "MeshXmlLoader.h"
@@ -24,7 +25,7 @@ public:
 	//Returns a meshInfo object containing info for the 
 	//requested mesh object if it exists. If it has not been 
 	//loaded yet, that is done automatically
-	MeshInfo GetMesh(std::string meshName);
+	std::shared_ptr<MeshInfo> GetMesh(std::string meshName);
 
 	//Loads a mesh to the GPU if it has not allready been loaded
 	//This should be done when loading a new game/level to all 
@@ -43,7 +44,7 @@ private:
 	//after the '.' in a filepath, aka the file extension
 	std::string GetExtension(std::string& filePath);
 
-	std::map<std::string, MeshInfo> LoadedMeshes;
+	std::map<std::string, std::shared_ptr<MeshInfo>> LoadedMeshes;
 
 	Mesh3dsLoader mesh3dsLoader;
 	MeshXmlLoader xmlMeshLoader;

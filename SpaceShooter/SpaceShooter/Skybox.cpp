@@ -20,11 +20,14 @@ void Skybox::initSkybox(std::string skyboxName, float size)
 	skybox[SKY_TOP]=loadTexture(boxPath + "top.png");
 	skybox[SKY_BOTTOM]=loadTexture(boxPath + "bottom.png");
 	this->size = size;
+	rotate = 0.0f;
 }
 
 void Skybox::drawSkybox()
 {
-	
+	glPushMatrix();
+	glLoadIdentity();
+	glRotatef(rotate, 0, 1, 0);
 	//checking if textures were turned on before enabling
 	bool texIsEnabled; 
 	if(glIsEnabled(GL_TEXTURE_2D))
@@ -127,6 +130,8 @@ void Skybox::drawSkybox()
 	if(!texIsEnabled)
 		glDisable(GL_TEXTURE_2D);
 	
+	glPopMatrix();
+	glClear(GL_DEPTH_BUFFER_BIT);
 }
 
 unsigned int Skybox::loadTexture(std::string filename)
@@ -171,5 +176,14 @@ unsigned int Skybox::loadTexture(std::string filename)
 	glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,img.width,img.height,0,GL_RGBA,IL_UNSIGNED_BYTE,&img.data[0]);        //we make the actual texture
 	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
 	return num;     //and we return the id
+}
+
+void Skybox::UpdateSkybox( float deltaTime )
+{
+	rotate += deltaTime*1.5f;
+	if(rotate >= 360)
+	{
+		rotate -=360;
+	}
 }
 

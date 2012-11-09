@@ -181,3 +181,9 @@ Vector3D Vector3D::CrossProduct( const Vector3D& vector2 ) const
 	return crossProduct;
 }
 
+Vector3D Vector3D::ZeroVec()
+{
+	Vector3D ZeroVec;
+	return ZeroVec;
+}
+

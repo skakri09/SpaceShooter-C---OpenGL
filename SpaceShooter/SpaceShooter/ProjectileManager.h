@@ -38,7 +38,7 @@ public:
 	float GetProjectileCooldown(ProjectileTypes projectileType);
 
 	//Returns meshinfo for the specified projectile type
-	MeshInfo* GetMeshInfo(ProjectileTypes projectileType);
+	std::shared_ptr<MeshInfo> GetMeshInfo(ProjectileTypes projectileType);
 	
 	//Returns a pointer to the vector of Projectiles currently held by this 
 	//manager.
@@ -53,7 +53,7 @@ private:
 	std::map<ProjectileTypes, float> projectileCooldowns; 
 	
 	//Map holding the meshinfo for each projectile
-	std::map<ProjectileTypes, MeshInfo> MeshInfos;
+	std::map<ProjectileTypes, std::shared_ptr<MeshInfo>> MeshInfos;
 
 	//Returns a projectile object of the param type
 	std::shared_ptr<Projectile> GetProjectile(ProjectileTypes projectileType);

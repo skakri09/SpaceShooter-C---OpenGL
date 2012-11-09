@@ -92,13 +92,9 @@ private:
 	//so we have something to look at while loading.
 	void DisplayLoadingScreen();
 
-	//A simple variable used to rotate the skybox to make everything 
-	//look slightly more alive
-	float rotate;
-
 	GameState currentGameState;
 
-	MainMenu menu;
+	std::shared_ptr<MainMenu> menu;
 };
 
 #endif // _GAMEMANAGER_H_
