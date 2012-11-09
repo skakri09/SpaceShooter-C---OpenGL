@@ -34,9 +34,6 @@ public:
 	//using this function, rely on the predefined game-
 	//specific functions instead.
 	bool KeyDownHold(SDLKey key);
-	
-	//Returning true when the game should be quit (escape or 'q')
-	bool Quit();
 
 	//Returning true if left mouse btn is being held down
 	bool LeftMouseDownHold();

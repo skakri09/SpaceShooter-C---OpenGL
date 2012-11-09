@@ -113,7 +113,7 @@ void GameManager::init() {
 	input.resize(window_width, window_height);
 	currentGameState = MENU;
 	menu = std::make_shared<MainMenu>();
-	menu->Init(&input);
+	menu->Init(&input, &doExit);
 }
 
 void GameManager::RenderGame() 

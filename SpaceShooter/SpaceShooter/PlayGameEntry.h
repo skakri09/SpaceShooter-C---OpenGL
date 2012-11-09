@@ -13,7 +13,7 @@
 class PlayGameEntry : public MenuEntry
 {
 public:
-    PlayGameEntry();
+    PlayGameEntry(float xPos, float yPos, float zPos, float scale);
     ~PlayGameEntry();
 
 	virtual void OnClicked();

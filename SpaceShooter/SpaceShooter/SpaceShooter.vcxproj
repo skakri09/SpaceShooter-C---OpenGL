@@ -101,6 +101,7 @@
     <ClCompile Include="ParticleManager.cpp" />
     <ClCompile Include="PlayGameEntry.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
+    <ClCompile Include="QuitGameEntry.cpp" />
     <ClCompile Include="TextFactory.cpp" />
     <ClCompile Include="Texturable.cpp" />
     <ClCompile Include="Planet.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="ParticleManager.h" />
     <ClInclude Include="PlayGameEntry.h" />
     <ClInclude Include="ProjectileManager.h" />
+    <ClInclude Include="QuitGameEntry.h" />
     <ClInclude Include="TextFactory.h" />
     <ClInclude Include="Texturable.h" />
     <ClInclude Include="Planet.h" />

@@ -289,6 +289,9 @@
     <ClCompile Include="PlayGameEntry.cpp">
       <Filter>Game\Menu\MenuEntries\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QuitGameEntry.cpp">
+      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -469,6 +472,9 @@
       <Filter>Game\Factories\MeshFactory</Filter>
     </ClInclude>
     <ClInclude Include="PlayGameEntry.h">
+      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitGameEntry.h">
       <Filter>Game\Menu\MenuEntries\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

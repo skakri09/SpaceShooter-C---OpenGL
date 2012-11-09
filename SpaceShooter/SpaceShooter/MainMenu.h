@@ -10,11 +10,13 @@
 
 #include <SDL.h>
 #include <gl/glew.h>
+#include <memory>
 
 #include "Skybox.h"
 #include "InputManager.h"
 #include "MenuEntry.h"
 #include "PlayGameEntry.h"
+#include "QuitGameEntry.h"
 
 class MainMenu
 {
@@ -22,7 +24,7 @@ public:
     MainMenu();
     ~MainMenu();
 
-	void Init(InputManager* input);
+	void Init(InputManager* input, bool* quitGame);
 
 	void UpdateMenu(float deltaTime);
 
@@ -32,8 +34,10 @@ protected:
 private:
 	Skybox skybox;
 
-	PlayGameEntry playGame;
+	InputManager* input;
 
+	std::shared_ptr<PlayGameEntry> playGameEntry;
+	std::shared_ptr<QuitGameEntry> quitGameEntry;
 };
 
 #endif // MainMenu_h__
