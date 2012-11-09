@@ -27,6 +27,7 @@ public:
 		float dirVecX, float dirVecY, float dirVecZ);
 
 protected:
+	void Draw();
 
 private:
 	Logger log;

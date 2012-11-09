@@ -27,7 +27,7 @@ void SpaceShipManager::InitManager(InputManager* input)
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
-
+	MeshFactory::Inst()->LoadMesh("..//3ds//MilleniumFalcon//MilleniumFalcon.3ds");
 	
 	player.InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(&player));

@@ -26,3 +26,10 @@ void ImperialStarDestroyer::InitSpaceShip( float startX, float startY, float sta
 
 	CreateGameObject("ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 }
+
+void ImperialStarDestroyer::Draw()
+{
+	glColor3f(0.5f, 0.5f, 0.5f);
+	BaseEnemyShip::Draw();
+	glColor3f(1, 1, 1);
+}

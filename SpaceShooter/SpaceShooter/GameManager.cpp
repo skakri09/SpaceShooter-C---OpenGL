@@ -100,6 +100,7 @@ void GameManager::init() {
 
 	DisplayLoadingScreen();
 	setOpenGLStates();
+	TextFactory::Inst()->InitTextFactory();
 	ProjectileManager::Inst()->InitProjectileManager();
 	SpaceShipManager::Inst()->InitManager(&input);
 	ParticleManager::Inst()->InitParticleManager();
@@ -111,13 +112,15 @@ void GameManager::init() {
 	//+ some other stuff
 	input.resize(window_width, window_height);
 	rotate = 0;
+	currentGameState = GAME;
+	menu.Init(&input);
 }
 
-void GameManager::render() {
+void GameManager::RenderGame() 
+{
 	//Clear screen, and set the correct program
 	glPushMatrix();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
 	glPushMatrix();
 	glLoadIdentity();
 	//rotating the spacebox slightly to make it look more alive.
@@ -133,10 +136,9 @@ void GameManager::render() {
 	ProjectileManager::Inst()->DrawProjectiles();
 	checkGLErrors();
 	glPopMatrix();
-	SDL_GL_SwapBuffers();
 }
 
-void GameManager::update()
+void GameManager::UpdateGame()
 {
 	rotate += deltaTime*1.5f;
 	if(rotate >= 360)
@@ -144,7 +146,6 @@ void GameManager::update()
 		rotate -=360;
 	}
 
-	input.Update(doExit);
 	environment.Update(deltaTime);
 	ParticleManager::Inst()->UpdateParticles(deltaTime);
 	SpaceShipManager::Inst()->UpdateManager(deltaTime, doExit);
@@ -182,8 +183,21 @@ void GameManager::GameLoop()
 			fps = 0;
 			sec = 0;
 		}
-		update();
-		render();		
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		
+		input.Update(doExit);
+
+		if(currentGameState == GAME)
+		{
+			UpdateGame();
+			RenderGame();
+		}
+		else if(currentGameState == MENU)
+		{
+			menu.UpdateMenu(deltaTime);
+			menu.DrawMenu();
+		}
+		SDL_GL_SwapBuffers();
 	}
 
 	quit();

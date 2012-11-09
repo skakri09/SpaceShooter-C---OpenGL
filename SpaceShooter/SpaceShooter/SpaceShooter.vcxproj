@@ -96,8 +96,12 @@
     <ClCompile Include="EnvironmentalManager.cpp" />
     <ClCompile Include="FleeState.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MenuEntry.cpp" />
     <ClCompile Include="ParticleManager.cpp" />
+    <ClCompile Include="PlayGameEntry.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
+    <ClCompile Include="TextFactory.cpp" />
     <ClCompile Include="Texturable.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Skybox.cpp" />
@@ -143,9 +147,13 @@
     <ClInclude Include="EnvironmentalManager.h" />
     <ClInclude Include="FleeState.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MenuEntry.h" />
     <ClInclude Include="MeshInfo.h" />
     <ClInclude Include="ParticleManager.h" />
+    <ClInclude Include="PlayGameEntry.h" />
     <ClInclude Include="ProjectileManager.h" />
+    <ClInclude Include="TextFactory.h" />
     <ClInclude Include="Texturable.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="ProjectileTypes.h" />

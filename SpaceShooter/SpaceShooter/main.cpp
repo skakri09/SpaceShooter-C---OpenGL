@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 		game->init();
 		game->GameLoop();
 		delete game;
+
 	} 
 	catch (std::exception &e) 
 	{

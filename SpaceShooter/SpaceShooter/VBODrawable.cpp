@@ -5,7 +5,7 @@ using GLUtils::checkGLErrors;
 VBODrawable::VBODrawable()
 	:log("VBODrawable", WARN)
 {
-	haveMeshInfo = false;
+	meshinfoStatus = NO_MESHINFO;
 }
 
 VBODrawable::~VBODrawable()
@@ -14,7 +14,7 @@ VBODrawable::~VBODrawable()
 
 void VBODrawable::Draw()
 {
-	if(haveMeshInfo)
+	if(meshinfoStatus == OBJECT_MESHINFO)
 	{
 		if(!meshInfo.haveIndices)
 		{
@@ -33,6 +33,26 @@ void VBODrawable::Draw()
 			DisableClientStates();	
 		}
 	}
+	else if(meshinfoStatus == POINTER_MESHINFO)
+	{
+		if(!meshInfo_p->haveIndices)
+		{
+			EnableClientStates();
+
+			glDrawArrays(meshInfo_p->mode, 0, meshInfo_p->numberOfIndices);
+			DisableClientStates();
+
+		}
+		else
+		{
+			EnableClientStates();
+
+			glDrawElements(meshInfo_p->mode, meshInfo_p->numberOfIndices, GL_UNSIGNED_INT, 0);
+
+			DisableClientStates();	
+		}
+	}
+
 	else
 	{
 		log << ERRORX << "meshInfo not set" << std::endl;
@@ -42,8 +62,15 @@ void VBODrawable::Draw()
 
 void VBODrawable::SetMeshInfo( MeshInfo meshInfo )
 {
-	this->meshInfo = meshInfo;
-	haveMeshInfo = true;
+	meshInfo_p = &meshInfo;
+	//this->meshInfo = meshInfo;
+	meshinfoStatus = OBJECT_MESHINFO;
+}
+
+void VBODrawable::SetMeshInfo( MeshInfo* meshInfo )
+{
+	meshInfo_p = meshInfo;
+	meshinfoStatus = POINTER_MESHINFO;
 }
 
 bool VBODrawable::HaveMeshInfo()

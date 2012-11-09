@@ -13,6 +13,8 @@
 #include <memory>
 #include <SDL.h>
 
+#include "TextFactory.h"
+#include "MainMenu.h"
 #include "Timer.h"
 #include "SpaceShipManager.h"
 #include "InputManager.h"
@@ -25,6 +27,8 @@
 
 #include <gl/glew.h>
 #include <gl/gl.h>
+
+enum GameState{MENU, GAME};
 
 //Forward declaring InputManager class as this class rely on it,
 //and the InputManager class rely on this class.
@@ -47,17 +51,16 @@ public:
 	void quit();
 
 	//Function that calls all render functions from other managers
-	void render();
+	void RenderGame();
 
 	//function that calls all update functions from other managers
 	//and takes care of swapping buffers
-	void update();
+	void UpdateGame();
 	
 	//Function that is called when the window is resized
 	void resize(unsigned int width, unsigned int height);
 
 private:
-
 	//Creates the OpenGL context using SDL
 	void createOpenGLContext();
 
@@ -69,9 +72,6 @@ private:
 	
 	void SetFog();
 
-	//A simple variable used to rotate the skybox to make everything 
-	//look slightly more alive
-	float rotate;
 private:
 	Logger log;
 
@@ -92,6 +92,13 @@ private:
 	//so we have something to look at while loading.
 	void DisplayLoadingScreen();
 
+	//A simple variable used to rotate the skybox to make everything 
+	//look slightly more alive
+	float rotate;
+
+	GameState currentGameState;
+
+	MainMenu menu;
 };
 
 #endif // _GAMEMANAGER_H_

@@ -68,12 +68,6 @@
     <Filter Include="Game\Factories">
       <UniqueIdentifier>{f03877de-f363-4ff3-8388-90a34d270094}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Factories\Header Files">
-      <UniqueIdentifier>{0182c98b-17ae-4596-a15e-507649d6c689}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Factories\Source Files">
-      <UniqueIdentifier>{09bc5448-f734-42b9-a22c-5530c3318802}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Components\Collidable">
       <UniqueIdentifier>{73f35500-7397-4ec9-b375-7022661f5fc6}</UniqueIdentifier>
     </Filter>
@@ -130,12 +124,30 @@
     <Filter Include="Game\GameObjects\Environmental">
       <UniqueIdentifier>{e8b467e5-79d5-403e-9cc4-053e889a367a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GUI">
+      <UniqueIdentifier>{579ddd68-071e-45be-94f7-cfb4047325e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu">
+      <UniqueIdentifier>{a42fc9d1-8812-4b7b-82c0-b53ffa767bb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\MenuEntries">
+      <UniqueIdentifier>{88cb7d8d-019a-422a-944a-5d6aec41ed3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\MenuEntries\Source Files">
+      <UniqueIdentifier>{8c1cc65c-d0a8-47eb-b2b1-7802a06cf1f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\MenuEntries\Header Files">
+      <UniqueIdentifier>{a415052c-3128-4013-acf8-e857a401cd58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Factories\TextFactory">
+      <UniqueIdentifier>{212cdf80-9661-4fc2-bc80-776f1d30f8b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Factories\MeshFactory">
+      <UniqueIdentifier>{09bc5448-f734-42b9-a22c-5530c3318802}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
-      <Filter>Game\Managers\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LogSys.cpp">
@@ -214,7 +226,7 @@
       <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MeshFactory.cpp">
-      <Filter>Game\Factories\Source Files</Filter>
+      <Filter>Game\Factories\MeshFactory</Filter>
     </ClCompile>
     <ClCompile Include="ShooterModule.cpp">
       <Filter>Game\Components\Shooter Module</Filter>
@@ -263,6 +275,19 @@
     </ClCompile>
     <ClCompile Include="EnvironmentalManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Game\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuEntry.cpp">
+      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextFactory.cpp">
+      <Filter>Game\Factories\TextFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayGameEntry.cpp">
+      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -365,9 +390,6 @@
     <ClInclude Include="ApproachXYPlayerState.h">
       <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MeshFactory.h">
-      <Filter>Game\Factories\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ShooterModule.h">
       <Filter>Game\Components\Shooter Module</Filter>
     </ClInclude>
@@ -433,6 +455,21 @@
     </ClInclude>
     <ClInclude Include="EnvironmentalManager.h">
       <Filter>Game\Managers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Game\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuEntry.h">
+      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextFactory.h">
+      <Filter>Game\Factories\TextFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshFactory.h">
+      <Filter>Game\Factories\MeshFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayGameEntry.h">
+      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

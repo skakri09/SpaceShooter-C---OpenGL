@@ -16,6 +16,9 @@
 
 #include "MeshInfo.h"
 #include "Logger.h"
+
+enum MeshInfoStatus{NO_MESHINFO, POINTER_MESHINFO, OBJECT_MESHINFO};
+
 class VBODrawable
 {
 public:
@@ -29,7 +32,8 @@ public:
 	//arrays and elements based on the info in the MeshInfo obj.
 	void Draw();
 
-	void SetMeshInfo(MeshInfo meshInfo);
+	//Sets meshinfo for this object. 
+	void SetMeshInfo(MeshInfo* meshInfo);
 
 	//Returns true if this class have received a MeshInfo object
 	bool HaveMeshInfo();
@@ -37,13 +41,16 @@ public:
 private:
 	Logger log;
 
-	MeshInfo meshInfo;
+	//MeshInfo meshInfo;
+	MeshInfo* meshInfo_p;
 
 	void EnableClientStates();
 
 	void DisableClientStates();
 
 	bool haveMeshInfo;
+
+	MeshInfoStatus meshinfoStatus;
 };
 
 #endif // VBODrawable_h__

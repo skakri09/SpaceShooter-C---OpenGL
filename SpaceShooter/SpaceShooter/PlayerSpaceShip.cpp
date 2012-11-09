@@ -15,11 +15,11 @@ PlayerSpaceShip::~PlayerSpaceShip()
 void PlayerSpaceShip::Draw()
 {
 	glPushMatrix();
-	
+	glColor3f(0.5f, 0.5f, 0.5f);
 	transformable.ApplyGLTransformations();
 	glRotatef(180, 0, 0, 1);//rotating the player towards negative z axis
 	vboDrawable.Draw();
-
+	glColor3f(1, 1, 1);
 	glPopMatrix();
 }
 
