@@ -9,11 +9,12 @@
 #define PlayGameEntry_h__
 
 #include "MenuEntry.h"
+#include "GameState.h"
 
 class PlayGameEntry : public MenuEntry
 {
 public:
-    PlayGameEntry(float xPos, float yPos, float zPos, float scale);
+    PlayGameEntry(GameState* gameState, float xPos, float yPos, float zPos, float scale);
     ~PlayGameEntry();
 
 	virtual void OnClicked();
@@ -21,7 +22,7 @@ public:
 protected:
 
 private:
-
+	GameState* gameState;
 };
 
 #endif // PlayGameEntry_h__

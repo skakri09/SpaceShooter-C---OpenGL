@@ -292,6 +292,9 @@
     <ClCompile Include="QuitGameEntry.cpp">
       <Filter>Game\Menu\MenuEntries\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameStateManager.cpp">
+      <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -476,6 +479,12 @@
     </ClInclude>
     <ClInclude Include="QuitGameEntry.h">
       <Filter>Game\Menu\MenuEntries\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Game\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateManager.h">
+      <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

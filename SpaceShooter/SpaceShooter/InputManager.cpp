@@ -6,6 +6,9 @@ InputManager::InputManager()
 	leftDownOnce = false;
 	rightDownOnce = false;
 	middleDownOnce = false;
+
+	keystates = SDL_GetKeyState(&keyCount);
+	prevKeystates = new Uint8[keyCount];
 }
 
 InputManager::~InputManager()
@@ -17,7 +20,9 @@ void InputManager::Update(bool& exitGame)
 {
 	mouseBtns = SDL_GetMouseState(&mouseX, &mouseY);
 
-	keystates = SDL_GetKeyState(NULL);
+	memcpy(prevKeystates, keystates, sizeof(Uint8) * keyCount);
+	//keystates = SDL_GetKeyState(&keyCount);
+	SDL_PumpEvents();
 	leftDownOnce = false;
 	rightDownOnce = false;
 	middleDownOnce = false;
@@ -69,6 +74,15 @@ void InputManager::Update(bool& exitGame)
 bool InputManager::KeyDownHold( SDLKey key )
 {
 	if(keystates[key] != NULL)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool InputManager::KeyDownOnce( SDLKey key )
+{
+	if(keystates[key] != NULL && prevKeystates[key] == NULL) 
 	{
 		return true;
 	}
@@ -151,3 +165,4 @@ bool InputManager::Fire()
 	}
 	return false;
 }
+

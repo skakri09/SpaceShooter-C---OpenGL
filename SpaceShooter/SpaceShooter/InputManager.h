@@ -63,10 +63,14 @@ public:
 	//Returning true if move down button is held down
 	bool MoveDown();
 
+	bool KeyDownOnce(SDLKey key);
+
 	void resize(unsigned int width, unsigned int height);
 
 private:
-	Uint8* keystates;	// Holds a snapshot of keys on the keyboard.
+	Uint8* keystates;		// Holds a snapshot of keys on the keyboard.
+	Uint8* prevKeystates;	//Snapshot of previous updates keystates
+	int keyCount;
 
 	bool leftDownOnce, middleDownOnce, rightDownOnce;
 	Uint8 mouseBtns;	// Holds a snapshot of the mouse buttons' state

@@ -95,6 +95,7 @@
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="EnvironmentalManager.cpp" />
     <ClCompile Include="FleeState.cpp" />
+    <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MenuEntry.cpp" />
@@ -147,6 +148,8 @@
     <ClInclude Include="CrossScreenWhileFireing.h" />
     <ClInclude Include="EnvironmentalManager.h" />
     <ClInclude Include="FleeState.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MenuEntry.h" />

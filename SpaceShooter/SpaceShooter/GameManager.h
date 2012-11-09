@@ -24,11 +24,10 @@
 #include "Texturable.h"
 #include "ProjectileManager.h"
 #include "EnvironmentalManager.h"
+#include "GameState.h"
 
 #include <gl/glew.h>
 #include <gl/gl.h>
-
-enum GameState{MENU, GAME};
 
 //Forward declaring InputManager class as this class rely on it,
 //and the InputManager class rely on this class.

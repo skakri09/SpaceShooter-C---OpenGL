@@ -17,6 +17,7 @@
 #include "MenuEntry.h"
 #include "PlayGameEntry.h"
 #include "QuitGameEntry.h"
+#include "GameState.h"
 
 class MainMenu
 {
@@ -24,7 +25,7 @@ public:
     MainMenu();
     ~MainMenu();
 
-	void Init(InputManager* input, bool* quitGame);
+	void Init(InputManager* input, bool* quitGame, GameState* gameState);
 
 	void UpdateMenu(float deltaTime);
 
@@ -34,10 +35,16 @@ protected:
 private:
 	Skybox skybox;
 
+	void HandleInput();
+
 	InputManager* input;
 
 	std::shared_ptr<PlayGameEntry> playGameEntry;
 	std::shared_ptr<QuitGameEntry> quitGameEntry;
+
+	std::vector<std::shared_ptr<MenuEntry>> menuEntries;
+
+	unsigned int selectedEntry;
 };
 
 #endif // MainMenu_h__

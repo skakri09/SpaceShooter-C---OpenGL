@@ -9,6 +9,7 @@ MenuEntry::MenuEntry(std::string entryText,
 	Vector3D position(xPos, yPos, zPos);
 	EntryTransformable.Init(position, scale, Vector3D::ZeroVec());
 	CreateEntryText(&entryText, scale, centered);
+	isSelected = false;
 }
 
 MenuEntry::~MenuEntry()
@@ -24,7 +25,10 @@ void MenuEntry::DrawEntry()
 {
 	glPushMatrix();
 	EntryTransformable.ApplyGLTransformations(true, true, false);
-
+	if(isSelected)
+	{
+		glColor3f(0.898f, 0.694f, 0.227f);
+	}
 	for(unsigned int i = 0; i < EntryText->vboLetters.size(); i++)
 	{
 		glPushMatrix();
@@ -35,6 +39,7 @@ void MenuEntry::DrawEntry()
 	
 		glPopMatrix();
 	}
+	glColor3f(1.0f, 1.0f, 1.0f);
 	glPopMatrix();
 }
 
