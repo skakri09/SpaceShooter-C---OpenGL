@@ -21,6 +21,7 @@
 #include "GetRandomFloat.h"
 #include "ImperialStarDestroyer.h"
 #include "ProjectileManager.h"
+#include "GameState.h"
 
 class SpaceShipManager
 {
@@ -31,7 +32,7 @@ public:
 	//pointer should point to the inputManager used
 	//by the game. We take it so that we can handle
 	//input for the spaceship in this class.
-	void InitManager(InputManager* input);
+	void InitManager(InputManager* input, GameState* gameState);
 	
 	//Calling Update() on all active spaceships
 	void UpdateManager(GLfloat deltaTime);
@@ -56,6 +57,9 @@ private:
 	//stored in GamePlayManager, so that we can handle player
 	//input internally instead of trough the GamePlayManager
 	InputManager* input;	
+
+	//Local pointer to the gameState so we can switch to another state when player dies
+	GameState* gameState;
 
 	std::shared_ptr<PlayerSpaceShip> player; // Player spaceship object
 

@@ -13,8 +13,8 @@ Camera::~Camera()
 
 void Camera::RenderCamera()
 {
-	glRotatef(-camPitch,1.0,0.0,0.0);
-	glRotatef(-camYaw,0.0,1.0,0.0);
+	glRotatef(-camPitch, 1.0f, 0.0f, 0.0f);
+	glRotatef(-camYaw, 0.0f, 1.0f, 0.0f);
 	skybox.drawSkybox();
 	UpdateCamera();	
 }
@@ -23,15 +23,20 @@ void Camera::Control(float mouseVel, float moveVel, InputManager* input)
 {
 	if(input->LeftMouseDownHold())
 	{
-		int MidX=window_width/2;
+		int MidX=window_width/2; 
 		int MidY=window_height/2;
+		
 		SDL_ShowCursor(SDL_DISABLE);
+		
 		int tmpx,tmpy;
-		SDL_GetMouseState(&tmpx,&tmpy);
-		camYaw+=mouseVel*(MidX-tmpx);
-		camPitch+=mouseVel*(MidY-tmpy);
+		SDL_GetMouseState(&tmpx,&tmpy); 
+		
+		camYaw+=mouseVel*(MidX-tmpx);   
+		camPitch+=mouseVel*(MidY-tmpy); 
+		
 		lockCamera();
-		SDL_WarpMouse(MidX,MidY);
+
+		SDL_WarpMouse(MidX,MidY);   
 	}
 	else
 	{
@@ -40,33 +45,40 @@ void Camera::Control(float mouseVel, float moveVel, InputManager* input)
 
 	if(input->MoveUp())
 	{
-		if(camPitch!=90 && camPitch!=-90)
+		if(camPitch!=90 && camPitch!=-90)  
+		{
 			moveCamera(moveVel,0.0);
-		moveCameraUp(moveVel,0.0);
+		}
+		moveCameraUp(moveVel,0.0);     
 	}
 	else if(input->MoveDown())
 	{
 		if(camPitch!=90 && camPitch!=-90)
+		{
 			moveCamera(moveVel,180.0);
+		}
 		moveCameraUp(moveVel,180.0);
-	}		
-
-	if(input->MoveLeft())
+	}              
+	if(input->MoveLeft()) 
+	{
 		moveCamera(moveVel,90.0);
+	}
 	else if(input->MoveRight())
-		moveCamera(moveVel,270);	
+	{
+		moveCamera(moveVel,270);        
+	}
 }
 
 void Camera::lockCamera()
 {
-	if(camPitch>90)
-		camPitch=90;
-	if(camPitch<-90)
-		camPitch=-90;
-	if(camYaw<0.0)
-		camYaw+=360.0;
-	if(camYaw>360.0)
-		camYaw-=360;
+	if(camPitch>90.0f)
+		camPitch=90.0f;
+	if(camPitch<-90.0f)
+		camPitch=-90.0f;
+	if(camYaw<0.0f)
+		camYaw+=360.0f;
+	if(camYaw>360.0f)
+		camYaw-=360.0f;
 }
 
 void Camera::moveCamera(float dist,float dir)
@@ -80,7 +92,7 @@ void Camera::moveCamera(float dist,float dir)
 void Camera::moveCameraUp(float dist,float dir)
 {
 	float rad=(camPitch+dir)*M_PI/180.0f;
-	camPos.setZ( camPos.getZ() + (sin(rad)*dist) );
+	camPos.setY( camPos.getY() + (sin(rad)*dist) );
 }
 
 void Camera::UpdateCamera()

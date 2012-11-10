@@ -25,6 +25,7 @@
 #include "ProjectileManager.h"
 #include "EnvironmentalManager.h"
 #include "GameState.h"
+#include "GameplayInformation.h"
 
 #include <gl/glew.h>
 #include <gl/gl.h>
@@ -41,7 +42,7 @@ public:
 
 	//Initializes the game, including the OpenGL context
 	//and data required
-	void init(InputManager* input);
+	void InitGamePlayManager(InputManager* input, GameState* gameState);
 
 	//Function that calls all render functions from other managers
 	void RenderGame();
@@ -54,11 +55,12 @@ public:
 
 private:
 	Logger log;
-	
+	GameState* gameState;
 	InputManager* input;
 	EnvironmentalManager environment;
 	Camera cam;
 
+	GameplayInformation gpi;
 	void SetGameLights();
 	void SetGameFog();
 };

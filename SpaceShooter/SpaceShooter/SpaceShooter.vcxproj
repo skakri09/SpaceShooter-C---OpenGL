@@ -96,6 +96,7 @@
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="EnvironmentalManager.cpp" />
     <ClCompile Include="FleeState.cpp" />
+    <ClCompile Include="GameplayInformation.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -104,6 +105,7 @@
     <ClCompile Include="PlayGameEntry.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
     <ClCompile Include="QuitGameEntry.cpp" />
+    <ClCompile Include="TextEntry.cpp" />
     <ClCompile Include="TextFactory.cpp" />
     <ClCompile Include="Texturable.cpp" />
     <ClCompile Include="Planet.cpp" />
@@ -150,8 +152,10 @@
     <ClInclude Include="CrossScreenWhileFireing.h" />
     <ClInclude Include="EnvironmentalManager.h" />
     <ClInclude Include="FleeState.h" />
+    <ClInclude Include="GameplayInformation.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
+    <ClInclude Include="GUIEntry.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MenuEntry.h" />
@@ -160,6 +164,7 @@
     <ClInclude Include="PlayGameEntry.h" />
     <ClInclude Include="ProjectileManager.h" />
     <ClInclude Include="QuitGameEntry.h" />
+    <ClInclude Include="TextEntry.h" />
     <ClInclude Include="TextFactory.h" />
     <ClInclude Include="Texturable.h" />
     <ClInclude Include="Planet.h" />

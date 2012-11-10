@@ -18,10 +18,10 @@ SpaceShipManager::~SpaceShipManager()
 {
 }
 
-void SpaceShipManager::InitManager(InputManager* input)
+void SpaceShipManager::InitManager(InputManager* input, GameState* gameState)
 {
 	this->input = input;
-	
+	this->gameState = gameState;
 	//making sure to pre-load all spaceships we will be using so we dont have to do it on runtime
 	//Its not necessary to load the player ship, as it's always loaded on the start
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
@@ -53,8 +53,10 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	HandleFrustumCollision();
 
 	player->Update(deltaTime);
+
 	if(player->CanKill())
 	{
+		*gameState = MENU;
 	}
 
 	for(auto i = EnemyShipsForTransfer.begin(); i != EnemyShipsForTransfer.end();)

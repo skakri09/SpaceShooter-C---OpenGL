@@ -18,7 +18,7 @@ TextFactory* TextFactory::Inst()
 
 void TextFactory::InitTextFactory()
 {
-	//Loading all the letters (a-z) and placing in a map
+	//Loading all the letters (a-z) and placing in the map
 	for(unsigned int i = 97; i < 123; i++)
 	{
 		std::string baseCharPath = "..//3ds//Text//Alphabet//";
@@ -27,6 +27,28 @@ void TextFactory::InitTextFactory()
 		baseCharPath += ".3ds";
 		alphabet[letter] = MeshFactory::Inst()->GetMesh(baseCharPath);
 	}
+	//Loading all the numbers 0-9 and placing in the map
+	for(unsigned int i = 48; i < 58; i++)
+	{
+		std::string baseCharPath = "..//3ds//Text//Numbers//";
+		char letter = static_cast<char>(i);
+		baseCharPath += letter;
+		baseCharPath += ".3ds";
+		alphabet[letter] = MeshFactory::Inst()->GetMesh(baseCharPath);
+	}
+
+	//Loading all misc characters to the map
+	std::string baseCharPath = "..//3ds//Text//Misc//";
+	
+	alphabet['!'] = MeshFactory::Inst()->GetMesh(baseCharPath + "!.3ds");
+
+	alphabet[','] = MeshFactory::Inst()->GetMesh(baseCharPath + ",.3ds");
+
+	alphabet['-'] = MeshFactory::Inst()->GetMesh(baseCharPath + "-.3ds");
+
+	alphabet['.'] = MeshFactory::Inst()->GetMesh(baseCharPath + "period.3ds");
+
+	alphabet[':'] = MeshFactory::Inst()->GetMesh(baseCharPath + "colon.3ds");
 }
 
 
@@ -105,12 +127,19 @@ std::shared_ptr<VboString> TextFactory::GetVboString( std::string* text )
 			position.setX((position.getX()+55+nextLetterAdjustment));
 			nextLetterAdjustment = 5;
 		}
+		else if(letter.letter == ':')
+		{
+			retString->stringLength += (40+nextLetterAdjustment);
+			position.setX((position.getX()+40+nextLetterAdjustment));
+			nextLetterAdjustment = -10;
+		}
 		else if(letter.letter != ' ')
 		{
 			retString->stringLength += (50+nextLetterAdjustment);
 			position.setX((position.getX()+50+nextLetterAdjustment));
 			nextLetterAdjustment = 0;
 		}
+
 		else //Space
 		{
 			position.setX(position.getX() + 30);
@@ -138,14 +167,11 @@ VboLetter TextFactory::GetVboLetter( char letter )
 		retLetter.meshInfo = NULL;
 		retLetter.letter = ' ';
 	}
-	else if(intVal < 97 || intVal > 122) // not ascii a-z lowercase
-	{
-		log << ERRORX << letter << " is not a supported letter. Only lowercase a-z, returning 'a'" << std::endl;
-		
-		retLetter.meshInfo = alphabet['a'];
-		retLetter.letter = 'a';
-	}
-	else //Letter is a valid ascii a-z lowercast
+	else if( (intVal >= 97 && intVal <= 122) 
+			|| (intVal >= 48 && intVal <= 57) 
+			|| (intVal >= 44 && intVal <=46) 
+			|| (intVal == 33)
+			|| (intVal == 58))
 	{
 		if(alphabet.find(letter) != alphabet.end())
 		{
@@ -158,6 +184,13 @@ VboLetter TextFactory::GetVboLetter( char letter )
 			retLetter.meshInfo = alphabet['a'];
 			retLetter.letter = 'a';
 		}
+	}
+	else //not a letter we currently support
+	{
+		log << ERRORX << letter << " is not a supported letter. Only lowercase a-z, returning 'a'" << std::endl;
+
+		retLetter.meshInfo = alphabet['a'];
+		retLetter.letter = 'a';
 	}
 	return retLetter;
 }

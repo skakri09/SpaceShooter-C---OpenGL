@@ -15,7 +15,7 @@
 #include "Mesh3dsLoader.h"
 
 //velocity values for the player spaceship
-static const float PLAYER_XY_VELOCITY = 75.0f;
+static const float PLAYER_XY_VELOCITY = 75.1f;
 static const float PLAYER_Z_VELOCITY = 100.0f;
 
 class PlayerSpaceShip : public SpaceShip

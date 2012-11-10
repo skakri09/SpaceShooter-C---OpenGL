@@ -66,7 +66,7 @@ void GameStateManager::SwitchState( GameState newState )
 			DisplayLoadingScreen();
 			input.resize(window_width, window_height);
 
-			game->init(&input);
+			game->InitGamePlayManager(&input, &switchToState);
 			
 			gameWasInited = true;
 		}

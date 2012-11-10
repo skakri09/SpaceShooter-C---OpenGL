@@ -148,6 +148,15 @@
     <Filter Include="Game\Camera">
       <UniqueIdentifier>{892d35a5-3c6c-4397-8215-a95b9899564f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GUI\GameplayGUI">
+      <UniqueIdentifier>{6c413e81-d787-40bc-a4e7-874cecca7fc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GUI\GameplayGUI\GUI Entry">
+      <UniqueIdentifier>{a890c84a-0af7-42f9-949f-baf8e144a507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GUI\GameplayGUI\GUI Entry\TextEntries">
+      <UniqueIdentifier>{3ee138a0-4af7-4f4c-9651-7d02837a5a52}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogSys.cpp">
@@ -300,6 +309,12 @@
     </ClCompile>
     <ClCompile Include="GamePlayManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameplayInformation.cpp">
+      <Filter>Game\GUI\GameplayGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TextEntry.cpp">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -494,6 +509,15 @@
     </ClInclude>
     <ClInclude Include="GamePlayManager.h">
       <Filter>Game\Managers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameplayInformation.h">
+      <Filter>Game\GUI\GameplayGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="TextEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
