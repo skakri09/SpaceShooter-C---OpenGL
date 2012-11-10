@@ -40,12 +40,15 @@ void GameStateManager::InitGameStateManager()
 	glShadeModel(GL_SMOOTH); 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
+	input.InitInputManager();
 	TextFactory::Inst()->InitTextFactory();
+
 	exit = false;
 	gameWasInited = false;
 	menuWasInited = false;
 	game = std::make_shared<GameManager>();
 	menu = std::make_shared<MainMenu>();
+
 	SwitchState(MENU);
 	prevUpdateGameState = currentState;
 }
@@ -56,11 +59,13 @@ void GameStateManager::SwitchState( GameState newState )
 	{
 	case GAME:
 		log << WARN << "Switching to Game state" << std::endl;
-		input.resize(window_width, window_height, true);
-		DisplayLoadingScreen();
-		input.resize(window_width, window_height);
+
 		if(!gameWasInited)
 		{
+			input.resize(window_width, window_height, true);
+			DisplayLoadingScreen();
+			input.resize(window_width, window_height);
+
 			game->init(&input);
 			
 			gameWasInited = true;
@@ -70,11 +75,13 @@ void GameStateManager::SwitchState( GameState newState )
 		break;
 	case MENU:
 		log << WARN << "Switching to Menu state" << std::endl;
-		input.resize(window_width, window_height, true);
-		DisplayLoadingScreen();
-		input.resize(window_width, window_height);
+
 		if(!menuWasInited)
 		{
+			input.resize(window_width, window_height, true);
+			DisplayLoadingScreen();
+			input.resize(window_width, window_height);
+
 			menu->Init(&input, &currentState);
 			menuWasInited = true;
 		}

@@ -3,12 +3,7 @@
 
 InputManager::InputManager()
 {
-	leftDownOnce = false;
-	rightDownOnce = false;
-	middleDownOnce = false;
 
-	keystates = SDL_GetKeyState(&keyCount);
-	prevKeystates = new Uint8[keyCount];
 }
 
 InputManager::~InputManager()
@@ -16,13 +11,32 @@ InputManager::~InputManager()
 
 }
 
+void InputManager::InitInputManager()
+{
+	leftDownOnce = false;
+	rightDownOnce = false;
+	middleDownOnce = false;
+
+	keystates = SDL_GetKeyState(&keyCount);
+	prevKeystates = new Uint8[keyCount];
+
+	activeWidth = window_width;
+	activeHeight = window_height;
+
+	//Call pump event twice to flush any previous inputs
+	SDL_PumpEvents();
+	SDL_PumpEvents();
+}
+
+
 void InputManager::Update(GameState* gameState)
 {
 	mouseBtns = SDL_GetMouseState(&mouseX, &mouseY);
 
 	memcpy(prevKeystates, keystates, sizeof(Uint8) * keyCount);
-	//keystates = SDL_GetKeyState(&keyCount);
+
 	SDL_PumpEvents();
+
 	leftDownOnce = false;
 	rightDownOnce = false;
 	middleDownOnce = false;
@@ -66,7 +80,9 @@ void InputManager::Update(GameState* gameState)
 			*gameState = QUIT;
 			break;
 		case SDL_VIDEORESIZE:
-			resize(event.resize.w, event.resize.h);
+			activeWidth = event.resize.w;
+			activeHeight = event.resize.h;
+			resize(activeWidth, activeHeight);
 			break; 
 		}
 		if(event.button.button == SDL_BUTTON_WHEELDOWN)
@@ -155,7 +171,7 @@ void InputManager::resize( unsigned int width, unsigned int height, bool toDefau
 {
 	if(!toDefault)
 	{
-		glViewport(0, 0, width, height);
+		glViewport(0, 0, activeWidth, activeHeight);
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
@@ -167,7 +183,7 @@ void InputManager::resize( unsigned int width, unsigned int height, bool toDefau
 	}
 	else
 	{
-		glViewport(0, 0, width, height);
+		glViewport(0, 0, activeWidth, activeHeight);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		glOrtho(-1, 1, -1, 1, 1, -1);

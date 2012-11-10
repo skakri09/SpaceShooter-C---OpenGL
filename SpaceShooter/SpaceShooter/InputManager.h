@@ -27,6 +27,8 @@ public:
 	InputManager(); //ctor
 	~InputManager();//dtor
 
+	void InitInputManager();
+
 	//Handles updates the input manager relies on to do input checks.
 	//Should be called in the beginning of each game loop update
 	//param bool should be a ref to the bool running the gameloop
@@ -73,7 +75,7 @@ private:
 	Uint8* keystates;		// Holds a snapshot of keys on the keyboard.
 	Uint8* prevKeystates;	//Snapshot of previous updates keystates
 	int keyCount;
-
+	unsigned int activeWidth, activeHeight;
 	bool leftDownOnce, middleDownOnce, rightDownOnce;
 	Uint8 mouseBtns;	// Holds a snapshot of the mouse buttons' state
 	int mouseX;		// Mouse x pos	
