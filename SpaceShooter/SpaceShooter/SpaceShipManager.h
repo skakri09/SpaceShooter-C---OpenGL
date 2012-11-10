@@ -53,8 +53,8 @@ private:
 	~SpaceShipManager();
 
 	//locally stored pointer to the inputManager object
-	//stored in gameManager, so that we can handle player
-	//input internally instead of trough the gameManager
+	//stored in GamePlayManager, so that we can handle player
+	//input internally instead of trough the GamePlayManager
 	InputManager* input;	
 
 	std::shared_ptr<PlayerSpaceShip> player; // Player spaceship object

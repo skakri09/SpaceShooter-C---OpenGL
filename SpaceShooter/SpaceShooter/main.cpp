@@ -1,4 +1,4 @@
-//#include "GameManager.h"
+//#include "GamePlayManager.h"
 #include "GameStateManager.h"
 #include <iostream>
 #include "Logger.h"
@@ -16,11 +16,6 @@ int main(int argc, char *argv[])
 
 	try 
 	{
-		/*GameManager* game;
-		game = new GameManager();
-		game->init();
-		game->GameLoop();
-		delete game;*/
 		GameStateManager* stateManager;
 		stateManager = new GameStateManager();
 		stateManager->InitGameStateManager();

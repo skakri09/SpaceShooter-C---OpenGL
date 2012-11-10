@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Comment CommentText="The gameManager class is the one running the gameloop. It takes care of calling Update and Draw on all the managers it holds, which is the 4 to the right.">
+  <Comment CommentText="The GamePlayManager class is the one running the gameloop. It takes care of calling Update and Draw on all the managers it holds, which is the 4 to the right.">
     <Position X="0.5" Y="2.812" Height="1.302" Width="2.075" />
   </Comment>
   <Comment CommentText="The spaceshipManager holds all the spaceships and takes care of calling update and draw on them. It also oversee collision checking by getting a vector of active projectiles from  the ProjectileManager, looping trough them and calling each spaceships HandleCollision">
@@ -313,11 +313,11 @@
       <FileName>ProjectileManager.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameManager" Collapsed="true">
+  <Class Name="GamePlayManager" Collapsed="true">
     <Position X="0.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAABmAAgABAQAQCAAAAAAAABIAAQABAABUBAA=</HashCode>
-      <FileName>GameManager.h</FileName>
+      <FileName>GamePlayManager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="InputManager" Collapsed="true">

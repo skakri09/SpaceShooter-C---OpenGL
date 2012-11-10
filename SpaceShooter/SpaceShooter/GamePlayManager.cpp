@@ -1,4 +1,4 @@
-#include "GameManager.h"
+#include "GamePlayManager.h"
 #include "GLUtils/GLUtils.hpp"
 
 #include <Windows.h>
@@ -15,15 +15,15 @@ using std::cerr;
 using std::endl;
 using GLUtils::checkGLErrors;
 
-GameManager::GameManager()
+GamePlayManager::GamePlayManager()
 	: log("GameMan", WARN)
 {
 }
 
-GameManager::~GameManager() {
+GamePlayManager::~GamePlayManager() {
 }
 
-void GameManager::init(InputManager* input) 
+void GamePlayManager::init(InputManager* input) 
 {
 	this->input = input;
 	TextFactory::Inst()->InitTextFactory();
@@ -31,14 +31,15 @@ void GameManager::init(InputManager* input)
 	SpaceShipManager::Inst()->InitManager(input);
 	ParticleManager::Inst()->InitParticleManager();
 	environment.InitManager();
-	skybox.initSkybox("skybox1", 100);
+	cam.SetCameraPosition(0, 0, 40);
+	cam.ChangeSkybox("skybox1");
+	//skybox.initSkybox("skybox1", 100);
 }
 
-void GameManager::RenderGame() 
+void GamePlayManager::RenderGame() 
 {
 	glPushMatrix();
-
-	skybox.drawSkybox();
+	cam.RenderCamera();
 
 	environment.DrawEnvironment();
 	ParticleManager::Inst()->DrawParticles();
@@ -48,16 +49,21 @@ void GameManager::RenderGame()
 	glPopMatrix();
 }
 
-void GameManager::UpdateGame(float deltaTime)
+void GamePlayManager::UpdateGame(float deltaTime)
 {
 	environment.Update(deltaTime);
-	skybox.UpdateSkybox(deltaTime);
+
+	//cam.Control(10.0f*deltaTime, 10.0f*deltaTime, input);
+	Vector3D cameraPos(*SpaceShipManager::Inst()->GetPlayer()->transformable.getPosition());
+	cameraPos.setZ(cameraPos.getZ() + 10);
+	cameraPos.setY(cameraPos.getY() + 3);
+	cam.SetCameraPosition(&cameraPos);
 	ParticleManager::Inst()->UpdateParticles(deltaTime);
 	SpaceShipManager::Inst()->UpdateManager(deltaTime);
 	ProjectileManager::Inst()->UpdateProjectiles(deltaTime);
 }
 
-void GameManager::OnEnteringGameState()
+void GamePlayManager::OnEnteringGameState()
 {
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
@@ -77,7 +83,7 @@ void GameManager::OnEnteringGameState()
 	SetGameFog();
 }
 
-void GameManager::SetGameLights()
+void GamePlayManager::SetGameLights()
 {
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
@@ -104,7 +110,7 @@ void GameManager::SetGameLights()
 	glLightfv(GL_LIGHT1, GL_SPECULAR, specular);      
 }
 
-void GameManager::SetGameFog()
+void GamePlayManager::SetGameFog()
 {
 	GLfloat fogColor[4]= {0.0f, 0.0f, 0.0f, 1.0f}; 
 	//GL_EXP, GL_EXP2, GL_LINEAR

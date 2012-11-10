@@ -17,7 +17,7 @@
 
 #include "GameState.h"
 #include "MainMenu.h"
-#include "GameManager.h"
+#include "GamePlayManager.h"
 #include "GameConstants.h"
 #include "InputManager.h"
 #include "Timer.h"
@@ -55,7 +55,7 @@ private:
 	void SetMenuLights();
 	void SetMenuFog();
 
-	std::shared_ptr<GameManager> game;
+	std::shared_ptr<GamePlayManager> game;
 	std::shared_ptr<MainMenu> menu;
 
 	bool gameWasInited;

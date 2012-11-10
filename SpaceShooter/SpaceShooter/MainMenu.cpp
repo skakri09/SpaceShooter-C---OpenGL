@@ -12,8 +12,8 @@ MainMenu::~MainMenu()
 
 void MainMenu::Init(InputManager* input, GameState* gameState)
 {
-	//skybox.initSkybox("skybox1", 100);
-	cam.ChangeSkybox("skybox2");
+	cam.SetCameraPosition(0, 0, 35);
+	cam.ChangeSkybox("skybox1");
 	this->input = input;
 	selectedEntry = 0;
 
@@ -27,7 +27,8 @@ void MainMenu::Init(InputManager* input, GameState* gameState)
 
 void MainMenu::UpdateMenu(float deltaTime)
 {
-	//skybox.UpdateSkybox(deltaTime);
+	this->deltaTime = deltaTime;
+	cam.Control(20*deltaTime, 30*deltaTime, input);
 	HandleInput();
 	UpdateSelectionShip(deltaTime);
 	for(unsigned int i = 0; i < menuEntries.size(); i++)
@@ -39,15 +40,14 @@ void MainMenu::UpdateMenu(float deltaTime)
 void MainMenu::DrawMenu()
 {
 	glPushMatrix();
-	cam.Control(0.05f, input);
-
-	//skybox.drawSkybox();
+	cam.RenderCamera();
 
 	menuShip->Draw();
 	for(unsigned int i = 0; i < menuEntries.size(); i++)
 	{
 		menuEntries.at(i)->DrawEntry();
 	}
+
 	glPopMatrix();
 }
 
@@ -123,7 +123,7 @@ void MainMenu::SetMenuLights()
 	glEnable(GL_LIGHT0);
 	glDisable(GL_LIGHT1);
 	const static GLfloat ambient[] = 
-	{ 0.2f, 0.2f, 0.2f, 0.1, 0.1f };
+	{ 0.2f, 0.2f, 0.2f, 0.1f, 0.1f };
 	const static GLfloat diffuse[] = 
 	{ 0.2f, 0.2f, 0.2f, 0.1f };
 	const static GLfloat specular[] = 

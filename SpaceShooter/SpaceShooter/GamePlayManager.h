@@ -1,6 +1,6 @@
 /********************************************************************
     created:    6:10:2012   9:42
-    filename:   GameManager.h
+    filename:   GamePlayManager.h
     author:     Kristian Skarseth
     
 	purpose:    This class acts as the game manager, calling all the
@@ -20,7 +20,7 @@
 #include "InputManager.h"
 #include "ParticleManager.h"
 #include "GameConstants.h"
-#include "Skybox.h"
+#include "Camera.h"
 #include "Texturable.h"
 #include "ProjectileManager.h"
 #include "EnvironmentalManager.h"
@@ -33,11 +33,11 @@
 //and the InputManager class rely on this class.
 class InputManager;
 
-class GameManager 
+class GamePlayManager 
 {
 public:
-	GameManager();  //ctor
-	~GameManager(); //dtor
+	GamePlayManager();  //ctor
+	~GamePlayManager(); //dtor
 
 	//Initializes the game, including the OpenGL context
 	//and data required
@@ -57,7 +57,7 @@ private:
 	
 	InputManager* input;
 	EnvironmentalManager environment;
-	Skybox skybox;
+	Camera cam;
 
 	void SetGameLights();
 	void SetGameFog();

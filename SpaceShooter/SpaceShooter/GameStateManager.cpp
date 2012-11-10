@@ -46,7 +46,7 @@ void GameStateManager::InitGameStateManager()
 	exit = false;
 	gameWasInited = false;
 	menuWasInited = false;
-	game = std::make_shared<GameManager>();
+	game = std::make_shared<GamePlayManager>();
 	menu = std::make_shared<MainMenu>();
 
 	SwitchState(MENU);

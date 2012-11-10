@@ -41,7 +41,7 @@ private:
 	Logger log;
 	Skybox skybox;
 	Camera cam;
-
+	float deltaTime;
 	void HandleInput();
 	void UpdateSelectionShip(float deltaTime);
 	void UpdateCameraPosition();
