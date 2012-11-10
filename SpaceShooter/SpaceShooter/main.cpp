@@ -1,4 +1,5 @@
-#include "GameManager.h"
+//#include "GameManager.h"
+#include "GameStateManager.h"
 #include <iostream>
 #include "Logger.h"
 #ifdef _WIN32
@@ -15,11 +16,17 @@ int main(int argc, char *argv[])
 
 	try 
 	{
-		GameManager* game;
+		/*GameManager* game;
 		game = new GameManager();
 		game->init();
 		game->GameLoop();
-		delete game;
+		delete game;*/
+		GameStateManager* stateManager;
+		stateManager = new GameStateManager();
+		stateManager->InitGameStateManager();
+		stateManager->GameLoop();
+		delete stateManager;
+		stateManager = 0;
 
 	} 
 	catch (std::exception &e) 

@@ -41,59 +41,26 @@ public:
 
 	//Initializes the game, including the OpenGL context
 	//and data required
-	void init();
-
-	// The main loop of the game. Runs the SDL main loop
-	void GameLoop();
-
-	// Quit function 
-	void quit();
+	void init(InputManager* input);
 
 	//Function that calls all render functions from other managers
 	void RenderGame();
 
 	//function that calls all update functions from other managers
 	//and takes care of swapping buffers
-	void UpdateGame();
-	
-	//Function that is called when the window is resized
-	void resize(unsigned int width, unsigned int height);
+	void UpdateGame(float deltaTime);
 
-private:
-	//Creates the OpenGL context using SDL
-	void createOpenGLContext();
-
-	//Sets states for OpenGL that we want to keep persistent
-	//throughout the game
-	void setOpenGLStates();
-
-	void SetLights();
-	
-	void SetFog();
+	void OnEnteringGameState();
 
 private:
 	Logger log;
-
-	Timer my_timer;		//Timer for machine independent motion
-	GLfloat deltaTime;	//Time since last update 
-
-	//Inputmanager, requires an update call each gameloop to be updated
-	//and ready for input queries
-	InputManager input;
-
+	
+	InputManager* input;
 	EnvironmentalManager environment;
-	//Our skybox
 	Skybox skybox;
 
-	bool doExit; //If true, the game quits
-
-	//Does a quick and dirty drawing of a loading screen
-	//so we have something to look at while loading.
-	void DisplayLoadingScreen();
-
-	GameState currentGameState;
-
-	std::shared_ptr<MainMenu> menu;
+	void SetGameLights();
+	void SetGameFog();
 };
 
 #endif // _GAMEMANAGER_H_

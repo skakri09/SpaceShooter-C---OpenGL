@@ -9,11 +9,12 @@
 #define QuitGameEntry_h__
 
 #include "MenuEntry.h"
+#include "GameState.h"
 
 class QuitGameEntry : public MenuEntry
 {
 public:
-    QuitGameEntry(bool* quitGame, float xPos, float yPos, float zPos, float scale);
+    QuitGameEntry(GameState* gameState, float xPos, float yPos, float zPos, float scale);
     ~QuitGameEntry();
 
 	virtual void OnClicked();
@@ -21,7 +22,7 @@ public:
 protected:
 
 private:
-	bool* quitGame;
+	GameState* gameState;
 };
 
 #endif // QuitGameEntry_h__

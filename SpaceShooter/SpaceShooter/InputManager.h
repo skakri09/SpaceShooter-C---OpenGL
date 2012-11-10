@@ -19,6 +19,8 @@
 #include <SDL.h>
 
 #include "GameConstants.h"
+#include "GameState.h"
+
 class InputManager
 {
 public:
@@ -28,7 +30,7 @@ public:
 	//Handles updates the input manager relies on to do input checks.
 	//Should be called in the beginning of each game loop update
 	//param bool should be a ref to the bool running the gameloop
-	void Update(bool& exitGame);
+	void Update(GameState* gameState);
 
 	//Returns true if the param key is down, try to avoid
 	//using this function, rely on the predefined game-
@@ -65,7 +67,7 @@ public:
 
 	bool KeyDownOnce(SDLKey key);
 
-	void resize(unsigned int width, unsigned int height);
+	void resize(unsigned int width, unsigned int height, bool toDefault = false);
 
 private:
 	Uint8* keystates;		// Holds a snapshot of keys on the keyboard.

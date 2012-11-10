@@ -16,7 +16,7 @@ InputManager::~InputManager()
 
 }
 
-void InputManager::Update(bool& exitGame)
+void InputManager::Update(GameState* gameState)
 {
 	mouseBtns = SDL_GetMouseState(&mouseX, &mouseY);
 
@@ -35,7 +35,14 @@ void InputManager::Update(bool& exitGame)
 			switch(event.key.keysym.sym) 
 			{
 			case SDLK_ESCAPE:
-				exitGame = true;
+				if(*gameState == MENU)
+				{
+					*gameState = QUIT;
+				}
+				else
+				{
+					*gameState = MENU;
+				}
 				break;
 			}
 			break;
@@ -56,7 +63,7 @@ void InputManager::Update(bool& exitGame)
 			}
 			break;
 		case SDL_QUIT: //e.g., user clicks the upper right x
-			exitGame = true;
+			*gameState = QUIT;
 			break;
 		case SDL_VIDEORESIZE:
 			resize(event.resize.w, event.resize.h);
@@ -144,17 +151,29 @@ bool InputManager::MoveDown()
 	return false;
 }
 
-void InputManager::resize( unsigned int width, unsigned int height )
+void InputManager::resize( unsigned int width, unsigned int height, bool toDefault)
 {
-	glViewport(0, 0, width, height);
+	if(!toDefault)
+	{
+		glViewport(0, 0, width, height);
 
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(75.0f, 1.7f, 10, FRUSTUM_DEPTH);
-	gluLookAt(0, 1.10, CAMERA_POS,	0, 0.3, 0,	0, 1, 0); 
-	//gluLookAt(0.0f, 20.0f, 20.0f, 0.0f, 0.0f ,-13.0f, 0.0f, 1.0f, 0.0f);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		gluPerspective(75.0f, 1.7f, 10, FRUSTUM_DEPTH);
+		gluLookAt(0, 1.10, CAMERA_POS,	0, 0.3, 0,	0, 1, 0); 
+		//gluLookAt(0.0f, 20.0f, 20.0f, 0.0f, 0.0f ,-13.0f, 0.0f, 1.0f, 0.0f);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+	}
+	else
+	{
+		glViewport(0, 0, width, height);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(-1, 1, -1, 1, 1, -1);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+	}
 }
 
 bool InputManager::Fire()

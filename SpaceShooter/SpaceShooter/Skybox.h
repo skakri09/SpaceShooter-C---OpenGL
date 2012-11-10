@@ -33,9 +33,7 @@ public:
 
 	void UpdateSkybox(float deltaTime);
 
-	unsigned int skybox[6];
-
-	
+	unsigned int spaceBox[6];
 
 private:
 	float size;

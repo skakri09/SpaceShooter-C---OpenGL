@@ -25,12 +25,13 @@ public:
     MainMenu();
     ~MainMenu();
 
-	void Init(InputManager* input, bool* quitGame, GameState* gameState);
+	void Init(InputManager* input, GameState* gameState);
 
 	void UpdateMenu(float deltaTime);
 
 	void DrawMenu();
-protected:
+	
+	void OnEnteringMenu();
 
 private:
 	Skybox skybox;
@@ -45,6 +46,9 @@ private:
 	std::vector<std::shared_ptr<MenuEntry>> menuEntries;
 
 	unsigned int selectedEntry;
+
+	void SetMenuLights();
+	void SetMenuFog();
 };
 
 #endif // MainMenu_h__

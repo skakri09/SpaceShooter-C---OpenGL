@@ -17,7 +17,6 @@ void Texturable::BindTexture(std::string textureName)
 	if(textures.find(textureName) != textures.end())
 	{
 		glBindTexture(GL_TEXTURE_2D, textures.find(textureName)->second);
-		checkGLErrors();
 	}
 	else
 	{

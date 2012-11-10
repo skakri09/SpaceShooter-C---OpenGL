@@ -34,7 +34,7 @@ public:
 	void InitManager(InputManager* input);
 	
 	//Calling Update() on all active spaceships
-	void UpdateManager(GLfloat deltaTime, bool& exit);
+	void UpdateManager(GLfloat deltaTime);
 
 	//Calling Draw() on all active spaceships
 	void DrawSpaceShips();

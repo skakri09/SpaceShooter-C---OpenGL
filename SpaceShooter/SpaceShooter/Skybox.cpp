@@ -13,12 +13,12 @@ Skybox::~Skybox()
 void Skybox::initSkybox(std::string skyboxName, float size)
 {
 	std::string boxPath = "..//skybox//"+ skyboxName + "//";
-	skybox[SKY_LEFT]=loadTexture(boxPath + "left.png");
-	skybox[SKY_BACK]=loadTexture(boxPath + "back.png");
-	skybox[SKY_RIGHT]=loadTexture(boxPath + "right.png");
-	skybox[SKY_FRONT]=loadTexture(boxPath + "front.png");
-	skybox[SKY_TOP]=loadTexture(boxPath + "top.png");
-	skybox[SKY_BOTTOM]=loadTexture(boxPath + "bottom.png");
+	spaceBox[SKY_LEFT]=loadTexture(boxPath + "left.png");
+	spaceBox[SKY_BACK]=loadTexture(boxPath + "back.png");
+	spaceBox[SKY_RIGHT]=loadTexture(boxPath + "right.png");
+	spaceBox[SKY_FRONT]=loadTexture(boxPath + "front.png");
+	spaceBox[SKY_TOP]=loadTexture(boxPath + "top.png");
+	spaceBox[SKY_BOTTOM]=loadTexture(boxPath + "bottom.png");
 	this->size = size;
 	rotate = 0.0f;
 }
@@ -38,7 +38,7 @@ void Skybox::drawSkybox()
 	glEnable(GL_TEXTURE_2D);			
 	
 	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D,skybox[SKY_BACK]); 
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_BACK]); 
 	glBegin(GL_QUADS);
 	glTexCoord2f(1, 1);
 	glVertex3f(size*-0.5f, size*-0.5f, size*-0.5f);//bottom left
@@ -52,7 +52,7 @@ void Skybox::drawSkybox()
 	glPopMatrix();
 
 	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D,skybox[SKY_LEFT]);
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_LEFT]);
 	glBegin(GL_QUADS);
 	glTexCoord2f(1, 1);
 	glVertex3f(size*-0.5f, size*-0.5f, size*0.5f);//front bottom
@@ -66,7 +66,7 @@ void Skybox::drawSkybox()
 	glPopMatrix();
 
 	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D,skybox[SKY_FRONT]);
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_FRONT]);
 	glBegin(GL_QUADS);
 	glTexCoord2f(0, 1);
 	glVertex3f(size*-0.5f, size*-0.5f, size*0.5f);//bottom left
@@ -80,7 +80,7 @@ void Skybox::drawSkybox()
 	glPopMatrix();
 
 	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D,skybox[SKY_RIGHT]);
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_RIGHT]);
 	glBegin(GL_QUADS);
 	glTexCoord2f(0, 1);
 	glVertex3f(size*0.5f, size*-0.5f, size*0.5f);//front bottom
@@ -94,7 +94,7 @@ void Skybox::drawSkybox()
 	glPopMatrix();
 
 	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D,skybox[SKY_TOP]);          
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_TOP]);          
 	glBegin(GL_QUADS);
 	glTexCoord2f(0, 1);
 	glVertex3f(size*-0.5f, size*0.5f, size*0.5f);//front left
@@ -111,7 +111,7 @@ void Skybox::drawSkybox()
 
 	glPushMatrix();
 
-	glBindTexture(GL_TEXTURE_2D,skybox[SKY_BOTTOM]);               
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_BOTTOM]);               
 	glBegin(GL_QUADS);
 	glTexCoord2f(0, 0);
 	glVertex3f(size*-0.5f, size*-0.5f, size*0.5f);//front left
