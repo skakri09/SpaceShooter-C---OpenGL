@@ -31,3 +31,4 @@ void LaserLowCooldown::CreateProjectile(ProjectileTypes projectileType,  std::st
 		}
 	}
 }
+

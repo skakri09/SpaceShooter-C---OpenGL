@@ -18,7 +18,7 @@ public:
 	
 	//Initialize the text entry. Should set position, scale, rotation,
 	//text and all other information relevant
-	virtual void Init() = 0;
+	virtual void Init(){}
 
 	virtual void Update(float deltaTime);
 	virtual void Draw(VBODrawable* vbo);

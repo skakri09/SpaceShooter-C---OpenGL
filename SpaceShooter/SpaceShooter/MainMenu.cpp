@@ -13,7 +13,7 @@ MainMenu::~MainMenu()
 void MainMenu::Init(InputManager* input, GameState* gameState)
 {
 	cam.SetCameraPosition(0, 0, 35);
-	cam.ChangeSkybox("skybox1");
+	cam.SetSkybox("skybox1");
 	this->input = input;
 	selectedEntry = 0;
 

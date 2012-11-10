@@ -49,7 +49,7 @@ void GameStateManager::InitGameStateManager()
 	game = std::make_shared<GamePlayManager>();
 	menu = std::make_shared<MainMenu>();
 
-	SwitchState(MENU);
+	SwitchState(GAME);
 	switchToState = currentState;
 }
 

@@ -42,8 +42,8 @@ void Camera::Control(float mouseVel, float moveVel, InputManager* input)
 	{
 		SDL_ShowCursor(SDL_ENABLE);
 	}
-
-	if(input->MoveUp())
+	
+	if(input->KeyDownHold(SDLK_KP8))//up
 	{
 		if(camPitch!=90 && camPitch!=-90)  
 		{
@@ -51,7 +51,7 @@ void Camera::Control(float mouseVel, float moveVel, InputManager* input)
 		}
 		moveCameraUp(moveVel,0.0);     
 	}
-	else if(input->MoveDown())
+	else if(input->KeyDownHold(SDLK_KP2))//down
 	{
 		if(camPitch!=90 && camPitch!=-90)
 		{
@@ -59,13 +59,19 @@ void Camera::Control(float mouseVel, float moveVel, InputManager* input)
 		}
 		moveCameraUp(moveVel,180.0);
 	}              
-	if(input->MoveLeft()) 
+	if(input->KeyDownHold(SDLK_KP4)) //left
 	{
 		moveCamera(moveVel,90.0);
 	}
-	else if(input->MoveRight())
+	else if(input->KeyDownHold(SDLK_KP6)) //right
 	{
 		moveCamera(moveVel,270);        
+	}
+	
+	if(input->KeyDownOnce(SDLK_KP5))//reset camera transform
+	{
+		camYaw=0.0f;
+		camPitch=0.0f;
 	}
 }
 
@@ -100,7 +106,7 @@ void Camera::UpdateCamera()
 	glTranslatef(-camPos.getX(), -camPos.getY(), -camPos.getZ());
 }
 
-void Camera::ChangeSkybox( std::string newSkybox )
+void Camera::SetSkybox( std::string newSkybox )
 {
 	skybox.initSkybox(newSkybox, 10);
 }

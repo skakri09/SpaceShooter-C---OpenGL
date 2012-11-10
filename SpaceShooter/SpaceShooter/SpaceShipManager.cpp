@@ -44,7 +44,7 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 {
 	if(input->Fire())
 	{
-		player->Shoot(LASER_FAST);
+		player->Shoot(DOUBLE_TRIPLE_CONE_LASER);
 	}
 	HandlePlayerRotation();
 	HandleXAxisMovement();
@@ -123,6 +123,7 @@ void SpaceShipManager::HandleCollision()
 {
 	std::vector<std::shared_ptr<Projectile>>* projectiles = 
 		ProjectileManager::Inst()->GetProjectiles();
+	
 	for(auto i = projectiles->begin(); i != projectiles->end(); i++)
 	{
 		if( *(*i)->GetOwner() == *player )

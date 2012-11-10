@@ -31,24 +31,26 @@ void GamePlayManager::InitGamePlayManager(InputManager* input, GameState* gameSt
 	SpaceShipManager::Inst()->InitManager(input, gameState);
 	ParticleManager::Inst()->InitParticleManager();
 	environment.InitManager();
-	cam.SetCameraPosition(0, 0, 30);
-	cam.ChangeSkybox("skybox1");
 
-	gpi.InitGameplayInformation();
-	//skybox.initSkybox("skybox1", 100);
+	cam.SetCameraPosition(0, 0, CAMERA_POS);
+	cam.SetSkybox("skybox1");
+
+	gpi.InitGUI();
 }
 
 void GamePlayManager::RenderGame() 
 {
 	glPushMatrix();
+	
 	cam.RenderCamera();
-
+	
 	environment.DrawEnvironment();
 	ParticleManager::Inst()->DrawParticles();
 	SpaceShipManager::Inst()->DrawSpaceShips();
 	ProjectileManager::Inst()->DrawProjectiles();
 
-	gpi.RenderGameplayInformation();
+	gpi.RenderGUI();
+
 	glPopMatrix();
 }
 
@@ -56,7 +58,7 @@ void GamePlayManager::UpdateGame(float deltaTime)
 {
 	environment.Update(deltaTime);
 
-	//cam.Control(10.0f*deltaTime, 10.0f*deltaTime, input);
+	cam.Control(15.0f*deltaTime, 40.0f*deltaTime, input);
 	/*Vector3D cameraPos(*SpaceShipManager::Inst()->GetPlayer()->transformable.getPosition());
 	cameraPos.setZ(cameraPos.getZ() + 10);
 	cameraPos.setY(cameraPos.getY() + 3);
@@ -64,7 +66,7 @@ void GamePlayManager::UpdateGame(float deltaTime)
 	ParticleManager::Inst()->UpdateParticles(deltaTime);
 	SpaceShipManager::Inst()->UpdateManager(deltaTime);
 	ProjectileManager::Inst()->UpdateProjectiles(deltaTime);
-	gpi.UpdateGameplayInformation(deltaTime);
+	gpi.UpdateGUI(deltaTime);
 }
 
 void GamePlayManager::OnEnteringGameState()

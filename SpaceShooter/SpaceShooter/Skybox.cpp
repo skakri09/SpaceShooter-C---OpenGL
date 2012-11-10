@@ -26,7 +26,6 @@ void Skybox::initSkybox(std::string skyboxName, float size)
 void Skybox::drawSkybox()
 {
 	glPushMatrix();
-	//glLoadIdentity();
 	glRotatef(rotate, 0, 1, 0);
 	//checking if textures were turned on before enabling
 	bool texIsEnabled; 
@@ -128,8 +127,10 @@ void Skybox::drawSkybox()
 	glEnable(GL_LIGHTING);
 	glEnable(GL_DEPTH_TEST);
 	if(!texIsEnabled)
+	{
 		glDisable(GL_TEXTURE_2D);
-	
+	}
+
 	glPopMatrix();
 	glClear(GL_DEPTH_BUFFER_BIT);
 }

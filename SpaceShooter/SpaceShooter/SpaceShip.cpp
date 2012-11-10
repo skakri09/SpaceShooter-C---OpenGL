@@ -126,5 +126,6 @@ void SpaceShip::Respawn()
 
 	SpaceShipCurrentHealth = SpaceShipMaxHealth;
 	respawnImmunityTimer = 0.0f;
+	log << WARN << "Respawned - " << SpaceShipCurrentHealth << " HP left - " << lives << " lives left." << std::endl;
 }
 

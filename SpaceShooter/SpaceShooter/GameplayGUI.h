@@ -20,29 +20,26 @@
 #include "VBODrawable.h"
 #include "Transformable.h"
 #include "GUIEntry.h"
+#include "HPEntry.h"
+#include "LivesEntry.h"
 
-class GameplayInformation
+class GameplayGUI
 {
 public:
-    GameplayInformation();
-    ~GameplayInformation();
+    GameplayGUI();
+    ~GameplayGUI();
 
-	void InitGameplayInformation();
+	void InitGUI();
 
-	void UpdateGameplayInformation(float deltaTime);
+	void UpdateGUI(float deltaTime);
 
-	void RenderGameplayInformation();
+	void RenderGUI();
 
 
 private:
 	VBODrawable vbo;
 
 	std::vector<std::shared_ptr<GUIEntry>> GuiEntries;
-
-	Transformable playerHPPos;
-	std::shared_ptr<VboString> PlayerHP;
-	std::string playerHPString;
-	void RenderPlayerHP();
 
 };
 

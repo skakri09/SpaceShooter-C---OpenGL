@@ -28,6 +28,12 @@ void ProjectileManager::InitProjectileManager()
 
 	std::shared_ptr<Projectile> laserSlow = GetProjectile(LASER_SLOW);
 	projectileCooldowns[LASER_SLOW] = laserSlow->GetProjectileCooldown();
+
+	std::shared_ptr<Projectile> tripleConeLaser = GetProjectile(TRIPLE_CONE_LASER);
+	projectileCooldowns[TRIPLE_CONE_LASER] = tripleConeLaser->GetProjectileCooldown();
+
+	std::shared_ptr<Projectile> dtripleConeLaser = GetProjectile(DOUBLE_TRIPLE_CONE_LASER);
+	projectileCooldowns[DOUBLE_TRIPLE_CONE_LASER] = dtripleConeLaser->GetProjectileCooldown();
 }
 
 void ProjectileManager::UpdateProjectiles(float deltaTime)
@@ -104,6 +110,12 @@ std::shared_ptr<Projectile> ProjectileManager::GetProjectile( ProjectileTypes pr
 	case LASER_SLOW:
 		projectiles.push_back(std::make_shared<LaserHighCooldown>());
 		break;
+	case TRIPLE_CONE_LASER:
+		projectiles.push_back(std::make_shared<TripleConeLaser>());
+		break;
+	case DOUBLE_TRIPLE_CONE_LASER:
+		projectiles.push_back(std::make_shared<DoubleTripleConeLaser>());
+		break;
 	}
 
 	return projectiles.back();
@@ -126,5 +138,3 @@ std::vector<std::shared_ptr<Projectile>>* ProjectileManager::GetProjectiles()
 {
 	return &ActiveProjectiles;
 }
-
-

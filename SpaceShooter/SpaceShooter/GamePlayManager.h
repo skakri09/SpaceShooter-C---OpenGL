@@ -25,7 +25,7 @@
 #include "ProjectileManager.h"
 #include "EnvironmentalManager.h"
 #include "GameState.h"
-#include "GameplayInformation.h"
+#include "GameplayGUI.h"
 
 #include <gl/glew.h>
 #include <gl/gl.h>
@@ -60,7 +60,7 @@ private:
 	EnvironmentalManager environment;
 	Camera cam;
 
-	GameplayInformation gpi;
+	GameplayGUI gpi;
 	void SetGameLights();
 	void SetGameFog();
 };

@@ -17,7 +17,7 @@ void TextEntry::Update( float deltaTime )
 void TextEntry::Draw(VBODrawable* vbo)
 {
 	glPushMatrix();
-	GUIEntry::transformable.ApplyGLTransformations(true, true, false);
+	GUIEntry::transformable.ApplyGLTransformations(true, true, true);
 
 	for(unsigned int i = 0; i < VBOString->vboLetters.size(); i++)
 	{

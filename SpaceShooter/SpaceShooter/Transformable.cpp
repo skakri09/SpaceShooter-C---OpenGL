@@ -177,6 +177,11 @@ Vector3D& Transformable::getDirectionVector()
 	return directionVector;
 }
 
+void Transformable::SetDirectionVector( float xDir, float yDir, float zDir )
+{
+	directionVector.setValues(xDir, yDir, zDir);
+}
+
 void Transformable::SetXPos( float xPos )
 {
 	position.setX(xPos);

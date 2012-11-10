@@ -10,12 +10,14 @@
 
 #include "Transformable.h"
 #include "VBODrawable.h"
+#include "GameConstants.h"
 
 class GUIEntry
 {
 public:
 	GUIEntry(){}
 
+	virtual void Init() = 0;
 	virtual void Update(float deltaTime) = 0;
 	virtual void Draw(VBODrawable* vbo) = 0;
 

@@ -7,7 +7,7 @@
 				more correctly said, move everything arround in the scene.
 				Also holds the skybox
 
-	Note:		Inspiration for the class gotten from  a tutorial by 
+	Note:		Inspiration for the class gotten from a tutorial by 
 				thecplusplusguy at youtube
 *********************************************************************/
 #ifndef Camera_h__
@@ -29,6 +29,7 @@
 #include "InputManager.h"
 #include "Skybox.h"
 #include "Vector3d.h"
+#include "GameplayGUI.h"
 
 class Camera
 {
@@ -50,11 +51,12 @@ public:
 	void UpdateAutomaticCamera(float deltaTime);
 
 	//Change the skybox
-	void ChangeSkybox(std::string newSkybox);
+	void SetSkybox(std::string newSkybox);
 
 private:
 	Skybox skybox;
 
+	std::shared_ptr<GameplayGUI> GUI;
 	//Locks the camera between 90 and 0 for pitch,
 	//and 360 and 0 for yaw
 	void lockCamera();

@@ -83,7 +83,8 @@ public:
 	CollisionTransformationInfo& GetCollisionTransformationInfo();
 	
 	Vector3D& getDirectionVector();
-
+	void SetDirectionVector(float xDir, float yDir, float zDir);
+	
 private:
 	// Calculates the position by adding velocity multiplied by
 	// deltaTime (time since last frame) with the current position

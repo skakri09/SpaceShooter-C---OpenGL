@@ -14,7 +14,9 @@
 
 #include "LaserLowCooldown.h"
 #include "LaserHighCooldown.h"
+#include "TripleConeLaser.h"
 #include "ProjectileTypes.h"
+#include "DoubleTripleConeLaser.h"
 #include "Logger.h"
 
 class ProjectileManager

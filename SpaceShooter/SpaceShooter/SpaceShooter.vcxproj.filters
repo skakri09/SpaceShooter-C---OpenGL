@@ -157,6 +157,15 @@
     <Filter Include="Game\GUI\GameplayGUI\GUI Entry\TextEntries">
       <UniqueIdentifier>{3ee138a0-4af7-4f4c-9651-7d02837a5a52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GUI\GameplayGUI\GUI Entry\TextEntries\Header Files">
+      <UniqueIdentifier>{05485ec5-6a8e-4ae6-9e76-d2a96d939959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GUI\GameplayGUI\GUI Entry\TextEntries\Source Files">
+      <UniqueIdentifier>{d604f6ae-8ec6-48b5-b675-ce7a3942dff5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GUI\GameplayGUI\GUI Entry\TextEntries\Base">
+      <UniqueIdentifier>{28427df3-c6ed-4bf6-bc04-49bab4d476e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogSys.cpp">
@@ -310,11 +319,26 @@
     <ClCompile Include="GamePlayManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameplayInformation.cpp">
+    <ClCompile Include="GameplayGUI.cpp">
       <Filter>Game\GUI\GameplayGUI</Filter>
     </ClCompile>
+    <ClCompile Include="HPEntry.cpp">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="TextEntry.cpp">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="LivesEntry.cpp">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TripleConeLaser.cpp">
+      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleTripleConeLaser.cpp">
+      <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -510,14 +534,29 @@
     <ClInclude Include="GamePlayManager.h">
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameplayInformation.h">
-      <Filter>Game\GUI\GameplayGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="TextEntry.h">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
-    </ClInclude>
     <ClInclude Include="GUIEntry.h">
       <Filter>Game\GUI\GameplayGUI\GUI Entry</Filter>
+    </ClInclude>
+    <ClInclude Include="GameplayGUI.h">
+      <Filter>Game\GUI\GameplayGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="HPEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="LivesEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Game\Managers\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TripleConeLaser.h">
+      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleTripleConeLaser.h">
+      <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
