@@ -109,11 +109,11 @@ void MainMenu::SetMenuLights()
 	glEnable(GL_LIGHT0);
 	glDisable(GL_LIGHT1);
 	const static GLfloat ambient[] = 
-	{ 0.898f, 0.694f, 0.227f, 1.0f };
+	{ 0.898f, 0.694f, 0.227f, 0.0f };
 	const static GLfloat diffuse[] = 
 	{ 0.898f, 0.694f, 0.227f, 0.5f };
 	const static GLfloat specular[] = 
-	{ 0.898f, 0.694f, 0.227f, 1.0f };
+	{ 0.898f, 0.694f, 0.227f, 0.0f };
 	const static GLfloat position[] = 
 	{ 0.0f, 0.0f, 500.0, 1.0f }; 
 

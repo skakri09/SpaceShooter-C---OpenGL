@@ -27,7 +27,11 @@ void MenuEntry::DrawEntry()
 	EntryTransformable.ApplyGLTransformations(true, true, false);
 	if(isSelected)
 	{
-		glColor3f(0.898f, 0.694f, 0.227f);
+		glColor3f(0.15f, 0.15f, 0.15f);
+	}
+	else
+	{
+		glColor3f(0.05f, 0.05f, 0.05f);
 	}
 	for(unsigned int i = 0; i < EntryText->vboLetters.size(); i++)
 	{
