@@ -21,7 +21,7 @@
 class ImperialTieInterceptor : public BaseEnemyShip
 {
 public:
-    ImperialTieInterceptor(PlayerSpaceShip* playerShip);
+    ImperialTieInterceptor(std::shared_ptr<PlayerSpaceShip> playerShip);
     virtual ~ImperialTieInterceptor();
 	
 	void Update(GLfloat deltaTime);

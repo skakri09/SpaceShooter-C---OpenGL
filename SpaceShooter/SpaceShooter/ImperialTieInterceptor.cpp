@@ -1,6 +1,6 @@
 #include "ImperialTieInterceptor.h"
 
-ImperialTieInterceptor::ImperialTieInterceptor(PlayerSpaceShip* playerShip)
+ImperialTieInterceptor::ImperialTieInterceptor(std::shared_ptr<PlayerSpaceShip> playerShip)
 	: log("ImperialTieInterceptor", WARN),
 	 BaseEnemyShip(playerShip, std::make_shared<IdleState>(),
 					std::make_shared<EnemySpaceshipConstantState>(),

@@ -3,7 +3,7 @@
 #pragma warning(push)
 //Disabling warning about using 'this' pointer in ctor. 
 #pragma warning(disable: 4355)
-BaseEnemyShip::BaseEnemyShip(PlayerSpaceShip* playerShip, 
+BaseEnemyShip::BaseEnemyShip(std::shared_ptr<PlayerSpaceShip> playerShip, 
 	std::shared_ptr<AiState> startupState,
 	std::shared_ptr<AiState> constantState,
 	int enemyHP)

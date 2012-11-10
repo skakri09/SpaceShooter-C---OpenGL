@@ -50,7 +50,7 @@ void GameStateManager::InitGameStateManager()
 	menu = std::make_shared<MainMenu>();
 
 	SwitchState(MENU);
-	prevUpdateGameState = currentState;
+	switchToState = currentState;
 }
 
 void GameStateManager::SwitchState( GameState newState )
@@ -82,11 +82,14 @@ void GameStateManager::SwitchState( GameState newState )
 			DisplayLoadingScreen();
 			input.resize(window_width, window_height);
 
-			menu->Init(&input, &currentState);
+			menu->Init(&input, &switchToState);
 			menuWasInited = true;
 		}
 		currentState = MENU;
 		menu->OnEnteringMenu();
+		break;
+	case QUIT:
+		exit = true;
 		break;
 	}
 }
@@ -97,11 +100,10 @@ void GameStateManager::GameLoop()
 	float sec = 0.0f;
 	while(!exit)
 	{
-		if(prevUpdateGameState != currentState)
+		if(switchToState != currentState)
 		{
-			SwitchState(currentState);
+			SwitchState(switchToState);
 		}
-		prevUpdateGameState = currentState;
 		deltaTime = static_cast<float>(timer.elapsedAndRestart());
 		sec += deltaTime;
 		fps++;
@@ -115,7 +117,7 @@ void GameStateManager::GameLoop()
 		}
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
-		input.Update(&currentState);
+		input.Update(&switchToState);
 
 		UpdateCurrentState();
 		DrawCurrentState();
@@ -123,10 +125,6 @@ void GameStateManager::GameLoop()
 		checkGLErrors();
 
 		SDL_GL_SwapBuffers();
-		if(currentState == QUIT)
-		{
-			exit = true;
-		}
 	}
 }
 

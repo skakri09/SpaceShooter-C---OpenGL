@@ -17,7 +17,7 @@
 class ImperialStarDestroyer : public BaseEnemyShip
 {
 public:
-    ImperialStarDestroyer(PlayerSpaceShip* playerShip);
+    ImperialStarDestroyer(std::shared_ptr<PlayerSpaceShip> playerShip);
     ~ImperialStarDestroyer();
 
 	void Update(GLfloat deltaTime);

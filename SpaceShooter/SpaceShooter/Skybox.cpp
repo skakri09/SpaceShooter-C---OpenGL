@@ -26,7 +26,7 @@ void Skybox::initSkybox(std::string skyboxName, float size)
 void Skybox::drawSkybox()
 {
 	glPushMatrix();
-	glLoadIdentity();
+	//glLoadIdentity();
 	glRotatef(rotate, 0, 1, 0);
 	//checking if textures were turned on before enabling
 	bool texIsEnabled; 

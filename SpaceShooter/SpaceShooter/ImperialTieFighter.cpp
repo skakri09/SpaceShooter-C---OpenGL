@@ -1,7 +1,7 @@
 #include "ImperialTieFighter.h"
 
 
-ImperialTieFighter::ImperialTieFighter(PlayerSpaceShip* playerShip)
+ImperialTieFighter::ImperialTieFighter(std::shared_ptr<PlayerSpaceShip> playerShip)
 	: log("ImperialTieFighter", WARN),
 	BaseEnemyShip(playerShip, std::make_shared<IdleState>(),
 	std::make_shared<EnemySpaceshipConstantState>(),

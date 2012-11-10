@@ -29,8 +29,14 @@ void SpaceShipManager::InitManager(InputManager* input)
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//MilleniumFalcon//MilleniumFalcon.3ds");
 	
-	player.InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
-	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(&player));
+	if(!player)
+	{
+		player = std::make_shared<PlayerSpaceShip>();
+		player->InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);	
+	}
+	
+	
+	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(player));
 	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
 }
 
@@ -38,7 +44,7 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 {
 	if(input->Fire())
 	{
-		player.Shoot(LASER_FAST);
+		player->Shoot(LASER_FAST);
 	}
 	HandlePlayerRotation();
 	HandleXAxisMovement();
@@ -46,8 +52,8 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	
 	HandleFrustumCollision();
 
-	player.Update(deltaTime);
-	if(player.CanKill())
+	player->Update(deltaTime);
+	if(player->CanKill())
 	{
 	}
 
@@ -77,7 +83,7 @@ void SpaceShipManager::DrawSpaceShips()
 {
 	glPushMatrix();
 
-	player.Draw();
+	player->Draw();
 	
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();i++)
 	{
@@ -92,9 +98,15 @@ void SpaceShipManager::TransferShipToShipManager( std::shared_ptr<BaseEnemyShip>
 	EnemyShipsForTransfer.push_back(ship);
 }
 
-PlayerSpaceShip* SpaceShipManager::GetPlayer()
+void SpaceShipManager::TransferShipToShipManager( std::shared_ptr<PlayerSpaceShip> ship )
 {
-	return &player;
+	player = ship;
+	player->InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
+}
+
+std::shared_ptr<PlayerSpaceShip> SpaceShipManager::GetPlayer()
+{
+	return player;
 }
 
 std::vector<std::shared_ptr<BaseEnemyShip>>* SpaceShipManager::GetEnemySpaceships()
@@ -111,7 +123,7 @@ void SpaceShipManager::HandleCollision()
 		ProjectileManager::Inst()->GetProjectiles();
 	for(auto i = projectiles->begin(); i != projectiles->end(); i++)
 	{
-		if( *(*i)->GetOwner() == player )
+		if( *(*i)->GetOwner() == *player )
 		{
 			for(auto s = EnemySpaceShips.begin(); s != EnemySpaceShips.end(); s++)
 			{
@@ -120,7 +132,7 @@ void SpaceShipManager::HandleCollision()
 		}
 		else
 		{
-			player.HandleProjectileCollision( (*i) );
+			player->HandleProjectileCollision( (*i) );
 		}
 	}
 }
@@ -132,23 +144,23 @@ void SpaceShipManager::HandleXAxisMovement()
 		//if left and right
 		if (input->MoveLeft() && input->MoveRight())
 		{
-			player.transformable.setXVel(0.0f);
+			player->transformable.setXVel(0.0f);
 		}
 		//If only left
 		if (input->MoveLeft() && !input->MoveRight())
 		{
-			player.transformable.setXVel(-PLAYER_XY_VELOCITY);
+			player->transformable.setXVel(-PLAYER_XY_VELOCITY);
 		}
 		//If only right
 		if (!input->MoveLeft() && input->MoveRight())
 		{
-			player.transformable.setXVel(PLAYER_XY_VELOCITY);
+			player->transformable.setXVel(PLAYER_XY_VELOCITY);
 		}
 	}
 	else
 	{
 		//No movement
-		player.transformable.setXVel(0.0f);
+		player->transformable.setXVel(0.0f);
 	}
 }
 
@@ -159,45 +171,45 @@ void SpaceShipManager::HandleYAxisMovement()
 		//if up and down
 		if (input->MoveUp() && input->MoveDown())
 		{
-			player.transformable.setYVel(0.0f);
+			player->transformable.setYVel(0.0f);
 		}
 		//If only up
 		if (input->MoveUp() && !input->MoveDown())
 		{
-			player.transformable.setYVel(PLAYER_XY_VELOCITY);
+			player->transformable.setYVel(PLAYER_XY_VELOCITY);
 		}
 		//If only down
 		if (!input->MoveUp() && input->MoveDown())
 		{
-			player.transformable.setYVel(-PLAYER_XY_VELOCITY);
+			player->transformable.setYVel(-PLAYER_XY_VELOCITY);
 		}
 	}
 	else
 	{
 		//No movement
-		player.transformable.setYVel(0.0f);
+		player->transformable.setYVel(0.0f);
 	}
 }
 
 void SpaceShipManager::HandleFrustumCollision()
 {
-	if( (player.transformable.getXPos() >= FRUSTUM_RIGHT && player.transformable.getXVel() > 0.0f) || 
-		(player.transformable.getXPos() <= FRUSTUM_LEFT && player.transformable.getXVel() < 0.0f))
+	if( (player->transformable.getXPos() >= FRUSTUM_RIGHT && player->transformable.getXVel() > 0.0f) || 
+		(player->transformable.getXPos() <= FRUSTUM_LEFT && player->transformable.getXVel() < 0.0f))
 	{
-		player.transformable.setXVel(0.0f);
+		player->transformable.setXVel(0.0f);
 	}
-	if( (player.transformable.getYPos() >= FRUSTUM_TOP && player.transformable.getYVel() > 0.0f) || 
-		(player.transformable.getYPos() <= FRUSTUM_BOTTOM && player.transformable.getYVel() < 0.0f))
+	if( (player->transformable.getYPos() >= FRUSTUM_TOP && player->transformable.getYVel() > 0.0f) || 
+		(player->transformable.getYPos() <= FRUSTUM_BOTTOM && player->transformable.getYVel() < 0.0f))
 	{
-		player.transformable.setYVel(0.0f);
+		player->transformable.setYVel(0.0f);
 	}
-	log << INFO << player.transformable.getYPos() << std::endl;
+	log << INFO << player->transformable.getYPos() << std::endl;
 }
 
 void SpaceShipManager::HandlePlayerRotation()
 {
 	/*if(input->LeftMouseDownOnce())
 	{
-		player.InitRotation(Y_AXIS);
+		player->InitRotation(Y_AXIS);
 	}*/
 }

@@ -27,11 +27,11 @@ void MenuEntry::DrawEntry()
 	EntryTransformable.ApplyGLTransformations(true, true, false);
 	if(isSelected)
 	{
-		glColor3f(0.15f, 0.15f, 0.15f);
+		glColor4f( 0.898f, 0.694f, 0.227f, 1.0f);
 	}
 	else
 	{
-		glColor3f(0.05f, 0.05f, 0.05f);
+		glColor4f( 0.898f, 0.694f, 0.227f, 0.2f);
 	}
 	for(unsigned int i = 0; i < EntryText->vboLetters.size(); i++)
 	{
@@ -43,7 +43,7 @@ void MenuEntry::DrawEntry()
 	
 		glPopMatrix();
 	}
-	glColor3f(1.0f, 1.0f, 1.0f);
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	glPopMatrix();
 }
 
@@ -57,7 +57,13 @@ void MenuEntry::CreateEntryText( std::string* entryText, float scale, bool cente
 	EntryText = TextFactory::Inst()->GetVboString(entryText);
 	if(centered)
 	{
+		isCentered = true;
 		EntryText->stringLength*= scale;
 		EntryTransformable.SetXPos(EntryTransformable.getXPos() - (EntryText->stringLength/2) );
 	}
+}
+
+Vector3D* MenuEntry::GetPosition()
+{
+	return EntryTransformable.getPosition();
 }

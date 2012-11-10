@@ -40,8 +40,9 @@ public:
 	void DrawSpaceShips();
 
 	void TransferShipToShipManager(std::shared_ptr<BaseEnemyShip> ship);
+	void TransferShipToShipManager(std::shared_ptr<PlayerSpaceShip> ship);
 
-	PlayerSpaceShip* GetPlayer();
+	std::shared_ptr<PlayerSpaceShip> GetPlayer();
 
 	std::vector<std::shared_ptr<BaseEnemyShip>>* GetEnemySpaceships();
 
@@ -56,7 +57,7 @@ private:
 	//input internally instead of trough the gameManager
 	InputManager* input;	
 
-	PlayerSpaceShip player; // Player spaceship object
+	std::shared_ptr<PlayerSpaceShip> player; // Player spaceship object
 
 	//Handles movement along the x axis. Checks for input and changes
 	//x velocity based on the input.

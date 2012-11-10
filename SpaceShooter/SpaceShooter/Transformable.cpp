@@ -213,3 +213,13 @@ Vector3D& Transformable::GetScale()
 	return scale;
 }
 
+void Transformable::SetPos( Vector3D& newPos )
+{
+	position = newPos;
+}
+
+void Transformable::SetPos( float xPos, float yPos, float zPos )
+{
+	position.setValues(xPos, yPos, zPos);
+}
+

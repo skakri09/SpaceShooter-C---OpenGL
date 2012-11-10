@@ -90,6 +90,7 @@
     <ClCompile Include="ApproachXYPlayerState.cpp" />
     <ClCompile Include="ApproachXYZPlayerState.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="CrossScreenWhileFireing.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="ApproachXYPlayerState.h" />
     <ClInclude Include="ApproachXYZPlayerState.h" />
     <ClInclude Include="BoundingSphere.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="CrossScreenWhileFireing.h" />
     <ClInclude Include="EnvironmentalManager.h" />

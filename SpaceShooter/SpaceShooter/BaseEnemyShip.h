@@ -19,7 +19,7 @@ using std::shared_ptr;
 class BaseEnemyShip : public SpaceShip
 {
 public:
-    BaseEnemyShip(PlayerSpaceShip* playerShip, 
+    BaseEnemyShip(std::shared_ptr<PlayerSpaceShip>, 
 				   std::shared_ptr<AiState> startupState,
 				   std::shared_ptr<AiState> constantState,
 				   int enemyHP);
@@ -35,7 +35,7 @@ public:
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ) = 0;
 
-	PlayerSpaceShip* getPlayerShip(){return playerShip;}
+	std::shared_ptr<PlayerSpaceShip> getPlayerShip(){return playerShip;}
 
 	AiStateMachine& GetAiStateMachine(){return aiStateMachine;}
 
@@ -44,7 +44,7 @@ protected:
 	AiStateMachine aiStateMachine;
 
 	//A pointer to the player spaceship. 
-	PlayerSpaceShip* playerShip;
+	std::shared_ptr<PlayerSpaceShip> playerShip;
 
 	bool isActive;
 

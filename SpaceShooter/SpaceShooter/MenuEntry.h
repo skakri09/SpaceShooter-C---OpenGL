@@ -33,13 +33,15 @@ public:
 
 	void SetIsSelected(bool isSelected);
 
+	Vector3D* GetPosition();
+
 protected:
 
 private:
 	Logger log;
 
 	bool isSelected;
-
+	bool isCentered;
 	Transformable EntryTransformable;
 
 	std::shared_ptr<VboString> EntryText;

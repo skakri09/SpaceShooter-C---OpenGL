@@ -70,6 +70,8 @@ public:
 
 	void SetVelocity(float xVel, float yVel, float zVel);
 
+	void SetPos(Vector3D& newPos);
+	void SetPos(float xPos, float yPos, float zPos);
 	void SetXPos(float xPos);
 	void SetYPos(float yPos);
 	void SetZPos(float zPos);

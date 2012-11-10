@@ -175,8 +175,8 @@ void InputManager::resize( unsigned int width, unsigned int height, bool toDefau
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(75.0f, 1.7f, 10, FRUSTUM_DEPTH);
-		gluLookAt(0, 1.10, CAMERA_POS,	0, 0.3, 0,	0, 1, 0); 
+		gluPerspective(75.0f, 1.7f, 1, FRUSTUM_DEPTH);
+		//gluLookAt(0, 1.10, CAMERA_POS,	0, 0.3, 0,	0, 1, 0); 
 		//gluLookAt(0.0f, 20.0f, 20.0f, 0.0f, 0.0f ,-13.0f, 0.0f, 1.0f, 0.0f);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();

@@ -18,6 +18,10 @@
 #include "PlayGameEntry.h"
 #include "QuitGameEntry.h"
 #include "GameState.h"
+#include "PlayerSpaceShip.h"
+#include "Vector3d.h"
+#include "Camera.h"
+#include "Logger.h"
 
 class MainMenu
 {
@@ -34,9 +38,13 @@ public:
 	void OnEnteringMenu();
 
 private:
+	Logger log;
 	Skybox skybox;
+	Camera cam;
 
 	void HandleInput();
+	void UpdateSelectionShip(float deltaTime);
+	void UpdateCameraPosition();
 
 	InputManager* input;
 
@@ -45,6 +53,8 @@ private:
 
 	std::vector<std::shared_ptr<MenuEntry>> menuEntries;
 
+	std::shared_ptr<PlayerSpaceShip> menuShip;
+	
 	unsigned int selectedEntry;
 
 	void SetMenuLights();

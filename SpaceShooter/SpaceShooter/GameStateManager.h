@@ -41,7 +41,7 @@ private:
 	Logger log;
 	bool exit;
 	GameState currentState;
-	GameState prevUpdateGameState;
+	GameState switchToState;
 	void UpdateCurrentState();
 	void DrawCurrentState();
 

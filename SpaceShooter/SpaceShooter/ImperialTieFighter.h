@@ -21,7 +21,7 @@
 class ImperialTieFighter : public BaseEnemyShip
 {
 public:
-    ImperialTieFighter(PlayerSpaceShip* playerShip);
+    ImperialTieFighter(std::shared_ptr<PlayerSpaceShip> playerShip);
     ~ImperialTieFighter();
 
 	void Update(GLfloat deltaTime);
