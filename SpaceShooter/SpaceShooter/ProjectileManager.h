@@ -18,8 +18,9 @@
 #include "ProjectileTypes.h"
 #include "DoubleTripleConeLaser.h"
 #include "Logger.h"
+#include "ManagerInterface.h"
 
-class ProjectileManager
+class ProjectileManager : public ManagerInterface
 {
 public:
 	static ProjectileManager* Inst();    
@@ -29,7 +30,7 @@ public:
 	//pre-loaded, there will be a tiny freeze as they are loaded.
 	void InitProjectileManager();
 
-	void UpdateProjectiles(float deltaTime);
+	void Update(float deltaTime);
 
 	void DrawProjectiles();
 

@@ -45,7 +45,7 @@ void ParticleManager::DrawParticles()
 	}
 }
 
-void ParticleManager::UpdateParticles( float deltaTime )
+void ParticleManager::Update( float deltaTime )
 {
 	if(!particles.empty())
 	{

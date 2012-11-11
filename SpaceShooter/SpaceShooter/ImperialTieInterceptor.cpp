@@ -4,7 +4,7 @@ ImperialTieInterceptor::ImperialTieInterceptor(std::shared_ptr<PlayerSpaceShip> 
 	: log("ImperialTieInterceptor", WARN),
 	 BaseEnemyShip(playerShip, std::make_shared<IdleState>(),
 					std::make_shared<EnemySpaceshipConstantState>(),
-					10)//hp
+					10, IMPERIAL_TIE_INTERCEPTOR)//hp
 	
 {
 

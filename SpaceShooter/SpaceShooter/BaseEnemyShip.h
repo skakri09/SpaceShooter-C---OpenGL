@@ -15,6 +15,7 @@ using std::shared_ptr;
 #include "PlayerSpaceShip.h"
 #include "AiStateMachine.h"
 #include "EnemySpaceshipConstantState.h"
+#include "EnemyTypes.h"
 
 class BaseEnemyShip : public SpaceShip
 {
@@ -22,7 +23,7 @@ public:
     BaseEnemyShip(std::shared_ptr<PlayerSpaceShip>, 
 				   std::shared_ptr<AiState> startupState,
 				   std::shared_ptr<AiState> constantState,
-				   int enemyHP);
+				   int enemyHP, EnemyTypes enemyType);
 
     virtual ~BaseEnemyShip();
 	
@@ -39,6 +40,10 @@ public:
 
 	AiStateMachine& GetAiStateMachine(){return aiStateMachine;}
 
+	EnemyTypes GetEnemyType(){return enemyType;}
+
+	bool WasKilledByPlayer(){return killedByPlayer;}
+
 protected:
 	//The AI state machine
 	AiStateMachine aiStateMachine;
@@ -46,12 +51,12 @@ protected:
 	//A pointer to the player spaceship. 
 	std::shared_ptr<PlayerSpaceShip> playerShip;
 
-	bool isActive;
+	bool killedByPlayer;
 
 private:
 	Logger log;
 
-
+	EnemyTypes enemyType;
 
 };
 #endif // SimpleEnemyShip_h__

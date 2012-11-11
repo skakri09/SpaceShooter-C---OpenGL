@@ -26,15 +26,16 @@
 #include "EnvironmentalManager.h"
 #include "GameState.h"
 #include "GameplayGUI.h"
+#include "ManagerInterface.h"
+#include "ScoreManager.h"
 
 #include <gl/glew.h>
-#include <gl/gl.h>
 
 //Forward declaring InputManager class as this class rely on it,
 //and the InputManager class rely on this class.
 class InputManager;
 
-class GamePlayManager 
+class GamePlayManager : public ManagerInterface 
 {
 public:
 	GamePlayManager();  //ctor
@@ -49,7 +50,7 @@ public:
 
 	//function that calls all update functions from other managers
 	//and takes care of swapping buffers
-	void UpdateGame(float deltaTime);
+	void Update(float deltaTime);
 
 	void OnEnteringGameState();
 
@@ -57,6 +58,8 @@ private:
 	Logger log;
 	GameState* gameState;
 	InputManager* input;
+
+	ScoreManager score;
 	EnvironmentalManager environment;
 	Camera cam;
 

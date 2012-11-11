@@ -133,7 +133,7 @@ void GameStateManager::UpdateCurrentState()
 	switch(currentState)
 	{
 	case GAME:
-		game->UpdateGame(deltaTime);
+		game->Update(deltaTime);
 		break;
 	case MENU:
 		menu->UpdateMenu(deltaTime);

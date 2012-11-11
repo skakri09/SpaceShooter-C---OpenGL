@@ -1,28 +1,26 @@
 /********************************************************************
-    created:    10:11:2012   17:40
-    filename:   HPEntry.h
+    created:    10:11:2012   23:28
+    filename:   ScoreTextEntry.h
     author:     Kristian Skarseth
     
     purpose:    
 *********************************************************************/
-#ifndef HPEntry_h__
-#define HPEntry_h__
+#ifndef ScoreTextEntry_h__
+#define ScoreTextEntry_h__
 
 #include "TextEntry.h"
-#include "SpaceShipManager.h"
+#include "ScoreManager.h"
 
-class HPEntry : public TextEntry
+class ScoreTextEntry : public TextEntry
 {
 public:
-    HPEntry();
-    ~HPEntry();
+    ScoreTextEntry();
+    ~ScoreTextEntry();
 
 	void Init();
 	void Update(float deltaTime);
 	void Draw(VBODrawable* vbo);
 
-private:
-	int currentlyDisplayedHP;
 };
 
-#endif // HPEntry_h__
+#endif // ScoreTextEntry_h__

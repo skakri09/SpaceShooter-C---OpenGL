@@ -18,8 +18,9 @@
 #include "MeshFactory.h"
 #include "VBODrawable.h"
 #include "Particle.h"
+#include "ManagerInterface.h"
 
-class ParticleManager
+class ParticleManager : public ManagerInterface
 {
 public:
 	//Singleton access function
@@ -29,7 +30,7 @@ public:
    void InitParticleManager();
 
    void DrawParticles();
-   void UpdateParticles(float deltaTime);
+   void Update(float deltaTime);
 
    //Emits a batch of particles that can be used for a standard collision
    void EmitStandardSpaceshipProjectileCollision(Vector3D origin);

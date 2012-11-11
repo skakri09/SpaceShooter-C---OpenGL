@@ -13,7 +13,9 @@
 #include <string>
 #include <map>
 
-class SoundManager
+#include "ManagerInterface.h"
+
+class SoundManager : public ManagerInterface
 {
 public:
     static SoundManager* Inst();
@@ -24,6 +26,7 @@ public:
 
 	void PlayEffect(std::string effectName);
 
+	void Update(float deltaTime){}
 private:
 	SoundManager();
 	~SoundManager();

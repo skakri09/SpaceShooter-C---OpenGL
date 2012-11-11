@@ -9,16 +9,19 @@ GameplayGUI::~GameplayGUI()
 {
 }
 
-void GameplayGUI::InitGUI()
+void GameplayGUI::InitGUI(ManagerInterface* manager)
 {
 
 	GuiEntries.push_back(std::make_shared<HPEntry>());
 	GuiEntries.push_back(std::make_shared<LivesEntry>());
-
+	GuiEntries.push_back(std::make_shared<ScoreTextEntry>());
 	for(unsigned int i = 0; i < GuiEntries.size(); i++)
 	{
 		GuiEntries.at(i)->Init();
 	}
+
+	GuiEntries.push_back(std::make_shared<ScoreValueEntry>());
+	GuiEntries.back()->Init(manager);
 }
 
 void GameplayGUI::UpdateGUI(float deltaTime)

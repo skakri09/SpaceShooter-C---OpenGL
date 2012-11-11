@@ -4,7 +4,7 @@
 ImperialStarDestroyer::ImperialStarDestroyer(std::shared_ptr<PlayerSpaceShip> playerShip)
 	:log("ImperialStarDestroyerInactiveState", WARN),
 	BaseEnemyShip(playerShip, std::make_shared<StarDestroyerShipSpawning>(),
-	std::make_shared<EnemySpaceshipConstantState>(), 1000)
+	std::make_shared<EnemySpaceshipConstantState>(), 1000, IMPERIAL_STAR_DESTROYER)
 {
 }
 

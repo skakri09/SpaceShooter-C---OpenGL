@@ -11,6 +11,7 @@
 #include "Transformable.h"
 #include "VBODrawable.h"
 #include "GameConstants.h"
+#include "ManagerInterface.h"
 
 class GUIEntry
 {
@@ -18,6 +19,8 @@ public:
 	GUIEntry(){}
 
 	virtual void Init() = 0;
+	virtual void Init(ManagerInterface* manager) = 0;
+	
 	virtual void Update(float deltaTime) = 0;
 	virtual void Draw(VBODrawable* vbo) = 0;
 

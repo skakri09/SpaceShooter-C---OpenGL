@@ -11,10 +11,10 @@ LivesEntry::~LivesEntry()
 
 void LivesEntry::Init()
 {
-	int lives = SpaceShipManager::Inst()->GetPlayer()->GetLives();
-	currentlyDisplayedLives = lives;
+	currentlyDisplayedLives = SpaceShipManager::Inst()->GetPlayer()->GetLives();
+
 	std::stringstream livesStream;
-	livesStream << "lives: " << lives;
+	livesStream << "lives: " << currentlyDisplayedLives;
 
 	stringInUse = livesStream.str();
 	updatedString = stringInUse;

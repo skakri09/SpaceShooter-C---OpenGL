@@ -22,8 +22,10 @@
 #include "ImperialStarDestroyer.h"
 #include "ProjectileManager.h"
 #include "GameState.h"
+#include "ManagerInterface.h"
+#include "ScoreManager.h"
 
-class SpaceShipManager
+class SpaceShipManager : public ManagerInterface
 {
 public:
 	static SpaceShipManager* Inst();
@@ -32,10 +34,10 @@ public:
 	//pointer should point to the inputManager used
 	//by the game. We take it so that we can handle
 	//input for the spaceship in this class.
-	void InitManager(InputManager* input, GameState* gameState);
+	void InitManager(InputManager* input, GameState* gameState, ScoreManager* scoreManager);
 	
 	//Calling Update() on all active spaceships
-	void UpdateManager(GLfloat deltaTime);
+	void Update(GLfloat deltaTime);
 
 	//Calling Draw() on all active spaceships
 	void DrawSpaceShips();
@@ -60,6 +62,9 @@ private:
 
 	//Local pointer to the gameState so we can switch to another state when player dies
 	GameState* gameState;
+
+	//Local pointer to scoremanager so we can notify it when the player kills something
+	ScoreManager* scoreManager;
 
 	std::shared_ptr<PlayerSpaceShip> player; // Player spaceship object
 

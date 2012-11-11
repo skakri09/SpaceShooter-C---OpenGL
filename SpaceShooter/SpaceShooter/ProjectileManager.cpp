@@ -36,7 +36,7 @@ void ProjectileManager::InitProjectileManager()
 	projectileCooldowns[DOUBLE_TRIPLE_CONE_LASER] = dtripleConeLaser->GetProjectileCooldown();
 }
 
-void ProjectileManager::UpdateProjectiles(float deltaTime)
+void ProjectileManager::Update(float deltaTime)
 {
 	//Updating the projectiles. Erasing them from the vector if 
 	//they are no longer tagged as "fired"

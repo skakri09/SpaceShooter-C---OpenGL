@@ -85,6 +85,12 @@ std::shared_ptr<VboString> TextFactory::GetVboString( std::string* text )
 			position.setX((position.getX()+40+nextLetterAdjustment));
 			nextLetterAdjustment = -10;
 		}
+		else if(letter.letter == 'o')
+		{
+			retString->stringLength += (52+nextLetterAdjustment);
+			position.setX((position.getX()+52+nextLetterAdjustment));
+			nextLetterAdjustment = 4;
+		}
 		else if(letter.letter == 'w')
 		{
 			retString->stringLength += (60+nextLetterAdjustment);
@@ -126,6 +132,12 @@ std::shared_ptr<VboString> TextFactory::GetVboString( std::string* text )
 			retString->stringLength += (55+nextLetterAdjustment);
 			position.setX((position.getX()+55+nextLetterAdjustment));
 			nextLetterAdjustment = 5;
+		}
+		else if(letter.letter == 's')
+		{
+			retString->stringLength += (45+nextLetterAdjustment);
+			position.setX((position.getX()+45+nextLetterAdjustment));
+			nextLetterAdjustment = -5;
 		}
 		else if(letter.letter == ':')
 		{

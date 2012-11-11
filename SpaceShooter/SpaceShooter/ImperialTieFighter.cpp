@@ -5,7 +5,7 @@ ImperialTieFighter::ImperialTieFighter(std::shared_ptr<PlayerSpaceShip> playerSh
 	: log("ImperialTieFighter", WARN),
 	BaseEnemyShip(playerShip, std::make_shared<IdleState>(),
 	std::make_shared<EnemySpaceshipConstantState>(),
-	20)//hp
+	20, IMPERIAL_TIE_FIGHTER)//hp
 {
 }
 

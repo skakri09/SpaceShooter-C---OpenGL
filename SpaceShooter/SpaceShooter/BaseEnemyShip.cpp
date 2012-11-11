@@ -6,14 +6,18 @@
 BaseEnemyShip::BaseEnemyShip(std::shared_ptr<PlayerSpaceShip> playerShip, 
 	std::shared_ptr<AiState> startupState,
 	std::shared_ptr<AiState> constantState,
-	int enemyHP)
+	int enemyHP, EnemyTypes enemyType)
 	:log("SimpleEnemyShip", WARN),
 	aiStateMachine(this, 
 					startupState,
 					constantState),
 	SpaceShip(enemyHP)
 {
+	this->enemyType = enemyType;
+
 	this->playerShip = playerShip;
+	
+	killedByPlayer = false;
 }
 #pragma warning(pop)
 
@@ -36,4 +40,8 @@ void BaseEnemyShip::Update( GLfloat deltaTime )
 {
 	aiStateMachine.Update(deltaTime);
 	SpaceShip::Update(deltaTime);
+	if(SpaceShipCurrentHealth <= 0)
+	{
+		killedByPlayer = true;
+	}
 }

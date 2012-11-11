@@ -10,8 +10,9 @@
 
 #include "Planet.h"
 #include "MeshFactory.h"
+#include "ManagerInterface.h"
 
-class EnvironmentalManager
+class EnvironmentalManager : public ManagerInterface
 {
 public:
     EnvironmentalManager();

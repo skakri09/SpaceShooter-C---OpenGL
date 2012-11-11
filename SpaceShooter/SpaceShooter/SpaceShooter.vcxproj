@@ -108,6 +108,9 @@
     <ClCompile Include="PlayGameEntry.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
     <ClCompile Include="QuitGameEntry.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
+    <ClCompile Include="ScoreTextEntry.cpp" />
+    <ClCompile Include="ScoreValueEntry.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="TextEntry.cpp" />
     <ClCompile Include="TextFactory.cpp" />
@@ -156,6 +159,7 @@
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="CrossScreenWhileFireing.h" />
     <ClInclude Include="DoubleTripleConeLaser.h" />
+    <ClInclude Include="EnemyTypes.h" />
     <ClInclude Include="EnvironmentalManager.h" />
     <ClInclude Include="FleeState.h" />
     <ClInclude Include="GameplayGUI.h" />
@@ -166,12 +170,16 @@
     <ClInclude Include="ImperialStarDestroyer.h" />
     <ClInclude Include="LivesEntry.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="ManagerInterface.h" />
     <ClInclude Include="MenuEntry.h" />
     <ClInclude Include="MeshInfo.h" />
     <ClInclude Include="ParticleManager.h" />
     <ClInclude Include="PlayGameEntry.h" />
     <ClInclude Include="ProjectileManager.h" />
     <ClInclude Include="QuitGameEntry.h" />
+    <ClInclude Include="ScoreManager.h" />
+    <ClInclude Include="ScoreTextEntry.h" />
+    <ClInclude Include="ScoreValueEntry.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="TextEntry.h" />
     <ClInclude Include="TextFactory.h" />

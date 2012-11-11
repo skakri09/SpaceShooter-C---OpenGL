@@ -18,10 +18,12 @@ SpaceShipManager::~SpaceShipManager()
 {
 }
 
-void SpaceShipManager::InitManager(InputManager* input, GameState* gameState)
+void SpaceShipManager::InitManager(InputManager* input, GameState* gameState, ScoreManager* scoreManager)
 {
+	this->scoreManager = scoreManager;
 	this->input = input;
 	this->gameState = gameState;
+
 	//making sure to pre-load all spaceships we will be using so we dont have to do it on runtime
 	//Its not necessary to load the player ship, as it's always loaded on the start
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
@@ -35,12 +37,11 @@ void SpaceShipManager::InitManager(InputManager* input, GameState* gameState)
 		player->InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);	
 	}
 	
-	
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(player));
 	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
 }
 
-void SpaceShipManager::UpdateManager(GLfloat deltaTime)
+void SpaceShipManager::Update(GLfloat deltaTime)
 {
 	if(input->Fire())
 	{
@@ -69,6 +70,11 @@ void SpaceShipManager::UpdateManager(GLfloat deltaTime)
 	{
 		if( (*i)->CanKill() )
 		{
+			if( (*i)->WasKilledByPlayer())
+			{
+				scoreManager->EnemyKilled((*i)->GetEnemyType());
+			}
+			
 			i = EnemySpaceShips.erase(i);
 			log << WARN << "killing spaceship" << std::endl;
 		}

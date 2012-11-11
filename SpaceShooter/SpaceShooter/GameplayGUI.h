@@ -22,6 +22,9 @@
 #include "GUIEntry.h"
 #include "HPEntry.h"
 #include "LivesEntry.h"
+#include "ManagerInterface.h"
+#include "ScoreTextEntry.h"
+#include "ScoreValueEntry.h"
 
 class GameplayGUI
 {
@@ -29,7 +32,7 @@ public:
     GameplayGUI();
     ~GameplayGUI();
 
-	void InitGUI();
+	void InitGUI(ManagerInterface* manager);
 
 	void UpdateGUI(float deltaTime);
 
