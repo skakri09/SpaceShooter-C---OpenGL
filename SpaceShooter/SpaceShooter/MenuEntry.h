@@ -36,10 +36,6 @@ public:
 	Vector3D* GetPosition();
 
 protected:
-
-private:
-	Logger log;
-
 	bool isSelected;
 	bool isCentered;
 	Transformable EntryTransformable;
@@ -49,6 +45,11 @@ private:
 	void CreateEntryText(std::string* entryText, float scale, bool centered);
 
 	VBODrawable vbo;
+
+private:
+	Logger log;
+
+	
 };
 
 #endif // MenuEntry_h__

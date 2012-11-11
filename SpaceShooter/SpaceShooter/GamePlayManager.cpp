@@ -75,14 +75,8 @@ void GamePlayManager::OnEnteringGameState()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_CULL_FACE);
-	glEnable(GL_BLEND);
-	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_MULTISAMPLE);
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST );
-	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST );
-	glEnable(GL_LINE_SMOOTH);
-	glEnable(GL_POLYGON_SMOOTH);
 	glShadeModel(GL_SMOOTH); 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
@@ -124,7 +118,7 @@ void GamePlayManager::SetGameFog()
 	glFogi(GL_FOG_MODE, GL_LINEAR);       
 	glFogfv(GL_FOG_COLOR, fogColor);           
 	glFogf(GL_FOG_DENSITY, 0.45f);          
-	glHint(GL_FOG_HINT, GL_NICEST);      
+	glHint(GL_FOG_HINT, GL_DONT_CARE);      
 	glFogf(GL_FOG_START, 300.0f);         
 	glFogf(GL_FOG_END, FRUSTUM_DEPTH);              
 	glEnable(GL_FOG);   

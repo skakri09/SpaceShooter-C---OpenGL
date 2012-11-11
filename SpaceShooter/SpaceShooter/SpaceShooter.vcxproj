@@ -89,6 +89,7 @@
     <ClCompile Include="ApproachRandXYPos.cpp" />
     <ClCompile Include="ApproachXYPlayerState.cpp" />
     <ClCompile Include="ApproachXYZPlayerState.cpp" />
+    <ClCompile Include="BackToMainMenuEntry.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collidable.cpp" />
@@ -103,7 +104,10 @@
     <ClCompile Include="ImperialStarDestroyer.cpp" />
     <ClCompile Include="LivesEntry.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuEntry.cpp" />
+    <ClCompile Include="OptionsEntry.cpp" />
+    <ClCompile Include="OptionsMenu.cpp" />
     <ClCompile Include="ParticleManager.cpp" />
     <ClCompile Include="PlayGameEntry.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
@@ -140,6 +144,7 @@
     <ClCompile Include="SpaceShipManager.cpp" />
     <ClCompile Include="LaserLowCooldown.cpp" />
     <ClCompile Include="StarDestroyerShipSpawning.cpp" />
+    <ClCompile Include="TogglePolygonSmoothEnabledEntry.cpp" />
     <ClCompile Include="Transformable.cpp" />
     <ClCompile Include="TripleConeLaser.cpp" />
     <ClCompile Include="VBODrawable.cpp" />
@@ -154,6 +159,7 @@
     <ClInclude Include="ApproachRandXYPos.h" />
     <ClInclude Include="ApproachXYPlayerState.h" />
     <ClInclude Include="ApproachXYZPlayerState.h" />
+    <ClInclude Include="BackToMainMenuEntry.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collidable.h" />
@@ -172,8 +178,11 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="ManagerInterface.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuEntry.h" />
     <ClInclude Include="MeshInfo.h" />
+    <ClInclude Include="OptionsEntry.h" />
+    <ClInclude Include="OptionsMenu.h" />
     <ClInclude Include="ParticleManager.h" />
     <ClInclude Include="PlayGameEntry.h" />
     <ClInclude Include="ProjectileManager.h" />
@@ -218,6 +227,7 @@
     <ClInclude Include="LaserLowCooldown.h" />
     <ClInclude Include="StarDestroyerShipSpawning.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="TogglePolygonSmoothEnabledEntry.h" />
     <ClInclude Include="Transformable.h" />
     <ClInclude Include="CollisionTransformationInfo.h" />
     <ClInclude Include="TripleConeLaser.h" />

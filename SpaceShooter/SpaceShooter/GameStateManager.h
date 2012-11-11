@@ -24,6 +24,7 @@
 #include "Texturable.h"
 #include "Logger.h"
 #include "TextFactory.h"
+#include "OptionsMenu.h"
 
 class GameStateManager
 {
@@ -57,9 +58,11 @@ private:
 
 	std::shared_ptr<GamePlayManager> game;
 	std::shared_ptr<MainMenu> menu;
-
+	std::shared_ptr<OptionsMenu> options;
 	bool gameWasInited;
 	bool menuWasInited;
+	bool optionsWasInited;
+
 private: //One-time inits:
 	InputManager input;
 	Timer timer;

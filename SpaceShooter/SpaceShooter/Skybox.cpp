@@ -167,7 +167,6 @@ unsigned int Skybox::loadTexture(std::string filename)
 	// finally get the image data, and delete the il-image.
 	ilCopyPixels(0, 0, 0, img.width, img.height, 1, IL_RGBA, IL_UNSIGNED_BYTE, &img.data[0]);
 	ilDeleteImages(1, &imageName); 
-
 	
 	glBindTexture(GL_TEXTURE_2D,num);       //and use the texture, we have just generated
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST); //if the texture is smaller, than the image, we get the avarege of the pixels next to it

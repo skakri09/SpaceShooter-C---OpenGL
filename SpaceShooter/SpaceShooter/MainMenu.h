@@ -12,7 +12,6 @@
 #include <gl/glew.h>
 #include <memory>
 
-#include "Skybox.h"
 #include "InputManager.h"
 #include "MenuEntry.h"
 #include "PlayGameEntry.h"
@@ -22,8 +21,10 @@
 #include "Vector3d.h"
 #include "Camera.h"
 #include "Logger.h"
+#include "OptionsEntry.h"
+#include "Menu.h"
 
-class MainMenu
+class MainMenu : public Menu
 {
 public:
     MainMenu();
@@ -33,32 +34,13 @@ public:
 
 	void UpdateMenu(float deltaTime);
 
-	void DrawMenu();
+	void RenderMenu();
 	
 	void OnEnteringMenu();
 
 private:
 	Logger log;
-	Skybox skybox;
-	Camera cam;
-	float deltaTime;
-	void HandleInput();
-	void UpdateSelectionShip(float deltaTime);
-	void UpdateCameraPosition();
 
-	InputManager* input;
-
-	std::shared_ptr<PlayGameEntry> playGameEntry;
-	std::shared_ptr<QuitGameEntry> quitGameEntry;
-
-	std::vector<std::shared_ptr<MenuEntry>> menuEntries;
-
-	std::shared_ptr<PlayerSpaceShip> menuShip;
-	
-	unsigned int selectedEntry;
-
-	void SetMenuLights();
-	void SetMenuFog();
 };
 
 #endif // MainMenu_h__

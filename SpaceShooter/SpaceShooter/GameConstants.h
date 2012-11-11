@@ -17,6 +17,6 @@ static const float FRUSTUM_BOTTOM = -22.0f;
 static const float FRUSTUM_DEPTH = 1200.0f;
 static const float CAMERA_POS = 30.0f;
 static const unsigned int window_width = 1280;
-static const unsigned int window_height = 900;
+static const unsigned int window_height = 720;
 
 #endif // GameConstants_H

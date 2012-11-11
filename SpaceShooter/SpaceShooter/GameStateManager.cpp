@@ -30,13 +30,16 @@ void GameStateManager::InitGameStateManager()
 	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
-	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_MULTISAMPLE);
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST );
-	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST );
+
 	glEnable(GL_LINE_SMOOTH);
-	glEnable(GL_POLYGON_SMOOTH);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST );
+
+	//glEnable(GL_POLYGON_SMOOTH);
+	//glHint(GL_POLYGON_SMOOTH_HINT, GL_FASTEST);
+	
 	glShadeModel(GL_SMOOTH); 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
@@ -46,9 +49,10 @@ void GameStateManager::InitGameStateManager()
 	exit = false;
 	gameWasInited = false;
 	menuWasInited = false;
+	optionsWasInited = false;
 	game = std::make_shared<GamePlayManager>();
 	menu = std::make_shared<MainMenu>();
-
+	options = std::make_shared<OptionsMenu>();
 	SwitchState(GAME);
 	switchToState = currentState;
 }
@@ -73,7 +77,7 @@ void GameStateManager::SwitchState( GameState newState )
 		currentState = GAME;
 		game->OnEnteringGameState();
 		break;
-	case MENU:
+	case MAIN_MENU:
 		log << WARN << "Switching to Menu state" << std::endl;
 
 		if(!menuWasInited)
@@ -85,8 +89,22 @@ void GameStateManager::SwitchState( GameState newState )
 			menu->Init(&input, &switchToState);
 			menuWasInited = true;
 		}
-		currentState = MENU;
+		currentState = MAIN_MENU;
 		menu->OnEnteringMenu();
+		break;
+	case OPTIONS:
+		log << WARN << "Switching to Options state" << std::endl;
+		if(!optionsWasInited)
+		{
+			input.resize(window_width, window_height, true);
+			DisplayLoadingScreen();
+			input.resize(window_width, window_height);
+
+			options->Init(&input, &switchToState);
+			menuWasInited = true;
+		}
+		currentState = OPTIONS;
+		options->OnEnteringMenu();
 		break;
 	case QUIT:
 		exit = true;
@@ -97,7 +115,7 @@ void GameStateManager::SwitchState( GameState newState )
 void GameStateManager::GameLoop()
 {
 	float fps = 0.0f;
-	float sec = 0.0f;
+	float fpsTimer = 0.0f;
 	while(!exit)
 	{
 		if(switchToState != currentState)
@@ -105,15 +123,16 @@ void GameStateManager::GameLoop()
 			SwitchState(switchToState);
 		}
 		deltaTime = static_cast<float>(timer.elapsedAndRestart());
-		sec += deltaTime;
-		fps++;
-		if(sec >= 1.0f)//updating the fps counter once every second
+		fpsTimer += deltaTime;
+		
+		if(fpsTimer >= 0.3f)//updating the fps counter once every second
 		{
+			fps = 1/deltaTime;
 			std::ostringstream captionStream;
 			captionStream << "FPS: " << fps;
 			SDL_WM_SetCaption(captionStream.str().c_str(), "");
 			fps = 0;
-			sec = 0;
+			fpsTimer = 0;
 		}
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
@@ -135,8 +154,11 @@ void GameStateManager::UpdateCurrentState()
 	case GAME:
 		game->Update(deltaTime);
 		break;
-	case MENU:
+	case MAIN_MENU:
 		menu->UpdateMenu(deltaTime);
+		break;
+	case OPTIONS:
+		options->UpdateMenu(deltaTime);
 		break;
 	}
 }
@@ -148,8 +170,11 @@ void GameStateManager::DrawCurrentState()
 	case GAME:
 		game->RenderGame();
 		break;
-	case MENU:
-		menu->DrawMenu();
+	case MAIN_MENU:
+		menu->RenderMenu();
+		break;
+	case OPTIONS:
+		options->RenderMenu();
 		break;
 	}
 }

@@ -130,15 +130,6 @@
     <Filter Include="Game\Menu">
       <UniqueIdentifier>{a42fc9d1-8812-4b7b-82c0-b53ffa767bb9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Menu\MenuEntries">
-      <UniqueIdentifier>{88cb7d8d-019a-422a-944a-5d6aec41ed3e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Menu\MenuEntries\Source Files">
-      <UniqueIdentifier>{8c1cc65c-d0a8-47eb-b2b1-7802a06cf1f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Menu\MenuEntries\Header Files">
-      <UniqueIdentifier>{a415052c-3128-4013-acf8-e857a401cd58}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Factories\TextFactory">
       <UniqueIdentifier>{212cdf80-9661-4fc2-bc80-776f1d30f8b7}</UniqueIdentifier>
     </Filter>
@@ -165,6 +156,33 @@
     </Filter>
     <Filter Include="Game\GUI\GameplayGUI\GUI Entry\TextEntries\Source Files">
       <UniqueIdentifier>{d604f6ae-8ec6-48b5-b675-ce7a3942dff5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\MainMenu">
+      <UniqueIdentifier>{8c643a98-f681-49d6-af37-72137dd61822}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\Options Menu">
+      <UniqueIdentifier>{a9b85e56-76ee-4e59-aea7-02db3675d218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\Base Menu">
+      <UniqueIdentifier>{61bc3219-d97e-4f29-8c77-ea7a4d245a9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\MenuEntries">
+      <UniqueIdentifier>{88cb7d8d-019a-422a-944a-5d6aec41ed3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\MenuEntries\Source Files">
+      <UniqueIdentifier>{8c1cc65c-d0a8-47eb-b2b1-7802a06cf1f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\MenuEntries\Header Files">
+      <UniqueIdentifier>{a415052c-3128-4013-acf8-e857a401cd58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\Options Menu\OptionEntries">
+      <UniqueIdentifier>{dfcf5afd-553b-42de-a3bb-e4d951f948b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\Options Menu\OptionEntries\Source Files">
+      <UniqueIdentifier>{fb6fc6ca-575b-4363-a0af-d6fe074facdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Menu\Options Menu\OptionEntries\Header Files">
+      <UniqueIdentifier>{519735da-9649-4d1a-a98e-18e59d8c8507}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -294,9 +312,6 @@
     <ClCompile Include="EnvironmentalManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Game\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuEntry.cpp">
       <Filter>Game\Menu\MenuEntries\Source Files</Filter>
@@ -348,6 +363,24 @@
     </ClCompile>
     <ClCompile Include="ScoreValueEntry.cpp">
       <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsEntry.cpp">
+      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Game\Menu\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsMenu.cpp">
+      <Filter>Game\Menu\Options Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Game\Menu\Base Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="BackToMainMenuEntry.cpp">
+      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TogglePolygonSmoothEnabledEntry.cpp">
+      <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -513,9 +546,6 @@
     <ClInclude Include="EnvironmentalManager.h">
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Game\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="MenuEntry.h">
       <Filter>Game\Menu\MenuEntries\Header Files</Filter>
     </ClInclude>
@@ -584,6 +614,24 @@
     </ClInclude>
     <ClInclude Include="Math.h">
       <Filter>Game\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsEntry.h">
+      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Game\Menu\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Game\Menu\Base Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsMenu.h">
+      <Filter>Game\Menu\Options Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="BackToMainMenuEntry.h">
+      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TogglePolygonSmoothEnabledEntry.h">
+      <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

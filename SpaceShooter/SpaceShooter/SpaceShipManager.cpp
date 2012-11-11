@@ -57,7 +57,7 @@ void SpaceShipManager::Update(GLfloat deltaTime)
 
 	if(player->CanKill())
 	{
-		*gameState = MENU;
+		*gameState = MAIN_MENU;
 	}
 
 	for(auto i = EnemyShipsForTransfer.begin(); i != EnemyShipsForTransfer.end();)
@@ -130,7 +130,6 @@ void SpaceShipManager::HandleCollision()
 	std::vector<std::shared_ptr<Projectile>>* projectiles = 
 		ProjectileManager::Inst()->GetProjectiles();
 	
-	int checks = 0;
 	for(unsigned int i = 0; i < projectiles->size(); i++)
 	{
 		if(*projectiles->at(i)->GetOwner() == *player)
@@ -138,7 +137,6 @@ void SpaceShipManager::HandleCollision()
 			for(unsigned int x = 0; x < EnemySpaceShips.size(); x++)
 			{
 				EnemySpaceShips.at(x)->HandleProjectileCollision( projectiles->at(i) );
-				checks++;
 			}
 		}
 		else
@@ -146,7 +144,6 @@ void SpaceShipManager::HandleCollision()
 			player->HandleProjectileCollision( projectiles->at(i) );
 		}
 	}
-	log << WARN << checks << std::endl;
 
 }
 
@@ -162,12 +159,12 @@ void SpaceShipManager::HandleXAxisMovement()
 		//If only left
 		if (input->MoveLeft() && !input->MoveRight())
 		{
-			player->transformable.setXVel(-PLAYER_XY_VELOCITY);
+			player->transformable.setXVel(-PLAYER_X_VELOCITY);
 		}
 		//If only right
 		if (!input->MoveLeft() && input->MoveRight())
 		{
-			player->transformable.setXVel(PLAYER_XY_VELOCITY);
+			player->transformable.setXVel(PLAYER_X_VELOCITY);
 		}
 	}
 	else
@@ -189,12 +186,12 @@ void SpaceShipManager::HandleYAxisMovement()
 		//If only up
 		if (input->MoveUp() && !input->MoveDown())
 		{
-			player->transformable.setYVel(PLAYER_XY_VELOCITY);
+			player->transformable.setYVel(PLAYER_Y_VELOCITY);
 		}
 		//If only down
 		if (!input->MoveUp() && input->MoveDown())
 		{
-			player->transformable.setYVel(-PLAYER_XY_VELOCITY);
+			player->transformable.setYVel(-PLAYER_Y_VELOCITY);
 		}
 	}
 	else
