@@ -1,0 +1,14 @@
+Spaceshooter todo list:
+*make the star particles change speed (add changeSpeed function) based on imaginary speed of 	spaceship
+*Make projectiles spawn from a set position on the spaceships
+*Make colllisionspheres more optimaly sized
+*make GUI for lifes, projectile types available etc.
+*Make some cool planets as background
+*Make a sort of loadingmanager that takes care of loading all meshes etc on startup or begning of a level
+*Sound: Explosion on hit, sound on fire, starwars empire theme when boss comes 
+*Make a class with common AI functions that all AI states have access to (possibly put in AIstate class?)
+*finne ut hvorfor det er små freezes når man har mange explosions på en gang (muligens getMesh som gjør det)
+*add "blinking" when spacehsip respawn
+*make player accelerate
+*Add colors in draw for each spaceship etc to make them look more unique.
+*Use starwars intro as cinematic and render with AVI stuff: http://nehe.gamedev.net/tutorial/playing_avi_files_in_opengl/23001/
