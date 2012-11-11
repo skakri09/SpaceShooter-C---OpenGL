@@ -26,7 +26,7 @@ float Vector3D::Distance( Vector3D& vector2 )
 
 float Vector3D::XYDistance( Vector3D& vector2 )
 {
-	return sqrt( pow((vector2.x - x), 2) + 
+	return sqrt14( pow((vector2.x - x), 2) + 
 		pow((vector2.y - y), 2));
 }
 
@@ -149,7 +149,7 @@ void Vector3D::InvertZ()
 	
 float Vector3D::Magnitude() const
 {
-	return sqrt( (x*x) + (y*y) + (z*z) );
+	return sqrt14( (x*x) + (y*y) + (z*z) );
 }
 
 float Vector3D::Normalize()
