@@ -14,15 +14,21 @@
 #ifndef SMPEG_PLAYER_H
 #define SMPEG_PLAYER_H
 
+#include <gl/glew.h>
 #include <SDL.h>
 #include <smpeg.h>
 
 #include "Logger.h"
 #include "SoundManager.h"
+#include "glmovie-tile.h"
 
 using std::endl;
 using std::string;
 
+static void glmpeg_update( SDL_Surface* surface, Sint32 x, Sint32 y, Uint32 w, Uint32 h );
+GLenum glmovie_init( GLuint, GLuint );
+void glmovie_draw( GLubyte* );
+void glmovie_resize( GLuint, GLuint );
 class SMPEGPlayer
 {
 public:
@@ -64,13 +70,14 @@ public:
 
 	// Get the current status of the movie, can be SMPEG_ERROR = -1, SMPEG_STOPPED, SMPEG_PLAYING
 	SMPEGstatus GetStatus();
-
+	
+	
 private:
 	Logger log;
 
 	// Surface for the main screen
 	SDL_Surface *screen;
-
+	SDL_Surface* surface;
 	// Surface for the movie
 	SDL_Surface *movieSurface;
 
@@ -90,5 +97,6 @@ private:
 
 	void DrawIMG(SDL_Surface *img, SDL_Surface *dst, int x, int y);
 };
+
 
 #endif

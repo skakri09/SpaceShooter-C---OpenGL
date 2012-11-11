@@ -669,6 +669,9 @@
     <ClInclude Include="SMPEGPlayer.h">
       <Filter>Game\SMPEG player</Filter>
     </ClInclude>
+    <ClInclude Include="glmovie-tile.h">
+      <Filter>Game\SMPEG player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib3ds-1_3d.dll">

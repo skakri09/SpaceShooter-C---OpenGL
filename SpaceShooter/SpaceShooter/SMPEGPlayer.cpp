@@ -89,15 +89,6 @@ void SMPEGPlayer::SetPosition( int x, int y )
 // Load the movie
 bool SMPEGPlayer::Load( string fileName, SDL_Surface* renderEngineScreen, int maxscalex, int maxscaley )
 {
-	MaxScaleX = maxscalex;
-	MaxScaleY = maxscaley;
-
-	// Limit how much we can scale by
-	MaxScale = (maxscalex > maxscaley ? maxscaley : maxscalex);
-
-	// Assign the screen surface
-	screen = renderEngineScreen;
-
 	if(movie)
 	{
 		SMPEG_delete( movie );
@@ -112,31 +103,59 @@ bool SMPEGPlayer::Load( string fileName, SDL_Surface* renderEngineScreen, int ma
 		return false;
 	}
 
-	// Create a temporary surface to render the movie to
-	SDL_Surface* tempSurface2 = SDL_CreateRGBSurface( SDL_SWSURFACE, movieInfo.width * MaxScaleX, movieInfo.height * MaxScaleY, 32, screen->format->Rmask, 
-		screen->format->Gmask, screen->format->Bmask, screen->format->Amask );
-
-	// Now make a surface optimized for the main screen
-	movieSurface = SDL_DisplayFormat( tempSurface2 );
-
-	// Free the temporary surface
-	SDL_FreeSurface( tempSurface2 );
-
-	// Set the surface to draw to
-	SMPEG_setdisplay( movie, movieSurface, 0, 0 );
-	if(SMPEG_error(movie) != NULL)
+	surface  = SDL_AllocSurface( SDL_SWSURFACE,
+		1280,
+		720,
+		32,
+		0x000000FF,
+		0x0000FF00,
+		0x00FF0000,
+		0xFF000000 );
+	if(!surface)
 	{
-		log << WARN << "Load() - SMPEG_setdisplay() error: " << SMPEG_error(movie) << endl;
-		return false;
+		log << ERRORX << "surface faulty" << std::endl;
 	}
-
-
-	// Set the display region
-	SMPEG_setdisplayregion( movie, 0, 0, movieInfo.width, movieInfo.height );
-	if(SMPEG_error(movie) != NULL)
+	if ( glmovie_init(1280, 720) != GL_NO_ERROR ) 
 	{
-		log << WARN << "Load() - SMPEG_setdisplayregion() error: " << SMPEG_error(movie) << endl;
+		log << ERRORX << "glmovie init faulty" << std::endl;
 	}
+	glmovie_resize( screen->w, screen->h );
+	SMPEG_setdisplay( movie, surface, NULL, glmpeg_update );
+
+	MaxScaleX = maxscalex;
+	MaxScaleY = maxscaley;
+
+	//// Limit how much we can scale by
+	//MaxScale = (maxscalex > maxscaley ? maxscaley : maxscalex);
+
+	//// Assign the screen surface
+	//screen = renderEngineScreen;
+
+	//// Create a temporary surface to render the movie to
+	//SDL_Surface* tempSurface2 = SDL_CreateRGBSurface( SDL_SWSURFACE, movieInfo.width * MaxScaleX, movieInfo.height * MaxScaleY, 32, screen->format->Rmask, 
+	//	screen->format->Gmask, screen->format->Bmask, screen->format->Amask );
+
+	//// Now make a surface optimized for the main screen
+	//movieSurface = SDL_DisplayFormat( tempSurface2 );
+
+	//// Free the temporary surface
+	//SDL_FreeSurface( tempSurface2 );
+
+	//// Set the surface to draw to
+	//SMPEG_setdisplay( movie, movieSurface, 0, 0 );
+	//if(SMPEG_error(movie) != NULL)
+	//{
+	//	log << WARN << "Load() - SMPEG_setdisplay() error: " << SMPEG_error(movie) << endl;
+	//	return false;
+	//}
+
+
+	//// Set the display region
+	//SMPEG_setdisplayregion( movie, 0, 0, movieInfo.width, movieInfo.height );
+	//if(SMPEG_error(movie) != NULL)
+	//{
+	//	log << WARN << "Load() - SMPEG_setdisplayregion() error: " << SMPEG_error(movie) << endl;
+	//}
 
 
 	return true;
@@ -252,4 +271,25 @@ void SMPEGPlayer::DrawIMG(SDL_Surface *img, SDL_Surface *dst, int x, int y)
 	dest.x = x;
 	dest.y = y;
 	SDL_BlitSurface(img, NULL, dst, &dest);
+}
+
+void glmpeg_update( SDL_Surface* surface, Sint32 x, Sint32 y, Uint32 w, Uint32 h )
+{
+	GLenum error;
+
+	if (( !surface ) || ( !surface->pixels )) 
+	{
+		//log << ERRORX << "some error" << std::endl;
+	}
+
+	glmovie_draw( (GLubyte*) surface->pixels );
+
+	error = glGetError( );
+
+	if( error != GL_NO_ERROR )
+	{
+	//	log << ERRORX << "some error" << std::endl;
+	}
+
+	SDL_GL_SwapBuffers();
 }

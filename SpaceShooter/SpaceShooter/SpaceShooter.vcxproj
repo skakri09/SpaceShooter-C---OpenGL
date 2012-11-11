@@ -177,6 +177,7 @@
     <ClInclude Include="GameplayGUI.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
+    <ClInclude Include="glmovie-tile.h" />
     <ClInclude Include="GUIEntry.h" />
     <ClInclude Include="HPEntry.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
