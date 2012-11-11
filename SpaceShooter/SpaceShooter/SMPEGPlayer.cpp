@@ -4,7 +4,7 @@
 /*  P U B L I C     F U N C T I O N S  */
 /*  ---------------------------------  */
 
-CSmpeg::CSmpeg() : log("SmpegPlayer", INFO)
+SMPEGPlayer::SMPEGPlayer() : log("SmpegPlayer", INFO)
 {
 	MaxScaleX = MaxScaleY = MaxScale = 1;
 
@@ -16,7 +16,7 @@ CSmpeg::CSmpeg() : log("SmpegPlayer", INFO)
 }
 
 // Free our movie
-CSmpeg::~CSmpeg()
+SMPEGPlayer::~SMPEGPlayer()
 {
 	Stop();
 	if(movie)
@@ -31,19 +31,19 @@ CSmpeg::~CSmpeg()
 	}
 }
 
-void CSmpeg::ClearScreen()
+void SMPEGPlayer::ClearScreen()
 {
 	SDL_FillRect( movieSurface, 0, 0 );
 }
 
 // Set's the volume on a scale of 0 - 100
-void CSmpeg::SetVolume( int vol )
+void SMPEGPlayer::SetVolume( int vol )
 {
 	SMPEG_setvolume( movie, vol );
 }
 
 // Scale the movie by the desired factors
-void CSmpeg::Scale( int w, int h )
+void SMPEGPlayer::Scale( int w, int h )
 {
 	// Prevent a divide by 0
 	if( w == 0 )
@@ -57,7 +57,7 @@ void CSmpeg::Scale( int w, int h )
 }
 
 // Scale the movie by the desired factor
-void CSmpeg::ScaleBy( int factor )
+void SMPEGPlayer::ScaleBy( int factor )
 {
 	// Prevent a divide by 0
 	if( factor == 0 )
@@ -72,7 +72,7 @@ void CSmpeg::ScaleBy( int factor )
 }
 
 // Sets the region of the video to be shown
-void CSmpeg::SetDisplayRegion( int x, int y, int w, int h )
+void SMPEGPlayer::SetDisplayRegion( int x, int y, int w, int h )
 {
 	SMPEG_setdisplayregion( movie, x, y, w, h );
 	if(SMPEG_error(movie) != NULL)
@@ -80,14 +80,14 @@ void CSmpeg::SetDisplayRegion( int x, int y, int w, int h )
 }
 
 // Set the position that the movie should be drawn at on the screen
-void CSmpeg::SetPosition( int x, int y )
+void SMPEGPlayer::SetPosition( int x, int y )
 {
 	X = x;
 	Y = y;
 }
 
 // Load the movie
-bool CSmpeg::Load( string fileName, SDL_Surface* renderEngineScreen, int maxscalex, int maxscaley )
+bool SMPEGPlayer::Load( string fileName, SDL_Surface* renderEngineScreen, int maxscalex, int maxscaley )
 {
 	MaxScaleX = maxscalex;
 	MaxScaleY = maxscaley;
@@ -103,6 +103,7 @@ bool CSmpeg::Load( string fileName, SDL_Surface* renderEngineScreen, int maxscal
 		SMPEG_delete( movie );
 		movie = 0;
 	}
+
 	movie = SMPEG_new(fileName.c_str(), &movieInfo, true );
 
 	if(SMPEG_error(movie) != NULL)
@@ -142,7 +143,7 @@ bool CSmpeg::Load( string fileName, SDL_Surface* renderEngineScreen, int maxscal
 }
 
 // Set the looping of hte movie
-void CSmpeg::SetLoop( int val )
+void SMPEGPlayer::SetLoop( int val )
 {
 	SMPEG_loop( movie, val );
 	if(SMPEG_error(movie) != NULL)
@@ -150,7 +151,7 @@ void CSmpeg::SetLoop( int val )
 }
 
 // Play the movie
-void CSmpeg::Play()
+void SMPEGPlayer::Play()
 {
 	SMPEG_play( movie );
 	if(SMPEG_error(movie) != NULL)
@@ -158,7 +159,7 @@ void CSmpeg::Play()
 }
 
 // Pause the movie
-void CSmpeg::Pause()
+void SMPEGPlayer::Pause()
 {
 	SMPEG_pause( movie );
 	if(SMPEG_error(movie) != NULL)
@@ -166,7 +167,7 @@ void CSmpeg::Pause()
 }
 
 // Stops the movie, but keeps current position
-void CSmpeg::Stop()
+void SMPEGPlayer::Stop()
 {
 	SMPEG_stop( movie );
 	if(SMPEG_error(movie) != NULL)
@@ -174,7 +175,7 @@ void CSmpeg::Stop()
 }
 
 // Rewind the movie back to 0:00:00
-void CSmpeg::Rewind()
+void SMPEGPlayer::Rewind()
 {
 	SMPEG_rewind( movie );
 	if(SMPEG_error(movie) != NULL)
@@ -182,7 +183,7 @@ void CSmpeg::Rewind()
 }
 
 // Seek a number of bytes into the movie
-void CSmpeg::Seek( int bytes )
+void SMPEGPlayer::Seek( int bytes )
 {
 	SMPEG_seek( movie, bytes );
 	if(SMPEG_error(movie) != NULL)
@@ -190,7 +191,7 @@ void CSmpeg::Seek( int bytes )
 }
 
 // Skip a number of seconds
-void CSmpeg::Skip( float seconds )
+void SMPEGPlayer::Skip( float seconds )
 {
 	SMPEG_skip( movie, seconds );
 	if(SMPEG_error(movie) != NULL)
@@ -198,7 +199,7 @@ void CSmpeg::Skip( float seconds )
 }
 
 // Render some frame of the movie
-void CSmpeg::RenderFrame( int frame )
+void SMPEGPlayer::RenderFrame( int frame )
 {
 	SMPEG_renderFrame( movie, frame );
 	if(SMPEG_error(movie) != NULL)
@@ -206,7 +207,7 @@ void CSmpeg::RenderFrame( int frame )
 }
 
 // Render the final frame of the movie
-void CSmpeg::RenderFinal()
+void SMPEGPlayer::RenderFinal()
 {
 	SMPEG_renderFinal( movie, movieSurface, 0, 0 );
 	if(SMPEG_error(movie) != NULL)
@@ -214,26 +215,26 @@ void CSmpeg::RenderFinal()
 }
 
 // Draw the movie surface to the main screen at x, y
-void CSmpeg::DisplayAt( int x, int y )
+void SMPEGPlayer::DisplayAt( int x, int y )
 {
 	DrawIMG( movieSurface, screen, x, y );
 }
 
 // Draw the movie surface to the main screen at x, y
-void CSmpeg::Display()
+void SMPEGPlayer::Display()
 {
 	DrawIMG( movieSurface, screen, X, Y );
 }
 
 // Return the current info for the movie
-SMPEG_Info CSmpeg::GetInfo()
+SMPEG_Info SMPEGPlayer::GetInfo()
 {
 	SMPEG_getinfo( movie, &movieInfo );
 	return movieInfo;
 }
 
 // Get the current status of the movie, can be SMPEG_ERROR = -1, SMPEG_STOPPED, SMPEG_PLAYING
-SMPEGstatus CSmpeg::GetStatus()
+SMPEGstatus SMPEGPlayer::GetStatus()
 {
 	if(movie)
 	{
@@ -245,7 +246,7 @@ SMPEGstatus CSmpeg::GetStatus()
 
 /*  P R I V A T E     F U N C T I O N S  */
 /*   ----------------------------------  */
-void CSmpeg::DrawIMG(SDL_Surface *img, SDL_Surface *dst, int x, int y)
+void SMPEGPlayer::DrawIMG(SDL_Surface *img, SDL_Surface *dst, int x, int y)
 {
 	SDL_Rect dest;
 	dest.x = x;

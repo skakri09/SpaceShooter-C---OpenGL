@@ -15,30 +15,12 @@ GameStateManager::~GameStateManager()
 
 void GameStateManager::InitGameStateManager()
 {
-	// Initialize SDL
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) 
-	{
-		std::stringstream err;
-		err << "Could not initialize SDL: " << SDL_GetError();
-		throw std::runtime_error(err.str());
-	}
-	atexit( SDL_Quit);
 	CreateOpenGLContext();
+
+
 	InitGlew();
 	InitDevil();
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_COLOR_MATERIAL);
-	glEnable(GL_MULTISAMPLE);
-
-	glEnable(GL_LINE_SMOOTH);
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST );
-	glHint(GL_POLYGON_SMOOTH_HINT, GL_DONT_CARE);
-	glShadeModel(GL_SMOOTH); 
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	
 	DisplayLoadingScreen();
 
 	input.InitInputManager();
@@ -63,6 +45,7 @@ void GameStateManager::InitGameStateManager()
 
 void GameStateManager::SwitchState( GameState newState )
 {
+
 	switch(newState)
 	{
 	case GAME:
@@ -131,8 +114,11 @@ void GameStateManager::SwitchState( GameState newState )
 			gameWasInited = true;
 		}
 		game->ResetGame();
-		//SwitchState(GAME);
 		switchToState = GAME;
+		break;
+	case PLAYING_VIDEO:
+		smpeg.Load("..//Video//intro.mpg", screen);
+		currentState = newState;
 		break;
 	case QUIT:
 		exit = true;
@@ -144,6 +130,7 @@ void GameStateManager::GameLoop()
 {
 	float fps = 0.0f;
 	float fpsTimer = 0.0f;
+
 	while(!exit)
 	{
 		if(switchToState != currentState)
@@ -153,17 +140,17 @@ void GameStateManager::GameLoop()
 		deltaTime = static_cast<float>(timer.elapsedAndRestart());
 		fpsTimer += deltaTime;
 		
-		if(fpsTimer >= 0.3f)//updating the fps counter once every second
+		if(fpsTimer >= 0.3f)//updating the fps counter once every .3sec
 		{
 			fps = 1/deltaTime;
-			std::ostringstream captionStream;
+			std::ostringstream captionStream;		
 			captionStream << "FPS: " << fps;
 			SDL_WM_SetCaption(captionStream.str().c_str(), "");
 			fps = 0;
 			fpsTimer = 0;
 		}
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
+
 		input.Update(&switchToState);
 		
 		HandleInput();
@@ -212,6 +199,9 @@ void GameStateManager::DrawCurrentState()
 	case INGAME_MENU:
 		ingameMenu->RenderMenu();
 		break;
+	case PLAYING_VIDEO:
+		smpeg.Display();
+		break;
 	}
 }
 
@@ -220,27 +210,7 @@ void GameStateManager::DrawCurrentState()
 //*******************************//
 void GameStateManager::CreateOpenGLContext()
 {
-	// Set OpenGL attributes
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); // Use double buffering
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16); // Use framebuffer with 16 bit depth buffer
-	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8); // Use framebuffer with 8 bit for red
-	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8); // Use framebuffer with 8 bit for green
-	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8); // Use framebuffer with 8 bit for blue
-	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8); // Use framebuffer with 8 bit for alpha
-
-	SDL_WM_SetCaption("NITH - PG430 Space Invaders - FPS: 0", "");
-
-	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
-
-	screen = SDL_SetVideoMode(window_width, window_height, 0, SDL_OPENGL 
-								| SDL_DOUBLEBUF | SDL_RESIZABLE);
-	if(screen == NULL) 
-	{
-		std::stringstream err;
-		err << "SDL_SetVideoMode failed ";
-		throw std::runtime_error(err.str());
-	}
+	SetOpenGLVideoMode();
 }
 
 void GameStateManager::InitGlew()
@@ -325,5 +295,69 @@ void GameStateManager::HandleInput()
 			switchToState = INGAME_MENU;
 			break;
 		}
+	}
+	if(input.KeyDownOnce(SDLK_m))
+	{
+		switchToState = PLAYING_VIDEO;
+	}
+}
+
+void GameStateManager::SetOpenGLVideoMode()
+{
+	// Initialize SDL
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) 
+	{
+		std::stringstream err;
+		err << "Could not initialize SDL: " << SDL_GetError();
+		throw std::runtime_error(err.str());
+	}
+	atexit( SDL_Quit);
+
+
+	// Set OpenGL attributes
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); // Use double buffering
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16); // Use framebuffer with 16 bit depth buffer
+	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8); // Use framebuffer with 8 bit for red
+	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8); // Use framebuffer with 8 bit for green
+	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8); // Use framebuffer with 8 bit for blue
+	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8); // Use framebuffer with 8 bit for alpha
+
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
+	
+	screen = SDL_SetVideoMode(window_width, window_height, 0, SDL_OPENGL 
+		| SDL_DOUBLEBUF | SDL_RESIZABLE);
+	if(screen == NULL) 
+	{
+		std::stringstream err;
+		err << "SDL_SetVideoMode failed ";
+		throw std::runtime_error(err.str());
+	}
+
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_COLOR_MATERIAL);
+	glEnable(GL_MULTISAMPLE);
+
+	glEnable(GL_LINE_SMOOTH);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST );
+	glHint(GL_POLYGON_SMOOTH_HINT, GL_DONT_CARE);
+	glShadeModel(GL_SMOOTH); 
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	SDL_GL_SwapBuffers();
+}
+
+void GameStateManager::SetSDLVideoMode()
+{
+	SDL_SetVideoMode(window_width, window_height, 0, SDL_DOUBLEBUF | SDL_RESIZABLE);
+	if(screen == NULL)
+	{
+		std::stringstream err;
+		err << "SDL_SetVideoMode failed ";
+		throw std::runtime_error(err.str());
 	}
 }

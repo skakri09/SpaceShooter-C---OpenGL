@@ -18,28 +18,23 @@
 #include <smpeg.h>
 
 #include "Logger.h"
+#include "SoundManager.h"
 
 using std::endl;
 using std::string;
 
-class CSmpeg
+class SMPEGPlayer
 {
 public:
 	//void PlayMovie();
-	CSmpeg();
+	SMPEGPlayer();
 
 	// Free our movie
-	~CSmpeg();
+	~SMPEGPlayer();
 
 	void ClearScreen();
-
-	// Set's the volume on a scale of 0 - 100
-	void SetVolume( int vol );
-
-	// Scale the movie by the desired factors
+	void SetVolume( int vol );// Set's the volume on a scale of 0 - 100
 	void Scale( int w, int h );
-
-	// Scale the movie by the desired factor
 	void ScaleBy( int factor );
 
 	// Sets the region of the video to be shown
@@ -54,38 +49,18 @@ public:
 	// Set the looping of the movie
 	void SetLoop( int val );
 
-	// Play the movie
 	void Play();
-
-	// Pause the movie
 	void Pause();
-
-	// Stops the movie, but keeps current position
 	void Stop();
 
-	// Rewind the movie back to 0:00:00
-	void Rewind();
-
-	// Seek a number of bytes into the movie
-	void Seek( int bytes );
-
-	// Skip a number of seconds
-	void Skip( float seconds );
-
-	// Render some frame of the movie
-	void RenderFrame( int frame );
-
-	// Render the final frame of the movie
-	void RenderFinal();
-
-	// Draw the movie surface to the main screen at x, y
-	void DisplayAt( int x, int y );
-
-	// Draw the movie surface to the main screen at x, y
-	void Display();
-
-	// Return the current info for the movie
-	SMPEG_Info GetInfo();
+	void Rewind();					// Rewind the movie back to 0:00:00
+	void Seek( int bytes );			// Seek a number of bytes into the movie
+	void Skip( float seconds );		// Skip a number of seconds
+	void RenderFrame( int frame );	// Render some frame of the movie
+	void RenderFinal();				// Render the final frame of the movie
+	void DisplayAt( int x, int y );	// Draw the movie surface to the main screen at x, y
+	void Display();					// Draw the movie surface to the main screen at x, y
+	SMPEG_Info GetInfo();			// Return the current info for the movie
 
 	// Get the current status of the movie, can be SMPEG_ERROR = -1, SMPEG_STOPPED, SMPEG_PLAYING
 	SMPEGstatus GetStatus();
