@@ -102,6 +102,7 @@
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="HPEntry.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
+    <ClCompile Include="IngameMenu.cpp" />
     <ClCompile Include="LivesEntry.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="GUIEntry.h" />
     <ClInclude Include="HPEntry.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
+    <ClInclude Include="IngameMenu.h" />
     <ClInclude Include="LivesEntry.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="ManagerInterface.h" />

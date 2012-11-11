@@ -24,3 +24,8 @@ void EnvironmentalManager::DrawEnvironment()
 {
 	planet.Draw();
 }
+
+void EnvironmentalManager::ResetEnvironment()
+{
+
+}

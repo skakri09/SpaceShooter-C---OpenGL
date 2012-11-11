@@ -23,6 +23,7 @@
 #include "Logger.h"
 #include "OptionsEntry.h"
 #include "Menu.h"
+#include "SoundManager.h"
 
 class MainMenu : public Menu
 {

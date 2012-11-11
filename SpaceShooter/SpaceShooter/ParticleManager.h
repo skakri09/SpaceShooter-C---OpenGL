@@ -45,6 +45,8 @@ public:
 	   float minSize,
 	   float r, float g, float b);
 
+   void ResetParticles();
+
 private:
 	ParticleManager();
 	~ParticleManager();

@@ -184,6 +184,9 @@
     <Filter Include="Game\Menu\Options Menu\OptionEntries\Header Files">
       <UniqueIdentifier>{519735da-9649-4d1a-a98e-18e59d8c8507}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Menu\IngameMenu">
+      <UniqueIdentifier>{d0ff3b05-4552-46b2-b29e-d59f396624e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogSys.cpp">
@@ -381,6 +384,9 @@
     </ClCompile>
     <ClCompile Include="TogglePolygonSmoothEnabledEntry.cpp">
       <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IngameMenu.cpp">
+      <Filter>Game\Menu\IngameMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -633,6 +639,9 @@
     <ClInclude Include="TogglePolygonSmoothEnabledEntry.h">
       <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IngameMenu.h">
+      <Filter>Game\Managers\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib3ds-1_3d.dll">
@@ -650,12 +659,12 @@
     <None Include="GameObject.h">
       <Filter>Game\GameObjects</Filter>
     </None>
-    <None Include="..\xml\square.xml">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="..\xml\Projectiles\Mesh_Laser.xml">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ClassDiagram1.cd" />
+    <None Include="..\xml\square.xml">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

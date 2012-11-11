@@ -61,7 +61,16 @@ void VBODrawable::EnableClientStates()
 	{
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo->vertices);
-		glVertexPointer(3, GL_FLOAT, 0, 0);
+		switch(meshInfo->mode)
+		{
+		case GL_QUADS:
+			glVertexPointer(4, GL_FLOAT, 0, 0);
+			break;
+		case GL_TRIANGLES:
+			glVertexPointer(3, GL_FLOAT, 0, 0);
+			break;
+
+		}
 	}
 
 	if(meshInfo->haveNormals)
@@ -81,8 +90,7 @@ void VBODrawable::EnableClientStates()
 	{
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo->textCoords);
-		glTexCoordPointer(2, GL_FLOAT, 0, 0);
-		glBindTexture(GL_TEXTURE_2D,2); 
+		glTexCoordPointer(3, GL_FLOAT, 0, 0);
 	}
 	if(meshInfo->haveIndices)
 	{

@@ -36,24 +36,28 @@ void GameStateManager::InitGameStateManager()
 
 	glEnable(GL_LINE_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST );
-
-	//glEnable(GL_POLYGON_SMOOTH);
-	//glHint(GL_POLYGON_SMOOTH_HINT, GL_FASTEST);
-	
+	glHint(GL_POLYGON_SMOOTH_HINT, GL_DONT_CARE);
 	glShadeModel(GL_SMOOTH); 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	DisplayLoadingScreen();
 
 	input.InitInputManager();
 	TextFactory::Inst()->InitTextFactory();
+	SoundManager::Inst()->InitSoundManager();
 
 	exit = false;
 	gameWasInited = false;
 	menuWasInited = false;
 	optionsWasInited = false;
+	ingameMenuWasInited = false;
+
 	game = std::make_shared<GamePlayManager>();
-	menu = std::make_shared<MainMenu>();
+	mainMenu = std::make_shared<MainMenu>();
 	options = std::make_shared<OptionsMenu>();
-	SwitchState(GAME);
+	ingameMenu = std::make_shared<IngameMenu>();
+
+	SwitchState(MAIN_MENU);
+	
 	switchToState = currentState;
 }
 
@@ -63,16 +67,19 @@ void GameStateManager::SwitchState( GameState newState )
 	{
 	case GAME:
 		log << WARN << "Switching to Game state" << std::endl;
-
 		if(!gameWasInited)
 		{
 			input.resize(window_width, window_height, true);
 			DisplayLoadingScreen();
 			input.resize(window_width, window_height);
-
 			game->InitGamePlayManager(&input, &switchToState);
-			
 			gameWasInited = true;
+		}
+		switch(currentState)
+		{
+		case MAIN_MENU:
+			game->ResetGame();
+			break;
 		}
 		currentState = GAME;
 		game->OnEnteringGameState();
@@ -86,11 +93,11 @@ void GameStateManager::SwitchState( GameState newState )
 			DisplayLoadingScreen();
 			input.resize(window_width, window_height);
 
-			menu->Init(&input, &switchToState);
+			mainMenu->Init(&input, &switchToState);
 			menuWasInited = true;
 		}
 		currentState = MAIN_MENU;
-		menu->OnEnteringMenu();
+		mainMenu->OnEnteringMenu();
 		break;
 	case OPTIONS:
 		log << WARN << "Switching to Options state" << std::endl;
@@ -105,6 +112,19 @@ void GameStateManager::SwitchState( GameState newState )
 		}
 		currentState = OPTIONS;
 		options->OnEnteringMenu();
+		break;
+	case INGAME_MENU:
+		log << WARN << "Switching to Ingame Menu state" << std::endl;
+		if(!ingameMenuWasInited)
+		{
+			input.resize(window_width, window_height, true);
+			DisplayLoadingScreen();
+			input.resize(window_width, window_height);
+			ingameMenu->Init(&input, &switchToState);
+			ingameMenuWasInited = true;
+		}
+		currentState = INGAME_MENU;
+		ingameMenu->OnEnteringMenu();
 		break;
 	case QUIT:
 		exit = true;
@@ -137,7 +157,9 @@ void GameStateManager::GameLoop()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		input.Update(&switchToState);
-
+		
+		HandleInput();
+		
 		UpdateCurrentState();
 		DrawCurrentState();
 		
@@ -155,10 +177,13 @@ void GameStateManager::UpdateCurrentState()
 		game->Update(deltaTime);
 		break;
 	case MAIN_MENU:
-		menu->UpdateMenu(deltaTime);
+		mainMenu->UpdateMenu(deltaTime);
 		break;
 	case OPTIONS:
 		options->UpdateMenu(deltaTime);
+		break;
+	case INGAME_MENU:
+		ingameMenu->UpdateMenu(deltaTime);
 		break;
 	}
 }
@@ -171,10 +196,13 @@ void GameStateManager::DrawCurrentState()
 		game->RenderGame();
 		break;
 	case MAIN_MENU:
-		menu->RenderMenu();
+		mainMenu->RenderMenu();
 		break;
 	case OPTIONS:
 		options->RenderMenu();
+		break;
+	case INGAME_MENU:
+		ingameMenu->RenderMenu();
 		break;
 	}
 }
@@ -234,19 +262,21 @@ void GameStateManager::InitDevil()
 //	   	 O T H E R		 //
 //***********************//
 
+
 void GameStateManager::DisplayLoadingScreen()
 {
 	glPushMatrix();
 
-
 	glLoadIdentity();
-	Texturable texturable;
+	glScalef(2, 2, 2);
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glDisable(GL_LIGHTING);
+
+	Texturable texturable;
 	texturable.InitTexture("..//images//LoadingScreen.jpg", "loadingscreen");
 	texturable.BindTexture("loadingscreen");
 
-	glScalef(2, 2, 2);
 
 	glBegin(GL_QUADS);
 	glTexCoord2f(0, 0);
@@ -261,9 +291,30 @@ void GameStateManager::DisplayLoadingScreen()
 
 	texturable.UnbindTexture();
 	SDL_GL_SwapBuffers();
-	GLuint foo;
-	glGenTextures(1,&foo);  //we generate a unique one
-
-
 	glPopMatrix();
+}
+
+void GameStateManager::HandleInput()
+{
+	if(input.KeyDownOnce(SDLK_ESCAPE))
+	{
+		switch(currentState)
+		{
+		case GAME_OVER:
+			switchToState = MAIN_MENU;
+			break;
+		case OPTIONS:
+			switchToState = MAIN_MENU;
+			break;
+		case INGAME_MENU:
+			switchToState = GAME;
+			break;
+		case MAIN_MENU:
+			switchToState = QUIT;
+			break;
+		case GAME:
+			switchToState = INGAME_MENU;
+			break;
+		}
+	}
 }

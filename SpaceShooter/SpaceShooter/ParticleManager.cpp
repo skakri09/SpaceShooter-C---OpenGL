@@ -102,3 +102,8 @@ void ParticleManager::EmitParticles( Vector3D origin,
 	}
 }
 
+void ParticleManager::ResetParticles()
+{
+	particles.clear();
+}
+

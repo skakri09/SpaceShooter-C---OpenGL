@@ -35,4 +35,5 @@ void MainMenu::RenderMenu()
 void MainMenu::OnEnteringMenu()
 {
 	Menu::OnEnteringMenu();
+	SoundManager::Inst()->PlaySong("imperial_march");
 }

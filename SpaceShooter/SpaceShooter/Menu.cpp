@@ -86,7 +86,7 @@ void Menu::UpdateSelectionShip( float deltaTime )
 
 void Menu::HandleInput()
 {
-	if(input->KeyDownOnce(SDLK_s))// && !input->KeyDownOnce(SDLK_w))
+	if(input->KeyDownOnce(SDLK_s))
 	{
 		if(selectedEntry >= menuEntries.size()-1)
 		{
@@ -100,6 +100,7 @@ void Menu::HandleInput()
 			++selectedEntry;
 			menuEntries.at(selectedEntry)->SetIsSelected(true);
 		}
+		SoundManager::Inst()->PlayEffect("button");
 	}
 	else if(input->KeyDownOnce(SDLK_w) && !input->KeyDownOnce(SDLK_s))
 	{
@@ -115,6 +116,7 @@ void Menu::HandleInput()
 			--selectedEntry;
 			menuEntries.at(selectedEntry)->SetIsSelected(true);
 		}
+		SoundManager::Inst()->PlayEffect("button");
 	}
 
 	if(input->KeyDownOnce(SDLK_RETURN) || input->KeyDownOnce(SDLK_SPACE))

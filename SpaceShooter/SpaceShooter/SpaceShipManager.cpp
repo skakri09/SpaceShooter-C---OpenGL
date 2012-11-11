@@ -30,15 +30,7 @@ void SpaceShipManager::InitManager(InputManager* input, GameState* gameState, Sc
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//MilleniumFalcon//MilleniumFalcon.3ds");
-	
-	if(!player)
-	{
-		player = std::make_shared<PlayerSpaceShip>();
-		player->InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);	
-	}
-	
-	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(player));
-	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
+	ResetSpaceships();
 }
 
 void SpaceShipManager::Update(GLfloat deltaTime)
@@ -222,4 +214,20 @@ void SpaceShipManager::HandlePlayerRotation()
 	{
 		player->InitRotation(Y_AXIS);
 	}*/
+}
+
+void SpaceShipManager::ResetSpaceships()
+{
+	EnemySpaceShips.clear();
+	EnemyShipsForTransfer.clear();
+
+	if(!player)
+	{
+		player = std::make_shared<PlayerSpaceShip>();
+			
+	}
+	player->InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
+
+	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(player));
+	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
 }

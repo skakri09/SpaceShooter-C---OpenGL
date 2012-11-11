@@ -37,5 +37,7 @@ void PlayerSpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 		dirVecX, dirVecY, dirVecZ, 
 		0.3f);
 	
+	lives = 3;
+
 	CreateGameObject("MilleniumFalcon//MilleniumFalcon.3ds");
 }

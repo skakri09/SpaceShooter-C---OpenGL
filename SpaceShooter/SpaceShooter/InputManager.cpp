@@ -49,14 +49,6 @@ void InputManager::Update(GameState* gameState)
 			switch(event.key.keysym.sym) 
 			{
 			case SDLK_ESCAPE:
-				if(*gameState == MAIN_MENU)
-				{
-					*gameState = QUIT;
-				}
-				else
-				{
-					*gameState = MAIN_MENU;
-				}
 				break;
 			}
 			break;

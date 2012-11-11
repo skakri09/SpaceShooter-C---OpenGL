@@ -49,5 +49,5 @@ void GameplayGUI::RenderGUI()
 	glEnable(GL_DEPTH_TEST);
 
 	glPopMatrix();
-	glClear(GL_DEPTH_BUFFER_BIT);
+	
 }

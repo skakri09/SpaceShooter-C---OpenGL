@@ -12,8 +12,10 @@
 #include <SDL_mixer.h>
 #include <string>
 #include <map>
+#include <sstream>
 
 #include "ManagerInterface.h"
+
 
 class SoundManager : public ManagerInterface
 {
@@ -22,11 +24,12 @@ public:
 
 	void InitSoundManager();
 
-	void PlaySong(std::string songName);
+	void PlaySong(std::string songName, unsigned short volume = 100);
 
-	void PlayEffect(std::string effectName);
+	void PlayEffect(std::string effectName, unsigned short volume = 100);
 
 	void Update(float deltaTime){}
+
 private:
 	SoundManager();
 	~SoundManager();
@@ -37,6 +40,8 @@ private:
 	std::map<std::string, Mix_Music*> Songs;
 	std::map<std::string, Mix_Chunk*> Effects;
 
+	static const unsigned short MUS_MAIN_CHANNEL = 1;
+	static const unsigned short FX_MAIN_CHANNEL = 2;
 };
 
 #endif // SoundManager_h__

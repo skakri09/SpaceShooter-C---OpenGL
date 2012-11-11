@@ -123,3 +123,11 @@ void GamePlayManager::SetGameFog()
 	glFogf(GL_FOG_END, FRUSTUM_DEPTH);              
 	glEnable(GL_FOG);   
 }
+
+void GamePlayManager::ResetGame()
+{
+	SpaceShipManager::Inst()->ResetSpaceships();
+	ParticleManager::Inst()->ResetParticles();
+	environment.ResetEnvironment();
+	score.ResetScore();
+}

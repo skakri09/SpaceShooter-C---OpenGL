@@ -13,6 +13,7 @@
 #include "PlayerSpaceShip.h"
 #include "InputManager.h"
 #include "Camera.h"
+#include "SoundManager.h"
 
 class Menu
 {

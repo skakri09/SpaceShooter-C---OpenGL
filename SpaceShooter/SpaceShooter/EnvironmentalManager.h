@@ -23,6 +23,9 @@ public:
 	void Update(float deltaTime);
 	
 	void DrawEnvironment();
+
+	void ResetEnvironment();
+
 protected:
 
 private:

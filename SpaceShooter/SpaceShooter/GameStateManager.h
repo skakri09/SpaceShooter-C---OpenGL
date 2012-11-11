@@ -25,6 +25,9 @@
 #include "Logger.h"
 #include "TextFactory.h"
 #include "OptionsMenu.h"
+#include "SoundManager.h"
+#include "VBODrawable.h"
+#include "IngameMenu.h"
 
 class GameStateManager
 {
@@ -57,12 +60,14 @@ private:
 	void SetMenuFog();
 
 	std::shared_ptr<GamePlayManager> game;
-	std::shared_ptr<MainMenu> menu;
+	std::shared_ptr<MainMenu> mainMenu;
 	std::shared_ptr<OptionsMenu> options;
+	std::shared_ptr<IngameMenu> ingameMenu;
+
 	bool gameWasInited;
 	bool menuWasInited;
 	bool optionsWasInited;
-
+	bool ingameMenuWasInited;
 private: //One-time inits:
 	InputManager input;
 	Timer timer;
@@ -72,6 +77,8 @@ private: //One-time inits:
 	void InitGlew();
 	void InitDevil();
 	void DisplayLoadingScreen();
+	
+	void HandleInput();
 };
 
 #endif // GameStateManager_h__
