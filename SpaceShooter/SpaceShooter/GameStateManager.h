@@ -68,6 +68,7 @@ private:
 	bool menuWasInited;
 	bool optionsWasInited;
 	bool ingameMenuWasInited;
+
 private: //One-time inits:
 	InputManager input;
 	Timer timer;
@@ -79,6 +80,8 @@ private: //One-time inits:
 	void DisplayLoadingScreen();
 	
 	void HandleInput();
+
+	SDL_Surface* screen;
 };
 
 #endif // GameStateManager_h__

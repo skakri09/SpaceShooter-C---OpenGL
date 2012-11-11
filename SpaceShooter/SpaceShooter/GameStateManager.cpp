@@ -233,8 +233,9 @@ void GameStateManager::CreateOpenGLContext()
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
-	if (SDL_SetVideoMode(window_width, window_height, 0, SDL_OPENGL
-		| SDL_DOUBLEBUF | SDL_RESIZABLE) == NULL) 
+	screen = SDL_SetVideoMode(window_width, window_height, 0, SDL_OPENGL 
+								| SDL_DOUBLEBUF | SDL_RESIZABLE);
+	if(screen == NULL) 
 	{
 		std::stringstream err;
 		err << "SDL_SetVideoMode failed ";

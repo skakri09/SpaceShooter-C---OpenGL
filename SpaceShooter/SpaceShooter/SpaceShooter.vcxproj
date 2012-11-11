@@ -119,6 +119,7 @@
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="ScoreTextEntry.cpp" />
     <ClCompile Include="ScoreValueEntry.cpp" />
+    <ClCompile Include="SMPEGPlayer.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="TextEntry.cpp" />
     <ClCompile Include="TextFactory.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="ScoreTextEntry.h" />
     <ClInclude Include="ScoreValueEntry.h" />
+    <ClInclude Include="SMPEGPlayer.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="TextEntry.h" />
     <ClInclude Include="TextFactory.h" />
