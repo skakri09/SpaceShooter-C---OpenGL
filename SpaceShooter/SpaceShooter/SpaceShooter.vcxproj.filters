@@ -582,6 +582,9 @@
     <ClInclude Include="ScoreValueEntry.h">
       <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Game\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib3ds-1_3d.dll">

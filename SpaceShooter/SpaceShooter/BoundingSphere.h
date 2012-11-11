@@ -34,7 +34,7 @@ public:
 	//Returns the amount of collision between this and the param
 	//vector3D as a vector3d. If there is no collision, the returned 
 	//vector3d will be a null-vector
-	Vector3D IsCollision(BoundingSphere& otherCollidable);
+	Vector3D IsCollision(BoundingSphere* otherCollidable);
 
 	//Creates the collisionBox for the spaceship. from a vector of vertices
 	void CreateCollisionBox(std::vector<float>* vertices);

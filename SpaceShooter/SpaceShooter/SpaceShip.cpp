@@ -94,7 +94,8 @@ void SpaceShip::HandleProjectileCollision( std::shared_ptr<Projectile> projectil
 {
 	if(projectile->isFired())
 	{
-		BoundingSphere projectileColSphere = projectile->collisionSphere;
+		BoundingSphere* projectileColSphere = &projectile->collisionSphere;
+
 		Vector3D collAmnt = collisionSphere.IsCollision(projectileColSphere);
 		if(collAmnt.getX() > 0 || collAmnt.getY() > 0.0f || collAmnt.getZ() > 0.0f)
 		{

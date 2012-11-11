@@ -130,6 +130,7 @@ void SpaceShipManager::HandleCollision()
 	std::vector<std::shared_ptr<Projectile>>* projectiles = 
 		ProjectileManager::Inst()->GetProjectiles();
 	
+	int checks = 0;
 	for(auto i = projectiles->begin(); i != projectiles->end(); i++)
 	{
 		if( *(*i)->GetOwner() == *player )
@@ -137,6 +138,7 @@ void SpaceShipManager::HandleCollision()
 			for(auto s = EnemySpaceShips.begin(); s != EnemySpaceShips.end(); s++)
 			{
 				(*s)->HandleProjectileCollision( (*i) );
+				checks ++;
 			}
 		}
 		else
@@ -144,6 +146,8 @@ void SpaceShipManager::HandleCollision()
 			player->HandleProjectileCollision( (*i) );
 		}
 	}
+	log << WARN << checks << std::endl;
+
 }
 
 void SpaceShipManager::HandleXAxisMovement()

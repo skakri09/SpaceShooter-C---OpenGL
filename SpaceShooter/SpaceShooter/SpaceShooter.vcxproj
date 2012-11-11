@@ -171,6 +171,7 @@
     <ClInclude Include="LivesEntry.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="ManagerInterface.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="MenuEntry.h" />
     <ClInclude Include="MeshInfo.h" />
     <ClInclude Include="ParticleManager.h" />

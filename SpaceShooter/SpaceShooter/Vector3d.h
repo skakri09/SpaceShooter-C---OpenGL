@@ -16,13 +16,8 @@
 
 #include "Logger.h"
 #include "Timer.h"
+#include "Math.h"
 
-double inline __declspec (naked) __fastcall sqrt14(double n)
-{
-	_asm fld qword ptr [esp+4]
-	_asm fsqrt
-	_asm ret 8
-} 
 
 class Vector3D
 {
@@ -32,7 +27,7 @@ public:
 	~Vector3D();
 	
 	static Vector3D ZeroVec();
-
+	
 	void setValues(float x, float y, float z)
 	{
 		this->x = x; this->y = y; this->z = z;

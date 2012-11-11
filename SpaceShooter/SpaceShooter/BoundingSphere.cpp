@@ -9,16 +9,16 @@ BoundingSphere::~BoundingSphere()
 {
 }
 
-Vector3D BoundingSphere::IsCollision( BoundingSphere& otherCollidable)
+Vector3D BoundingSphere::IsCollision( BoundingSphere* otherCollidable)
 {
 	Vector3D ammountOfCollision = 0;
-	float distance = CollisionMidpoint.Distance(otherCollidable.GetMidpoint());
+	float distance = CollisionMidpoint.Distance(otherCollidable->GetMidpoint());
 
-	if( distance < CollisionRadius + otherCollidable.GetRadius() )
+	if( distance < CollisionRadius + otherCollidable->GetRadius() )
 	{
-        Vector3D a = otherCollidable.GetMidpoint();
+        Vector3D a = otherCollidable->GetMidpoint();
 
-		ammountOfCollision = otherCollidable.GetMidpoint() - CollisionMidpoint;
+		ammountOfCollision = otherCollidable->GetMidpoint() - CollisionMidpoint;
 	}
 
 	return ammountOfCollision;
