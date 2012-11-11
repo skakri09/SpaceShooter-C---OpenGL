@@ -17,6 +17,13 @@
 #include "Logger.h"
 #include "Timer.h"
 
+double inline __declspec (naked) __fastcall sqrt14(double n)
+{
+	_asm fld qword ptr [esp+4]
+	_asm fsqrt
+	_asm ret 8
+} 
+
 class Vector3D
 {
 public:
@@ -117,6 +124,7 @@ private:
 	float y;
 	float z;
 
+	
 };
 
 #endif
