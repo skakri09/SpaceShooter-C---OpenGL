@@ -128,6 +128,7 @@ void GamePlayManager::ResetGame()
 {
 	SpaceShipManager::Inst()->ResetSpaceships();
 	ParticleManager::Inst()->ResetParticles();
+	ProjectileManager::Inst()->ResetProjectiles();
 	environment.ResetEnvironment();
 	score.ResetScore();
 }

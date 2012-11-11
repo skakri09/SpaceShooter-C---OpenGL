@@ -27,11 +27,16 @@ void Skybox::drawSkybox()
 {
 	glPushMatrix();
 	glRotatef(rotate, 0, 1, 0);
-	//checking if textures were turned on before enabling
-	bool texIsEnabled; 
+
+	bool texIsEnabled = false;
 	if(glIsEnabled(GL_TEXTURE_2D))
 		texIsEnabled = true;
-	else texIsEnabled = false;
+	
+	bool fogEnabled = false;
+	if(glIsEnabled(GL_FOG))
+		fogEnabled = true;
+	
+	glDisable(GL_FOG);
 	glDisable(GL_LIGHTING);
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);			
@@ -129,6 +134,10 @@ void Skybox::drawSkybox()
 	if(!texIsEnabled)
 	{
 		glDisable(GL_TEXTURE_2D);
+	}
+	if(fogEnabled)
+	{
+		glEnable(GL_FOG);
 	}
 
 	glPopMatrix();

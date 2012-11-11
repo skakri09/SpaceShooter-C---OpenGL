@@ -138,3 +138,12 @@ std::vector<std::shared_ptr<Projectile>>* ProjectileManager::GetProjectiles()
 {
 	return &ActiveProjectiles;
 }
+
+void ProjectileManager::ResetProjectiles()
+{
+	for(unsigned int i = 0; i < ActiveProjectiles.size(); i++)
+	{
+		ActiveProjectiles.at(i)->DestroyProjectile();
+	}
+	ActiveProjectiles.clear();
+}

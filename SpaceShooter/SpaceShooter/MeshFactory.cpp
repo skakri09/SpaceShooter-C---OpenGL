@@ -23,23 +23,9 @@ std::shared_ptr<MeshInfo> MeshFactory::GetMesh( std::string meshName)
 		return LoadedMeshes.find(meshName)->second;
 	}
 	else
-	{		
-		std::string extension = GetExtension(meshName);
-		if(extension == "3ds")
-		{
-			//load 3ds file
-			LoadedMeshes[meshName] = std::make_shared<MeshInfo>();
-			*LoadedMeshes[meshName] = mesh3dsLoader.Load3dsMesh(meshName);
-
-			return LoadedMeshes[meshName];
-		}
-		else if(extension == "xml")
-		{
-			//load xml file
-			LoadedMeshes[meshName] = std::make_shared<MeshInfo>();
-			*LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
-			return LoadedMeshes[meshName]; 
-		}
+	{
+		LoadMesh(meshName);
+		return LoadedMeshes[meshName];
 	}
 	return std::make_shared<MeshInfo>();
 }
@@ -66,6 +52,7 @@ void MeshFactory::LoadMesh( std::string meshName )
 			*LoadedMeshes[meshName] = xmlMeshLoader.LoadMeshXml(meshName);
 		}
 	}
+	log << INFO << "loaded: " << meshName << std::endl;
 }
 
 std::string MeshFactory::GetExtension( std::string& filePath )

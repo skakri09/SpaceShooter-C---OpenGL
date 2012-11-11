@@ -66,6 +66,7 @@ void GameStateManager::SwitchState( GameState newState )
 	switch(newState)
 	{
 	case GAME:
+		currentState = GAME;
 		log << WARN << "Switching to Game state" << std::endl;
 		if(!gameWasInited)
 		{
@@ -75,18 +76,11 @@ void GameStateManager::SwitchState( GameState newState )
 			game->InitGamePlayManager(&input, &switchToState);
 			gameWasInited = true;
 		}
-		switch(currentState)
-		{
-		case MAIN_MENU:
-			game->ResetGame();
-			break;
-		}
-		currentState = GAME;
 		game->OnEnteringGameState();
 		break;
 	case MAIN_MENU:
+		currentState = MAIN_MENU;
 		log << WARN << "Switching to Menu state" << std::endl;
-
 		if(!menuWasInited)
 		{
 			input.resize(window_width, window_height, true);
@@ -96,10 +90,10 @@ void GameStateManager::SwitchState( GameState newState )
 			mainMenu->Init(&input, &switchToState);
 			menuWasInited = true;
 		}
-		currentState = MAIN_MENU;
 		mainMenu->OnEnteringMenu();
 		break;
 	case OPTIONS:
+		currentState = OPTIONS;
 		log << WARN << "Switching to Options state" << std::endl;
 		if(!optionsWasInited)
 		{
@@ -110,10 +104,10 @@ void GameStateManager::SwitchState( GameState newState )
 			options->Init(&input, &switchToState);
 			menuWasInited = true;
 		}
-		currentState = OPTIONS;
 		options->OnEnteringMenu();
 		break;
 	case INGAME_MENU:
+		currentState = INGAME_MENU;
 		log << WARN << "Switching to Ingame Menu state" << std::endl;
 		if(!ingameMenuWasInited)
 		{
@@ -123,8 +117,21 @@ void GameStateManager::SwitchState( GameState newState )
 			ingameMenu->Init(&input, &switchToState);
 			ingameMenuWasInited = true;
 		}
-		currentState = INGAME_MENU;
 		ingameMenu->OnEnteringMenu();
+		break;
+	case NEW_GAME:
+		currentState = newState;
+		if(!gameWasInited)
+		{
+			input.resize(window_width, window_height, true);
+			DisplayLoadingScreen();
+			input.resize(window_width, window_height);
+			game->InitGamePlayManager(&input, &switchToState);
+			gameWasInited = true;
+		}
+		game->ResetGame();
+		//SwitchState(GAME);
+		switchToState = GAME;
 		break;
 	case QUIT:
 		exit = true;

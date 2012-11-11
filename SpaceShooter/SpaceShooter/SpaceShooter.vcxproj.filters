@@ -388,6 +388,12 @@
     <ClCompile Include="IngameMenu.cpp">
       <Filter>Game\Menu\IngameMenu</Filter>
     </ClCompile>
+    <ClCompile Include="RestartGameEntry.cpp">
+      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResumeGameEntry.cpp">
+      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLUtils\GLUtils.hpp">
@@ -639,8 +645,14 @@
     <ClInclude Include="TogglePolygonSmoothEnabledEntry.h">
       <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RestartGameEntry.h">
+      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="IngameMenu.h">
-      <Filter>Game\Managers\Header Files</Filter>
+      <Filter>Game\Menu\IngameMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ResumeGameEntry.h">
+      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

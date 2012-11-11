@@ -61,7 +61,8 @@ void VBODrawable::EnableClientStates()
 	{
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo->vertices);
-		switch(meshInfo->mode)
+		glVertexPointer(3, GL_FLOAT, 0, 0);
+		/*switch(meshInfo->mode)
 		{
 		case GL_QUADS:
 			glVertexPointer(4, GL_FLOAT, 0, 0);
@@ -70,7 +71,7 @@ void VBODrawable::EnableClientStates()
 			glVertexPointer(3, GL_FLOAT, 0, 0);
 			break;
 
-		}
+		}*/
 	}
 
 	if(meshInfo->haveNormals)

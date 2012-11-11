@@ -11,6 +11,8 @@
 #include "Menu.h"
 #include "MenuEntry.h"
 #include "BackToMainMenuEntry.h"
+#include "RestartGameEntry.h"
+#include "ResumeGameEntry.h"
 
 class IngameMenu : public Menu
 {

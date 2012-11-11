@@ -47,6 +47,8 @@ public:
 	//manager.
 	std::vector<std::shared_ptr<Projectile>>* GetProjectiles();
 
+	void ResetProjectiles();
+
 private:
 	ProjectileManager();
 	~ProjectileManager();

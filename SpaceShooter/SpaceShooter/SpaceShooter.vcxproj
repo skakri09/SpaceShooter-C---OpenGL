@@ -113,6 +113,8 @@
     <ClCompile Include="PlayGameEntry.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
     <ClCompile Include="QuitGameEntry.cpp" />
+    <ClCompile Include="RestartGameEntry.cpp" />
+    <ClCompile Include="ResumeGameEntry.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="ScoreTextEntry.cpp" />
     <ClCompile Include="ScoreValueEntry.cpp" />
@@ -189,6 +191,8 @@
     <ClInclude Include="PlayGameEntry.h" />
     <ClInclude Include="ProjectileManager.h" />
     <ClInclude Include="QuitGameEntry.h" />
+    <ClInclude Include="RestartGameEntry.h" />
+    <ClInclude Include="ResumeGameEntry.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="ScoreTextEntry.h" />
     <ClInclude Include="ScoreValueEntry.h" />
