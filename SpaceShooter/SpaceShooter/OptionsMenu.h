@@ -9,7 +9,7 @@
 #define OptionsMenu_h__
 
 #include "Menu.h"
-#include "BackToMainMenuEntry.h"
+#include "BackEntry.h"
 #include "TogglePolygonSmoothEnabledEntry.h"
 
 class OptionsMenu : public Menu
@@ -20,10 +20,12 @@ public:
 
 	void Init(InputManager* input, GameState* gameState);
 
+	void SetBackState(GameState state);
+
 protected:
 
 private:
-
+	std::shared_ptr<BackEntry> backEntry;
 };
 
 #endif // OptionsMenu_h__

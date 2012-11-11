@@ -23,9 +23,9 @@ void SoundManager::InitSoundManager()
 	Effects["laser_short"] = Mix_LoadWAV((effectBasePath+"laser_short.wav").c_str());
 	Effects["blaster"] = Mix_LoadWAV((effectBasePath+"blaster.wav").c_str());
 	Effects["button"] = Mix_LoadWAV((effectBasePath+"button.wav").c_str());
+	Effects["laser_tripleFire_long"] = Mix_LoadWAV( (effectBasePath+"laser_tripleFire_long.wav").c_str());
 
 	Songs["imperial_march"] = Mix_LoadMUS( (songBasePath+"imperial_march.ogg").c_str());
-
 }
 
 SoundManager* SoundManager::Inst()
@@ -65,5 +65,6 @@ void SoundManager::PlayEffect( std::string effectName, unsigned short volume )
 	}
 	Mix_HaltChannel(FX_MAIN_CHANNEL);
 	Mix_PlayChannel(FX_MAIN_CHANNEL, effect, 0);
+	Mix_Volume(FX_MAIN_CHANNEL, volume);
 }
 

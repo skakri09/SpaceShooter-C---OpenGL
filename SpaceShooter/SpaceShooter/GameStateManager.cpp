@@ -93,7 +93,6 @@ void GameStateManager::SwitchState( GameState newState )
 		mainMenu->OnEnteringMenu();
 		break;
 	case OPTIONS:
-		currentState = OPTIONS;
 		log << WARN << "Switching to Options state" << std::endl;
 		if(!optionsWasInited)
 		{
@@ -102,9 +101,11 @@ void GameStateManager::SwitchState( GameState newState )
 			input.resize(window_width, window_height);
 
 			options->Init(&input, &switchToState);
-			menuWasInited = true;
+			optionsWasInited = true;
 		}
+		options->SetBackState(currentState);
 		options->OnEnteringMenu();
+		currentState = OPTIONS;
 		break;
 	case INGAME_MENU:
 		currentState = INGAME_MENU;

@@ -21,6 +21,7 @@ void Menu::Init( InputManager* input, GameState* gameState )
 		menuEntries.at(i)->SetIsSelected(false);
 	}
 	selectedEntry = 0;
+	menuEntries.at(selectedEntry)->SetIsSelected(true);
 }
 
 void Menu::UpdateMenu( float deltaTime )
@@ -50,6 +51,13 @@ void Menu::RenderMenu()
 
 void Menu::OnEnteringMenu()
 {
+	for(unsigned int i = 0; i < menuEntries.size(); i++)
+	{
+		menuEntries.at(i)->SetIsSelected(false);
+	}
+	selectedEntry = 0;
+	menuEntries.at(selectedEntry)->SetIsSelected(true);
+	
 	if(!menuShip)
 	{
 		menuShip = std::make_shared<PlayerSpaceShip>();

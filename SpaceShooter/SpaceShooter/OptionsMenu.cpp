@@ -13,9 +13,16 @@ OptionsMenu::~OptionsMenu()
 void OptionsMenu::Init( InputManager* input, GameState* gameState )
 {
 	menuEntries.push_back(std::make_shared<TogglePolygonSmoothEnabledEntry>(0.0f, 0.0f, 0.0f, 0.04f));
-	menuEntries.push_back(std::make_shared<BackToMainMenuEntry>(gameState, 0.0f, -5.0f, 0.0f, 0.08f));
+	
+	backEntry = std::make_shared<BackEntry>(gameState, 0.0f, -5.0f, 0.0f, 0.08f);
+	menuEntries.push_back(backEntry);
 	
 	Menu::Init(input, gameState);
 
 	menuEntries.at(selectedEntry)->SetIsSelected(true);
+}
+
+void OptionsMenu::SetBackState( GameState state )
+{
+	backEntry->SetBackToState(state);
 }

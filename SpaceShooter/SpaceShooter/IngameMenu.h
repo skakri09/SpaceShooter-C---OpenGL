@@ -13,6 +13,7 @@
 #include "BackToMainMenuEntry.h"
 #include "RestartGameEntry.h"
 #include "ResumeGameEntry.h"
+#include "OptionsEntry.h"
 
 class IngameMenu : public Menu
 {

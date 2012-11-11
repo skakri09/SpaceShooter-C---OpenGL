@@ -37,8 +37,12 @@ void SpaceShipManager::Update(GLfloat deltaTime)
 {
 	if(input->Fire())
 	{
-		player->Shoot(DOUBLE_TRIPLE_CONE_LASER);
+		if(player->Shoot(DOUBLE_TRIPLE_CONE_LASER))
+		{
+			SoundManager::Inst()->PlayEffect("laser_tripleFire_long", 40);
+		}
 	}
+
 	HandlePlayerRotation();
 	HandleXAxisMovement();
 	HandleYAxisMovement();

@@ -394,6 +394,9 @@
     <ClCompile Include="ResumeGameEntry.cpp">
       <Filter>Game\Menu\MenuEntries\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BackEntry.cpp">
+      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLUtils\GLUtils.hpp">
@@ -652,6 +655,9 @@
       <Filter>Game\Menu\IngameMenu</Filter>
     </ClInclude>
     <ClInclude Include="ResumeGameEntry.h">
+      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackEntry.h">
       <Filter>Game\Menu\MenuEntries\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -24,6 +24,7 @@
 #include "GameState.h"
 #include "ManagerInterface.h"
 #include "ScoreManager.h"
+#include "SoundManager.h"
 
 class SpaceShipManager : public ManagerInterface
 {
