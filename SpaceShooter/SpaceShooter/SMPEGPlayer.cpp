@@ -18,9 +18,9 @@ SMPEGPlayer::SMPEGPlayer() : log("SmpegPlayer", INFO)
 // Free our movie
 SMPEGPlayer::~SMPEGPlayer()
 {
-	Stop();
 	if(movie)
 	{
+		Stop();
 		SMPEG_delete( movie );
 		movie = 0;
 	}

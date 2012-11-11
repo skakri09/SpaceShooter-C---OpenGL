@@ -118,6 +118,7 @@ void GameStateManager::SwitchState( GameState newState )
 		break;
 	case PLAYING_VIDEO:
 		smpeg.Load("..//Video//intro.mpg", screen);
+		smpeg.Play();
 		currentState = newState;
 		break;
 	case QUIT:
@@ -180,6 +181,12 @@ void GameStateManager::UpdateCurrentState()
 	case INGAME_MENU:
 		ingameMenu->UpdateMenu(deltaTime);
 		break;
+	case PLAYING_VIDEO:
+		if(smpeg.GetStatus() != SMPEG_PLAYING)
+		{
+			switchToState = MAIN_MENU;
+		}
+		break;
 	}
 }
 
@@ -200,6 +207,7 @@ void GameStateManager::DrawCurrentState()
 		ingameMenu->RenderMenu();
 		break;
 	case PLAYING_VIDEO:
+		SDL_FillRect(screen, 0, 0);
 		smpeg.Display();
 		break;
 	}
@@ -294,6 +302,9 @@ void GameStateManager::HandleInput()
 		case GAME:
 			switchToState = INGAME_MENU;
 			break;
+		case PLAYING_VIDEO:
+			smpeg.Stop();
+			switchToState = MAIN_MENU;
 		}
 	}
 	if(input.KeyDownOnce(SDLK_m))
