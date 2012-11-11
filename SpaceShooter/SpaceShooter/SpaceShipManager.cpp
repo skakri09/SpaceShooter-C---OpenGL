@@ -131,19 +131,19 @@ void SpaceShipManager::HandleCollision()
 		ProjectileManager::Inst()->GetProjectiles();
 	
 	int checks = 0;
-	for(auto i = projectiles->begin(); i != projectiles->end(); i++)
+	for(unsigned int i = 0; i < projectiles->size(); i++)
 	{
-		if( *(*i)->GetOwner() == *player )
+		if(*projectiles->at(i)->GetOwner() == *player)
 		{
-			for(auto s = EnemySpaceShips.begin(); s != EnemySpaceShips.end(); s++)
+			for(unsigned int x = 0; x < EnemySpaceShips.size(); x++)
 			{
-				(*s)->HandleProjectileCollision( (*i) );
-				checks ++;
+				EnemySpaceShips.at(x)->HandleProjectileCollision( projectiles->at(i) );
+				checks++;
 			}
 		}
 		else
 		{
-			player->HandleProjectileCollision( (*i) );
+			player->HandleProjectileCollision( projectiles->at(i) );
 		}
 	}
 	log << WARN << checks << std::endl;
