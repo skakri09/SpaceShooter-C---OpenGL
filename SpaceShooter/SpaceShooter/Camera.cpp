@@ -72,6 +72,7 @@ void Camera::Control(float mouseVel, float moveVel, InputManager* input)
 	{
 		camYaw=0.0f;
 		camPitch=0.0f;
+		camPos.setValues(CAMERA_POS_X, CAMERA_POS_Y, CAMERA_POS_Z);
 	}
 }
 

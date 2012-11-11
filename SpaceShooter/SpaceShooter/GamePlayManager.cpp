@@ -32,7 +32,7 @@ void GamePlayManager::InitGamePlayManager(InputManager* input, GameState* gameSt
 	ParticleManager::Inst()->InitParticleManager();
 	environment.InitManager();
 
-	cam.SetCameraPosition(0, 0, CAMERA_POS);
+	cam.SetCameraPosition(0, 0, CAMERA_POS_Z);
 	cam.SetSkybox("skybox1");
 
 	gpi.InitGUI(&score);
