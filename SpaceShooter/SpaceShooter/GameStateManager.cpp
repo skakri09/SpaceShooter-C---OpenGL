@@ -256,29 +256,17 @@ void GameStateManager::DisplayLoadingScreen()
 	glPushMatrix();
 
 	glLoadIdentity();
-	//glScalef(2, 2, 2);
+	glScaled(2, 2, 2);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glDisable(GL_LIGHTING);
 	Texturable texturable;
 	texturable.InitTexture("..//images//LoadingScreen.jpg", "loadingscreen");
 	texturable.BindTexture("loadingscreen");
-	glColor4d(1, 1, 1,1);
+
 	VBODrawable	vbo;
 	vbo.SetMeshInfo(MeshFactory::Inst()->GetMesh("..//xml//square.xml"));
-	//glTranslatef(0, 0, -10);
 	vbo.Draw();
-	
-	//glBegin(GL_QUADS);
-	//glTexCoord2f(0, 0);
-	//glVertex3f(-0.5f, -0.5f, 0.0f);//bottomleft
-	//glTexCoord2f(1, 0);
-	//glVertex3f(0.5f, -0.5f, 0.0f);//bottomright
-	//glTexCoord2f(1, 1);
-	//glVertex3f(0.5f, 0.5f, 0.0f);//topright
-	//glTexCoord2f(0, 1);
-	//glVertex3f(-0.5f, 0.5f, 0.0f);//topleft
-	//glEnd();
 
 	texturable.UnbindTexture();
 	SDL_GL_SwapBuffers();

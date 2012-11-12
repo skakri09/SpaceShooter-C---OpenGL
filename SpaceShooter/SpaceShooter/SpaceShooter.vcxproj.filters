@@ -190,6 +190,9 @@
     <Filter Include="Game\SMPEG player">
       <UniqueIdentifier>{cd7d8e46-66f0-414b-ad79-519e52446690}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\skybox">
+      <UniqueIdentifier>{e7b18e27-cebf-4adf-a615-96bdceefd6ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogSys.cpp">
@@ -701,9 +704,6 @@
     <None Include="..\xml\Mesh_PlayerSpaceship.xml">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\xml\skybox.xml">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="..\particles\particle.xml">
       <Filter>Resource Files</Filter>
     </None>
@@ -716,6 +716,9 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="..\xml\square.xml">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\xml\skybox.xml">
+      <Filter>Resource Files\skybox</Filter>
     </None>
   </ItemGroup>
 </Project>
