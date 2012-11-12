@@ -31,8 +31,8 @@ void IngameMenu::RenderMenu()
 	Menu::RenderMenu();
 }
 
-void IngameMenu::OnEnteringMenu()
+void IngameMenu::OnEnteringMenu(GameState* gameState)
 {
-	Menu::OnEnteringMenu();
+	Menu::OnEnteringMenu(gameState);
 	SoundManager::Inst()->PlaySong("imperial_march");
 }

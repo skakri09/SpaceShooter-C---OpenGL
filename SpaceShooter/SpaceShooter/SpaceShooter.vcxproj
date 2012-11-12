@@ -60,7 +60,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>DevIL.lib;ILU.lib;ILUT.lib;glew32.lib;glew32mx.lib;glew32mxs.lib;glew32s.lib;lib3ds.lib;SDL.lib;SDL_mixer.lib;SDLmain.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DevIL.lib;ILU.lib;ILUT.lib;glew32.lib;glew32mx.lib;glew32mxs.lib;glew32s.lib;lib3ds.lib;SDL.lib;SDL_mixer.lib;SDLmain.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;smpeg.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\libraries\i386\SDL-1.2.15\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/NODEFAULTLIB:msvcrt.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
@@ -149,7 +149,10 @@
     <ClCompile Include="SpaceShipManager.cpp" />
     <ClCompile Include="LaserLowCooldown.cpp" />
     <ClCompile Include="StarDestroyerShipSpawning.cpp" />
+    <ClCompile Include="ToggleEffectsMute.cpp" />
+    <ClCompile Include="ToggleMusicMute.cpp" />
     <ClCompile Include="TogglePolygonSmoothEnabledEntry.cpp" />
+    <ClCompile Include="ToggleSoundMute.cpp" />
     <ClCompile Include="Transformable.cpp" />
     <ClCompile Include="TripleConeLaser.cpp" />
     <ClCompile Include="VBODrawable.cpp" />
@@ -178,6 +181,7 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="glmovie-tile.h" />
+    <ClInclude Include="glmovie.h" />
     <ClInclude Include="GUIEntry.h" />
     <ClInclude Include="HPEntry.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
@@ -238,7 +242,10 @@
     <ClInclude Include="LaserLowCooldown.h" />
     <ClInclude Include="StarDestroyerShipSpawning.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="ToggleEffectsMute.h" />
+    <ClInclude Include="ToggleMusicMute.h" />
     <ClInclude Include="TogglePolygonSmoothEnabledEntry.h" />
+    <ClInclude Include="ToggleSoundMute.h" />
     <ClInclude Include="Transformable.h" />
     <ClInclude Include="CollisionTransformationInfo.h" />
     <ClInclude Include="TripleConeLaser.h" />

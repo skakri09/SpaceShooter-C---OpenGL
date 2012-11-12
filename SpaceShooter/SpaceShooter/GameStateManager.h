@@ -28,7 +28,6 @@
 #include "SoundManager.h"
 #include "VBODrawable.h"
 #include "IngameMenu.h"
-#include "SMPEGPlayer.h"
 
 class GameStateManager
 {
@@ -74,7 +73,7 @@ private: //One-time inits:
 	InputManager input;
 	Timer timer;
 	float deltaTime;
-	SMPEGPlayer smpeg;
+	//SMPEGPlayer smpeg;
 	void CreateOpenGLContext();
 	void InitGlew();
 	void InitDevil();

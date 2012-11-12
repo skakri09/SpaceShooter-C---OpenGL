@@ -29,6 +29,7 @@ void Menu::UpdateMenu( float deltaTime )
 	this->deltaTime = deltaTime;
 	HandleInput();
 	UpdateSelectionShip(deltaTime);
+	cam.Control(1, 1, input);
 	for(unsigned int i = 0; i < menuEntries.size(); i++)
 	{
 		menuEntries.at(i)->UpdateEntry(deltaTime);
@@ -49,7 +50,7 @@ void Menu::RenderMenu()
 	glPopMatrix();
 }
 
-void Menu::OnEnteringMenu()
+void Menu::OnEnteringMenu(GameState* gameState)
 {
 	for(unsigned int i = 0; i < menuEntries.size(); i++)
 	{
@@ -108,7 +109,7 @@ void Menu::HandleInput()
 			++selectedEntry;
 			menuEntries.at(selectedEntry)->SetIsSelected(true);
 		}
-		SoundManager::Inst()->PlayEffect("button");
+		SoundManager::Inst()->PlayEffect("button", 75);
 	}
 	else if(input->KeyDownOnce(SDLK_w) && !input->KeyDownOnce(SDLK_s))
 	{
@@ -124,7 +125,7 @@ void Menu::HandleInput()
 			--selectedEntry;
 			menuEntries.at(selectedEntry)->SetIsSelected(true);
 		}
-		SoundManager::Inst()->PlayEffect("button");
+		SoundManager::Inst()->PlayEffect("button", 75);
 	}
 
 	if(input->KeyDownOnce(SDLK_RETURN) || input->KeyDownOnce(SDLK_SPACE))

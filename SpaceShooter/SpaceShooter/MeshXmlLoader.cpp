@@ -18,7 +18,7 @@ MeshInfo MeshXmlLoader::LoadMeshXml( std::string meshLoadPath )
 	std::vector<unsigned int> indices;
 	std::vector<float> normals;
 	std::vector<float> colors;
-	std::vector<unsigned int> texCoords;
+	std::vector<float> texCoords;
 	
 	//Loading the xml with base class' xml loader function
 	ptree xmlPtree = *XmlLoader::LoadXML(meshLoadPath);
@@ -49,7 +49,7 @@ MeshInfo MeshXmlLoader::LoadMeshXml( std::string meshLoadPath )
 	}
 
 	std::string texCoordString = xmlPtree.get<std::string>("mesh.textCoords");
-	if(!PlaceUIntsInMeshObj(texCoordString, texCoords))
+	if(!PlaceFloatsInMeshObj(texCoordString, texCoords))
 	{
 		log << ERRORX << "The placing of texCoords in mesh object was not successful" << std::endl;
 	}
@@ -257,7 +257,7 @@ bool MeshXmlLoader::BindIndices( std::vector<unsigned int>& indices, MeshInfo& m
 	}
 }
 
-bool MeshXmlLoader::BindTexCoords( std::vector<unsigned int>& texCoords, MeshInfo& meshInfo )
+bool MeshXmlLoader::BindTexCoords( std::vector<float>& texCoords, MeshInfo& meshInfo )
 {
 	if(!texCoords.empty())
 	{

@@ -10,6 +10,7 @@ VBODrawable::VBODrawable()
 
 VBODrawable::~VBODrawable()
 {
+
 }
 
 void VBODrawable::Draw()
@@ -62,16 +63,6 @@ void VBODrawable::EnableClientStates()
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo->vertices);
 		glVertexPointer(3, GL_FLOAT, 0, 0);
-		/*switch(meshInfo->mode)
-		{
-		case GL_QUADS:
-			glVertexPointer(4, GL_FLOAT, 0, 0);
-			break;
-		case GL_TRIANGLES:
-			glVertexPointer(3, GL_FLOAT, 0, 0);
-			break;
-
-		}*/
 	}
 
 	if(meshInfo->haveNormals)
@@ -84,14 +75,14 @@ void VBODrawable::EnableClientStates()
 	if(meshInfo->haveColors)
 	{
 		glEnableClientState(GL_COLOR_ARRAY);
-		glBindBuffer(GL_COLOR_ARRAY, meshInfo->colors);
+		glBindBuffer(GL_ARRAY_BUFFER, meshInfo->colors);
 		glColorPointer(3, GL_FLOAT, 0, 0);
 	}
 	if(meshInfo->haveTexCoords)
 	{
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, meshInfo->textCoords);
-		glTexCoordPointer(3, GL_FLOAT, 0, 0);
+		glTexCoordPointer(2, GL_FLOAT, 0, 0);
 	}
 	if(meshInfo->haveIndices)
 	{
@@ -119,7 +110,6 @@ void VBODrawable::DisableClientStates()
 	{
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindTexture(GL_TEXTURE_2D,0); 
 	}
 	if(meshInfo->haveIndices)
 	{

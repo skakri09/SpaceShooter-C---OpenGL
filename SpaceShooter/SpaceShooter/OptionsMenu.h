@@ -11,6 +11,9 @@
 #include "Menu.h"
 #include "BackEntry.h"
 #include "TogglePolygonSmoothEnabledEntry.h"
+#include "ToggleSoundMute.h"
+#include "ToggleMusicMute.h"
+#include "ToggleEffectsMute.h"
 
 class OptionsMenu : public Menu
 {

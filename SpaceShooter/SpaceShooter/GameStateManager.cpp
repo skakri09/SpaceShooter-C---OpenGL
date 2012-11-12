@@ -45,7 +45,7 @@ void GameStateManager::InitGameStateManager()
 
 void GameStateManager::SwitchState( GameState newState )
 {
-
+	GameState prevState = currentState;
 	switch(newState)
 	{
 	case GAME:
@@ -73,7 +73,7 @@ void GameStateManager::SwitchState( GameState newState )
 			mainMenu->Init(&input, &switchToState);
 			menuWasInited = true;
 		}
-		mainMenu->OnEnteringMenu();
+		mainMenu->OnEnteringMenu(&prevState);
 		break;
 	case OPTIONS:
 		log << WARN << "Switching to Options state" << std::endl;
@@ -87,7 +87,7 @@ void GameStateManager::SwitchState( GameState newState )
 			optionsWasInited = true;
 		}
 		options->SetBackState(currentState);
-		options->OnEnteringMenu();
+		options->OnEnteringMenu(&prevState);
 		currentState = OPTIONS;
 		break;
 	case INGAME_MENU:
@@ -101,7 +101,7 @@ void GameStateManager::SwitchState( GameState newState )
 			ingameMenu->Init(&input, &switchToState);
 			ingameMenuWasInited = true;
 		}
-		ingameMenu->OnEnteringMenu();
+		ingameMenu->OnEnteringMenu(&prevState);
 		break;
 	case NEW_GAME:
 		currentState = newState;
@@ -117,8 +117,8 @@ void GameStateManager::SwitchState( GameState newState )
 		switchToState = GAME;
 		break;
 	case PLAYING_VIDEO:
-		smpeg.Load("..//Video//intro.mpg", screen);
-		smpeg.Play();
+		//smpeg.Load("..//Video//intro.mpg", screen);
+		//smpeg.Play();
 		currentState = newState;
 		break;
 	case QUIT:
@@ -153,7 +153,7 @@ void GameStateManager::GameLoop()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		input.Update(&switchToState);
-		
+		SoundManager::Inst()->Update(deltaTime);
 		HandleInput();
 		
 		UpdateCurrentState();
@@ -182,10 +182,10 @@ void GameStateManager::UpdateCurrentState()
 		ingameMenu->UpdateMenu(deltaTime);
 		break;
 	case PLAYING_VIDEO:
-		if(smpeg.GetStatus() != SMPEG_PLAYING)
+		/*if(smpeg.GetStatus() != SMPEG_PLAYING)
 		{
 			switchToState = MAIN_MENU;
-		}
+		}*/
 		break;
 	}
 }
@@ -207,8 +207,8 @@ void GameStateManager::DrawCurrentState()
 		ingameMenu->RenderMenu();
 		break;
 	case PLAYING_VIDEO:
-		SDL_FillRect(screen, 0, 0);
-		smpeg.Display();
+		/*SDL_FillRect(screen, 0, 0);
+		smpeg.Display();*/
 		break;
 	}
 }
@@ -218,6 +218,7 @@ void GameStateManager::DrawCurrentState()
 //*******************************//
 void GameStateManager::CreateOpenGLContext()
 {
+	SetSDLVideoMode();
 	SetOpenGLVideoMode();
 }
 
@@ -255,26 +256,29 @@ void GameStateManager::DisplayLoadingScreen()
 	glPushMatrix();
 
 	glLoadIdentity();
-	glScalef(2, 2, 2);
+	//glScalef(2, 2, 2);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glDisable(GL_LIGHTING);
-
 	Texturable texturable;
 	texturable.InitTexture("..//images//LoadingScreen.jpg", "loadingscreen");
 	texturable.BindTexture("loadingscreen");
-
-
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 0);
-	glVertex3f(-0.5f, -0.5f, 0.0f);//bottomleft
-	glTexCoord2f(1, 0);
-	glVertex3f(0.5f, -0.5f, 0.0f);//bottomright
-	glTexCoord2f(1, 1);
-	glVertex3f(0.5f, 0.5f, 0.0f);//topright
-	glTexCoord2f(0, 1);
-	glVertex3f(-0.5f, 0.5f, 0.0f);//topleft
-	glEnd();
+	glColor4d(1, 1, 1,1);
+	VBODrawable	vbo;
+	vbo.SetMeshInfo(MeshFactory::Inst()->GetMesh("..//xml//square.xml"));
+	//glTranslatef(0, 0, -10);
+	vbo.Draw();
+	
+	//glBegin(GL_QUADS);
+	//glTexCoord2f(0, 0);
+	//glVertex3f(-0.5f, -0.5f, 0.0f);//bottomleft
+	//glTexCoord2f(1, 0);
+	//glVertex3f(0.5f, -0.5f, 0.0f);//bottomright
+	//glTexCoord2f(1, 1);
+	//glVertex3f(0.5f, 0.5f, 0.0f);//topright
+	//glTexCoord2f(0, 1);
+	//glVertex3f(-0.5f, 0.5f, 0.0f);//topleft
+	//glEnd();
 
 	texturable.UnbindTexture();
 	SDL_GL_SwapBuffers();
@@ -303,7 +307,7 @@ void GameStateManager::HandleInput()
 			switchToState = INGAME_MENU;
 			break;
 		case PLAYING_VIDEO:
-			smpeg.Stop();
+			//smpeg.Stop();
 			switchToState = MAIN_MENU;
 		}
 	}

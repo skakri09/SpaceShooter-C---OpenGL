@@ -403,6 +403,15 @@
     <ClCompile Include="SMPEGPlayer.cpp">
       <Filter>Game\SMPEG player</Filter>
     </ClCompile>
+    <ClCompile Include="ToggleSoundMute.cpp">
+      <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ToggleMusicMute.cpp">
+      <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ToggleEffectsMute.cpp">
+      <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLUtils\GLUtils.hpp">
@@ -671,6 +680,18 @@
     </ClInclude>
     <ClInclude Include="glmovie-tile.h">
       <Filter>Game\SMPEG player</Filter>
+    </ClInclude>
+    <ClInclude Include="glmovie.h">
+      <Filter>Game\SMPEG player</Filter>
+    </ClInclude>
+    <ClInclude Include="ToggleSoundMute.h">
+      <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ToggleMusicMute.h">
+      <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ToggleEffectsMute.h">
+      <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

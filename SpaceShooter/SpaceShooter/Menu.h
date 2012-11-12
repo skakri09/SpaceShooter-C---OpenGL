@@ -33,7 +33,7 @@ public:
 
 	//Resets the menu to it's default state, positioning lights, enabling/disabling
 	//openGL states etc
-	virtual void OnEnteringMenu();
+	virtual void OnEnteringMenu(GameState* previousState);
 
 protected:
 	virtual void UpdateSelectionShip(float deltaTime);

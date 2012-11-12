@@ -28,8 +28,16 @@ public:
 
 	void PlayEffect(std::string effectName, unsigned short volume = 100);
 
-	void Update(float deltaTime){}
+	void Update(float deltaTime);
 
+	bool SoundMuted();
+	void SetSoundMute(bool mute);
+
+	bool MusicMuted();
+	void SetMusicMute(bool mute);
+
+	bool EffectsMuted();
+	void SetEffectsMuted(bool mute);
 private:
 	SoundManager();
 	~SoundManager();
@@ -40,8 +48,26 @@ private:
 	std::map<std::string, Mix_Music*> Songs;
 	std::map<std::string, Mix_Chunk*> Effects;
 
-	static const unsigned short MUS_MAIN_CHANNEL = 1;
-	static const unsigned short FX_MAIN_CHANNEL = 2;
+	static const unsigned short FX_MAIN_CHANNEL = 1;
+
+	bool soundMuted;
+	bool musicMuted;
+	bool effectsMuted;
+
+	std::string currentPlayedMusic;
+	unsigned short currentSongVolume;
+
+	std::string currentPlayedMusic_global;
+	unsigned short currentSongVolume_global;
+
+
+	std::string songPlayedPreMute;
+	unsigned short prevSongVolume;
+
+
+	std::string songPlayedPreMute_global;
+	unsigned short prevSongVolume_global;
+	
 };
 
 #endif // SoundManager_h__

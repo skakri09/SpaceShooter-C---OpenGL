@@ -27,7 +27,7 @@ public:
 
 	void RenderMenu();
 
-	void OnEnteringMenu();
+	void OnEnteringMenu(GameState* gameState);
 
 protected:
 

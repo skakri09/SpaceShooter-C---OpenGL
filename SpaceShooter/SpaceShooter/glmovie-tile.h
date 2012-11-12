@@ -19,14 +19,11 @@
 #ifndef glmovie_tile_H
 #define glmovie_tile_H
 
-
+#include "glmovie.h"
 #include <stdlib.h>
 #include <string.h>
 
 static void glmpeg_update( SDL_Surface* surface, Sint32 x, Sint32 y, Uint32 w, Uint32 h );
-GLenum glmovie_init( GLuint, GLuint );
-void glmovie_draw( GLubyte* );
-void glmovie_resize( GLuint, GLuint );
 
 /* Some data is redundant at this stage. */
 typedef struct glmovie_texture_t {
@@ -68,14 +65,14 @@ static GLuint movie_height = 0;
 void glmovie_draw( GLubyte* frame )
 {
     GLuint i;
-    GLdouble shift;
+    GLfloat shift;
 
     glClear( GL_COLOR_BUFFER_BIT );
 
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity( );
 
-    shift = 1 / ((double) texture_size);
+    shift = 1 / ((GLfloat) texture_size);
     for (i = 0; i < num_texture_rows * num_texture_cols; i++) {
         glBindTexture( GL_TEXTURE_2D, textures[i].id );
         glPixelStorei( GL_UNPACK_ROW_LENGTH, movie_width );
@@ -96,14 +93,14 @@ void glmovie_draw( GLubyte* frame )
         glTexCoord2f( shift, shift );
         glVertex2i( textures[i].col * texture_size,
                     textures[i].row * texture_size );
-        glTexCoord2f( shift, shift + (textures[i].movie_height)/((double) texture_size) );
+        glTexCoord2f( shift, shift + (textures[i].movie_height)/((GLfloat) texture_size) );
         glVertex2i( textures[i].col * texture_size,
                     (textures[i].row + 1) * texture_size);
-        glTexCoord2f( shift + (textures[i].movie_width)/((double) texture_size),
-                      shift + (textures[i].movie_height)/((double) texture_size) );
+        glTexCoord2f( shift + (textures[i].movie_width)/((GLfloat) texture_size),
+                      shift + (textures[i].movie_height)/((GLfloat) texture_size) );
         glVertex2i( (textures[i].col + 1) * texture_size,
                     (textures[i].row + 1) * texture_size);
-        glTexCoord2f( shift + (textures[i].movie_width)/((double) texture_size), shift );
+        glTexCoord2f( shift + (textures[i].movie_width)/((GLfloat) texture_size), shift );
         glVertex2i( (textures[i].col + 1) * texture_size,
                     textures[i].row * texture_size );
         glEnd( );

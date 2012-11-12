@@ -37,7 +37,7 @@ public:
 
 	void RenderMenu();
 	
-	void OnEnteringMenu();
+	void OnEnteringMenu(GameState* gameState);
 
 private:
 	Logger log;
