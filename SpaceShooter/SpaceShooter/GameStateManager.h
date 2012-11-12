@@ -28,6 +28,7 @@
 #include "SoundManager.h"
 #include "VBODrawable.h"
 #include "IngameMenu.h"
+#include "SmpegPlayer.h"
 
 class GameStateManager
 {
@@ -40,6 +41,10 @@ public:
 	void SwitchState(GameState newState);
 
 	void GameLoop();
+
+	//This function is ONLY safe to call before initializing 
+	//the statemanager. IF done after, game will crash
+	void PlayIntroVideo();
 
 private:
 	Logger log;
@@ -76,8 +81,7 @@ private: //One-time inits:
 	InputManager input;
 	Timer timer;
 	float deltaTime;
-	//SMPEGPlayer smpeg;
-	void CreateOpenGLContext();
+	
 	void InitGlew();
 	void InitDevil();
 	void DisplayLoadingScreen();

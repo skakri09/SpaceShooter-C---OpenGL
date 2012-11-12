@@ -9,7 +9,8 @@ enum GameState
 	GAME_OVER, 
 	INGAME_MENU,
 	NEW_GAME,
-	OPTIONS
+	OPTIONS,
+	PLAYING_VIDEO
 };
 
 #endif // GameState_H

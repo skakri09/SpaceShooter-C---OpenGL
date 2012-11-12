@@ -29,7 +29,7 @@ void Menu::UpdateMenu( float deltaTime )
 	this->deltaTime = deltaTime;
 	HandleInput();
 	UpdateSelectionShip(deltaTime);
-	cam.Control(1, 1, input);
+	cam.Control(25*deltaTime, 40*deltaTime, input);
 	for(unsigned int i = 0; i < menuEntries.size(); i++)
 	{
 		menuEntries.at(i)->UpdateEntry(deltaTime);

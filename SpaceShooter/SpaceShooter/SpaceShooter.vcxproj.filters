@@ -190,6 +190,9 @@
     <Filter Include="Resource Files\skybox">
       <UniqueIdentifier>{e7b18e27-cebf-4adf-a615-96bdceefd6ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\SMPEG">
+      <UniqueIdentifier>{27ec587e-a980-4e1e-ab8e-849e031b93f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogSys.cpp">
@@ -408,6 +411,9 @@
     </ClCompile>
     <ClCompile Include="ToggleEffectsMute.cpp">
       <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SmpegPlayer.cpp">
+      <Filter>Game\SMPEG</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -681,6 +687,9 @@
     <ClInclude Include="ToggleEffectsMute.h">
       <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SmpegPlayer.h">
+      <Filter>Game\SMPEG</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib3ds-1_3d.dll">
@@ -703,12 +712,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\xml\skybox.xml">
-      <Filter>Resource Files\skybox</Filter>
-    </None>
-    <None Include="..\xml\skybox1.xml">
-      <Filter>Resource Files\skybox</Filter>
-    </None>
-    <None Include="..\xml\skybox2.xml">
       <Filter>Resource Files\skybox</Filter>
     </None>
   </ItemGroup>

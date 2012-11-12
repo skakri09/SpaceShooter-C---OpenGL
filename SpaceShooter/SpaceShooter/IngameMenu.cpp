@@ -1,7 +1,7 @@
 #include "IngameMenu.h"
 
 IngameMenu::IngameMenu()
-	: Menu("skybox1")
+	: Menu("skybox3")
 {
 }
 

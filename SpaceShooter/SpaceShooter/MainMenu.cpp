@@ -3,7 +3,7 @@
 
 MainMenu::MainMenu()
 	:log("mainMenu", WARN),
-	Menu("skybox1")
+	Menu("skybox3")
 {
 }
 

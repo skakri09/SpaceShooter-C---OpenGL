@@ -36,8 +36,6 @@ public:
 
 	void UpdateSkybox(float deltaTime);
 
-	unsigned int spaceBox[6];
-
 private:
 	float size;
 	float rotate;
@@ -45,11 +43,8 @@ private:
 	VBODrawable vbo;
 	Texturable tex;
 
+	std::string loadedSkybox;
 	Logger log;
-
-	unsigned int loadTexture(std::string filename);
-
-	enum faces{SKY_LEFT=0, SKY_BACK, SKY_RIGHT, SKY_FRONT, SKY_TOP, SKY_BOTTOM};
 
 };
 

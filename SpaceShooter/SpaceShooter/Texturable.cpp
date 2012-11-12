@@ -33,7 +33,10 @@ void Texturable::UnbindTexture()
 
 void Texturable::InitTexture( std::string textureFullPathname, std::string textureKeyName )
 {
-	LoadAndBindTexture(textureFullPathname, textureKeyName);
+	if(textures.find(textureKeyName) == textures.end())
+	{
+		LoadAndBindTexture(textureFullPathname, textureKeyName);
+	}
 }
 
 void Texturable::LoadAndBindTexture( std::string imageFullPathAndName, std::string keyName )
@@ -46,6 +49,11 @@ void Texturable::LoadAndBindTexture( std::string imageFullPathAndName, std::stri
 	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
 	//Storing the texture in our map on the keyname
 	textures[keyName] = texId; 
+
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST); //if the texture is smaller, than the image, we get the avarege of the pixels next to it
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST); //same if the image bigger
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP);      //we repeat the pixels in the edge of the texture, it will hide that 1px wide line at the edge of the cube, which you have seen in the video
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP);      //we do it for vertically and horizontally (previous line)
 
 	// Specify texture. If the image has four components, the last 
 	// is the alpha channel, which we will use in the blending
@@ -60,11 +68,14 @@ void Texturable::LoadAndBindTexture( std::string imageFullPathAndName, std::stri
 			GL_RGBA, GL_UNSIGNED_BYTE, &img->data[0]);
 	}
 
-	//Set texture parameters for wrapping and minification/magnification filters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	
+	//glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,img.width,img.height,0,GL_RGBA,IL_UNSIGNED_BYTE,&img.data[0]);        //we make the actual texture
+
+	////Set texture parameters for wrapping and minification/magnification filters
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	if(img)

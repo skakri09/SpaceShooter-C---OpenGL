@@ -2,7 +2,7 @@
 
 
 OptionsMenu::OptionsMenu()
-	:Menu("skybox1")
+	:Menu("skybox3")
 {
 }
 

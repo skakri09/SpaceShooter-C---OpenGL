@@ -80,6 +80,7 @@ private:
 	Uint8 mouseBtns;	// Holds a snapshot of the mouse buttons' state
 	int mouseX;		// Mouse x pos	
 	int mouseY;		// Mouse y pos
+	bool inited;
 };
 
 #endif // InputManager_h__

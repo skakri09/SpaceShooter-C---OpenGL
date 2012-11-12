@@ -15,7 +15,7 @@ GameStateManager::~GameStateManager()
 
 void GameStateManager::InitGameStateManager()
 {
-	CreateOpenGLContext();
+	SetOpenGLVideoMode();
 
 	InitGlew();
 	InitDevil();
@@ -203,10 +203,26 @@ void GameStateManager::DrawCurrentState()
 
 // C O N S T A N T   S T A T E S //
 //*******************************//
-void GameStateManager::CreateOpenGLContext()
+void GameStateManager::PlayIntroVideo()
 {
-	//SetSDLVideoMode();
-	SetOpenGLVideoMode();
+	SetSDLVideoMode();
+	input.InitInputManager();
+	std::shared_ptr<SmpegPlayer> vidPlayer = std::make_shared<SmpegPlayer>();
+	vidPlayer->Load("..//Video//intro.mpg", screen);
+	vidPlayer->Play();
+	while(vidPlayer->GetStatus() == SMPEG_PLAYING)
+	{
+		SDL_FillRect( screen, 0, 0 );
+		vidPlayer->Display();
+		input.Update(&switchToState);
+		if(input.KeyDownOnce(SDLK_ESCAPE))
+		{
+			vidPlayer->Stop();
+		}
+	}
+	SDL_FillRect( screen, 0, 0 );
+	input.resize(80000, 80000, true);
+	input.resize(1280, 720);
 }
 
 void GameStateManager::InitGlew()
@@ -332,11 +348,32 @@ void GameStateManager::SetOpenGLVideoMode()
 
 void GameStateManager::SetSDLVideoMode()
 {
-	SDL_SetVideoMode(window_width, window_height, 0, SDL_DOUBLEBUF | SDL_RESIZABLE);
-	if(screen == NULL)
+	if (!SDL_WasInit(SDL_INIT_VIDEO))
 	{
-		std::stringstream err;
-		err << "SDL_SetVideoMode failed ";
-		throw std::runtime_error(err.str());
+		if (0 > SDL_Init(SDL_INIT_VIDEO))
+		{
+			log << CRITICAL << "Cannot Initialize SDL video Subsystem - " << SDL_GetError() << endl;
+		}
+		else
+		{
+			screen = SDL_SetVideoMode(
+				1280,						//Window Width
+				720,						//Window Height
+				16,								//Bit depth
+				SDL_HWSURFACE | SDL_DOUBLEBUF);	//Flags
+
+			if (!screen) 
+			{
+				log << CRITICAL << "Cannot set video mode - " << SDL_GetError() << endl;
+			}
+		}
 	}
+
+	//SDL_SetVideoMode(window_width, window_height, 0, SDL_DOUBLEBUF | SDL_RESIZABLE);
+	//if(screen == NULL)
+	//{
+	//	std::stringstream err;
+	//	err << "SDL_SetVideoMode failed ";
+	//	throw std::runtime_error(err.str());
+	//}
 }

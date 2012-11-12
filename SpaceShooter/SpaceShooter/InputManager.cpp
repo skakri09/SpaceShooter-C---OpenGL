@@ -3,7 +3,7 @@
 
 InputManager::InputManager()
 {
-
+	inited = false;
 }
 
 InputManager::~InputManager()
@@ -13,19 +13,23 @@ InputManager::~InputManager()
 
 void InputManager::InitInputManager()
 {
-	leftDownOnce = false;
-	rightDownOnce = false;
-	middleDownOnce = false;
+	if(!inited)
+	{
+		leftDownOnce = false;
+		rightDownOnce = false;
+		middleDownOnce = false;
 
-	keystates = SDL_GetKeyState(&keyCount);
-	prevKeystates = new Uint8[keyCount];
+		keystates = SDL_GetKeyState(&keyCount);
+		prevKeystates = new Uint8[keyCount];
 
-	activeWidth = window_width;
-	activeHeight = window_height;
+		activeWidth = window_width;
+		activeHeight = window_height;
 
-	//Call pump event twice to flush any previous inputs
-	SDL_PumpEvents();
-	SDL_PumpEvents();
+		//Call pump event twice to flush any previous inputs
+		SDL_PumpEvents();
+		SDL_PumpEvents();
+		inited = true;
+	}
 }
 
 
