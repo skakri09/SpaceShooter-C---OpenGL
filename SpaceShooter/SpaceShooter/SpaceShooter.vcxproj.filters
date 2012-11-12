@@ -187,9 +187,6 @@
     <Filter Include="Game\Menu\IngameMenu">
       <UniqueIdentifier>{d0ff3b05-4552-46b2-b29e-d59f396624e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\SMPEG player">
-      <UniqueIdentifier>{cd7d8e46-66f0-414b-ad79-519e52446690}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\skybox">
       <UniqueIdentifier>{e7b18e27-cebf-4adf-a615-96bdceefd6ca}</UniqueIdentifier>
     </Filter>
@@ -402,9 +399,6 @@
     </ClCompile>
     <ClCompile Include="BackEntry.cpp">
       <Filter>Game\Menu\MenuEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SMPEGPlayer.cpp">
-      <Filter>Game\SMPEG player</Filter>
     </ClCompile>
     <ClCompile Include="ToggleSoundMute.cpp">
       <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
@@ -678,15 +672,6 @@
     <ClInclude Include="BackEntry.h">
       <Filter>Game\Menu\MenuEntries\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SMPEGPlayer.h">
-      <Filter>Game\SMPEG player</Filter>
-    </ClInclude>
-    <ClInclude Include="glmovie-tile.h">
-      <Filter>Game\SMPEG player</Filter>
-    </ClInclude>
-    <ClInclude Include="glmovie.h">
-      <Filter>Game\SMPEG player</Filter>
-    </ClInclude>
     <ClInclude Include="ToggleSoundMute.h">
       <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
     </ClInclude>
@@ -718,6 +703,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\xml\skybox.xml">
+      <Filter>Resource Files\skybox</Filter>
+    </None>
+    <None Include="..\xml\skybox1.xml">
+      <Filter>Resource Files\skybox</Filter>
+    </None>
+    <None Include="..\xml\skybox2.xml">
       <Filter>Resource Files\skybox</Filter>
     </None>
   </ItemGroup>

@@ -12,6 +12,8 @@ Skybox::~Skybox()
 
 void Skybox::initSkybox(std::string skyboxName, float size)
 {
+	tex.InitTexture("..//skybox//skybox1//all.png", "skybox1");
+
 	std::string boxPath = "..//skybox//"+ skyboxName + "//";
 	spaceBox[SKY_LEFT]=loadTexture(boxPath + "left.png");
 	spaceBox[SKY_BACK]=loadTexture(boxPath + "back.png");
@@ -21,126 +23,28 @@ void Skybox::initSkybox(std::string skyboxName, float size)
 	spaceBox[SKY_BOTTOM]=loadTexture(boxPath + "bottom.png");
 	this->size = size;
 	rotate = 0.0f;
+	vbo.SetMeshInfo(MeshFactory::Inst()->GetMesh("..//xml//skybox1.xml"));
 }
 
 void Skybox::drawSkybox()
 {
+	
 	glPushMatrix();
-	glRotatef(rotate, 0, 1, 0);
 
-	bool texIsEnabled = false;
-	if(glIsEnabled(GL_TEXTURE_2D))
-		texIsEnabled = true;
-	
-	bool fogEnabled = false;
-	if(glIsEnabled(GL_FOG))
-		fogEnabled = true;
-	
-	glDisable(GL_FOG);
+	glScaled(size, size, size);
+
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glDisable(GL_LIGHTING);
-	glDisable(GL_DEPTH_TEST);
-	glEnable(GL_TEXTURE_2D);			
-	
-	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_BACK]); 
-	glBegin(GL_QUADS);
-	glTexCoord2f(1, 1);
-	glVertex3f(size*-0.5f, size*-0.5f, size*-0.5f);//bottom left
-	glTexCoord2f(0, 1);
-	glVertex3f(size*0.5f, size*-0.5f, size*-0.5f);//bottom right
-	glTexCoord2f(0, 0);
-	glVertex3f(size*0.5f, size*0.5f, size*-0.5f); //top right
-	glTexCoord2f(1, 0);
-	glVertex3f(size*-0.5f, size*0.5f, size*-0.5f);//top left
-	glEnd();
-	glPopMatrix();
+	glDisable(GL_CULL_FACE);
 
-	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_LEFT]);
-	glBegin(GL_QUADS);
-	glTexCoord2f(1, 1);
-	glVertex3f(size*-0.5f, size*-0.5f, size*0.5f);//front bottom
-	glTexCoord2f(0, 1);
-	glVertex3f(size*-0.5f, size*-0.5f, size*-0.5f);//back bottom
-	glTexCoord2f(0, 0);
-	glVertex3f(size*-0.5f, size*0.5f, size*-0.5f);//back top
-	glTexCoord2f(1, 0);
-	glVertex3f(size*-0.5f, size*0.5f, size*0.5f);//front top
-	glEnd();
-	glPopMatrix();
+	tex.BindTexture("skybox1");
+	vbo.Draw();
+	tex.UnbindTexture();
 
-	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_FRONT]);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 1);
-	glVertex3f(size*-0.5f, size*-0.5f, size*0.5f);//bottom left
-	glTexCoord2f(0, 0);
-	glVertex3f(size*-0.5f, size*0.5f, size*0.5f);//top left
-	glTexCoord2f(1, 0);
-	glVertex3f(size*0.5f, size*0.5f, size*0.5f);//top right
-	glTexCoord2f(1, 1);
-	glVertex3f(size*0.5f, size*-0.5f, size*0.5f);//bottom right
-	glEnd();
-	glPopMatrix();
-
-	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_RIGHT]);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 1);
-	glVertex3f(size*0.5f, size*-0.5f, size*0.5f);//front bottom
-	glTexCoord2f(0, 0);
-	glVertex3f(size*0.5f, size*0.5f, size*0.5f);//front top
-	glTexCoord2f(1, 0);
-	glVertex3f(size*0.5f, size*0.5f, size*-0.5f);//back top
-	glTexCoord2f(1, 1);
-	glVertex3f(size*0.5f, size*-0.5f, size*-0.5f);//back bottom
-	glEnd();
-	glPopMatrix();
-
-	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_TOP]);          
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 1);
-	glVertex3f(size*-0.5f, size*0.5f, size*0.5f);//front left
-	glTexCoord2f(0, 0);
-	glVertex3f(size*-0.5f, size*0.5f, size*-0.5f);//back left
-	glTexCoord2f(1, 0);
-	glVertex3f(size*0.5f, size*0.5f, size*-0.5f);//back right
-	glTexCoord2f(1, 1);
-	glVertex3f(size*0.5f, size*0.5f, size*0.5f);//front right
-	
-	
-	glEnd();
-	glPopMatrix();
-
-	glPushMatrix();
-
-	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_BOTTOM]);               
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 0);
-	glVertex3f(size*-0.5f, size*-0.5f, size*0.5f);//front left
-	glTexCoord2f(1, 0);
-	glVertex3f(size*0.5f, size*-0.5f, size*0.5f);//front right
-	glTexCoord2f(1, 1);
-	glVertex3f(size*0.5f, size*-0.5f, size*-0.5f);//back right
-	glTexCoord2f(0, 1);
-	glVertex3f(size*-0.5f, size*-0.5f, size*-0.5f);//back left
-	glEnd();
-	glPopMatrix();
-	
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_LIGHTING);
-	glEnable(GL_DEPTH_TEST);
-	if(!texIsEnabled)
-	{
-		glDisable(GL_TEXTURE_2D);
-	}
-	if(fogEnabled)
-	{
-		glEnable(GL_FOG);
-	}
-
 	glPopMatrix();
+
 	glClear(GL_DEPTH_BUFFER_BIT);
 }
 

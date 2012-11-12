@@ -119,7 +119,6 @@
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="ScoreTextEntry.cpp" />
     <ClCompile Include="ScoreValueEntry.cpp" />
-    <ClCompile Include="SMPEGPlayer.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="TextEntry.cpp" />
     <ClCompile Include="TextFactory.cpp" />
@@ -180,8 +179,6 @@
     <ClInclude Include="GameplayGUI.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
-    <ClInclude Include="glmovie-tile.h" />
-    <ClInclude Include="glmovie.h" />
     <ClInclude Include="GUIEntry.h" />
     <ClInclude Include="HPEntry.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
@@ -204,7 +201,6 @@
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="ScoreTextEntry.h" />
     <ClInclude Include="ScoreValueEntry.h" />
-    <ClInclude Include="SMPEGPlayer.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="TextEntry.h" />
     <ClInclude Include="TextFactory.h" />
@@ -260,6 +256,8 @@
     <None Include="..\xml\skybox.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="..\xml\skybox1.xml" />
+    <None Include="..\xml\skybox2.xml" />
     <None Include="..\xml\square.xml" />
     <None Include="ClassDiagram1.cd" />
     <None Include="GameObject.h" />

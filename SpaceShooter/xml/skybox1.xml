@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mesh>
+  <mode>
+    4 <!--quads-->
+  </mode>
+  <vertices>
+    
+    <!--back-->
+   -0.5f, -0.5f, -0.5f<!--back bottom left-->
+    0.5f, -0.5f, -0.5f<!--back bottom right-->
+    0.5f, 0.5f, -0.5f<!--back top right-->
+   -0.5f, 0.5f, -0.5f<!--back top left-->
+   
+   <!--left-->
+    -0.5f, -0.5f, -0.5f<!--back bottom left-->
+    -0.5f, 0.5f, -0.5f<!--back top left-->
+    -0.5f, 0.5f, 0.5f<!-- front top left-->
+    -0.5f, -0.5f, 0.5f<!-- front bottom left-->
+   <!--front-->
+    -0.5f, -0.5f, 0.5f<!-- front bottom left-->
+    -0.5f, 0.5f, 0.5f<!-- front top left-->
+    0.5f, 0.5f, 0.5f<!--front top right-->
+    0.5f, -0.5f, 0.5f<!--front bottom right-->
+    <!--right-->
+    0.5f, -0.5f, -0.5f<!--back bottom right-->
+    0.5f, -0.5f, 0.5f<!--front bottom right-->
+    0.5f, 0.5f, 0.5f<!--front top right-->
+    -0.5f, 0.5f, -0.5f<!--back top left-->
+    <!--top-->
+    0.5f, 0.5f, -0.5f<!--back top right-->
+    0.5f, 0.5f, 0.5f<!--front top right-->
+    -0.5f, 0.5f, 0.5f<!-- front top left-->
+    -0.5f, 0.5f, -0.5f<!--back top left-->
+    <!--bottom-->
+    -0.5f, -0.5f, -0.5f<!--back bottom left-->
+    -0.5f, -0.5f, 0.5f<!-- front bottom left-->
+    0.5f, -0.5f, 0.5f<!--front bottom right-->
+    0.5f, -0.5f, -0.5f<!--back bottom right--> 
+  
+  </vertices>
+  
+  <indices>
+
+  </indices>
+  
+  <textCoords>
+    <!--back-->
+    0.0f, 0.0f
+    0.16666666666666666666666666666667f, 0.0f
+    0.16666666666666666666666666666667f, 1.0f
+    0.0, 1.0f
+
+    <!--left-->
+    0.16666666666666666666666666666667f, 0.0f
+    0.33333333333333333333333333333334f, 0.0f
+    0.33333333333333333333333333333334f, 1.0f
+    0.16666666666666666666666666666667f, 1.0f
+
+    <!--front-->
+    0.33333333333333333333333333333334f, 0.0f
+    0.5f, 0.0f
+    0.5f, 5.0f
+    0.33333333333333333333333333333334f, 1.0f
+
+    <!--right-->
+    0.5f, 0.0f
+    0.66666666666666666666666666666668f, 0.0f
+    0.66666666666666666666666666666668f, 1.0f
+    0.5f, 1.0f
+
+    <!--top-->
+    0.66666666666666666666666666666668f, 0.0f
+    0.83333333333333333333333333333335f, 0.0f
+    0.83333333333333333333333333333335f, 1.0f
+    0.66666666666666666666666666666668f, 1.0f
+
+    <!--bottom-->
+    0.83333333333333333333333333333335f, 0.0f
+    1.0f, 0.0f
+    1.0f, 1.0f
+    0.83333333333333333333333333333335f, 1.0f
+
+  </textCoords>
+  
+  <colors>
+  </colors>
+  
+</mesh>
+

@@ -43,7 +43,7 @@ void Texturable::LoadAndBindTexture( std::string imageFullPathAndName, std::stri
 	GLuint texId;
 	glGenTextures(1, &texId);
 	glBindTexture(GL_TEXTURE_2D, texId);
-	
+	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
 	//Storing the texture in our map on the keyname
 	textures[keyName] = texId; 
 

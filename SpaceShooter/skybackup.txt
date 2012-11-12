@@ -1,0 +1,139 @@
+glPushMatrix();
+	glRotatef(rotate, 0, 1, 0);
+
+	bool texIsEnabled = false;
+	if(glIsEnabled(GL_TEXTURE_2D))
+		texIsEnabled = true;
+	
+	bool fogEnabled = false;
+	if(glIsEnabled(GL_FOG))
+		fogEnabled = true;
+	
+	glDisable(GL_FOG);
+	glDisable(GL_LIGHTING);
+	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);			
+	
+	//glBindTexture(GL_TEXTURE_2D, spaceBox[SKY_LEFT]);
+
+	tex.BindTexture("skybox1");
+	//vbo.Draw();
+	//tex.UnbindTexture();
+	//glScalef(size, size, size);
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_BACK]); 
+	glBegin(GL_QUADS);
+	glTexCoord2f(1, 1);
+	glVertex3f(-0.5f, -0.5f, -0.5f);//bottom left
+	glTexCoord2f(0, 1);
+	glVertex3f(0.5f, -0.5f, -0.5f);//bottom right
+	glTexCoord2f(0, 0);
+	glVertex3f(0.5f, 0.5f, -0.5f); //top right
+	glTexCoord2f(1, 0);
+	glVertex3f(-0.5f, 0.5f, -0.5f);//top left
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_LEFT]);
+	glBegin(GL_QUADS);
+	glTexCoord2f(1, 1);
+	glVertex3f(-0.5f, -0.5f, 0.5f);//front bottom
+	glTexCoord2f(0, 1);
+	glVertex3f(-0.5f, -0.5f, -0.5f);//back bottom
+	glTexCoord2f(0, 0);
+	glVertex3f(-0.5f, 0.5f, -0.5f);//back top
+	glTexCoord2f(1, 0);
+	glVertex3f(-0.5f, 0.5f, 0.5f);//front top
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_FRONT]);
+	glBegin(GL_QUADS);
+	glTexCoord2f(0, 1);
+	glVertex3f(-0.5f, -0.5f, 0.5f);//bottom left
+	glTexCoord2f(0, 0);
+	glVertex3f(-0.5f, 0.5f, 0.5f);//top left
+	glTexCoord2f(1, 0);
+	glVertex3f(0.5f, 0.5f, 0.5f);//top right
+	glTexCoord2f(1, 1);
+	glVertex3f(0.5f, -0.5f, 0.5f);//bottom right
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_RIGHT]);
+	glBegin(GL_QUADS);
+	glTexCoord2f(0, 1);
+	glVertex3f(0.5f, -0.5f, 0.5f);//front bottom
+	glTexCoord2f(0, 0);
+	glVertex3f(0.5f, 0.5f, 0.5f);//front top
+	glTexCoord2f(1, 0);
+	glVertex3f(0.5f, 0.5f, -0.5f);//back top
+	glTexCoord2f(1, 1);
+	glVertex3f(0.5f, -0.5f, -0.5f);//back bottom
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_TOP]);          
+	glBegin(GL_QUADS);
+	glTexCoord2f(0, 1);
+	glVertex3f(-0.5f, 0.5f, 0.5f);//front left
+	glTexCoord2f(0, 0);
+	glVertex3f(-0.5f, 0.5f, -0.5f);//back left
+	glTexCoord2f(1, 0);
+	glVertex3f(0.5f, 0.5f, -0.5f);//back right
+	glTexCoord2f(1, 1);
+	glVertex3f(0.5f, 0.5f, 0.5f);//front right
+
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+
+	glBindTexture(GL_TEXTURE_2D,spaceBox[SKY_BOTTOM]);               
+	glBegin(GL_QUADS);
+	glTexCoord2f(0, 0);
+	glVertex3f(-0.5f, -0.5f, 0.5f);//front left
+	glTexCoord2f(1, 0);
+	glVertex3f(0.5f, -0.5f, 0.5f);//front right
+	glTexCoord2f(1, 1);
+	glVertex3f(0.5f, -0.5f, -0.5f);//back right
+	glTexCoord2f(0, 1);
+	glVertex3f(-0.5f, -0.5f, -0.5f);//back left
+	glEnd();
+	glPopMatrix();
+	
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_DEPTH_TEST);
+
+	if(!texIsEnabled)
+	{
+		glDisable(GL_TEXTURE_2D);
+	}
+	if(fogEnabled)
+	{
+		glEnable(GL_FOG);
+	}
+
+
+
+
+0    -0.5f, -0.5f, -0.5f<!--back bottom left-->
+    
+1    0.5f, -0.5f, -0.5f<!--back bottom right-->
+    
+2    0.5f, 0.5f, -0.5f<!--back top right-->
+    
+3    -0.5f, 0.5f, -0.5f<!--back top left-->
+    
+4    -0.5f, -0.5f, 0.5f<!-- front bottom left-->
+
+5    0.5f, -0.5f, 0.5f<!--front bottom right-->
+
+6    0.5f, 0.5f, 0.5f<!--front top right-->
+
+7    -0.5f, 0.5f, 0.5f<!-- front top left-->

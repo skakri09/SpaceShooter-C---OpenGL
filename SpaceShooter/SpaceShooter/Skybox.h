@@ -20,6 +20,9 @@
 
 #include "Image.h"
 #include "Logger.h"
+#include "VBODrawable.h"
+#include "MeshFactory.h"
+#include "Texturable.h"
 
 class Skybox
 {
@@ -38,6 +41,9 @@ public:
 private:
 	float size;
 	float rotate;
+
+	VBODrawable vbo;
+	Texturable tex;
 
 	Logger log;
 

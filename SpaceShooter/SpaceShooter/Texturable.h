@@ -42,8 +42,6 @@ private:
 
 	std::map<std::string, GLuint> textures;
 
-	
-
 	Image* ReadImage(std::string image);
 
 

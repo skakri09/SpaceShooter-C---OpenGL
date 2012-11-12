@@ -70,6 +70,9 @@ private:
 	bool ingameMenuWasInited;
 
 private: //One-time inits:
+	Texturable texturable;
+	VBODrawable	vbo;
+
 	InputManager input;
 	Timer timer;
 	float deltaTime;

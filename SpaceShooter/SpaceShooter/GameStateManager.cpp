@@ -17,10 +17,12 @@ void GameStateManager::InitGameStateManager()
 {
 	CreateOpenGLContext();
 
-
 	InitGlew();
 	InitDevil();
-	
+
+	texturable.InitTexture("..//images//LoadingScreen.jpg", "loadingscreen");
+	vbo.SetMeshInfo(MeshFactory::Inst()->GetMesh("..//xml//square.xml"));
+
 	DisplayLoadingScreen();
 
 	input.InitInputManager();
@@ -116,11 +118,6 @@ void GameStateManager::SwitchState( GameState newState )
 		game->ResetGame();
 		switchToState = GAME;
 		break;
-	case PLAYING_VIDEO:
-		//smpeg.Load("..//Video//intro.mpg", screen);
-		//smpeg.Play();
-		currentState = newState;
-		break;
 	case QUIT:
 		exit = true;
 		break;
@@ -181,12 +178,6 @@ void GameStateManager::UpdateCurrentState()
 	case INGAME_MENU:
 		ingameMenu->UpdateMenu(deltaTime);
 		break;
-	case PLAYING_VIDEO:
-		/*if(smpeg.GetStatus() != SMPEG_PLAYING)
-		{
-			switchToState = MAIN_MENU;
-		}*/
-		break;
 	}
 }
 
@@ -206,10 +197,6 @@ void GameStateManager::DrawCurrentState()
 	case INGAME_MENU:
 		ingameMenu->RenderMenu();
 		break;
-	case PLAYING_VIDEO:
-		/*SDL_FillRect(screen, 0, 0);
-		smpeg.Display();*/
-		break;
 	}
 }
 
@@ -218,7 +205,7 @@ void GameStateManager::DrawCurrentState()
 //*******************************//
 void GameStateManager::CreateOpenGLContext()
 {
-	SetSDLVideoMode();
+	//SetSDLVideoMode();
 	SetOpenGLVideoMode();
 }
 
@@ -260,15 +247,11 @@ void GameStateManager::DisplayLoadingScreen()
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glDisable(GL_LIGHTING);
-	Texturable texturable;
-	texturable.InitTexture("..//images//LoadingScreen.jpg", "loadingscreen");
+
 	texturable.BindTexture("loadingscreen");
-
-	VBODrawable	vbo;
-	vbo.SetMeshInfo(MeshFactory::Inst()->GetMesh("..//xml//square.xml"));
 	vbo.Draw();
-
 	texturable.UnbindTexture();
+
 	SDL_GL_SwapBuffers();
 	glPopMatrix();
 }
@@ -294,14 +277,7 @@ void GameStateManager::HandleInput()
 		case GAME:
 			switchToState = INGAME_MENU;
 			break;
-		case PLAYING_VIDEO:
-			//smpeg.Stop();
-			switchToState = MAIN_MENU;
 		}
-	}
-	if(input.KeyDownOnce(SDLK_m))
-	{
-		switchToState = PLAYING_VIDEO;
 	}
 }
 
