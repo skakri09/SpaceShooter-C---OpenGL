@@ -219,10 +219,15 @@ void GameStateManager::PlayIntroVideo()
 		{
 			vidPlayer->Stop();
 		}
+		SDL_Flip(screen);
 	}
-	SDL_FillRect( screen, 0, 0 );
-	input.resize(80000, 80000, true);
-	input.resize(1280, 720);
+	
+	//ugly hack to avoid getting some small white borders after playing video
+	screen = SDL_SetVideoMode(
+		1279,						//Window Width
+		719,						//Window Height
+		16,								//Bit depth
+		SDL_HWSURFACE | SDL_DOUBLEBUF);	//Flag
 }
 
 void GameStateManager::InitGlew()
@@ -350,7 +355,7 @@ void GameStateManager::SetSDLVideoMode()
 {
 	if (!SDL_WasInit(SDL_INIT_VIDEO))
 	{
-		if (0 > SDL_Init(SDL_INIT_VIDEO))
+		if (0 > SDL_Init(SDL_INIT_EVERYTHING))
 		{
 			log << CRITICAL << "Cannot Initialize SDL video Subsystem - " << SDL_GetError() << endl;
 		}
@@ -368,12 +373,4 @@ void GameStateManager::SetSDLVideoMode()
 			}
 		}
 	}
-
-	//SDL_SetVideoMode(window_width, window_height, 0, SDL_DOUBLEBUF | SDL_RESIZABLE);
-	//if(screen == NULL)
-	//{
-	//	std::stringstream err;
-	//	err << "SDL_SetVideoMode failed ";
-	//	throw std::runtime_error(err.str());
-	//}
 }
