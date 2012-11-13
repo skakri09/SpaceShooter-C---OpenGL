@@ -10,7 +10,7 @@
 
 #include "Logger.h"
 #include "AABB.h"
-
+#include "CollisionTransformationInfo.h"
 class AABBCollisionBox : public AABB
 {
 public:

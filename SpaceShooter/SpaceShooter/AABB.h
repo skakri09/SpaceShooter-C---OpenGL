@@ -47,7 +47,9 @@ protected:
 
 	void UpdateAABBWorldPosition(Vector3D* worldPos);
 private:
-	//Logger log;
+	std::vector<Vector3D*> objectCorners;
+	std::vector<Vector3D> worldCorners;
+	//Logger log;	
 };
 
 #endif // AABB_h__

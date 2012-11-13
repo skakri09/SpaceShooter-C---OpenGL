@@ -58,6 +58,20 @@ void AABB::CreateAABB( std::vector<float>* vertices)
 	m_RightBottomBack.setValues(m_Right, m_Bottom, m_Back);
 	m_LeftBottomFront.setValues(m_Left, m_Bottom, m_Front);
 	m_RightBottomFront.setValues(m_Right, m_Bottom, m_Front);
+
+	objectCorners.push_back(&m_LeftTopBack);
+	objectCorners.push_back(&m_RightTopBack);
+	objectCorners.push_back(&m_LeftTopFront);
+	objectCorners.push_back(&m_RightTopFront);
+	objectCorners.push_back(&m_LeftBottomBack);
+	objectCorners.push_back(&m_RightBottomBack);
+	objectCorners.push_back(&m_LeftBottomFront);
+	objectCorners.push_back(&m_RightBottomFront);
+
+	for(unsigned int i = 0; i < objectCorners.size();i++)
+	{
+		worldCorners.push_back(*objectCorners.at(i));
+	}
 }
 
 void AABB::CreateAABB( Lib3dsVector* vertices, unsigned int size)
@@ -108,4 +122,30 @@ void AABB::CreateAABB( Lib3dsVector* vertices, unsigned int size)
 	m_RightBottomBack.setValues(m_Right, m_Bottom, m_Back);
 	m_LeftBottomFront.setValues(m_Left, m_Bottom, m_Front);
 	m_RightBottomFront.setValues(m_Right, m_Bottom, m_Front);
+	objectCorners.push_back(&m_LeftTopBack);
+	objectCorners.push_back(&m_RightTopBack);
+	objectCorners.push_back(&m_LeftTopFront);
+	objectCorners.push_back(&m_RightTopFront);
+	objectCorners.push_back(&m_LeftBottomBack);
+	objectCorners.push_back(&m_RightBottomBack);
+	objectCorners.push_back(&m_LeftBottomFront);
+	objectCorners.push_back(&m_RightBottomFront);
+	for(unsigned int i = 0; i < objectCorners.size();i++)
+	{
+		worldCorners.push_back(*objectCorners.at(i));
+	}
+}
+
+void AABB::UpdateAABBWorldPosition( Vector3D* worldPos )
+{
+	for(unsigned int i = 0; i < objectCorners.size(); i++)
+	{
+		Vector3D* vec = objectCorners.at(i);
+		worldCorners.at(i).setValues
+			(
+			vec->getX()+worldPos->getX(), 
+			vec->getY()+worldPos->getX(), 
+			vec->getZ()+worldPos->getX()
+			);
+	}
 }
