@@ -86,6 +86,7 @@
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
     <ClCompile Include="ApproachEdge.cpp" />
+    <ClCompile Include="ApproachGivenPosition.cpp" />
     <ClCompile Include="ApproachRandXYPos.cpp" />
     <ClCompile Include="ApproachXYPlayerState.cpp" />
     <ClCompile Include="ApproachXYZPlayerState.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="AiState.h" />
     <ClInclude Include="AiStateMachine.h" />
     <ClInclude Include="ApproachEdge.h" />
+    <ClInclude Include="ApproachGivenPosition.h" />
     <ClInclude Include="ApproachRandXYPos.h" />
     <ClInclude Include="ApproachXYPlayerState.h" />
     <ClInclude Include="ApproachXYZPlayerState.h" />

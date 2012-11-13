@@ -36,5 +36,5 @@ void MainMenu::OnEnteringMenu(GameState* gameState)
 {
 	Menu::OnEnteringMenu(gameState);
 
-	SoundManager::Inst()->PlaySong("imperial_march");
+	SoundManager::Inst()->PlaySong("imperial_probe");
 }

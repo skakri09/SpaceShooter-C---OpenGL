@@ -72,6 +72,7 @@ void GamePlayManager::Update(float deltaTime)
 
 void GamePlayManager::OnEnteringGameState()
 {
+	SoundManager::Inst()->PlaySong("battle");
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_CULL_FACE);

@@ -16,6 +16,7 @@
 #include "ImperialTieFighter.h"
 #include "ImperialTieInterceptor.h"
 #include "GetRandomFloat.h"
+#include "ApproachGivenPosition.h"
 
 class StarDestroyerShipSpawning : public AiState
 {
@@ -38,6 +39,8 @@ private:
 	void HandleShipSpawning(float deltaTime);
 	float lastImpInterceptorSpawn;
 	float lastImpTieFighterSpawn;
+
+	unsigned int totalShipsSpawned;
 };
 
 #endif // StarDestroyerShipSpawning_h__

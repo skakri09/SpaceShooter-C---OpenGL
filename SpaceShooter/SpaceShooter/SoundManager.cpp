@@ -32,6 +32,9 @@ void SoundManager::InitSoundManager()
 	Effects["laser_tripleFire_long"] = Mix_LoadWAV( (effectBasePath+"laser_tripleFire_long.wav").c_str());
 
 	Songs["imperial_march"] = Mix_LoadMUS( (songBasePath+"imperial_march.ogg").c_str());
+	Songs["imperial_probe"] = Mix_LoadMUS( (songBasePath+"imperial_probe.ogg").c_str());
+	Songs["throne_room"] = Mix_LoadMUS( (songBasePath+"throne_room.ogg").c_str());
+	Songs["battle"] = Mix_LoadMUS( (songBasePath+"battle.ogg").c_str());
 }
 
 SoundManager* SoundManager::Inst()
@@ -77,8 +80,9 @@ void SoundManager::PlayEffect( std::string effectName, unsigned short volume )
 			Effects[effectName] = effect;
 		}
 		Mix_HaltChannel(FX_MAIN_CHANNEL);
-		Mix_PlayChannel(FX_MAIN_CHANNEL, effect, 0);
 		Mix_Volume(FX_MAIN_CHANNEL, volume);
+		Mix_PlayChannel(FX_MAIN_CHANNEL, effect, 0);
+		
 	}
 }
 

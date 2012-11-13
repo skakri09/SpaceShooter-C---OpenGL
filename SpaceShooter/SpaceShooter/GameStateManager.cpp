@@ -24,10 +24,11 @@ void GameStateManager::InitGameStateManager()
 	vbo.SetMeshInfo(MeshFactory::Inst()->GetMesh("..//xml//square.xml"));
 
 	DisplayLoadingScreen();
-
+	SoundManager::Inst()->InitSoundManager();
+	SoundManager::Inst()->PlaySong("imperial_probe");
 	input.InitInputManager();
 	TextFactory::Inst()->InitTextFactory();
-	SoundManager::Inst()->InitSoundManager();
+	
 
 	exit = false;
 	gameWasInited = false;

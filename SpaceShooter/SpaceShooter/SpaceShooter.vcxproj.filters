@@ -415,6 +415,9 @@
     <ClCompile Include="SmpegPlayer.cpp">
       <Filter>Game\SMPEG</Filter>
     </ClCompile>
+    <ClCompile Include="ApproachGivenPosition.cpp">
+      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLUtils\GLUtils.hpp">
@@ -689,6 +692,9 @@
     </ClInclude>
     <ClInclude Include="SmpegPlayer.h">
       <Filter>Game\SMPEG</Filter>
+    </ClInclude>
+    <ClInclude Include="ApproachGivenPosition.h">
+      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -14,6 +14,7 @@ void StarDestroyerShipSpawning::Enter( BaseEnemyShip* owner )
 	direction = LEFT;
 	owner->transformable.setXVel(20.0f);
 	ownerShip = owner;
+	totalShipsSpawned = 0;
 }
 
 void StarDestroyerShipSpawning::UpdateState( BaseEnemyShip* owner, float deltaTime )
@@ -21,6 +22,10 @@ void StarDestroyerShipSpawning::UpdateState( BaseEnemyShip* owner, float deltaTi
 	log << INFO << "--" << std::endl;
 	UpdateDirection(owner);
 	HandleShipSpawning(deltaTime);
+	if(totalShipsSpawned >= 10)
+	{	
+		owner->GetAiStateMachine().ChangeState(std::make_shared<ApproachGivenPosition>(0, -50, -150, 50));
+	}
 }
 
 void StarDestroyerShipSpawning::Exit( BaseEnemyShip* owner )
@@ -62,7 +67,7 @@ void StarDestroyerShipSpawning::HandleShipSpawning( float deltaTime )
 	lastImpInterceptorSpawn += deltaTime;
 	lastImpTieFighterSpawn += deltaTime;
 
-	if(lastImpTieFighterSpawn >= 2.0f)
+	if(lastImpTieFighterSpawn >= 1.5f)
 	{
 		lastImpTieFighterSpawn = 0.0f;
 		std::shared_ptr<ImperialTieFighter> ship = std::make_shared<ImperialTieFighter>
@@ -72,8 +77,9 @@ void StarDestroyerShipSpawning::HandleShipSpawning( float deltaTime )
 		float z = ownerShip->transformable.getZPos();
 		ship->InitSpaceShip(x, y, z, -90, 1, 0, 0, 0, 0, 1);
 		SpaceShipManager::Inst()->TransferShipToShipManager(ship);
+		totalShipsSpawned++;
 	}
-	if(lastImpInterceptorSpawn >= 4.0f)
+	if(lastImpInterceptorSpawn >= 2.0f)
 	{
 		lastImpInterceptorSpawn = 0.0f;
 		std::shared_ptr<ImperialTieInterceptor> ship = std::make_shared<ImperialTieInterceptor>
@@ -83,6 +89,7 @@ void StarDestroyerShipSpawning::HandleShipSpawning( float deltaTime )
 		float z = ownerShip->transformable.getZPos();
 		ship->InitSpaceShip(x, y, z, -90, 1, 0, 0, 0, 0, 1);
 		SpaceShipManager::Inst()->TransferShipToShipManager(ship);
+		totalShipsSpawned++;
 	}
 }
 

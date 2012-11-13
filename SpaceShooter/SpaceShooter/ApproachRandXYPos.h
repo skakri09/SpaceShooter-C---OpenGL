@@ -34,6 +34,8 @@ private:
 	Vector3D targetPosition;
 	Vector3D targetDirection;
 	Vector3D velocity;
+
+	bool destReached;
 };
 
 #endif // ApproachRandXYPos_h__
