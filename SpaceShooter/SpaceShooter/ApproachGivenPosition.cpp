@@ -13,7 +13,7 @@ void ApproachGivenPosition::Enter( BaseEnemyShip* owner )
 {
 	velocity = targetPos - *owner->transformable.getPosition();
 	velocity.Normalize();
-	velocity *= velocity;
+	velocity *= velValue;
 	owner->transformable.SetVelocity(velocity);
 	destReached = false;
 }

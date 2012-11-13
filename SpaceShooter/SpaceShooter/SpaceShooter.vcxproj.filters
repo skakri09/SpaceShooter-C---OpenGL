@@ -71,12 +71,6 @@
     <Filter Include="Game\Components\Collidable">
       <UniqueIdentifier>{73f35500-7397-4ec9-b375-7022661f5fc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Components\Collidable\Header Files">
-      <UniqueIdentifier>{931148ca-66b9-4003-9d05-3af32e048afb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Components\Collidable\Source Files">
-      <UniqueIdentifier>{7cb255ac-e9d2-4938-954b-37412f861ece}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Components\Shooter Module">
       <UniqueIdentifier>{1882e82b-f696-4d08-a9e4-453249fd280f}</UniqueIdentifier>
     </Filter>
@@ -85,12 +79,6 @@
     </Filter>
     <Filter Include="Game\Components\SpaceShipAI\States">
       <UniqueIdentifier>{0768e7ca-c450-4e7d-99cd-cc1bb51b35be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Components\SpaceShipAI\States\Source Files">
-      <UniqueIdentifier>{ce2922d5-5c64-434f-92da-a28b2d9903f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Components\SpaceShipAI\States\Header Files">
-      <UniqueIdentifier>{a5efe86b-35ef-4781-87f7-a4d44ce88134}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\Components\VBO">
       <UniqueIdentifier>{fbb20691-ad67-4934-9e72-08773d967cbf}</UniqueIdentifier>
@@ -213,17 +201,8 @@
     <ClCompile Include="BaseEnemyShip.cpp">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EnemySpaceShipConstantState.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FireState.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SpaceShipManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IdleState.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="XmlLoader.cpp">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
@@ -234,12 +213,6 @@
     <ClCompile Include="NormalCalculator.cpp">
       <Filter>Game\Utility\NormalCalculator</Filter>
     </ClCompile>
-    <ClCompile Include="BoundingSphere.cpp">
-      <Filter>Game\Components\Collidable\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AABB.cpp">
-      <Filter>Game\Components\Collidable\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Transformable.cpp">
       <Filter>Game\Components\Transformable</Filter>
     </ClCompile>
@@ -248,9 +221,6 @@
     </ClCompile>
     <ClCompile Include="MeshXmlLoader.cpp">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
-    </ClCompile>
-    <ClCompile Include="Collidable.cpp">
-      <Filter>Game\Components\Collidable\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlayerSpaceShip.cpp">
       <Filter>Game\GameObjects\SpaceShips\Player</Filter>
@@ -264,20 +234,11 @@
     <ClCompile Include="ImperialTieInterceptor.cpp">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ApproachXYZPlayerState.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ApproachXYPlayerState.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MeshFactory.cpp">
       <Filter>Game\Factories\MeshFactory</Filter>
     </ClCompile>
     <ClCompile Include="ShooterModule.cpp">
       <Filter>Game\Components\Shooter Module</Filter>
-    </ClCompile>
-    <ClCompile Include="StarDestroyerShipSpawning.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ImperialStarDestroyer.cpp">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
@@ -297,26 +258,14 @@
     <ClCompile Include="ParticleManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ApproachRandXYPos.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ApproachEdge.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ProjectileManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FleeState.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LaserLowCooldown.cpp">
       <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LaserHighCooldown.cpp">
       <Filter>Game\GameObjects\Projectiles\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CrossScreenWhileFireing.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EnvironmentalManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
@@ -415,8 +364,50 @@
     <ClCompile Include="SmpegPlayer.cpp">
       <Filter>Game\SMPEG</Filter>
     </ClCompile>
+    <ClCompile Include="ApproachEdge.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="StarDestroyerShipSpawning.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
     <ClCompile Include="ApproachGivenPosition.cpp">
-      <Filter>Game\Components\SpaceShipAI\States\Source Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ApproachRandXYPos.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ApproachXYPlayerState.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ApproachXYZPlayerState.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossScreenWhileFireing.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySpaceShipConstantState.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="FireState.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="FleeState.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="AABB.cpp">
+      <Filter>Game\Components\Collidable</Filter>
+    </ClCompile>
+    <ClCompile Include="Collidable.cpp">
+      <Filter>Game\Components\Collidable</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundingSphere.cpp">
+      <Filter>Game\Components\Collidable</Filter>
+    </ClCompile>
+    <ClCompile Include="AABBCollisionBox.cpp">
+      <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -456,20 +447,11 @@
     <ClInclude Include="AiState.h">
       <Filter>Game\Components\SpaceShipAI</Filter>
     </ClInclude>
-    <ClInclude Include="EnemySpaceshipConstantState.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FireState.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameConstants.h">
       <Filter>Game\Utility</Filter>
     </ClInclude>
     <ClInclude Include="SpaceShipManager.h">
       <Filter>Game\Managers\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IdleState.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="XmlLoader.h">
       <Filter>Game\Utility\ResourceLoading\XML loading</Filter>
@@ -479,15 +461,6 @@
     </ClInclude>
     <ClInclude Include="NormalCalculator.h">
       <Filter>Game\Utility\NormalCalculator</Filter>
-    </ClInclude>
-    <ClInclude Include="BoundingSphere.h">
-      <Filter>Game\Components\Collidable\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Collidable.h">
-      <Filter>Game\Components\Collidable\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AABB.h">
-      <Filter>Game\Components\Collidable\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Transformable.h">
       <Filter>Game\Components\Transformable</Filter>
@@ -510,17 +483,8 @@
     <ClInclude Include="GetRandomFloat.h">
       <Filter>Game\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="ApproachXYZPlayerState.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ApproachXYPlayerState.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ShooterModule.h">
       <Filter>Game\Components\Shooter Module</Filter>
-    </ClInclude>
-    <ClInclude Include="StarDestroyerShipSpawning.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ImperialStarDestroyer.h">
       <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
@@ -558,26 +522,14 @@
     <ClInclude Include="ParticleManager.h">
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ApproachRandXYPos.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ApproachEdge.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ProjectileManager.h">
       <Filter>Game\Managers\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FleeState.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LaserHighCooldown.h">
       <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LaserLowCooldown.h">
       <Filter>Game\GameObjects\Projectiles\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CrossScreenWhileFireing.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnvironmentalManager.h">
       <Filter>Game\Managers\Header Files</Filter>
@@ -693,8 +645,50 @@
     <ClInclude Include="SmpegPlayer.h">
       <Filter>Game\SMPEG</Filter>
     </ClInclude>
+    <ClInclude Include="ApproachEdge.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StarDestroyerShipSpawning.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
     <ClInclude Include="ApproachGivenPosition.h">
-      <Filter>Game\Components\SpaceShipAI\States\Header Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ApproachRandXYPos.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ApproachXYPlayerState.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ApproachXYZPlayerState.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossScreenWhileFireing.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySpaceshipConstantState.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="FireState.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="FleeState.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="AABB.h">
+      <Filter>Game\Components\Collidable</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundingSphere.h">
+      <Filter>Game\Components\Collidable</Filter>
+    </ClInclude>
+    <ClInclude Include="Collidable.h">
+      <Filter>Game\Components\Collidable</Filter>
+    </ClInclude>
+    <ClInclude Include="AABBCollisionBox.h">
+      <Filter>Game\Components\Collidable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

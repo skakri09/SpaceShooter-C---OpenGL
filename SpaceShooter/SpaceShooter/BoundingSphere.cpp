@@ -8,7 +8,7 @@ BoundingSphere::BoundingSphere()
 BoundingSphere::~BoundingSphere()
 {
 }
-
+#include <iostream>
 Vector3D BoundingSphere::IsCollision( BoundingSphere* otherCollidable)
 {
 	Vector3D ammountOfCollision = 0;

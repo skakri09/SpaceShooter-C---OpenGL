@@ -288,10 +288,7 @@ void GameStateManager::HandleInput()
 			switchToState = MAIN_MENU;
 			break;
 		case OPTIONS:
-			if(prevState == INGAME_MENU)
-				switchToState = INGAME_MENU;
-			else if(prevState == MAIN_MENU)
-				switchToState = MAIN_MENU;
+			switchToState = prevState;
 			break;
 		case INGAME_MENU:
 			switchToState = GAME;

@@ -45,6 +45,7 @@ protected:
 	Vector3D m_LeftBottomFront;
 	Vector3D m_RightBottomFront;
 
+	void UpdateAABBWorldPosition(Vector3D* worldPos);
 private:
 	//Logger log;
 };

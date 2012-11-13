@@ -85,6 +85,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
+    <ClCompile Include="AABBCollisionBox.cpp" />
     <ClCompile Include="ApproachEdge.cpp" />
     <ClCompile Include="ApproachGivenPosition.cpp" />
     <ClCompile Include="ApproachRandXYPos.cpp" />
@@ -162,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABB.h" />
+    <ClInclude Include="AABBCollisionBox.h" />
     <ClInclude Include="AiState.h" />
     <ClInclude Include="AiStateMachine.h" />
     <ClInclude Include="ApproachEdge.h" />
