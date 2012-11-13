@@ -51,6 +51,7 @@ private:
 	bool exit;
 	GameState currentState;
 	GameState switchToState;
+	GameState prevState;
 	void UpdateCurrentState();
 	void DrawCurrentState();
 

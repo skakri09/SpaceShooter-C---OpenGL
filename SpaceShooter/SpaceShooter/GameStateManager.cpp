@@ -48,7 +48,7 @@ void GameStateManager::InitGameStateManager()
 
 void GameStateManager::SwitchState( GameState newState )
 {
-	GameState prevState = currentState;
+	prevState = currentState;
 	switch(newState)
 	{
 	case GAME:
@@ -288,7 +288,10 @@ void GameStateManager::HandleInput()
 			switchToState = MAIN_MENU;
 			break;
 		case OPTIONS:
-			switchToState = MAIN_MENU;
+			if(prevState == INGAME_MENU)
+				switchToState = INGAME_MENU;
+			else if(prevState == MAIN_MENU)
+				switchToState = MAIN_MENU;
 			break;
 		case INGAME_MENU:
 			switchToState = GAME;
