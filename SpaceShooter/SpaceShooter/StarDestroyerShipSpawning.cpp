@@ -21,7 +21,7 @@ void StarDestroyerShipSpawning::UpdateState( BaseEnemyShip* owner, float deltaTi
 {
 	log << INFO << "--" << std::endl;
 	UpdateDirection(owner);
-	HandleShipSpawning(deltaTime);
+	//HandleShipSpawning(deltaTime);
 	if(totalShipsSpawned >= 10)
 	{	
 		owner->GetAiStateMachine().ChangeState(std::make_shared<ApproachGivenPosition>(0, -50, -150, 50));
