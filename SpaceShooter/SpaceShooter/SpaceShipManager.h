@@ -83,6 +83,9 @@ private:
 	//y velocity based on the input.
 	void HandleYAxisMovement();
 
+	//Checks for input that changes the players weapon selection
+	void UpdatePlayerWeaponSelection();
+
 	//Does simple collision checking with the frustum. The truth is it
 	//only checks for collision against set x and y coordinates that 
 	//matches the sides of the screen where the ship starts. If its

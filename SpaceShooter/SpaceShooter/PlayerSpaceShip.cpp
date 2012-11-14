@@ -40,5 +40,32 @@ void PlayerSpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	
 	lives = 3;
 
+	activeProjectileType = LASER_FAST;
+	
+	for(int i = 0; i < totalTypes; i++)
+	{
+		projTypes[i].projType = static_cast<ProjectileTypes>(i+1);//skipping the first type which is LASER_SLOW
+		projTypes[i].known = true;//!i; //all but the first are unknown
+	}
+
 	CreateGameObject("MilleniumFalcon//MilleniumFalcon.3ds");
+}
+
+ProjectileTypes PlayerSpaceShip::GetActiveProjectileType()
+{
+	return activeProjectileType;
+}
+
+void PlayerSpaceShip::SetActiveProjectileType( ProjectileTypes newType )
+{
+	for(unsigned int i = 0; i < totalTypes; i++)
+	{
+		if(projTypes[i].projType == newType)
+		{
+			if(projTypes[i].known)
+			{
+				activeProjectileType = newType;
+			}
+		}
+	}
 }

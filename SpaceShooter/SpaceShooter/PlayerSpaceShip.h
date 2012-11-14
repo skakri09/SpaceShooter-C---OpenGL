@@ -19,6 +19,11 @@ static const float PLAYER_X_VELOCITY = 35.0f;
 static const float PLAYER_Y_VELOCITY = 30.0f;
 static const float PLAYER_Z_VELOCITY = 100.0f;
 
+struct ProjectileKnown
+{
+	ProjectileTypes projType;
+	bool known;
+};
 class PlayerSpaceShip : public SpaceShip
 {
 public:
@@ -35,9 +40,20 @@ public:
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ);
 	
+	//Returns the projectile type that's currently active for the player
+	ProjectileTypes GetActiveProjectileType();
+
+	//Sets the active projectile type of the player, if it's available
+	void SetActiveProjectileType(ProjectileTypes newType);
+
 private:
 	Logger log;
 
+	ProjectileTypes activeProjectileType;
+
+	//Array representing the projectiletypes and if they are known or not
+	static const unsigned int totalTypes = 3;
+	ProjectileKnown projTypes[totalTypes];
 };
 	
 #endif // PlayerSpaceShip_H

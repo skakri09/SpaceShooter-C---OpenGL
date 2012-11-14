@@ -76,8 +76,8 @@ void ImperialStarDestroyer::CreateStarDestroyerSubBoxes(std::shared_ptr<AABBColl
 
 	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, -3.5f, 12.0f, -21.43f, -5.0f)); //Back middle-top
 
-	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, -10.0f, -30.0f, -21.43f, 20.0f)); //Back  bottom
-	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-5.0f, 5.0f, -30.0f, -10.0f, -21.43f, 5.0f)); //Back  bottom2
+	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, -10.0f, -8.0f, -21.43f, 20.0f)); //Back  bottom
+	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-5.0f, 5.0f, -13.0f, -10.0f, -21.43f, 5.0f)); //Back  bottom2
 
 	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, -3.5f, 0.0f, -5.0f, 22.0f));//middle tier1
 	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, 0.0f, 4.0f, -5.0f, 13.0f));//middle tier2

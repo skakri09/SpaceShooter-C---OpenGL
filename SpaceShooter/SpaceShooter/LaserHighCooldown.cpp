@@ -2,7 +2,7 @@
 
 
 LaserHighCooldown::LaserHighCooldown()
-	:Projectile(LASER_SLOW, 30.0f, 10.0f, 10, 3.5f, 0.02f)
+	:Projectile(LASER_SLOW, 30.0f, 10.0f, 10, 2.5f, 0.02f)
 {
 	CreateProjectile(LASER_SLOW, "..//3ds//Laser//Laser.3ds");
 }

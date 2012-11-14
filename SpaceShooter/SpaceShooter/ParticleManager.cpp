@@ -3,12 +3,18 @@
 ParticleManager::ParticleManager()
 	:log("ParticleManager", WARN)
 {
-
 }
 
 ParticleManager::~ParticleManager()
 {
-
+	ResetParticles();
+	for(auto i = AllParticles.begin(); i != AllParticles.end(); i++)
+	{
+		Particle* p = *i;
+		i = ActiveParticles.erase(i);
+		delete p;
+		p = 0;
+	}
 }
 
 ParticleManager* ParticleManager::Inst()
@@ -25,8 +31,8 @@ void ParticleManager::InitParticleManager()
 	}
 	for(unsigned int i = 0; i < MAX_PARTICLES; i++)
 	{
-		InactiveParticles.push_back(new Particle());
-		InactiveParticles.back()->FlagForKill();
+		AllParticles.push_back(new Particle());
+		AllParticles.back()->FlagForKill();
 	}
 }
 
@@ -53,26 +59,6 @@ void ParticleManager::DrawParticles()
 			glColor4f(1, 1, 1, 1);
 		}
 	}
-	//if(!particles.empty())
-	//{
-	//	if(vbo.HaveMeshInfo())
-	//	{
-	//		glColor3f(1.0f, 0.5f, 1.0f);
-	//		vbo.EnableClientStates();
-	//		for(auto i = particles.begin(); i != particles.end(); i++)
-	//		{
-	//			if( (*i)->IsAlive() )
-	//			{
-	//				glPushMatrix();
-	//				(*i)->Draw();	 // Applies particle-specific translation etc
-	//				vbo.Draw(false); // Draws the particle with the shared VBO
-	//				glPopMatrix();
-	//			}
-	//		}
-	//		vbo.DisableClientStates();
-	//		glColor4f(1, 1, 1, 1);
-	//	}
-	//}
 }
 
 void ParticleManager::Update( float deltaTime )
@@ -93,24 +79,6 @@ void ParticleManager::Update( float deltaTime )
 			}
 		}
 	}
-	/*
-	 if(!particles.empty())
-	 {
-
-	 for(auto i = particles.begin(); i != particles.end();)
-	 {
-	 (*i)->Update(deltaTime);
-
-	 if((*i)->CanKill())
-	 {
-	 i = particles.erase(i);
-	 }
-	 else
-	 {
-	 ++i;
-	 }
-	 }
-	 }*/
 }
 
 void ParticleManager::EmitStandardSpaceshipProjectileCollision( Vector3D origin )
@@ -134,11 +102,11 @@ void ParticleManager::EmitParticles( Vector3D origin,
 		bool foundParticle = false;
 		while(!foundParticle)
 		{
-			if(x < InactiveParticles.size())
+			if(x < AllParticles.size())
 			{
-				if(!InactiveParticles.at(x)->IsAlive())
+				if(!AllParticles.at(x)->IsAlive())
 				{
-					ActiveParticles.push_back(InactiveParticles.at(x));
+					ActiveParticles.push_back(AllParticles.at(x));
 					Vector3D startPos(origin.getX()+GetRandFloat(-startSpreadRadius, startSpreadRadius),
 						origin.getY()+GetRandFloat(-startSpreadRadius, startSpreadRadius),
 						origin.getZ()+GetRandFloat(-startSpreadRadius, startSpreadRadius));
@@ -160,37 +128,14 @@ void ParticleManager::EmitParticles( Vector3D origin,
 		}
 
 	}
-/*
-	unsigned int newVecSize = particles.size() + particleAmnt;
-	particles.reserve(newVecSize);
-
-	for(unsigned int i = 0; i <particleAmnt; i++)
-	{
-		particles.push_back(std::make_shared<Particle>());
-
-		Vector3D startPos(origin.getX()+GetRandFloat(-startSpreadRadius, startSpreadRadius),
-			origin.getY()+GetRandFloat(-startSpreadRadius, startSpreadRadius),
-			origin.getZ()+GetRandFloat(-startSpreadRadius, startSpreadRadius));
-
-		Vector3D velocity(GetRandFloat(-maxSpeed, maxSpeed),
-			GetRandFloat(-maxSpeed, maxSpeed),
-			GetRandFloat(-maxSpeed, maxSpeed));
-
-		float scale = GetRandFloat(minSize, maxSize);
-
-		particles.back()->InitParticle(startPos, velocity, fadeSpeed, r, g, b, scale );
-	}*/
 }
 
 void ParticleManager::ResetParticles()
 {
 	for(auto i = ActiveParticles.begin(); i != ActiveParticles.end(); i++)
 	{
-		Particle* p = *i;
+		(*i)->FlagForKill();
 		i = ActiveParticles.erase(i);
-		delete p;
-		p = 0;
 	}
-	particles.clear();
 }
 

@@ -37,9 +37,10 @@ void SpaceShipManager::InitManager(InputManager* input, GameState* gameState, Sc
 
 void SpaceShipManager::Update(GLfloat deltaTime)
 {
+	UpdatePlayerWeaponSelection();
 	if(input->Fire())
 	{
-		if(player->Shoot(DOUBLE_TRIPLE_CONE_LASER))
+		if(player->Shoot(player->GetActiveProjectileType()))
 		{
 			SoundManager::Inst()->PlayEffect("laser_tripleFire_long", 10);
 		}
@@ -273,4 +274,33 @@ void SpaceShipManager::ResetSpaceships()
 
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(player));
 	EnemySpaceShips.back()->InitSpaceShip(-200.0f, -200.0f, -800.0f, 0, 0, 0, 0, 0, 0, -1);
+}
+
+void SpaceShipManager::UpdatePlayerWeaponSelection()
+{
+	if(input->KeyDownOnce(SDLK_1))
+	{
+		player->SetActiveProjectileType(LASER_FAST);
+		return;
+	}
+	if(input->KeyDownOnce(SDLK_2))
+	{
+		player->SetActiveProjectileType(TRIPLE_CONE_LASER);
+		return;
+	}
+	if(input->KeyDownOnce(SDLK_3))
+	{
+		player->SetActiveProjectileType(DOUBLE_TRIPLE_CONE_LASER);
+		return;
+	}
+	/*if(input->KeyDownOnce(SDLK_4))
+	{
+		player->SetActiveProjectileType(DOUBLE_TRIPLE_CONE_LASER);
+		return;
+	}
+	if(input->KeyDownOnce(SDLK_5))
+	{
+		player->SetActiveProjectileType(LASER_SLOW);
+		return;
+	}*/
 }

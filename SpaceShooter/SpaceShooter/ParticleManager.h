@@ -57,9 +57,7 @@ private:
 	VBODrawable vbo;
 
 	std::vector<Particle*> ActiveParticles;
-	std::vector<Particle*> InactiveParticles;
-
-	std::vector<std::shared_ptr<Particle>> particles;
+	std::vector<Particle*> AllParticles;
 };
 
 #endif // ParticleManager_h__
