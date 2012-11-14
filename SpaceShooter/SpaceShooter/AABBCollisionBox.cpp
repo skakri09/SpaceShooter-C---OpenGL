@@ -18,24 +18,14 @@ void AABBCollisionBox::Update( CollisionTransformationInfo& translationInfo )
 	
 	minPoint = orgMinPoint;
 	maxPoint = orgMaxPoint;
-	height = m_Height*biggest;
-	width = m_Width*biggest;
-	depth = m_Depth*biggest;
 
 	minPoint *= translationInfo.scale;
-	minPoint.setZ(minPoint.getZ()-depth);
 	minPoint += translationInfo.position;
 	
 	maxPoint *= translationInfo.scale;
-	maxPoint.setZ(maxPoint.getZ()-depth);
 	maxPoint += translationInfo.position;
 	
 
-	//minPoint = (orgMinPoint + translationInfo.position)+(orgMinPoint * translationInfo.scale);
-	////minPoint = (orgMinPoint * translationInfo.scale);
-
-	//maxPoint = (orgMaxPoint + translationInfo.position)+(orgMaxPoint * translationInfo.scale);
-	////maxPoint = (orgMaxPoint * translationInfo.scale);
 }
 
 bool AABBCollisionBox::IsCollision( AABBCollisionBox* otherCollidable )
@@ -43,28 +33,12 @@ bool AABBCollisionBox::IsCollision( AABBCollisionBox* otherCollidable )
 	Vector3D* oMin = otherCollidable->GetMin();
 	Vector3D* oMax = otherCollidable->GetMax();
 
-	if (minPoint.getX() + width						< oMin->getX())		return false;
-	if (minPoint.getY() + height					< oMin->getY())		return false;
-	if (minPoint.getZ()	+ depth						< oMin->getZ())		return false;
-	if (oMin->getX()	+ otherCollidable->width	< minPoint.getX())	return false;
-	if (oMin->getY()	+ otherCollidable->height	< minPoint.getY())	return false;
-	if (oMin->getZ()	+ otherCollidable->depth	< minPoint.getZ())	return false;
-
-	return true;
-
-	return
-		minPoint.getX() > oMax->getX() || maxPoint.getX() < oMin->getX() ||
-		minPoint.getY() >oMax->getY() || maxPoint.getY() <oMin->getY() ||
-		minPoint.getZ() > oMax->getZ() || maxPoint.getZ() < oMin->getZ();
-
-
-	if( maxPoint.getX() < oMin->getX() || minPoint.getX() > oMax->getX() )
-		return false;
-	if( maxPoint.getY() < oMin->getY() || minPoint.getY() > oMax->getY() )
-		return false;
-	if( maxPoint.getZ() < oMin->getZ() || minPoint.getZ() > oMax->getZ() )
-		return false;
-
+	if(maxPoint.getX() < oMin->getX()) return false;
+	if(maxPoint.getY() < oMin->getY()) return false;
+	if(maxPoint.getZ() < oMin->getZ()) return false;
+	if(minPoint.getX() > oMax->getX()) return false;
+	if(minPoint.getY() > oMax->getY()) return false;
+	if(minPoint.getZ() > oMax->getZ()) return false;
 	return true;
 }
 

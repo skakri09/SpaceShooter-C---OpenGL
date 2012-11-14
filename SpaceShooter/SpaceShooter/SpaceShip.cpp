@@ -98,7 +98,8 @@ void SpaceShip::HandleProjectileCollision( std::shared_ptr<Projectile> projectil
 {
 	if(projectile->isFired())
 	{
-		if(projectile->aabb.IsCollision(&aabb))
+		if(aabb.IsCollision(&projectile->aabb))
+		//if(projectile->aabb.IsCollision(&aabb))
 		{
 			int dmgTaken = projectile->GetProjectileDmg();
 			SpaceShipCurrentHealth -= dmgTaken;

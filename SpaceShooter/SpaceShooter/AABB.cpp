@@ -101,14 +101,16 @@ void AABB::CreateAABB( Lib3dsVector* vertices, unsigned int size)
 	m_Depth = m_Front - m_Back;
 
 	m_LeftTopBack.setValues(m_Left, m_Top, m_Back);
-	m_RightTopBack.setValues(m_Right, m_Top, m_Back);
 	m_LeftTopFront.setValues(m_Left, m_Top, m_Front);
 	m_RightTopFront.setValues(m_Right, m_Top, m_Front);
 	m_LeftBottomBack.setValues(m_Left, m_Bottom, m_Back);
 	m_RightBottomBack.setValues(m_Right, m_Bottom, m_Back);
-	m_LeftBottomFront.setValues(m_Left, m_Bottom, m_Front);
 	m_RightBottomFront.setValues(m_Right, m_Bottom, m_Front);
 	
+
+	m_RightTopBack.setValues(m_Right, m_Top, m_Front);
+	m_LeftBottomFront.setValues(m_Left, m_Bottom, m_Back);
+
 	orgMinPoint = minPoint = m_LeftBottomFront;
 	orgMaxPoint = maxPoint = m_RightTopBack;
 }
