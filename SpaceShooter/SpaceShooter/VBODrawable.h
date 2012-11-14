@@ -27,7 +27,7 @@ public:
 	//set we get an error and may crash.
 	//The class handles choosing between drawing with 
 	//arrays and elements based on the info in the MeshInfo obj.
-	void Draw();
+	void Draw(bool enableClientStates = true);
 
 	//Sets meshinfo for this object. 
 	void SetMeshInfo(std::shared_ptr<MeshInfo> meshInfo);
@@ -35,15 +35,15 @@ public:
 	//Returns true if this class have received a MeshInfo object
 	bool HaveMeshInfo();
 
+	void EnableClientStates();
+
+	void DisableClientStates();
+
 private:
 	Logger log;
 
 	//MeshInfo meshInfo;
 	std::shared_ptr<MeshInfo> meshInfo;
-
-	void EnableClientStates();
-
-	void DisableClientStates();
 
 	bool haveMeshInfo;
 };

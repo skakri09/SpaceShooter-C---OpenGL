@@ -13,26 +13,22 @@ VBODrawable::~VBODrawable()
 
 }
 
-void VBODrawable::Draw()
+void VBODrawable::Draw(bool enableClientStates)
 {
 	if(haveMeshInfo)
 	{
+		if(enableClientStates)
+			EnableClientStates();
 		if(!meshInfo->haveIndices)
 		{
-			EnableClientStates();
-
 			glDrawArrays(meshInfo->mode, 0, meshInfo->numberOfIndices);
-			DisableClientStates();
-
 		}
 		else
 		{
-			EnableClientStates();
-
 			glDrawElements(meshInfo->mode, meshInfo->numberOfIndices, GL_UNSIGNED_INT, 0);
-
-			DisableClientStates();	
 		}
+		if(enableClientStates)
+			DisableClientStates();	
 	}
 	else
 	{

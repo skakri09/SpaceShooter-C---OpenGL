@@ -29,18 +29,19 @@ void ParticleManager::DrawParticles()
 {
 	if(!particles.empty())
 	{
-		//BindTexture("particle");
 		glColor3f(1.0f, 0.5f, 1.0f);
+		vbo.EnableClientStates();
 		for(auto i = particles.begin(); i != particles.end(); i++)
 		{
 			if(vbo.HaveMeshInfo())
 			{
 				glPushMatrix();
 				(*i)->Draw();	//Applies particle-specific translation etc
-				vbo.Draw();		//Draws the particle with the shared VBO
+				vbo.Draw(false);		//Draws the particle with the shared VBO
 				glPopMatrix();
 			}
 		}
+		vbo.DisableClientStates();
 		glColor4f(1, 1, 1, 1);
 	}
 }
