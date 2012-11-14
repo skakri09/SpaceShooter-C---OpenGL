@@ -1,6 +1,7 @@
 #include "Camera.h"
 
 Camera::Camera()
+	:log("Camera", WARN)
 {
 	camYaw=0.0f;
 	camPitch=0.0f;
@@ -105,6 +106,7 @@ void Camera::moveCameraUp(float dist,float dir)
 void Camera::UpdateCamera()
 {
 	glTranslatef(-camPos.getX(), -camPos.getY(), -camPos.getZ());
+	
 }
 
 void Camera::SetSkybox( std::string newSkybox )

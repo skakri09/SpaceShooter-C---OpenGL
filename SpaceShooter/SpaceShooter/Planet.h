@@ -16,7 +16,7 @@
 class Planet : public GameObject
 {
 public:
-    Planet();
+    Planet(std::string planetName);
     ~Planet();
 
 	virtual void Draw();

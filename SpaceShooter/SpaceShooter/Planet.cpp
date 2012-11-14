@@ -1,9 +1,10 @@
 #include "Planet.h"
 
 
-Planet::Planet()
+Planet::Planet(std::string planetName)
 {
 	rotation = 130.0f;
+	CreatePlanet(planetName);
 }
 
 Planet::~Planet()

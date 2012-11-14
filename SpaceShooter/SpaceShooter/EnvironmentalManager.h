@@ -8,9 +8,12 @@
 #ifndef EnvironmentalManager_h__
 #define EnvironmentalManager_h__
 
+#include <vector>
+
 #include "Planet.h"
 #include "MeshFactory.h"
 #include "ManagerInterface.h"
+#include "DeathStar.h"
 
 class EnvironmentalManager : public ManagerInterface
 {
@@ -29,7 +32,7 @@ public:
 protected:
 
 private:
-	Planet planet;
+	std::vector<std::shared_ptr<GameObject>> Environment;
 };
 
 #endif // EnvironmentalManager_h__

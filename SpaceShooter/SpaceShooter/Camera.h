@@ -30,6 +30,7 @@
 #include "Skybox.h"
 #include "Vector3d.h"
 #include "GameplayGUI.h"
+#include "Logger.h"
 
 class Camera
 {
@@ -54,6 +55,7 @@ public:
 	void SetSkybox(std::string newSkybox);
 
 private:
+	Logger log;
 	Skybox skybox;
 
 	std::shared_ptr<GameplayGUI> GUI;

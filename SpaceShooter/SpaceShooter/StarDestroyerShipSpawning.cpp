@@ -75,7 +75,7 @@ void StarDestroyerShipSpawning::HandleShipSpawning( float deltaTime )
 		float x = ownerShip->transformable.getXPos();
 		float y = ownerShip->transformable.getYPos();
 		float z = ownerShip->transformable.getZPos();
-		ship->InitSpaceShip(x, y, z, -90, 1, 0, 0, 0, 0, 1);
+		ship->InitSpaceShip(x, y, z, 0, 0, 0, 0, 0, 0, 1);
 		SpaceShipManager::Inst()->TransferShipToShipManager(ship);
 		totalShipsSpawned++;
 	}
@@ -87,7 +87,7 @@ void StarDestroyerShipSpawning::HandleShipSpawning( float deltaTime )
 		float x = ownerShip->transformable.getXPos();
 		float y = ownerShip->transformable.getYPos();
 		float z = ownerShip->transformable.getZPos();
-		ship->InitSpaceShip(x, y, z, -90, 1, 0, 0, 0, 0, 1);
+		ship->InitSpaceShip(x, y, z, 0, 0, 0, 0, 0, 0, 1);
 		SpaceShipManager::Inst()->TransferShipToShipManager(ship);
 		totalShipsSpawned++;
 	}

@@ -7,6 +7,7 @@ SpaceShipManager* SpaceShipManager::Inst()
 {
 	static SpaceShipManager* instance = new SpaceShipManager();
 	return instance;
+
 }
 
 SpaceShipManager::SpaceShipManager() 
@@ -46,7 +47,7 @@ void SpaceShipManager::Update(GLfloat deltaTime)
 	HandlePlayerRotation();
 	HandleXAxisMovement();
 	HandleYAxisMovement();
-	
+
 	HandleFrustumCollision();
 
 	player->Update(deltaTime);
@@ -86,9 +87,9 @@ void SpaceShipManager::Update(GLfloat deltaTime)
 void SpaceShipManager::DrawSpaceShips()
 {
 	glPushMatrix();
-
-	player->Draw();
 	
+	player->Draw();
+
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();i++)
 	{
 		(*i)->Draw();
@@ -172,28 +173,58 @@ void SpaceShipManager::HandleXAxisMovement()
 
 void SpaceShipManager::HandleYAxisMovement()
 {
+	bool z = false;
 	if (input->MoveUp()|| input->MoveDown())
 	{
 		//if up and down
 		if (input->MoveUp() && input->MoveDown())
 		{
-			player->transformable.setYVel(0.0f);
+			if(!z)
+			{
+				player->transformable.setYVel(0.0f);
+			}
+			else
+			{
+				player->transformable.setZVel(0.0f);
+			}
+			
 		}
 		//If only up
 		if (input->MoveUp() && !input->MoveDown())
 		{
-			player->transformable.setYVel(PLAYER_Y_VELOCITY);
+			if(!z)
+			{
+				player->transformable.setYVel(PLAYER_Y_VELOCITY);
+			}
+			else
+			{
+				player->transformable.setZVel(-PLAYER_Y_VELOCITY);
+			}
 		}
 		//If only down
 		if (!input->MoveUp() && input->MoveDown())
 		{
-			player->transformable.setYVel(-PLAYER_Y_VELOCITY);
+			if(!z)
+			{
+				player->transformable.setYVel(-PLAYER_Y_VELOCITY);
+			}
+			else
+			{
+				player->transformable.setZVel(PLAYER_Y_VELOCITY);
+			}
 		}
 	}
 	else
 	{
 		//No movement
-		player->transformable.setYVel(0.0f);
+		if(!z)
+		{
+			player->transformable.setYVel(0.0f);
+		}
+		else
+		{
+			player->transformable.setZVel(0.0f);
+		}
 	}
 }
 

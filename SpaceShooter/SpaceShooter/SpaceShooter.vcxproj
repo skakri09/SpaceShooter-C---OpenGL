@@ -97,6 +97,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="CrossScreenWhileFireing.cpp" />
+    <ClCompile Include="DeathStar.cpp" />
     <ClCompile Include="DoubleTripleConeLaser.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="EnvironmentalManager.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="CrossScreenWhileFireing.h" />
+    <ClInclude Include="DeathStar.h" />
     <ClInclude Include="DoubleTripleConeLaser.h" />
     <ClInclude Include="EnemyTypes.h" />
     <ClInclude Include="EnvironmentalManager.h" />

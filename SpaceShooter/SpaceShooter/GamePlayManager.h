@@ -55,7 +55,7 @@ public:
 	void OnEnteringGameState();
 
 	void ResetGame();
-
+	
 private:
 	Logger log;
 	GameState* gameState;

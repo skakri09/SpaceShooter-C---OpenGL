@@ -409,6 +409,9 @@
     <ClCompile Include="AABBCollisionBox.cpp">
       <Filter>Game\Components\Collidable</Filter>
     </ClCompile>
+    <ClCompile Include="DeathStar.cpp">
+      <Filter>Game\GameObjects\Environmental</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLUtils\GLUtils.hpp">
@@ -689,6 +692,9 @@
     </ClInclude>
     <ClInclude Include="AABBCollisionBox.h">
       <Filter>Game\Components\Collidable</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathStar.h">
+      <Filter>Game\GameObjects\Environmental</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
