@@ -14,8 +14,6 @@ PlayerSpaceShip::~PlayerSpaceShip()
 
 void PlayerSpaceShip::Draw()
 {
-	aabb.DrawAABB();
-
 	glPushMatrix();
 	
 	glColor3f(0.5f, 0.5f, 0.5f);

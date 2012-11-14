@@ -36,8 +36,6 @@ public:
 
 	void DrawAABB();
 
-	void SetDrawAAB(bool drawAAB, bool drawSubBoxes);
-
 	void CreateSubBox(std::shared_ptr<AABBCollisionBox> newSubBox);
 
 protected:

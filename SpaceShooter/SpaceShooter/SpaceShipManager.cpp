@@ -13,6 +13,7 @@ SpaceShipManager* SpaceShipManager::Inst()
 SpaceShipManager::SpaceShipManager() 
 	:log("SpaceShipmanager", WARN)
 {
+	drawAABBs = false;
 }
 
 SpaceShipManager::~SpaceShipManager()
@@ -88,10 +89,17 @@ void SpaceShipManager::DrawSpaceShips()
 {
 	glPushMatrix();
 	
+	if(drawAABBs){player->aabb.DrawAABB();}
+		
 	player->Draw();
 
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();i++)
 	{
+		if(drawAABBs)
+		{
+			(*i)->aabb.DrawAABB();
+		}
+		
 		(*i)->Draw();
 	}
 
@@ -264,5 +272,5 @@ void SpaceShipManager::ResetSpaceships()
 	player->InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(player));
-	EnemySpaceShips.back()->InitSpaceShip(-000.0f, -000.0f, -100.0f, 0, 0, 0, 0, 0, 0, -1);
+	EnemySpaceShips.back()->InitSpaceShip(-200.0f, -200.0f, -800.0f, 0, 0, 0, 0, 0, 0, -1);
 }

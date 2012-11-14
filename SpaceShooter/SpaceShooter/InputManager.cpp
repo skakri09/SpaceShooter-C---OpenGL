@@ -22,6 +22,9 @@ void InputManager::InitInputManager()
 		keystates = SDL_GetKeyState(&keyCount);
 		prevKeystates = new Uint8[keyCount];
 
+		prevMouseBtns = mouseBtns;
+		mouseBtns = SDL_GetMouseState(&mouseX, &mouseY);
+
 		activeWidth = window_width;
 		activeHeight = window_height;
 
@@ -35,6 +38,7 @@ void InputManager::InitInputManager()
 
 void InputManager::Update(GameState* gameState)
 {
+	prevMouseBtns = mouseBtns;
 	mouseBtns = SDL_GetMouseState(&mouseX, &mouseY);
 
 	memcpy(prevKeystates, keystates, sizeof(Uint8) * keyCount);
@@ -120,7 +124,7 @@ bool InputManager::MiddleMouseDownHold()
 
 bool InputManager::RightMouseDownHold()
 {
-	return ((mouseBtns&SDL_BUTTON_RIGHT) != 0);
+	return ((mouseBtns&SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0);
 }
 
 bool InputManager::MoveLeft()

@@ -52,12 +52,16 @@ public:
 
 	void ResetSpaceships();
 	
+	void SetDrawAABB(bool drawAABB){drawAABBs = drawAABB;}
+	bool IsDrawingAABB(){return drawAABBs;}
+
 private:
 	Logger log;
 
 	SpaceShipManager();
 	~SpaceShipManager();
 
+	bool drawAABBs;
 	//locally stored pointer to the inputManager object
 	//stored in GamePlayManager, so that we can handle player
 	//input internally instead of trough the GamePlayManager

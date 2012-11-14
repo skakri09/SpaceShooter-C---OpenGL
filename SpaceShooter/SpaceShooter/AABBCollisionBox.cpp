@@ -3,7 +3,6 @@
 
 AABBCollisionBox::AABBCollisionBox()
 {
-	drawAAB = true;
 }
 
 AABBCollisionBox::AABBCollisionBox(
@@ -84,51 +83,39 @@ void AABBCollisionBox::CreateCollisionBox( Lib3dsVector* vertices, unsigned int 
 
 void AABBCollisionBox::DrawAABB()
 {
-	if(drawAAB)
-	{
-		glPushMatrix();
-		glBegin(GL_LINE_LOOP); 
-		glVertex3f(maxPoint.getX(),maxPoint.getY(),minPoint.getZ()); 
-		glVertex3f(minPoint.getX(),maxPoint.getY(),minPoint.getZ()); 
-		glVertex3f(minPoint.getX(),minPoint.getY(),minPoint.getZ());
-		glVertex3f(maxPoint.getX(),minPoint.getY(),minPoint.getZ()); 
-		glEnd();
+	glPushMatrix();
+	glBegin(GL_LINE_LOOP); 
+	glVertex3f(maxPoint.getX(),maxPoint.getY(),minPoint.getZ()); 
+	glVertex3f(minPoint.getX(),maxPoint.getY(),minPoint.getZ()); 
+	glVertex3f(minPoint.getX(),minPoint.getY(),minPoint.getZ());
+	glVertex3f(maxPoint.getX(),minPoint.getY(),minPoint.getZ()); 
+	glEnd();
 
-		glBegin(GL_LINE_LOOP); 
-		glVertex3f(maxPoint.getX(),minPoint.getY(),maxPoint.getZ());
-		glVertex3f(maxPoint.getX(),maxPoint.getY(),maxPoint.getZ());
-		glVertex3f(minPoint.getX(),maxPoint.getY(),maxPoint.getZ());
-		glVertex3f(minPoint.getX(),minPoint.getY(),maxPoint.getZ());
-		glEnd();
+	glBegin(GL_LINE_LOOP); 
+	glVertex3f(maxPoint.getX(),minPoint.getY(),maxPoint.getZ());
+	glVertex3f(maxPoint.getX(),maxPoint.getY(),maxPoint.getZ());
+	glVertex3f(minPoint.getX(),maxPoint.getY(),maxPoint.getZ());
+	glVertex3f(minPoint.getX(),minPoint.getY(),maxPoint.getZ());
+	glEnd();
 
-		glBegin (GL_LINE_LOOP); 
-		glVertex3f(maxPoint.getX(),maxPoint.getY(),minPoint.getZ()); 
-		glVertex3f(maxPoint.getX(),maxPoint.getY(),maxPoint.getZ());
-		glVertex3f(minPoint.getX(),maxPoint.getY(),maxPoint.getZ()); 
-		glVertex3f(minPoint.getX(),maxPoint.getY(),minPoint.getZ()); 
-		glEnd();
+	glBegin (GL_LINE_LOOP); 
+	glVertex3f(maxPoint.getX(),maxPoint.getY(),minPoint.getZ()); 
+	glVertex3f(maxPoint.getX(),maxPoint.getY(),maxPoint.getZ());
+	glVertex3f(minPoint.getX(),maxPoint.getY(),maxPoint.getZ()); 
+	glVertex3f(minPoint.getX(),maxPoint.getY(),minPoint.getZ()); 
+	glEnd();
 
-		glBegin (GL_LINE_LOOP);
-		glVertex3f(maxPoint.getX(),minPoint.getY(),maxPoint.getZ());
-		glVertex3f(minPoint.getX(),minPoint.getY(),maxPoint.getZ()); 
-		glVertex3f(minPoint.getX(),minPoint.getY(),minPoint.getZ()); 
-		glVertex3f(maxPoint.getX(),minPoint.getY(),minPoint.getZ()); 
-		glEnd();
-		glPopMatrix();
+	glBegin (GL_LINE_LOOP);
+	glVertex3f(maxPoint.getX(),minPoint.getY(),maxPoint.getZ());
+	glVertex3f(minPoint.getX(),minPoint.getY(),maxPoint.getZ()); 
+	glVertex3f(minPoint.getX(),minPoint.getY(),minPoint.getZ()); 
+	glVertex3f(maxPoint.getX(),minPoint.getY(),minPoint.getZ()); 
+	glEnd();
+	glPopMatrix();
 
-		for(unsigned int i = 0; i < SubBoxes.size(); i++)
-		{
-			SubBoxes.at(i)->DrawAABB();
-		}
-	}
-}
-
-void AABBCollisionBox::SetDrawAAB( bool drawAAB, bool drawSubBoxes )
-{
-	this->drawAAB = drawAAB;
 	for(unsigned int i = 0; i < SubBoxes.size(); i++)
 	{
-		SubBoxes.at(i)->SetDrawAAB(drawSubBoxes, true);
+		SubBoxes.at(i)->DrawAABB();
 	}
 }
 

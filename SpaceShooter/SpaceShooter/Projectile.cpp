@@ -29,8 +29,6 @@ void Projectile::Draw()
 		// Applying transformations to this matrix to match the position and rotation of the 
 		// spaceship when fire was called.
 		glPushMatrix();
-		aabb.DrawAABB();
-		//glTranslatef(initialStartPosition.getX(), initialStartPosition.getY(), initialStartPosition.getZ());
 
 		//Draw the projectile in the above object's space which is transformed into the correct
 		//position and rotation.

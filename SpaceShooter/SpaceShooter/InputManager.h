@@ -70,13 +70,20 @@ public:
 
 	void resize(unsigned int width, unsigned int height, bool toDefault = false);
 
+	int GetMouseX(){return mouseX;}
+	int GetMouseY(){return mouseY;}
+
 private:
 	Uint8* keystates;		// Holds a snapshot of keys on the keyboard.
 	Uint8* prevKeystates;	//Snapshot of previous updates keystates
+
+	Uint8 mouseBtns;	// Holds a snapshot of the mouse buttons' state
+	Uint8 prevMouseBtns;	// Holds a snapshot of the mouse buttons' state
+
 	int keyCount;
 	unsigned int activeWidth, activeHeight;
 	bool leftDownOnce, middleDownOnce, rightDownOnce;
-	Uint8 mouseBtns;	// Holds a snapshot of the mouse buttons' state
+	
 	int mouseX;		// Mouse x pos	
 	int mouseY;		// Mouse y pos
 	bool inited;

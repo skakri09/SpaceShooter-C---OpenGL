@@ -56,7 +56,8 @@ public:
 
 	void ResetGame();
 	
-	void SetDebugMode(bool debugOn){debugMode = debugOn;}
+	void SetDebugMode(bool debugOn);
+
 private:
 	Logger log;
 	GameState* gameState;

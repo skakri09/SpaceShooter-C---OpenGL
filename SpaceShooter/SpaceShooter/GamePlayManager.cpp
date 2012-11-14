@@ -56,14 +56,12 @@ void GamePlayManager::RenderGame()
 }
 
 void GamePlayManager::Update(float deltaTime)
-{
-	/*Vector3D cameraPos(*SpaceShipManager::Inst()->GetPlayer()->transformable.getPosition());
-	cameraPos.setZ(cameraPos.getZ() + 10);
-	cameraPos.setY(cameraPos.getY() + 3);
-	cam.SetCameraPosition(&cameraPos);*/
-	cam.Control(25.0f*deltaTime, 50.0f*deltaTime, input);
-
-	if(!debugMode)
+{	
+	if(debugMode)
+	{
+		cam.Control(25.0f*deltaTime, 50.0f*deltaTime, input);
+	}
+	else
 	{
 		environment.Update(deltaTime);
 		ParticleManager::Inst()->Update(deltaTime);
@@ -71,6 +69,14 @@ void GamePlayManager::Update(float deltaTime)
 		ProjectileManager::Inst()->Update(deltaTime);
 		score.Update(deltaTime);
 		gpi.UpdateGUI(deltaTime);
+	}
+	if(input->KeyDownOnce(SDLK_F2))
+	{
+		SpaceShipManager::Inst()->SetDrawAABB(!SpaceShipManager::Inst()->IsDrawingAABB());
+	}
+	if(input->KeyDownOnce(SDLK_F1))
+	{
+		SetDebugMode(!debugMode);
 	}
 }
 
@@ -145,4 +151,20 @@ void GamePlayManager::ResetGame()
 	ProjectileManager::Inst()->ResetProjectiles();
 	environment.ResetEnvironment();
 	score.ResetScore();
+}
+
+void GamePlayManager::SetDebugMode( bool debugOn )
+{
+	debugMode = debugOn;
+	if(debugOn)
+	{
+		cam.Control(25.0f*0.1f, 50.0f*0.1f, input);
+		cam.SetCtrlMode(WASD_WITH_MOUSE);
+	}
+	else
+	{
+		cam.SetCameraPosition(0, 0, CAMERA_POS_Z);
+		cam.ResetCamRotation();
+		cam.SetCtrlMode(NONE);
+	}
 }

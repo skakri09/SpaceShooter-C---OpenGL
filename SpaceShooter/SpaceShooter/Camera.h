@@ -32,7 +32,7 @@
 #include "GameplayGUI.h"
 #include "Logger.h"
 
-enum ControlMode{WASD, NUM_PAD, NONE};
+enum ControlMode{WASD_WITH_MOUSE, NUM_PAD_WITH_MOUSE, NONE};
 
 class Camera
 {
@@ -58,13 +58,17 @@ public:
 
 	void SetCtrlMode(ControlMode newControlMode);
 
+	void ResetCamRotation();
+
 private:
 	Logger log;
 	Skybox skybox;
 
 	ControlMode ctrlMode;
 
-	std::shared_ptr<GameplayGUI> GUI;
+	bool firstRoundOfMouseDown;
+	int orgMouseX, orgMouseY;
+
 	//Locks the camera between 90 and 0 for pitch,
 	//and 360 and 0 for yaw
 	void lockCamera();
@@ -79,6 +83,7 @@ private:
 	float camYaw;			//camera rotation in Y axis
 	float camPitch;			//camera rotation in X axis
 	
+	void ControlRotation(float mouseVel, float moveVel, InputManager* input);
 	void ControlCamNumpad(float mouseVel, float moveVel, InputManager* input);
 	void ControlCamWASDSX(float mouseVel, float moveVel, InputManager* input);
 };

@@ -5,7 +5,8 @@ Camera::Camera()
 {
 	camYaw=0.0f;
 	camPitch=0.0f;
-	ctrlMode = NUM_PAD;
+	ctrlMode = NUM_PAD_WITH_MOUSE;
+	firstRoundOfMouseDown = true;
 }
 
 Camera::~Camera()
@@ -24,33 +25,27 @@ void Camera::RenderCamera()
 void Camera::Control(float mouseVel, float moveVel, InputManager* input)
 {
 	if(ctrlMode != NONE)
-	{
+	{		
 		if(input->LeftMouseDownHold())
 		{
-			int MidX=window_width/2; 
-			int MidY=window_height/2;
-
-			SDL_ShowCursor(SDL_DISABLE);
-
-			int tmpx,tmpy;
-			SDL_GetMouseState(&tmpx,&tmpy); 
-
-			camYaw+=mouseVel*(MidX-tmpx);   
-			camPitch+=mouseVel*(MidY-tmpy); 
-
-			lockCamera();
-
-			SDL_WarpMouse(MidX,MidY);   
+			ControlRotation(mouseVel, moveVel, input);
 		}
 		else
 		{
+			if(firstRoundOfMouseDown == false)
+			{
+				SDL_WarpMouse(orgMouseX,orgMouseY); 
+			}
+			firstRoundOfMouseDown = true;
+			
 			SDL_ShowCursor(SDL_ENABLE);
 		}
-		if(ctrlMode == NUM_PAD)
+
+		if(ctrlMode == NUM_PAD_WITH_MOUSE)
 		{
 			ControlCamNumpad(mouseVel, moveVel, input);
 		}
-		else if(ctrlMode == WASD)
+		else if(ctrlMode == WASD_WITH_MOUSE)
 		{
 			ControlCamWASDSX(mouseVel, moveVel, input);
 		}
@@ -191,4 +186,41 @@ void Camera::ControlCamWASDSX(float mouseVel, float moveVel, InputManager* input
 void Camera::SetCtrlMode( ControlMode newControlMode )
 {
 	this->ctrlMode = newControlMode;
+	firstRoundOfMouseDown = true;
 }
+
+void Camera::ResetCamRotation()
+{
+	camYaw=0.0f;
+	camPitch=0.0f;
+	SDL_ShowCursor(SDL_ENABLE);
+}
+
+void Camera::ControlRotation( float mouseVel, float moveVel, InputManager* input )
+{
+	int MidX=window_width/2; 
+	int MidY=window_height/2;
+
+	SDL_ShowCursor(SDL_DISABLE);
+
+	int tmpx,tmpy;
+	if(!firstRoundOfMouseDown)
+	{
+		SDL_GetMouseState(&tmpx,&tmpy); 
+	}
+	else
+	{
+		SDL_GetMouseState(&orgMouseX,&orgMouseY); 
+		tmpx = MidX;
+		tmpy = MidY;
+		firstRoundOfMouseDown = false;
+	}
+
+	camYaw+=mouseVel*(MidX-tmpx);   
+	camPitch+=mouseVel*(MidY-tmpy); 
+
+	lockCamera();
+
+	SDL_WarpMouse(MidX,MidY);   
+}
+
