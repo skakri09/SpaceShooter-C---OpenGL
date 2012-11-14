@@ -21,7 +21,6 @@ void Particle::InitParticle(Vector3D startPos, Vector3D velocity,
 	this->r = r;
 	this->g = g;
 	this->b = b;
-	//CreateParticle("particle");
 }
 
 void Particle::Draw()
@@ -44,27 +43,4 @@ void Particle::Update( GLfloat deltaTime )
 		life = 0.0f;
 		FlagForKill();
 	}
-}
-
-void Particle::CreateParticle( std::string particleNameNoExtension )
-{
-	if(!vbo.HaveMeshInfo())
-	{
- 		std::string basePath = "..//particles//";
- 		std::string particleImgPath = basePath + particleNameNoExtension + ".png";
-		std::string particleMeshpath = basePath + particleNameNoExtension + ".xml";
-		
-		//Image img = ReadImage(particleImgPath);
-
- 		std::shared_ptr<MeshInfo> meshInfo = MeshFactory::Inst()->GetMesh(particleMeshpath);
-
-		vbo.SetMeshInfo(meshInfo);
-	}
-}
-
-Image Particle::ReadImage( std::string particleName )
-{
-	Image retImg;
-
-	return retImg;
 }
