@@ -49,11 +49,14 @@ public:
 
 	void ResetProjectiles();
 
+	void SetDrawAABB(bool renderAABB){this->renderAABB = renderAABB;}
+	
 private:
 	ProjectileManager();
 	~ProjectileManager();
 	Logger log;
 
+	bool renderAABB;
 	//Map holding the cooldown for each projectile type
 	std::map<ProjectileTypes, float> projectileCooldowns; 
 	

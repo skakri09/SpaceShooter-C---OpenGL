@@ -43,11 +43,8 @@ void ImperialStarDestroyer::CreateGameObject( std::string meshPathFrom3dsFolder 
 		std::shared_ptr<MeshInfo> meshInfo = MeshFactory::Inst()->GetMesh(meshPath);
 
 		vboDrawable.SetMeshInfo(meshInfo);
-		collisionSphere = *meshInfo->collisionSphere;
-
 		//Creating sub boxes
 		CreateStarDestroyerSubBoxes(meshInfo->aabb);
-		
 		aabb = *meshInfo->aabb;
 	}
 }
@@ -77,7 +74,10 @@ void ImperialStarDestroyer::CreateStarDestroyerSubBoxes(std::shared_ptr<AABBColl
 	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-25.0f, -21.0f, -8.0f, -3.5f, -16.43f, -10.0f)); //left long7
 	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(21.0f, 25.0f, -8.0f, -3.5f, -16.43f, -10.0f));//right long7
 
-	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, -3.5f, 12.0f, -21.43f, -5.0f)); //Back middle top
+	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, -3.5f, 12.0f, -21.43f, -5.0f)); //Back middle-top
+
+	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, -8.0f, -10.0f, -21.43f, 20.0f)); //Back  bottom
+	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-5.0f, 5.0f, -10.0f, -13.0f, -21.43f, 5.0f)); //Back  bottom2
 
 	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, -3.5f, 0.0f, -5.0f, 22.0f));//middle tier1
 	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, 0.0f, 4.0f, -5.0f, 13.0f));//middle tier2

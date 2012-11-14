@@ -34,7 +34,7 @@ void Projectile::Draw()
 		//position and rotation.
 		glPushMatrix();
 
-		transformable.ApplyGLTransformations(true, true, false);
+		transformable.ApplyGLTransformations(true, true, true);
 		vboDrawable.Draw();
 
 		glPopMatrix();
@@ -67,8 +67,24 @@ void Projectile::FireProjectile( Transformable& ownerTransformable, GameObject* 
 {
 	SetOwner(owner);
 
-	transformable.Init(*ownerTransformable.getPosition(), Vector3D::ZeroVec(), 0, 1,
-						ownerTransformable.getDirectionVector());
+	if(ownerTransformable.getDirectionVector().getX() < 0.0f)
+	{
+		Vector3D axis(0.0f, 1.0f, 0.0f);
+		transformable.Init(*ownerTransformable.getPosition(), axis, 25.0f, 1,
+			ownerTransformable.getDirectionVector());
+	}
+	else if(ownerTransformable.getDirectionVector().getX() > 0.0f)
+	{
+		Vector3D axis(0.0f, 1.0f, 0.0f);
+		transformable.Init(*ownerTransformable.getPosition(), axis, -25.0f, 1,
+			ownerTransformable.getDirectionVector());
+	}
+	else
+	{
+		transformable.Init(*ownerTransformable.getPosition(), Vector3D::ZeroVec(), 0, 1,
+			ownerTransformable.getDirectionVector());
+	}
+	
 	
 	transformable.SetScale(scale, scale, scale);
 	timeSinceFired = 0.0f;

@@ -22,11 +22,13 @@ void LaserHighCooldown::CreateProjectile(ProjectileTypes projectileType,  std::s
 
 			vboDrawable.SetMeshInfo(meshInfo);
 			collisionSphere = *meshInfo->collisionSphere;
+			aabb = *meshInfo->aabb;
 		}
 		else
 		{
 			vboDrawable.SetMeshInfo(_meshInfo);
 			collisionSphere = *_meshInfo->collisionSphere;
+			aabb = *_meshInfo->aabb;
 		}
 	}
 }

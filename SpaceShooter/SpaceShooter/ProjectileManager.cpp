@@ -4,6 +4,7 @@
 ProjectileManager::ProjectileManager()
 	:log("ProjectileManager", WARN)
 {
+	renderAABB = false;
 }
 
 ProjectileManager::~ProjectileManager()
@@ -63,6 +64,10 @@ void ProjectileManager::DrawProjectiles()
 	{
 		if( (*i)->isFired() )
 		{
+			if(renderAABB)
+			{
+				(*i)->aabb.DrawAABB();
+			}
 			(*i)->Draw();
 		}
 	}

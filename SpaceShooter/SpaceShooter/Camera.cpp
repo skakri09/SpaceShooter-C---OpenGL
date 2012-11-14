@@ -24,11 +24,20 @@ void Camera::RenderCamera()
 
 void Camera::Control(float mouseVel, float moveVel, InputManager* input)
 {
+	float actingMoveVel = moveVel;
+	if(input->KeyDownHold(SDLK_LSHIFT))
+	{	//Setting camera movement speed to 4x if shift is held down
+		actingMoveVel*=4;
+	}
+	else if(input->KeyDownHold(SDLK_LCTRL))
+	{//Setting camera movement speed to 1/4th if shift is held down
+		actingMoveVel/=4;
+	}
 	if(ctrlMode != NONE)
 	{		
 		if(input->LeftMouseDownHold())
 		{
-			ControlRotation(mouseVel, moveVel, input);
+			ControlRotation(mouseVel, actingMoveVel, input);
 		}
 		else
 		{
@@ -43,11 +52,11 @@ void Camera::Control(float mouseVel, float moveVel, InputManager* input)
 
 		if(ctrlMode == NUM_PAD_WITH_MOUSE)
 		{
-			ControlCamNumpad(mouseVel, moveVel, input);
+			ControlCamNumpad(mouseVel, actingMoveVel, input);
 		}
 		else if(ctrlMode == WASD_WITH_MOUSE)
 		{
-			ControlCamWASDSX(mouseVel, moveVel, input);
+			ControlCamWASDSX(mouseVel, actingMoveVel, input);
 		}
 	}
 	

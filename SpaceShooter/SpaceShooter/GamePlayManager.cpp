@@ -73,6 +73,7 @@ void GamePlayManager::Update(float deltaTime)
 	if(input->KeyDownOnce(SDLK_F2))
 	{
 		SpaceShipManager::Inst()->SetDrawAABB(!SpaceShipManager::Inst()->IsDrawingAABB());
+		ProjectileManager::Inst()->SetDrawAABB(SpaceShipManager::Inst()->IsDrawingAABB());
 	}
 	if(input->KeyDownOnce(SDLK_F1))
 	{

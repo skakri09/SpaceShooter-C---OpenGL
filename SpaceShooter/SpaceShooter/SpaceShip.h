@@ -23,7 +23,6 @@
 #include "ShooterModule.h"
 #include "VBODrawable.h"
 #include "Transformable.h"
-#include "BoundingSphere.h"
 #include "AABBCollisionBox.h"
 
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
@@ -60,10 +59,6 @@ public:
 								float dirVecX, float dirVecY, float dirVecZ,
 								float scale);
 
-	//Starts rotation around the specified axis
-	//void InitRotation(Axis axisToRotateArround);
-
-
 	void HandleProjectileCollision(std::shared_ptr<Projectile> projectile);
 
 	int GetSpaceshipHP(){return SpaceShipCurrentHealth;}
@@ -72,8 +67,7 @@ public:
 	ShooterModule shooterModule;	//A spaceship can shoot
 	VBODrawable vboDrawable;		//A spaceship is drawn with VBOs
 	Transformable transformable;	//A spaceship is transformable
-	BoundingSphere collisionSphere;	//A spaceship has a boundingSphere for collision
-	AABBCollisionBox aabb;
+	AABBCollisionBox aabb;			//A spaceship has an AABB for collision
 
 	//Takes care of firing the spaceships gun.
 	bool Shoot(ProjectileTypes projectileType);
@@ -93,6 +87,7 @@ protected:
 	RespawnValues respawnValues;
 	float respawnImmunityTimer;
 	float respawnImmunityDuration;
+
 private:
 	Logger log;
 

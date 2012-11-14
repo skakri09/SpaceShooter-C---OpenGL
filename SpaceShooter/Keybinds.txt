@@ -1,0 +1,27 @@
+F1 - Toggle Debug-movement mode. When on, you can move freely arround and the game will be paused.
+F2 - Toggle collision boxes. When on, collision boxes are drawn.
+
+Escape - Depends on the gamestate. When in menues, it will take you back to previous state. When in-game it brings up the in-game menu. When on Main-Menu it quits.
+
+In menues:
+W/S - move up/down on menu selection
+Space/Enter - Select the current marked menu entry.
+
+Gameplay mode:
+W - Move Up
+S - move down
+D - move right
+A - move left
+space - shoot
+
+Debug mode:
+W - Move forward when in debug mode
+S - Move backwards when in debug mode
+D - Move right
+A - Move left
+x - Move down in debug mode
+space - Move up
+Left mouse - Allows moving camera arround
+Left shift - Move at 4x speed
+Left Ctr - Move at 1/4th speed
+There are a couple of various debug control modes available, but they are not bound and must be changed in-game
