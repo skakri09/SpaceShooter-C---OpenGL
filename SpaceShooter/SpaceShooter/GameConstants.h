@@ -21,4 +21,5 @@ static const float CAMERA_POS_Z = 30.0f;
 static const unsigned int window_width = 1280;
 static const unsigned int window_height = 720;
 
+static const unsigned int MAX_PARTICLES = 400;
 #endif // GameConstants_H

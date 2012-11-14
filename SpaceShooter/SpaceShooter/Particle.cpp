@@ -21,6 +21,7 @@ void Particle::InitParticle(Vector3D startPos, Vector3D velocity,
 	this->r = r;
 	this->g = g;
 	this->b = b;
+	GameObject::kill = false;
 }
 
 void Particle::Draw()

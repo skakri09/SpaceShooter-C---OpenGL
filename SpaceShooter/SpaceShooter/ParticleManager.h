@@ -19,6 +19,8 @@
 #include "VBODrawable.h"
 #include "Particle.h"
 #include "ManagerInterface.h"
+#include "GameConstants.h"
+#include "Logger.h"
 
 class ParticleManager : public ManagerInterface
 {
@@ -48,10 +50,14 @@ public:
    void ResetParticles();
 
 private:
+	Logger log;
 	ParticleManager();
 	~ParticleManager();
 
 	VBODrawable vbo;
+
+	std::vector<Particle*> ActiveParticles;
+	std::vector<Particle*> InactiveParticles;
 
 	std::vector<std::shared_ptr<Particle>> particles;
 };

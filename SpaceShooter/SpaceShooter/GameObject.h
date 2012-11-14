@@ -47,9 +47,9 @@ public:
 	}
 
 protected:
-
-private:
 	bool kill;
+private:
+	
 	GameObject* owner;
 };
 
