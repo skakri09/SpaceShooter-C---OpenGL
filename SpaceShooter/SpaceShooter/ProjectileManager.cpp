@@ -35,6 +35,12 @@ void ProjectileManager::InitProjectileManager()
 
 	std::shared_ptr<Projectile> dtripleConeLaser = GetProjectile(DOUBLE_TRIPLE_CONE_LASER);
 	projectileCooldowns[DOUBLE_TRIPLE_CONE_LASER] = dtripleConeLaser->GetProjectileCooldown();
+
+	std::shared_ptr<Projectile> doubleLaser = GetProjectile(DOUBLE_LASER);
+	projectileCooldowns[DOUBLE_LASER] = doubleLaser->GetProjectileCooldown();
+
+	std::shared_ptr<Projectile> quadLaser = GetProjectile(QUAD_LASER);
+	projectileCooldowns[QUAD_LASER] = quadLaser->GetProjectileCooldown();
 }
 
 void ProjectileManager::Update(float deltaTime)
@@ -120,6 +126,12 @@ std::shared_ptr<Projectile> ProjectileManager::GetProjectile( ProjectileTypes pr
 		break;
 	case DOUBLE_TRIPLE_CONE_LASER:
 		projectiles.push_back(std::make_shared<DoubleTripleConeLaser>());
+		break;
+	case DOUBLE_LASER:
+		projectiles.push_back(std::make_shared<DoubleLaser>());
+		break;
+	case QUAD_LASER:
+		projectiles.push_back(std::make_shared<QuadLaser>());
 		break;
 	}
 

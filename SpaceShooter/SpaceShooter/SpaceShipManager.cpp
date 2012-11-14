@@ -285,22 +285,22 @@ void SpaceShipManager::UpdatePlayerWeaponSelection()
 	}
 	if(input->KeyDownOnce(SDLK_2))
 	{
-		player->SetActiveProjectileType(TRIPLE_CONE_LASER);
+		player->SetActiveProjectileType(DOUBLE_LASER);
 		return;
 	}
 	if(input->KeyDownOnce(SDLK_3))
 	{
-		player->SetActiveProjectileType(DOUBLE_TRIPLE_CONE_LASER);
+		player->SetActiveProjectileType(TRIPLE_CONE_LASER);
 		return;
 	}
-	/*if(input->KeyDownOnce(SDLK_4))
+	if(input->KeyDownOnce(SDLK_4))
 	{
-		player->SetActiveProjectileType(DOUBLE_TRIPLE_CONE_LASER);
+		player->SetActiveProjectileType(QUAD_LASER);
 		return;
 	}
 	if(input->KeyDownOnce(SDLK_5))
 	{
-		player->SetActiveProjectileType(LASER_SLOW);
+		player->SetActiveProjectileType(DOUBLE_TRIPLE_CONE_LASER);
 		return;
-	}*/
+	}
 }

@@ -46,13 +46,17 @@ public:
 	//Sets the active projectile type of the player, if it's available
 	void SetActiveProjectileType(ProjectileTypes newType);
 
+	bool ProjectileTypeKnown(ProjectileTypes projType);
+
+	void MakeProjectileActive(ProjectileTypes projType);
+
 private:
 	Logger log;
 
 	ProjectileTypes activeProjectileType;
 
 	//Array representing the projectiletypes and if they are known or not
-	static const unsigned int totalTypes = 3;
+	static const unsigned int totalTypes = 5;
 	ProjectileKnown projTypes[totalTypes];
 };
 	

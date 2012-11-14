@@ -98,6 +98,7 @@
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="CrossScreenWhileFireing.cpp" />
     <ClCompile Include="DeathStar.cpp" />
+    <ClCompile Include="DoubleLaser.cpp" />
     <ClCompile Include="DoubleTripleConeLaser.cpp" />
     <ClCompile Include="EnemySpaceShipConstantState.cpp" />
     <ClCompile Include="EnvironmentalManager.cpp" />
@@ -105,6 +106,7 @@
     <ClCompile Include="GameplayGUI.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="HPEntry.cpp" />
+    <ClCompile Include="ImageEntry.cpp" />
     <ClCompile Include="ImperialStarDestroyer.cpp" />
     <ClCompile Include="IngameMenu.cpp" />
     <ClCompile Include="LivesEntry.cpp" />
@@ -115,7 +117,9 @@
     <ClCompile Include="OptionsMenu.cpp" />
     <ClCompile Include="ParticleManager.cpp" />
     <ClCompile Include="PlayGameEntry.cpp" />
+    <ClCompile Include="ProjectileIcon.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
+    <ClCompile Include="QuadLaser.cpp" />
     <ClCompile Include="QuitGameEntry.cpp" />
     <ClCompile Include="RestartGameEntry.cpp" />
     <ClCompile Include="ResumeGameEntry.cpp" />
@@ -179,6 +183,7 @@
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="CrossScreenWhileFireing.h" />
     <ClInclude Include="DeathStar.h" />
+    <ClInclude Include="DoubleLaser.h" />
     <ClInclude Include="DoubleTripleConeLaser.h" />
     <ClInclude Include="EnemyTypes.h" />
     <ClInclude Include="EnvironmentalManager.h" />
@@ -188,6 +193,7 @@
     <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="GUIEntry.h" />
     <ClInclude Include="HPEntry.h" />
+    <ClInclude Include="ImageEntry.h" />
     <ClInclude Include="ImperialStarDestroyer.h" />
     <ClInclude Include="IngameMenu.h" />
     <ClInclude Include="LivesEntry.h" />
@@ -201,7 +207,9 @@
     <ClInclude Include="OptionsMenu.h" />
     <ClInclude Include="ParticleManager.h" />
     <ClInclude Include="PlayGameEntry.h" />
+    <ClInclude Include="ProjectileIcon.h" />
     <ClInclude Include="ProjectileManager.h" />
+    <ClInclude Include="Quadlaser.h" />
     <ClInclude Include="QuitGameEntry.h" />
     <ClInclude Include="RestartGameEntry.h" />
     <ClInclude Include="ResumeGameEntry.h" />

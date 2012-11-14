@@ -50,7 +50,6 @@ void ScoreValueEntry::Update( float deltaTime )
 
 void ScoreValueEntry::Draw(VBODrawable* vbo)
 {
-
 	glColor3f(0.898f, 0.694f, 0.227f);
 	TextEntry::Draw(vbo);
 	glColor3f(1, 1, 1);

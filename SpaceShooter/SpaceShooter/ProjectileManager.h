@@ -17,6 +17,8 @@
 #include "TripleConeLaser.h"
 #include "ProjectileTypes.h"
 #include "DoubleTripleConeLaser.h"
+#include "DoubleLaser.h"
+#include "QuadLaser.h"
 #include "Logger.h"
 #include "ManagerInterface.h"
 

@@ -136,6 +136,9 @@
     <Filter Include="Game\SMPEG">
       <UniqueIdentifier>{27ec587e-a980-4e1e-ab8e-849e031b93f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GUI\GameplayGUI\GUI Entry\ImageEntries">
+      <UniqueIdentifier>{d45e49a3-36e2-467a-a1e1-563e90bbe890}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogSys.cpp">
@@ -366,6 +369,18 @@
     </ClCompile>
     <ClCompile Include="RestartGameEntry.cpp">
       <Filter>Game\Menu\MenuEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageEntry.cpp">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\ImageEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileIcon.cpp">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\ImageEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleLaser.cpp">
+      <Filter>Game\GameObjects\Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadLaser.cpp">
+      <Filter>Game\GameObjects\Projectiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -650,6 +665,18 @@
     </ClInclude>
     <ClInclude Include="RestartGameEntry.h">
       <Filter>Game\Menu\MenuEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\ImageEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileIcon.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\ImageEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleLaser.h">
+      <Filter>Game\GameObjects\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Quadlaser.h">
+      <Filter>Game\GameObjects\Projectiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -15,6 +15,12 @@ void GameplayGUI::InitGUI(ManagerInterface* manager)
 	GuiEntries.push_back(std::make_shared<HPEntry>());
 	GuiEntries.push_back(std::make_shared<LivesEntry>());
 	GuiEntries.push_back(std::make_shared<ScoreTextEntry>());
+	GuiEntries.push_back(std::make_shared<ProjectileIcon>(LASER_FAST,"SingleLaser.png", -6.1f, 3.40f, -5.0f, 0.8f));
+	GuiEntries.push_back(std::make_shared<ProjectileIcon>(DOUBLE_LASER,"DoubleLaser.png", -5.2f, 3.40f, -5.0f, 0.8f));
+	GuiEntries.push_back(std::make_shared<ProjectileIcon>(TRIPLE_CONE_LASER,"TripleLaser.png", -4.3f, 3.40f, -5.0f, 0.8f));
+	GuiEntries.push_back(std::make_shared<ProjectileIcon>(QUAD_LASER,"QuadLaser.png", -3.4f, 3.40f, -5.0f, 0.8f));
+	GuiEntries.push_back(std::make_shared<ProjectileIcon>(DOUBLE_TRIPLE_CONE_LASER,"DoubleTripleLaser.png", -2.5f, 3.40f, -5.0f, 0.8f));
+
 	for(unsigned int i = 0; i < GuiEntries.size(); i++)
 	{
 		GuiEntries.at(i)->Init();

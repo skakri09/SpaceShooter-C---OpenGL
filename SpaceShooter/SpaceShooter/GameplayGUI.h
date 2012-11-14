@@ -25,6 +25,7 @@
 #include "ManagerInterface.h"
 #include "ScoreTextEntry.h"
 #include "ScoreValueEntry.h"
+#include "ProjectileIcon.h"
 
 class GameplayGUI
 {

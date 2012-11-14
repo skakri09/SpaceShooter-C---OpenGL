@@ -13,6 +13,7 @@ S - move down
 D - move right
 A - move left
 space - shoot
+1-5 - Switch weapon 
 
 Debug mode:
 W - Move forward when in debug mode
