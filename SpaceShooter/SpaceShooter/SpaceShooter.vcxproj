@@ -259,7 +259,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\particles\particle.xml" />
-    <None Include="..\xml\Mesh_PlayerSpaceship.xml" />
     <None Include="..\xml\Projectiles\Mesh_Laser.xml" />
     <None Include="..\xml\skybox.xml" />
     <None Include="..\xml\square.xml" />

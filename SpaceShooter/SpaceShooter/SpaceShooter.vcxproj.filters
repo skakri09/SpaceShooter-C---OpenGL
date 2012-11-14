@@ -29,12 +29,6 @@
     <Filter Include="Game\GameObjects\Particles">
       <UniqueIdentifier>{a7c2d978-e4eb-4e6c-94c6-48ff97e725a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\GameObjects\Particles\Header Files">
-      <UniqueIdentifier>{05190b0b-8b64-404f-aa08-01e89cb1609d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\GameObjects\Particles\Source Files">
-      <UniqueIdentifier>{f4c90c94-0dc3-4428-b5d9-ae04966a5e59}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Utility\ResourceLoading">
       <UniqueIdentifier>{58dd5215-ec28-40cc-8a00-8840c951b124}</UniqueIdentifier>
     </Filter>
@@ -49,12 +43,6 @@
     </Filter>
     <Filter Include="Game\GameObjects\SpaceShips\Enemies">
       <UniqueIdentifier>{4abf28cd-1480-44bd-91f3-7367e3c0c573}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\GameObjects\SpaceShips\Enemies\Header Files">
-      <UniqueIdentifier>{84164f3e-c197-44c2-9643-476140178b08}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\GameObjects\SpaceShips\Enemies\Source Files">
-      <UniqueIdentifier>{ad07e0da-0a92-44b1-a607-1c7919515eab}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\Components">
       <UniqueIdentifier>{80c502bf-18f2-4d74-a866-d52285e7ae62}</UniqueIdentifier>
@@ -127,17 +115,8 @@
     <Filter Include="Game\GUI\GameplayGUI\GUI Entry">
       <UniqueIdentifier>{a890c84a-0af7-42f9-949f-baf8e144a507}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\GUI\GameplayGUI\GUI Entry\TextEntry">
-      <UniqueIdentifier>{4f796925-c01e-4112-9245-e56e17da72f0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\GUI\GameplayGUI\GUI Entry\TextEntries">
       <UniqueIdentifier>{3ee138a0-4af7-4f4c-9651-7d02837a5a52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\GUI\GameplayGUI\GUI Entry\TextEntries\Header Files">
-      <UniqueIdentifier>{05485ec5-6a8e-4ae6-9e76-d2a96d939959}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\GUI\GameplayGUI\GUI Entry\TextEntries\Source Files">
-      <UniqueIdentifier>{d604f6ae-8ec6-48b5-b675-ce7a3942dff5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\Menu\MainMenu">
       <UniqueIdentifier>{8c643a98-f681-49d6-af37-72137dd61822}</UniqueIdentifier>
@@ -145,32 +124,14 @@
     <Filter Include="Game\Menu\Options Menu">
       <UniqueIdentifier>{a9b85e56-76ee-4e59-aea7-02db3675d218}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Menu\Base Menu">
-      <UniqueIdentifier>{61bc3219-d97e-4f29-8c77-ea7a4d245a9a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Menu\MenuEntries">
       <UniqueIdentifier>{88cb7d8d-019a-422a-944a-5d6aec41ed3e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Menu\MenuEntries\Source Files">
-      <UniqueIdentifier>{8c1cc65c-d0a8-47eb-b2b1-7802a06cf1f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Menu\MenuEntries\Header Files">
-      <UniqueIdentifier>{a415052c-3128-4013-acf8-e857a401cd58}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\Menu\Options Menu\OptionEntries">
       <UniqueIdentifier>{dfcf5afd-553b-42de-a3bb-e4d951f948b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Menu\Options Menu\OptionEntries\Source Files">
-      <UniqueIdentifier>{fb6fc6ca-575b-4363-a0af-d6fe074facdc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Menu\Options Menu\OptionEntries\Header Files">
-      <UniqueIdentifier>{519735da-9649-4d1a-a98e-18e59d8c8507}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Menu\IngameMenu">
       <UniqueIdentifier>{d0ff3b05-4552-46b2-b29e-d59f396624e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\skybox">
-      <UniqueIdentifier>{e7b18e27-cebf-4adf-a615-96bdceefd6ca}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\SMPEG">
       <UniqueIdentifier>{27ec587e-a980-4e1e-ab8e-849e031b93f2}</UniqueIdentifier>
@@ -185,12 +146,6 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Game\GameObjects\Particles\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseEnemyShip.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SpaceShipManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
@@ -219,20 +174,11 @@
     <ClCompile Include="SpaceShip.cpp">
       <Filter>Game\GameObjects\SpaceShips</Filter>
     </ClCompile>
-    <ClCompile Include="ImperialTieFighter.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ImperialTieInterceptor.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MeshFactory.cpp">
       <Filter>Game\Factories\MeshFactory</Filter>
     </ClCompile>
     <ClCompile Include="ShooterModule.cpp">
       <Filter>Game\Components\Shooter Module</Filter>
-    </ClCompile>
-    <ClCompile Include="ImperialStarDestroyer.cpp">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Planet.cpp">
       <Filter>Game\GameObjects\Environmental</Filter>
@@ -256,17 +202,8 @@
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MenuEntry.cpp">
-      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TextFactory.cpp">
       <Filter>Game\Factories\TextFactory</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayGameEntry.cpp">
-      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QuitGameEntry.cpp">
-      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameStateManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
@@ -280,29 +217,11 @@
     <ClCompile Include="GameplayGUI.cpp">
       <Filter>Game\GUI\GameplayGUI</Filter>
     </ClCompile>
-    <ClCompile Include="HPEntry.cpp">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LivesEntry.cpp">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="SoundManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ScoreManager.cpp">
       <Filter>Game\Managers\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreTextEntry.cpp">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TextEntry.cpp">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntry</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreValueEntry.cpp">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OptionsEntry.cpp">
-      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MainMenu.cpp">
       <Filter>Game\Menu\MainMenu</Filter>
@@ -310,35 +229,8 @@
     <ClCompile Include="OptionsMenu.cpp">
       <Filter>Game\Menu\Options Menu</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Game\Menu\Base Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="BackToMainMenuEntry.cpp">
-      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TogglePolygonSmoothEnabledEntry.cpp">
-      <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IngameMenu.cpp">
       <Filter>Game\Menu\IngameMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="RestartGameEntry.cpp">
-      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ResumeGameEntry.cpp">
-      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BackEntry.cpp">
-      <Filter>Game\Menu\MenuEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ToggleSoundMute.cpp">
-      <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ToggleMusicMute.cpp">
-      <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ToggleEffectsMute.cpp">
-      <Filter>Game\Menu\Options Menu\OptionEntries\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SmpegPlayer.cpp">
       <Filter>Game\SMPEG</Filter>
@@ -406,6 +298,75 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Game\GameObjects\Projectiles</Filter>
     </ClCompile>
+    <ClCompile Include="BaseEnemyShip.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ImperialTieInterceptor.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ImperialStarDestroyer.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ImperialTieFighter.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Game\GameObjects\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="LivesEntry.cpp">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="HPEntry.cpp">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreValueEntry.cpp">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreTextEntry.cpp">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="TextEntry.cpp">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Game\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="ToggleSoundMute.cpp">
+      <Filter>Game\Menu\Options Menu\OptionEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="ToggleEffectsMute.cpp">
+      <Filter>Game\Menu\Options Menu\OptionEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="ToggleMusicMute.cpp">
+      <Filter>Game\Menu\Options Menu\OptionEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="TogglePolygonSmoothEnabledEntry.cpp">
+      <Filter>Game\Menu\Options Menu\OptionEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="ResumeGameEntry.cpp">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="BackEntry.cpp">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="BackToMainMenuEntry.cpp">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuEntry.cpp">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsEntry.cpp">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayGameEntry.cpp">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitGameEntry.cpp">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClCompile>
+    <ClCompile Include="RestartGameEntry.cpp">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLUtils\GLUtils.hpp">
@@ -428,12 +389,6 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Game\Managers\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Game\GameObjects\Particles\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseEnemyShip.h">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AiStateMachine.h">
       <Filter>Game\Components\SpaceShipAI</Filter>
@@ -468,20 +423,11 @@
     <ClInclude Include="SpaceShip.h">
       <Filter>Game\GameObjects\SpaceShips</Filter>
     </ClInclude>
-    <ClInclude Include="ImperialTieFighter.h">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ImperialTieInterceptor.h">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GetRandomFloat.h">
       <Filter>Game\Utility</Filter>
     </ClInclude>
     <ClInclude Include="ShooterModule.h">
       <Filter>Game\Components\Shooter Module</Filter>
-    </ClInclude>
-    <ClInclude Include="ImperialStarDestroyer.h">
-      <Filter>Game\GameObjects\SpaceShips\Enemies\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Planet.h">
       <Filter>Game\GameObjects\Environmental</Filter>
@@ -522,20 +468,11 @@
     <ClInclude Include="EnvironmentalManager.h">
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MenuEntry.h">
-      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TextFactory.h">
       <Filter>Game\Factories\TextFactory</Filter>
     </ClInclude>
     <ClInclude Include="MeshFactory.h">
       <Filter>Game\Factories\MeshFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayGameEntry.h">
-      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QuitGameEntry.h">
-      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameState.h">
       <Filter>Game\Utility</Filter>
@@ -555,74 +492,29 @@
     <ClInclude Include="GameplayGUI.h">
       <Filter>Game\GUI\GameplayGUI</Filter>
     </ClInclude>
-    <ClInclude Include="HPEntry.h">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LivesEntry.h">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="SoundManager.h">
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ScoreManager.h">
       <Filter>Game\Managers\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreTextEntry.h">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ManagerInterface.h">
       <Filter>Game\Managers\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TextEntry.h">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntry</Filter>
     </ClInclude>
     <ClInclude Include="EnemyTypes.h">
       <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreValueEntry.h">
-      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Math.h">
       <Filter>Game\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="OptionsEntry.h">
-      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MainMenu.h">
       <Filter>Game\Menu\MainMenu</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Game\Menu\Base Menu</Filter>
-    </ClInclude>
     <ClInclude Include="OptionsMenu.h">
       <Filter>Game\Menu\Options Menu</Filter>
     </ClInclude>
-    <ClInclude Include="BackToMainMenuEntry.h">
-      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TogglePolygonSmoothEnabledEntry.h">
-      <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RestartGameEntry.h">
-      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IngameMenu.h">
       <Filter>Game\Menu\IngameMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="ResumeGameEntry.h">
-      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BackEntry.h">
-      <Filter>Game\Menu\MenuEntries\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ToggleSoundMute.h">
-      <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ToggleMusicMute.h">
-      <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ToggleEffectsMute.h">
-      <Filter>Game\Menu\Options Menu\OptionEntries\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SmpegPlayer.h">
       <Filter>Game\SMPEG</Filter>
@@ -690,12 +582,78 @@
     <ClInclude Include="TripleConeLaser.h">
       <Filter>Game\GameObjects\Projectiles</Filter>
     </ClInclude>
+    <ClInclude Include="BaseEnemyShip.h">
+      <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ImperialTieInterceptor.h">
+      <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ImperialStarDestroyer.h">
+      <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ImperialTieFighter.h">
+      <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Game\GameObjects\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="HPEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreValueEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreTextEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="LivesEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="TextEntry.h">
+      <Filter>Game\GUI\GameplayGUI\GUI Entry\TextEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Game\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="ToggleEffectsMute.h">
+      <Filter>Game\Menu\Options Menu\OptionEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="ToggleMusicMute.h">
+      <Filter>Game\Menu\Options Menu\OptionEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="TogglePolygonSmoothEnabledEntry.h">
+      <Filter>Game\Menu\Options Menu\OptionEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="ToggleSoundMute.h">
+      <Filter>Game\Menu\Options Menu\OptionEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="BackEntry.h">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="ResumeGameEntry.h">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="BackToMainMenuEntry.h">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuEntry.h">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsEntry.h">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayGameEntry.h">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitGameEntry.h">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClInclude>
+    <ClInclude Include="RestartGameEntry.h">
+      <Filter>Game\Menu\MenuEntries</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib3ds-1_3d.dll">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="..\xml\Mesh_PlayerSpaceship.xml">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\particles\particle.xml">
@@ -712,7 +670,7 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\xml\skybox.xml">
-      <Filter>Resource Files\skybox</Filter>
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
 </Project>
