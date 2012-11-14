@@ -13,7 +13,7 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-#include <gl/gl.h>
+#include <gl/glew.h>
 
 #include "MeshInfo.h"
 #include "Logger.h"

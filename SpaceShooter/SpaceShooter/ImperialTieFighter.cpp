@@ -1,5 +1,5 @@
 #include "ImperialTieFighter.h"
-
+#include "ApproachGivenPosition.h"
 
 ImperialTieFighter::ImperialTieFighter(std::shared_ptr<PlayerSpaceShip> playerShip)
 	: log("ImperialTieFighter", WARN),

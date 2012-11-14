@@ -18,10 +18,11 @@ Mesh3dsLoader::~Mesh3dsLoader()
 MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 {
 	model = lib3ds_file_load(_3dsMeshFile.c_str());
-	
+	Lib3dsVector min, max;
+
 	MeshInfo meshInfo;
 
-	Lib3dsMaterial* foo = model->materials;
+	//Lib3dsMaterial* foo = model->materials;
 	//Lib3dsMaterial* lib3ds_file_get_materials(Lib3dsFile *file) { return file->materials; }
 
 	if(!model)
@@ -62,7 +63,7 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 				finishedFaces++;
 			}
 		}
-
+		
 		meshInfo.mode = GL_TRIANGLES;
 		//Creating the buffer objects
 		meshInfo.haveVertices = true;
@@ -82,9 +83,23 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 		
 		meshInfo.numberOfIndices = totalFaces*3;
 
+		lib3ds_file_bounding_box_of_nodes(model, true, false, false, min, max);
+		std::shared_ptr<Vector3D> AABBmin = std::make_shared<Vector3D>();
+		std::shared_ptr<Vector3D> AABBmax = std::make_shared<Vector3D>();
+		AABBmin->setValues(min[0], min[1], min[2]);
+		AABBmax->setValues(max[0], max[1], max[2]);
+
+		collBox = std::make_shared<AABBCollisionBox>();
+		collBox->SetPoints(AABBmin, AABBmax);
+		collBox->CreateCollisionBox(vertices, (totalFaces*3));
+		meshInfo.aabb = collBox;
+
 		collisionSphere = std::make_shared<BoundingSphere>();
 		collisionSphere->CreateCollisionBox(vertices, totalFaces);
 		meshInfo.collisionSphere = collisionSphere;
+
+
+
 		if(vertices)
 		{
 			delete[] vertices;

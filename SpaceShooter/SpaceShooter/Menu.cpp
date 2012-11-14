@@ -109,7 +109,7 @@ void Menu::HandleInput()
 			++selectedEntry;
 			menuEntries.at(selectedEntry)->SetIsSelected(true);
 		}
-		SoundManager::Inst()->PlayEffect("button", 75);
+		SoundManager::Inst()->PlayEffect("button", 30);
 	}
 	else if(input->KeyDownOnce(SDLK_w) && !input->KeyDownOnce(SDLK_s))
 	{
@@ -125,7 +125,7 @@ void Menu::HandleInput()
 			--selectedEntry;
 			menuEntries.at(selectedEntry)->SetIsSelected(true);
 		}
-		SoundManager::Inst()->PlayEffect("button", 75);
+		SoundManager::Inst()->PlayEffect("button", 30);
 	}
 
 	if(input->KeyDownOnce(SDLK_RETURN) || input->KeyDownOnce(SDLK_SPACE))

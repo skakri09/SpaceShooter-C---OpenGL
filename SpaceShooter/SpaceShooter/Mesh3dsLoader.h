@@ -14,7 +14,6 @@
 #include <lib3ds/file.h>
 #include <lib3ds/mesh.h>
 #include <gl/glew.h>
-#include <gl/GL.h>
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -27,6 +26,7 @@
 #include "MeshInfo.h"
 #include "Logger.h"
 #include "BoundingSphere.h"
+#include "AABBCollisionBox.h"
 
 class Mesh3dsLoader
 {
@@ -45,6 +45,7 @@ private:
 	Logger log;
 
 	std::shared_ptr<BoundingSphere> collisionSphere;
+	std::shared_ptr<AABBCollisionBox> collBox;
 
 	unsigned int GetNrOfFaces();
 

@@ -13,8 +13,10 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-#include <gl/gl.h>
+#include <gl/glew.h>
+
 #include "BoundingSphere.h"
+#include "AABBCollisionBox.h"
 #include <memory>
 
 class BoundingSphere;
@@ -38,7 +40,9 @@ public:
 	GLuint colors;		bool haveColors;
 	GLenum mode;
 
+	std::shared_ptr<AABBCollisionBox> aabb;
 	std::shared_ptr<BoundingSphere> collisionSphere;
+
 };
 
 #endif // MeshInfo_h__

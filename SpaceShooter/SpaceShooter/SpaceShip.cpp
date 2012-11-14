@@ -20,6 +20,8 @@ void SpaceShip::Update(float deltaTime)
 {
 	transformable.Update(deltaTime);
 	collisionSphere.Update(transformable.GetCollisionTransformationInfo());
+	aabb.Update(transformable.GetCollisionTransformationInfo());
+
 	shooterModule.UpdateModule(deltaTime);
 
 	respawnImmunityTimer += deltaTime;
@@ -46,6 +48,7 @@ void SpaceShip::Draw()
 {
 	if(IsAlive())
 	{
+		
 		transformable.ApplyGLTransformations();
 		vboDrawable.Draw();
 	}
@@ -62,6 +65,7 @@ void SpaceShip::CreateGameObject(std::string meshPathFrom3dsFolder)
 
 		vboDrawable.SetMeshInfo(meshInfo);
 		collisionSphere = *meshInfo->collisionSphere;
+		aabb = *meshInfo->aabb;
 	}
 }
 
@@ -94,7 +98,18 @@ void SpaceShip::HandleProjectileCollision( std::shared_ptr<Projectile> projectil
 {
 	if(projectile->isFired())
 	{
-		BoundingSphere* projectileColSphere = &projectile->collisionSphere;
+		if(projectile->aabb.IsCollision(&aabb))
+		{
+			int dmgTaken = projectile->GetProjectileDmg();
+			SpaceShipCurrentHealth -= dmgTaken;
+			log << WARN << "Spaceship hit! It lost " << dmgTaken << ", " 
+				<< SpaceShipCurrentHealth << "/" << SpaceShipMaxHealth <<"HP left" << std::endl;
+
+			EmittProjectileHittParticles(*projectile);
+
+			projectile->DestroyProjectile();
+		}
+		/*BoundingSphere* projectileColSphere = &projectile->collisionSphere;
 
 		Vector3D collAmnt = collisionSphere.IsCollision(projectileColSphere);
 		if(collAmnt.getX() > 0 || collAmnt.getY() > 0.0f || collAmnt.getZ() > 0.0f)
@@ -103,11 +118,11 @@ void SpaceShip::HandleProjectileCollision( std::shared_ptr<Projectile> projectil
 			SpaceShipCurrentHealth -= dmgTaken;
 			log << WARN << "Spaceship hit! It lost " << dmgTaken << ", " 
 				<< SpaceShipCurrentHealth << "/" << SpaceShipMaxHealth <<"HP left" << std::endl;
-				
+
 			EmittProjectileHittParticles(*projectile);
-				
+
 			projectile->DestroyProjectile();
-		}
+		}*/
 	}
 }
 

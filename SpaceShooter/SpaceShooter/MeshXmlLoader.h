@@ -11,7 +11,6 @@
 #include <windows.h>
 #endif
 #include <gl/glew.h>
-#include <gl/GL.h>
 
 #include <string>
 #include <sstream>

@@ -14,8 +14,7 @@
 #include <windows.h>
 #endif
 
-#include <gl/gl.h>
-#include <gl/GLU.h>
+#include <gl/glew.h>
 #include <SDL.h>
 
 #include "GameConstants.h"

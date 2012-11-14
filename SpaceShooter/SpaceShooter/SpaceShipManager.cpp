@@ -26,7 +26,7 @@ void SpaceShipManager::InitManager(InputManager* input, GameState* gameState, Sc
 
 	//making sure to pre-load all spaceships we will be using so we dont have to do it on runtime
 	//Its not necessary to load the player ship, as it's always loaded on the start
-	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
+ 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieFighter//ImperialTieFighter.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//MilleniumFalcon//MilleniumFalcon.3ds");
@@ -233,5 +233,5 @@ void SpaceShipManager::ResetSpaceships()
 	player->InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(player));
-	EnemySpaceShips.back()->InitSpaceShip(-200, 200, -600, 200, 0, 1, 0, 0, 0, 1);
+	EnemySpaceShips.back()->InitSpaceShip(0, 0, -200, 0, 0, 0, 0, 0, 0, 1);
 }

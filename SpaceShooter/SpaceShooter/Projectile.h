@@ -19,6 +19,7 @@
 #include "Transformable.h"
 #include "BoundingSphere.h"
 #include "GameConstants.h"
+#include "AABBCollisionBox.h"
 
 class Projectile : public GameObject
 {
@@ -51,6 +52,7 @@ public:
 	VBODrawable vboDrawable;		//A projectile is drawn with VBOs
 	Transformable transformable;	//A projectile is transformable
 	BoundingSphere collisionSphere;	//A projectile has a boundingSphere for collision
+	AABBCollisionBox aabb;
 
 protected:
 	virtual void CreateProjectile(ProjectileTypes projectileType, std::string meshPathFromXmlFolder){}

@@ -12,7 +12,6 @@
 #include <windows.h>
 #endif
 #include <gl/glew.h>
-#include <gl/gl.h>
 
 #include "MeshInfo.h"
 #include "Logger.h"

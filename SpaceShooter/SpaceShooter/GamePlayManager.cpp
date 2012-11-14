@@ -2,7 +2,7 @@
 #include "GLUtils/GLUtils.hpp"
 
 #include <Windows.h>
-#include <GL/GL.h>
+#include <gl/glew.h>
 
 #include <iostream>
 #include <string>
@@ -58,7 +58,7 @@ void GamePlayManager::Update(float deltaTime)
 {
 	environment.Update(deltaTime);
 
-	cam.Control(15.0f*deltaTime, 40.0f*deltaTime, input);
+	cam.Control(25.0f*deltaTime, 150.0f*deltaTime, input);
 	/*Vector3D cameraPos(*SpaceShipManager::Inst()->GetPlayer()->transformable.getPosition());
 	cameraPos.setZ(cameraPos.getZ() + 10);
 	cameraPos.setY(cameraPos.getY() + 3);
@@ -114,15 +114,18 @@ void GamePlayManager::SetGameLights()
 
 void GamePlayManager::SetGameFog()
 {
+	glPushMatrix();
+	glLoadIdentity();
+	glEnable(GL_FOG); 
 	GLfloat fogColor[4]= {0.0f, 0.0f, 0.0f, 1.0f}; 
 	//GL_EXP, GL_EXP2, GL_LINEAR
 	glFogi(GL_FOG_MODE, GL_LINEAR);       
 	glFogfv(GL_FOG_COLOR, fogColor);           
-	glFogf(GL_FOG_DENSITY, 0.45f);          
+	glFogf(GL_FOG_DENSITY, 0.35f);          
 	glHint(GL_FOG_HINT, GL_DONT_CARE);      
-	glFogf(GL_FOG_START, 300.0f);         
-	glFogf(GL_FOG_END, FRUSTUM_DEPTH);              
-	glEnable(GL_FOG);   
+	glFogf(GL_FOG_START, 1.0f);         
+	glFogf(GL_FOG_END, FRUSTUM_DEPTH);
+	glPopMatrix();
 }
 
 void GamePlayManager::ResetGame()

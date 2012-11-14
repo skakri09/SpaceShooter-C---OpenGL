@@ -18,16 +18,20 @@ public:
 	AABB();
 	~AABB();
 
+	void SetPoints(std::shared_ptr<Vector3D> min, std::shared_ptr<Vector3D> max);
+
+	Vector3D* GetMin(){return &minPoint;}
+	Vector3D* GetMax(){return &maxPoint;}
+
+	float m_Height, height;
+	float m_Width, width;
+	float m_Depth, depth;
 protected:
 	//Creates an AABB from a vector of floats
 	void CreateAABB(std::vector<float>* vertices);
 
 	//Creates an AABB from a 2d array of floats 
 	void CreateAABB( Lib3dsVector* vertices, unsigned int size);
-
-	float m_Height;
-	float m_Width;
-	float m_Depth;
 
 	float m_Left;
 	float m_Right;
@@ -45,11 +49,14 @@ protected:
 	Vector3D m_LeftBottomFront;
 	Vector3D m_RightBottomFront;
 
-	void UpdateAABBWorldPosition(Vector3D* worldPos);
+	Vector3D minPoint;
+	Vector3D maxPoint;
+
+	Vector3D orgMinPoint;
+	Vector3D orgMaxPoint;
 private:
-	std::vector<Vector3D*> objectCorners;
-	std::vector<Vector3D> worldCorners;
-	//Logger log;	
+
+	
 };
 
 #endif // AABB_h__

@@ -21,7 +21,6 @@
 #include "Logger.h"
 
 #include <gl/glew.h>
-#include <gl/GL.h>
 
 class Texturable
 {

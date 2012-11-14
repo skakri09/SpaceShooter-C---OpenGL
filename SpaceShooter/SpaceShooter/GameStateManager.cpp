@@ -41,7 +41,7 @@ void GameStateManager::InitGameStateManager()
 	options = std::make_shared<OptionsMenu>();
 	ingameMenu = std::make_shared<IngameMenu>();
 
-	SwitchState(MAIN_MENU);
+	SwitchState(GAME);
 	
 	switchToState = currentState;
 }

@@ -407,7 +407,7 @@
       <Filter>Game\Components\Collidable</Filter>
     </ClCompile>
     <ClCompile Include="AABBCollisionBox.cpp">
-      <Filter>Game\Managers\Source Files</Filter>
+      <Filter>Game\Components\Collidable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

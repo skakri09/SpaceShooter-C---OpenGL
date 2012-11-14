@@ -21,7 +21,7 @@
 #include "MeshFactory.h"
 #include "Image.h"
 
-#include <gl/GL.h>
+#include <gl/glew.h>
 
 
 

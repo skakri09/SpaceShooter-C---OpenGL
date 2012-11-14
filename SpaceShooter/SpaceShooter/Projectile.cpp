@@ -23,12 +23,13 @@ Projectile::~Projectile()
 
 void Projectile::Draw()
 {
+	
 	if(fired)
 	{
 		// Applying transformations to this matrix to match the position and rotation of the 
 		// spaceship when fire was called.
 		glPushMatrix();
-
+		aabb.DrawAABB();
 		//glTranslatef(initialStartPosition.getX(), initialStartPosition.getY(), initialStartPosition.getZ());
 
 		//Draw the projectile in the above object's space which is transformed into the correct
@@ -37,7 +38,6 @@ void Projectile::Draw()
 
 		transformable.ApplyGLTransformations(true, true, false);
 		vboDrawable.Draw();
-
 
 		glPopMatrix();
 		glPopMatrix();
@@ -51,12 +51,13 @@ void Projectile::Update(GLfloat deltaTime)
 		transformable.Update(deltaTime);
 		timeSinceFired += deltaTime;
 		collisionSphere.Update(transformable.GetCollisionTransformationInfo());
-		
+		aabb.Update(transformable.GetCollisionTransformationInfo());
+
 		//Makes sure we stop drawing the projectile if it's been "airborne" longer then or 
 		//equal to the constant PROJECTILE_FLYTIME, or it's outside the frustum
 		if(timeSinceFired >= PROJECTILE_FLYTIME 
 			|| transformable.getZPos() > CAMERA_POS_Z+5 
-			|| transformable.getZPos() < -FRUSTUM_DEPTH )
+			|| transformable.getZPos() < (-500) )
 		{
 			fired = false;
 			timeSinceFired = 0.0f;
@@ -82,6 +83,8 @@ void Projectile::FireProjectile( Transformable& ownerTransformable, GameObject* 
 	initialStartPosition = *ownerTransformable.getPosition();
 
 	collisionSphere.Update(transformable.GetCollisionTransformationInfo());
+	aabb.Update(transformable.GetCollisionTransformationInfo());
+
 	fired = true;
 }
 

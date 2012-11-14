@@ -7,10 +7,11 @@
 *********************************************************************/
 #ifndef AABBCollisionBox_h__
 #define AABBCollisionBox_h__
-
-#include "Logger.h"
 #include "AABB.h"
 #include "CollisionTransformationInfo.h"
+
+#include <gl/glew.h>
+
 class AABBCollisionBox : public AABB
 {
 public:
@@ -23,7 +24,7 @@ public:
 	//and scale of the object this collisionbox is ment for.
 	void Update(CollisionTransformationInfo& translationInfo);
 
-	Vector3D IsCollision(AABBCollisionBox* otherCollidable);
+	bool IsCollision(AABBCollisionBox* otherCollidable);
 
 	//Creates the collisionBox for the spaceship. from a vector of vertices
 	void CreateCollisionBox(std::vector<float>* vertices);
@@ -31,15 +32,13 @@ public:
 	//same as above, but takes a pointer to a lib3dsvector which contain the vertices instead
 	void CreateCollisionBox(Lib3dsVector* vertices, unsigned int size);
 
-
+	void DrawAABB();
 
 protected:
 	Vector3D& GetMidpoint();
 
 	float GetRadius();
 
-private:
-	Logger log;
 };
 
 #endif // AABBCollisionBox_h__

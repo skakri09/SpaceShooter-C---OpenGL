@@ -14,7 +14,6 @@
 #define AiState_h__
 #include <Windows.h>
 #include <gl/glew.h>
-#include <gl/GL.h>
 #include <string>
 
 class BaseEnemyShip;

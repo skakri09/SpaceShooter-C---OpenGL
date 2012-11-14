@@ -5,7 +5,7 @@
 #ifdef _WIN32
 #include <Windows.h>
 #endif
-
+#include <gl/glew.h>
 /**
  * Simple program that starts our game manager
  */

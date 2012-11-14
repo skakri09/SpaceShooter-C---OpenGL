@@ -10,6 +10,7 @@
 #define SpaceShip_H
 
 #include <vector>
+#include <memory>
 
 #include "Logger.h"
 #include "GameObject.h"
@@ -23,7 +24,7 @@
 #include "VBODrawable.h"
 #include "Transformable.h"
 #include "BoundingSphere.h"
-
+#include "AABBCollisionBox.h"
 
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
@@ -72,6 +73,7 @@ public:
 	VBODrawable vboDrawable;		//A spaceship is drawn with VBOs
 	Transformable transformable;	//A spaceship is transformable
 	BoundingSphere collisionSphere;	//A spaceship has a boundingSphere for collision
+	AABBCollisionBox aabb;
 
 	//Takes care of firing the spaceships gun.
 	bool Shoot(ProjectileTypes projectileType);
