@@ -5,6 +5,7 @@ Camera::Camera()
 {
 	camYaw=0.0f;
 	camPitch=0.0f;
+	ctrlMode = NUM_PAD;
 }
 
 Camera::~Camera()
@@ -22,59 +23,39 @@ void Camera::RenderCamera()
 
 void Camera::Control(float mouseVel, float moveVel, InputManager* input)
 {
-	if(input->LeftMouseDownHold())
+	if(ctrlMode != NONE)
 	{
-		int MidX=window_width/2; 
-		int MidY=window_height/2;
-		
-		SDL_ShowCursor(SDL_DISABLE);
-		
-		int tmpx,tmpy;
-		SDL_GetMouseState(&tmpx,&tmpy); 
-		
-		camYaw+=mouseVel*(MidX-tmpx);   
-		camPitch+=mouseVel*(MidY-tmpy); 
-		
-		lockCamera();
+		if(input->LeftMouseDownHold())
+		{
+			int MidX=window_width/2; 
+			int MidY=window_height/2;
 
-		SDL_WarpMouse(MidX,MidY);   
-	}
-	else
-	{
-		SDL_ShowCursor(SDL_ENABLE);
+			SDL_ShowCursor(SDL_DISABLE);
+
+			int tmpx,tmpy;
+			SDL_GetMouseState(&tmpx,&tmpy); 
+
+			camYaw+=mouseVel*(MidX-tmpx);   
+			camPitch+=mouseVel*(MidY-tmpy); 
+
+			lockCamera();
+
+			SDL_WarpMouse(MidX,MidY);   
+		}
+		else
+		{
+			SDL_ShowCursor(SDL_ENABLE);
+		}
+		if(ctrlMode == NUM_PAD)
+		{
+			ControlCamNumpad(mouseVel, moveVel, input);
+		}
+		else if(ctrlMode == WASD)
+		{
+			ControlCamWASDSX(mouseVel, moveVel, input);
+		}
 	}
 	
-	if(input->KeyDownHold(SDLK_KP8))//up
-	{
-		if(camPitch!=90 && camPitch!=-90)  
-		{
-			moveCamera(moveVel,0.0);
-		}
-		moveCameraUp(moveVel,0.0);     
-	}
-	else if(input->KeyDownHold(SDLK_KP2))//down
-	{
-		if(camPitch!=90 && camPitch!=-90)
-		{
-			moveCamera(moveVel,180.0);
-		}
-		moveCameraUp(moveVel,180.0);
-	}              
-	if(input->KeyDownHold(SDLK_KP4)) //left
-	{
-		moveCamera(moveVel,90.0);
-	}
-	else if(input->KeyDownHold(SDLK_KP6)) //right
-	{
-		moveCamera(moveVel,270);        
-	}
-	
-	if(input->KeyDownOnce(SDLK_KP5))//reset camera transform
-	{
-		camYaw=0.0f;
-		camPitch=0.0f;
-		camPos.setValues(CAMERA_POS_X, CAMERA_POS_Y, CAMERA_POS_Z);
-	}
 }
 
 void Camera::lockCamera()
@@ -127,4 +108,87 @@ void Camera::SetCameraPosition( Vector3D* position )
 void Camera::SetCameraPosition( float xPos, float yPos, float zPos )
 {
 	camPos.setValues(xPos, yPos, zPos);
+}
+
+void Camera::ControlCamNumpad(float mouseVel, float moveVel, InputManager* input)
+{
+	if(input->KeyDownHold(SDLK_KP8))//up
+	{
+		if(camPitch!=90 && camPitch!=-90)  
+		{
+			moveCamera(moveVel,0.0);
+		}
+		moveCameraUp(moveVel,0.0);     
+	}
+	else if(input->KeyDownHold(SDLK_KP5))//down
+	{
+		if(camPitch!=90 && camPitch!=-90)
+		{
+			moveCamera(moveVel,180.0);
+		}
+		moveCameraUp(moveVel,180.0);
+	}              
+	if(input->KeyDownHold(SDLK_KP4)) //left
+	{
+		moveCamera(moveVel,90.0);
+	}
+	else if(input->KeyDownHold(SDLK_KP6)) //right
+	{
+		moveCamera(moveVel,270);        
+	}
+
+	if(input->KeyDownOnce(SDLK_KP2))//reset camera transform
+	{
+		camYaw=0.0f;
+		camPitch=0.0f;
+		camPos.setValues(CAMERA_POS_X, CAMERA_POS_Y, CAMERA_POS_Z);
+	}
+}
+
+void Camera::ControlCamWASDSX(float mouseVel, float moveVel, InputManager* input)
+{
+	if(input->KeyDownHold(SDLK_w))//up
+	{
+		if(camPitch!=90 && camPitch!=-90)  
+		{
+			moveCamera(moveVel,0.0);
+		}
+		moveCameraUp(moveVel,0.0);     
+	}
+	else if(input->KeyDownHold(SDLK_s))//down
+	{
+		if(camPitch!=90 && camPitch!=-90)
+		{
+			moveCamera(moveVel,180.0);
+		}
+		moveCameraUp(moveVel,180.0);
+	}              
+	if(input->KeyDownHold(SDLK_a)) //left
+	{
+		moveCamera(moveVel,90.0);
+	}
+	else if(input->KeyDownHold(SDLK_d)) //right
+	{
+		moveCamera(moveVel,270);        
+	}
+
+	if(input->KeyDownHold(SDLK_SPACE))
+	{
+		camPos.setY(camPos.getY() + moveVel);
+	}
+	else if(input->KeyDownHold(SDLK_x))
+	{
+		camPos.setY(camPos.getY() - moveVel);
+	}
+	if(input->KeyDownOnce(SDLK_KP2))//reset camera transform
+	{
+		camYaw=0.0f;
+		camPitch=0.0f;
+		camPos.setValues(CAMERA_POS_X, CAMERA_POS_Y, CAMERA_POS_Z);
+	}
+}
+
+void Camera::SetCtrlMode( ControlMode newControlMode )
+{
+	this->ctrlMode = newControlMode;
 }

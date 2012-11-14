@@ -18,6 +18,7 @@ using GLUtils::checkGLErrors;
 GamePlayManager::GamePlayManager()
 	: log("GameMan", WARN)
 {
+	debugMode = false;
 }
 
 GamePlayManager::~GamePlayManager() {
@@ -43,12 +44,12 @@ void GamePlayManager::RenderGame()
 	glPushMatrix();
 	
 	cam.RenderCamera();
-	
+
 	environment.DrawEnvironment();
-	ParticleManager::Inst()->DrawParticles();
+	
 	SpaceShipManager::Inst()->DrawSpaceShips();
 	ProjectileManager::Inst()->DrawProjectiles();
-
+	ParticleManager::Inst()->DrawParticles();
 	gpi.RenderGUI();
 
 	glPopMatrix();
@@ -56,18 +57,21 @@ void GamePlayManager::RenderGame()
 
 void GamePlayManager::Update(float deltaTime)
 {
-	environment.Update(deltaTime);
-
-	cam.Control(25.0f*deltaTime, 150.0f*deltaTime, input);
 	/*Vector3D cameraPos(*SpaceShipManager::Inst()->GetPlayer()->transformable.getPosition());
 	cameraPos.setZ(cameraPos.getZ() + 10);
 	cameraPos.setY(cameraPos.getY() + 3);
 	cam.SetCameraPosition(&cameraPos);*/
-	ParticleManager::Inst()->Update(deltaTime);
-	SpaceShipManager::Inst()->Update(deltaTime);
-	ProjectileManager::Inst()->Update(deltaTime);
-	score.Update(deltaTime);
-	gpi.UpdateGUI(deltaTime);
+	cam.Control(25.0f*deltaTime, 50.0f*deltaTime, input);
+
+	if(!debugMode)
+	{
+		environment.Update(deltaTime);
+		ParticleManager::Inst()->Update(deltaTime);
+		SpaceShipManager::Inst()->Update(deltaTime);
+		ProjectileManager::Inst()->Update(deltaTime);
+		score.Update(deltaTime);
+		gpi.UpdateGUI(deltaTime);
+	}
 }
 
 void GamePlayManager::OnEnteringGameState()
@@ -90,26 +94,32 @@ void GamePlayManager::SetGameLights()
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHT1);
-	const static GLfloat ambient[] = 
+	//const static GLfloat ambient[] = 
+	//{ 0.1f, 0.1f, 0.1f, 1.0f };
+	//const static GLfloat diffuse[] = 
+	//{ 0.1f, 0.1f, 0.1f, 1.0f };
+	//const static GLfloat specular[] = 
+	//{ 0.1f, 0.1f, 0.1f, 1.0f };
+	//const static GLfloat position[] = 
+	//{ 0.0f, 500.0f, -500.0, 1.0f }; 
+	////glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+	//glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+	//glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+	//glLightfv(GL_LIGHT0, GL_POSITION, position);
+
+
+	const static GLfloat ambient2[] = 
 	{ 0.0f, 0.0f, 0.0f, 1.0f };
-	const static GLfloat diffuse[] = 
+	const static GLfloat diffuse2[] = 
 	{ 1.0f, 1.0f, 1.0f, 0.5f };
-	const static GLfloat specular[] = 
-	{ 0.0f, 1.0f, 0.0f, 1.0f };
-	const static GLfloat position[] = 
-	{ 0.0f, 0.0f, -500.0, 1.0f }; 
+	const static GLfloat specular2[] = 
+	{ 1.0f, 1.0f, 1.0f, 1.0f };
 	const static GLfloat position2[] = 
-	{ -500.0f, -500.0f, 0.0, 0.0f }; 
-
-	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
-	glLightfv(GL_LIGHT0, GL_POSITION, position);
-
+	{ -500.0f, -500.0f, 5000.0, 0.0f }; 
 	glLightfv(GL_LIGHT1, GL_POSITION, position2);
-	glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
-	glLightfv(GL_LIGHT1, GL_SPECULAR, specular);      
+	glLightfv(GL_LIGHT1, GL_AMBIENT, ambient2);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, specular2);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, position2);      
 }
 
 void GamePlayManager::SetGameFog()

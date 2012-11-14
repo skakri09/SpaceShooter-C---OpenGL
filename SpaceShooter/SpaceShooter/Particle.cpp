@@ -39,8 +39,9 @@ void Particle::Update( GLfloat deltaTime )
 
 	life -= fade * deltaTime;
 
-	if (life <= 0.0f) 
+	if (life <= 0.00f) 
 	{
+		life = 0.0f;
 		FlagForKill();
 	}
 }

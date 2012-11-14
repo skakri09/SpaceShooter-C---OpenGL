@@ -31,3 +31,12 @@ void ImperialTieInterceptor::InitSpaceShip(float startX, float startY, float sta
 	CreateGameObject("ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	aiStateMachine.ChangeState(std::make_shared<ApproachEdge>());
 }
+
+void ImperialTieInterceptor::Draw()
+{
+	aabb.DrawAABB();
+	glColor4f(0.1f, 0.1f, 0.15f, 1.0f);
+	BaseEnemyShip::Draw();
+	glColor4f(1, 1, 1, 1);
+}
+

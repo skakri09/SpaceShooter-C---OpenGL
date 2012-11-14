@@ -264,5 +264,5 @@ void SpaceShipManager::ResetSpaceships()
 	player->InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(player));
-	EnemySpaceShips.back()->InitSpaceShip(0, 0, -200, 0, 0, 0, 0, 0, 0, 1);
+	EnemySpaceShips.back()->InitSpaceShip(-000.0f, -000.0f, -100.0f, 0, 0, 0, 0, 0, 0, -1);
 }

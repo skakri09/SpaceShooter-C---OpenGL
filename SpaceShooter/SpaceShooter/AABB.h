@@ -18,7 +18,7 @@ public:
 	AABB();
 	~AABB();
 
-	void SetPoints(std::shared_ptr<Vector3D> min, std::shared_ptr<Vector3D> max);
+	void SetPoints(Vector3D min, Vector3D max);
 
 	Vector3D* GetMin(){return &minPoint;}
 	Vector3D* GetMax(){return &maxPoint;}

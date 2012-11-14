@@ -30,3 +30,11 @@ void ImperialTieFighter::InitSpaceShip(float startX, float startY, float startZ,
 	CreateGameObject("ImperialTieFighter//ImperialTieFighter.3ds");
 	aiStateMachine.ChangeState(std::make_shared<ApproachRandXYPos>());
 }
+
+void ImperialTieFighter::Draw()
+{
+	aabb.DrawAABB();
+	glColor4f(0.2f, 0.1f, 0.1f, 1.0f);
+	BaseEnemyShip::Draw();
+	glColor4f(1, 1, 1, 1);
+}

@@ -51,7 +51,7 @@ public:
 	std::vector<std::shared_ptr<BaseEnemyShip>>* GetEnemySpaceships();
 
 	void ResetSpaceships();
-
+	
 private:
 	Logger log;
 

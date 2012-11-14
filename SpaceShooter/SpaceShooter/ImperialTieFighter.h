@@ -26,6 +26,8 @@ public:
 
 	void Update(GLfloat deltaTime);
 
+	void Draw();
+
 	void InitSpaceShip(float startX, float startY, float startZ,
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ);

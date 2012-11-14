@@ -32,6 +32,8 @@
 #include "GameplayGUI.h"
 #include "Logger.h"
 
+enum ControlMode{WASD, NUM_PAD, NONE};
+
 class Camera
 {
 public:
@@ -54,9 +56,13 @@ public:
 	//Change the skybox
 	void SetSkybox(std::string newSkybox);
 
+	void SetCtrlMode(ControlMode newControlMode);
+
 private:
 	Logger log;
 	Skybox skybox;
+
+	ControlMode ctrlMode;
 
 	std::shared_ptr<GameplayGUI> GUI;
 	//Locks the camera between 90 and 0 for pitch,
@@ -72,7 +78,9 @@ private:
 	Vector3D camPos;		//current camera position
 	float camYaw;			//camera rotation in Y axis
 	float camPitch;			//camera rotation in X axis
-
+	
+	void ControlCamNumpad(float mouseVel, float moveVel, InputManager* input);
+	void ControlCamWASDSX(float mouseVel, float moveVel, InputManager* input);
 };
 
 #endif // Camera_h__

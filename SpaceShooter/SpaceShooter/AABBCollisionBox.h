@@ -16,6 +16,8 @@ class AABBCollisionBox : public AABB
 {
 public:
 	AABBCollisionBox();
+	AABBCollisionBox(float minX, float maxX, float minY, float maxY,
+						float minZ, float maxZ);
 	~AABBCollisionBox();
 
 	//Updates the collisionbx. Should be called every game update, or when we want
@@ -34,11 +36,16 @@ public:
 
 	void DrawAABB();
 
+	void SetDrawAAB(bool drawAAB, bool drawSubBoxes);
+
+	void CreateSubBox(std::shared_ptr<AABBCollisionBox> newSubBox);
+
 protected:
 	Vector3D& GetMidpoint();
-
 	float GetRadius();
-
+	
+	bool drawAAB;
+	std::vector<std::shared_ptr<AABBCollisionBox>> SubBoxes;
 };
 
 #endif // AABBCollisionBox_h__

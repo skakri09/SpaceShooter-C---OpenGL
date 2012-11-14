@@ -28,7 +28,6 @@ BaseEnemyShip::~BaseEnemyShip()
 
 void BaseEnemyShip::Draw()
 {
-	aabb.DrawAABB();
 	glPushMatrix();
 
 	transformable.ApplyGLTransformations();

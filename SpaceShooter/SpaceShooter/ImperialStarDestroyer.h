@@ -12,7 +12,8 @@
 #include "Logger.h"
 #include "SpaceShip.h"
 #include "PlayerSpaceShip.h"
- #include "StarDestroyerShipSpawning.h"
+#include "StarDestroyerShipSpawning.h"
+#include "IdleState.h"
 
 class ImperialStarDestroyer : public BaseEnemyShip
 {
@@ -21,16 +22,20 @@ public:
     ~ImperialStarDestroyer();
 
 	void Update(GLfloat deltaTime);
+	
+	void Draw();
 
 	void InitSpaceShip(float startX, float startY, float startZ,
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ);
 
 protected:
-	void Draw();
+	void CreateGameObject(std::string meshPathFrom3dsFolder);
 
 private:
 	Logger log;
+
+	void CreateStarDestroyerSubBoxes(std::shared_ptr<AABBCollisionBox> orgAABB);
 
 };
 

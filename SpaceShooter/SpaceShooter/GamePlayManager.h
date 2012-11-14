@@ -56,10 +56,12 @@ public:
 
 	void ResetGame();
 	
+	void SetDebugMode(bool debugOn){debugMode = debugOn;}
 private:
 	Logger log;
 	GameState* gameState;
 	InputManager* input;
+	bool debugMode;
 
 	ScoreManager score;
 	EnvironmentalManager environment;
