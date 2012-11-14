@@ -12,7 +12,7 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-
+#include <gl/glew.h>
 #include <IL/il.h>
 #include <IL/ilu.h>
 #include <map>
@@ -20,7 +20,7 @@
 #include "Image.h"
 #include "Logger.h"
 
-#include <gl/glew.h>
+#include "TextureFactory.h"
 
 class Texturable
 {
@@ -33,16 +33,10 @@ public:
 	void BindTexture(std::string textureName);
 	void UnbindTexture();
 
-protected:
-	void LoadAndBindTexture(std::string imageFullPathAndName, std::string keyName);
-
 private:
 	Logger log;
 
 	std::map<std::string, GLuint> textures;
-
-	Image* ReadImage(std::string image);
-
 
 };
 

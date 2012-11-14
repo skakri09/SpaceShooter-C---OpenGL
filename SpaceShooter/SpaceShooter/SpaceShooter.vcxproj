@@ -93,6 +93,7 @@
     <ClCompile Include="ApproachXYZPlayerState.cpp" />
     <ClCompile Include="BackEntry.cpp" />
     <ClCompile Include="BackToMainMenuEntry.cpp" />
+    <ClCompile Include="BasePowerup.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collidable.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="SpaceShipManager.cpp" />
     <ClCompile Include="LaserLowCooldown.cpp" />
     <ClCompile Include="StarDestroyerShipSpawning.cpp" />
+    <ClCompile Include="TextureFactory.cpp" />
     <ClCompile Include="ToggleEffectsMute.cpp" />
     <ClCompile Include="ToggleMusicMute.cpp" />
     <ClCompile Include="TogglePolygonSmoothEnabledEntry.cpp" />
@@ -178,6 +180,7 @@
     <ClInclude Include="ApproachXYZPlayerState.h" />
     <ClInclude Include="BackEntry.h" />
     <ClInclude Include="BackToMainMenuEntry.h" />
+    <ClInclude Include="BasePowerup.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collidable.h" />
@@ -253,6 +256,7 @@
     <ClInclude Include="SpaceShipManager.h" />
     <ClInclude Include="LaserLowCooldown.h" />
     <ClInclude Include="StarDestroyerShipSpawning.h" />
+    <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="ToggleEffectsMute.h" />
     <ClInclude Include="ToggleMusicMute.h" />
