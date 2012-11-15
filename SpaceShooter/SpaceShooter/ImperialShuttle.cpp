@@ -36,7 +36,7 @@ void ImperialShuttle::InitSpaceShip( float startX, float startY, float startZ, f
 {
 	SpaceShip::InitSpaceShip(startX, startY, startZ,
 		startRotDeg, rotX, rotY, rotZ,
-		dirVecX, dirVecY, dirVecZ, 0.8f);
+		dirVecX, dirVecY, dirVecZ, 0.3f);
 
 	CreateGameObject("ImperialShuttle//ImperialShuttle.3ds");
 
@@ -44,10 +44,7 @@ void ImperialShuttle::InitSpaceShip( float startX, float startY, float startZ, f
 	float randY = GetRandFloat(-5.0f, 5.0f);
 	aiStateMachine.ChangeState
 	(
-		std::make_shared<ApproachGivenPosition>
-		(
-			0.0f, 0.0f, -100.0f, 100.0f
-		)
+		std::make_shared<ShuttleAI>()
 	);
 
 }

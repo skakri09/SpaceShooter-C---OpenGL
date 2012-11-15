@@ -14,7 +14,7 @@
 #include "PlayerSpaceShip.h"
 
 #include "EnemySpaceshipConstantState.h"
-#include "ApproachGivenPosition.h"
+#include "ShuttleAI.h"
 #include "IdleState.h"
 #include "KillOwnerState.h"
 #include "ProjectileTypes.h"
