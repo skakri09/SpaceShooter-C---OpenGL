@@ -421,6 +421,9 @@
     <ClCompile Include="LaserWall.cpp">
       <Filter>Game\GameObjects\Projectiles</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerSeekingLaser.cpp">
+      <Filter>Game\GameObjects\Projectiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLUtils\GLUtils.hpp">
@@ -748,6 +751,9 @@
       <Filter>Game\Components\SpaceShipAI\StarDestroyerStates</Filter>
     </ClInclude>
     <ClInclude Include="LaserWall.h">
+      <Filter>Game\GameObjects\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSeekingLaser.h">
       <Filter>Game\GameObjects\Projectiles</Filter>
     </ClInclude>
   </ItemGroup>

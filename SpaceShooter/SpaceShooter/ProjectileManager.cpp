@@ -44,6 +44,9 @@ void ProjectileManager::InitProjectileManager()
 
 	std::shared_ptr<Projectile> lw = GetProjectile(LASER_WALL);
 	projectileCooldowns[LASER_WALL] = lw->GetProjectileCooldown();
+	
+	std::shared_ptr<Projectile> psl = GetProjectile(PLAYER_SEEKING_LASER);
+	projectileCooldowns[PLAYER_SEEKING_LASER] = psl->GetProjectileCooldown();
 }
 
 void ProjectileManager::Update(float deltaTime)
@@ -139,6 +142,8 @@ std::shared_ptr<Projectile> ProjectileManager::GetProjectile( ProjectileTypes pr
 	case LASER_WALL:
 		projectiles.push_back(std::make_shared<LaserWall>());
 		break;
+	case PLAYER_SEEKING_LASER:
+		projectiles.push_back(std::make_shared<PlayerSeekingLaser>());
 	}
 
 	return projectiles.back();

@@ -66,16 +66,23 @@ void Projectile::Update(GLfloat deltaTime)
 void Projectile::FireProjectile( Transformable& ownerTransformable, GameObject* owner)
 {
 	SetOwner(owner);
+	Vector3D axis;
+	float asd = ownerTransformable.getDirectionVector().getX();
 
 	if(ownerTransformable.getDirectionVector().getX() < 0.0f)
 	{
-		Vector3D axis(0.0f, 25.0f, 0.0f);
+		if(ownerTransformable.getDirectionVector().getZ()>0)
+		axis.setValues(0.0f, 45.0f*asd, 0.0f);
+		else axis.setValues(0.0f, -45.0f*asd, 0.0f);
+
 		transformable.Init(*ownerTransformable.getPosition(), axis, 1,
 			ownerTransformable.getDirectionVector());
 	}
 	else if(ownerTransformable.getDirectionVector().getX() > 0.0f)
 	{
-		Vector3D axis(0.0f, -25.0f, 0.0f);
+		if(ownerTransformable.getDirectionVector().getZ()>0)
+			axis.setValues(0.0f, 45.0f*asd, 0.0f);
+		else axis.setValues(0.0f, -45.0f*asd, 0.0f);
 		transformable.Init(*ownerTransformable.getPosition(), axis, 1,
 			ownerTransformable.getDirectionVector());
 	}

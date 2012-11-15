@@ -97,6 +97,7 @@
     <ClCompile Include="FireCircle.cpp" />
     <ClCompile Include="ImperialShuttle.cpp" />
     <ClCompile Include="LaserWall.cpp" />
+    <ClCompile Include="PlayerSeekingLaser.cpp" />
     <ClCompile Include="ShuttleAI.cpp" />
     <ClCompile Include="StarDestroyerBossFight.cpp" />
     <ClCompile Include="StarDestroyerExecutor.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="ImperialShuttle.h" />
     <ClInclude Include="KillOwnerState.h" />
     <ClInclude Include="LaserWall.h" />
+    <ClInclude Include="PlayerSeekingLaser.h" />
     <ClInclude Include="ShuttleAI.h" />
     <ClInclude Include="StarDestroyerBossFight.h" />
     <ClInclude Include="StarDestroyerExecutor.h" />

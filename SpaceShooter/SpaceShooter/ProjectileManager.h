@@ -21,6 +21,7 @@
 #include "Logger.h"
 #include "ManagerInterface.h"
 #include "LaserWall.h"
+#include "PlayerSeekingLaser.h"
 
 class ProjectileManager : public ManagerInterface
 {

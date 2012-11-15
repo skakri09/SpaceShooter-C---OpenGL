@@ -26,6 +26,8 @@ public:
 
 private:
 	Logger log;
+
+	int shotsFired;
 };
 
 #endif // StarDestroyerBossFight_h__
