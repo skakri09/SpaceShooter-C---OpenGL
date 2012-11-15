@@ -14,6 +14,7 @@
 #include "PlayerSpaceShip.h"
 #include "StarDestroyerShipSpawning.h"
 #include "IdleState.h"
+#include "StarDestroyerBossFight.h"
 
 class ImperialStarDestroyer : public BaseEnemyShip
 {

@@ -397,6 +397,12 @@
     <ClCompile Include="StarDestroyerExecutor.cpp">
       <Filter>Game\GameObjects\Environmental</Filter>
     </ClCompile>
+    <ClCompile Include="ImperialStarShuttle.cpp">
+      <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="StarDestroyerBossFight.cpp">
+      <Filter>Game\Managers\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLUtils\GLUtils.hpp">
@@ -701,6 +707,15 @@
     </ClInclude>
     <ClInclude Include="StarDestroyerExecutor.h">
       <Filter>Game\GameObjects\Environmental</Filter>
+    </ClInclude>
+    <ClInclude Include="ImperialStarShuttle.h">
+      <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="StarDestroyerBossFight.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="KillOwnerState.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

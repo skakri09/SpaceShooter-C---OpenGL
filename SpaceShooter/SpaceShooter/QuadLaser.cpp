@@ -13,14 +13,14 @@ QuadLaser::~QuadLaser()
 void QuadLaser::FireProjectile( Transformable& ownerTransformable, GameObject* owner )
 {
 	Transformable frst(ownerTransformable);
-	frst.SetPos(frst.getXPos()-0.5f, frst.getYPos()-0.5f, frst.getZPos());
+	frst.SetPos(frst.getXPos(), frst.getYPos()-0.5f, frst.getZPos());
 
 	Transformable second(ownerTransformable);
-	second.SetPos(second.getXPos()+0.5f, second.getYPos()+0.5f, second.getZPos());
+	second.SetPos(second.getXPos(), second.getYPos()+0.5f, second.getZPos());
 
 
-	ProjectileManager::Inst()->Shoot(LASER_FAST, frst, owner);
-	ProjectileManager::Inst()->Shoot(LASER_FAST, second, owner);
+	ProjectileManager::Inst()->Shoot(DOUBLE_LASER, frst, owner);
+	ProjectileManager::Inst()->Shoot(DOUBLE_LASER, second, owner);
 }
 
 void QuadLaser::CreateProjectile( ProjectileTypes projectileType, std::string meshPathFromXmlFolder )

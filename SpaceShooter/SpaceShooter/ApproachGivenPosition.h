@@ -11,11 +11,13 @@
 #include "AiState.h"
 #include "BaseEnemyShip.h"
 #include "logger.h"
+#include "GetRandomFloat.h"
 
 class ApproachGivenPosition : public AiState
 {
 public:
-	ApproachGivenPosition(float xPos, float yPos, float zPos, float velocity);
+	ApproachGivenPosition(float xPos, float yPos, float zPos, float velocity,
+		std::shared_ptr<AiState> stateToEnterOnceReached);
 
 	virtual void Enter(BaseEnemyShip* owner);
 
@@ -29,6 +31,8 @@ private:
 	Vector3D velocity;
 	float velValue;
 	bool destReached;
+
+	std::shared_ptr<AiState> stateToEnterOnceReached;
 };
 
 #endif // ApproachGivenPosition_h__

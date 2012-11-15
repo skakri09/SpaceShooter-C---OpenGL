@@ -42,6 +42,18 @@ void SpaceShipManager::Update(GLfloat deltaTime)
 	{
 		SpawnProjectilePowerup(DOUBLE_TRIPLE_CONE_LASER);
 	}
+	if(input->KeyDownOnce(SDLK_j))
+	{
+		SpawnProjectilePowerup(DOUBLE_LASER);
+	}
+	if(input->KeyDownOnce(SDLK_k))
+	{
+		SpawnProjectilePowerup(QUAD_LASER);
+	}
+	if(input->KeyDownOnce(SDLK_h))
+	{
+		SpawnProjectilePowerup(TRIPLE_CONE_LASER);
+	}
 	UpdatePlayerWeaponSelection();
 	if(input->Fire())
 	{

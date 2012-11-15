@@ -24,7 +24,11 @@ void StarDestroyerShipSpawning::UpdateState( BaseEnemyShip* owner, float deltaTi
 	HandleShipSpawning(deltaTime);
 	if(totalShipsSpawned >= 5)
 	{	
-		owner->GetAiStateMachine().ChangeState(std::make_shared<ApproachGivenPosition>(0.0f, 0.0f, -150.0f, 50.0f));
+		owner->GetAiStateMachine().ChangeState(
+			std::make_shared<ApproachGivenPosition>
+			( 
+				0.0f, -10.0f, -150.0f, 50.0f, std::make_shared<StarDestroyerBossFight>()
+			));
 	}
 }
 

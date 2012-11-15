@@ -1,12 +1,14 @@
 #include "ApproachGivenPosition.h"
 
-ApproachGivenPosition::ApproachGivenPosition( float xPos, float yPos, float zPos, float velocity )
+ApproachGivenPosition::ApproachGivenPosition( float xPos, float yPos, float zPos, float velocity,
+	std::shared_ptr<AiState> stateToEnterOnceReached)
 	:log("ApproachGivenPosition", INFO),
 	AiState("ApproachGivenPosition")
 
 {
 	targetPos.setValues(xPos, yPos, zPos);
 	velValue = velocity;
+	this->stateToEnterOnceReached = stateToEnterOnceReached;
 }
 
 void ApproachGivenPosition::Enter( BaseEnemyShip* owner )
@@ -31,8 +33,7 @@ void ApproachGivenPosition::UpdateState( BaseEnemyShip* owner, float delta )
 			owner->transformable.SetVelocity(newVel);
 			if(dist <= 1)
 			{
-				//enter bossfight state
-				//owner->GetAiStateMachine().ChangeState(std::make_shared<FireState>());
+				owner->GetAiStateMachine().ChangeState(stateToEnterOnceReached);
 				destReached = true;
 			}
 

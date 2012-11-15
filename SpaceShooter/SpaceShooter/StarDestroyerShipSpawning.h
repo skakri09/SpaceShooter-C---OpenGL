@@ -17,6 +17,7 @@
 #include "ImperialTieInterceptor.h"
 #include "GetRandomFloat.h"
 #include "ApproachGivenPosition.h"
+#include "StarDestroyerBossFight.h"
 
 class StarDestroyerShipSpawning : public AiState
 {

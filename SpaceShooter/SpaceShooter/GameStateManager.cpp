@@ -5,8 +5,9 @@ using GLUtils::checkGLErrors;
 GameStateManager::GameStateManager()
 	:log("GameStateManager", WARN)
 {
-	timer.restart();
 	srand(static_cast<unsigned int>(time(0)));
+	float x = GetRandFloat(0.0f, 3.1f);
+	timer.restart();
 }
 
 GameStateManager::~GameStateManager()

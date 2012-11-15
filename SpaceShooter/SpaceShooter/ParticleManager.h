@@ -21,6 +21,7 @@
 #include "ManagerInterface.h"
 #include "GameConstants.h"
 #include "Logger.h"
+#include "Texturable.h"
 
 class ParticleManager : public ManagerInterface
 {
@@ -58,6 +59,8 @@ private:
 
 	std::vector<Particle*> ActiveParticles;
 	std::vector<Particle*> AllParticles;
+
+	Texturable texturable;
 };
 
 #endif // ParticleManager_h__

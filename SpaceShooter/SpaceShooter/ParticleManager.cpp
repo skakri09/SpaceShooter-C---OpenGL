@@ -34,6 +34,7 @@ void ParticleManager::InitParticleManager()
 		AllParticles.push_back(new Particle());
 		AllParticles.back()->FlagForKill();
 	}
+	texturable.InitTexture("..//particles//particle.png", "particle");
 }
 
 
@@ -43,6 +44,7 @@ void ParticleManager::DrawParticles()
 	{
 		if(vbo.HaveMeshInfo())
 		{
+			texturable.BindTexture("particle");
 			glColor3f(1.0f, 0.5f, 1.0f);
 			vbo.EnableClientStates();
 			for(auto i = ActiveParticles.begin(); i != ActiveParticles.end(); i++)
@@ -56,6 +58,7 @@ void ParticleManager::DrawParticles()
 				}
 			}
 			vbo.DisableClientStates();
+			texturable.UnbindTexture();
 			glColor4f(1, 1, 1, 1);
 		}
 	}

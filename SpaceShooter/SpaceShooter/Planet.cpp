@@ -1,5 +1,5 @@
 #include "Planet.h"
-
+#include "GetRandomFloat.h"
 
 Planet::Planet(std::string planetName)
 {
@@ -47,5 +47,15 @@ void Planet::CreatePlanet( std::string meshName )
 		vboDrawable.SetMeshInfo(meshInfo);
 	}
 	InitPlanet(800, -400, -800);
-	tex.InitTexture("..//3ds//Planets//Endor//Endor.jpg", "Endor.jpg");
+	std::string texName;
+	float x = GetRandFloat(0.0f, 2.0f);
+	if(x < 1)
+	{
+		texName = "a2.jpg";
+	}
+	else
+	{
+		texName = "a3.jpg";
+	}
+	tex.InitTexture("..//3ds//Planets//Endor//"+texName, "Endor.jpg");
 }
