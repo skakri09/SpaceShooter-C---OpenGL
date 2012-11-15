@@ -25,6 +25,7 @@
 #include "ManagerInterface.h"
 #include "ScoreManager.h"
 #include "SoundManager.h"
+#include "WeaponUpgrade.h"
 
 class SpaceShipManager : public ManagerInterface
 {
@@ -54,6 +55,8 @@ public:
 	
 	void SetDrawAABB(bool drawAABB){drawAABBs = drawAABB;}
 	bool IsDrawingAABB(){return drawAABBs;}
+
+	void SpawnProjectilePowerup(ProjectileTypes typeToSpawn);
 
 private:
 	Logger log;
@@ -101,6 +104,7 @@ private:
 
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemySpaceShips;
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemyShipsForTransfer;
+	std::vector<std::shared_ptr<WeaponUpgrade>> wepUpgrades;
 };
 
 #endif // SpaceShipManager_h__

@@ -139,11 +139,11 @@
     <Filter Include="Game\GUI\GameplayGUI\GUI Entry\ImageEntries">
       <UniqueIdentifier>{d45e49a3-36e2-467a-a1e1-563e90bbe890}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\GameObjects\PowerUp">
-      <UniqueIdentifier>{09a0c0fc-1490-405b-8398-b1670908a872}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Factories\TextureFactory">
       <UniqueIdentifier>{ad87b615-a595-488f-9876-dd703f15871a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObjects\WeaponUpgrade">
+      <UniqueIdentifier>{09a0c0fc-1490-405b-8398-b1670908a872}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -391,8 +391,8 @@
     <ClCompile Include="TextureFactory.cpp">
       <Filter>Game\Factories\TextureFactory</Filter>
     </ClCompile>
-    <ClCompile Include="BasePowerup.cpp">
-      <Filter>Game\GameObjects\PowerUp</Filter>
+    <ClCompile Include="WeaponUpgrade.cpp">
+      <Filter>Game\GameObjects\WeaponUpgrade</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -693,8 +693,8 @@
     <ClInclude Include="TextureFactory.h">
       <Filter>Game\Factories\TextureFactory</Filter>
     </ClInclude>
-    <ClInclude Include="BasePowerup.h">
-      <Filter>Game\GameObjects\PowerUp</Filter>
+    <ClInclude Include="WeaponUpgrade.h">
+      <Filter>Game\GameObjects\WeaponUpgrade</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -707,14 +707,14 @@
     <None Include="GameObject.h">
       <Filter>Game\GameObjects</Filter>
     </None>
-    <None Include="..\xml\Projectiles\Mesh_Laser.xml">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="ClassDiagram1.cd" />
     <None Include="..\xml\square.xml">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\xml\skybox.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\xml\boxableSquare.xml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

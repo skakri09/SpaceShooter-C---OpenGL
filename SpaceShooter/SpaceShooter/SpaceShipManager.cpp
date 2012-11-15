@@ -37,6 +37,10 @@ void SpaceShipManager::InitManager(InputManager* input, GameState* gameState, Sc
 
 void SpaceShipManager::Update(GLfloat deltaTime)
 {
+	if(input->KeyDownOnce(SDLK_l))
+	{
+		SpawnProjectilePowerup(DOUBLE_TRIPLE_CONE_LASER);
+	}
 	UpdatePlayerWeaponSelection();
 	if(input->Fire())
 	{
@@ -44,6 +48,23 @@ void SpaceShipManager::Update(GLfloat deltaTime)
 		{
 			SoundManager::Inst()->PlayEffect("laser_tripleFire_long", 10);
 		}
+	}
+
+	for(auto i = wepUpgrades.begin(); i != wepUpgrades.end();)
+	{
+		(*i)->Update(deltaTime);
+		if( (*i)->CanKill())
+		{
+			i = wepUpgrades.erase(i);
+		}
+		else if((*i)->aabb.IsCollision(&player->aabb))
+		{
+			player->MakeProjectileActive((*i)->GetType());
+			(*i)->FlagForKill();
+			i = wepUpgrades.erase(i);
+		}
+		else
+			++i;
 	}
 
 	HandlePlayerRotation();
@@ -89,7 +110,14 @@ void SpaceShipManager::Update(GLfloat deltaTime)
 void SpaceShipManager::DrawSpaceShips()
 {
 	glPushMatrix();
-	
+	for(unsigned int i = 0; i < wepUpgrades.size(); i++)
+	{
+		if(drawAABBs)
+		{
+			wepUpgrades.at(i)->aabb.DrawAABB();
+		}
+		wepUpgrades.at(i)->Draw();
+	}
 	if(drawAABBs){player->aabb.DrawAABB();}
 		
 	player->Draw();
@@ -303,4 +331,17 @@ void SpaceShipManager::UpdatePlayerWeaponSelection()
 		player->SetActiveProjectileType(DOUBLE_TRIPLE_CONE_LASER);
 		return;
 	}
+}
+
+void SpaceShipManager::SpawnProjectilePowerup( ProjectileTypes typeToSpawn )
+{
+	Vector3D startPos(0, 0, -100.0f);
+	Vector3D tarPos(-5, 3, CAMERA_POS_Z+5);
+	wepUpgrades.push_back(
+		std::make_shared<WeaponUpgrade>(
+			typeToSpawn,
+			startPos,
+			tarPos,
+			10.0f,
+			1.0f));
 }
