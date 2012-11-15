@@ -29,14 +29,12 @@ public:
 		Vector3D velocity);
 
 	void Init(Vector3D startPos,
-		Vector3D rotationAxis,
-		float rotationDeg,
+		Vector3D rotation,
 		float scale,	//Cheating and only allowing uniform scaling
 		Vector3D directionVector);
 
 	void Init(float xPos, float yPos, float zPos,
-		Vector3D rotationAxis,
-		float rotationDeg,
+		Vector3D rotation,
 		float scale,	//Cheating and only allowing uniform scaling
 		Vector3D directionVector);
 
@@ -47,7 +45,8 @@ public:
 
 	//Does the glTranslatef, glScalef and glRotatef function calls
 	//with the variables we have stored in this class.
-	void ApplyGLTransformations(bool translatef = true, bool scalef = true, bool rotatef = true);
+	void ApplyGLTransformations(bool translatef = true, 
+		bool scalef = true, bool rotatef = true);
 
 	//Various get and set functions for velocity and position.
 	//Creating several ways of setting and getting the variables
@@ -108,8 +107,8 @@ private:
 	Vector3D scale;		// The scale of the object this class is representing
 
 	//The rotation of the gameObject
-	Vector3D rotationAxis;
-	Vector3D rotationDegrees;
+	Vector3D rotation;
+
 	float objectRotationDegrees;
 };
 

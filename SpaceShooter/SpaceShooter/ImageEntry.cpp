@@ -6,7 +6,7 @@ ImageEntry::ImageEntry(std::string textureName, float xPos, float yPos, float zP
 	
 	this->textureName = textureName;
 	this->texturePath = "..//images//" + textureName;
-	GUIEntry::transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 0, scale, Vector3D::ZeroVec());
+	GUIEntry::transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), scale, Vector3D::ZeroVec());
 }
 
 

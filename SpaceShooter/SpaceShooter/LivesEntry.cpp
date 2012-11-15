@@ -21,8 +21,8 @@ void LivesEntry::Init()
 
 	VBOString = TextFactory::Inst()->GetVboString(&stringInUse);
 
-	Vector3D rotAxis(0, 1, 0);
-	transformable.Init(-6.8f, -3.7f, -5, rotAxis, 15, 0.008f, Vector3D::ZeroVec());
+	Vector3D rotation(0, 15, 0);
+	transformable.Init(-6.8f, -3.7f, -5, rotation, 0.008f, Vector3D::ZeroVec());
 }
 
 void LivesEntry::Update( float deltaTime )

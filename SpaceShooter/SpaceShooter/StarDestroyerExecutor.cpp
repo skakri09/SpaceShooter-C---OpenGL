@@ -73,7 +73,7 @@ void StarDestroyerExecutor::Update( GLfloat deltaTime )
 void StarDestroyerExecutor::Init( float xPos, float yPos, float zPos )
 {
 	LoadAssets();
-	transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 0, 0.2f, Vector3D::ZeroVec());
+	transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 0.2f, Vector3D::ZeroVec());
 	
 	tTarPos = *transformable.getPosition();
 

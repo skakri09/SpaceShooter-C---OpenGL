@@ -80,16 +80,15 @@ void SpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	Vector3D rotationAxis(rotX, rotY, rotZ);
 	Vector3D directionVec(dirVecX, dirVecY, dirVecZ);
 
-	transformable.Init(startPos,rotationAxis, startRotDeg, scale, directionVec);
+	transformable.Init(startPos, rotationAxis, scale, directionVec);
 
 	SpaceShipCurrentHealth = SpaceShipMaxHealth;
 	
 	//Saving the init values in case we need to respawn later	
 	respawnValues.dirVec = directionVec;
-	respawnValues.rotAxis = rotationAxis;
+	respawnValues.rotation = rotationAxis;
 	respawnValues.startPos = startPos;
 	respawnValues.scale = scale;
-	respawnValues.startRotDeg = startRotDeg;
 }
 
 void SpaceShip::HandleProjectileCollision( std::shared_ptr<Projectile> projectile )
@@ -119,8 +118,7 @@ void SpaceShip::EmittProjectileHittParticles(Projectile& p)
 void SpaceShip::Respawn()
 {
 	transformable.Init(respawnValues.startPos, 
-						respawnValues.rotAxis, 
-						respawnValues.startRotDeg, 
+						respawnValues.rotation, 
 						respawnValues.scale, 
 						respawnValues.dirVec);
 

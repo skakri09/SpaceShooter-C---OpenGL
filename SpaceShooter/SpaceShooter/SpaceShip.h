@@ -33,10 +33,9 @@ static const GLfloat ROTATE_SPEED = 200.0f;
 struct RespawnValues
 {
 	Vector3D startPos;
-	Vector3D rotAxis;
+	Vector3D rotation;
 	Vector3D dirVec;
 	float scale;
-	float startRotDeg;
 };
 
 class SpaceShip : public GameObject

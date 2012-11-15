@@ -69,19 +69,19 @@ void Projectile::FireProjectile( Transformable& ownerTransformable, GameObject* 
 
 	if(ownerTransformable.getDirectionVector().getX() < 0.0f)
 	{
-		Vector3D axis(0.0f, 1.0f, 0.0f);
-		transformable.Init(*ownerTransformable.getPosition(), axis, 25.0f, 1,
+		Vector3D axis(0.0f, 25.0f, 0.0f);
+		transformable.Init(*ownerTransformable.getPosition(), axis, 1,
 			ownerTransformable.getDirectionVector());
 	}
 	else if(ownerTransformable.getDirectionVector().getX() > 0.0f)
 	{
-		Vector3D axis(0.0f, 1.0f, 0.0f);
-		transformable.Init(*ownerTransformable.getPosition(), axis, -25.0f, 1,
+		Vector3D axis(0.0f, -25.0f, 0.0f);
+		transformable.Init(*ownerTransformable.getPosition(), axis, 1,
 			ownerTransformable.getDirectionVector());
 	}
 	else
 	{
-		transformable.Init(*ownerTransformable.getPosition(), Vector3D::ZeroVec(), 0, 1,
+		transformable.Init(*ownerTransformable.getPosition(), Vector3D::ZeroVec(), 1,
 			ownerTransformable.getDirectionVector());
 	}
 	

@@ -10,8 +10,7 @@ Transformable::~Transformable()
 }
 
 void Transformable::Init(Vector3D startPos,
-							Vector3D rotationAxis,
-							float rotationDeg,
+							Vector3D rotation,
 							float scale, /* only allowing uniform scaling */ 
 							Vector3D directionVector )
 {
@@ -21,14 +20,12 @@ void Transformable::Init(Vector3D startPos,
 
 	this->directionVector = directionVector;
 
-	objectRotationDegrees = rotationDeg;
-
-	this->rotationAxis = rotationAxis;
+	this->rotation = rotation;
 	UpdateCollisionTransformationInfo();
 }
 
 void Transformable::Init( float xPos, float yPos, float zPos, 
-						Vector3D rotationAxis, float rotationDeg, 
+						Vector3D rotation,
 						float scale, /*only allowing uniform scaling */ 
 						Vector3D directionVector )
 {
@@ -40,9 +37,7 @@ void Transformable::Init( float xPos, float yPos, float zPos,
 
 	this->directionVector = directionVector;
 
-	objectRotationDegrees = rotationDeg;
-
-	this->rotationAxis = rotationAxis;
+	this->rotation = rotation;
 	UpdateCollisionTransformationInfo();
 }
 												/*only allowing uniform scaling */ 
@@ -54,9 +49,7 @@ void Transformable::Init( Vector3D startPos, float scale, Vector3D velocity )
 
 	directionVector = velocity;//.Normalize();
 
-	objectRotationDegrees = 0.0f;
-
-	rotationAxis = Vector3D::ZeroVec();
+	rotation = Vector3D::ZeroVec();
 
 	this->velocity = velocity;
 	UpdateCollisionTransformationInfo();
@@ -87,10 +80,9 @@ void Transformable::ApplyGLTransformations(
 	
 	if(rotatef)
 	{
-		//glRotatef(objectRotationDegrees, 
-		//	rotationAxis.getX(),
-		//	rotationAxis.getY(), 
-		//	rotationAxis.getZ());
+		glRotatef(rotation.getX(), 1, 0, 0);
+		glRotatef(rotation.getY(), 0, 1, 0);
+		glRotatef(rotation.getZ(), 0, 0, 1);
 	}
 }
 

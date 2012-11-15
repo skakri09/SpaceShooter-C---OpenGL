@@ -31,8 +31,8 @@ void ScoreValueEntry::Init( ManagerInterface* manager )
 
 	VBOString = TextFactory::Inst()->GetVboString(&stringInUse);
 
-	Vector3D rotAxis(0, 1, 0);
-	transformable.Init(3.6f, -3.3f, -5, rotAxis, -15, 0.008f, Vector3D::ZeroVec());
+	Vector3D rotation(0, -15, 0);
+	transformable.Init(3.6f, -3.3f, -5, rotation, 0.008f, Vector3D::ZeroVec());
 }
 
 void ScoreValueEntry::Update( float deltaTime )

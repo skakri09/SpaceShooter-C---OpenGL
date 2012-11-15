@@ -33,7 +33,7 @@ void Planet::Update( GLfloat deltaTime )
 
 void Planet::InitPlanet( float xPos, float yPos, float zPos )
 {
-	transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 0, 2.0f, Vector3D::ZeroVec());
+	transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 2.0f, Vector3D::ZeroVec());
 }
 
 void Planet::CreatePlanet( std::string meshName )
