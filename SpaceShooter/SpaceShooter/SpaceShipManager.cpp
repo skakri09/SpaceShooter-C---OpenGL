@@ -2,7 +2,6 @@
 #include "GLUtils/GLUtils.hpp"
 using GLUtils::checkGLErrors;
 
-
 SpaceShipManager* SpaceShipManager::Inst()
 {
 	static SpaceShipManager* instance = new SpaceShipManager();
@@ -40,7 +39,7 @@ void SpaceShipManager::InitManager(InputManager* input, GameState* gameState, Sc
 void SpaceShipManager::Update(GLfloat deltaTime)
 {
 	ImperialStarShuttleSpawnTimer+= deltaTime;
-	if(ImperialStarShuttleSpawnTimer >= 7.0f)
+	if(ImperialStarShuttleSpawnTimer >= 15.0f)
 	{
 		ImperialStarShuttleSpawnTimer = 0.0f;
 		SpawnImperialStarShuttle();
@@ -256,8 +255,10 @@ void SpaceShipManager::ResetSpaceships()
 	}
 	player->InitSpaceShip(0.0f, -10.0f, 0.0f, 0, 0, 0, 0, 0, 0, -1);
 
-	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(player));
-	EnemySpaceShips.back()->InitSpaceShip(-200.0f, -200.0f, -800.0f, 0, 0, 0, 0, 0, 0, -1);
+	starDestroyer = std::make_shared<ImperialStarDestroyer>(player);
+	starDestroyer->InitSpaceShip(-200.0f, -200.0f, -800.0f, 0, 0, 0, 0, 0, 0, -1);
+	EnemySpaceShips.push_back(starDestroyer);
+
 	ImperialStarShuttleSpawnTimer = 0.0f;
 }
 
@@ -298,13 +299,30 @@ void SpaceShipManager::SpawnProjectilePowerup( ProjectileTypes typeToSpawn, Vect
 			typeToSpawn,
 			startPos,
 			tarPos,
-			20.0f,
+			40.0f,
 			2.5f));
 }
 
 void SpaceShipManager::SpawnImperialStarShuttle()
 {
-	EnemySpaceShips.push_back(std::make_shared<ImperialShuttle>(GetPlayer(), DOUBLE_TRIPLE_CONE_LASER));
+	ProjectileTypes newType;
+	if(!player->ProjectileTypeKnown(DOUBLE_LASER))
+	{
+		newType = DOUBLE_LASER;
+	}
+	else if(!player->ProjectileTypeKnown(TRIPLE_CONE_LASER))
+	{
+		newType = TRIPLE_CONE_LASER;
+	}
+	else if(!player->ProjectileTypeKnown(QUAD_LASER))
+	{
+		newType = QUAD_LASER;
+	}
+	else if(!player->ProjectileTypeKnown(DOUBLE_TRIPLE_CONE_LASER))
+	{
+		newType = DOUBLE_TRIPLE_CONE_LASER;
+	}
+	EnemySpaceShips.push_back(std::make_shared<ImperialShuttle>(GetPlayer(), newType));
 	EnemySpaceShips.back()->InitSpaceShip(-200, 0, -400, 0, 0, 0, 0, 0, 0, 1);
 }
 
@@ -362,4 +380,9 @@ void SpaceShipManager::HandlePlayerInput()
 
 	HandleXAxisMovement();
 	HandleYAxisMovement();
+}
+
+std::shared_ptr<ImperialStarDestroyer> SpaceShipManager::GetStarDestroyer()
+{
+	return starDestroyer;
 }

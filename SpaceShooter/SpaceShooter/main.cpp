@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	{
 		GameStateManager* stateManager;
 		stateManager = new GameStateManager();
-		//stateManager->PlayIntroVideo();
+		stateManager->PlayIntroVideo();
 		stateManager->InitGameStateManager();
 		stateManager->GameLoop();
 		delete stateManager;

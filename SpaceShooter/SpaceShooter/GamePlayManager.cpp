@@ -109,28 +109,14 @@ void GamePlayManager::OnEnteringGameState()
 void GamePlayManager::SetGameLights()
 {
 	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHT1);
-	//const static GLfloat ambient[] = 
-	//{ 0.1f, 0.1f, 0.1f, 1.0f };
-	//const static GLfloat diffuse[] = 
-	//{ 0.1f, 0.1f, 0.1f, 1.0f };
-	//const static GLfloat specular[] = 
-	//{ 0.1f, 0.1f, 0.1f, 1.0f };
-	//const static GLfloat position[] = 
-	//{ 0.0f, 500.0f, -500.0, 1.0f }; 
-	////glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-	//glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-	//glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
-	//glLightfv(GL_LIGHT0, GL_POSITION, position);
-
 
 	const static GLfloat ambient2[] = 
-	{ 0.0f, 0.0f, 0.0f, 1.0f };
+	{ 0.5f, 0.5f, 0.5f, 1.0f };
 	const static GLfloat diffuse2[] = 
-	{ 1.0f, 1.0f, 1.0f, 0.5f };
+	{ 0.5f, 0.5f, 0.5f, 0.5f };
 	const static GLfloat specular2[] = 
-	{ 1.0f, 1.0f, 1.0f, 1.0f };
+	{ 0.5f, 0.5f, 0.5f, 1.0f };
 	const static GLfloat position2[] = 
 	{ -500.0f, -500.0f, 5000.0, 0.0f }; 
 	glLightfv(GL_LIGHT1, GL_POSITION, position2);

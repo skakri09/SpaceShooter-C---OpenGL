@@ -29,6 +29,7 @@
 #include "Texturable.h"
 #include "ImperialShuttle.h"
 
+class ImperialStarDestroyer;
 class SpaceShipManager : public ManagerInterface
 {
 public:
@@ -50,12 +51,14 @@ public:
 	void TransferShipToShipManager(std::shared_ptr<PlayerSpaceShip> ship);
 
 	std::shared_ptr<PlayerSpaceShip> GetPlayer();
+	std::shared_ptr<ImperialStarDestroyer> GetStarDestroyer();
 
 	std::vector<std::shared_ptr<BaseEnemyShip>>* GetEnemySpaceships();
 
 	void ResetSpaceships();
 	
 	void SetDrawAABB(bool drawAABB){drawAABBs = drawAABB;}
+
 	bool IsDrawingAABB(){return drawAABBs;}
 
 	void SpawnProjectilePowerup(ProjectileTypes typeToSpawn, Vector3D* startPos );
@@ -81,6 +84,7 @@ private:
 	ScoreManager* scoreManager;
 
 	std::shared_ptr<PlayerSpaceShip> player; // Player spaceship object
+	std::shared_ptr<ImperialStarDestroyer> starDestroyer;
 
 	//Handles movement along the x axis. Checks for input and changes
 	//x velocity based on the input.

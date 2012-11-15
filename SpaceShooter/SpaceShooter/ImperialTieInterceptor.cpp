@@ -34,7 +34,7 @@ void ImperialTieInterceptor::InitSpaceShip(float startX, float startY, float sta
 
 void ImperialTieInterceptor::Draw()
 {
-	glColor4f(0.1f, 0.1f, 0.15f, 1.0f);
+	glColor4f(0.1f, 0.8f, 1.0f, 1.0f);
 	BaseEnemyShip::Draw();
 	glColor4f(1, 1, 1, 1);
 }

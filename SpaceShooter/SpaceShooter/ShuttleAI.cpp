@@ -10,7 +10,7 @@ ShuttleAI::ShuttleAI()
 
 	startVel = leftTargetPos - dsStartPos;
 	startVel.Normalize(); 
-	startVel*= 100.0f;
+	startVel*= 150.0f;
 }
 
 void ShuttleAI::Enter( BaseEnemyShip* owner )

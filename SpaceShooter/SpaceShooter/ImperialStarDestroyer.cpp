@@ -4,7 +4,7 @@
 ImperialStarDestroyer::ImperialStarDestroyer(std::shared_ptr<PlayerSpaceShip> playerShip)
 	:log("ImperialStarDestroyerInactiveState", WARN),
 	BaseEnemyShip(playerShip, std::make_shared<StarDestroyerShipSpawning>(),
-	std::make_shared<EnemySpaceshipConstantState>(), 1000, IMPERIAL_STAR_DESTROYER)
+	std::make_shared<EnemySpaceshipConstantState>(), 10000, IMPERIAL_STAR_DESTROYER)
 {
 }
 
@@ -15,7 +15,16 @@ ImperialStarDestroyer::~ImperialStarDestroyer()
 
 void ImperialStarDestroyer::Update( GLfloat deltaTime )
 {
-	BaseEnemyShip::Update(deltaTime);
+	aiStateMachine.Update(deltaTime);
+	transformable.Update(deltaTime);
+	aabb.Update(transformable.GetCollisionTransformationInfo());
+	shooterModule.UpdateModule(deltaTime);
+	
+	if(SpaceShipCurrentHealth <= 0)
+	{
+		GameObject::FlagForKill();
+		killedByPlayer = true;
+	}
 }
 
 void ImperialStarDestroyer::InitSpaceShip( float startX, float startY, float startZ, float startRotDeg, float rotX, float rotY, float rotZ, float dirVecX, float dirVecY, float dirVecZ )

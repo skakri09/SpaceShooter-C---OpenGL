@@ -27,9 +27,9 @@ void ImperialShuttle::Update( GLfloat deltaTime )
 
 void ImperialShuttle::Draw()
 {
-	glColor4f(0.2f, 0.5f, 0.2f, 1.0f);
 	glPushMatrix();
 
+	glColor4f(0.5f, 1.0f, 0.1f, 1.0f);
 	transformable.ApplyGLTransformations();
 	vboDrawable.Draw();
 
