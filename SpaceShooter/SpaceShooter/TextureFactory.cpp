@@ -89,7 +89,6 @@ Image* TextureFactory::ReadImage( std::string image )
 			log << ERRORX << Error << iluErrorString(Error) << std::endl;
 		}
 		ilDeleteImages(1, &imageName); // Delete the image name. 
-		exit(-1);
 	}
 	img->width = ilGetInteger(IL_IMAGE_WIDTH); // getting image width
 	img->height = ilGetInteger(IL_IMAGE_HEIGHT); // and height

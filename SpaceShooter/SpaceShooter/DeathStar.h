@@ -13,7 +13,7 @@
 #include "VBODrawable.h"
 #include "Transformable.h"
 #include "MeshFactory.h"
-
+#include "Texturable.h"
 class DeathStar : public GameObject
 {
 public:
@@ -28,7 +28,7 @@ public:
 
 	VBODrawable vboDrawable;
 	Transformable transformable;
-
+	Texturable texturable;
 protected:
 	//a simple variable used to rotate the planet
 	float rotation;

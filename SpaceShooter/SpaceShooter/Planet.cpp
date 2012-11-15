@@ -14,11 +14,11 @@ Planet::~Planet()
 void Planet::Draw()
 {
 	glPushMatrix();
-	glColor3f(0.0f, 0.5f, 0.0f);
+	tex.BindTexture("Endor.jpg");
 	transformable.ApplyGLTransformations(true, true, false);
 	glRotatef(rotation, 1.5f, 0.5f, 1.5f);
 	vboDrawable.Draw();
-	glColor3f(1, 1, 1);
+	tex.UnbindTexture();
 	glPopMatrix();
 }
 
@@ -47,4 +47,5 @@ void Planet::CreatePlanet( std::string meshName )
 		vboDrawable.SetMeshInfo(meshInfo);
 	}
 	InitPlanet(800, -400, -800);
+	tex.InitTexture("..//3ds//Planets//Endor//Endor.jpg", "Endor.jpg");
 }

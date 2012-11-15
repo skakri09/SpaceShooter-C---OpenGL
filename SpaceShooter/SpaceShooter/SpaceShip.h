@@ -24,6 +24,7 @@
 #include "VBODrawable.h"
 #include "Transformable.h"
 #include "AABBCollisionBox.h"
+#include "Texturable.h"
 
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
@@ -68,12 +69,12 @@ public:
 	VBODrawable vboDrawable;		//A spaceship is drawn with VBOs
 	Transformable transformable;	//A spaceship is transformable
 	AABBCollisionBox aabb;			//A spaceship has an AABB for collision
+	Texturable texturable;
 
 	//Takes care of firing the spaceships gun.
 	bool Shoot(ProjectileTypes projectileType);
 
 protected:
-	
 	virtual void CreateGameObject(std::string meshPathFrom3dsFolder);
 
 	unsigned int lives;			//Amnt of times the spaceship can die

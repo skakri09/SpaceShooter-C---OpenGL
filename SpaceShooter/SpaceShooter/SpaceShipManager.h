@@ -26,6 +26,7 @@
 #include "ScoreManager.h"
 #include "SoundManager.h"
 #include "WeaponUpgrade.h"
+#include "Texturable.h"
 
 class SpaceShipManager : public ManagerInterface
 {
