@@ -11,6 +11,7 @@
 #include "AiState.h"
 #include "BaseEnemyShip.h"
 #include "logger.h"
+#include "SpaceShipManager.h"
 
 class KillOwnerState : public AiState
 {

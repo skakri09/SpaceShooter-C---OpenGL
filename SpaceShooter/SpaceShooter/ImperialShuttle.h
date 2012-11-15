@@ -5,8 +5,8 @@
     
     purpose:    
 *********************************************************************/
-#ifndef ImperialStarShuttle_h__
-#define ImperialStarShuttle_h__
+#ifndef ImperialShuttle_h__
+#define ImperialShuttle_h__
 
 #include "BaseEnemyShip.h"
 #include "Logger.h"
@@ -17,12 +17,13 @@
 #include "ApproachGivenPosition.h"
 #include "IdleState.h"
 #include "KillOwnerState.h"
+#include "ProjectileTypes.h"
 
-class ImperialStarShuttle : public BaseEnemyShip
+class ImperialShuttle : public BaseEnemyShip
 {
 public:
-    ImperialStarShuttle(std::shared_ptr<PlayerSpaceShip> playerShip);
-    ~ImperialStarShuttle();
+	ImperialShuttle(std::shared_ptr<PlayerSpaceShip> playerShip, ProjectileTypes cargo);
+    ~ImperialShuttle();
 
 	void Update(GLfloat deltaTime);
 
@@ -32,8 +33,12 @@ public:
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ);
 
+	ProjectileTypes GetCargo(){return cargo;}
+
 private:
 	Logger log;
+
+	ProjectileTypes cargo;
 };
 
-#endif // ImperialStarShuttle_h__
+#endif // ImperialShuttle_h__

@@ -23,7 +23,7 @@ class WeaponUpgrade : public GameObject
 {
 public:
     WeaponUpgrade(ProjectileTypes thisType, 
-		Vector3D startPos, 
+		Vector3D* startPos, 
 		Vector3D targetPos,
 		float velocity,
 		float scale);

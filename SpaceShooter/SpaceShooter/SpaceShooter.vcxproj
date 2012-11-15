@@ -93,7 +93,7 @@
     <ClCompile Include="ApproachXYZPlayerState.cpp" />
     <ClCompile Include="BackEntry.cpp" />
     <ClCompile Include="BackToMainMenuEntry.cpp" />
-    <ClCompile Include="ImperialStarShuttle.cpp" />
+    <ClCompile Include="ImperialShuttle.cpp" />
     <ClCompile Include="StarDestroyerBossFight.cpp" />
     <ClCompile Include="StarDestroyerExecutor.cpp" />
     <ClCompile Include="WeaponUpgrade.cpp" />
@@ -183,7 +183,7 @@
     <ClInclude Include="ApproachXYZPlayerState.h" />
     <ClInclude Include="BackEntry.h" />
     <ClInclude Include="BackToMainMenuEntry.h" />
-    <ClInclude Include="ImperialStarShuttle.h" />
+    <ClInclude Include="ImperialShuttle.h" />
     <ClInclude Include="KillOwnerState.h" />
     <ClInclude Include="StarDestroyerBossFight.h" />
     <ClInclude Include="StarDestroyerExecutor.h" />

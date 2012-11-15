@@ -1,17 +1,17 @@
 #include "WeaponUpgrade.h"
 
 WeaponUpgrade::WeaponUpgrade(ProjectileTypes thisType, 
-	Vector3D startPos, 
+	Vector3D* startPos, 
 	Vector3D targetPos,
 	float velocity,
 	float scale)
 {
 	this->targetPos = targetPos;
-	Vector3D vel = targetPos - startPos;
+	Vector3D vel = targetPos - *startPos;
 	vel.Normalize();
 	vel*= velocity;
 
-	transformable.Init(startPos, scale, vel);
+	transformable.Init(*startPos, scale, vel);
 	rotation = 0.0f;
 
 	this->thisType = thisType;

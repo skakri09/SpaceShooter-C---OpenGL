@@ -40,19 +40,8 @@ void SpaceShipManager::Update(GLfloat deltaTime)
 {
 	if(input->KeyDownOnce(SDLK_l))
 	{
-		SpawnProjectilePowerup(DOUBLE_TRIPLE_CONE_LASER);
-	}
-	if(input->KeyDownOnce(SDLK_j))
-	{
-		SpawnProjectilePowerup(DOUBLE_LASER);
-	}
-	if(input->KeyDownOnce(SDLK_k))
-	{
-		SpawnProjectilePowerup(QUAD_LASER);
-	}
-	if(input->KeyDownOnce(SDLK_h))
-	{
-		SpawnProjectilePowerup(TRIPLE_CONE_LASER);
+		SpawnImperialStarShuttle();
+		//SpawnProjectilePowerup(DOUBLE_TRIPLE_CONE_LASER);
 	}
 	UpdatePlayerWeaponSelection();
 	if(input->Fire())
@@ -350,9 +339,8 @@ void SpaceShipManager::UpdatePlayerWeaponSelection()
 	}
 }
 
-void SpaceShipManager::SpawnProjectilePowerup( ProjectileTypes typeToSpawn )
+void SpaceShipManager::SpawnProjectilePowerup( ProjectileTypes typeToSpawn, Vector3D* startPos )
 {
-	Vector3D startPos(0, 0, -100.0f);
 	Vector3D tarPos(-5, 3, CAMERA_POS_Z+5);
 	wepUpgrades.push_back(
 		std::make_shared<WeaponUpgrade>(
@@ -361,4 +349,10 @@ void SpaceShipManager::SpawnProjectilePowerup( ProjectileTypes typeToSpawn )
 			tarPos,
 			10.0f,
 			1.0f));
+}
+
+void SpaceShipManager::SpawnImperialStarShuttle()
+{
+	EnemySpaceShips.push_back(std::make_shared<ImperialShuttle>(GetPlayer(), DOUBLE_TRIPLE_CONE_LASER));
+	EnemySpaceShips.back()->InitSpaceShip(-200, 0, -400, 0, 0, 0, 0, 0, 0, 1);
 }
