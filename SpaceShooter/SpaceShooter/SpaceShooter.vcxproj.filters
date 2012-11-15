@@ -145,6 +145,9 @@
     <Filter Include="Game\GameObjects\WeaponUpgrade">
       <UniqueIdentifier>{09a0c0fc-1490-405b-8398-b1670908a872}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Components\SpaceShipAI\StarDestroyerStates">
+      <UniqueIdentifier>{916efa9d-d9a2-4d6b-bc2e-4df044de0233}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogSys.cpp">
@@ -242,9 +245,6 @@
       <Filter>Game\SMPEG</Filter>
     </ClCompile>
     <ClCompile Include="ApproachEdge.cpp">
-      <Filter>Game\Components\SpaceShipAI\States</Filter>
-    </ClCompile>
-    <ClCompile Include="StarDestroyerShipSpawning.cpp">
       <Filter>Game\Components\SpaceShipAI\States</Filter>
     </ClCompile>
     <ClCompile Include="ApproachGivenPosition.cpp">
@@ -397,9 +397,6 @@
     <ClCompile Include="ImperialShuttle.cpp">
       <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="StarDestroyerBossFight.cpp">
-      <Filter>Game\Components\SpaceShipAI\States</Filter>
-    </ClCompile>
     <ClCompile Include="ShuttleAI.cpp">
       <Filter>Game\Components\SpaceShipAI\States</Filter>
     </ClCompile>
@@ -409,8 +406,20 @@
     <ClCompile Include="GameplayGUI.cpp">
       <Filter>Game\GUI\GameplayGUI</Filter>
     </ClCompile>
+    <ClCompile Include="StarDestroyerBossFight.cpp">
+      <Filter>Game\Components\SpaceShipAI\StarDestroyerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StarDestroyerShipSpawning.cpp">
+      <Filter>Game\Components\SpaceShipAI\StarDestroyerStates</Filter>
+    </ClCompile>
     <ClCompile Include="StarDestroyerMoveToBossFight.cpp">
-      <Filter>Game\Managers\Source Files</Filter>
+      <Filter>Game\Components\SpaceShipAI\StarDestroyerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="FireCircle.cpp">
+      <Filter>Game\Components\SpaceShipAI\StarDestroyerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserWall.cpp">
+      <Filter>Game\GameObjects\Projectiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -561,9 +570,6 @@
     <ClInclude Include="ApproachEdge.h">
       <Filter>Game\Components\SpaceShipAI\States</Filter>
     </ClInclude>
-    <ClInclude Include="StarDestroyerShipSpawning.h">
-      <Filter>Game\Components\SpaceShipAI\States</Filter>
-    </ClInclude>
     <ClInclude Include="ApproachGivenPosition.h">
       <Filter>Game\Components\SpaceShipAI\States</Filter>
     </ClInclude>
@@ -711,9 +717,6 @@
     <ClInclude Include="StarDestroyerExecutor.h">
       <Filter>Game\GameObjects\Environmental</Filter>
     </ClInclude>
-    <ClInclude Include="StarDestroyerBossFight.h">
-      <Filter>Game\Components\SpaceShipAI\States</Filter>
-    </ClInclude>
     <ClInclude Include="KillOwnerState.h">
       <Filter>Game\Components\SpaceShipAI\States</Filter>
     </ClInclude>
@@ -732,8 +735,20 @@
     <ClInclude Include="BossHP.h">
       <Filter>Game\GUI\GameplayGUI\GUI Entry</Filter>
     </ClInclude>
+    <ClInclude Include="StarDestroyerShipSpawning.h">
+      <Filter>Game\Components\SpaceShipAI\StarDestroyerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StarDestroyerBossFight.h">
+      <Filter>Game\Components\SpaceShipAI\StarDestroyerStates</Filter>
+    </ClInclude>
     <ClInclude Include="StarDestroyerMoveToBossfight.h">
-      <Filter>Game\Components\SpaceShipAI\States</Filter>
+      <Filter>Game\Components\SpaceShipAI\StarDestroyerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="FireCircle.h">
+      <Filter>Game\Components\SpaceShipAI\StarDestroyerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserWall.h">
+      <Filter>Game\GameObjects\Projectiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

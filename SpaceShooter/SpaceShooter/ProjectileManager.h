@@ -11,7 +11,6 @@
 #include <memory>
 #include <map>
 
-
 #include "LaserLowCooldown.h"
 #include "LaserHighCooldown.h"
 #include "TripleConeLaser.h"
@@ -21,6 +20,7 @@
 #include "QuadLaser.h"
 #include "Logger.h"
 #include "ManagerInterface.h"
+#include "LaserWall.h"
 
 class ProjectileManager : public ManagerInterface
 {

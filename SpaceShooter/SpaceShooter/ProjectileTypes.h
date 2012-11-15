@@ -7,6 +7,7 @@ enum ProjectileTypes {	LASER_SLOW = 0,
 						TRIPLE_CONE_LASER,
 						QUAD_LASER,
 						DOUBLE_TRIPLE_CONE_LASER,
+						LASER_WALL
 					 };
 
 #endif // ProjectileTypes_h__

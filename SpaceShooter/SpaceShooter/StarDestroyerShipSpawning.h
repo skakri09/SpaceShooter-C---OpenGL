@@ -18,6 +18,7 @@
 #include "GetRandomFloat.h"
 #include "ApproachGivenPosition.h"
 #include "StarDestroyerBossFight.h"
+#include "StarDestroyerMoveToBossfight.h"
 
 class StarDestroyerShipSpawning : public AiState
 {

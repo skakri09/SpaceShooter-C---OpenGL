@@ -305,25 +305,36 @@ void SpaceShipManager::SpawnProjectilePowerup( ProjectileTypes typeToSpawn, Vect
 
 void SpaceShipManager::SpawnImperialStarShuttle()
 {
-	ProjectileTypes newType;
-	if(!player->ProjectileTypeKnown(DOUBLE_LASER))
+	if(GetStarDestroyer()->GetAiStateMachine().GetCurrentState() == "StarDestroyerShipSpawning")
 	{
-		newType = DOUBLE_LASER;
+		bool spawnShuttle = true;
+		ProjectileTypes newType;
+		if(!player->ProjectileTypeKnown(DOUBLE_LASER))
+		{
+			newType = DOUBLE_LASER;
+		}
+		else if(!player->ProjectileTypeKnown(TRIPLE_CONE_LASER))
+		{
+			newType = TRIPLE_CONE_LASER;
+		}
+		else if(!player->ProjectileTypeKnown(QUAD_LASER))
+		{
+			newType = QUAD_LASER;
+		}
+		else if(!player->ProjectileTypeKnown(DOUBLE_TRIPLE_CONE_LASER))
+		{
+			newType = DOUBLE_TRIPLE_CONE_LASER;
+		}
+		else
+		{
+			spawnShuttle = false;
+		}
+		if(spawnShuttle)
+		{
+			EnemySpaceShips.push_back(std::make_shared<ImperialShuttle>(GetPlayer(), newType));
+			EnemySpaceShips.back()->InitSpaceShip(-200, 0, -400, 0, 0, 0, 0, 0, 0, 1);
+		}	
 	}
-	else if(!player->ProjectileTypeKnown(TRIPLE_CONE_LASER))
-	{
-		newType = TRIPLE_CONE_LASER;
-	}
-	else if(!player->ProjectileTypeKnown(QUAD_LASER))
-	{
-		newType = QUAD_LASER;
-	}
-	else if(!player->ProjectileTypeKnown(DOUBLE_TRIPLE_CONE_LASER))
-	{
-		newType = DOUBLE_TRIPLE_CONE_LASER;
-	}
-	EnemySpaceShips.push_back(std::make_shared<ImperialShuttle>(GetPlayer(), newType));
-	EnemySpaceShips.back()->InitSpaceShip(-200, 0, -400, 0, 0, 0, 0, 0, 0, 1);
 }
 
 void SpaceShipManager::UpdateEnemies( float deltaTime )

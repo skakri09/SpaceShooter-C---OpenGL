@@ -11,6 +11,7 @@
 #include "AiState.h"
 #include "BaseEnemyShip.h"
 #include "logger.h"
+#include "StarDestroyerBossFight.h"
 
 class StarDestroyerMoveToBossfight : public AiState
 {
@@ -25,6 +26,11 @@ public:
 
 private:
 	Logger log;
+
+	Vector3D targetPos;
+	Vector3D velocity;
+	
+	static float timer;
 };
 
 #endif // StarDestroyerMoveToBossfight_h__

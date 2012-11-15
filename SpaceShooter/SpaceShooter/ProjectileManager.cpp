@@ -41,6 +41,9 @@ void ProjectileManager::InitProjectileManager()
 
 	std::shared_ptr<Projectile> quadLaser = GetProjectile(QUAD_LASER);
 	projectileCooldowns[QUAD_LASER] = quadLaser->GetProjectileCooldown();
+
+	std::shared_ptr<Projectile> lw = GetProjectile(LASER_WALL);
+	projectileCooldowns[LASER_WALL] = lw->GetProjectileCooldown();
 }
 
 void ProjectileManager::Update(float deltaTime)
@@ -132,6 +135,9 @@ std::shared_ptr<Projectile> ProjectileManager::GetProjectile( ProjectileTypes pr
 		break;
 	case QUAD_LASER:
 		projectiles.push_back(std::make_shared<QuadLaser>());
+		break;
+	case LASER_WALL:
+		projectiles.push_back(std::make_shared<LaserWall>());
 		break;
 	}
 

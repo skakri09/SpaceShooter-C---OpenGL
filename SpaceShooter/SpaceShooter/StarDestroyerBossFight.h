@@ -11,6 +11,7 @@
 #include "AiState.h"
 #include "BaseEnemyShip.h"
 #include "logger.h"
+#include "FireCircle.h"
 
 class StarDestroyerBossFight : public AiState
 {
