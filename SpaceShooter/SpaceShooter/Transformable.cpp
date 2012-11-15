@@ -87,10 +87,10 @@ void Transformable::ApplyGLTransformations(
 	
 	if(rotatef)
 	{
-		glRotatef(objectRotationDegrees, 
-			rotationAxis.getX(),
-			rotationAxis.getY(), 
-			rotationAxis.getZ());
+		//glRotatef(objectRotationDegrees, 
+		//	rotationAxis.getX(),
+		//	rotationAxis.getY(), 
+		//	rotationAxis.getZ());
 	}
 }
 

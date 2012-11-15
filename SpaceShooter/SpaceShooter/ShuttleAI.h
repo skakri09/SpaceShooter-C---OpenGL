@@ -54,8 +54,7 @@ private:
 	void SetLeftToRightState(BaseEnemyShip* enemy);
 	void SetRightToPlanetState(BaseEnemyShip* enemy);
 
-	void Accelerate(float deltaTime);
-
+	void SetRotation(BaseEnemyShip* enemy);
 };
 
 #endif // ShuttleAI_h__

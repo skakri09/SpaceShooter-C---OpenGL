@@ -95,8 +95,18 @@ void ShuttleAI::SetRightToPlanetState( BaseEnemyShip* owner )
 	currentVelocity = &flyOutVel;
 }
 
-void ShuttleAI::Accelerate( float deltaTime )
+void ShuttleAI::SetRotation( BaseEnemyShip* enemy )
 {
+	switch(curTravelPart)
+	{
+	case TO_SCREEN_LEFT:
 
+		break;
+	case TO_SCREEN_RIGHT:
+		
+		break;
+	case TO_PLANET:
+
+		break;
+	}
 }
-

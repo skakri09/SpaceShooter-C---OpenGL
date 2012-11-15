@@ -109,6 +109,7 @@ private:
 
 	//The rotation of the gameObject
 	Vector3D rotationAxis;
+	Vector3D rotationDegrees;
 	float objectRotationDegrees;
 };
 

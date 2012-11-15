@@ -348,8 +348,8 @@ void SpaceShipManager::SpawnProjectilePowerup( ProjectileTypes typeToSpawn, Vect
 			typeToSpawn,
 			startPos,
 			tarPos,
-			10.0f,
-			1.0f));
+			20.0f,
+			2.5f));
 }
 
 void SpaceShipManager::SpawnImperialStarShuttle()

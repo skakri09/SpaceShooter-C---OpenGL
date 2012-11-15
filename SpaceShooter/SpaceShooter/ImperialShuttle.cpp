@@ -28,7 +28,12 @@ void ImperialShuttle::Update( GLfloat deltaTime )
 void ImperialShuttle::Draw()
 {
 	glColor4f(0.2f, 0.5f, 0.2f, 1.0f);
-	BaseEnemyShip::Draw();
+	glPushMatrix();
+
+	transformable.ApplyGLTransformations();
+	vboDrawable.Draw();
+
+	glPopMatrix();
 	glColor4f(1, 1, 1, 1);
 }
 
