@@ -1,7 +1,7 @@
 #include "ApproachGivenPosition.h"
 
-ApproachGivenPosition::ApproachGivenPosition( float xPos, float yPos, float zPos, float velocity,
-	std::shared_ptr<AiState> stateToEnterOnceReached)
+ApproachGivenPosition::ApproachGivenPosition( float xPos, float yPos, 
+		float zPos, float velocity)
 	:log("ApproachGivenPosition", INFO),
 	AiState("ApproachGivenPosition")
 
@@ -33,7 +33,6 @@ void ApproachGivenPosition::UpdateState( BaseEnemyShip* owner, float delta )
 			owner->transformable.SetVelocity(newVel);
 			if(dist <= 1)
 			{
-				owner->GetAiStateMachine().ChangeState(stateToEnterOnceReached);
 				destReached = true;
 			}
 
@@ -44,5 +43,5 @@ void ApproachGivenPosition::UpdateState( BaseEnemyShip* owner, float delta )
 
 void ApproachGivenPosition::Exit( BaseEnemyShip* owner )
 {
-
+	owner->transformable.SetVelocity(0, 0, 0);
 }

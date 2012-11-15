@@ -16,8 +16,7 @@
 class ApproachGivenPosition : public AiState
 {
 public:
-	ApproachGivenPosition(float xPos, float yPos, float zPos, float velocity,
-		std::shared_ptr<AiState> stateToEnterOnceReached);
+	ApproachGivenPosition(float xPos, float yPos, float zPos, float velocity);
 
 	virtual void Enter(BaseEnemyShip* owner);
 

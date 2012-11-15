@@ -397,11 +397,11 @@
     <ClCompile Include="StarDestroyerExecutor.cpp">
       <Filter>Game\GameObjects\Environmental</Filter>
     </ClCompile>
-    <ClCompile Include="StarDestroyerBossFight.cpp">
-      <Filter>Game\Managers\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ImperialShuttle.cpp">
       <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="StarDestroyerBossFight.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

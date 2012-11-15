@@ -15,7 +15,7 @@
 class StarDestroyerBossFight : public AiState
 {
 public:
-    StarDestroyerBossFight():log("StarDestroyerBossFight", INFO),AiState("StarDestroyerBossFight"){}
+    StarDestroyerBossFight():log("StarDestroyerBossFight", WARN),AiState("StarDestroyerBossFight"){}
 
 	virtual void Enter(BaseEnemyShip* enemy);
 

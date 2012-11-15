@@ -43,16 +43,11 @@ void ImperialShuttle::InitSpaceShip( float startX, float startY, float startZ, f
 	float randX = GetRandFloat(-5.0f, 5.0f);
 	float randY = GetRandFloat(-5.0f, 5.0f);
 	aiStateMachine.ChangeState
-		(
+	(
 		std::make_shared<ApproachGivenPosition>
 		(
-		0.0f, 0.0f, -100.0f, 100.0f, 
-		std::make_shared<ApproachGivenPosition>
-		(
-		randX, randY, CAMERA_POS_Z, 50.0f, 
-		std::make_shared<KillOwnerState>()
+			0.0f, 0.0f, -100.0f, 100.0f
 		)
-		)
-		);
+	);
 
 }

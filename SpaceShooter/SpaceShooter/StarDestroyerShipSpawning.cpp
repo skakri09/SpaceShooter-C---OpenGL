@@ -27,7 +27,7 @@ void StarDestroyerShipSpawning::UpdateState( BaseEnemyShip* owner, float deltaTi
 		owner->GetAiStateMachine().ChangeState(
 			std::make_shared<ApproachGivenPosition>
 			( 
-				0.0f, -10.0f, -150.0f, 50.0f, std::make_shared<StarDestroyerBossFight>()
+				0.0f, -10.0f, -150.0f, 50.0f
 			));
 	}
 }

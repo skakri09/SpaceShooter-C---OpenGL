@@ -32,6 +32,7 @@ void SpaceShipManager::InitManager(InputManager* input, GameState* gameState, Sc
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//MilleniumFalcon//MilleniumFalcon.3ds");
+	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialShuttle//ImperialShuttle.3ds");
 	tex.InitTexture("..//images//panels.jpg", "spaceshipPanels");
 	ResetSpaceships();
 }
