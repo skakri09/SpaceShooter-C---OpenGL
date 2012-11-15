@@ -24,7 +24,6 @@
 #include "VBODrawable.h"
 #include "Transformable.h"
 #include "AABBCollisionBox.h"
-#include "Texturable.h"
 
 enum Axis {X_AXIS, Y_AXIS, Z_AXIS};
 
@@ -68,8 +67,7 @@ public:
 	ShooterModule shooterModule;	//A spaceship can shoot
 	VBODrawable vboDrawable;		//A spaceship is drawn with VBOs
 	Transformable transformable;	//A spaceship is transformable
-	AABBCollisionBox aabb;			//A spaceship has an AABB for collision
-	Texturable texturable;
+	AABBCollisionBox aabb;			//A spaceship has an AABB for collisio
 
 	//Takes care of firing the spaceships gun.
 	bool Shoot(ProjectileTypes projectileType);

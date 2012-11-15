@@ -68,6 +68,8 @@ private:
 	EnvironmentalManager environment;
 	Camera cam;
 
+	float GamePlaySpeed;
+
 	GameplayGUI gpi;
 	void SetGameLights();
 	void SetGameFog();

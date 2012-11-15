@@ -139,12 +139,12 @@ void Vector3D::InvertX()
 
 void Vector3D::InvertY()
 {
-	y > 0 ? y=(0-x) : y = abs(x);
+	y > 0 ? y=(0-y) : y = abs(y);
 }
 
 void Vector3D::InvertZ()
 {
-	z > 0 ? z=(0-x) : z = abs(x);
+	z > 0 ? z=(0-z) : z = abs(z);
 }
 	
 float Vector3D::Magnitude() const

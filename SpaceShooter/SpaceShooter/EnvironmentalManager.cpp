@@ -37,5 +37,6 @@ void EnvironmentalManager::DrawEnvironment()
 
 void EnvironmentalManager::ResetEnvironment()
 {
-
+	Environment.clear();
+	InitManager();
 }

@@ -65,7 +65,6 @@ void SpaceShip::CreateGameObject(std::string meshPathFrom3dsFolder)
 		vboDrawable.SetMeshInfo(meshInfo);
 		aabb = *meshInfo->aabb;
 	}
-	texturable.InitTexture("..//3ds//aluminium.jpg", "aluminium.jpg");
 }
 
 bool SpaceShip::Shoot(ProjectileTypes projectileType)

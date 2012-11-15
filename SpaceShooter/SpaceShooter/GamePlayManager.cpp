@@ -37,6 +37,8 @@ void GamePlayManager::InitGamePlayManager(InputManager* input, GameState* gameSt
 	cam.SetSkybox("skybox1");
 
 	gpi.InitGUI(&score);
+	
+	GamePlaySpeed = 1.0f;
 }
 
 void GamePlayManager::RenderGame() 
@@ -65,7 +67,7 @@ void GamePlayManager::Update(float deltaTime)
 	{
 		environment.Update(deltaTime);
 		ParticleManager::Inst()->Update(deltaTime);
-		SpaceShipManager::Inst()->Update(deltaTime);
+		SpaceShipManager::Inst()->Update(deltaTime*GamePlaySpeed);
 		ProjectileManager::Inst()->Update(deltaTime);
 		score.Update(deltaTime);
 		gpi.UpdateGUI(deltaTime);
@@ -78,6 +80,14 @@ void GamePlayManager::Update(float deltaTime)
 	if(input->KeyDownOnce(SDLK_F1))
 	{
 		SetDebugMode(!debugMode);
+	}
+	if(input->KeyDownHold(SDLK_KP_PLUS))
+	{
+		GamePlaySpeed+=(1*deltaTime);
+	}
+	else if(input->KeyDownHold(SDLK_KP_MINUS))
+	{
+		GamePlaySpeed-=(1*deltaTime);
 	}
 }
 

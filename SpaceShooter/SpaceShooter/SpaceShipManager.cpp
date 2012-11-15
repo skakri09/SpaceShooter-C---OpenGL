@@ -32,6 +32,7 @@ void SpaceShipManager::InitManager(InputManager* input, GameState* gameState, Sc
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialTieInterceptor//ImperialTieInterceptor.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//ImperialStarDestroyer//ImperialStarDestroyer.3ds");
 	MeshFactory::Inst()->LoadMesh("..//3ds//MilleniumFalcon//MilleniumFalcon.3ds");
+	tex.InitTexture("..//images//panels.jpg", "spaceshipPanels");
 	ResetSpaceships();
 }
 
@@ -120,6 +121,8 @@ void SpaceShipManager::DrawSpaceShips()
 	}
 	if(drawAABBs){player->aabb.DrawAABB();}
 		
+	//Using the same texture for all spaceships
+	tex.BindTexture("spaceshipPanels");
 	player->Draw();
 
 	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();i++)
@@ -131,6 +134,8 @@ void SpaceShipManager::DrawSpaceShips()
 		
 		(*i)->Draw();
 	}
+
+	tex.UnbindTexture();
 
 	glPopMatrix();
 }

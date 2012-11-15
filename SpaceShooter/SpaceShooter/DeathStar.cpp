@@ -46,5 +46,5 @@ void DeathStar::LoadDeathstar()
 void DeathStar::InitDeathstar( float xPos, float yPos, float zPos )
 {
 	LoadDeathstar();
-	transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 0, 2.0f, Vector3D::ZeroVec());
+	transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 0, 2.5f, Vector3D::ZeroVec());
 }

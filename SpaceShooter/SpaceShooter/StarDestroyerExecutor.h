@@ -31,9 +31,20 @@ public:
 	Texturable texturable;
 
 protected:
+	bool bottomIsTarget;
+
+	Vector3D bTarPos;
+	Vector3D tTarPos;
+	Vector3D* target;
+	bool downIsTarget;
+	Vector3D orgVel;
 
 	void Init(float xPos, float yPos, float zPos);
 	void LoadAssets();
+
+	void ChangeDirection();
+	void SetVel();
+	void deAccelerate(float deltaTime);
 
 };
 

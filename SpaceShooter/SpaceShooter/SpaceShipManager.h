@@ -65,6 +65,8 @@ private:
 	SpaceShipManager();
 	~SpaceShipManager();
 
+	Texturable tex;
+
 	bool drawAABBs;
 	//locally stored pointer to the inputManager object
 	//stored in GamePlayManager, so that we can handle player
