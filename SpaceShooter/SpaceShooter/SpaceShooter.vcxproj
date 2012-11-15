@@ -94,6 +94,7 @@
     <ClCompile Include="BackEntry.cpp" />
     <ClCompile Include="BackToMainMenuEntry.cpp" />
     <ClCompile Include="ImperialShuttle.cpp" />
+    <ClCompile Include="ShuttleAI.cpp" />
     <ClCompile Include="StarDestroyerBossFight.cpp" />
     <ClCompile Include="StarDestroyerExecutor.cpp" />
     <ClCompile Include="WeaponUpgrade.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="BackToMainMenuEntry.h" />
     <ClInclude Include="ImperialShuttle.h" />
     <ClInclude Include="KillOwnerState.h" />
+    <ClInclude Include="ShuttleAI.h" />
     <ClInclude Include="StarDestroyerBossFight.h" />
     <ClInclude Include="StarDestroyerExecutor.h" />
     <ClInclude Include="WeaponUpgrade.h" />

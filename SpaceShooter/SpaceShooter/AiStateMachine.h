@@ -11,18 +11,18 @@
 
 #include "AiState.h"
 #include "BaseEnemyShip.h"
-//class BaseEnemyShip;
+
+
 class AiStateMachine
 {
 public:
-	//typedef std::shared_ptr<AiState<BaseEnemyShip>> AiStatePtr;
 	//Ctor for the state machine. The state machine needs a pointer to the class
 	//that owns it (param 1), an AiState ptr to the state we wish to start in
 	//(param 2) and another AiState ptr to the state we wish to always be active.
 	//The ptrs are of type shared_ptr<AiState>
-    AiStateMachine(BaseEnemyShip* owner, 
-					std::shared_ptr<AiState> startupState, 
-					std::shared_ptr<AiState> constantState)
+	AiStateMachine(BaseEnemyShip* owner, 
+		std::shared_ptr<AiState> startupState, 
+		std::shared_ptr<AiState> constantState)
 	{
 		this->owner = owner;
 

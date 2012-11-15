@@ -403,6 +403,9 @@
     <ClCompile Include="StarDestroyerBossFight.cpp">
       <Filter>Game\Components\SpaceShipAI\States</Filter>
     </ClCompile>
+    <ClCompile Include="ShuttleAI.cpp">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLUtils\GLUtils.hpp">
@@ -467,9 +470,6 @@
     </ClInclude>
     <ClInclude Include="Planet.h">
       <Filter>Game\GameObjects\Environmental</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.h">
-      <Filter>Game\Components</Filter>
     </ClInclude>
     <ClInclude Include="CollisionTransformationInfo.h">
       <Filter>Game\Components\Collidable</Filter>
@@ -716,6 +716,12 @@
     </ClInclude>
     <ClInclude Include="ImperialShuttle.h">
       <Filter>Game\GameObjects\SpaceShips\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Game\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="ShuttleAI.h">
+      <Filter>Game\Components\SpaceShipAI\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

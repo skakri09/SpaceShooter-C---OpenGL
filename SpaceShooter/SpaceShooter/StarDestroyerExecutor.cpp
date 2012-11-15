@@ -2,7 +2,7 @@
 
 StarDestroyerExecutor::StarDestroyerExecutor()
 {
-	Init(-850, -15, -800);
+	Init(450, -500, -900);
 }
 
 StarDestroyerExecutor::~StarDestroyerExecutor()
@@ -14,9 +14,10 @@ void StarDestroyerExecutor::Draw()
 {
 	glPushMatrix();
 	transformable.ApplyGLTransformations(true, true, false);
-	glRotatef(-90, 0, 0, 1);
-	glRotatef(-90, 0, 1, 0);
-	glRotatef(-15, 1, 0, 0);
+	glRotatef(180, 0, 1, 0);
+	glRotatef(-90, 1, 0, 0);
+	glRotatef(-10, 0, 0, 1);
+	//glRotatef(-20, 0, 0, 1);
 	texturable.BindTexture("DSP");
 	vboDrawable.Draw();
 
@@ -72,12 +73,12 @@ void StarDestroyerExecutor::Update( GLfloat deltaTime )
 void StarDestroyerExecutor::Init( float xPos, float yPos, float zPos )
 {
 	LoadAssets();
-	transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 0, 0.5f, Vector3D::ZeroVec());
+	transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 0, 0.2f, Vector3D::ZeroVec());
 	
 	tTarPos = *transformable.getPosition();
 
 	bTarPos = tTarPos;
-	bTarPos.setY(-75);
+	bTarPos.setY(tTarPos.getY()-75.0f);
 	
 	transformable.setYVel(-5);
 	orgVel = *transformable.getVelocity();

@@ -45,7 +45,7 @@ void ParticleManager::DrawParticles()
 		if(vbo.HaveMeshInfo())
 		{
 			texturable.BindTexture("particle");
-			glColor3f(1.0f, 0.5f, 1.0f);
+			//glColor3f(1.0f, 0.5f, 1.0f);
 			vbo.EnableClientStates();
 			for(auto i = ActiveParticles.begin(); i != ActiveParticles.end(); i++)
 			{
@@ -86,7 +86,7 @@ void ParticleManager::Update( float deltaTime )
 
 void ParticleManager::EmitStandardSpaceshipProjectileCollision( Vector3D origin )
 {
-	EmitParticles(origin, 30, 0.1f, 10, 1.0f, 0.3f, 0.1f, 1.0f, 0.5f, 0.0f);
+	EmitParticles(origin, 30, 0.1f, 10, 1.0f, 0.9f, 0.5f, 1.0f, 0.5f, 0.0f);
 }
 
 void ParticleManager::EmitParticles( Vector3D origin, 
