@@ -394,6 +394,9 @@
     <ClCompile Include="WeaponUpgrade.cpp">
       <Filter>Game\GameObjects\WeaponUpgrade</Filter>
     </ClCompile>
+    <ClCompile Include="StarDestroyerExecutor.cpp">
+      <Filter>Game\GameObjects\Environmental</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLUtils\GLUtils.hpp">
@@ -695,6 +698,9 @@
     </ClInclude>
     <ClInclude Include="WeaponUpgrade.h">
       <Filter>Game\GameObjects\WeaponUpgrade</Filter>
+    </ClInclude>
+    <ClInclude Include="StarDestroyerExecutor.h">
+      <Filter>Game\GameObjects\Environmental</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

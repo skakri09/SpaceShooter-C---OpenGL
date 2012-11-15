@@ -54,7 +54,7 @@ MeshInfo Mesh3dsLoader::Load3dsMesh( std::string _3dsMeshFile )
 				{
 					if(mesh->texelL)
 					{	//copying the texcoords. This is not finished yet, and not sure if working
-						memcpy(&texCoords[finishedFaces*3 +i], mesh->texelL[face->points[i]], sizeof(float)*2);
+						memcpy(&texCoords[finishedFaces*3 +i], mesh->texelL[face->points[i]], sizeof(Lib3dsTexel));
 						//log << INFO << mesh->faceL[i].material << std::endl;
 					}
 					memcpy(&vertices[finishedFaces*3 +i], mesh->pointL[face->points[i]].pos, sizeof(float)*3);

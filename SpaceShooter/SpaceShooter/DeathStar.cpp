@@ -14,10 +14,12 @@ DeathStar::~DeathStar()
 void DeathStar::Draw()
 {
 	glPushMatrix();
-	texturable.BindTexture("DeathStarPanels.jpg");
 	transformable.ApplyGLTransformations(true, true, false);
 	glRotatef(rotation, 0.2f, 1.0f, 0.0f);
+
+	texturable.BindTexture("DSP");
 	vboDrawable.Draw();
+
 	texturable.UnbindTexture();
 	glPopMatrix();
 }
@@ -38,7 +40,7 @@ void DeathStar::LoadDeathstar()
 		std::shared_ptr<MeshInfo> meshInfo = MeshFactory::Inst()->GetMesh("..//3ds//DeathStar//DeathStar.3ds");
 		vboDrawable.SetMeshInfo(meshInfo);
 	}
-	texturable.InitTexture("..//3ds//DeathStar//DeathStarPanels.jpg", "DeathStarPanels.jpg");
+	texturable.InitTexture("..//3ds//DeathStar//DeathStarPanels.jpg", "DSP");
 }
 
 void DeathStar::InitDeathstar( float xPos, float yPos, float zPos )

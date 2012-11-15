@@ -14,6 +14,7 @@
 #include "MeshFactory.h"
 #include "ManagerInterface.h"
 #include "DeathStar.h"
+#include "StarDestroyerExecutor.h"
 
 class EnvironmentalManager : public ManagerInterface
 {

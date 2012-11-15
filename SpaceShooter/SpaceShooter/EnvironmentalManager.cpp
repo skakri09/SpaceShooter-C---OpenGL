@@ -15,6 +15,8 @@ void EnvironmentalManager::InitManager()
 
 	Environment.push_back(std::make_shared<Planet>("Endor//Endor.3ds"));
 	Environment.push_back(std::make_shared<DeathStar>());
+	Environment.push_back(std::make_shared<StarDestroyerExecutor>());
+
 }
 
 void EnvironmentalManager::Update( float deltaTime )

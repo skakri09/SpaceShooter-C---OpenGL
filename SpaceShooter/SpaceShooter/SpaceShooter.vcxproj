@@ -93,6 +93,7 @@
     <ClCompile Include="ApproachXYZPlayerState.cpp" />
     <ClCompile Include="BackEntry.cpp" />
     <ClCompile Include="BackToMainMenuEntry.cpp" />
+    <ClCompile Include="StarDestroyerExecutor.cpp" />
     <ClCompile Include="WeaponUpgrade.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="ApproachXYZPlayerState.h" />
     <ClInclude Include="BackEntry.h" />
     <ClInclude Include="BackToMainMenuEntry.h" />
+    <ClInclude Include="StarDestroyerExecutor.h" />
     <ClInclude Include="WeaponUpgrade.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Camera.h" />
