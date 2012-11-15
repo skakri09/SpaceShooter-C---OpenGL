@@ -102,15 +102,20 @@ private:
 	//orthographic projection
 	void HandleFrustumCollision();
 
-	void HandlePlayerRotation();
-
 	void HandleCollision();
+
+	void UpdateEnemies(float deltaTime);
+
+	void UpdateWepUpgrades(float deltaTime);
+
+	void HandlePlayerInput();
 
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemySpaceShips;
 	std::vector<std::shared_ptr<BaseEnemyShip>> EnemyShipsForTransfer;
 	std::vector<std::shared_ptr<WeaponUpgrade>> wepUpgrades;
 
 	void SpawnImperialStarShuttle();
+	float ImperialStarShuttleSpawnTimer;
 
 };
 

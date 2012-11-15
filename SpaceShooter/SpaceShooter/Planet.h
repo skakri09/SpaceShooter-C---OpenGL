@@ -37,7 +37,7 @@ protected:
 	virtual void InitPlanet(float xPos, float yPos, float zPos);
 
 private:
-	
+	std::string currTexture;
 };
 
 #endif // Planet_h__

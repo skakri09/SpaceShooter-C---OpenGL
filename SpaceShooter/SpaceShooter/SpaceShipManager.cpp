@@ -39,45 +39,19 @@ void SpaceShipManager::InitManager(InputManager* input, GameState* gameState, Sc
 
 void SpaceShipManager::Update(GLfloat deltaTime)
 {
-	if(input->KeyDownOnce(SDLK_l))
+	ImperialStarShuttleSpawnTimer+= deltaTime;
+	if(ImperialStarShuttleSpawnTimer >= 7.0f)
 	{
+		ImperialStarShuttleSpawnTimer = 0.0f;
 		SpawnImperialStarShuttle();
-		//SpawnProjectilePowerup(DOUBLE_TRIPLE_CONE_LASER);
 	}
+
+	HandlePlayerInput();
 	UpdatePlayerWeaponSelection();
-	if(input->Fire())
-	{
-		if(player->Shoot(player->GetActiveProjectileType()))
-		{
-			SoundManager::Inst()->PlayEffect("laser_tripleFire_long", 10);
-		}
-	}
-
-	for(auto i = wepUpgrades.begin(); i != wepUpgrades.end();)
-	{
-		(*i)->Update(deltaTime);
-		if( (*i)->CanKill())
-		{
-			i = wepUpgrades.erase(i);
-		}
-		else if((*i)->aabb.IsCollision(&player->aabb))
-		{
-			player->MakeProjectileActive((*i)->GetType());
-			(*i)->FlagForKill();
-			i = wepUpgrades.erase(i);
-		}
-		else
-			++i;
-	}
-
-	HandlePlayerRotation();
-	HandleXAxisMovement();
-	HandleYAxisMovement();
-
 	HandleFrustumCollision();
+	UpdateWepUpgrades(deltaTime);
 
 	player->Update(deltaTime);
-
 	if(player->CanKill())
 	{
 		*gameState = MAIN_MENU;
@@ -88,25 +62,8 @@ void SpaceShipManager::Update(GLfloat deltaTime)
 		EnemySpaceShips.push_back(*i);
 		i = EnemyShipsForTransfer.erase(i);
 	}
+	UpdateEnemies(deltaTime);
 
-	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();)
-	{
-		if( (*i)->CanKill() )
-		{
-			if( (*i)->WasKilledByPlayer())
-			{
-				scoreManager->EnemyKilled((*i)->GetEnemyType());
-			}
-			
-			i = EnemySpaceShips.erase(i);
-			log << WARN << "killing spaceship" << std::endl;
-		}
-		else
-		{
-			(*i)->Update(deltaTime);
-			++i;
-		}
-	}
 	HandleCollision();
 }
 
@@ -287,14 +244,6 @@ void SpaceShipManager::HandleFrustumCollision()
 	log << INFO << player->transformable.getYPos() << std::endl;
 }
 
-void SpaceShipManager::HandlePlayerRotation()
-{
-	/*if(input->LeftMouseDownOnce())
-	{
-		player->InitRotation(Y_AXIS);
-	}*/
-}
-
 void SpaceShipManager::ResetSpaceships()
 {
 	EnemySpaceShips.clear();
@@ -309,6 +258,7 @@ void SpaceShipManager::ResetSpaceships()
 
 	EnemySpaceShips.push_back(std::make_shared<ImperialStarDestroyer>(player));
 	EnemySpaceShips.back()->InitSpaceShip(-200.0f, -200.0f, -800.0f, 0, 0, 0, 0, 0, 0, -1);
+	ImperialStarShuttleSpawnTimer = 0.0f;
 }
 
 void SpaceShipManager::UpdatePlayerWeaponSelection()
@@ -356,4 +306,60 @@ void SpaceShipManager::SpawnImperialStarShuttle()
 {
 	EnemySpaceShips.push_back(std::make_shared<ImperialShuttle>(GetPlayer(), DOUBLE_TRIPLE_CONE_LASER));
 	EnemySpaceShips.back()->InitSpaceShip(-200, 0, -400, 0, 0, 0, 0, 0, 0, 1);
+}
+
+void SpaceShipManager::UpdateEnemies( float deltaTime )
+{
+	for(auto i = EnemySpaceShips.begin(); i != EnemySpaceShips.end();)
+	{
+		if( (*i)->CanKill() )
+		{
+			if( (*i)->WasKilledByPlayer())
+			{
+				scoreManager->EnemyKilled((*i)->GetEnemyType());
+			}
+
+			i = EnemySpaceShips.erase(i);
+			log << WARN << "killing spaceship" << std::endl;
+		}
+		else
+		{
+			(*i)->Update(deltaTime);
+			++i;
+		}
+	}
+}
+
+void SpaceShipManager::UpdateWepUpgrades( float deltaTime )
+{
+	for(auto i = wepUpgrades.begin(); i != wepUpgrades.end();)
+	{
+		(*i)->Update(deltaTime);
+		if( (*i)->CanKill())
+		{
+			i = wepUpgrades.erase(i);
+		}
+		else if((*i)->aabb.IsCollision(&player->aabb))
+		{
+			player->MakeProjectileActive((*i)->GetType());
+			(*i)->FlagForKill();
+			i = wepUpgrades.erase(i);
+		}
+		else
+			++i;
+	}
+}
+
+void SpaceShipManager::HandlePlayerInput()
+{
+	if(input->Fire())
+	{
+		if(player->Shoot(player->GetActiveProjectileType()))
+		{
+			SoundManager::Inst()->PlayEffect("laser_tripleFire_long", 10);
+		}
+	}
+
+	HandleXAxisMovement();
+	HandleYAxisMovement();
 }

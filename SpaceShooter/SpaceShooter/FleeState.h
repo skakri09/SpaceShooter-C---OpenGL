@@ -14,6 +14,13 @@
 #include "logger.h"
 #include "GameConstants.h"
 
+enum TargetDirection
+{
+	RIGHT,
+	UP,
+	DOWN,
+	LEFT
+};
 class FleeState : public AiState
 {
 public:
@@ -33,6 +40,10 @@ private:
 	//Decides the target position based on the start position of the owner spaceship
 	//Function will try to find the shortest way out from the frustum
 	void SetTargetPos(Vector3D* currentPos);
+
+	void SetRotation(BaseEnemyShip* owner, float deltaTime);
+
+	TargetDirection direction;
 };
 
 #endif // FleeState_h__

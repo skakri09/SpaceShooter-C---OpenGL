@@ -17,6 +17,7 @@
 #include "GameConstants.h"
 #include "KillOwnerState.h"
 
+#include <gl/glew.h>
 enum TravelPart
 {
 	TO_SCREEN_LEFT,
@@ -50,11 +51,12 @@ private:
 	Vector3D* currentVelocity;
 	
 	TravelPart curTravelPart;
+	TravelPart rotationPart;
 
 	void SetLeftToRightState(BaseEnemyShip* enemy);
 	void SetRightToPlanetState(BaseEnemyShip* enemy);
 
-	void SetRotation(BaseEnemyShip* enemy);
+	void SetRotation(BaseEnemyShip* enemy, float deltaTime);
 };
 
 #endif // ShuttleAI_h__

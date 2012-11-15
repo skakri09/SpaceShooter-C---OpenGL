@@ -220,3 +220,53 @@ void Transformable::SetPos( float xPos, float yPos, float zPos )
 	position.setValues(xPos, yPos, zPos);
 }
 
+void Transformable::SetRotation( Vector3D newRotation )
+{
+	rotation = newRotation;
+}
+
+void Transformable::SetRotation( Vector3D& newRotation )
+{
+	rotation = newRotation;
+}
+
+void Transformable::SetRotation( float xRot, float yRot, float zRot )
+{
+	rotation.setValues(xRot, yRot, zRot);
+}
+
+void Transformable::SetXRot( float xRot )
+{
+	rotation.setX(xRot);
+}
+
+void Transformable::SetYRot( float yRot )
+{
+	rotation.setY(yRot);
+}
+
+void Transformable::SetZRot( float zRot )
+{
+	rotation.setZ(zRot);
+}
+
+Vector3D* Transformable::GetRotation()
+{
+	return &rotation;
+}
+
+float Transformable::GetXRot()
+{
+	return rotation.getX();
+}
+
+float Transformable::GetYRot()
+{
+	return rotation.getY();
+}
+
+float Transformable::GetZRot()
+{
+	return rotation.getZ();
+}
+

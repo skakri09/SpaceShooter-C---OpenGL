@@ -4,8 +4,8 @@ ShuttleAI::ShuttleAI()
 	:log("ShuttleAI", INFO),AiState("ShuttleAI")
 {
 	dsStartPos.setValues(-700, 200, -750);
-	leftTargetPos.setValues(FRUSTUM_LEFT, GetRandFloat(FRUSTUM_BOTTOM, FRUSTUM_BOTTOM), -100.0f);
-	rightTargetPos.setValues(FRUSTUM_RIGHT, GetRandFloat(FRUSTUM_BOTTOM, FRUSTUM_BOTTOM), -100.0f);
+	leftTargetPos.setValues(FRUSTUM_LEFT, GetRandFloat(FRUSTUM_BOTTOM, FRUSTUM_TOP), -100.0f);
+	rightTargetPos.setValues(FRUSTUM_RIGHT, GetRandFloat(FRUSTUM_BOTTOM, FRUSTUM_TOP), -100.0f);
 	planetTargetPos.setValues(700, -700, -1100);
 
 	startVel = leftTargetPos - dsStartPos;
@@ -21,6 +21,7 @@ void ShuttleAI::Enter( BaseEnemyShip* owner )
 	currentTarget = &leftTargetPos;
 	currentVelocity = &startVel;
 	curTravelPart = TO_SCREEN_LEFT;
+	rotationPart = TO_SCREEN_LEFT;
 	log << WARN << "Travelpart = TO_SCREEN_LEFT" << std::endl;
 }
 
@@ -35,6 +36,13 @@ void ShuttleAI::UpdateState( BaseEnemyShip* owner, float deltaTime )
 			Vector3D newVel = *currentVelocity;
 			newVel*= (dist/60);
 			owner->transformable.SetVelocity(newVel);
+			if(dist <= 15)
+			{
+				if(curTravelPart == TO_SCREEN_LEFT)
+				{
+					rotationPart = TO_SCREEN_RIGHT;
+				}
+			}
 			if(dist <= 5)
 			{
 				if(curTravelPart == TO_SCREEN_LEFT)
@@ -51,6 +59,10 @@ void ShuttleAI::UpdateState( BaseEnemyShip* owner, float deltaTime )
 	}
 	else //curtravelpart == TO_SCREN_RIGHT
 	{
+		if(dist <= 10)
+		{
+			rotationPart = TO_PLANET;
+		}
 		if(dist <= 5)
 		{
 			Vector3D newVel = *currentVelocity;
@@ -62,6 +74,7 @@ void ShuttleAI::UpdateState( BaseEnemyShip* owner, float deltaTime )
 			}
 		}
 	}
+	SetRotation(owner, deltaTime);
 }
 
 void ShuttleAI::Exit( BaseEnemyShip* owner )
@@ -95,18 +108,31 @@ void ShuttleAI::SetRightToPlanetState( BaseEnemyShip* owner )
 	currentVelocity = &flyOutVel;
 }
 
-void ShuttleAI::SetRotation( BaseEnemyShip* enemy )
+void ShuttleAI::SetRotation( BaseEnemyShip* owner, float deltaTime )
 {
-	switch(curTravelPart)
+	float targetRotation;
+	switch(rotationPart)
 	{
 	case TO_SCREEN_LEFT:
-
+		targetRotation = 43.0f;
+		if(owner->transformable.GetYRot() < targetRotation)
+		{
+			owner->transformable.SetYRot(owner->transformable.GetYRot()+(targetRotation/2)*deltaTime);
+		}
 		break;
 	case TO_SCREEN_RIGHT:
-		
+		targetRotation = 90.0f;
+		if(owner->transformable.GetYRot() < targetRotation)
+		{
+			owner->transformable.SetYRot(owner->transformable.GetYRot()+(targetRotation/2)*deltaTime);
+		}
 		break;
 	case TO_PLANET:
-
+		targetRotation = 148.0f;
+		if(owner->transformable.GetYRot() < targetRotation)
+		{
+			owner->transformable.SetYRot(owner->transformable.GetYRot()+(targetRotation/2)*deltaTime);
+		}
 		break;
 	}
 }

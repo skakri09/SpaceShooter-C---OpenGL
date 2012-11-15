@@ -84,6 +84,18 @@ public:
 	Vector3D& getDirectionVector();
 	void SetDirectionVector(float xDir, float yDir, float zDir);
 	
+	void SetRotation(Vector3D newRotation);
+	void SetRotation(Vector3D& newRotation);
+	void SetRotation(float xRot, float yRot, float zRot);
+	void SetXRot(float xRot);
+	void SetYRot(float yRot);
+	void SetZRot(float zRot);
+
+	Vector3D* GetRotation();
+	float GetXRot();
+	float GetYRot();
+	float GetZRot();
+
 private:
 	// Calculates the position by adding velocity multiplied by
 	// deltaTime (time since last frame) with the current position

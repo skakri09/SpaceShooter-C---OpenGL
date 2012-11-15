@@ -14,7 +14,7 @@ Planet::~Planet()
 void Planet::Draw()
 {
 	glPushMatrix();
-	tex.BindTexture("Endor.jpg");
+	tex.BindTexture(currTexture);
 	transformable.ApplyGLTransformations(true, true, false);
 	glRotatef(rotation, 1.5f, 0.5f, 1.5f);
 	vboDrawable.Draw();
@@ -34,6 +34,22 @@ void Planet::Update( GLfloat deltaTime )
 void Planet::InitPlanet( float xPos, float yPos, float zPos )
 {
 	transformable.Init(xPos, yPos, zPos, Vector3D::ZeroVec(), 2.0f, Vector3D::ZeroVec());
+	std::string texName;
+	float x = GetRandFloat(0.0f, 3.0f);
+	if(x < 1)
+	{
+		texName = "a2.jpg";
+	}
+	else if(x <= 2)
+	{
+		texName = "a3.jpg";
+	}
+	else
+	{
+		texName = "a1.jpg";
+	}
+	tex.InitTexture("..//3ds//Planets//Endor//"+texName, texName);
+	currTexture = texName;
 }
 
 void Planet::CreatePlanet( std::string meshName )
@@ -47,15 +63,5 @@ void Planet::CreatePlanet( std::string meshName )
 		vboDrawable.SetMeshInfo(meshInfo);
 	}
 	InitPlanet(800, -400, -800);
-	std::string texName;
-	float x = GetRandFloat(0.0f, 2.0f);
-	if(x < 1)
-	{
-		texName = "a2.jpg";
-	}
-	else
-	{
-		texName = "a3.jpg";
-	}
-	tex.InitTexture("..//3ds//Planets//Endor//"+texName, "Endor.jpg");
+
 }

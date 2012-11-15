@@ -19,7 +19,7 @@ ImperialShuttle::~ImperialShuttle()
 void ImperialShuttle::Update( GLfloat deltaTime )
 {
 	BaseEnemyShip::Update(deltaTime);
-	if(CanKill())
+	if(killedByPlayer)
 	{
 		SpaceShipManager::Inst()->SpawnProjectilePowerup(cargo, transformable.getPosition());
 	}
@@ -51,5 +51,4 @@ void ImperialShuttle::InitSpaceShip( float startX, float startY, float startZ, f
 	(
 		std::make_shared<ShuttleAI>()
 	);
-
 }
