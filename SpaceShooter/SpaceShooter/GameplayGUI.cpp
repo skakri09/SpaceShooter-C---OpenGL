@@ -12,6 +12,7 @@ GameplayGUI::~GameplayGUI()
 void GameplayGUI::InitGUI(ManagerInterface* manager)
 {
 
+	GuiEntries.push_back(std::make_shared<BossHP>());
 	GuiEntries.push_back(std::make_shared<HPEntry>());
 	GuiEntries.push_back(std::make_shared<LivesEntry>());
 	GuiEntries.push_back(std::make_shared<ScoreTextEntry>());

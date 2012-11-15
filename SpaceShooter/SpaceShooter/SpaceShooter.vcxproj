@@ -93,10 +93,12 @@
     <ClCompile Include="ApproachXYZPlayerState.cpp" />
     <ClCompile Include="BackEntry.cpp" />
     <ClCompile Include="BackToMainMenuEntry.cpp" />
+    <ClCompile Include="BossHP.cpp" />
     <ClCompile Include="ImperialShuttle.cpp" />
     <ClCompile Include="ShuttleAI.cpp" />
     <ClCompile Include="StarDestroyerBossFight.cpp" />
     <ClCompile Include="StarDestroyerExecutor.cpp" />
+    <ClCompile Include="StarDestroyerMoveToBossFight.cpp" />
     <ClCompile Include="WeaponUpgrade.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -184,11 +186,13 @@
     <ClInclude Include="ApproachXYZPlayerState.h" />
     <ClInclude Include="BackEntry.h" />
     <ClInclude Include="BackToMainMenuEntry.h" />
+    <ClInclude Include="BossHP.h" />
     <ClInclude Include="ImperialShuttle.h" />
     <ClInclude Include="KillOwnerState.h" />
     <ClInclude Include="ShuttleAI.h" />
     <ClInclude Include="StarDestroyerBossFight.h" />
     <ClInclude Include="StarDestroyerExecutor.h" />
+    <ClInclude Include="StarDestroyerMoveToBossfight.h" />
     <ClInclude Include="WeaponUpgrade.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Camera.h" />
@@ -281,6 +285,7 @@
   <ItemGroup>
     <None Include="..\particles\particle.xml" />
     <None Include="..\xml\boxableSquare.xml" />
+    <None Include="..\xml\hpBar.xml" />
     <None Include="..\xml\skybox.xml" />
     <None Include="..\xml\square.xml" />
     <None Include="ClassDiagram1.cd" />

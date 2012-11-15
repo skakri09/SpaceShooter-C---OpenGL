@@ -61,6 +61,8 @@ public:
 	void HandleProjectileCollision(std::shared_ptr<Projectile> projectile);
 
 	int GetSpaceshipHP(){return SpaceShipCurrentHealth;}
+	int GetSpaceshipMaxHP(){return SpaceShipMaxHealth;}
+
 	unsigned int GetLives(){return lives;}
 
 	ShooterModule shooterModule;	//A spaceship can shoot

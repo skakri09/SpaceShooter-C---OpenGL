@@ -6,6 +6,7 @@ ImperialStarDestroyer::ImperialStarDestroyer(std::shared_ptr<PlayerSpaceShip> pl
 	BaseEnemyShip(playerShip, std::make_shared<StarDestroyerShipSpawning>(),
 	std::make_shared<EnemySpaceshipConstantState>(), 10000, IMPERIAL_STAR_DESTROYER)
 {
+	FightModeActive = false;
 }
 
 ImperialStarDestroyer::~ImperialStarDestroyer()
@@ -19,7 +20,12 @@ void ImperialStarDestroyer::Update( GLfloat deltaTime )
 	transformable.Update(deltaTime);
 	aabb.Update(transformable.GetCollisionTransformationInfo());
 	shooterModule.UpdateModule(deltaTime);
-	
+
+	if(!FightModeActive)
+	{
+		SpaceShipCurrentHealth = SpaceShipMaxHealth;
+	}
+
 	if(SpaceShipCurrentHealth <= 0)
 	{
 		GameObject::FlagForKill();
@@ -34,6 +40,7 @@ void ImperialStarDestroyer::InitSpaceShip( float startX, float startY, float sta
 		dirVecX, dirVecY, dirVecZ, 1.5f);
 
 	CreateGameObject("ImperialStarDestroyer//ImperialStarDestroyer.3ds");
+	FightModeActive = false;
 }
 
 void ImperialStarDestroyer::Draw()
@@ -90,4 +97,9 @@ void ImperialStarDestroyer::CreateStarDestroyerSubBoxes(std::shared_ptr<AABBColl
 
 	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, -3.5f, 0.0f, -5.0f, 22.0f));//middle tier1
 	orgAABB->CreateSubBox(std::make_shared<AABBCollisionBox>(-10.0f, 10.0f, 0.0f, 4.0f, -5.0f, 13.0f));//middle tier2
+}
+
+void ImperialStarDestroyer::EnableFightMode()
+{
+	FightModeActive = true;
 }

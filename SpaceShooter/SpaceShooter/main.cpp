@@ -7,7 +7,7 @@
 #endif
 #include <gl/glew.h>
 /**
- * Simple program that starts our game manager
+ * Simple program that starts our state manager
  */
 int main(int argc, char *argv[]) 
 {
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	{
 		GameStateManager* stateManager;
 		stateManager = new GameStateManager();
-		stateManager->PlayIntroVideo();
+		//stateManager->PlayIntroVideo();
 		stateManager->InitGameStateManager();
 		stateManager->GameLoop();
 		delete stateManager;

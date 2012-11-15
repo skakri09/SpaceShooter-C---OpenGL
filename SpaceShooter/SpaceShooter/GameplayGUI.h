@@ -26,6 +26,7 @@
 #include "ScoreTextEntry.h"
 #include "ScoreValueEntry.h"
 #include "ProjectileIcon.h"
+#include "BossHP.h"
 
 class GameplayGUI
 {

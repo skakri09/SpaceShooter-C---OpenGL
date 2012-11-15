@@ -30,6 +30,8 @@ public:
 		float startRotDeg, float rotX, float rotY, float rotZ,
 		float dirVecX, float dirVecY, float dirVecZ);
 
+	void EnableFightMode();
+
 protected:
 	void CreateGameObject(std::string meshPathFrom3dsFolder);
 
@@ -37,7 +39,8 @@ private:
 	Logger log;
 
 	void CreateStarDestroyerSubBoxes(std::shared_ptr<AABBCollisionBox> orgAABB);
-
+	
+	bool FightModeActive;
 };
 
 #endif // ImperialStarDestroyerInactive_h__
