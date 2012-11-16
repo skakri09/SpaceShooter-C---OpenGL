@@ -45,7 +45,7 @@ void PlayerSpaceShip::InitSpaceShip( float startX, float startY, float startZ,
 	for(int i = 0; i < totalTypes; i++)
 	{
 		projTypes[i].projType = static_cast<ProjectileTypes>(i+1);//skipping the first type which is LASER_SLOW
-		projTypes[i].known = i; //all but the first are unknown
+		projTypes[i].known = !i; //all but the first are unknown
 	}
 	CreateGameObject("MilleniumFalcon//MilleniumFalcon.3ds");
 }

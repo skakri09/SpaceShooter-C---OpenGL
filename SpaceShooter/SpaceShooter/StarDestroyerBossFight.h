@@ -12,6 +12,7 @@
 #include "BaseEnemyShip.h"
 #include "logger.h"
 #include "FireCircle.h"
+#include "GameConstants.h"
 
 class StarDestroyerBossFight : public AiState
 {
@@ -28,6 +29,9 @@ private:
 	Logger log;
 
 	int shotsFired;
+
+	bool chargeUpPlayed;
+
 };
 
 #endif // StarDestroyerBossFight_h__

@@ -1,4 +1,5 @@
 #include "FireCircle.h"
+#include "SoundManager.h"
 
 FireCircle::FireCircle()
 	:log("FireCircle", INFO),AiState("FireCircle")
@@ -20,6 +21,7 @@ void FireCircle::UpdateState( BaseEnemyShip* owner, float deltaTime )
 	trans.SetDirectionVector(fireDirectionVec.getX(), fireDirectionVec.getY(), fireDirectionVec.getZ());
 	if(owner->shooterModule.Shoot(LASER_WALL, trans, owner))
 	{
+		SoundManager::Inst()->PlayEffect(2, "star_destroyer_cone", 10);
 		fireDirectionVec.setX(fireDirectionVec.getX()-0.1f);
 	}
 

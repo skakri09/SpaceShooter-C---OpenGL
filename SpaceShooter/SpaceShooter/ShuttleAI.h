@@ -24,6 +24,7 @@ enum TravelPart
 	TO_SCREEN_RIGHT,
 	TO_PLANET
 };
+
 class ShuttleAI : public AiState
 {
 public:

@@ -27,6 +27,9 @@ public:
 	void PlaySong(std::string songName, unsigned short volume = 100);
 
 	void PlayEffect(std::string effectName, unsigned short volume = 100);
+	void PlayEffect(unsigned int channel, 
+					std::string effectName, 
+					unsigned short volume = 100);
 
 	void Update(float deltaTime);
 
@@ -38,6 +41,7 @@ public:
 
 	bool EffectsMuted();
 	void SetEffectsMuted(bool mute);
+
 private:
 	SoundManager();
 	~SoundManager();
@@ -67,7 +71,6 @@ private:
 
 	std::string songPlayedPreMute_global;
 	unsigned short prevSongVolume_global;
-	
 };
 
 #endif // SoundManager_h__
