@@ -3,7 +3,7 @@
     filename:   Quadlaser.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    Shoots 4 lasers straight forward
 *********************************************************************/
 #ifndef Quadlaser_h__
 #define Quadlaser_h__

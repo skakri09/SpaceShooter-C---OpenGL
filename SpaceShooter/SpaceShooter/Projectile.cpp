@@ -26,19 +26,7 @@ void Projectile::Draw()
 	
 	if(fired)
 	{
-		// Applying transformations to this matrix to match the position and rotation of the 
-		// spaceship when fire was called.
-		glPushMatrix();
-
-		//Draw the projectile in the above object's space which is transformed into the correct
-		//position and rotation.
-		glPushMatrix();
-
 		transformable.ApplyGLTransformations(true, true, true);
-		vboDrawable.Draw();
-
-		glPopMatrix();
-		glPopMatrix();
 	}
 }
 

@@ -3,7 +3,8 @@
     filename:   TextureFactory.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    The texture factory loads and manages textures. If a class in the game
+				needs access to a texture, it's retrieved from this class
 *********************************************************************/
 #ifndef TextureFactory_h__
 #define TextureFactory_h__

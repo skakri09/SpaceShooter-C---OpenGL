@@ -3,7 +3,7 @@
     filename:   ScoreManager.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    Handles the score of the player
 *********************************************************************/
 #ifndef ScoreManager_h__
 #define ScoreManager_h__

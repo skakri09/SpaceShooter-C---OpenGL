@@ -12,13 +12,13 @@ BossHP::~BossHP()
 void BossHP::Init()
 {
 	_vbo.SetMeshInfo(MeshFactory::Inst()->GetMesh("..//xml//hpBar.xml"));
-	static_cast<float>(bossMaxHP) = SpaceShipManager::Inst()->GetStarDestroyer()->GetSpaceshipMaxHP();
+	bossMaxHP = static_cast<float>(SpaceShipManager::Inst()->GetStarDestroyer()->GetSpaceshipMaxHP());
 	transformable.Init(1.2f, 3.6f, -5, Vector3D::ZeroVec(), 1.0f, Vector3D::ZeroVec());
 }
 
 void BossHP::Update( float deltaTime )
 {
-	static_cast<float>(bossHP) = SpaceShipManager::Inst()->GetStarDestroyer()->GetSpaceshipHP();
+	bossHP = static_cast<float>(SpaceShipManager::Inst()->GetStarDestroyer()->GetSpaceshipHP());
 	
 	xScale = bossHP/bossMaxHP;
 }

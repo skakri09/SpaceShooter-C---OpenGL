@@ -3,7 +3,7 @@
     filename:   TripleConeLaser.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    Shoots 3 lasers in a cone
 *********************************************************************/
 #ifndef TripleConeLaser_h__
 #define TripleConeLaser_h__

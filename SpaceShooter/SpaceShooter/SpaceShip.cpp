@@ -99,7 +99,7 @@ void SpaceShip::HandleProjectileCollision( std::shared_ptr<Projectile> projectil
 		{
 			int dmgTaken = projectile->GetProjectileDmg();
 			SpaceShipCurrentHealth -= dmgTaken;
-			log << WARN << "Spaceship hit! It lost " << dmgTaken << ", " 
+			log << INFO << "Spaceship hit! It lost " << dmgTaken << ", " 
 				<< SpaceShipCurrentHealth << "/" << SpaceShipMaxHealth <<"HP left" << std::endl;
 
 			EmittProjectileHittParticles(*projectile);

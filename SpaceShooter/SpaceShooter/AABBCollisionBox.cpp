@@ -56,7 +56,7 @@ bool AABBCollisionBox::IsCollision( AABBCollisionBox* otherCollidable )
 	
 	if(SubBoxes.empty())
 	{
-			return true;
+		return true;
 	}
 	else//If this collision box consist of more sub-boxes we loop trough them and check them
 	{

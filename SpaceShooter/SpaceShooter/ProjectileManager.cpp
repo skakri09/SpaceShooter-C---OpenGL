@@ -19,6 +19,7 @@ ProjectileManager* ProjectileManager::Inst()
 
 void ProjectileManager::InitProjectileManager()
 {
+	laserVBO.SetMeshInfo(MeshFactory::Inst()->GetMesh("..//3ds//Laser//Laser.3ds"));
 	//Repeat the two following lines of code for each ProjectileType added to the game!
 	//This takes care of pre-loading the mesh into a VBO on the graphics card on startup
 	//so we dont get a small freeze when trying to use an object that has not been loaded.
@@ -47,6 +48,12 @@ void ProjectileManager::InitProjectileManager()
 	
 	std::shared_ptr<Projectile> psl = GetProjectile(PLAYER_SEEKING_LASER);
 	projectileCooldowns[PLAYER_SEEKING_LASER] = psl->GetProjectileCooldown();
+
+	for(unsigned int i = 0; i < 10; i++)
+	{
+		projectiles.push_back(std::make_shared<LaserWall>());
+	}
+	
 }
 
 void ProjectileManager::Update(float deltaTime)
@@ -72,6 +79,7 @@ void ProjectileManager::DrawProjectiles()
 	glPushMatrix();
 	//Drawing all our projectiles if they are tagged as "fired"
 	glColor3f(1.0f, 0.7f, 0.0f);//orangeish color
+	laserVBO.EnableClientStates();
 	for(auto i = ActiveProjectiles.begin(); i != ActiveProjectiles.end(); i++)
 	{
 		if( (*i)->isFired() )
@@ -80,9 +88,13 @@ void ProjectileManager::DrawProjectiles()
 			{
 				(*i)->aabb.DrawAABB();
 			}
+			glPushMatrix();
 			(*i)->Draw();
+			laserVBO.Draw(false);
+			glPopMatrix();
 		}
 	}
+	laserVBO.DisableClientStates();
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glPopMatrix();
 }

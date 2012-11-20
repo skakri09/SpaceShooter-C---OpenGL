@@ -4,7 +4,7 @@
     author:     Kristian Skarseth
     
     purpose:    Provides a class with the functionality to move, scale
-				and rotate(not done yet). 
+				and rotate
 *********************************************************************/
 #ifndef Transformable_h__
 #define Transformable_h__

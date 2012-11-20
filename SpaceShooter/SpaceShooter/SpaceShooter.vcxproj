@@ -105,7 +105,6 @@
     <ClCompile Include="WeaponUpgrade.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="CrossScreenWhileFireing.cpp" />
     <ClCompile Include="DeathStar.cpp" />
     <ClCompile Include="DoubleLaser.cpp" />
@@ -202,7 +201,6 @@
     <ClInclude Include="WeaponUpgrade.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Collidable.h" />
     <ClInclude Include="CrossScreenWhileFireing.h" />
     <ClInclude Include="DeathStar.h" />
     <ClInclude Include="DoubleLaser.h" />
@@ -293,7 +291,9 @@
     <None Include="..\xml\boxableSquare.xml" />
     <None Include="..\xml\hpBar.xml" />
     <None Include="..\xml\skybox.xml" />
-    <None Include="..\xml\square.xml" />
+    <None Include="..\xml\square.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClassDiagram1.cd" />
     <None Include="GameObject.h" />
     <None Include="lib3ds-1_3d.dll" />

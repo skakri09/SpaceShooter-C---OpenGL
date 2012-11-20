@@ -3,7 +3,9 @@
 	filename: 	AABBCollisionBox.h
 	author:		Kristian Skarseth
 	
-	purpose:	
+	purpose:	Defines an AABB collision box that can be checked for collision against
+				anotehr AABB collision box. the AABB can also contain sub-AABBs for more
+				precise collision checking.
 *********************************************************************/
 #ifndef AABBCollisionBox_h__
 #define AABBCollisionBox_h__

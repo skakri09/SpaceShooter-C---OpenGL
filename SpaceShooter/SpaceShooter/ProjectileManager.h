@@ -22,6 +22,7 @@
 #include "ManagerInterface.h"
 #include "LaserWall.h"
 #include "PlayerSeekingLaser.h"
+#include "VBODrawable.h"
 
 class ProjectileManager : public ManagerInterface
 {
@@ -58,6 +59,8 @@ private:
 	ProjectileManager();
 	~ProjectileManager();
 	Logger log;
+
+	VBODrawable laserVBO;
 
 	bool renderAABB;
 	//Map holding the cooldown for each projectile type

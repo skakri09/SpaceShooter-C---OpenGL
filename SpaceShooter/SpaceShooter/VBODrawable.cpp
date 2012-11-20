@@ -19,7 +19,7 @@ void VBODrawable::Draw(bool enableClientStates)
 	{
 		if(enableClientStates)
 			EnableClientStates();
-		if(!meshInfo->haveIndices)
+ 		if(!meshInfo->haveIndices)
 		{
 			glDrawArrays(meshInfo->mode, 0, meshInfo->numberOfIndices);
 		}

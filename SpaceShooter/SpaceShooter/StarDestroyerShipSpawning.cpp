@@ -22,7 +22,7 @@ void StarDestroyerShipSpawning::UpdateState( BaseEnemyShip* owner, float deltaTi
 	log << INFO << "--" << std::endl;
 	UpdateDirection(owner);
 	HandleShipSpawning(deltaTime);
-	if(totalShipsSpawned >= 100)
+	if(totalShipsSpawned >= 75)
 	{	
 		owner->GetAiStateMachine().ChangeState(std::make_shared<StarDestroyerMoveToBossfight>());
 	}
@@ -67,7 +67,7 @@ void StarDestroyerShipSpawning::HandleShipSpawning( float deltaTime )
 	lastImpInterceptorSpawn += deltaTime;
 	lastImpTieFighterSpawn += deltaTime;
 
-	if(lastImpTieFighterSpawn >= 1.5f)
+	if(lastImpTieFighterSpawn >= 2.5f)
 	{
 		lastImpTieFighterSpawn = 0.0f;
 		std::shared_ptr<ImperialTieFighter> ship = std::make_shared<ImperialTieFighter>
@@ -79,7 +79,7 @@ void StarDestroyerShipSpawning::HandleShipSpawning( float deltaTime )
 		SpaceShipManager::Inst()->TransferShipToShipManager(ship);
 		totalShipsSpawned++;
 	}
-	if(lastImpInterceptorSpawn >= 2.0f)
+	if(lastImpInterceptorSpawn >= 3.0f)
 	{
 		lastImpInterceptorSpawn = 0.0f;
 		std::shared_ptr<ImperialTieInterceptor> ship = std::make_shared<ImperialTieInterceptor>

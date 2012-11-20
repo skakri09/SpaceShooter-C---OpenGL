@@ -3,7 +3,8 @@
     filename:   ImperialStarShuttle.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    An imperial shuttle. This enemy does not attack, but if 
+				killed it spawns a powerup that can be picked up by the player.
 *********************************************************************/
 #ifndef ImperialShuttle_h__
 #define ImperialShuttle_h__

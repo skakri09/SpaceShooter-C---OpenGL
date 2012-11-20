@@ -3,7 +3,8 @@
     filename:   PlayerSeekingLaser.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    A laser that targets the player when fired. It goes straight
+				ahead, but towards the position the player was when fired.
 *********************************************************************/
 #ifndef PlayerSeekingLaser_h__
 #define PlayerSeekingLaser_h__

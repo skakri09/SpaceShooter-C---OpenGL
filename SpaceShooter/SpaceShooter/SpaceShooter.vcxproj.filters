@@ -277,9 +277,6 @@
     <ClCompile Include="AABB.cpp">
       <Filter>Game\Components\Collidable</Filter>
     </ClCompile>
-    <ClCompile Include="Collidable.cpp">
-      <Filter>Game\Components\Collidable</Filter>
-    </ClCompile>
     <ClCompile Include="BoundingSphere.cpp">
       <Filter>Game\Components\Collidable</Filter>
     </ClCompile>
@@ -604,9 +601,6 @@
       <Filter>Game\Components\Collidable</Filter>
     </ClInclude>
     <ClInclude Include="BoundingSphere.h">
-      <Filter>Game\Components\Collidable</Filter>
-    </ClInclude>
-    <ClInclude Include="Collidable.h">
       <Filter>Game\Components\Collidable</Filter>
     </ClInclude>
     <ClInclude Include="AABBCollisionBox.h">

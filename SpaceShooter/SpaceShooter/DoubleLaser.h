@@ -3,7 +3,7 @@
     filename:   DoubleLaser.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    Shoots two lasers straight forward
 *********************************************************************/
 #ifndef DoubleLaser_h__
 #define DoubleLaser_h__

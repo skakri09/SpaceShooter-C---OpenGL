@@ -60,7 +60,6 @@ void PlayerSeekingLaser::FireProjectile( Transformable& ownerTransformable, Game
 	aabb.Update(transformable.GetCollisionTransformationInfo());
 
 	fired = true;
-	//ProjectileManager::Inst()->Shoot(PLAYER_SEEKING_LASER, trans, owner);
 }
 
 void PlayerSeekingLaser::CreateProjectile( ProjectileTypes projectileType, std::string meshPathFromXmlFolder )

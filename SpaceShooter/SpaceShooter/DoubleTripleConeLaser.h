@@ -3,7 +3,7 @@
     filename:   DoubleTripleConeLaser.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    Shoots two lasers above eachother in 3 directions. 6 lasers total
 *********************************************************************/
 #ifndef DoubleTripleConeLaser_h__
 #define DoubleTripleConeLaser_h__

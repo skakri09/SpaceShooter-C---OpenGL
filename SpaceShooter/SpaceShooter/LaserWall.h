@@ -3,7 +3,7 @@
     filename:   LaserWall.h
     author:     Kristian Skarseth
     
-    purpose:    
+    purpose:    A laser that spawns 20 lasers in a vertical cone
 *********************************************************************/
 #ifndef LaserWall_h__
 #define LaserWall_h__
